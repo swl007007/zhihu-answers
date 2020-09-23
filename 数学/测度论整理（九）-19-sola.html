@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（九）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-0cc186fcfa6a277e76db3d314dcef57f_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/136044365" target="_blank">
+                        测度论整理（九）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-04-24
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这次我们开始符号测度的内容。
+                </p>
+                <p>
+                    定义并研究符号测度的动机是：想在测度空间上建立类似于
+                    <b>
+                        微分
+                    </b>
+                    的概念。由于我们已经在测度空间上定义了积分，我们可以巧妙地借用积分来定义微分。为此，我们需要先引入不定积分的概念。下假设
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    为测度空间，那么对于任意可测集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，我们都能定义
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                    作为积分存在的可测函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的
+                    <b>
+                        不定积分
+                    </b>
+                    。这样的定义方式是自然的。因为在数学分析中，NL公式连接了定积分与不定积分。即我们可以将定积分看成是取定了积分区域的不定积分，故
+                    <b>
+                        将不定积分看成是以积分区域为变量的定积分
+                    </b>
+                    。在这里是异曲同工的，我们将积分区域
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    看成一个变量，那么不定积分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29" alt="\varphi(A)" eeimg="1">
+                    就可以用定积分来定义了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这样的定义具有一些不错的性质。譬如：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cvarnothing%29%3D0" alt="\varphi(\varnothing)=0" eeimg="1">
+                    ，对于任意零测集
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28B%29%3D0" alt="\varphi(B)=0" eeimg="1">
+                    。注意到若
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的一个可测分割，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Xf%5C%2Cd%5Cmu%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty%5Cint_%7BA_n%7Df%5C%2Cd%5Cmu" alt="\int_Xf\,d\mu=\sum_{n=1}^\infty\int_{A_n}f\,d\mu" eeimg="1">
+                    （利用单调收敛定理容易构造函数列进行证明），故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    具有
+                    <b>
+                        可列可加性
+                    </b>
+                    。我们发现：如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    还具有非负性的话，它就是一个测度了！但是很遗憾，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    显然可以是负的。由于其
+                    <b>
+                        比起一个真正的测度而言，仅仅丧失了非负性
+                    </b>
+                    ，我们称其为
+                    <b>
+                        符号测度
+                    </b>
+                    。不定积分是一个经典的符号测度，也是一个结构很清楚的符号测度。但是，一般的符号测度的结构是什么样的？它们一定都能写成不定积分的形式吗？这就是我们接下来要考察的问题了。我们后面都将在
+                    <b>
+                        可测空间
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%29" alt="(X,\mathscr{F})" eeimg="1">
+                    上讨论符号测度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先，如同我们在测度性质提及的，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cvarnothing%29%3D0" alt="\varphi(\varnothing)=0" eeimg="1">
+                    与可列可加性结合就可得到
+                    <b>
+                        有限可加性
+                    </b>
+                    。但是遗憾的是，依赖于测度非负性而推出的单调性、半可列可加性不再成立。然而，上、下连续性的证明中并未用到非负性，故对于条件测度
+                    <b>
+                        上、下连续性
+                    </b>
+                    依旧成立。
+                </p>
+                <p>
+                    其次，由于符号测度取值在
+                    <img src="https://www.zhihu.com/equation?tex=%5B-%5Cinfty%2C%2B%5Cinfty%5D" alt="[-\infty,+\infty]" eeimg="1">
+                    中且要满足可列可加性，我们容易发现其值域不能同时包含
+                    <img src="https://www.zhihu.com/equation?tex=%2B%5Cinfty" alt="+\infty" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=-%5Cinfty" alt="-\infty" eeimg="1">
+                    ，在此不妨讨论
+                    <b>
+                        值域
+                    </b>
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%28-%5Cinfty%2C%2B%5Cinfty%5D" alt="(-\infty,+\infty]" eeimg="1">
+                    的条件测度。
+                </p>
+                <p>
+                    关于条件测度的另一个基本性质是：若有一列两两不交的可测集
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%28%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+A_n%29%7C%3C%5Cinfty" alt="|\varphi(\bigcup_{n=1}^\infty A_n)|&lt;\infty" eeimg="1">
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%7C%5Cvarphi%28A_n%29%7C%3C%5Cinfty" alt="\sum_{n=1}^\infty |\varphi(A_n)|&lt;\infty" eeimg="1">
+                    。这条性质乍看之下仅仅利用可列可加性并无法得到，但是注意到对于一个可正可负的量，我们总是能做
+                    <b>
+                        正负部拆分
+                    </b>
+                    。在这里，我们对于集合列做正负部拆分，
+                    <img src="https://www.zhihu.com/equation?tex=A_n%5E%2B" alt="A_n^+" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_n%29%5Cgeq0" alt="\varphi(A_n)\geq0" eeimg="1">
+                    时取值
+                    <img src="https://www.zhihu.com/equation?tex=A_n" alt="A_n" eeimg="1">
+                    ，否则取值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing" alt="\varnothing" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=A_n%5E-" alt="A_n^-" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_n%29%5Cleq0" alt="\varphi(A_n)\leq0" eeimg="1">
+                    时取值
+                    <img src="https://www.zhihu.com/equation?tex=A_n" alt="A_n" eeimg="1">
+                    ，否则取值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing" alt="\varnothing" eeimg="1">
+                    。对于集合列做好正负部拆分后命题可立即得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由于符号测度缺失了非负性导致其性质并不够好，一个最朴素的想法就是想办法把非负性添加上去。我们不妨如下地理解符号测度：不将其看为定义于可测空间上的函数，而是将其看作是对于可测空间中点（
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中元素）的作用。暂且抛却“可测性”这个限制，我们发现：对于每个点，其被符号测度作用后要么会显示出正的性质（即对符号测度有
+                    <b>
+                        正贡献
+                    </b>
+                    ），要么会显示出负的性质（对符号测度有
+                    <b>
+                        负贡献
+                    </b>
+                    ），要么会显示出零的性质（对符号测度
+                    <b>
+                        没影响
+                    </b>
+                    ）。那么按照这样来理解的话，一个可测集如果有正的符号测度只是因为其中点对于符号测度的正贡献超过了其中点对于符号测度的负贡献。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    所以自然地，我们引入
+                    <b>
+                        Hahn分解
+                    </b>
+                    的概念。如果我们能够找到
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    <b>
+                        的可测分割
+                        <img src="https://www.zhihu.com/equation?tex=X%5E%2B%2CX%5E-" alt="X^+,X^-" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=X%5E%2B" alt="X^+" eeimg="1">
+                        中所有可测集具有非负符号测度且
+                        <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                        中所有可测集具有非正符号测度
+                    </b>
+                    ，那么我们称其为符号测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    诱导出的Hahn分解。
+                </p>
+                <p>
+                    容易发现，把符号测度限制在
+                    <img src="https://www.zhihu.com/equation?tex=X%5E%2B" alt="X^+" eeimg="1">
+                    上，那么它就会升级成一个测度；把符号测度限制在
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    上并且取相反数，它也可以升级成一个测度。可见Hahn分解将符号测度
+                    <b>
+                        分解成为了两个测度
+                    </b>
+                    ，这两个测度的定义域刚好给出了
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的一个可测分割。对于不定积分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                    ，其Hahn分解是显然的：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+f%5Cgeq+0+%5Cright+%5C%7D%2C%5Cleft+%5C%7B++f%3C0%5Cright+%5C%7D" alt="\left \{ f\geq 0 \right \},\left \{  f&lt;0\right \}" eeimg="1">
+                    。现在的问题是：对于一般的符号测度，Hahn分解一定存在吗？
+                </p>
+                <p>
+                    答案是肯定的！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    为此，我们不妨定义一个新的函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2A%28A%29%3D%5Csup%5Cleft+%5C%7B++%5Cvarphi%28B%29%7CB%5Csubset+A%2CB%5Cin%5Cmathscr%7BF%7D%5Cright+%5C%7D" alt="\varphi^*(A)=\sup\left \{  \varphi(B)|B\subset A,B\in\mathscr{F}\right \}" eeimg="1">
+                    。直观地理解，其用来
+                    <b>
+                        度量
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        中的正贡献元究竟有多少
+                    </b>
+                    。我们可以将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2A%28A%29" alt="\varphi^*(A)" eeimg="1">
+                    理解为：将
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中所有正贡献元拿出来，看看其符号测度有多大。那么容易验证其
+                    <b>
+                        非负、单调
+                    </b>
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的符号测度不可能超过其中所有正贡献元的符号测度（
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5Cleq+%5Cvarphi%5E%2A" alt="\varphi\leq \varphi^*" eeimg="1">
+                    ），其将会成为我们估计符号测度上界的有力工具。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接着，给出两个引理：
+                </p>
+                <p>
+                    <b>
+                        引理1
+                    </b>
+                    ：对于可测集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29%3C%5Cinfty" alt="\varphi(A)&lt;\infty" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cexists+A_%7B%5Cvarepsilon%7D%5Cin+%5Cmathscr%7BF%7D" alt="\forall \varepsilon &gt;0,\exists A_{\varepsilon}\in \mathscr{F}" eeimg="1">
+                    ，其为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的子集，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_%7B%5Cvarepsilon%7D%29%5Cgeq+0%2C%5Cvarphi%5E%2A%28A-A_%7B%5Cvarepsilon%7D%29%5Cleq+%5Cvarepsilon" alt="\varphi(A_{\varepsilon})\geq 0,\varphi^*(A-A_{\varepsilon})\leq \varepsilon" eeimg="1">
+                    。
+                </p>
+                <p>
+                    利用反证法可以不断地将
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中具有正符号测度下界的一列两两不交可测集
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++B_n%5Cright+%5C%7D" alt="\left \{  B_n\right \}" eeimg="1">
+                    拿出来，并且发现其可列并的符号测度无限，从而达成矛盾。这个引理的意义在于：
+                    <b>
+                        对于符号测度有限的可测集，我们总是能够将其中所有的正贡献元（
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_%7B%5Cvarepsilon%7D%29%5Cgeq+0" alt="\varphi(A_{\varepsilon})\geq 0" eeimg="1">
+                    <b>
+                        ）在“几乎”的意义下（
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2A%28A-A_%7B%5Cvarepsilon%7D%29%5Cleq+%5Cvarepsilon" alt="\varphi^*(A-A_{\varepsilon})\leq \varepsilon" eeimg="1">
+                    <b>
+                        ）清晰地（
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A_%7B%5Cvarepsilon%7D%5Cin+%5Cmathscr%7BF%7D" alt="A_{\varepsilon}\in \mathscr{F}" eeimg="1">
+                    <b>
+                        ）分离出来
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        引理2：
+                    </b>
+                    对于可测集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29%3C0" alt="\varphi(A)&lt;0" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+A_%7B0%7D%5Cin+%5Cmathscr%7BF%7D" alt="\exists A_{0}\in \mathscr{F}" eeimg="1">
+                    ，其为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的子集，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_%7B0%7D%29%3C0%2C%5Cvarphi%5E%2A%28A-A_%7B0%7D%29%3D0" alt="\varphi(A_{0})&lt;0,\varphi^*(A-A_{0})=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    利用引理1，将其中的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    实现为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7Bk%7D" alt="\frac{1}{k}" eeimg="1">
+                    ，即可取出一列正符号测度且两两不交的集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++C_n%5Cright+%5C%7D" alt="\left \{  C_n\right \}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A-%28C_1%5Ccup...%5Ccup+C_n%29%29%5Cleq+%5Cfrac%7B1%7D%7Bn%7D" alt="\varphi(A-(C_1\cup...\cup C_n))\leq \frac{1}{n}" eeimg="1">
+                    。即对于
+                    <img src="https://www.zhihu.com/equation?tex=C_1" alt="C_1" eeimg="1">
+                    ，其将
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中几乎所有正贡献元分离出来。对于
+                    <img src="https://www.zhihu.com/equation?tex=C_2" alt="C_2" eeimg="1">
+                    ，其将
+                    <img src="https://www.zhihu.com/equation?tex=A-C_1" alt="A-C_1" eeimg="1">
+                    中几乎所有正贡献元分离出来，以此类推。
+                </p>
+                <p>
+                    所以，直观地理接，我们把所有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++C_n%5Cright+%5C%7D" alt="\left \{  C_n\right \}" eeimg="1">
+                    并起来，再把其从
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中去除，就可以得到一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_%7B0%7D%29%3C0%2C%5Cvarphi%5E%2A%28A-A_%7B0%7D%29%3D0" alt="\varphi(A_{0})&lt;0,\varphi^*(A-A_{0})=0" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=A_0" alt="A_0" eeimg="1">
+                    。这个引理的意义在于：
+                    <b>
+                        对于符号测度为负的可测集，我们总是能够将其中所有的负贡献元（
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_%7B0%7D%29%3C0" alt="\varphi(A_{0})&lt;0" eeimg="1">
+                    <b>
+                        ）完全地（
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2A%28A-A_%7B0%7D%29%3D0" alt="\varphi^*(A-A_{0})=0" eeimg="1">
+                    <b>
+                        ）清晰地（
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A_%7B0%7D%5Cin+%5Cmathscr%7BF%7D" alt="A_{0}\in \mathscr{F}" eeimg="1">
+                    <b>
+                        ）分离出来
+                    </b>
+                    。这个引理比起上个引理更好的一点在于：分离是完全的，而非“几乎”意义下的了！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有了这些准备，证明Hahn分解定理就不算困难了。
+                </p>
+                <p>
+                    其大致的证明思路是：先构造
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    ，在确保剩下的集合满足
+                    <img src="https://www.zhihu.com/equation?tex=X%5E%2B" alt="X^+" eeimg="1">
+                    的性质。具体地，
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    中元素均为零贡献元以及负贡献元，故很自然地，我们希望在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D%5E-%3D%5Cleft+%5C%7B++A%5Cin%5Cmathscr%7BF%7D%7C%5Cvarphi%5E%2A%28A%29%3D0%5Cright+%5C%7D" alt="\mathscr{F}^-=\left \{  A\in\mathscr{F}|\varphi^*(A)=0\right \}" eeimg="1">
+                    中寻找元素来构造
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    。（因为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D%5E-" alt="\mathscr{F}^-" eeimg="1">
+                    <b>
+                        中每个集合的所有正贡献元在符号测度下看为零，是可忽略的
+                    </b>
+                    ）且我们容易发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D%5E-" alt="\mathscr{F}^-" eeimg="1">
+                    本质上是一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    <b>
+                        环
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么问题是：我们如何进行
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    的构造呢？我们令
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha%3D%5Cinf%5Cleft+%5C%7B++%5Cvarphi%28A%29%7CA%5Cin%5Cmathscr%7BF%7D%5E-%5Cright+%5C%7D" alt="\alpha=\inf\left \{  \varphi(A)|A\in\mathscr{F}^-\right \}" eeimg="1">
+                    ，为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D%5E-" alt="\mathscr{F}^-" eeimg="1">
+                    中所有集合符号测度的下确界。那么我们很自然地，为了确保
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    中包含了所有负贡献元，应该取一列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D%5E-" alt="\mathscr{F}^-" eeimg="1">
+                    中的集合
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_n%29%5Crightarrow%5Calpha" alt="\varphi(A_n)\rightarrow\alpha" eeimg="1">
+                    。（这确保了集合列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+A_n+%5Cright+%5C%7D" alt="\left \{ A_n \right \}" eeimg="1">
+                    中包含了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D%5E-" alt="\mathscr{F}^-" eeimg="1">
+                    中那些符号测度最小的集合）由此定义出的
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-%3D%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+A_n" alt="X^-=\bigcup_{n=1}^\infty A_n" eeimg="1">
+                    即可满足其中所有可测集符号测度非正！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=X%5E%2B%3DX-X%5E-" alt="X^+=X-X^-" eeimg="1">
+                    。假设有
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X%5E%2B" alt="X^+" eeimg="1">
+                    子集且符号测度为负，那么直观地说，
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中负贡献元比正贡献元多，但是其却与
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    不交。我们利用引理，可以将
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中的所有负贡献元组成的集合
+                    <img src="https://www.zhihu.com/equation?tex=A_0" alt="A_0" eeimg="1">
+                    完全地分离出来，即使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_0%29%3C0%2C%5Cvarphi%5E%2A%28A_0%29%3D0" alt="\varphi(A_0)&lt;0,\varphi^*(A_0)=0" eeimg="1">
+                    。那么
+                    <img src="https://www.zhihu.com/equation?tex=A_0%5Ccup+X%5E-" alt="A_0\cup X^-" eeimg="1">
+                    就
+                    <b>
+                        应该是一个比所有
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D%5E-" alt="\mathscr{F}^-" eeimg="1">
+                        中元素都具有更小符号测度的元素
+                    </b>
+                    ，因为其比起
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    有了更多的负贡献元，而正贡献元却没有增加！即我们可以证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_0%5Ccup+X%5E-%29%3C%5Calpha" alt="\varphi(A_0\cup X^-)&lt;\alpha" eeimg="1">
+                    ，与下确界矛盾！事实上，将符号测度最小的那些集合归入
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-" alt="X^-" eeimg="1">
+                    中本身就已经保证了
+                    <img src="https://www.zhihu.com/equation?tex=X%5E%2B" alt="X^+" eeimg="1">
+                    中任意可测集的符号测度非负！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此，Hahn分解定理得证！
+                    <b>
+                        对于任意可测空间上的符号测度，我们都能够进行Hahn分解！
+                    </b>
+                    特别地，若我们有两个不同的Hahn分解
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++X_1%5E%2B%2CX_1%5E-%5Cright+%5C%7D%2C%5Cleft+%5C%7B++X_2%5E%2B%2CX_2%5E-%5Cright+%5C%7D" alt="\left \{  X_1^+,X_1^-\right \},\left \{  X_2^+,X_2^-\right \}" eeimg="1">
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X_1%5E%2B-X_2%5E%2B" alt="X_1^+-X_2^+" eeimg="1">
+                    中可测集，那么必定有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29%3D0" alt="\varphi(A)=0" eeimg="1">
+                    成立。在这样的意义下，Hahn分解是唯一的！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以这样对Hahn分解的含义打个比方：
+                    <b>
+                        将可测空间中的点看成符号测度作用的对象，那么点会自然地分成正元、负元、零元。Hahn分解定理告诉我们总是存在这样的一种切割方法，使得切割过后的一块只包含正元、零元，另一块只包含零元、负元，且这样的切割边界是清晰的
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有了Hahn分解，我们就可以分解符号测度了！
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%28A%29%3D%5Cvarphi%28A%5Ccap+X%5E%2B%29%2C%5Cvarphi%5E-%28A%29%3D%5Cvarphi%28A%5Ccap+X%5E-%29" alt="\varphi^+(A)=\varphi(A\cap X^+),\varphi^-(A)=\varphi(A\cap X^-)" eeimg="1">
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%5Cpm" alt="\varphi^\pm" eeimg="1">
+                    显然均为
+                    <b>
+                        测度
+                    </b>
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3D%5Cvarphi%5E%2B-%5Cvarphi%5E-" alt="\varphi=\varphi^+-\varphi^-" eeimg="1">
+                    。
+                </p>
+                <p>
+                    特别地，我们发现对于可测的
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的任意可测子集
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%28A%29%5Cgeq+%5Cvarphi%5E%2B%28B%29" alt="\varphi^+(A)\geq \varphi^+(B)" eeimg="1">
+                    （测度的单调性），
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%28B%29%5Cgeq%5Cvarphi%28B%29" alt="\varphi^+(B)\geq\varphi(B)" eeimg="1">
+                    （测度的非负性），故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%28A%29%5Cgeq%5Cvarphi%5E%2A%28A%29" alt="\varphi^+(A)\geq\varphi^*(A)" eeimg="1">
+                    。反之，由于
+                    <img src="https://www.zhihu.com/equation?tex=A%5Ccap+X%5E%2B" alt="A\cap X^+" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的可测子集，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%28A%29%5Cleq%5Cvarphi%5E%2A%28A%29" alt="\varphi^+(A)\leq\varphi^*(A)" eeimg="1">
+                    。
+                    <b>
+                        故
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%3D%5Cvarphi%5E%2A" alt="\varphi^+=\varphi^*" eeimg="1">
+                        ！
+                    </b>
+                </p>
+                <p>
+                    类似地，
+                    <b>
+                        可得到
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E-%3D%28-%5Cvarphi%29%5E%2A" alt="\varphi^-=(-\varphi)^*" eeimg="1">
+                        ！
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        也就是说，任意可测空间上的符号测度都能够分解为两个测度之差，且
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%3D%5Cvarphi%5E%2A%2C%5Cvarphi%5E-%3D%28-%5Cvarphi%29%5E%2A" alt="\varphi^+=\varphi^*,\varphi^-=(-\varphi)^*" eeimg="1">
+                    <b>
+                        ！
+                    </b>
+                </p>
+                <p>
+                    将符号测度分解为两个测度之差其实并不新奇，因为这是很容易就能做到的，而且有很多种方式可以做。但是通过上述过程得到的符号测度分解中，我们对于两个测度的
+                    <b>
+                        结构都有着清晰的认知
+                    </b>
+                    ，这是可贵的！其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%28A%29" alt="\varphi^+(A)" eeimg="1">
+                    就是
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    所有可测子集符号测度的上确界且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E-" alt="\varphi^-" eeimg="1">
+                    必为有限测度！这样的符号测度分解被称为
+                    <b>
+                        Jordan分解
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B" alt="\varphi^+" eeimg="1">
+                    被称为
+                    <b>
+                        上变差
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E-" alt="\varphi^-" eeimg="1">
+                    被称为
+                    <b>
+                        下变差
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C%3D%5Cvarphi%5E%2B%2B%5Cvarphi%5E-" alt="|\varphi|=\varphi^++\varphi^-" eeimg="1">
+                    被称为
+                    <b>
+                        全变差
+                    </b>
+                    。
+                </p>
+                <p>
+                    <b>
+                        Jordan分解
+                    </b>
+                    的一个特殊之处在于其在符号测度的测度分解中具有
+                    <b>
+                        极小性
+                    </b>
+                    。即对于符号测度的任意测度分解
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3D%5Cmu-%5Cnu" alt="\varphi=\mu-\nu" eeimg="1">
+                    ，总是有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%5Cleq+%5Cmu%2C%5Cvarphi%5E-%5Cleq%5Cnu" alt="\varphi^+\leq \mu,\varphi^-\leq\nu" eeimg="1">
+                    成立！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于Hahn分解与Jordan分解就讲到这里，下次我们讲讲Radon-Nikodym定理。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

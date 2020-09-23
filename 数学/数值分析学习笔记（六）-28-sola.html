@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            数值分析学习笔记（六）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-e4674148d8514006e7f8f92c829f1156_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/51583001" target="_blank">
+                        数值分析学习笔记（六）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-04
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    在这一章中，我们主要关注线性方程组的求解问题。
+                </p>
+                <p>
+                    我们都知道：线性方程组的最经典与基础的求解方式就是Gauss消元法。基于Gauss消元法，我们可以给出主元优化的Gauss方法、同时可以求矩阵的逆、对矩阵进行LU分解等一系列的操作。在此，我们均默认读者对Gauss消元及其延伸方法有着最低限度的了解。
+                </p>
+                <p>
+                    那么，我们要介绍的线性方程组求解方法与Gauss方法有何不同呢？
+                </p>
+                <p>
+                    我们要介绍的是一些
+                    <b>
+                        求解线性方程组的迭代方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    方法的迭代属性使得这些方法
+                    <b>
+                        收敛得更快
+                    </b>
+                    ，但代价是方法的
+                    <b>
+                        通用性变低
+                    </b>
+                    了。（不像Gauss方法适用于任意线性方程组求解）
+                </p>
+                <p>
+                    然而，在追求高计算速度的今天，这些迭代方法仍旧有着极其重要的地位与广泛的应用。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    为了后文误差分析便利，我们先引出向量与矩阵的范数的概念，用来度量任意两个同维向量或矩阵之间的距离。
+                </p>
+                <p>
+                    以下若无特殊说明，
+                    <b>
+                        假定出现的向量均为
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        维列向量，矩阵均为
+                        <img src="https://www.zhihu.com/equation?tex=n%5Ctimes+n" alt="n\times n" eeimg="1">
+                        方阵
+                    </b>
+                    。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        称
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%5C+%7C%7C" alt="||\ \ ||" eeimg="1">
+                        为向量范数（
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En%5Crightarrow+%5Cmathbb%7BR%7D" alt="\mathbb{R}^n\rightarrow \mathbb{R}" eeimg="1">
+                        的映射），若其满足以下性质：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        正定性：
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%7C%7C%5Cgeq+0" alt="||\vec{x}||\geq 0" eeimg="1">
+                        ，等号当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3D%5Cvec%7B0%7D" alt="\vec{x}=\vec{0}" eeimg="1">
+                        成立。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        齐次性：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%5Cin+%5Cmathbb%7BR%7D%2C%7C%7Ca%5Cvec%7Bx%7D%7C%7C%3D%7Ca%7C%5C+%7C%7C%5Cvec%7Bx%7D%7C%7C" alt="\forall a\in \mathbb{R},||a\vec{x}||=|a|\ ||\vec{x}||" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        三角不等式：
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%2B%5Cvec%7By%7D%7C%7C%5Cleq+%7C%7C%5Cvec%7Bx%7D%7C%7C%2B%7C%7C%5Cvec%7By%7D%7C%7C" alt="||\vec{x}+\vec{y}||\leq ||\vec{x}||+||\vec{y}||" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们给出几个最常用的向量范数的定义：
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3D%5Cbegin%7Bbmatrix%7D+x_1%5C%5C++x_2%5C%5C++...%5C%5C++x_n+%5Cend%7Bbmatrix%7D" alt="\vec{x}=\begin{bmatrix} x_1\\  x_2\\  ...\\  x_n \end{bmatrix}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%7C%7C_1%3D%5Csum_%7Bj%3D1%7D%5En%7Cx_j%7C" alt="||\vec{x}||_1=\sum_{j=1}^n|x_j|" eeimg="1">
+                        称为向量的
+                        <img src="https://www.zhihu.com/equation?tex=l_1" alt="l_1" eeimg="1">
+                        范数。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%7C%7C_2%3D%5Csqrt%7B%5Csum_%7Bj%3D1%7D%5Enx_j%5E2%7D" alt="||\vec{x}||_2=\sqrt{\sum_{j=1}^nx_j^2}" eeimg="1">
+                        称为向量的
+                        <img src="https://www.zhihu.com/equation?tex=l_2" alt="l_2" eeimg="1">
+                        范数。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%7C%7C_%5Cinfty%3Dmax_%7B1%5Cleq+j%5Cleq+n%7D%7Cx_j%7C" alt="||\vec{x}||_\infty=max_{1\leq j\leq n}|x_j|" eeimg="1">
+                        称为向量的
+                        <img src="https://www.zhihu.com/equation?tex=l_%5Cinfty" alt="l_\infty" eeimg="1">
+                        范数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    读者容易自行验证这三类范数都满足向量范数定义中的三个性质。
+                </p>
+                <p>
+                    （关于
+                    <img src="https://www.zhihu.com/equation?tex=l_2" alt="l_2" eeimg="1">
+                    范数的三角不等式性质证明，我们利用Cauchy不等式即可）
+                </p>
+                <p>
+                    即：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5ET%5Cvec%7By%7D%5Cleq+%7C%7C%5Cvec%7Bx%7D%7C%7C%5C+%7C%7C%5Cvec%7By%7D%7C%7C" alt="\vec{x}^T\vec{y}\leq ||\vec{x}||\ ||\vec{y}||" eeimg="1">
+                    ，这也是线性代数中非常常用的不等式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        向量范数
+                    </b>
+                    从本质上来说，给我们一种方式来
+                    <b>
+                        度量一个向量的长度
+                    </b>
+                    。
+                </p>
+                <p>
+                    有了长度的概念，我们很自然地，模仿数学分析的过程，可以定义
+                    <b>
+                        向量之间的距离
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=d%28%5Cvec%7Bx%7D%2C%5Cvec%7By%7D%29%3D%7C%7C%5Cvec%7Bx%7D-%5Cvec%7By%7D%7C%7C" alt="d(\vec{x},\vec{y})=||\vec{x}-\vec{y}||" eeimg="1">
+                    。
+                </p>
+                <p>
+                    则我们可以得到：
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3D%5Cbegin%7Bbmatrix%7D+x_1%5C%5C++x_2%5C%5C++...%5C%5C++x_n+%5Cend%7Bbmatrix%7D%2C%5Cvec%7By%7D%3D%5Cbegin%7Bbmatrix%7D+y_1%5C%5C++y_2%5C%5C++...%5C%5C++y_n+%5Cend%7Bbmatrix%7D" alt="\vec{x}=\begin{bmatrix} x_1\\  x_2\\  ...\\  x_n \end{bmatrix},\vec{y}=\begin{bmatrix} y_1\\  y_2\\  ...\\  y_n \end{bmatrix}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        向量之间的
+                        <img src="https://www.zhihu.com/equation?tex=l_1" alt="l_1" eeimg="1">
+                        距离：
+                        <img src="https://www.zhihu.com/equation?tex=d_1%28%5Cvec%7Bx%7D%2C%5Cvec%7By%7D%29%3D%5Csum_%7Bj%3D1%7D%5En%7Cx_j-y_j%7C" alt="d_1(\vec{x},\vec{y})=\sum_{j=1}^n|x_j-y_j|" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        向量之间的
+                        <img src="https://www.zhihu.com/equation?tex=l_2" alt="l_2" eeimg="1">
+                        距离：
+                        <img src="https://www.zhihu.com/equation?tex=d_2%28%5Cvec%7Bx%7D%2C%5Cvec%7By%7D%29%3D%5Csqrt%7B%5Csum_%7Bj%3D1%7D%5En%28x_j-y_j%29%5E2%7D" alt="d_2(\vec{x},\vec{y})=\sqrt{\sum_{j=1}^n(x_j-y_j)^2}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        向量之间的
+                        <img src="https://www.zhihu.com/equation?tex=l_%5Cinfty" alt="l_\infty" eeimg="1">
+                        距离：
+                        <img src="https://www.zhihu.com/equation?tex=d%28%5Cvec%7Bx%7D%2C%5Cvec%7By%7D%29%3Dmax_%7B1%5Cleq+j%5Cleq+n%7D%7Cx_j-y_j%7C" alt="d(\vec{x},\vec{y})=max_{1\leq j\leq n}|x_j-y_j|" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回忆数学分析中，我们在定义了距离后，便能够定义数列的极限。
+                </p>
+                <p>
+                    在此同样地，我们在定义了向量间的距离后，可以定义
+                    <b>
+                        向量列的极限
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们模仿分析中的做法进行推广：
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon%3E0%2C%5C+%5Cexists+N%2C%5C+s.t.%5C+k%3EN" alt="\forall \varepsilon&gt;0,\ \exists N,\ s.t.\ k&gt;N" eeimg="1">
+                        时，都有
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%5E%7B%28k%29%7D-%5Cvec%7Bx%7D%7C%7C%3C%5Cvarepsilon" alt="||\vec{x}^{(k)}-\vec{x}||&lt;\varepsilon" eeimg="1">
+                        成立，则称向量列
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D" alt="\vec{x}^{(k)}" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%5C+%7C%7C" alt="||\ \ ||" eeimg="1">
+                        定义的向量范数意义下收敛到
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D" alt="\vec{x}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    读者可以自证：
+                    <img src="https://www.zhihu.com/equation?tex=l_1%2Cl_2%2Cl_%5Cinfty" alt="l_1,l_2,l_\infty" eeimg="1">
+                    这三种向量范数意义下的收敛都是等价的。
+                </p>
+                <p>
+                    事实上，我们有更强的结论：
+                    <b>
+                        所有向量范数意义下的收敛都是等价的。
+                    </b>
+                </p>
+                <p>
+                    关于不同意义的向量范数之间的关系，此处不多赘述了。仅仅提及以下性质：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%7C%7C_%5Cinfty%5Cleq+%7C%7C%5Cvec%7Bx%7D%7C%7C_2%5Cleq+%5Csqrt%7Bn%7D%7C%7C%5Cvec%7Bx%7D%7C%7C_%5Cinfty" alt="||\vec{x}||_\infty\leq ||\vec{x}||_2\leq \sqrt{n}||\vec{x}||_\infty" eeimg="1">
+                    。证明也十分简单，不再给出。
+                </p>
+                <p>
+                    关于向量的长度、向量间距离、向量列收敛性的定义，我们讨论至此已经可以建立一个完备的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的向量空间。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面，我们将向量的有关定义与结论尝试着推广到矩阵上。
+                </p>
+                <p>
+                    类似向量范数的定义，我们定义矩阵范数。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        称
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%5C+%7C%7C" alt="||\ \ ||" eeimg="1">
+                    <b>
+                        为矩阵范数（
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E%7Bn%5Ctimes+n%7D%5Crightarrow+%5Cmathbb%7BR%7D" alt="\mathbb{R}^{n\times n}\rightarrow \mathbb{R}" eeimg="1">
+                    <b>
+                        的映射），若其满足以下性质：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        正定性：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C%5Cgeq+0" alt="||A||\geq 0" eeimg="1">
+                    <b>
+                        ，等号当且仅当
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A%3D0" alt="A=0" eeimg="1">
+                    <b>
+                        成立。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        齐次性：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%5Cin+%5Cmathbb%7BR%7D%2C%7C%7CaA%7C%7C%3D%7Ca%7C%5C+%7C%7CA%7C%7C" alt="\forall a\in \mathbb{R},||aA||=|a|\ ||A||" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        三角不等式：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%2BB%7C%7C%5Cleq+%7C%7CA%7C%7C%2B%7C%7CB%7C%7C" alt="||A+B||\leq ||A||+||B||" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        相容性：
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CAB%7C%7C%5Cleq+%7C%7CA%7C%7C%5C+%7C%7CB%7C%7C" alt="||AB||\leq ||A||\ ||B||" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们在理解矩阵范数时，不要再像理解向量范数一般将其想象成一个数表。而是要关注到矩阵的本质是一个线性变换。此处要注意的是矩阵范数定义中的相容性是与向量范数定义不同的。
+                </p>
+                <p>
+                    <b>
+                        矩阵范数
+                    </b>
+                    可以理解为是
+                    <b>
+                        对于矩阵作为线性变换的作用效果的度量
+                    </b>
+                    。
+                </p>
+                <p>
+                    下面，我们进一步将向量范数与矩阵范数联系在一起：
+                </p>
+                <p>
+                    <b>
+                        定理（向量范数诱导出的矩阵自然范数）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%5C+%7C%7C" alt="||\ \ ||" eeimg="1">
+                        为一个向量范数，则由其诱导出的
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C%3Dmax_%7B%5Cvec%7Bx%7D%5Cneq+%5Cvec%7B0%7D%7D%5Cfrac%7B%7C%7CA%5Cvec%7Bx%7D%7C%7C%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C%7D" alt="||A||=max_{\vec{x}\neq \vec{0}}\frac{||A\vec{x}||}{||\vec{x}||}" eeimg="1">
+                        必定为矩阵范数，且称为矩阵
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        在向量范数
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%5C+%7C%7C" alt="||\ \ ||" eeimg="1">
+                        诱导下的自然范数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个定理告诉我们：矩阵范数中有很大一部分可以直接由我们前面讨论过的向量范数直接诱导而来。且其赋予了矩阵自然范数以明确的几何意义：将
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    看作一个线性变换，则其能使一个向量伸长的最大倍数(对应向量范数意义下)即为自然范数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    同时我们得到了一个常用的推论：对于任何矩阵的自然范数
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%5C+%7C%7C" alt="||\ \ ||" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%5Cvec%7Bx%7D%7C%7C%5Cleq+%7C%7CA%7C%7C%5C+%7C%7C%5Cvec%7Bx%7D%7C%7C" alt="||A\vec{x}||\leq ||A||\ ||\vec{x}||" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当然，
+                    <b>
+                        并非所有矩阵范数都是自然范数
+                    </b>
+                    。
+                </p>
+                <p>
+                    一个很显然的反例是：
+                    <b>
+                        矩阵的Frobenius范数：
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_F%3D%5Csum_%7Bi%3D1%7D%5En%5Csum_%7Bj%3D1%7D%5Ena_%7Bij%7D%5E2" alt="||A||_F=\sum_{i=1}^n\sum_{j=1}^na_{ij}^2" eeimg="1">
+                        （所有元素平方和）
+                    </b>
+                </p>
+                <p>
+                    反证：
+                </p>
+                <p>
+                    假设其为自然范数，即
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_F%3Dmax%5Cfrac%7B%7C%7CA%5Cvec%7Bx%7D%7C%7C_V%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C_V%7D" alt="||A||_F=max\frac{||A\vec{x}||_V}{||\vec{x}||_V}" eeimg="1">
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=A%3DI_n" alt="A=I_n" eeimg="1">
+                    的情况，此时
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CI_n%7C%7C_F%3D%5Csqrt%7Bn%7D" alt="||I_n||_F=\sqrt{n}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    但是，
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CI_n%7C%7C_F%3Dmax%5Cfrac%7B%7C%7C%5Cvec%7Bx%7D%7C%7C_V%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C_V%7D%3D1" alt="||I_n||_F=max\frac{||\vec{x}||_V}{||\vec{x}||_V}=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    矛盾！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注意到将
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    看作一个线性变换，则其能使一个向量伸长的最大倍数即为矩阵的自然范数。我们发现这与矩阵特征值的定义是吻合的。故引入谱半径的定义。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        谱半径
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28A%29%3Dmax%7C%5Clambda_i%7C" alt="\rho(A)=max|\lambda_i|" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                        为矩阵
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        的复特征值
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们来着重介绍常用矩阵范数的计算方法。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_%5Cinfty" alt="||A||_\infty" eeimg="1">
+                    是由向量的无穷范数诱导出的矩阵无穷范数，即
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_%5Cinfty%3Dmax%5Cfrac%7B%7C%7CA%5Cvec%7Bx%7D%7C%7C_%5Cinfty%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C_%5Cinfty%7D" alt="||A||_\infty=max\frac{||A\vec{x}||_\infty}{||\vec{x}||_\infty}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    类似地，我们能够得到
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_2%2C%7C%7CA%7C%7C_1" alt="||A||_2,||A||_1" eeimg="1">
+                    作为向量范数诱导出的矩阵自然范数。
+                </p>
+                <p>
+                    我们的问题是：
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_1%2C%7C%7CA%7C%7C_2%2C%7C%7CA%7C%7C_%5Cinfty" alt="||A||_1,||A||_2,||A||_\infty" eeimg="1">
+                    要如何简便地计算呢？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_2" alt="||A||_2" eeimg="1">
+                        的计算）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_2%3D%5Csqrt%7B%5Crho%28A%5EHA%29%7D" alt="||A||_2=\sqrt{\rho(A^HA)}" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=A%5EH" alt="A^H" eeimg="1">
+                        表示复共轭转置。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    由高代的知识，我们容易知道
+                    <img src="https://www.zhihu.com/equation?tex=A%5EHA" alt="A^HA" eeimg="1">
+                    为Hermite矩阵，故其特征值
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_1%2C...%2C%5Clambda_n" alt="\lambda_1,...,\lambda_n" eeimg="1">
+                    均为实数，且每个特征值代数重数等于几何重数。
+                </p>
+                <p>
+                    则我们取其特征向量并且进行Schimidt正交化得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Ba_1%7D%2C...%2C%5Cvec%7Ba_n%7D" alt="\vec{a_1},...,\vec{a_n}" eeimg="1">
+                    （一组基）。
+                </p>
+                <p>
+                    则任意向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3Dk_1%5Cvec%7Ba_1%7D%2B...%2Bk_n%5Cvec%7Ba_n%7D" alt="\vec{x}=k_1\vec{a_1}+...+k_n\vec{a_n}" eeimg="1">
+                    可被线性表出。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%7C%7CA%5Cvec%7Bx%7D%7C%7C%5E2_2%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C%5E2_2%7D%3D%5Cfrac%7B%5Cvec%7Bx%7D%5EH%28A%5EHA%29%5Cvec%7Bx%7D%7D%7B%5Cvec%7Bx%7D%5EH%5Cvec%7Bx%7D%7D%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5En%5Clambda_i%7Ck_i%7C%5E2%7D%7B%5Csum_%7Bi%3D1%7D%5En%7Ck_i%7C%5E2%7D" alt="\frac{||A\vec{x}||^2_2}{||\vec{x}||^2_2}=\frac{\vec{x}^H(A^HA)\vec{x}}{\vec{x}^H\vec{x}}=\frac{\sum_{i=1}^n\lambda_i|k_i|^2}{\sum_{i=1}^n|k_i|^2}" eeimg="1">
+                </p>
+                <p>
+                    故有
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_2%3Dmax%5Cfrac%7B%7C%7CA%5Cvec%7Bx%7D%7C%7C_2%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C_2%7D%3D%5Csqrt%7Bmax+%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5En%5Clambda_i%7Ck_i%7C%5E2%7D%7B%5Csum_%7Bi%3D1%7D%5En%7Ck_i%7C%5E2%7D%7D%3D%5Csqrt%7B%5Crho%28A%5EHA%29%7D" alt="||A||_2=max\frac{||A\vec{x}||_2}{||\vec{x}||_2}=\sqrt{max \frac{\sum_{i=1}^n\lambda_i|k_i|^2}{\sum_{i=1}^n|k_i|^2}}=\sqrt{\rho(A^HA)}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_%5Cinfty" alt="||A||_\infty" eeimg="1">
+                        的计算）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_%5Cinfty%3Dmax_i%5C+%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bij%7D%7C" alt="||A||_\infty=max_i\ \sum_{j=1}^n|a_{ij}|" eeimg="1">
+                        ，为最大行和。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    不妨取
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%7C%7C_%5Cinfty%3D1" alt="||\vec{x}||_\infty=1" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_%5Cinfty%3Dmax%7C%7CA%5Cvec%7Bx%7D%7C%7C_%5Cinfty%5Cleq+max%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bij%7D%7C%5C+max%5C+%7Cx_j%7C%3Dmax%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bij%7D%7C" alt="||A||_\infty=max||A\vec{x}||_\infty\leq max\sum_{j=1}^n|a_{ij}|\ max\ |x_j|=max\sum_{j=1}^n|a_{ij}|" eeimg="1">
+                </p>
+                <p>
+                    接下来假设
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+k%2C%5C+s.t." alt="\exists k,\ s.t." eeimg="1">
+                    <img src="https://www.zhihu.com/equation?tex=max%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bij%7D%7C%3D%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bkj%7D%7C" alt="max\sum_{j=1}^n|a_{ij}|=\sum_{j=1}^n|a_{kj}|" eeimg="1">
+                    ，则发现取
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%7C%7C_%5Cinfty%3D1" alt="||\vec{x}||_\infty=1" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=x_j%3Dsgn%28a_%7Bkj%7D%29" alt="x_j=sgn(a_{kj})" eeimg="1">
+                    ，则有
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%5Cvec%7Bx%7D%7C%7C_%5Cinfty%3D%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bkj%7D%7C" alt="||A\vec{x}||_\infty=\sum_{j=1}^n|a_{kj}|" eeimg="1">
+                    。
+                </p>
+                <p>
+                    这说明
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_%5Cinfty%3Dmax%7C%7CA%5Cvec%7Bx%7D%7C%7C_%5Cinfty%5Cgeq%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bkj%7D%7C%3Dmax%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bij%7D%7C" alt="||A||_\infty=max||A\vec{x}||_\infty\geq\sum_{j=1}^n|a_{kj}|=max\sum_{j=1}^n|a_{ij}|" eeimg="1">
+                </p>
+                <p>
+                    故我们得到了
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_%5Cinfty%3Dmax_i%5C+%5Csum_%7Bj%3D1%7D%5En%7Ca_%7Bij%7D%7C" alt="||A||_\infty=max_i\ \sum_{j=1}^n|a_{ij}|" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_1" alt="||A||_1" eeimg="1">
+                        的计算）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_1%3Dmax_j%5C+%5Csum_%7Bi%3D1%7D%5En%7Ca_%7Bij%7D%7C" alt="||A||_1=max_j\ \sum_{i=1}^n|a_{ij}|" eeimg="1">
+                        ，为最大列和。
+                    </b>
+                </p>
+                <p>
+                    证明可以模仿无穷范数的证明进行。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们给出收敛矩阵的定义，为后续要介绍的线性方程求解方法进行铺垫。
+                </p>
+                <p>
+                    <b>
+                        定义：若
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bk%5Crightarrow%5Cinfty%7DA%5Ek%3D0" alt="\lim_{k\rightarrow\infty}A^k=0" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        为收敛矩阵。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    收敛矩阵的几何意义很明确。
+                    <b>
+                        若一个矩阵作用在任意一个向量上足够多次能使得其收缩至
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                        向量
+                    </b>
+                    ，则矩阵为收敛矩阵。
+                </p>
+                <p>
+                    下面给出矩阵收敛的一些等价条件，读者容易证明。
+                </p>
+                <p>
+                    <b>
+                        定理：（矩阵收敛的充要条件）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （1）存在自然范数，使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%7C%7CA%5En%7C%7C%3D0" alt="\lim_{n\rightarrow\infty}||A^n||=0" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （2）对任意自然范数，
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%7C%7CA%5En%7C%7C%3D0" alt="\lim_{n\rightarrow\infty}||A^n||=0" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （3）
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28A%29%3C1" alt="\rho(A)&lt;1" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （4）
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvec%7Bx%7D%2C%5C+%5Clim_%7Bn%5Crightarrow%5Cinfty%7DA%5En%5Cvec%7Bx%7D%3D%5Cvec%7B0%7D" alt="\forall \vec{x},\ \lim_{n\rightarrow\infty}A^n\vec{x}=\vec{0}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，简要给出一些矩阵范数以及谱半径的性质，读者可自证。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_F%5Cleq+%7C%7CA%7C%7C_F%7C%7C%5Cvec%7Bx%7D%7C%7C_2" alt="||A||_F\leq ||A||_F||\vec{x}||_2" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C_2%5Cleq+%7C%7CA%7C%7C_F%5Cleq+%5Csqrt%7Bn%7D%7C%7CA%7C%7C_2" alt="||A||_2\leq ||A||_F\leq \sqrt{n}||A||_2" eeimg="1">
+                </p>
+                <p>
+                    对任意自然范数
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C+%5C+%5C+%7C%7C" alt="|| \ \ ||" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28A%29%5Cleq+%7C%7CA%7C%7C" alt="\rho(A)\leq ||A||" eeimg="1">
+                    （事实上，谱半径不仅仅是下界，也是下确界）
+                </p>
+                <p>
+                    Gelfand公式：
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28A%29%3D%5Clim_%7Bk%5Crightarrow%5Cinfty%7D%7C%7CA%5Ek%7C%7C%5E%7B%5Cfrac%7B1%7D%7Bk%7D%7D" alt="\rho(A)=\lim_{k\rightarrow\infty}||A^k||^{\frac{1}{k}}" eeimg="1">
+                    ，及其推论：
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28A%29%5Cleq+%7C%7CA%5Ek%7C%7C%5E%7B%5Cfrac%7B1%7D%7Bk%7D%7D" alt="\rho(A)\leq ||A^k||^{\frac{1}{k}}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    至此为止，我们对于范数的介绍告一段落。我们即将进入正题：介绍各种迭代求解线性方程组的方法。
+                    <b>
+                        我们需要清楚的是：向量范数是对于向量长度的一种度量，矩阵范数是对于矩阵作为线性变换作用在向量上的效果的度量。由向量与矩阵范数，我们可以定义向量间的距离，并将微积分（极限概念）扩展到向量空间与矩阵空间上。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在本章的剩下内容中，我们都将集中精力在方程组
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%3D%5Cvec%7Bb%7D" alt="A\vec{x}=\vec{b}" eeimg="1">
+                    的数值求解方法上。
+                </p>
+                <p>
+                    注意到这样一个方程组中的第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    个方程为
+                    <img src="https://www.zhihu.com/equation?tex=a_%7Bi1%7Dx_1%2B...%2Ba_%7Bin%7Dx_n%3Db_i" alt="a_{i1}x_1+...+a_{in}x_n=b_i" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们都很熟悉Gauss方法，因为其消元的操作非常易于我们理解。
+                </p>
+                <p>
+                    但是现在，我们要跳出这样的思维局限。
+                </p>
+                <p>
+                    容易发现求解方程从本质上来说与求解零点是相同的。只不过现在我们要求解的是一个更复杂的矩阵函数
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D-%5Cvec%7Bb%7D" alt="A\vec{x}-\vec{b}" eeimg="1">
+                    的零点。
+                </p>
+                <p>
+                    回忆我们之前介绍过的零点求解方法，我们想从那些方法中得到一些启发。
+                </p>
+                <p>
+                    对于零点求解，主要的方法有二分法与不动点迭代法两大类。
+                </p>
+                <p>
+                    二分法显然不适合用来处理复杂的线性方程组求解问题。我们想是否可以
+                    <b>
+                        类比不动点迭代
+                    </b>
+                    方法创造出一些全新的线性方程组求解方法。
+                </p>
+                <p>
+                    在不动点迭代中，我们将
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D0" alt="f(x)=0" eeimg="1">
+                    的问题化为
+                    <img src="https://www.zhihu.com/equation?tex=g%28x%29%3Dx" alt="g(x)=x" eeimg="1">
+                    求解，并且保证其等解性。
+                </p>
+                <p>
+                    而在矩阵处理中，我们可以类似地，将
+                    <b>
+                        对角线上的元素进行变量分离，来起到不动点迭代中
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        的效果。（后文会继续解释这一点）
+                    </b>
+                </p>
+                <p>
+                    由这样的一个基本想法，我们可以得到最基础的迭代求解方法：Jacobi方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Jacobi方法
+                    </b>
+                </p>
+                <p>
+                    我们对第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    个方程分离变量得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=a_%7Bii%7Dx_i%3Db_i-%28a_%7Bi1%7Dx_1%2B...%2Ba_%7Bi%2Ci-1%7Dx_%7Bi-1%7D%2Ba_%7Bi%2Ci%2B1%7Dx_%7Bi%2B1%7D%2Ba_%7Bin%7Dx_n%29" alt="a_{ii}x_i=b_i-(a_{i1}x_1+...+a_{i,i-1}x_{i-1}+a_{i,i+1}x_{i+1}+a_{in}x_n)" eeimg="1">
+                </p>
+                <p>
+                    进一步地，
+                    <img src="https://www.zhihu.com/equation?tex=x_i%3D%5Cfrac%7B1%7D%7Ba_%7Bii%7D%7D%28b_i-%5Csum_%7Bj%3D1%7D%5E%7Bi-1%7Da_%7Bij%7Dx_j-%5Csum_%7Bj%3Di%2B1%7D%5E%7Bn%7Da_%7Bij%7Dx_j%29" alt="x_i=\frac{1}{a_{ii}}(b_i-\sum_{j=1}^{i-1}a_{ij}x_j-\sum_{j=i+1}^{n}a_{ij}x_j)" eeimg="1">
+                </p>
+                <p>
+                    在变形完成之后，我们继续模仿求解零点的不动点方法。
+                </p>
+                <p>
+                    在求解零点时，我们先选取初值
+                    <img src="https://www.zhihu.com/equation?tex=p_0" alt="p_0" eeimg="1">
+                    ，并且生成
+                    <img src="https://www.zhihu.com/equation?tex=p_1%3Dg%28p_0%29%2Cp_2%3Dg%28p_1%29%2C..." alt="p_1=g(p_0),p_2=g(p_1),..." eeimg="1">
+                </p>
+                <p>
+                    在求解线性方程组中，我们类似地，
+                    <b>
+                        利用上一次的估计值来生成下一次的估计
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们
+                    <b>
+                        总是用
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D" alt="\vec{x}^{(k)}" eeimg="1">
+                        表示第
+                        <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                        次迭代中生成的对方程组解的估计
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    则我们得到如下
+                    <b>
+                        Jacobi方法的估计式：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        给定迭代初值
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D" alt="\vec{x}^{(0)}" eeimg="1">
+                        ，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=x_i%5E%7B%28k%29%7D%3D%5Cfrac%7B1%7D%7Ba_%7Bii%7D%7D%28b_i-%5Csum_%7Bj%3D1%7D%5E%7Bi-1%7Da_%7Bij%7Dx%5E%7B%28k-1%29%7D_j-%5Csum_%7Bj%3Di%2B1%7D%5E%7Bn%7Da_%7Bij%7Dx%5E%7B%28k-1%29%7D_j%29%5C+%28k%3D1%2C2%2C...%29" alt="x_i^{(k)}=\frac{1}{a_{ii}}(b_i-\sum_{j=1}^{i-1}a_{ij}x^{(k-1)}_j-\sum_{j=i+1}^{n}a_{ij}x^{(k-1)}_j)\ (k=1,2,...)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    一个问题是：我们要怎样衡量一个估计的好坏呢？
+                </p>
+                <p>
+                    回忆之前提到的向量范数，我们在这里不妨取向量的无穷范数。
+                </p>
+                <p>
+                    则我们可以定义出
+                    <b>
+                        第
+                        <img src="https://www.zhihu.com/equation?tex=k-1" alt="k-1" eeimg="1">
+                        次估计相对于第
+                        <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                        次估计求解线性方程组的绝对误差：
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%5E%7B%28k%29%7D-%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%7C%7C_%5Cinfty" alt="||\vec{x}^{(k)}-\vec{x}^{(k-1)}||_\infty" eeimg="1">
+                        ，以及相对误差：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%7C%7C%5Cvec%7Bx%7D%5E%7B%28k%29%7D-%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%7C%7C_%5Cinfty%7D%7B%7C%7C%5Cvec%7Bx%7D%5E%7B%28k%29%7D%7C%7C_%5Cinfty%7D" alt="\frac{||\vec{x}^{(k)}-\vec{x}^{(k-1)}||_\infty}{||\vec{x}^{(k)}||_\infty}" eeimg="1">
+                </p>
+                <p>
+                    在实现中，我们常常利用这两个误差作为标准来判断估计是否已经足够得好。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    读者可能仍旧会疑惑：Jacobi方法与不动点迭代在形式上完全不同，为何却说它是不动点迭代在矩阵代数中的推广呢？
+                </p>
+                <p>
+                    我们下面尝试着将Jacobi方法的估计式写成矩阵形式即可立马清晰地看出其本质。
+                </p>
+                <p>
+                    我们在后文都
+                    <b>
+                        假设对于矩阵
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        为其对角元素组成的对角矩阵，
+                        <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                        为其下三角部分（不含主对角线）元素的相反数组成的下三角矩阵，
+                        <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                        为其上三角部分（不含主对角线）元素的相反数组成的上三角矩阵。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        即进行一个简单的分解使得
+                        <img src="https://www.zhihu.com/equation?tex=A%3DD-L-U" alt="A=D-L-U" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    那么我们的估计式
+                    <img src="https://www.zhihu.com/equation?tex=x_i%5E%7B%28k%29%7D%3D%5Cfrac%7B1%7D%7Ba_%7Bii%7D%7D%28b_i-%5Csum_%7Bj%3D1%7D%5E%7Bi-1%7Da_%7Bij%7Dx%5E%7B%28k-1%29%7D_j-%5Csum_%7Bj%3Di%2B1%7D%5E%7Bn%7Da_%7Bij%7Dx%5E%7B%28k-1%29%7D_j%29" alt="x_i^{(k)}=\frac{1}{a_{ii}}(b_i-\sum_{j=1}^{i-1}a_{ij}x^{(k-1)}_j-\sum_{j=i+1}^{n}a_{ij}x^{(k-1)}_j)" eeimg="1">
+                </p>
+                <p>
+                    可以写成
+                    <img src="https://www.zhihu.com/equation?tex=D%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%28L%2BU%29%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%5Cvec%7Bb%7D" alt="D\vec{x}^{(k)}=(L+U)\vec{x}^{(k-1)}+\vec{b}" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        当
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        可逆时，我们有
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DD%5E%7B-1%7D%28L%2BU%29%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2BD%5E%7B-1%7D%5Cvec%7Bb%7D" alt="\vec{x}^{(k)}=D^{-1}(L+U)\vec{x}^{(k-1)}+D^{-1}\vec{b}" eeimg="1">
+                    </b>
+                    ，这就是
+                    <b>
+                        Jacobi方法的矩阵形式
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们容易发现我们将
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%3D%5Cvec%7Bb%7D" alt="A\vec{x}=\vec{b}" eeimg="1">
+                    转化为了等解的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3DD%5E%7B-1%7D%28L%2BU%29%5Cvec%7Bx%7D%2BD%5E%7B-1%7D%5Cvec%7Bb%7D" alt="\vec{x}=D^{-1}(L+U)\vec{x}+D^{-1}\vec{b}" eeimg="1">
+                    形式。
+                </p>
+                <p>
+                    进一步抽象的话，Jacobi方法给出了
+                    <b>
+                        线性方程组求解的
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DT%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%5Cvec%7Bc%7D" alt="\vec{x}^{(k)}=T\vec{x}^{(k-1)}+\vec{c}" eeimg="1">
+                        迭代形式
+                    </b>
+                    。
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=T%3DD%5E%7B-1%7D%28L%2BU%29%2C%5Cvec%7Bc%7D%3DD%5E%7B-1%7D%5Cvec%7Bb%7D" alt="T=D^{-1}(L+U),\vec{c}=D^{-1}\vec{b}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    而我们容易发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DT%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%5Cvec%7Bc%7D" alt="\vec{x}^{(k)}=T\vec{x}^{(k-1)}+\vec{c}" eeimg="1">
+                    与不动点迭代的形式是一致的。
+                </p>
+                <p>
+                    故
+                    <b>
+                        Jacobi方法为不动点迭代的推广
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们试举一例。在之后的不同方法中，我们都将利用这个例子来进行方法之间的比较。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cbegin%7Bbmatrix%7D+0.2+%260.1++%261++%261++%260+%5C%5C+0.1++%264++%26+-1+%261++%26-1+%5C%5C+++1%26+-1+%26+60+%260++%26-2+%5C%5C++1+%26+1+%260++%268++%264+%5C%5C++0+%26+-1+%26+-2+%26+4+%26+700+%5Cend%7Bbmatrix%7D+%2C+%5Cvec%7Bb%7D%3D%5Cbegin%7Bbmatrix%7D+1%5C%5C++2%5C%5C++3%5C%5C++4%5C%5C++5+%5Cend%7Bbmatrix%7D" alt="A=\begin{bmatrix} 0.2 &amp;0.1  &amp;1  &amp;1  &amp;0 \\ 0.1  &amp;4  &amp; -1 &amp;1  &amp;-1 \\   1&amp; -1 &amp; 60 &amp;0  &amp;-2 \\  1 &amp; 1 &amp;0  &amp;8  &amp;4 \\  0 &amp; -1 &amp; -2 &amp; 4 &amp; 700 \end{bmatrix} , \vec{b}=\begin{bmatrix} 1\\  2\\  3\\  4\\  5 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    我们给定初值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D%3D%5Cvec%7B0%7D" alt="\vec{x}^{(0)}=\vec{0}" eeimg="1">
+                    ，容许的误差为
+                    <img src="https://www.zhihu.com/equation?tex=0.01" alt="0.01" eeimg="1">
+                    （无穷范数定义的相对误差标准）
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-626f3c8627cf009efdf581698d166ed2_r.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以看到：进行了
+                    <img src="https://www.zhihu.com/equation?tex=34" alt="34" eeimg="1">
+                    次迭代后，估计最终停止。
+                </p>
+                <p>
+                    这说明
+                    <b>
+                        Jacobi方法收敛的速度是不够快
+                    </b>
+                    的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么，问题是：要如何改进Jacobi方法呢？
+                </p>
+                <p>
+                    我们再观察一下Jacobi方法的估计式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x_i%5E%7B%28k%29%7D%3D%5Cfrac%7B1%7D%7Ba_%7Bii%7D%7D%28b_i-%5Csum_%7Bj%3D1%7D%5E%7Bi-1%7Da_%7Bij%7Dx%5E%7B%28k-1%29%7D_j-%5Csum_%7Bj%3Di%2B1%7D%5E%7Bn%7Da_%7Bij%7Dx%5E%7B%28k-1%29%7D_j%29" alt="x_i^{(k)}=\frac{1}{a_{ii}}(b_i-\sum_{j=1}^{i-1}a_{ij}x^{(k-1)}_j-\sum_{j=i+1}^{n}a_{ij}x^{(k-1)}_j)" eeimg="1">
+                </p>
+                <p>
+                    我们发现：这样的一个估计式仍旧有改进的余地：
+                </p>
+                <p>
+                    注意到
+                    <b>
+                        在第
+                        <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                        次迭代中估计第
+                        <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                        个分量时，我们已经完成了第
+                        <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                        次迭代中对于
+                        <img src="https://www.zhihu.com/equation?tex=x_1%2Cx_2%2C...%2Cx_%7Bi-1%7D" alt="x_1,x_2,...,x_{i-1}" eeimg="1">
+                        的估计
+                    </b>
+                    。故我们可以用第
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    次迭代中的值而不是第
+                    <img src="https://www.zhihu.com/equation?tex=k-1" alt="k-1" eeimg="1">
+                    次迭代中的值。这样会显著地提高收敛速度。经过如此改进后的方法就是Gauss-Seidel方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Gauss-Seidel方法
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        估计式：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=x_i%5E%7B%28k%29%7D%3D%5Cfrac%7B1%7D%7Ba_%7Bii%7D%7D%28b_i-%5Csum_%7Bj%3D1%7D%5E%7Bi-1%7Da_%7Bij%7Dx%5E%7B%28k%29%7D_j-%5Csum_%7Bj%3Di%2B1%7D%5E%7Bn%7Da_%7Bij%7Dx%5E%7B%28k-1%29%7D_j%29" alt="x_i^{(k)}=\frac{1}{a_{ii}}(b_i-\sum_{j=1}^{i-1}a_{ij}x^{(k)}_j-\sum_{j=i+1}^{n}a_{ij}x^{(k-1)}_j)" eeimg="1">
+                </p>
+                <p>
+                    对于Gauss-Seidel方法，我们先如同前面一样给出其矩阵形式。
+                </p>
+                <p>
+                    我们可以将估计式写成
+                    <img src="https://www.zhihu.com/equation?tex=D%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DL%5Cvec%7Bx%7D%5E%7B%28k%29%7D%2BU%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%5Cvec%7Bb%7D" alt="D\vec{x}^{(k)}=L\vec{x}^{(k)}+U\vec{x}^{(k-1)}+\vec{b}" eeimg="1">
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=%28D-L%29%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DU%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%5Cvec%7Bb%7D" alt="(D-L)\vec{x}^{(k)}=U\vec{x}^{(k-1)}+\vec{b}" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        当
+                        <img src="https://www.zhihu.com/equation?tex=D-L" alt="D-L" eeimg="1">
+                        可逆时，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%28D-L%29%5E%7B-1%7DU%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%28D-L%29%5E%7B-1%7D%5Cvec%7Bb%7D" alt="\vec{x}^{(k)}=(D-L)^{-1}U\vec{x}^{(k-1)}+(D-L)^{-1}\vec{b}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    这就是
+                    <b>
+                        Gauss-Seidel方法的矩阵形式
+                    </b>
+                    。
+                </p>
+                <p>
+                    同样地，我们容易看出其
+                    <b>
+                        也是不动点迭代方法的推广，而区别仅仅在于其进行了与Jacobi方法不同的等解变换，利用了不同的不动点迭代函数
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    读者可能会疑惑：这样一个小小的改动真的能带来很大的提升吗？
+                </p>
+                <p>
+                    我们仍旧用前面相同的例子来说明。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cbegin%7Bbmatrix%7D+0.2+%260.1++%261++%261++%260+%5C%5C+0.1++%264++%26+-1+%261++%26-1+%5C%5C+++1%26+-1+%26+60+%260++%26-2+%5C%5C++1+%26+1+%260++%268++%264+%5C%5C++0+%26+-1+%26+-2+%26+4+%26+700+%5Cend%7Bbmatrix%7D+%2C+%5Cvec%7Bb%7D%3D%5Cbegin%7Bbmatrix%7D+1%5C%5C++2%5C%5C++3%5C%5C++4%5C%5C++5+%5Cend%7Bbmatrix%7D" alt="A=\begin{bmatrix} 0.2 &amp;0.1  &amp;1  &amp;1  &amp;0 \\ 0.1  &amp;4  &amp; -1 &amp;1  &amp;-1 \\   1&amp; -1 &amp; 60 &amp;0  &amp;-2 \\  1 &amp; 1 &amp;0  &amp;8  &amp;4 \\  0 &amp; -1 &amp; -2 &amp; 4 &amp; 700 \end{bmatrix} , \vec{b}=\begin{bmatrix} 1\\  2\\  3\\  4\\  5 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    我们给定初值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D%3D%5Cvec%7B0%7D" alt="\vec{x}^{(0)}=\vec{0}" eeimg="1">
+                    ，容许的误差为
+                    <img src="https://www.zhihu.com/equation?tex=0.01" alt="0.01" eeimg="1">
+                    （无穷范数定义的相对误差标准）
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-66225c2029c38290e1fe0164342cb6d6_r.jpg">
+                </figure>
+                <p>
+                    我们发现Gauss-Seidel方法竟然只需要
+                    <img src="https://www.zhihu.com/equation?tex=11" alt="11" eeimg="1">
+                    次迭代就能达成与Jacobi方法相同的效果。迭代次数降为了原先的三分之一。这是一个不小的突破。
+                </p>
+                <p>
+                    事实上，大量实践都证明了
+                    <b>
+                        Gauss-Seidel方法在大多数情况下收敛速度快于Jacobi方法（但这并不意味着更优，后文将会提及）
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        收敛条件
+                    </b>
+                </p>
+                <p>
+                    我们已经得到了求解线性方程组的两种迭代方法，但是我们之前一直没有考虑一个十分重要的问题：这两种方法对任意矩阵都
+                    <b>
+                        收敛
+                    </b>
+                    吗？如若不然，
+                    <b>
+                        收敛条件
+                    </b>
+                    是什么呢？
+                </p>
+                <p>
+                    下面我们对于这类利用不动点迭代进行推广得到的迭代方法进行收敛条件的分析。
+                </p>
+                <p>
+                    我们如同之前一样，将
+                    <b>
+                        一个迭代方法抽象为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DT%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%5Cvec%7Bc%7D" alt="\vec{x}^{(k)}=T\vec{x}^{(k-1)}+\vec{c}" eeimg="1">
+                    ，而Jacobi与Gauss-Seidel方法均只是
+                    <img src="https://www.zhihu.com/equation?tex=T%2C%5Cvec%7Bc%7D" alt="T,\vec{c}" eeimg="1">
+                    取一定值条件下的特例。
+                </p>
+                <p>
+                    则我们有如下收敛条件：
+                </p>
+                <p>
+                    <b>
+                        定理（线性方程组的迭代方法的收敛条件）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        迭代方法
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DT%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%5Cvec%7Bc%7D" alt="\vec{x}^{(k)}=T\vec{x}^{(k-1)}+\vec{c}" eeimg="1">
+                        收敛到
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3DT%5Cvec%7Bx%7D%2B%5Cvec%7Bc%7D" alt="\vec{x}=T\vec{x}+\vec{c}" eeimg="1">
+                        的解当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28T%29%3C1" alt="\rho(T)&lt;1" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T%29%3C1" alt="\rho(T)&lt;1" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DT%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2B%5Cvec%7Bc%7D%3DT%5E2%5Cvec%7Bx%7D%5E%7B%28k-2%29%7D%2B%28T%2BI%29%5Cvec%7Bc%7D%3D...%3DT%5Ek%5Cvec%7Bx%7D%5E%7B%280%29%7D%2B%28I%2BT%2B...%2BT%5E%7Bk-1%7D%29%5Cvec%7Bc%7D" alt="\vec{x}^{(k)}=T\vec{x}^{(k-1)}+\vec{c}=T^2\vec{x}^{(k-2)}+(T+I)\vec{c}=...=T^k\vec{x}^{(0)}+(I+T+...+T^{k-1})\vec{c}" eeimg="1">
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T%29%3C1" alt="\rho(T)&lt;1" eeimg="1">
+                    ，容易知道
+                    <img src="https://www.zhihu.com/equation?tex=I-T" alt="I-T" eeimg="1">
+                    可逆，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D0%7D%5E%5Cinfty+T%5Ej%3D%28I-T%29%5E%7B-1%7D" alt="\sum_{j=0}^\infty T^j=(I-T)^{-1}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bk%5Crightarrow+%5Cinfty%7D%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%5Cvec%7Bx%7D%5E%7B%280%29%7D%5Clim_%7Bk%5Crightarrow+%5Cinfty%7DT%5Ek%2B%28I-T%29%5E%7B-1%7D%5Cvec%7Bc%7D" alt="\lim_{k\rightarrow \infty}\vec{x}^{(k)}=\vec{x}^{(0)}\lim_{k\rightarrow \infty}T^k+(I-T)^{-1}\vec{c}" eeimg="1">
+                </p>
+                <p>
+                    回忆我们之前提及的收敛矩阵的性质。一个矩阵收敛当且仅当其谱半径小于
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bk%5Crightarrow+%5Cinfty%7DT%5Ek%3D0" alt="\lim_{k\rightarrow \infty}T^k=0" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bk%5Crightarrow+%5Cinfty%7D%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%28I-T%29%5E%7B-1%7D%5Cvec%7Bc%7D" alt="\lim_{k\rightarrow \infty}\vec{x}^{(k)}=(I-T)^{-1}\vec{c}" eeimg="1">
+                </p>
+                <p>
+                    即为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3DT%5Cvec%7Bx%7D%2B%5Cvec%7Bc%7D" alt="\vec{x}=T\vec{x}+\vec{c}" eeimg="1">
+                    的解。
+                </p>
+                <p>
+                    要证明逆命题，我们同样利用收敛矩阵的性质。要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T%29%3C1" alt="\rho(T)&lt;1" eeimg="1">
+                    ，即等价于证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvec%7Bz%7D%2C%5C+%5Clim_%7Bk%5Crightarrow+%5Cinfty%7DT%5Ek%5Cvec%7Bz%7D%3D0" alt="\forall \vec{z},\ \lim_{k\rightarrow \infty}T^k\vec{z}=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    类比于一元情况中对于不动点迭代收敛性的证明，我们同样利用Lagrange中值定理的形式进行估计。
+                </p>
+                <p>
+                    我们发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D-%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DT%28%5Cvec%7Bx%7D-%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%29%3D...%3DT%5Ek%28%5Cvec%7Bx%7D-%5Cvec%7Bx%7D%5E%7B%280%29%7D%29" alt="\vec{x}-\vec{x}^{(k)}=T(\vec{x}-\vec{x}^{(k-1)})=...=T^k(\vec{x}-\vec{x}^{(0)})" eeimg="1">
+                </p>
+                <p>
+                    则我们很自然地，取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D%3D%5Cvec%7Bx%7D-%5Cvec%7Bz%7D" alt="\vec{x}^{(0)}=\vec{x}-\vec{z}" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D-%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3DT%5Ek%5Cvec%7Bz%7D" alt="\vec{x}-\vec{x}^{(k)}=T^k\vec{z}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由于方法收敛，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bk%5Crightarrow+%5Cinfty%7D%5Cvec%7Bx%7D-%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%5Cvec%7B0%7D" alt="\lim_{k\rightarrow \infty}\vec{x}-\vec{x}^{(k)}=\vec{0}" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bk%5Crightarrow+%5Cinfty%7DT%5Ek%5Cvec%7Bz%7D%3D%5Cvec%7B0%7D" alt="\lim_{k\rightarrow \infty}T^k\vec{z}=\vec{0}" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，线性方程组的迭代方法作为不动点迭代的推广，在性质上与不动点迭代非常类似。
+                </p>
+                <p>
+                    我们同样可以得到不动点迭代形式的误差估计。要注意的是，
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28T%29" alt="\rho(T)" eeimg="1">
+                        在某种程度上代替了导数在不动点迭代之中的作用
+                    </b>
+                    。
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28T%29" alt="\rho(T)" eeimg="1">
+                        越小，方法收敛速度越快。
+                    </b>
+                </p>
+                <p>
+                    由此，我们容易证明当
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    为
+                    <b>
+                        严格对角占优矩阵时，Jacobi方法与Gauss-Seidel方法均收敛
+                    </b>
+                    。（反证并且利用严格对角占优矩阵满秩的性质）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于Jacobi与Gauss-Seidel方法，另外一点值得一提的是：它们之间
+                    <b>
+                        并无确定的优劣之分
+                    </b>
+                    。虽然我们一直在说Gauss-Seidel方法是Jacobi方法的改进，且大多数情况下能使得求解更快收敛，这却并不是绝对的。
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cbegin%7Bbmatrix%7D+2+%26-1++%261+%5C%5C+2++%262+%26+2+%5C%5C+++-1%26+-1+%26+2+++%5Cend%7Bbmatrix%7D+%2C+%5Cvec%7Bb%7D%3D%5Cbegin%7Bbmatrix%7D+-1%5C%5C++4%5C%5C++-5%5Cend%7Bbmatrix%7D" alt="A=\begin{bmatrix} 2 &amp;-1  &amp;1 \\ 2  &amp;2 &amp; 2 \\   -1&amp; -1 &amp; 2   \end{bmatrix} , \vec{b}=\begin{bmatrix} -1\\  4\\  -5\end{bmatrix}" eeimg="1">
+                    ，读者容易验证Jacobi方法中
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T_j%29%3D%5Cfrac%7B%5Csqrt%7B5%7D%7D%7B2%7D" alt="\rho(T_j)=\frac{\sqrt{5}}{2}" eeimg="1">
+                    ，而Gauss-Seidel方法中
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T_g%29%3D%5Cfrac%7B1%7D%7B2%7D" alt="\rho(T_g)=\frac{1}{2}" eeimg="1">
+                    。这意味着
+                    <b>
+                        Jacobi方法不收敛，G-S方法收敛
+                    </b>
+                    。
+                </p>
+                <p>
+                    而对于
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cbegin%7Bbmatrix%7D+1+%262++%26-2+%5C%5C+1++%261%26+1+%5C%5C+++2%26+2+%26+1+++%5Cend%7Bbmatrix%7D+%2C+%5Cvec%7Bb%7D%3D%5Cbegin%7Bbmatrix%7D+7%5C%5C++2%5C%5C++5%5Cend%7Bbmatrix%7D" alt="A=\begin{bmatrix} 1 &amp;2  &amp;-2 \\ 1  &amp;1&amp; 1 \\   2&amp; 2 &amp; 1   \end{bmatrix} , \vec{b}=\begin{bmatrix} 7\\  2\\  5\end{bmatrix}" eeimg="1">
+                    ，读者容易验证Jacobi方法中
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T_j%29%3D0" alt="\rho(T_j)=0" eeimg="1">
+                    ，而G-S方法中
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T_g%29%3D2" alt="\rho(T_g)=2" eeimg="1">
+                    。这意味着
+                    <b>
+                        Jacobi方法收敛，G-S方法不收敛
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来我们要介绍的超松弛方法（SOR）本质上是对于G-S方法的改进，其引入了估计的权重以达到加速收敛与减小残差的目的。
+                </p>
+                <p>
+                    <b>
+                        超松弛方法（SOR）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        估计式：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=x_i%5E%7B%28k%29%7D%3D%281-w%29%5Cvec%7Bx%7D_i%5E%7B%28k-1%29%7D%2B%5Cfrac%7Bw%7D%7Ba_%7Bii%7D%7D%28b_i-%5Csum_%7Bj%3D1%7D%5E%7Bi-1%7Da_%7Bij%7Dx%5E%7B%28k%29%7D_j-%5Csum_%7Bj%3Di%2B1%7D%5E%7Bn%7Da_%7Bij%7Dx%5E%7B%28k-1%29%7D_j%29" alt="x_i^{(k)}=(1-w)\vec{x}_i^{(k-1)}+\frac{w}{a_{ii}}(b_i-\sum_{j=1}^{i-1}a_{ij}x^{(k)}_j-\sum_{j=i+1}^{n}a_{ij}x^{(k-1)}_j)" eeimg="1">
+                </p>
+                <p>
+                    可以看到，具体的做法就是为G-S方法中的估计式赋权
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    ，而对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D_i%5E%7B%28k-1%29%7D" alt="\vec{x}_i^{(k-1)}" eeimg="1">
+                    赋权
+                    <img src="https://www.zhihu.com/equation?tex=1-w" alt="1-w" eeimg="1">
+                    来生成第
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    次迭代中对于
+                    <img src="https://www.zhihu.com/equation?tex=x_i" alt="x_i" eeimg="1">
+                    的估计。
+                </p>
+                <p>
+                    对于SOR的原理，我们不过多展开，而是侧重于方法的分析上。
+                </p>
+                <p>
+                    类比之前两个方法分析中的做法，我们容易写出SOR估计式的矩阵形式。
+                </p>
+                <p>
+                    <b>
+                        矩阵形式：当
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=D-wL" alt="D-wL" eeimg="1">
+                    <b>
+                        可逆时，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%28D-wL%29%5E%7B-1%7D%5B%281-w%29D%2BwU%5D%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2Bw%28D-wL%29%5E%7B-1%7D%5Cvec%7Bb%7D" alt="\vec{x}^{(k)}=(D-wL)^{-1}[(1-w)D+wU]\vec{x}^{(k-1)}+w(D-wL)^{-1}\vec{b}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    容易看到，SOR本质上也是不动点迭代方法的推广。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cbegin%7Bbmatrix%7D+0.2+%260.1++%261++%261++%260+%5C%5C+0.1++%264++%26+-1+%261++%26-1+%5C%5C+++1%26+-1+%26+60+%260++%26-2+%5C%5C++1+%26+1+%260++%268++%264+%5C%5C++0+%26+-1+%26+-2+%26+4+%26+700+%5Cend%7Bbmatrix%7D+%2C+%5Cvec%7Bb%7D%3D%5Cbegin%7Bbmatrix%7D+1%5C%5C++2%5C%5C++3%5C%5C++4%5C%5C++5+%5Cend%7Bbmatrix%7D" alt="A=\begin{bmatrix} 0.2 &amp;0.1  &amp;1  &amp;1  &amp;0 \\ 0.1  &amp;4  &amp; -1 &amp;1  &amp;-1 \\   1&amp; -1 &amp; 60 &amp;0  &amp;-2 \\  1 &amp; 1 &amp;0  &amp;8  &amp;4 \\  0 &amp; -1 &amp; -2 &amp; 4 &amp; 700 \end{bmatrix} , \vec{b}=\begin{bmatrix} 1\\  2\\  3\\  4\\  5 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    我们给定初值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D%3D%5Cvec%7B0%7D" alt="\vec{x}^{(0)}=\vec{0}" eeimg="1">
+                    ，容许的误差为
+                    <img src="https://www.zhihu.com/equation?tex=0.01" alt="0.01" eeimg="1">
+                    （无穷范数定义的相对误差标准）
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-cc43c977df49e7af1ab0c8b91d8cb9ee_r.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    可以看到：取超松弛参数
+                    <img src="https://www.zhihu.com/equation?tex=w%3D1.25" alt="w=1.25" eeimg="1">
+                    ，仅仅进行了6次迭代，就得到了我们想要的结果。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于超松弛参数
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    的选取，事实上并不是任意的。
+                </p>
+                <p>
+                    <b>
+                        定理（Kahan）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        对角元均非零，
+                        <img src="https://www.zhihu.com/equation?tex=T_w%3D%28D-wL%29%5E%7B-1%7D%5B%281-w%29D%2BwU%5D" alt="T_w=(D-wL)^{-1}[(1-w)D+wU]" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28T_w%29%5Cgeq+%7Cw-1%7C" alt="\rho(T_w)\geq |w-1|" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    为对角矩阵，我们有
+                    <img src="https://www.zhihu.com/equation?tex=%7CT_w%7C%3D%7C%28D-wL%29%5E%7B-1%7D%7C%7C%281-w%29D%2BwU%7C%3D%7CD%5E%7B-1%7D%7C%281-w%29%5En%7CD%7C%3D%281-w%29%5En" alt="|T_w|=|(D-wL)^{-1}||(1-w)D+wU|=|D^{-1}|(1-w)^n|D|=(1-w)^n" eeimg="1">
+                </p>
+                <p>
+                    由特征值与行列式的关系，我们有
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_1...%5Clambda_n%3D%281-w%29%5En" alt="\lambda_1...\lambda_n=(1-w)^n" eeimg="1">
+                </p>
+                <p>
+                    故易知
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T_w%29%3Dmax_i%7C%5Clambda_i%7C%5Cgeq+%7Cw-1%7C" alt="\rho(T_w)=max_i|\lambda_i|\geq |w-1|" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个定理的一个重要推论是：
+                    <b>
+                        SOR方法收敛的必要条件是
+                        <img src="https://www.zhihu.com/equation?tex=%7Cw-1%7C%3C1" alt="|w-1|&lt;1" eeimg="1">
+                        ，即
+                        <img src="https://www.zhihu.com/equation?tex=0%3Cw%3C2" alt="0&lt;w&lt;2" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    事实上，对于
+                    <b>
+                        正定
+                    </b>
+                    矩阵而言，
+                    <img src="https://www.zhihu.com/equation?tex=0%3Cw%3C2" alt="0&lt;w&lt;2" eeimg="1">
+                    <b>
+                        的SOR方法对任意初值必定收敛
+                    </b>
+                    。
+                </p>
+                <p>
+                    对于
+                    <b>
+                        正定的三对角矩阵
+                    </b>
+                    而言，我们甚至能够找到理论上的最佳
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28T_w%29%3Dw-1" alt="\rho(T_w)=w-1" eeimg="1">
+                    成立。（此处均不再赘述）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们要讨论一类特殊的矩阵：
+                    <b>
+                        病态矩阵
+                    </b>
+                    。其为线性方程组的求解带来了不小的麻烦。
+                </p>
+                <p>
+                    病态的线性方程组指的是：
+                    <b>
+                        即使
+                        <img src="https://www.zhihu.com/equation?tex=A%2C%5Cvec%7Bb%7D" alt="A,\vec{b}" eeimg="1">
+                        能够被精确表示，计算过程中的舍入误差会使得方程组的解的估计值与真实解相差甚远
+                    </b>
+                    。
+                </p>
+                <p>
+                    也就是说，假设真实解为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D" alt="\vec{x}" eeimg="1">
+                    ，估计解为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7By%7D" alt="\vec{y}" eeimg="1">
+                    。即使
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%5Cvec%7Bx%7D-A%5Cvec%7By%7D%7C%7C" alt="||A\vec{x}-A\vec{y}||" eeimg="1">
+                    足够小，
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D-%5Cvec%7By%7D%7C%7C" alt="||\vec{x}-\vec{y}||" eeimg="1">
+                    也可能较大。
+                    <b>
+                        较小的后向误差并不能保证较小的前向误差
+                    </b>
+                    。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cbegin%7Bbmatrix%7D+1%262%5C%5C+1.0001%262+%5Cend%7Bbmatrix%7D%2C+%5Cvec%7Bb%7D%3D%5Cbegin%7Bbmatrix%7D+3%5C%5C+3.0001+%5Cend%7Bbmatrix%7D" alt="A=\begin{bmatrix} 1&amp;2\\ 1.0001&amp;2 \end{bmatrix}, \vec{b}=\begin{bmatrix} 3\\ 3.0001 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    若我们得到的估计值为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7By%7D%3D%5Cbegin%7Bbmatrix%7D+3%5C%5C+-0.0001+%5Cend%7Bbmatrix%7D" alt="\vec{y}=\begin{bmatrix} 3\\ -0.0001 \end{bmatrix}" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7By%7D%3D%5Cbegin%7Bbmatrix%7D+2.9998%5C%5C+3.0001+%5Cend%7Bbmatrix%7D" alt="A\vec{y}=\begin{bmatrix} 2.9998\\ 3.0001 \end{bmatrix}" eeimg="1">
+                    ，与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bb%7D" alt="\vec{b}" eeimg="1">
+                    十分接近。
+                </p>
+                <p>
+                    但是显然真实解为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3D%5Cbegin%7Bbmatrix%7D+1%5C%5C+1+%5Cend%7Bbmatrix%7D" alt="\vec{x}=\begin{bmatrix} 1\\ 1 \end{bmatrix}" eeimg="1">
+                    ，而
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D-%5Cvec%7By%7D%7C%7C" alt="||\vec{x}-\vec{y}||" eeimg="1">
+                    显然较大。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        病态的线性方程组的重要特征就是：系数矩阵的行或列的近线性相关现象。
+                    </b>
+                    即存在两行虽不线性相关，但是稍加一些微小的扰动后就会变得线性相关。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对此现象，我们还想要得到一个能用来衡量病态程度的标准。我们通过对于一般线性方程组的误差的估计自然地引出条件数的概念。
+                </p>
+                <p>
+                    <b>
+                        定理（线性方程组的误差估计）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%3D%5Cvec%7Bb%7D" alt="A\vec{x}=\vec{b}" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        非奇异，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7By%7D" alt="\vec{y}" eeimg="1">
+                        为对于此方程组的估计值。
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D%3D%5Cvec%7Bb%7D-A%5Cvec%7By%7D" alt="\vec{r}=\vec{b}-A\vec{y}" eeimg="1">
+                        定义为残差向量。则对任意矩阵的自然范数，
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D-%5Cvec%7By%7D%7C%7C%5Cleq+%7C%7C%5Cvec%7Br%7D%7C%7C%5C+%7C%7CA%5E%7B-1%7D%7C%7C" alt="||\vec{x}-\vec{y}||\leq ||\vec{r}||\ ||A^{-1}||" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%7C%7C%5Cvec%7Bx%7D-%5Cvec%7By%7D%7C%7C%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C%7D%5Cleq+%7C%7CA%7C%7C%5C+%7C%7CA%5E%7B-1%7D%7C%7C%5C+%5Cfrac%7B%7C%7C%5Cvec%7Br%7D%7C%7C%7D%7B%7C%7C%5Cvec%7Bb%7D%7C%7C%7D" alt="\frac{||\vec{x}-\vec{y}||}{||\vec{x}||}\leq ||A||\ ||A^{-1}||\ \frac{||\vec{r}||}{||\vec{b}||}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D-%5Cvec%7By%7D%7C%7C%3D%7C%7CA%5E%7B-1%7D%5Cvec%7Br%7D%7C%7C%5Cleq%7C%7CA%5E%7B-1%7D%7C%7C%5C+%7C%7C%5Cvec%7Br%7D%7C%7C" alt="||\vec{x}-\vec{y}||=||A^{-1}\vec{r}||\leq||A^{-1}||\ ||\vec{r}||" eeimg="1">
+                </p>
+                <p>
+                    而对于
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%3D%5Cvec%7Bb%7D" alt="A\vec{x}=\vec{b}" eeimg="1">
+                    ，有
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bb%7D%7C%7C%5Cleq%7C%7CA%7C%7C%5C+%7C%7C%5Cvec%7Bx%7D%7C%7C" alt="||\vec{b}||\leq||A||\ ||\vec{x}||" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%7C%7C%5Cvec%7Bx%7D-%5Cvec%7By%7D%7C%7C%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C%7D%5Cleq%7C%7CA%7C%7C%5C+%7C%7CA%5E%7B-1%7D%7C%7C%5C+%5Cfrac%7B%7C%7C%5Cvec%7Br%7D%7C%7C%7D%7B%7C%7C%5Cvec%7Bb%7D%7C%7C%7D" alt="\frac{||\vec{x}-\vec{y}||}{||\vec{x}||}\leq||A||\ ||A^{-1}||\ \frac{||\vec{r}||}{||\vec{b}||}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们发现：由向量范数定义的相对误差的上界被
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%7C%7C%5C+%7C%7CA%5E%7B-1%7D%7C%7C" alt="||A||\ ||A^{-1}||" eeimg="1">
+                    控制着。
+                </p>
+                <p>
+                    故我们很自然地如下定义条件数。
+                </p>
+                <p>
+                    <b>
+                        条件数：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=K%28A%29%3D%7C%7CA%7C%7C%5C+%7C%7CA%5E%7B-1%7D%7C%7C" alt="K(A)=||A||\ ||A^{-1}||" eeimg="1">
+                </p>
+                <p>
+                    容易发现：
+                    <b>
+                        条件数越大，矩阵的病态程度越严重，舍入误差越有可能造成解的严重偏移
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在求解线性方程组时，我们常常会选择避开病态的线性方程组。（比如上一章中提及的Hilbert矩阵，我们为了避开求解而引入正交多项式）
+                </p>
+                <p>
+                    而当我们不得不求解病态的线性方程组时，我们常常利用迭代求精的方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        迭代求精方法
+                    </b>
+                </p>
+                <p>
+                    迭代求精方法的思想很简单。我们先得到
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%3D%5Cvec%7Bb%7D" alt="A\vec{x}=\vec{b}" eeimg="1">
+                    的一个估计
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D" alt="\vec{x}^{(0)}" eeimg="1">
+                    。然而，由于病态性，这个估计显然是不合意的。
+                </p>
+                <p>
+                    我们计算出估计的残差
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D%5E%7B%280%29%7D%3D%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%5E%7B%280%29%7D" alt="\vec{r}^{(0)}=\vec{b}-A\vec{x}^{(0)}" eeimg="1">
+                    ，并且
+                    <b>
+                        求解方程
+                        <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%3D%5Cvec%7Br%7D%5E%7B%280%29%7D" alt="A\vec{x}=\vec{r}^{(0)}" eeimg="1">
+                        ，得到估计
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%281%29%7D" alt="\vec{x}^{(1)}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        那么显然
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D%2B%5Cvec%7Bx%7D%5E%7B%281%29%7D" alt="\vec{x}^{(0)}+\vec{x}^{(1)}" eeimg="1">
+                        是一个比
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D" alt="\vec{x}^{(0)}" eeimg="1">
+                        要更好的估计。
+                    </b>
+                </p>
+                <p>
+                    后面一直以此类推地进行上述过程。
+                </p>
+                <p>
+                    迭代求精方法先产生出一个基估计，并在此基础上对每一次估计产生出的残差进一步迭代估计，将残差产生的影响累积到基估计上来起到调整的作用。
+                </p>
+                <p>
+                    对于一个
+                    <b>
+                        进行
+                        <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                        位舍入
+                    </b>
+                    的计算过程而言，一般
+                    <b>
+                        当
+                        <img src="https://www.zhihu.com/equation?tex=K_%5Cinfty%28A%29%3C10%5Et" alt="K_\infty(A)&lt;10^t" eeimg="1">
+                        时，迭代求精方法都能取得良好的效果
+                    </b>
+                    。（若条件数再大，则需要提高计算过程精度才能对准确度有本质提升）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们来介绍一种最复杂，但也是最有效并且应用最广的方法：
+                    <b>
+                        共轭梯度法
+                    </b>
+                    。
+                </p>
+                <p>
+                    共轭梯度下降方法一般而言
+                    <b>
+                        假定
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        是一个正定矩阵
+                    </b>
+                    （从而必定是对称的）。
+                </p>
+                <p>
+                    共轭梯度法的思路是：将线性方程组求解问题转化为求函数最小值的问题，然后利用函数梯度来对于函数的最小值进行估计。对于给定的初值，我们可以将共轭梯度法看成在一个函数曲面上的行走，而我们的目的是要走到函数的最小值处。在每一步估计过程中，我们关心的是：
+                    <b>
+                        1、我们这步应该朝哪个方向走 2、我们应该朝那个方向走多远的距离
+                    </b>
+                </p>
+                <p>
+                    然而，方程的解与函数的最小值有什么关联呢？
+                </p>
+                <p>
+                    下面的定理告诉我们如何将线性方程组求解转化为函数最小值求解问题。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（共轭梯度方法的问题转化）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D" alt="\vec{r}" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=Ax%3D%5Cvec%7Bb%7D" alt="Ax=\vec{b}" eeimg="1">
+                        的解当且仅当函数
+                        <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%29%3D%28%5Cvec%7Bx%7D%2CA%5Cvec%7Bx%7D%29-2%28%5Cvec%7Bx%7D%2C%5Cvec%7Bb%7D%29" alt="g(\vec{x})=(\vec{x},A\vec{x})-2(\vec{x},\vec{b})" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D" alt="\vec{r}" eeimg="1">
+                        处取到最小值。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们假设在某一步估计时，我们从现在的估计点
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D" alt="\vec{x}" eeimg="1">
+                    处向着
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D" alt="\vec{v}" eeimg="1">
+                    方向走了
+                    <img src="https://www.zhihu.com/equation?tex=t%7C%7C%5Cvec%7Bv%7D%7C%7C" alt="t||\vec{v}||" eeimg="1">
+                    的长度。
+                </p>
+                <p>
+                    即假设下一步估计为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%2Bt%5Cvec%7Bv%7D" alt="\vec{x}+t\vec{v}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们考虑函数
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%2Bt%5Cvec%7Bv%7D%29%3Dg%28%5Cvec%7Bx%7D%29-2t%28%5Cvec%7Bv%7D%2C%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%29%2Bt%5E2%28%5Cvec%7Bv%7D%2CA%5Cvec%7Bv%7D%29" alt="g(\vec{x}+t\vec{v})=g(\vec{x})-2t(\vec{v},\vec{b}-A\vec{x})+t^2(\vec{v},A\vec{v})" eeimg="1">
+                </p>
+                <p>
+                    （这里注意利用
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    对称而带来的
+                    <img src="https://www.zhihu.com/equation?tex=%28A%5Cvec%7Bx%7D%2C%5Cvec%7By%7D%29%3D%28%5Cvec%7Bx%7D%2CA%5Cvec%7By%7D%29" alt="(A\vec{x},\vec{y})=(\vec{x},A\vec{y})" eeimg="1">
+                    性质）
+                </p>
+                <p>
+                    我们的目标是：使得
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%2Bt%5Cvec%7Bv%7D%29" alt="g(\vec{x}+t\vec{v})" eeimg="1">
+                    。然而，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D" alt="\vec{x}" eeimg="1">
+                    作为上一步的估计值我们无法改变。
+                </p>
+                <p>
+                    我们真正能够选择的是：前进方向
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D" alt="\vec{v}" eeimg="1">
+                    ，与前进距离
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                </p>
+                <p>
+                    我们发现
+                    <b>
+                        最优的前进距离
+                        <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                        是容易选取
+                    </b>
+                    的。
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%2Bt%5Cvec%7Bv%7D%29" alt="g(\vec{x}+t\vec{v})" eeimg="1">
+                    为关于
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    的二次函数，经过求导，我们很容易得到
+                    <b>
+                        当
+                        <img src="https://www.zhihu.com/equation?tex=t%3D%5Cfrac%7B%28%5Cvec%7Bv%7D%2C%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%29%7D%7B%28%5Cvec%7Bv%7D%2CA%5Cvec%7Bv%7D%29%7D" alt="t=\frac{(\vec{v},\vec{b}-A\vec{x})}{(\vec{v},A\vec{v})}" eeimg="1">
+                        时函数值最小
+                    </b>
+                    。
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    这样选取的情形下，，我们将其带回
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%2Bt%5Cvec%7Bv%7D%29" alt="g(\vec{x}+t\vec{v})" eeimg="1">
+                    ，得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%2Bt%5Cvec%7Bv%7D%29%3Dg%28%5Cvec%7Bx%7D%29-%5Cfrac%7B%28%5Cvec%7Bv%7D%2C%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%29%5E2%7D%7B%28%5Cvec%7Bv%7D%2CA%5Cvec%7Bv%7D%29%7D" alt="g(\vec{x}+t\vec{v})=g(\vec{x})-\frac{(\vec{v},\vec{b}-A\vec{x})^2}{(\vec{v},A\vec{v})}" eeimg="1">
+                </p>
+                <p>
+                    容易发现，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D" alt="\vec{r}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=Ax%3D%5Cvec%7Bb%7D" alt="Ax=\vec{b}" eeimg="1">
+                    的解当且仅当函数
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%29%3D%28%5Cvec%7Bx%7D%2CA%5Cvec%7Bx%7D%29-2%28%5Cvec%7Bx%7D%2C%5Cvec%7Bb%7D%29" alt="g(\vec{x})=(\vec{x},A\vec{x})-2(\vec{x},\vec{b})" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D" alt="\vec{r}" eeimg="1">
+                    处取到最小值
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Br%7D%29" alt="g(\vec{r})" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由上述定理，我们可谓一举两得地得到了两个重要的结论。
+                </p>
+                <p>
+                    <b>
+                        1、我们成功将线性方程组求解问题转化为了函数的最小值求解问题。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2、我们知道了当初始估计
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D" alt="\vec{x}" eeimg="1">
+                        以及前进方向
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D" alt="\vec{v}" eeimg="1">
+                        给定时，我们的最优前进距离
+                        <img src="https://www.zhihu.com/equation?tex=t%3D%5Cfrac%7B%28%5Cvec%7Bv%7D%2C%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%29%7D%7B%28%5Cvec%7Bv%7D%2CA%5Cvec%7Bv%7D%29%7D" alt="t=\frac{(\vec{v},\vec{b}-A\vec{x})}{(\vec{v},A\vec{v})}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，我们不妨做如下理解：
+                </p>
+                <p>
+                    考虑特殊情况，向量均为一维（均为数）
+                </p>
+                <p>
+                    那么对于方程
+                    <img src="https://www.zhihu.com/equation?tex=ax%3Db%28a%3E0%29" alt="ax=b(a&gt;0)" eeimg="1">
+                    ，我们很自然地知道其零点即为
+                    <img src="https://www.zhihu.com/equation?tex=ax%5E2-2bx" alt="ax^2-2bx" eeimg="1">
+                    取最小值的点。而我们取定前进方向
+                    <img src="https://www.zhihu.com/equation?tex=v%3D1" alt="v=1" eeimg="1">
+                    时，给定初始估计
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    ，我们的最佳前近距离
+                    <img src="https://www.zhihu.com/equation?tex=t%3D%5Cfrac%7Bb-ax%7D%7Ba%7D" alt="t=\frac{b-ax}{a}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们惊奇地发现：无论初值
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    取多少，
+                    <img src="https://www.zhihu.com/equation?tex=x%2Btv%3D%5Cfrac%7Bb%7D%7Ba%7D" alt="x+tv=\frac{b}{a}" eeimg="1">
+                    为方程的真实解。事实上，这与我们后面阐述的共轭梯度方法的性质相吻合，
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        维线性方程组，最多进行
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        次迭代估计后共轭梯度方法保证能够收敛到真实解（只要
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    <b>
+                        正定）
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    同时，我们已经能够理解为何需要系数矩阵的正定性了。正如
+                    <img src="https://www.zhihu.com/equation?tex=a%3E0" alt="a&gt;0" eeimg="1">
+                    保证了
+                    <img src="https://www.zhihu.com/equation?tex=ax%5E2-2bx" alt="ax^2-2bx" eeimg="1">
+                    能够取到最小值一样，
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        的正定性保证了
+                        <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%29" alt="g(\vec{x})" eeimg="1">
+                        的凸性
+                    </b>
+                    。其保证了
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%29" alt="g(\vec{x})" eeimg="1">
+                    的所有局部最小值均为全局最小值，为梯度下降做好了充足的准备。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，让我们回到刚才讲到的地方。我们给出了已知前进方向的情况下最优的前近距离。接下来的一个自然的问题：前进方向要如何选取？
+                </p>
+                <p>
+                    一个常见的思路是选择当前估计点处的负的梯度方向作为前进方向。由数学分析的知识，我们知道梯度方向是该点处函数值变化最剧烈的方向。
+                </p>
+                <p>
+                    我们不妨求一下
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%29" alt="g(\vec{x})" eeimg="1">
+                    的梯度。
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+g%7D%7B%5Cpartial+x_k%7D%3D2%5Csum_%7Bi%3D1%7D%5Ena_%7Bki%7Dx_i-2b_k" alt="\frac{\partial g}{\partial x_k}=2\sum_{i=1}^na_{ki}x_i-2b_k" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        假设
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D%3D%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D" alt="\vec{r}=\vec{b}-A\vec{x}" eeimg="1">
+                        表示估计的残差
+                    </b>
+                    。
+                </p>
+                <p>
+                    容易得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+g%28%5Cvec%7Bx%7D%29%3D-2%5Cvec%7Br%7D" alt="\nabla g(\vec{x})=-2\vec{r}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    选取负梯度方向作为前进方向的迭代方法被称为
+                    <b>
+                        最速下降法
+                    </b>
+                    。它保证了每一步都沿着当前下降最快的方向前进。
+                </p>
+                <p>
+                    然而，在这里，对于线性方程组而言，梯度方向并不是一个最好的前进方向。
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-cf79e5b32e9ad9cca8fc476637628824_r.jpg">
+                </figure>
+                <p>
+                    我们考虑方程组维数为
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    的情况。上图是三维曲面
+                    <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%29" alt="g(\vec{x})" eeimg="1">
+                    的一组等高线（等高线上函数值相等，越靠近中心等高线表示的高度越低）。
+                </p>
+                <p>
+                    对于最速下降法，其对应的是绿色的下降过程。我们可以看到其每次都向最陡峭的方向下降。但是，
+                    <b>
+                        问题是：第一次下降与第三次下降在图中的前进路径是平行的
+                    </b>
+                    。我们虽然每次都在最快地下降，但是在不同点处很可能具有相同的负梯度方向，这使得我们做了很多“无用功”。
+                </p>
+                <p>
+                    一个简单的改进想法就是：我要是能将上图中绿色下降过程中的第一次、第三次、第五次下降的过程
+                    <b>
+                        合并
+                    </b>
+                    为一次下降过程，将第二次、第四次下降过程
+                    <b>
+                        合并
+                    </b>
+                    为一次下降过程，如同红色下降过程一般，那么我们就能节省大量迭代次数。而这就是共轭梯度方法。如果我们能够做到
+                    <b>
+                        在每个不同前进方向上只前进一次
+                    </b>
+                    ，那么我们至多迭代
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    次必定能获得
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维线性方程组的精确解。
+                </p>
+                <p>
+                    我们接下来要问：要如何找到那些不同的前进方向呢？
+                </p>
+                <p>
+                    这个时候，又轮到
+                    <b>
+                        正交性
+                    </b>
+                    登场了。我们应该都已经很熟悉：正交性蕴含了线性无关性，且使得各个方向上的误差得以分离，简化我们的计算。
+                </p>
+                <p>
+                    可是，另外一个问题是：这次我们要处理的函数不再像多项式一般具有很好的线性性质。对于高维空间的二次曲面我们要如何处理呢？
+                </p>
+                <p>
+                    熟悉解析几何的读者一定知道在处理二次曲线中为了代替正交性，我们引入了
+                    <b>
+                        共轭
+                    </b>
+                    的概念。事实上，共轭性就是正交性的一个推广（这里不过多展开）。
+                </p>
+                <p>
+                    在这里，我们类似地定义。
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%5Cneq+j%2C%5C+%28%5Cvec%7Bv%7D%5E%7B%28i%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28j%29%7D%29%3D0" alt="\forall i\neq j,\ (\vec{v}^{(i)},A\vec{v}^{(j)})=0" eeimg="1">
+                        ，我们就称所有前进方向
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D%5E%7B%28i%29%7D" alt="\vec{v}^{(i)}" eeimg="1">
+                        为一组
+                        <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                        共轭的前进方向
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们下面利用定理来表明
+                    <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                    共轭性带来的巨大好处。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（
+                        <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                        共轭前进方向的优越性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D%5E%7B%281%29%7D%2C...%2C%5Cvec%7Bv%7D%5E%7B%28n%29%7D" alt="\vec{v}^{(1)},...,\vec{v}^{(n)}" eeimg="1">
+                        为一组
+                        <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                        共轭前进方向。则对于
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvec%7Bx%7D%5E%7B%280%29%7D" alt="\forall \vec{x}^{(0)}" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=t_k%3D%5Cfrac%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2C%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%29%7D%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%7D" alt="t_k=\frac{(\vec{v}^{(k)},\vec{b}-A\vec{x}^{(k-1)})}{(\vec{v}^{(k)},A\vec{v}^{(k)})}" eeimg="1">
+                        为第
+                        <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                        次迭代中的前进距离。则估计式为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2Bt_k%5Cvec%7Bv%7D%5E%7B%28k%29%7D" alt="\vec{x}^{(k)}=\vec{x}^{(k-1)}+t_k\vec{v}^{(k)}" eeimg="1">
+                        。则经过
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        次迭代后，必定得到精确解，
+                        <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%5E%7B%28n%29%7D%3D%5Cvec%7Bb%7D" alt="A\vec{x}^{(n)}=\vec{b}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    利用估计式，我们重写
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%5E%7B%28n%29%7D" alt="A\vec{x}^{(n)}" eeimg="1">
+                    ，得到
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%5E%7B%28n%29%7D%3DA%5Cvec%7Bx%7D%5E%7B%280%29%7D%2Bt_1A%5Cvec%7Bv%7D%5E%7B%281%29%7D%2B...%2Bt_nA%5Cvec%7Bv%7D%5E%7B%28n%29%7D" alt="A\vec{x}^{(n)}=A\vec{x}^{(0)}+t_1A\vec{v}^{(1)}+...+t_nA\vec{v}^{(n)}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    则我们考虑
+                    <img src="https://www.zhihu.com/equation?tex=%28A%5Cvec%7Bx%7D%5E%7B%28n%29%7D-%5Cvec%7Bb%7D%2C%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%3D%28A%5Cvec%7Bx%7D%5E%7B%280%29%7D-%5Cvec%7Bb%7D%2C%5Cvec%7Bv%7D%29%2Bt_1%28%5Cvec%7Bv%7D%5E%7B%281%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%2B...%2Bt_n%28%5Cvec%7Bv%7D%5E%7B%28n%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29" alt="(A\vec{x}^{(n)}-\vec{b},\vec{v}^{(k)})=(A\vec{x}^{(0)}-\vec{b},\vec{v})+t_1(\vec{v}^{(1)},A\vec{v}^{(k)})+...+t_n(\vec{v}^{(n)},A\vec{v}^{(k)})" eeimg="1">
+                    。
+                </p>
+                <p>
+                    利用前进方向的共轭性，得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28A%5Cvec%7Bx%7D%5E%7B%28n%29%7D-%5Cvec%7Bb%7D%2C%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%3D%28A%5Cvec%7Bx%7D%5E%7B%280%29%7D-%5Cvec%7Bb%7D%2C%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%2Bt_k%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29" alt="(A\vec{x}^{(n)}-\vec{b},\vec{v}^{(k)})=(A\vec{x}^{(0)}-\vec{b},\vec{v}^{(k)})+t_k(\vec{v}^{(k)},A\vec{v}^{(k)})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=t_k%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%3D%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2C%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%5E%7B%280%29%7D%29" alt="t_k(\vec{v}^{(k)},A\vec{v}^{(k)})=(\vec{v}^{(k)},\vec{b}-A\vec{x}^{(0)})" eeimg="1">
+                </p>
+                <p>
+                    故我们有：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+k%2C%5C+%28A%5Cvec%7Bx%7D%5E%7B%28n%29%7D-%5Cvec%7Bb%7D%2C%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%3D0" alt="\forall k,\ (A\vec{x}^{(n)}-\vec{b},\vec{v}^{(k)})=0" eeimg="1">
+                </p>
+                <p>
+                    注意到：
+                    <b>
+                        关于
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        共轭的前进方向必定线性无关
+                    </b>
+                    （读者易证），故原命题得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个定理肯定了我们刚才的猜想：
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    <b>
+                        共轭性是优越的，它使得我们在进行迭代求解时在每一步都把当前前进方向上的残差给清理干净，任意两次不同迭代中减小的残差都是相互“正交”的。共轭梯度方法将残差减小的有效性做到了极致。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        故我们一般只取第一个前进方向
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D%5E%7B%281%29%7D%3D%5Cvec%7Br%7D%5E%7B%280%29%7D" alt="\vec{v}^{(1)}=\vec{r}^{(0)}" eeimg="1">
+                    <b>
+                        为负梯度方向。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们离成功只有一步之遥。我们只需要想办法使得前进方向可以在方法的执行过程中被不断更新，且依旧维护其
+                    <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                    共轭性就可以了。
+                </p>
+                <p>
+                    由于第
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    次迭代中的负梯度方向为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D%5E%7B%28k-1%29%7D" alt="\vec{r}^{(k-1)}" eeimg="1">
+                    ，我们想到能否通过对负梯度方向加上一个关于上一步前进方向
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D" alt="\vec{v}^{(k-1)}" eeimg="1">
+                    的偏移量，使得其方向被矫正，符合
+                    <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                    共轭性。
+                </p>
+                <p>
+                    即我们现在的目标转化为了：
+                    <b>
+                        假设我们已经有一组
+                        <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                        共轭的前进方向
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D%5E%7B%281%29%7D%2C...%2C%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D" alt="\vec{v}^{(1)},...,\vec{v}^{(k-1)}" eeimg="1">
+                        （第一个前进方向取下降最快的负梯度方向
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D%5E%7B%280%29%7D" alt="\vec{r}^{(0)}" eeimg="1">
+                    <b>
+                        ），我们要找到
+                        <img src="https://www.zhihu.com/equation?tex=s_%7Bk-1%7D" alt="s_{k-1}" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D%5E%7B%28k%29%7D%3D%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%2Bs_%7Bk-1%7D%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D" alt="\vec{v}^{(k)}=\vec{r}^{(k-1)}+s_{k-1}\vec{v}^{(k-1)}" eeimg="1">
+                        ，满足
+                        <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                        共轭性
+                    </b>
+                    。
+                </p>
+                <p>
+                    即满足
+                    <img src="https://www.zhihu.com/equation?tex=%28A%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2C%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%29%3D0" alt="(A\vec{v}^{(k)},\vec{v}^{(k-1)})=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28A%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2C%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%29%3D%28%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%2CA%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%2Bs_%7Bk-1%7D%28%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%29" alt="(A\vec{v}^{(k)},\vec{v}^{(k-1)})=(\vec{v}^{(k-1)},A\vec{r}^{(k-1)})+s_{k-1}(\vec{v}^{(k-1)},A\vec{v}^{(k-1)})" eeimg="1">
+                </p>
+                <p>
+                    我们
+                    <b>
+                        发现
+                        <img src="https://www.zhihu.com/equation?tex=s_%7Bk-1%7D%3D-%5Cfrac%7B+%28A%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%29%7D%7B+%28A%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%29%7D" alt="s_{k-1}=-\frac{ (A\vec{r}^{(k-1)},\vec{v}^{(k-1)})}{ (A\vec{v}^{(k-1)},\vec{v}^{(k-1)})}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        由此，我们基本完成了整个共轭梯度法
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们利用一些性质来对共轭梯度法的表达式进行化简与总结。
+                </p>
+                <p>
+                    首先是残差向量与前进方向的正交性。这是因为共轭梯度法
+                    <b>
+                        第
+                        <img src="https://www.zhihu.com/equation?tex=k-1" alt="k-1" eeimg="1">
+                        次迭代中的残差一定不再包含任何可以分解到第
+                        <img src="https://www.zhihu.com/equation?tex=k-1" alt="k-1" eeimg="1">
+                        次迭代中前进方向上的残差
+                    </b>
+                    。（共轭梯度法将残差减小的有效性做到极致）下面的定理说明了这一点。
+                </p>
+                <p>
+                    <b>
+                        定理（残差与前进方向的正交性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+j%3D1%2C2%2C...k%2C%5C+%28%5Cvec%7Br%7D%5E%7B%28k%29%7D%2C%5Cvec%7Bv%7D%5E%7B%28j%29%7D%29%3D0" alt="\forall j=1,2,...k,\ (\vec{r}^{(k)},\vec{v}^{(j)})=0" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    利用数学归纳法证明。此处仅仅进行简略的证明。
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cvec%7Br%7D%5E%7B%281%29%7D%2C%5Cvec%7Bv%7D%5E%7B%281%29%7D%29%3D%28%5Cvec%7Br%7D%5E%7B%281%29%7D%2C%5Cvec%7Br%7D%5E%7B%280%29%7D%29%3D%28%5Cvec%7Br%7D%5E%7B%280%29%7D%2C%5Cvec%7Br%7D%5E%7B%280%29%7D%29-%5Cfrac%7B%28%5Cvec%7Br%7D%5E%7B%280%29%7D%2C%5Cvec%7Br%7D%5E%7B%280%29%7D%29%7D%7B%28A%5Cvec%7Bv%7D%5E%7B%281%29%7D%2C%5Cvec%7Bv%7D%5E%7B%281%29%7D%29%7D%28A%5Cvec%7Bv%7D%5E%7B%281%29%7D%2C%5Cvec%7Bv%7D%5E%7B%281%29%7D%29%3D0" alt="(\vec{r}^{(1)},\vec{v}^{(1)})=(\vec{r}^{(1)},\vec{r}^{(0)})=(\vec{r}^{(0)},\vec{r}^{(0)})-\frac{(\vec{r}^{(0)},\vec{r}^{(0)})}{(A\vec{v}^{(1)},\vec{v}^{(1)})}(A\vec{v}^{(1)},\vec{v}^{(1)})=0" eeimg="1">
+                </p>
+                <p>
+                    接着，假设
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+j%3D1%2C2%2C...k%2C%5C+%28%5Cvec%7Br%7D%5E%7B%28k%29%7D%2C%5Cvec%7Bv%7D%5E%7B%28j%29%7D%29%3D0" alt="\forall j=1,2,...k,\ (\vec{r}^{(k)},\vec{v}^{(j)})=0" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cvec%7Br%7D%5E%7B%28k%2B1%29%7D%2C%5Cvec%7Bv%7D%5E%7B%28k%2B1%29%7D%29%3D0" alt="(\vec{r}^{(k+1)},\vec{v}^{(k+1)})=0" eeimg="1">
+                    （利用
+                    <img src="https://www.zhihu.com/equation?tex=t_%7Bk%2B1%7D" alt="t_{k+1}" eeimg="1">
+                    的表达式如上约去即可）
+                </p>
+                <p>
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cvec%7Br%7D%5E%7B%28k%2B1%29%7D%2C%5Cvec%7Bv%7D%5E%7B%28j%29%7D%29%3D0" alt="(\vec{r}^{(k+1)},\vec{v}^{(j)})=0" eeimg="1">
+                    （利用前进方向的
+                    <img src="https://www.zhihu.com/equation?tex=A-" alt="A-" eeimg="1">
+                    共轭性）
+                </p>
+                <p>
+                    即可得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，由此我们又可以得到另一个推论：
+                    <b>
+                        残差向量之间相互正交
+                    </b>
+                    。即
+                    <img src="https://www.zhihu.com/equation?tex=i%5Cneq+j%2C%5C+%28%5Cvec%7Br%7D%5E%7B%28i%29%7D%2C%5Cvec%7Br%7D%5E%7B%28j%29%7D%29%3D0" alt="i\neq j,\ (\vec{r}^{(i)},\vec{r}^{(j)})=0" eeimg="1">
+                    。（读者模仿上述证明自证）这是容易理解的，因为共轭梯度法要求在每个前进方向上一次性地清理干净所有这个方向上的残差组成。那么不同次迭代的残差之间自然是正交的了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面我们开始最后一步：对于方法中用到参数的化简。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=t_k%3D%5Cfrac%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%7D%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%7D%3D%5Cfrac%7B%28%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%7D%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%7D%2Bs_%7Bk-1%7D%5Cfrac%7B%28%5Cvec%7Bv%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%7D%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%7D" alt="t_k=\frac{(\vec{v}^{(k)},\vec{r}^{(k-1)})}{(\vec{v}^{(k)},A\vec{v}^{(k)})}=\frac{(\vec{r}^{(k-1)},\vec{r}^{(k-1)})}{(\vec{v}^{(k)},A\vec{v}^{(k)})}+s_{k-1}\frac{(\vec{v}^{(k-1)},\vec{r}^{(k-1)})}{(\vec{v}^{(k)},A\vec{v}^{(k)})}" eeimg="1">
+                </p>
+                <p>
+                    利用残差与前进方向的正交性，得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=t_k%3D%5Cfrac%7B%28%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%7D%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%7D" alt="t_k=\frac{(\vec{r}^{(k-1)},\vec{r}^{(k-1)})}{(\vec{v}^{(k)},A\vec{v}^{(k)})}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=s_k%3D-%5Cfrac%7B%28%5Cvec%7Br%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%7D%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%7D" alt="s_k=-\frac{(\vec{r}^{(k)},A\vec{v}^{(k)})}{(\vec{v}^{(k)},A\vec{v}^{(k)})}" eeimg="1">
+                </p>
+                <p>
+                    利用
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cvec%7Br%7D%5E%7B%28k%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k%29%7D%29%3D-t_k%28%5Cvec%7Br%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29" alt="(\vec{r}^{(k)},\vec{r}^{(k)})=-t_k(\vec{r}^{(k)},A\vec{v}^{(k)})" eeimg="1">
+                </p>
+                <p>
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%3Dt_k%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29" alt="(\vec{r}^{(k-1)},\vec{r}^{(k-1)})=t_k(\vec{v}^{(k)},A\vec{v}^{(k)})" eeimg="1">
+                </p>
+                <p>
+                    我们得到
+                    <img src="https://www.zhihu.com/equation?tex=s_k%3D%5Cfrac%7B%28%5Cvec%7Br%7D%5E%7B%28k%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k%29%7D%29%7D%7B%28%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%7D" alt="s_k=\frac{(\vec{r}^{(k)},\vec{r}^{(k)})}{(\vec{r}^{(k-1)},\vec{r}^{(k-1)})}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    至此我们完成了全部的共轭梯度法工作。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        对共轭梯度法进行如下总结：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        给定初值
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D" alt="\vec{x}^{(0)}" eeimg="1">
+                        ，我们求出残差
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D%5E%7B%280%29%7D%3D%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%5E%7B%280%29%7D" alt="\vec{r}^{(0)}=\vec{b}-A\vec{x}^{(0)}" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D%5E%7B%281%29%7D%3D%5Cvec%7Br%7D%5E%7B%280%29%7D" alt="\vec{v}^{(1)}=\vec{r}^{(0)}" eeimg="1">
+                        作为第一次迭代的前进方向。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于每一次迭代，我们要把握的是：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （这一步走多长）
+                        <img src="https://www.zhihu.com/equation?tex=t_k%3D%5Cfrac%7B%28%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%7D%7B%28%5Cvec%7Bv%7D%5E%7B%28k%29%7D%2CA%5Cvec%7Bv%7D%5E%7B%28k%29%7D%29%7D" alt="t_k=\frac{(\vec{r}^{(k-1)},\vec{r}^{(k-1)})}{(\vec{v}^{(k)},A\vec{v}^{(k)})}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （进行一次迭代，朝前进方向走一定长度）
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%2Bt_k%5Cvec%7Bv%7D%5E%7B%28k%29%7D" alt="\vec{x}^{(k)}=\vec{x}^{(k-1)}+t_k\vec{v}^{(k)}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （求出这一次迭代的残差，知道离终点还差多远）
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Br%7D%5E%7B%28k%29%7D%3D%5Cvec%7Bb%7D-A%5Cvec%7Bx%7D%5E%7B%28k%29%7D" alt="\vec{r}^{(k)}=\vec{b}-A\vec{x}^{(k)}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （准备好对于前进方向的调整）
+                        <img src="https://www.zhihu.com/equation?tex=s_k%3D%5Cfrac%7B%28%5Cvec%7Br%7D%5E%7B%28k%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k%29%7D%29%7D%7B%28%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%2C%5Cvec%7Br%7D%5E%7B%28k-1%29%7D%29%7D" alt="s_k=\frac{(\vec{r}^{(k)},\vec{r}^{(k)})}{(\vec{r}^{(k-1)},\vec{r}^{(k-1)})}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （更新前进方向，决定下一次迭代要向哪里走）
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bv%7D%5E%7B%28k%2B1%29%7D%3D%5Cvec%7Br%7D%5E%7B%28k%29%7D%2Bs_%7Bk%7D%5Cvec%7Bv%7D%5E%7B%28k%29%7D" alt="\vec{v}^{(k+1)}=\vec{r}^{(k)}+s_{k}\vec{v}^{(k)}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    但是其实这还并不是共轭梯度方法的全部。
+                </p>
+                <p>
+                    对于良态的线性方程组，上述方法已经足够取得好的效果，经常性地来说大约
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7Bn%7D" alt="\sqrt{n}" eeimg="1">
+                    步就可以结束迭代。
+                </p>
+                <p>
+                    然而上述方法始终没考虑
+                    <b>
+                        病态
+                    </b>
+                    方程组的情况。
+                </p>
+                <p>
+                    然而，共轭梯度法是一个易于推广的方法。对于病态问题，我们只需要多一步
+                    <b>
+                        预条件
+                    </b>
+                    的处理即可。
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cvec%7Bx%7D%3D%5Cvec%7Bb%7D" alt="A\vec{x}=\vec{b}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    正定。现在若
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    出现问题，我们自然地想到：将
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的条件经过
+                    <b>
+                        等解变换
+                    </b>
+                    来变好即可。
+                </p>
+                <p>
+                    为了维持系数矩阵的正定性，我们利用矩阵的合同关系。
+                </p>
+                <p>
+                    假设存在
+                    <b>
+                        满秩矩阵
+                        <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Chat%7BA%7D%3DC%5E%7B-1%7DA%28C%5E%7B-1%7D%29%5ET" alt="\hat{A}=C^{-1}A(C^{-1})^T" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        合同，仍旧正定
+                    </b>
+                    。
+                </p>
+                <p>
+                    那么原方程组与
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7BA%7DC%5ET%5Cvec%7Bx%7D%3DC%5E%7B-1%7D%5Cvec%7Bb%7D" alt="\hat{A}C^T\vec{x}=C^{-1}\vec{b}" eeimg="1">
+                    等解。
+                </p>
+                <p>
+                    <b>
+                        那么我们的做法很简单：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Chat%7BA%7D%3DC%5E%7B-1%7DA%28C%5E%7B-1%7D%29%5ET" alt="\hat{A}=C^{-1}A(C^{-1})^T" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Chat%7B%5Cvec%7Bx%7D%7D%3DC%5ET%5Cvec%7Bx%7D%2C%5C+%5Chat%7B%5Cvec%7Bb%7D%7D%3DC%5E%7B-1%7D%5Cvec%7Bb%7D" alt="\hat{\vec{x}}=C^T\vec{x},\ \hat{\vec{b}}=C^{-1}\vec{b}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        我们只需要解方程组
+                        <img src="https://www.zhihu.com/equation?tex=%5Chat%7BA%7D%5Chat%7B%5Cvec%7Bx%7D%7D%3D%5Chat%7B%5Cvec%7Bb%7D%7D" alt="\hat{A}\hat{\vec{x}}=\hat{\vec{b}}" eeimg="1">
+                        ，得到解为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7By%7D" alt="\vec{y}" eeimg="1">
+                        ，那么
+                        <img src="https://www.zhihu.com/equation?tex=%28C%5ET%29%5E%7B-1%7D%5Cvec%7By%7D" alt="(C^T)^{-1}\vec{y}" eeimg="1">
+                        即为原方程的解
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有了上述做法后，我们只需要专注于如何选择满秩的
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7BA%7D%3DC%5E%7B-1%7DA%28C%5E%7B-1%7D%29%5ET" alt="\hat{A}=C^{-1}A(C^{-1})^T" eeimg="1">
+                    的条件变好即可。
+                </p>
+                <p>
+                    <b>
+                        一般而言，我们常常取
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=C%3DD%5E%7B-%5Cfrac%7B1%7D%7B2%7D%7D%3Ddiag%28%5Csqrt%7B%5Cfrac%7B1%7D%7Ba_%7B11%7D%7D%7D%2C%5Csqrt%7B%5Cfrac%7B1%7D%7Ba_%7B22%7D%7D%7D%2C...%2C%5Csqrt%7B%5Cfrac%7B1%7D%7Ba_%7Bnn%7D%7D%7D%29" alt="C=D^{-\frac{1}{2}}=diag(\sqrt{\frac{1}{a_{11}}},\sqrt{\frac{1}{a_{22}}},...,\sqrt{\frac{1}{a_{nn}}})" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        或者先对
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        （正定）进行Cholesky分解
+                        <img src="https://www.zhihu.com/equation?tex=A%3DLL%5ET" alt="A=LL^T" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        再取
+                        <img src="https://www.zhihu.com/equation?tex=C%3DL" alt="C=L" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这些取法都能够有效地优化系数矩阵的条件，加快共轭梯度法的收敛。
+                </p>
+                <p>
+                    对于先前的例子：
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cbegin%7Bbmatrix%7D+0.2+%260.1++%261++%261++%260+%5C%5C+0.1++%264++%26+-1+%261++%26-1+%5C%5C+++1%26+-1+%26+60+%260++%26-2+%5C%5C++1+%26+1+%260++%268++%264+%5C%5C++0+%26+-1+%26+-2+%26+4+%26+700+%5Cend%7Bbmatrix%7D+%2C+%5Cvec%7Bb%7D%3D%5Cbegin%7Bbmatrix%7D+1%5C%5C++2%5C%5C++3%5C%5C++4%5C%5C++5+%5Cend%7Bbmatrix%7D" alt="A=\begin{bmatrix} 0.2 &amp;0.1  &amp;1  &amp;1  &amp;0 \\ 0.1  &amp;4  &amp; -1 &amp;1  &amp;-1 \\   1&amp; -1 &amp; 60 &amp;0  &amp;-2 \\  1 &amp; 1 &amp;0  &amp;8  &amp;4 \\  0 &amp; -1 &amp; -2 &amp; 4 &amp; 700 \end{bmatrix} , \vec{b}=\begin{bmatrix} 1\\  2\\  3\\  4\\  5 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    我们给定初值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%280%29%7D%3D%5Cvec%7B0%7D" alt="\vec{x}^{(0)}=\vec{0}" eeimg="1">
+                    ，容许的误差为
+                    <img src="https://www.zhihu.com/equation?tex=0.01" alt="0.01" eeimg="1">
+                    （无穷范数定义的相对误差标准）
+                </p>
+                <p>
+                    利用共轭梯度法，我们容易知道只要矩阵条件不病态，理论上方法
+                    <b>
+                        必定在
+                        <img src="https://www.zhihu.com/equation?tex=5" alt="5" eeimg="1">
+                        步之内收敛
+                    </b>
+                    。对于正定的线性系统的求解，共轭梯度法比SOR要更加快。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于线性方程组的迭代求法的介绍就到此为止了。
+                </p>
+                <p>
+                    在本章后半部分中，我们先介绍了Jacobi方法与Gauss-Seidel方法，后介绍了其推广形式SOR方法。接着，我们引入了病态的概念并且提出了处理病态问题的精细迭代方法。最后，我们介绍了复杂却快速有效的共轭梯度方法以及预条件处理。
+                </p>
+                <p>
+                    <b>
+                        总而言之，对于病态方程，我们通常利用精细迭代方法或者预条件处理后的共轭梯度方法来求解。一般而言，SOR方法的使用多于Jacobi以及Gauss-Seidel方法，但是这三种方法均不能保证对于任意满秩系数矩阵的收敛性。对于共轭梯度方法，虽然有着系数矩阵正定的前提条件，但是其是我们介绍的方法中最有效的，也基本能保证方法的收敛性。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本章的内容就到这里，谢谢各位的阅读！
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

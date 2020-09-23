@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            数值分析学习笔记（三）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-3c50a0d451a3500358ef07734f26f821_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/47282502" target="_blank">
+                        数值分析学习笔记（三）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-21
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    在本章，我们来介绍数值分析中插值问题的相关内容。
+                </p>
+                <p>
+                    相信我们都在分析学的课程中接触到过Weierstrass逼近定理。事实上，这个定理是插值方法发展的理论基础。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（Weierstrass逼近定理）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=f%5Cin+C%5Ba%2Cb%5D" alt="f\in C[a,b]" eeimg="1">
+                        ，则对于
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon%3E0%2C%5Cexists+P%28x%29" alt="\forall \varepsilon&gt;0,\exists P(x)" eeimg="1">
+                        为多项式且满足
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin%5Ba%2Cb%5D%2C%7Cf%28x%29-P%28x%29%7C%3C%5Cvarepsilon" alt="\forall x\in[a,b],|f(x)-P(x)|&lt;\varepsilon" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    很多读者可能会产生疑问：我们为何不利用Taylor公式，而要另外建立一套插值方法呢？
+                </p>
+                <p>
+                    我们知道：Taylor公式会有余项，而余项产生的误差往往在远离展开点时很难被控制。
+                </p>
+                <p>
+                    我们下面试举一例。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3De%5Ex" alt="f(x)=e^x" eeimg="1">
+                    ，则在
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    处展开的一阶至四阶Taylor公式分别为
+                    <img src="https://www.zhihu.com/equation?tex=P_1%28x%29%3D1%2Bx%2Bo%28x%29%2C" alt="P_1(x)=1+x+o(x)," eeimg="1">
+                    <img src="https://www.zhihu.com/equation?tex=P_2%28x%29%2CP_3%28x%29%2CP_4%28x%29%3D1%2Bx%2B%5Cfrac%7Bx%5E2%7D%7B2%7D%2B%5Cfrac%7Bx%5E3%7D%7B6%7D%2B%5Cfrac%7Bx%5E4%7D%7B24%7D%2Bo%28x%5E4%29" alt="P_2(x),P_3(x),P_4(x)=1+x+\frac{x^2}{2}+\frac{x^3}{6}+\frac{x^4}{24}+o(x^4)" eeimg="1">
+                </p>
+                <p>
+                    我们容易发现：在
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    远离
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    时，估计的误差虽然会随着阶数的增加而减小，但是仍然会非常大。如下图所示。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-c5e34feeac7ef50264966b3b9a139e92_r.jpg">
+                    <figcaption>
+                        图像中的曲线由下至上为P1,P2,P3,P4,f
+                    </figcaption>
+                </figure>
+                <p>
+                    我们发现：即使利用四阶Taylor公式，在
+                    <img src="https://www.zhihu.com/equation?tex=x%3D5" alt="x=5" eeimg="1">
+                    处的估计误差已经相当大了。
+                </p>
+                <p>
+                    可能又会有读者提出疑问：Taylor级数虽然有着如上缺陷，但是利用Taylor级数的收敛性不是也可以吗？
+                </p>
+                <p>
+                    这确实是一个很好的想法。我们知道：
+                    <img src="https://www.zhihu.com/equation?tex=e%5Ex%3D%5Csum_%7Bn%3D0%7D%5E%5Cinfty+%5Cfrac%7Bx%5En%7D%7Bn%21%7D" alt="e^x=\sum_{n=0}^\infty \frac{x^n}{n!}" eeimg="1">
+                    对于任意实数
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    均成立。
+                </p>
+                <p>
+                    可是在数值分析中，我们要考虑到实际的方面：计算机的计算资源是有限的，真正意义上的无穷不可能达到。所以Taylor级数在实现中仍然非常受限。
+                </p>
+                <p>
+                    Taylor公式的缺陷就在于：其余项为
+                    <img src="https://www.zhihu.com/equation?tex=%28x-x_0%29%5En" alt="(x-x_0)^n" eeimg="1">
+                    这样的形式。而
+                    <b>
+                        这样的形式将估计的误差集中在了展开点处
+                    </b>
+                    。我们之后介绍的Lagrange插值方法则会将误差
+                    <b>
+                        均匀地分布
+                    </b>
+                    在插值点处。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们正式进入插值方法的介绍。
+                </p>
+                <p>
+                    插值所要解决的问题是：给定
+                    <img src="https://www.zhihu.com/equation?tex=n%2B1" alt="n+1" eeimg="1">
+                    个插值点
+                    <img src="https://www.zhihu.com/equation?tex=%28x_0%2Cy_0%29%2C...%2C%28x_n%2Cy_n%29" alt="(x_0,y_0),...,(x_n,y_n)" eeimg="1">
+                    ，求出一个多项式，使得其经过这些所有点，且尽量减少误差与计算量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        1、Lagrange插值
+                    </b>
+                </p>
+                <p>
+                    Lagrange插值的想法很朴素：要使得
+                    <img src="https://www.zhihu.com/equation?tex=P%28x_0%29%3Dy_0%2CP%28x_1%29%3Dy_1%2C...%2CP%28x_n%29%3Dy_n" alt="P(x_0)=y_0,P(x_1)=y_1,...,P(x_n)=y_n" eeimg="1">
+                    ，那么我只需要构造如下形式：
+                    <img src="https://www.zhihu.com/equation?tex=P%28x%29%3DL_0%28x%29y_0%2BL_1%28x%29y_1%2B...%2BL_n%28x%29y_n" alt="P(x)=L_0(x)y_0+L_1(x)y_1+...+L_n(x)y_n" eeimg="1">
+                    ，使得这些
+                    <img src="https://www.zhihu.com/equation?tex=L_i%28x%29" alt="L_i(x)" eeimg="1">
+                    能起到类似于示性函数的作用即可。
+                </p>
+                <p>
+                    即，使得
+                    <img src="https://www.zhihu.com/equation?tex=L_i%28x%29" alt="L_i(x)" eeimg="1">
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=x_i" alt="x_i" eeimg="1">
+                    取值为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ，而对于
+                    <img src="https://www.zhihu.com/equation?tex=x_0%2C...%2Cx_%7Bi-1%7D%2Cx_%7Bi%2B1%7D%2C...%2Cx_n" alt="x_0,...,x_{i-1},x_{i+1},...,x_n" eeimg="1">
+                    取值为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们先来保证对于其它插值点取值均为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们只需要在
+                    <img src="https://www.zhihu.com/equation?tex=L_i%28x%29" alt="L_i(x)" eeimg="1">
+                    中包含因式
+                    <img src="https://www.zhihu.com/equation?tex=%28x-x_0%29...%28x-x_%7Bi-1%7D%29%28x-x_%7Bi%2B1%7D%29...%28x-x_n%29" alt="(x-x_0)...(x-x_{i-1})(x-x_{i+1})...(x-x_n)" eeimg="1">
+                    即可。
+                </p>
+                <p>
+                    接着，我们再来调整
+                    <img src="https://www.zhihu.com/equation?tex=L_i%28x_i%29" alt="L_i(x_i)" eeimg="1">
+                    的值。
+                </p>
+                <p>
+                    我们发现：只需要将上述因式除以常数
+                    <img src="https://www.zhihu.com/equation?tex=%28x_i-x_0%29...%28x_i-x_%7Bi-1%7D%29%28x_i-x_%7Bi%2B1%7D%29...%28x_i-x_n%29" alt="(x_i-x_0)...(x_i-x_{i-1})(x_i-x_{i+1})...(x_i-x_n)" eeimg="1">
+                    即可保证
+                    <img src="https://www.zhihu.com/equation?tex=L_i%28x_i%29%3D1" alt="L_i(x_i)=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么我们得到了满足条件的函数
+                    <img src="https://www.zhihu.com/equation?tex=L_i%28x%29%3D%5Cfrac%7B%28x-x_0%29...%28x-x_%7Bi-1%7D%29%28x-x_%7Bi%2B1%7D%29...%28x-x_n%29%7D%7B%28x_i-x_0%29...%28x_i-x_%7Bi-1%7D%29%28x_i-x_%7Bi%2B1%7D%29...%28x_i-x_n%29%7D" alt="L_i(x)=\frac{(x-x_0)...(x-x_{i-1})(x-x_{i+1})...(x-x_n)}{(x_i-x_0)...(x_i-x_{i-1})(x_i-x_{i+1})...(x_i-x_n)}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由此，我们完成了Lagrange插值方法。
+                </p>
+                <p>
+                    <b>
+                        Lagrange插值：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=P%28x%29%3D%5Csum_%7Bi%3D0%7D%5Eny_iL_i%28x%29" alt="P(x)=\sum_{i=0}^ny_iL_i(x)" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=L_i%28x%29%3D%5Cprod_%7Bj%3D0%5C+j%5Cneq+i%7D%5En%5Cfrac%7Bx-x_j%7D%7Bx_i-x_j%7D" alt="L_i(x)=\prod_{j=0\ j\neq i}^n\frac{x-x_j}{x_i-x_j}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    给定插值点
+                    <img src="https://www.zhihu.com/equation?tex=x_0%3D2%2Cx_1%3D2.75%2Cx_2%3D4%2Cf%28x%29%3D%5Cfrac%7B1%7D%7Bx%7D" alt="x_0=2,x_1=2.75,x_2=4,f(x)=\frac{1}{x}" eeimg="1">
+                    ，利用Lagrange插值方法来估计
+                    <img src="https://www.zhihu.com/equation?tex=f%283%29" alt="f(3)" eeimg="1">
+                    的值。
+                </p>
+                <p>
+                    解：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-423aaf3c3cf431a7de7f7b6a6a777b15_r.jpg">
+                </figure>
+                <p>
+                    我们发现，得到的结果与真实值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B3%7D" alt="\frac{1}{3}" eeimg="1">
+                    很接近，效果较好。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    除具体实现方法外，我们很关心的还有一点：Lagrange插值方法的余项是什么？要知道，Taylor公式就是因为余项导致的估计误差全部集中在一个点处而被我们抛弃。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（Lagrange插值的余项）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=f%5Cin+C%5E%7Bn%2B1%7D%5Ba%2Cb%5D" alt="f\in C^{n+1}[a,b]" eeimg="1">
+                        ，在
+                        <img src="https://www.zhihu.com/equation?tex=x_0%2Cx_1%2C...%2Cx_n" alt="x_0,x_1,...,x_n" eeimg="1">
+                        进行插值，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin%5Ba%2Cb%5D%2C%5C+f%28x%29%3DP%28x%29%2B%5Cfrac%7Bf%5E%7Bn%2B1%7D%28%5Cxi%29%7D%7B%28n%2B1%29%21%7D%28x-x_0%29...%28x-x_n%29" alt="\forall x\in[a,b],\ f(x)=P(x)+\frac{f^{n+1}(\xi)}{(n+1)!}(x-x_0)...(x-x_n)" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi+%5Cin%28a%2Cb%29" alt="\xi \in(a,b)" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        有关。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    只需要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5E%7B%27%7D%5Cin%5Ba%2Cb%5D%2C" alt="\forall x^{&#39;}\in[a,b]," eeimg="1">
+                    上式成立即可。取定
+                    <img src="https://www.zhihu.com/equation?tex=x%5E%7B%27%7D%5Cin%5Ba%2Cb%5D" alt="x^{&#39;}\in[a,b]" eeimg="1">
+                    。
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=x%5E%7B%27%7D" alt="x^{&#39;}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=x_0%2Cx_1%2C...%2Cx_n" alt="x_0,x_1,...,x_n" eeimg="1">
+                    中的一个，则显然得证。
+                </p>
+                <p>
+                    故不妨假设
+                    <img src="https://www.zhihu.com/equation?tex=x%5E%7B%27%7D" alt="x^{&#39;}" eeimg="1">
+                    不为插值点。
+                </p>
+                <p>
+                    构造函数
+                    <img src="https://www.zhihu.com/equation?tex=g%28x%29%3Df%28x%29-P%28x%29-%5Cfrac%7B%28x-x_0%29...%28x-x_n%29%7D%7B%28x%5E%7B%27%7D-x_0%29...%28x%5E%7B%27%7D-x_n%29%7D%5Bf%28x%5E%7B%27%7D%29-P%28x%5E%7B%27%7D%29%5D" alt="g(x)=f(x)-P(x)-\frac{(x-x_0)...(x-x_n)}{(x^{&#39;}-x_0)...(x^{&#39;}-x_n)}[f(x^{&#39;})-P(x^{&#39;})]" eeimg="1">
+                </p>
+                <p>
+                    我们容易知道：
+                    <img src="https://www.zhihu.com/equation?tex=x_0%2C...%2Cx_n%2Cx%5E%7B%27%7D" alt="x_0,...,x_n,x^{&#39;}" eeimg="1">
+                    均为
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    的零点。
+                </p>
+                <p>
+                    利用广义Rolle中值定理，容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Cxi+%5Cin%28a%2Cb%29%2Cg%5E%7B%28n%2B1%29%7D%28%5Cxi%29%3D0" alt="\exists \xi \in(a,b),g^{(n+1)}(\xi)=0" eeimg="1">
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=P%28x%29" alt="P(x)" eeimg="1">
+                    次数最多为
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=P%5E%7B%28n%2B1%29%7D%28x%29%3D0" alt="P^{(n+1)}(x)=0" eeimg="1">
+                </p>
+                <p>
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5E%7Bn%2B1%7D%7D%7Bdx%5E%7Bn%2B1%7D%7D%5Cfrac%7B%28x-x_0%29...%28x-x_n%29%7D%7B%28x%5E%7B%27%7D-x_0%29...%28x%5E%7B%27%7D-x_n%29%7D%3D%5Cfrac%7B%28n%2B1%29%21%7D%7B%28x%5E%7B%27%7D-x_0%29...%28x%5E%7B%27%7D-x_n%29%7D" alt="\frac{d^{n+1}}{dx^{n+1}}\frac{(x-x_0)...(x-x_n)}{(x^{&#39;}-x_0)...(x^{&#39;}-x_n)}=\frac{(n+1)!}{(x^{&#39;}-x_0)...(x^{&#39;}-x_n)}" eeimg="1">
+                </p>
+                <p>
+                    故得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%28x%5E%7B%27%7D%29-P%28x%5E%7B%27%7D%29%5D%5Cfrac%7B%28n%2B1%29%21%7D%7B%28x%5E%7B%27%7D-x_0%29...%28x%5E%7B%27%7D-x_n%29%7D%3Df%5E%7B%28n%2B1%29%7D%28%5Cxi%29" alt="[f(x^{&#39;})-P(x^{&#39;})]\frac{(n+1)!}{(x^{&#39;}-x_0)...(x^{&#39;}-x_n)}=f^{(n+1)}(\xi)" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以看到：Lagrange插值公式的余项与Taylor公式不同。
+                    <b>
+                        误差是均匀分布分布在所有插值点附近的
+                    </b>
+                    ，而非集中在一点处。这就是为何Lagrange插值在一个区间上进行函数的估值效果更优。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    给定插值点
+                    <img src="https://www.zhihu.com/equation?tex=x_0%3D2%2Cx_1%3D2.75%2Cx_2%3D4%2Cf%28x%29%3D%5Cfrac%7B1%7D%7Bx%7D" alt="x_0=2,x_1=2.75,x_2=4,f(x)=\frac{1}{x}" eeimg="1">
+                    ，利用Lagrange插值方法来估计
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    ，求当
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin%5B2%2C4%5D" alt="x\in[2,4]" eeimg="1">
+                    时可能的绝对误差的最大值。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    容易求出余项
+                    <img src="https://www.zhihu.com/equation?tex=R%28x%29%3D-%5Cxi%5E%7B-4%7D%28x-2%29%28x-2.75%29%28x-4%29%2C%5Cxi%5Cin%282%2C4%29" alt="R(x)=-\xi^{-4}(x-2)(x-2.75)(x-4),\xi\in(2,4)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7CR%28x%29%7C%5Cleq+%5Cfrac%7B1%7D%7B16%7D%7C%28x-2%29%28x-2.75%29%28x-4%29%7C" alt="|R(x)|\leq \frac{1}{16}|(x-2)(x-2.75)(x-4)|" eeimg="1">
+                </p>
+                <p>
+                    下面只需要求
+                    <img src="https://www.zhihu.com/equation?tex=%7C%28x-2%29%28x-2.75%29%28x-4%29%7C" alt="|(x-2)(x-2.75)(x-4)|" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5B2%2C4%5D" alt="[2,4]" eeimg="1">
+                    上的最大值。
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=g%28x%29%3D%28x-2%29%28x-2.75%29%28x-4%29" alt="g(x)=(x-2)(x-2.75)(x-4)" eeimg="1">
+                </p>
+                <p>
+                    则由
+                    <img src="https://www.zhihu.com/equation?tex=g%5E%7B%27%7D%3D0" alt="g^{&#39;}=0" eeimg="1">
+                    可求得
+                    <img src="https://www.zhihu.com/equation?tex=x%3D%5Cfrac%7B7%7D%7B3%7D%5C+or%5C+x%3D%5Cfrac%7B7%7D%7B2%7D" alt="x=\frac{7}{3}\ or\ x=\frac{7}{2}" eeimg="1">
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=%7C%28x-2%29%28x-2.75%29%28x-4%29%7C" alt="|(x-2)(x-2.75)(x-4)|" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5B2%2C4%5D" alt="[2,4]" eeimg="1">
+                    上的最大值在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B7%7D%7B2%7D" alt="\frac{7}{2}" eeimg="1">
+                    取到，为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B9%7D%7B16%7D" alt="\frac{9}{16}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=%7CR%28x%29%7C%5Cleq+%5Cfrac%7B9%7D%7B256%7D" alt="|R(x)|\leq \frac{9}{256}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然而，需要注意的是，当我们在实际应用Lagrange插值时，我们往往没有
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    的表达式，也就是说，我们往往无法估计
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B%28n%2B1%29%7D%28%5Cxi%29" alt="f^{(n+1)}(\xi)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    这意味着：很有可能出现
+                    <b>
+                        插值多项式阶数更高，但是估计值与真实值的绝对误差却更大
+                    </b>
+                    的情形。这也被称为
+                    <b>
+                        Runge现象
+                    </b>
+                    。对于
+                    <b>
+                        Cauchy-Lorenz分布的密度
+                    </b>
+                    函数，即形如
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B1%2B%28kx%29%5E2%7D" alt="\frac{1}{1+(kx)^2}" eeimg="1">
+                    的函数，这样的现象尤其明显。（这个问题本身就是病态的）具体到这样的问题，我们往往会采用不均匀的插值点选取，此处不过多展开。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    另外，值得一提的是，在进行Lagrange插值的过程中，我们往往先选取距离要估计点最靠近的插值点进行多项式构造，并确保要估计点落在插值点构成的区间内部，这样得到的估计往往会更精确。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然而从更加实际的方面来看待Lagrange插值公式，我们发现其计算过程非常繁杂。具体体现在：我们在计算高阶Lagrange插值公式时并无法用到我们先前计算过的低阶Lagrange插值公式的结果。我们为了改进这一缺陷，想要找到低阶与高阶Lagrange公式之间的联系。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（低阶Lagrange插值公式与高阶的关系）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        给定
+                        <img src="https://www.zhihu.com/equation?tex=x_0%2Cx_1%2C...%2Cx_k%2C%5C+%5C+x_i%5Cneq+x_j" alt="x_0,x_1,...,x_k,\ \ x_i\neq x_j" eeimg="1">
+                        ，我们用
+                        <img src="https://www.zhihu.com/equation?tex=P_%7B0%2C1%2C...%2Ck%7D" alt="P_{0,1,...,k}" eeimg="1">
+                        表示由
+                        <img src="https://www.zhihu.com/equation?tex=x_0%2C...%2Cx_k" alt="x_0,...,x_k" eeimg="1">
+                        这些插值节点生成的Lagrange插值多项式。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        那么我们有：
+                        <img src="https://www.zhihu.com/equation?tex=P_%7B0%2C1%2C...%2Ck%7D%28x%29%3D%5Cfrac%7B%28x-x_j%29P_%7B0%2C...%2Cj-1%2Cj%2B1%2C...%2Ck%7D%28x%29-%28x-x_i%29P_%7B0%2C...%2Ci-1%2Ci%2B1%2C...%2Ck%7D%28x%29%7D%7Bx_i-x_j%7D" alt="P_{0,1,...,k}(x)=\frac{(x-x_j)P_{0,...,j-1,j+1,...,k}(x)-(x-x_i)P_{0,...,i-1,i+1,...,k}(x)}{x_i-x_j}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    容易知道
+                    <img src="https://www.zhihu.com/equation?tex=degP%5Cleq+k" alt="degP\leq k" eeimg="1">
+                    ，我们只需要证明在
+                    <img src="https://www.zhihu.com/equation?tex=x_0%2Cx_1%2C...%2Cx_k" alt="x_0,x_1,...,x_k" eeimg="1">
+                    取值相同即可证明这两个多项式相同。
+                </p>
+                <p>
+                    接下来分成
+                    <img src="https://www.zhihu.com/equation?tex=x%3Dx_i%2Cx%3Dx_j" alt="x=x_i,x=x_j" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=else" alt="else" eeimg="1">
+                    三种情况分类讨论代入即可得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个定理的重要含义在于：两个
+                    <img src="https://www.zhihu.com/equation?tex=k-1" alt="k-1" eeimg="1">
+                    阶，有
+                    <img src="https://www.zhihu.com/equation?tex=k-1" alt="k-1" eeimg="1">
+                    个公共插值节点的Lagrange插值多项式可以生成一个
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    阶的Lagrange插值多项式。这便给了我们一种
+                    <b>
+                        递归的方法
+                    </b>
+                    来计算高阶Lagrange多项式，即我们可以利用先前计算得到的结果，大大地减少了计算量。这就是Neville方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Neville方法：对于插值节点
+                        <img src="https://www.zhihu.com/equation?tex=x_0%2C...%2Cx_n" alt="x_0,...,x_n" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=P_0%3Df%28x_0%29%2C...%2CP_n%3Df%28x_n%29" alt="P_0=f(x_0),...,P_n=f(x_n)" eeimg="1">
+                        ，那么利用上述定理，我们可以由
+                        <img src="https://www.zhihu.com/equation?tex=P_0%2CP_1" alt="P_0,P_1" eeimg="1">
+                        计算出
+                        <img src="https://www.zhihu.com/equation?tex=P_%7B0%2C1%7D" alt="P_{0,1}" eeimg="1">
+                        。同理地，得到所有的
+                        <img src="https://www.zhihu.com/equation?tex=P_%7Bi%2Ci%2B1%7D%28i%3D0%2C...%2Cn-1%29" alt="P_{i,i+1}(i=0,...,n-1)" eeimg="1">
+                        。再由
+                        <img src="https://www.zhihu.com/equation?tex=P_%7B0%2C1%7D%2CP_%7B1%2C2%7D" alt="P_{0,1},P_{1,2}" eeimg="1">
+                        计算出
+                        <img src="https://www.zhihu.com/equation?tex=P_%7B0%2C1%2C2%7D" alt="P_{0,1,2}" eeimg="1">
+                        ，以此类推，最终得到
+                        <img src="https://www.zhihu.com/equation?tex=P_%7B0%2C...%2Cn%7D" alt="P_{0,...,n}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，我们可以利用Neville表来清晰地描述Neville方法。
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-2f33d0ae8eabe1ee368b6b79cf8d6aeb_r.jpg">
+                </figure>
+                <p>
+                    我们清晰地看到在这个例子中，第一列从上至下为
+                    <img src="https://www.zhihu.com/equation?tex=P_0%2CP_1%2C...%2CP_3" alt="P_0,P_1,...,P_3" eeimg="1">
+                    ，第二列从上至下为
+                    <img src="https://www.zhihu.com/equation?tex=P_%7B0%2C1%7D%2CP_%7B1%2C2%7D%2CP_%7B2%2C3%7D" alt="P_{0,1},P_{1,2},P_{2,3}" eeimg="1">
+                    （忽略
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ），以此类推，最后一列的最下方元素即为
+                    <img src="https://www.zhihu.com/equation?tex=P_%7B0%2C1%2C2%2C3%7D%281.5%29" alt="P_{0,1,2,3}(1.5)" eeimg="1">
+                    ，为所求。
+                </p>
+                <p>
+                    当我们额外加入一个插值节点时，我们只需要在最后加入一行进行计算即可，不用全部重新进行计算。Neville方法使得Lagrange插值方法在具体实现时
+                    <b>
+                        节约了大量计算资源
+                    </b>
+                    。
+                </p>
+                <p>
+                    使用Neville方法时，我们常常最为关注对角线上的元素。它们分别为
+                    <img src="https://www.zhihu.com/equation?tex=P_0%2CP_%7B0%2C1%7D%2C...%2CP_%7B0%2C1%2C..%2Cn%7D" alt="P_0,P_{0,1},...,P_{0,1,..,n}" eeimg="1">
+                    ，为各阶Lagrange插值方法给出的估计值。故Neville方法的停止标准大多设为当
+                    <img src="https://www.zhihu.com/equation?tex=%7CP_%7B0%2C1%2C...%2Ci-1%7D-P_%7B0%2C1%2C...%2Ci%7D%7C%3Ctolerance" alt="|P_{0,1,...,i-1}-P_{0,1,...,i}|&lt;tolerance" eeimg="1">
+                    时停止。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、Newton插值
+                    </b>
+                </p>
+                <p>
+                    Newton插值方法也源于一个朴素的想法：使得多项式具有如下形式
+                    <img src="https://www.zhihu.com/equation?tex=P%28x%29%3Da_0%2Ba_1%28x-x_0%29%2B...%2Ba_n%28x-x_0%29...%28x-x_%7Bn-1%7D%29" alt="P(x)=a_0+a_1(x-x_0)+...+a_n(x-x_0)...(x-x_{n-1})" eeimg="1">
+                </p>
+                <p>
+                    这样一种形式的好处是：当我们要加入插值节点
+                    <img src="https://www.zhihu.com/equation?tex=x_%7Bn%2B1%7D" alt="x_{n+1}" eeimg="1">
+                    时，我们只需要在末尾加上一项
+                    <img src="https://www.zhihu.com/equation?tex=a_%7Bn%2B1%7D%28x-x_0%29...%28x-x_%7Bn%7D%29" alt="a_{n+1}(x-x_0)...(x-x_{n})" eeimg="1">
+                    即可，使得计算十分地方便。
+                </p>
+                <p>
+                    那么问题是：如何确定这些
+                    <img src="https://www.zhihu.com/equation?tex=a_i" alt="a_i" eeimg="1">
+                    呢？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们发现：
+                    <img src="https://www.zhihu.com/equation?tex=P%28x_0%29%3Df%28x_0%29" alt="P(x_0)=f(x_0)" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=a_0%3Df%28x_0%29" alt="a_0=f(x_0)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由
+                    <img src="https://www.zhihu.com/equation?tex=P%28x_1%29%3Df%28x_1%29" alt="P(x_1)=f(x_1)" eeimg="1">
+                    我们解得
+                    <img src="https://www.zhihu.com/equation?tex=a_1%3D%5Cfrac%7Bf%28x_1%29-f%28x_0%29%7D%7Bx_1-x_0%7D" alt="a_1=\frac{f(x_1)-f(x_0)}{x_1-x_0}" eeimg="1">
+                    ，以此类推 。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们发现：
+                    <img src="https://www.zhihu.com/equation?tex=a_i" alt="a_i" eeimg="1">
+                    与差商的形式恰好吻合。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=f%5Bx_i%5D%3Df%28x_i%29" alt="f[x_i]=f(x_i)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=f%5Bx_i%2Cx_%7Bi%2B1%7D%5D%3D%5Cfrac%7Bf%5Bx_i%5D-f%5Bx_%7Bi%2B1%7D%5D%7D%7Bx_i-x_%7Bi%2B1%7D%7D" alt="f[x_i,x_{i+1}]=\frac{f[x_i]-f[x_{i+1}]}{x_i-x_{i+1}}" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=f%5Bx_i%2Cx_%7Bi%2B1%7D%2Cx_%7Bi%2B2%7D%5D%3D%5Cfrac%7Bf%5Bx_i%2Cx_%7Bi%2B1%7D%5D-f%5Bx_%7Bi%2B1%7D%2Cx_%7Bi%2B2%7D%5D%7D%7Bx_i-x_%7Bi%2B2%7D%7D" alt="f[x_i,x_{i+1},x_{i+2}]=\frac{f[x_i,x_{i+1}]-f[x_{i+1},x_{i+2}]}{x_i-x_{i+2}}" eeimg="1">
+                        ，以此类推地迭代定义。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=f%5Bx_i%2C...%2Cx_%7Bi%2Bk%7D%5D" alt="f[x_i,...,x_{i+k}]" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                        阶差商。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    而容易证明：
+                    <img src="https://www.zhihu.com/equation?tex=a_i%3Df%5Bx_0%2C...%2Cx_i%5D" alt="a_i=f[x_0,...,x_i]" eeimg="1">
+                    满足所有插值点处于函数值相等的条件。（数学归纳法）
+                </p>
+                <p>
+                    故我们得到了Newton插值公式。
+                </p>
+                <p>
+                    <b>
+                        Newton插值：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=P_n%28x%29%3Df%5Bx_0%5D%2B%5Csum_%7Bk%3D1%7D%5Enf%5Bx_0%2C...%2Cx_k%5D%28x-x_0%29...%28x-x_%7Bk-1%7D%29" alt="P_n(x)=f[x_0]+\sum_{k=1}^nf[x_0,...,x_k](x-x_0)...(x-x_{k-1})" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    容易证明：Newton公式和Lagrange公式对相同的插值点得到的多项式完全相同。（次数不大于
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    但有
+                    <img src="https://www.zhihu.com/equation?tex=n%2B1" alt="n+1" eeimg="1">
+                    个公共零点）
+                </p>
+                <p>
+                    显然，Newton插值公式也能够像Neville方法一样列表进行递归的计算。（注意到差商的递归定义以及Newton插值公式的形式）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-69b8a5eb1fdca69835f7ad797f033d30_r.jpg">
+                </figure>
+                <p>
+                    事实上，计算过程和Neville方法几乎相同，区别仅仅是现在计算的是差商而已。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Newton插值还有
+                    <b>
+                        前向公式与后向公式
+                    </b>
+                    两种形式。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P_n%28x%29%3Df%5Bx_0%5D%2B%5Csum_%7Bk%3D1%7D%5Enf%5Bx_0%2C...%2Cx_k%5D%28x-x_0%29...%28x-x_%7Bk-1%7D%29" alt="P_n(x)=f[x_0]+\sum_{k=1}^nf[x_0,...,x_k](x-x_0)...(x-x_{k-1})" eeimg="1">
+                    便是前向公式形式。
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=P_n%28x%29%3Df%5Bx_n%5D%2Bf%5Bx_n%2Cx_%7Bn-1%7D%5D%28x-x_n%29%2B...%2Bf%5Bx_n%2C..%2Cx_0%5D%28x-x_n%29...%28x-x_1%29" alt="P_n(x)=f[x_n]+f[x_n,x_{n-1}](x-x_n)+...+f[x_n,..,x_0](x-x_n)...(x-x_1)" eeimg="1">
+                    便是后向公式形式。
+                </p>
+                <p>
+                    这两种形式实际上是等价的。但出于精度考虑，当要估计点更靠近
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    ，我们利用前向公式。而当要估计点更靠近
+                    <img src="https://www.zhihu.com/equation?tex=x_n" alt="x_n" eeimg="1">
+                    ，我们利用后向公式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，Newton插值还有
+                    <b>
+                        中心公式（Stirling公式）
+                    </b>
+                    ，用于当要估计点靠近
+                    <img src="https://www.zhihu.com/equation?tex=x_0%2Cx_n" alt="x_0,x_n" eeimg="1">
+                    中点的情况。这里不再赘述。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、Hermite插值
+                    </b>
+                </p>
+                <p>
+                    Hermite插值进一步地，要求插值多项式不仅在插值点处的函数值和原函数一致，还要求插值多项式在插值点处的一阶导数值与原函数的一阶导数一致。
+                </p>
+                <p>
+                    下面我们直接给出Hermite插值多项式的构造方法并验证其正确性。
+                </p>
+                <p>
+                    与Lagrange插值公式的构造想法如出一辙，我们想要找到
+                    <img src="https://www.zhihu.com/equation?tex=H%28x%29%3D%5Csum_%7Bj%3D0%7D%5Enf%28x_j%29H_j%28x%29%2B%5Csum_%7Bj%3D0%7D%5Enf%5E%7B%27%7D%28x_j%29%5Chat%7BH%7D_j%28x%29" alt="H(x)=\sum_{j=0}^nf(x_j)H_j(x)+\sum_{j=0}^nf^{&#39;}(x_j)\hat{H}_j(x)" eeimg="1">
+                </p>
+                <p>
+                    使得对于
+                    <img src="https://www.zhihu.com/equation?tex=i%5Cneq+j%2CH_j%28x_i%29%3D0%2CH_j%28x_j%29%3D1%2C%5Chat%7BH%7D_j%28x_i%29%3D0%2C%5Chat%7BH%7D_j%28x_j%29%3D0" alt="i\neq j,H_j(x_i)=0,H_j(x_j)=1,\hat{H}_j(x_i)=0,\hat{H}_j(x_j)=0" eeimg="1">
+                </p>
+                <p>
+                    这样能够满足在插值点处函数值相等的条件，再利用
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7BH%7D_j" alt="\hat{H}_j" eeimg="1">
+                    来对一阶导数的值进行调整。
+                </p>
+                <p>
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=H%5E%7B%27%7D_j%28x_i%29%3D0%2CH%5E%7B%27%7D_j%28x_j%29%3D0" alt="H^{&#39;}_j(x_i)=0,H^{&#39;}_j(x_j)=0" eeimg="1">
+                    ,
+                    <img src="https://www.zhihu.com/equation?tex=H+" alt="H" eeimg="1">
+                    不会对导数值的调整产生任何影响。
+                </p>
+                <p>
+                    那么只需要再满足
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7BH%7D%5E%7B%27%7D_j%28x_i%29%3D0%2C%5Chat%7BH%7D%5E%7B%27%7D_j%28x_j%29%3D1" alt="\hat{H}^{&#39;}_j(x_i)=0,\hat{H}^{&#39;}_j(x_j)=1" eeimg="1">
+                    即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（Hermite插值）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=L_j%28x%29" alt="L_j(x)" eeimg="1">
+                        为Lagrange插值中
+                        <img src="https://www.zhihu.com/equation?tex=f%28x_j%29" alt="f(x_j)" eeimg="1">
+                        项的系数多项式。（即满足
+                        <img src="https://www.zhihu.com/equation?tex=L_j%28x_j%29%3D1%2CL_j%28x_i%29%3D0%28i%5Cneq+j%29" alt="L_j(x_j)=1,L_j(x_i)=0(i\neq j)" eeimg="1">
+                        ）那么我们可以进行如下构造：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=H_j%28x%29%3D%5B1-2%28x-x_j%29L%5E%7B%27%7D_j%28x_j%29%5DL%5E2_j%28x%29" alt="H_j(x)=[1-2(x-x_j)L^{&#39;}_j(x_j)]L^2_j(x)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Chat%7BH%7D_j%28x%29%3D%28x-x_j%29L_j%5E2%28x%29" alt="\hat{H}_j(x)=(x-x_j)L_j^2(x)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=H%28x%29%3D%5Csum_%7Bj%3D0%7D%5Enf%28x_j%29H_j%28x%29%2B%5Csum_%7Bj%3D0%7D%5Enf%5E%7B%27%7D%28x_j%29%5Chat%7BH%7D_j%28x%29" alt="H(x)=\sum_{j=0}^nf(x_j)H_j(x)+\sum_{j=0}^nf^{&#39;}(x_j)\hat{H}_j(x)" eeimg="1">
+                        满足条件。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=i%5Cneq+j%2CH_j%28x_i%29%3D0%2CH_j%28x_j%29%3D1%2C%5Chat%7BH%7D_j%28x_i%29%3D0%2C%5Chat%7BH%7D_j%28x_j%29%3D0" alt="i\neq j,H_j(x_i)=0,H_j(x_j)=1,\hat{H}_j(x_i)=0,\hat{H}_j(x_j)=0" eeimg="1">
+                    ，显然在插值点处的函数值与原函数吻合。
+                </p>
+                <p>
+                    下面验证导数即可。
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=H%5E%7B%27%7D_j%28x_i%29%3D0%2CH%5E%7B%27%7D_j%28x_j%29%3D0" alt="H^{&#39;}_j(x_i)=0,H^{&#39;}_j(x_j)=0" eeimg="1">
+                    ，得到
+                    <img src="https://www.zhihu.com/equation?tex=H%5E%7B%27%7D%28x%29%3D%5B%5Csum_%7Bj%3D0%7D%5Enf%5E%7B%27%7D%28x_j%29%5Chat%7BH%7D_j%28x%29%5D%5E%7B%27%7D" alt="H^{&#39;}(x)=[\sum_{j=0}^nf^{&#39;}(x_j)\hat{H}_j(x)]^{&#39;}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H%5E%7B%27%7D%28x%29%3D%5Csum_%7Bj%3D0%7D%5Enf%5E%7B%27%7D%28x_j%29%28L_j%5E2%28x%29%2B2%28x-x_j%29L_j%28x%29L%5E%7B%27%7D_j%28x%29++%29" alt="H^{&#39;}(x)=\sum_{j=0}^nf^{&#39;}(x_j)(L_j^2(x)+2(x-x_j)L_j(x)L^{&#39;}_j(x)  )" eeimg="1">
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=H%5E%7B%27%7D%28x_j%29%3Df%5E%7B%27%7D%28x_j%29" alt="H^{&#39;}(x_j)=f^{&#39;}(x_j)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此，我们构造出了与
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在所有插值点处具有相同函数值以及一阶导数值的多项式。
+                </p>
+                <p>
+                    我们不难证明：Hermite多项式最高是
+                    <img src="https://www.zhihu.com/equation?tex=2n%2B1" alt="2n+1" eeimg="1">
+                    次的，且必定唯一。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然而，计算繁琐仍旧是一个很大的问题。
+                </p>
+                <p>
+                    事实上，Hermite多项式和Newton插值多项式的求解过程可以统一起来。这样的迭代过程会大大减少计算。
+                </p>
+                <p>
+                    <b>
+                        利用差商简化计算的Hermite方法：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        利用
+                        <img src="https://www.zhihu.com/equation?tex=z_0%2C...%2Cz_%7B2n%2B1%7D" alt="z_0,...,z_{2n+1}" eeimg="1">
+                        表示我们产生的新的插值节点。且满足
+                        <img src="https://www.zhihu.com/equation?tex=z_%7B2i%7D%3Dz_%7B2i%2B1%7D%3Dx_i%5C+%28i%3D0%2C...%2Cn%29" alt="z_{2i}=z_{2i+1}=x_i\ (i=0,...,n)" eeimg="1">
+                        （将
+                        <img src="https://www.zhihu.com/equation?tex=x_i" alt="x_i" eeimg="1">
+                        的节点都连续地写了两遍）。以此进行Newton插值公式的求解，其中
+                        <img src="https://www.zhihu.com/equation?tex=f%5Bz_%7B2i%7D%2Cz_%7B2i%2B1%7D%5D%3Df%5E%7B%27%7D%28x_i%29" alt="f[z_{2i},z_{2i+1}]=f^{&#39;}(x_i)" eeimg="1">
+                        ，则最终得到的多项式
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=H%28x%29%3Df%5Bz_0%5D%2B%5Csum_%7Bk%3D1%7D%5E%7B2n%2B1%7Df%5Bz_0%2C...%2Cz_k%5D%28x-z_0%29...%28x-z_%7Bk-1%7D%29" alt="H(x)=f[z_0]+\sum_{k=1}^{2n+1}f[z_0,...,z_k](x-z_0)...(x-z_{k-1})" eeimg="1">
+                        即为所求的Hermite多项式。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-aca0026557150de9cf203a5ec8b6b632_r.jpg">
+                </figure>
+                <p>
+                    容易发现，求解过程与Newton方法是完全一致的，初始的函数导数值放在了差商表的第二列的第
+                    <img src="https://www.zhihu.com/equation?tex=2%2C4%2C6" alt="2,4,6" eeimg="1">
+                    行。且差商表的第一列分别将每个插值节点写了两遍。
+                </p>
+                <p>
+                    具体算法的正确性证明就不在此给出了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        4、三次样条插值
+                    </b>
+                </p>
+                <p>
+                    三次样条插值的思想和前三者有较大的不同。
+                </p>
+                <p>
+                    前三种方法，无论Lagrange，Newton，或者是Hermite方法，都属于
+                    <b>
+                        基函数插值
+                    </b>
+                    。它们的特点是都有一个基函数，例如
+                    <img src="https://www.zhihu.com/equation?tex=L_j%28x%29%2CH_j%28x%29%2C%5Chat%7BH%7D_j%28x%29" alt="L_j(x),H_j(x),\hat{H}_j(x)" eeimg="1">
+                    。这些基函数在不同的插值点往往取值不同且有规律。我们通常先构造出使我们满意的基函数，接着再利用基函数进行线性组合来得到插值多项式。
+                </p>
+                <p>
+                    三次样条的基本思想则是：利用分段的思想来进行近似。
+                </p>
+                <p>
+                    与其让多项式次数变得非常高，不如在相邻的两个插值点间利用低次（3次）多项式进行估计，之后再想办法让多项式在插值点处具备光滑性，从而将一段段
+                    <b>
+                        光滑地“连接”
+                    </b>
+                    在一起。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此，我们得到了三次样条插值方法所得多项式应该满足的一些条件。
+                </p>
+                <p>
+                    假设三次样条插值多项式在 区间
+                    <img src="https://www.zhihu.com/equation?tex=%5Bx_j%2Cx_%7Bj%2B1%7D%5D" alt="[x_j,x_{j+1}]" eeimg="1">
+                    上的
+                    <b>
+                        三次多项式为
+                        <img src="https://www.zhihu.com/equation?tex=S_j%28x%29" alt="S_j(x)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （1）：
+                        <img src="https://www.zhihu.com/equation?tex=S_j%28x_j%29%3Df%28x_j%29%2CS_j%28x_%7Bj%2B1%7D%29%3Df%28x_%7Bj%2B1%7D%29" alt="S_j(x_j)=f(x_j),S_j(x_{j+1})=f(x_{j+1})" eeimg="1">
+                        （插值点与原函数值一致，连续性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （2）：
+                        <img src="https://www.zhihu.com/equation?tex=S_j%5E%7B%27%7D%28x_%7Bj%2B1%7D%29%3DS%5E%7B%27%7D_%7Bj%2B1%7D%28x_%7Bj%2B1%7D%29" alt="S_j^{&#39;}(x_{j+1})=S^{&#39;}_{j+1}(x_{j+1})" eeimg="1">
+                        （插值点处可导，
+                        <img src="https://www.zhihu.com/equation?tex=C%5E1" alt="C^1" eeimg="1">
+                        ）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （3）：
+                        <img src="https://www.zhihu.com/equation?tex=S_j%5E%7B%27%27%7D%28x_%7Bj%2B1%7D%29%3DS%5E%7B%27%27%7D_%7Bj%2B1%7D%28x_%7Bj%2B1%7D%29" alt="S_j^{&#39;&#39;}(x_{j+1})=S^{&#39;&#39;}_{j+1}(x_{j+1})" eeimg="1">
+                        （插值点处二阶可导，
+                        <img src="https://www.zhihu.com/equation?tex=C%5E2" alt="C^2" eeimg="1">
+                        ）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们容易发现，仅仅有这些条件还不能唯一地确定整个区间上的三次多项式。事实上，我们还能对
+                    <img src="https://www.zhihu.com/equation?tex=x_0%2Cx_n" alt="x_0,x_n" eeimg="1">
+                    额外附加一个条件进行限制。
+                </p>
+                <p>
+                    由此我们衍生出两种不同的三次样条插值多项式：自然样条与钳制样条。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        自然样条
+                    </b>
+                    除去上述三个条件外还需要额外满足：
+                </p>
+                <p>
+                    <b>
+                        自然边界条件：
+                        <img src="https://www.zhihu.com/equation?tex=S_0%5E%7B%27%27%7D%28x_0%29%3DS%5E%7B%27%27%7D_%7Bn-1%7D%28x_n%29%3D0" alt="S_0^{&#39;&#39;}(x_0)=S^{&#39;&#39;}_{n-1}(x_n)=0" eeimg="1">
+                        。（最两端的插值点处二阶导为
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                        ）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        钳制样条
+                    </b>
+                    除去上述三个条件外还需要额外满足：
+                </p>
+                <p>
+                    <b>
+                        钳制边界条件：
+                        <img src="https://www.zhihu.com/equation?tex=S_0%5E%7B%27%7D%28x_0%29%3Df%5E%7B%27%7D%28x_0%29%2CS%5E%7B%27%7D_%7Bn-1%7D%28x_n%29%3Df%5E%7B%27%7D%28x_n%29" alt="S_0^{&#39;}(x_0)=f^{&#39;}(x_0),S^{&#39;}_{n-1}(x_n)=f^{&#39;}(x_n)" eeimg="1">
+                        。（最两端的插值点处一阶导数与原函数相等）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来我们便可以开始三次样条插值多项式的具体构造。
+                </p>
+                <p>
+                    由于具体的计算过于繁琐，我们在此仅仅给出计算的思路。
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=S_j%28x%29%3Da_j%2Bb_j%28x-x_j%29%2Bc_j%28x-x_j%29%5E2%2Bd_j%28x-x_j%29%5E3" alt="S_j(x)=a_j+b_j(x-x_j)+c_j(x-x_j)^2+d_j(x-x_j)^3" eeimg="1">
+                </p>
+                <p>
+                    则容易有
+                    <img src="https://www.zhihu.com/equation?tex=a_%7Bj%2B1%7D%3DS_j%28x_%7Bj%2B1%7D%29%3DS_%7Bj%2B1%7D%28x_%7Bj%2B1%7D%29" alt="a_{j+1}=S_j(x_{j+1})=S_{j+1}(x_{j+1})" eeimg="1">
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=h_j%3Dx_%7Bj%2B1%7D-x_j" alt="h_j=x_{j+1}-x_j" eeimg="1">
+                </p>
+                <p>
+                    则我们将三次样条插值
+                    <b>
+                        在端点连续的条件转化为方程
+                        <img src="https://www.zhihu.com/equation?tex=a_%7Bj%2B1%7D%3Da_j%2Bb_jh_j%2Bc_jh_j%5E2%2Bd_jh_j%5E3" alt="a_{j+1}=a_j+b_jh_j+c_jh_j^2+d_jh_j^3" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        将
+                        <img src="https://www.zhihu.com/equation?tex=C%5E1" alt="C^1" eeimg="1">
+                        条件转化为方程
+                        <img src="https://www.zhihu.com/equation?tex=b_%7Bj%2B1%7D%3Db_j%2B2c_jh_j%2B3d_jh_j%5E2" alt="b_{j+1}=b_j+2c_jh_j+3d_jh_j^2" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        将
+                        <img src="https://www.zhihu.com/equation?tex=C%5E2" alt="C^2" eeimg="1">
+                        条件转化为方程
+                        <img src="https://www.zhihu.com/equation?tex=c_%7Bj%2B1%7D%3Dc_j%2B3d_jh_j" alt="c_{j+1}=c_j+3d_jh_j" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    那么我们就得到了一个线性方程组，注意此处
+                    <img src="https://www.zhihu.com/equation?tex=a_j%2Ch_j" alt="a_j,h_j" eeimg="1">
+                    为已知常数，
+                    <img src="https://www.zhihu.com/equation?tex=b_j%2Cc_j%2Cd_j" alt="b_j,c_j,d_j" eeimg="1">
+                    为未知数。
+                </p>
+                <p>
+                    解这个线性方程组我们便可以得到所有系数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，利用三次样条进行插值得到的多项式比起Lagrange多项式有着更好的平滑性。
+                </p>
+                <p>
+                    我们试举一例：
+                </p>
+                <p>
+                    我们利用两组相同数据点利用不同的方法进行插值。
+                </p>
+                <p>
+                    我们进行Lagrange插值得到如下结果：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-8d8b54d02b6ccbf2ce3effa065141b08_r.jpg">
+                </figure>
+                <p>
+                    我们发现其在整个区间上的
+                    <b>
+                        变化十分地剧烈
+                    </b>
+                    （由于是高次多项式）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    而我们利用三次样条进行插值得到：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-637985d96119f6713cd72e092047aa1a_r.jpg">
+                </figure>
+                <p>
+                    我们发现其图像在整个区间上十分地
+                    <b>
+                        平滑
+                    </b>
+                    。
+                </p>
+                <p>
+                    这归功于多项式的低次数以及端点处连接的二阶光滑性。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于插值方法的介绍我们到这里就告一段落。事实上，利用样条函数的插值思想是很重要的，而且可以进行很多的推广。在此之外，B-样条、Bezier曲线等等都在现实生活中有着广泛的用途。
+                </p>
+                <p>
+                    谢谢各位的阅读！（拖更了那么久终于写完了233）
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            数值分析学习笔记（一）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-d9614e76bb76b0e5736b188dfca21554_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46063091" target="_blank">
+                        数值分析学习笔记（一）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-06
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这个学期其实正好在学习数值分析，所以想借此机会在学习过程中做一个梳理，顺便学习一下Maple的使用方法。写这篇笔记的目的一方面想给自己学习上的激励，另外一方面是发现数值分析的内容比我想象中要丰富得多，可以与大家一起分享我的见解。
+                </p>
+                <p>
+                    鉴于这篇笔记大体上会跟着我的课程进度一同推进，更新肯定会异常地缓慢，可能也不能够列出大量习题供读者参考。但是，我会将很多重要的方法在Maple中运行一遍，并且附上截图，让大家能有直观的感受。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事不宜迟，我们直接开始吧233
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于基础的一些知识，主要都是关于微分，积分，Taylor公式之类的。相信学过高数或数分的读者都已经很清楚了。这部分我们就不再作介绍。直接来看一个用Maple实现的例子即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    求
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D5cos2x-2xsin2x" alt="f(x)=5cos2x-2xsin2x" eeimg="1">
+                    分别在
+                    <img src="https://www.zhihu.com/equation?tex=%5B1%2C2%5D" alt="[1,2]" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5B0.5%2C1%5D" alt="[0.5,1]" eeimg="1">
+                    上的极小值。
+                </p>
+                <p>
+                    解：
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-776aa2790a1ecb1b7fee2d211c8fe193_r.jpg">
+                </figure>
+                <p>
+                    如图，我们每次在开始新的工作时，首先会利用
+                    <img src="https://www.zhihu.com/equation?tex=restart" alt="restart" eeimg="1">
+                    来清空之前工作中的所有变量。
+                </p>
+                <p>
+                    接着，
+                    <img src="https://www.zhihu.com/equation?tex=with%28plots%29" alt="with(plots)" eeimg="1">
+                    的含义是加载
+                    <img src="https://www.zhihu.com/equation?tex=plots" alt="plots" eeimg="1">
+                    这个Maple中的图像包。
+                    <img src="https://www.zhihu.com/equation?tex=with%28%29" alt="with()" eeimg="1">
+                    是Maple种加载不同包所经常用到的指令，后面还会多次用到。
+                </p>
+                <p>
+                    我们定义
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    这个函数， 冒号加等于号表示赋值或赋予定义。
+                </p>
+                <p>
+                    <b>
+                        这里记得Maple中所有三角函数
+                        <img src="https://www.zhihu.com/equation?tex=sinx" alt="sinx" eeimg="1">
+                        要写成
+                        <img src="https://www.zhihu.com/equation?tex=sin%28x%29" alt="sin(x)" eeimg="1">
+                        ，一定要记得加括号哦！另外，
+                        <img src="https://www.zhihu.com/equation?tex=2x" alt="2x" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=sin%282x%29" alt="sin(2x)" eeimg="1">
+                        之间要加乘号哦！（只有常数乘以一个表达式不用加乘号，话说加减乘除和其它编程语言基本都是统一的，→用
+                        <img src="https://www.zhihu.com/equation?tex=-%3E" alt="-&gt;" eeimg="1">
+                        即可打出）
+                    </b>
+                    （我就被坑了半天2333
+                </p>
+                <p>
+                    最后，
+                    <img src="https://www.zhihu.com/equation?tex=plot%28f%2C0.5..2%29" alt="plot(f,0.5..2)" eeimg="1">
+                    表示画出
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin%5B0.5%2C2%5D" alt="x\in[0.5,2]" eeimg="1">
+                    中的图像。两个点在Maple中通常表示着“从...到...”的含义。
+                </p>
+                <p>
+                    通过观察图像，我们发现
+                    <img src="https://www.zhihu.com/equation?tex=%5B0.5%2C2%5D" alt="[0.5,2]" eeimg="1">
+                    上有一个极小值点（导数为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ）出现在
+                    <img src="https://www.zhihu.com/equation?tex=%5B1%2C2%5D" alt="[1,2]" eeimg="1">
+                    之间。
+                </p>
+                <p>
+                    根据求极值的理论，我们知道极值点只可能出现在导数为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    或闭区间的端点或不可导的点处。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    故我们来先求驻点。
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-9c172591950aea7a4b47ea0cc482e4a9_r.jpg">
+                </figure>
+                <p>
+                    我们定义
+                    <img src="https://www.zhihu.com/equation?tex=fp" alt="fp" eeimg="1">
+                    这个函数。
+                    <img src="https://www.zhihu.com/equation?tex=diff%28f%28x%29%2Cx%29" alt="diff(f(x),x)" eeimg="1">
+                    意味着
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    对
+                    <img src="https://www.zhihu.com/equation?tex=x+" alt="x" eeimg="1">
+                    求导得到的导函数。
+                </p>
+                <p>
+                    再次打入
+                    <img src="https://www.zhihu.com/equation?tex=fp%28x%29" alt="fp(x)" eeimg="1">
+                    就可以查看其具体表达式。（事实上在左下角的Variables变量栏中读者也都可以清楚地看到）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=fsolve" alt="fsolve" eeimg="1">
+                    为对
+                    <img src="https://www.zhihu.com/equation?tex=fp%28x%29%3D0" alt="fp(x)=0" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5B1%2C2%5D" alt="[1,2]" eeimg="1">
+                    中进行浮点数的方程求解。
+                </p>
+                <p>
+                    解得的结果即为驻点
+                    <img src="https://www.zhihu.com/equation?tex=x_0%3D1.358229874" alt="x_0=1.358229874" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%28%5C%25%29" alt="f(\%)" eeimg="1">
+                    在此处即相当于求
+                    <img src="https://www.zhihu.com/equation?tex=f%28x_0%29" alt="f(x_0)" eeimg="1">
+                    。在Maple中，
+                    <img src="https://www.zhihu.com/equation?tex=%5C%25" alt="\%" eeimg="1">
+                    代表了最近一次计算所产生的结果。
+                </p>
+                <p>
+                    到此为止，我们就求出了
+                    <img src="https://www.zhihu.com/equation?tex=%5B1%2C2%5D" alt="[1,2]" eeimg="1">
+                    上的极小值。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    但是如果我们仍旧利用导数的零点求解
+                    <img src="https://www.zhihu.com/equation?tex=%5B0.5%2C1%5D" alt="[0.5,1]" eeimg="1">
+                    上的极小值。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-a4d505c36f9cc189e8c7c5a44d3541bb_r.jpg">
+                </figure>
+                <p>
+                    我们发现输入命令后，Maple返回了一样的命令。
+                    <b>
+                        每当Maple返回了和我们输入命令同样的命令，我们都应该警惕，这表示Maple无法求得解。
+                    </b>
+                    （事实上这个区间中导函数没有零点）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接着，我们再来介绍一下Taylor公式的求解。
+                </p>
+                <p>
+                    我们以
+                    <img src="https://www.zhihu.com/equation?tex=cosx" alt="cosx" eeimg="1">
+                    为例。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-2191a965818abeab1ea8d533a59c8f34_r.jpg">
+                </figure>
+                <p>
+                    值得一提的是此处
+                    <img src="https://www.zhihu.com/equation?tex=taylor" alt="taylor" eeimg="1">
+                    这个指令，第一个参数是要展开的函数，第二个参数是要在哪一点处展开，第三个参数代表展开后不算余项的项数。（
+                    <img src="https://www.zhihu.com/equation?tex=4" alt="4" eeimg="1">
+                    就代表着为
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    阶Taylor展开）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=convert" alt="convert" eeimg="1">
+                    将泰勒展开式
+                    <img src="https://www.zhihu.com/equation?tex=s3" alt="s3" eeimg="1">
+                    转化为了多项式（去除余项）
+                    <img src="https://www.zhihu.com/equation?tex=p3" alt="p3" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Digits" alt="Digits" eeimg="1">
+                    为展示出的小数位（Maple默认
+                    <img src="https://www.zhihu.com/equation?tex=10" alt="10" eeimg="1">
+                    位，可以调整）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=subs" alt="subs" eeimg="1">
+                    为substitute，表示代入，此处指将
+                    <img src="https://www.zhihu.com/equation?tex=x%3D0.01" alt="x=0.01" eeimg="1">
+                    的值代入函数/表达式中，而
+                    <img src="https://www.zhihu.com/equation?tex=evalf" alt="evalf" eeimg="1">
+                    表示对于表达式的估值。
+                </p>
+                <p>
+                    由此我们得到的
+                    <img src="https://www.zhihu.com/equation?tex=y1" alt="y1" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=cos0.01" alt="cos0.01" eeimg="1">
+                    的值，而
+                    <img src="https://www.zhihu.com/equation?tex=y2" alt="y2" eeimg="1">
+                    是在原点处的三阶泰勒公式近似出的
+                    <img src="https://www.zhihu.com/equation?tex=cos0.01" alt="cos0.01" eeimg="1">
+                    的值。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们还能够将原点附近这两个函数的图像画出，进行对比。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-74cd82828d6150d88d6c5cf139c5f0ed_r.jpg">
+                </figure>
+                <p>
+                    分别定义两个图像，再利用
+                    <img src="https://www.zhihu.com/equation?tex=plots%5Bdisplay%5D" alt="plots[display]" eeimg="1">
+                    将它们合并到一张图中。
+                </p>
+                <p>
+                    这样我们就能清晰地看到三阶Taylor公式在原点附近拟合的程度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，定积分也可以进行类似的数值逼近。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-a277fd0da0b94e49af593955a4b0e160_r.jpg">
+                </figure>
+                <p>
+                    此处
+                    <img src="https://www.zhihu.com/equation?tex=err" alt="err" eeimg="1">
+                    即为绝对误差。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于数值分析的基本知识与Maple的介绍就到这里。
+                </p>
+                <p>
+                    这篇笔记可能略显简短，但是后续内容会多一些。
+                </p>
+                <p>
+                    谢谢各位的阅读！
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（三）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-4f939e00f54189cb655537e0be55bbae_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/113385198" target="_blank">
+                        测度论整理（三）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-03-15
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    关于测度扩张，上一篇文章中我们已经列出了一些关键的定理。这一篇文章中主要是进行梳理，讨论一些细节上的问题并且介绍Lebesgue-Stieljes测度的构建。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于测度扩张，我们实际有如下两条思路：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathscr%7BE%7D%2C%5Cmu%29" alt="(\mathscr{E},\mu)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing%5Cin%5Cmathscr%7BE%7D" alt="\varnothing\in\mathscr{E}" eeimg="1">
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28%5Cvarnothing%29+%3D+0" alt="\mu(\varnothing) = 0" eeimg="1">
+                    <img src="https://www.zhihu.com/equation?tex=%5Crightarrow" alt="\rightarrow" eeimg="1">
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathscr%7BT%7D%2C%5Ctau%29" alt="(\mathscr{T},\tau)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BT%7D%3DP%28X%29%2C%5Ctau" alt="\mathscr{T}=P(X),\tau" eeimg="1">
+                    为由
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    生成的外测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Crightarrow" alt="\rightarrow" eeimg="1">
+                    完全测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D_%5Ctau%2C%5Ctau%29" alt="(X,\mathscr{F}_\tau,\tau)" eeimg="1">
+                    （Caratheodory）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上述思路是我们最原始的思路，但是问题是不能确定
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_%5Ctau" alt="\mathscr{F}_\tau" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    的大小关系，即不能确定这究竟是不是一个扩张。为此，我们实际上会利用下述思路：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathscr%7BE%7D%2C%5Cmu%29" alt="(\mathscr{E},\mu)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    为
+                    <b>
+                        半环
+                    </b>
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    为其上
+                    <b>
+                        测度
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crightarrow" alt="\rightarrow" eeimg="1">
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathscr%7BT%7D%2C%5Ctau%29" alt="(\mathscr{T},\tau)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BT%7D%3DP%28X%29%2C%5Ctau" alt="\mathscr{T}=P(X),\tau" eeimg="1">
+                    为由
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    生成的外测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Crightarrow" alt="\rightarrow" eeimg="1">
+                    <b>
+                        完全测度空间
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D_%5Ctau%2C%5Ctau%29" alt="(X,\mathscr{F}_\tau,\tau)" eeimg="1">
+                    （Caratheodory）以及测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Csigma%28%5Cmathscr%7BE%7D%29%2C%5Ctau%29" alt="(X,\sigma(\mathscr{E}),\tau)" eeimg="1">
+                    （测度扩张定理）
+                    <img src="https://www.zhihu.com/equation?tex=%5Crightarrow" alt="\rightarrow" eeimg="1">
+                    <b>
+                        完全测度空间
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Ctilde%7B%5Csigma%28%5Cmathscr%7BE%7D%29%7D%2C%5Ctilde%7B%5Ctau%7D%29" alt="(X,\tilde{\sigma(\mathscr{E})},\tilde{\tau})" eeimg="1">
+                    （测度的完全化定理）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们很自然地想问这样一个问题：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D_%5Ctau%2C%5Ctau%29" alt="(X,\mathscr{F}_\tau,\tau)" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Csigma%28%5Cmathscr%7BE%7D%29%2C%5Ctau%29" alt="(X,\sigma(\mathscr{E}),\tau)" eeimg="1">
+                    差了多少？
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D_%5Ctau%2C%5Ctau%29" alt="(X,\mathscr{F}_\tau,\tau)" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Ctilde%7B%5Csigma%28%5Cmathscr%7BE%7D%29%7D%2C%5Ctilde%7B%5Ctau%7D%29" alt="(X,\tilde{\sigma(\mathscr{E})},\tilde{\tau})" eeimg="1">
+                    又差了多少？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_%5Ctau" alt="\mathscr{F}_\tau" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma%28%5Cmathscr%7BE%7D%29" alt="\sigma(\mathscr{E})" eeimg="1">
+                        的关联）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D_%5Ctau%2C%5Cexists+B%5Cin+%5Csigma%28%5Cmathscr%7BE%7D%29%2CA%5Csubset+B%2C%5Ctau%28A%29%3D%5Ctau%28B%29" alt="\forall A\in \mathscr{F}_\tau,\exists B\in \sigma(\mathscr{E}),A\subset B,\tau(A)=\tau(B)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        特别地，若测度扩张的唯一性条件成立，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D_%5Ctau%2C%5Cexists+B%5Cin+%5Csigma%28%5Cmathscr%7BE%7D%29%2CA%5Csubset+B%2C%5Ctau%28B-A%29%3D0" alt="\forall A\in \mathscr{F}_\tau,\exists B\in \sigma(\mathscr{E}),A\subset B,\tau(B-A)=0" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上述定理告诉我们：
+                    <b>
+                        任意
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                        -可测集都能被
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma%28%5Cmathscr%7BE%7D%29" alt="\sigma(\mathscr{E})" eeimg="1">
+                        中某个元素从外部在外测度意义下充分好地逼近
+                    </b>
+                    。事实上，
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的构造并不困难。注意到利用外测度中的下确界，对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cexists+B_1%2CB_2%2C...%5Cin%5Cmathscr%7BE%7D%2CA%5Csubset+%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+B_n%2C%5Ctau%28A%29%2B%5Cvarepsilon+%3E%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%5Cmu%28B_n%29" alt="\forall \varepsilon &gt;0,\exists B_1,B_2,...\in\mathscr{E},A\subset \bigcup_{n=1}^\infty B_n,\tau(A)+\varepsilon &gt;\sum_{n=1}^\infty \mu(B_n)" eeimg="1">
+                    。利用这样的
+                    <img src="https://www.zhihu.com/equation?tex=B_n" alt="B_n" eeimg="1">
+                    通过可列次集合运算来构造
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    即可保证
+                    <img src="https://www.zhihu.com/equation?tex=B%5Cin+%5Csigma%28%5Cmathscr%7BE%7D%29" alt="B\in \sigma(\mathscr{E})" eeimg="1">
+                    的同时，使得
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    的差别在外测度意义下是充分小的。
+                </p>
+                <p>
+                    值得一提的是：
+                    <b>
+                        对于半环
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=X%5Cin+%5Cmathscr%7BE%7D" alt="X\in \mathscr{E}" eeimg="1">
+                        加上
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                        上
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限的条件即足以使得测度扩张的唯一性条件成立
+                    </b>
+                    。这是由于
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    可以被
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    中至多可数个有限测度集覆盖，且半环上可以进行集合列的不交分解。
+                </p>
+                <p>
+                    另外作为一个技巧，当我们拥有测度扩张唯一性条件时，我们通常可以先由
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    生成外测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                    ，再利用扩张唯一性得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%7C_%7B%5Csigma%28%5Cmathscr%7BE%7D%29%7D%3D%5Ctau%7C_%7B%5Csigma%28%5Cmathscr%7BE%7D%29%7D" alt="\mu|_{\sigma(\mathscr{E})}=\tau|_{\sigma(\mathscr{E})}" eeimg="1">
+                    的条件。这是因为关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    ，我们通常不清楚其结构，但是关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    之间的联系，我们是清楚的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，借助于测度的工具，不仅仅是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_%5Ctau" alt="\mathscr{F}_\tau" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28%5Cmathscr%7BE%7D%29" alt="\sigma(\mathscr{E})" eeimg="1">
+                    的关联，我们还能够得到关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28%5Cmathscr%7BE%7D%29" alt="\sigma(\mathscr{E})" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    中元素关系的定理。
+                </p>
+                <p>
+                    <b>
+                        定理（
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    <b>
+                        与
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28%5Cmathscr%7BE%7D%29" alt="\sigma(\mathscr{E})" eeimg="1">
+                    <b>
+                        的关联）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=A%5Cin+%5Csigma%28%5Cmathscr%7BE%7D%29%2C%5Ctau%28A%29%3C%5Cinfty" alt="A\in \sigma(\mathscr{E}),\tau(A)&lt;\infty" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cexists+A_1%2CA_2%2C...%5Cin+%5Cmathscr%7BE%7D" alt="\forall \varepsilon &gt;0,\exists A_1,A_2,...\in \mathscr{E}" eeimg="1">
+                        两两不交，且
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+N%5Cin+%5Cmathbb%7BN%7D" alt="\exists N\in \mathbb{N}" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctau%28%28%5Cbigcup_%7Bi%3D1%7D%5ENA_i%29%5Cbigtriangleup+A%29%3C%5Cvarepsilon" alt="\tau((\bigcup_{i=1}^NA_i)\bigtriangleup A)&lt;\varepsilon" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于任意取定的
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，利用外测度定义总是能找到
+                    <img src="https://www.zhihu.com/equation?tex=B_1%2CB_2%2C...%5Cin%5Cmathscr%7BE%7D%2CA%5Csubset+%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+B_n%2C%5Ctau%28A%29%2B%5Cvarepsilon+%3E%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%5Cmu%28B_n%29" alt="B_1,B_2,...\in\mathscr{E},A\subset \bigcup_{n=1}^\infty B_n,\tau(A)+\varepsilon &gt;\sum_{n=1}^\infty \mu(B_n)" eeimg="1">
+                    。再利用半环上的集合列不交分解，即可以得到一列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    中两两不交的集合
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    ，其覆盖了
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，且在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    下测度之和只比
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%28A%29" alt="\tau(A)" eeimg="1">
+                    大了一点点，从而帮助我们估计了
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%28%28%5Cbigcup_%7Bi%3D1%7D%5ENA_i%29-+A%29" alt="\tau((\bigcup_{i=1}^NA_i)- A)" eeimg="1">
+                    的部分。
+                </p>
+                <p>
+                    由
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%28A%29%3C%5Cinfty" alt="\tau(A)&lt;\infty" eeimg="1">
+                    ，得知
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%5Cmu%28B_n%29" alt="\sum_{n=1}^\infty \mu(B_n)" eeimg="1">
+                    。利用Cauchy收敛准则，我们即可估计
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%28A-%28%5Cbigcup_%7Bi%3D1%7D%5ENA_i%29%29" alt="\tau(A-(\bigcup_{i=1}^NA_i))" eeimg="1">
+                    这一部分。
+                </p>
+                <p>
+                    上述定理告诉我们
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma%28%5Cmathscr%7BE%7D%29" alt="\sigma(\mathscr{E})" eeimg="1">
+                        中任意有限测度元素同样可以被
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                        中的有限不交并在外测度意义下充分好地逼近
+                    </b>
+                    。注意到：若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    为域，则
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cbigcup_%7Bi%3D1%7D%5ENA_i%29%5Cin+%5Cmathscr%7BE%7D" alt="(\bigcup_{i=1}^NA_i)\in \mathscr{E}" eeimg="1">
+                    ，定理的形式可以得到简化。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Csigma%28%5Cmathscr%7BE%7D%29%7D" alt="\tilde{\sigma(\mathscr{E})}" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_%5Ctau" alt="\mathscr{F}_\tau" eeimg="1">
+                    之间的关联，下述定理给出了优美的回答。
+                </p>
+                <p>
+                    <b>
+                        定理（
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Csigma%28%5Cmathscr%7BE%7D%29%7D" alt="\tilde{\sigma(\mathscr{E})}" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_%5Ctau" alt="\mathscr{F}_\tau" eeimg="1">
+                        之间的关联）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                        为半环且
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为其上测度，且测度扩张的唯一性条件成立，则
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Csigma%28%5Cmathscr%7BE%7D%29%7D%3D%5Cmathscr%7BF%7D_%5Ctau" alt="\tilde{\sigma(\mathscr{E})}=\mathscr{F}_\tau" eeimg="1">
+                    。
+                </p>
+                <p>
+                    这只是一个单纯验证性的证明，然而从中我们可以感受到对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%7D" alt="\tilde{}" eeimg="1">
+                    构造的巧妙。添加一个原集合系中零测集的任意子集极大程度上帮助了我们证明这一定理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，一个重要的例子就是
+                    <b>
+                        Lebesgue-Stieljes测度
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们只需要按照我们先前提出的思路一步步走下去即可。
+                </p>
+                <p>
+                    首先，构造一个半环上的测度。
+                </p>
+                <p>
+                    选定
+                    <b>
+                        半环
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BL%7D_%5Cmathbb%7BR%7D%3D%5Cleft+%5C%7B+%28a%2Cb%5D%7Ca%2Cb%5Cin%5Cmathbb%7BR%7D+%5Cright+%5C%7D" alt="\mathscr{L}_\mathbb{R}=\left \{ (a,b]|a,b\in\mathbb{R} \right \}" eeimg="1">
+                    ，选定一个
+                    <b>
+                        非降右连续
+                    </b>
+                    的函数
+                    <img src="https://www.zhihu.com/equation?tex=F%3A%5Cmathbb%7BR%7D%5Crightarrow%5Cmathbb%7BR%7D" alt="F:\mathbb{R}\rightarrow\mathbb{R}" eeimg="1">
+                    作为
+                    <b>
+                        准分布函数
+                    </b>
+                    ，我们可以定义：
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=a%3Cb" alt="a&lt;b" eeimg="1">
+                    的情形下，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28%28a%2Cb%5D%29%3DF%28b%29-F%28a%29" alt="\mu((a,b])=F(b)-F(a)" eeimg="1">
+                    ，否则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28%28a%2Cb%5D%29%3D0" alt="\mu((a,b])=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们可以证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    <b>
+                        必定为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BL%7D_%5Cmathbb%7BR%7D" alt="\mathscr{L}_\mathbb{R}" eeimg="1">
+                        上测度
+                    </b>
+                    。
+                </p>
+                <p>
+                    下面就是利用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    生成外测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                    。则其必为
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28%5Cmathscr%7BL%7D_%5Cmathbb%7BR%7D%29%3D%5Cmathscr%7BB%7D_%5Cmathbb%7BR%7D" alt="\sigma(\mathscr{L}_\mathbb{R})=\mathscr{B}_\mathbb{R}" eeimg="1">
+                    即
+                    <b>
+                        Borel域
+                    </b>
+                    上的测度。
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%3D%5Cbigcup_%7Bn%5Cin%5Cmathbb%7BZ%7D%7D%28n%2Cn%2B1%5D" alt="\mathbb{R}=\bigcup_{n\in\mathbb{Z}}(n,n+1]" eeimg="1">
+                    能被至多可数个不交有限测度集覆盖，故满足测度扩张的唯一性条件，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                    <b>
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        在Borel域上的唯一测度扩张
+                    </b>
+                    。
+                </p>
+                <p>
+                    那么再对测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BB%7D_%5Cmathbb%7BR%7D%2C%5Ctau%29" alt="(\mathbb{R},\mathscr{B}_\mathbb{R},\tau)" eeimg="1">
+                    做
+                    <b>
+                        完全化处理
+                    </b>
+                    即可得到
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BF%7D_%5Ctau%2C%5Ctau%29" alt="(\mathbb{R},\mathscr{F}_\tau,\tau)" eeimg="1">
+                    ，这与Caratheodory定理给出的结论实际上是一致的。
+                </p>
+                <p>
+                    而测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BF%7D_%5Ctau%2C%5Ctau%29" alt="(\mathbb{R},\mathscr{F}_\tau,\tau)" eeimg="1">
+                    即为
+                    <b>
+                        实数域上的Lebesgue-Stieljes测度，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_%5Ctau" alt="\mathscr{F}_\tau" eeimg="1">
+                    中元素均为
+                    <b>
+                        Lebesgue-Stieljes可测集
+                    </b>
+                    。
+                </p>
+                <p>
+                    特别地，取准分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29%3Dx" alt="F(x)=x" eeimg="1">
+                    即得到
+                    <b>
+                        Lebesgue测度
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    但是Lebesgue-Stieljes测度与Lebesgue测度的性质还是会有比较大的区别的。简单地看一看的话，
+                    <b>
+                        可数集在Lebesgue测度下都是零测的
+                    </b>
+                    （证明所有单点集外测度都是零即可），但是在Lebesgue-Stieljes测度下则不然。我们可以构造一个不连续的准分布函数，并且考察其间断点
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    。那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+a+%5Cright+%5C%7D" alt="\left \{ a \right \}" eeimg="1">
+                    即使作为一个单点集都并非Lebesgue-Stieljes测度下的零测集！
+                </p>
+                <p>
+                    事实上，学习了测度论之后，站在了比实变更高的视角上，会感觉到实变的定理就是一个个特例罢了。可能学习数学都是如此，学习一些特殊情况下的理论都是为了学习更高层次更普适的理论做铺垫的罢了。
+                </p>
+                <p>
+                    那么这次就先讲到这里。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

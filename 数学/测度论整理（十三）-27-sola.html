@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（十三）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-1aef7caf1c8ed5cf148757b57bbe3305_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/144911818" target="_blank">
+                        测度论整理（十三）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-05-31
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    终于弄完了毕业论文答辩的事情，感觉整个人都轻松了很多哈哈（虽然还是有好多考试和大作业）。可能过一段时间我会把我毕业论文参考的论文以及我做的一些微小的工作也写成文章放到专栏里供大家参考。
+                </p>
+                <hr>
+                <p>
+                    这次我们接着上次的东西讲有关于正则条件概率的部分。
+                </p>
+                <p>
+                    事实上，我在上次的文章中提到了：条件概率
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7C%5Cmathscr%7BG%7D%29" alt="P(A|\mathscr{G})" eeimg="1">
+                    本质上是一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    可测函数，其在
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    的意义下具有如同单调性、可列可加性等测度所具备的性质。但是，其距离一个测度还差得远，因为这里的“几乎处处”是依赖于集合选取的。
+                </p>
+                <p>
+                    那么为什么要将条件概率测度化呢？因为我们注意到
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Ccdot%29" alt="E(\cdot)" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Ccdot%7C%5Cmathscr%7BG%7D%29" alt="E(\cdot|\mathscr{G})" eeimg="1">
+                    具有非常相似的性质，诸如：线性性、单调性、三大收敛定理等等。由此，我们自然地联想到一个问题：
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Ccdot%7C%5Cmathscr%7BG%7D%29" alt="E(\cdot|\mathscr{G})" eeimg="1">
+                    是否可能在本质上与期望是相同的呢？也就是说，我们是否能够
+                    <b>
+                        用积分表示条件期望
+                    </b>
+                    呢？即我们想找到一个新的测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29%28%5Ccdot%29%3D%5Cint_%7B%5Cmathbb%7BR%7D%7Dy%5C%2C%5Cmu%28%5Ccdot%2Cdy%29" alt="E(f|\mathscr{G})(\cdot)=\int_{\mathbb{R}}y\,\mu(\cdot,dy)" eeimg="1">
+                    。其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Ccdot" alt="\cdot" eeimg="1">
+                    意味着变元，在此处即表示
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中的元素
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    。比起数学期望，条件期望的表达式中会多出一个变元，这是因为数学期望是实数而条件期望是可测函数。
+                </p>
+                <hr>
+                <p>
+                    在这样的动机下，我们引出正则条件概率的定义：
+                </p>
+                <p>
+                    注意到条件概率
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7C%5Cmathscr%7BG%7D%29%28x%29" alt="P(A|\mathscr{G})(x)" eeimg="1">
+                    的值本质上由三者决定：事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，条件
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    ，样本点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在这里，我们固定住条件
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    ，将
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7C%5Cmathscr%7BG%7D%29%28x%29" alt="P(A|\mathscr{G})(x)" eeimg="1">
+                    写成
+                    <img src="https://www.zhihu.com/equation?tex=P_%5Cmathscr%7BG%7D%28x%2CA%29" alt="P_\mathscr{G}(x,A)" eeimg="1">
+                    的二元函数形式，考虑样本点与事件的变化。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=P_%5Cmathscr%7BG%7D%28x%2CA%29" alt="P_\mathscr{G}(x,A)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X%5Ctimes+%5Cmathscr%7BF%7D" alt="X\times \mathscr{F}" eeimg="1">
+                    上的函数，其为
+                    <b>
+                        正则条件概率
+                    </b>
+                    若其满足下列性质：
+                </p>
+                <p>
+                    1、固定住
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P_%5Cmathscr%7BG%7D%28x%2C%5Ccdot%29" alt="P_\mathscr{G}(x,\cdot)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%29" alt="(X,\mathscr{F})" eeimg="1">
+                    上概率测度。
+                </p>
+                <p>
+                    2、固定住
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cin+%5Cmathscr%7BF%7D" alt="A\in \mathscr{F}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P_%5Cmathscr%7BG%7D%28%5Ccdot%2CA%29" alt="P_\mathscr{G}(\cdot,A)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7C%5Cmathscr%7BG%7D%29" alt="P(A|\mathscr{G})" eeimg="1">
+                    的一个版本。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对2中的“版本”做进一步解释：这意味着
+                    <img src="https://www.zhihu.com/equation?tex=P_%5Cmathscr%7BG%7D%28%5Ccdot%2CA%29" alt="P_\mathscr{G}(\cdot,A)" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7C%5Cmathscr%7BG%7D%29%28%5Ccdot%29" alt="P(A|\mathscr{G})(\cdot)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    的意义下是相等的。即我们要求了
+                    <img src="https://www.zhihu.com/equation?tex=P_%5Cmathscr%7BG%7D%28%5Ccdot%2CA%29" alt="P_\mathscr{G}(\cdot,A)" eeimg="1">
+                    为给定条件
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    下事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的条件概率。利用条件概率的定义我们不难得知，这要求
+                    <img src="https://www.zhihu.com/equation?tex=P_%5Cmathscr%7BG%7D%28%5Ccdot%2CA%29" alt="P_\mathscr{G}(\cdot,A)" eeimg="1">
+                    是一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    可测函数，且对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+B%5Cin+%5Cmathscr%7BG%7D" alt="\forall B\in \mathscr{G}" eeimg="1">
+                    ，都有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_BP_%5Cmathscr%7BG%7D%28%5Ccdot%2CA%29%5C%2CdP%3DP%28A%5Ccap+B%29" alt="\int_BP_\mathscr{G}(\cdot,A)\,dP=P(A\cap B)" eeimg="1">
+                    成立。
+                </p>
+                <hr>
+                <p>
+                    但是，正则条件概率对于一般的事件
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cin%5Cmathscr%7BF%7D" alt="A\in\mathscr{F}" eeimg="1">
+                    是否存在是一个复杂的问题。故在这里，我们仅仅讨论对于具有特殊形式的事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    正则条件概率是否存在。特别地，对于
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    以及实数
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    ，我们讨论当
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    具有形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++f%5Cleq+a%5Cright+%5C%7D" alt="\left \{  f\leq a\right \}" eeimg="1">
+                    时正则条件概率的存在性问题。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    具有如此形式时，考虑到
+                    <img src="https://www.zhihu.com/equation?tex=P%28f%5Cleq+a%29" alt="P(f\leq a)" eeimg="1">
+                    就已经与分布函数的形式吻合，我们可以自然地定义正则条件分布函数，从其入手来考虑特殊的正则条件概率的存在性以及性质。给定
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，我们称
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bf%7C%5Cmathscr%7BG%7D%7D%28x%2Ca%29" alt="F_{f|\mathscr{G}}(x,a)" eeimg="1">
+                    这个
+                    <img src="https://www.zhihu.com/equation?tex=X%5Ctimes%5Cmathbb%7BR%7D" alt="X\times\mathbb{R}" eeimg="1">
+                    上的函数为
+                    <b>
+                        正则条件分布函数
+                    </b>
+                    如果其满足：
+                </p>
+                <p>
+                    1、固定住
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bf%7C%5Cmathscr%7BG%7D%7D%28x%2C%5Ccdot%29" alt="F_{f|\mathscr{G}}(x,\cdot)" eeimg="1">
+                    为分布函数。
+                </p>
+                <p>
+                    2、固定住
+                    <img src="https://www.zhihu.com/equation?tex=a%5Cin+%5Cmathbb%7BR%7D" alt="a\in \mathbb{R}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bf%7C%5Cmathscr%7BG%7D%7D%28%5Ccdot%2Ca%29" alt="F_{f|\mathscr{G}}(\cdot,a)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=P%28f%5Cleq+a%7C%5Cmathscr%7BG%7D%29" alt="P(f\leq a|\mathscr{G})" eeimg="1">
+                    的一个版本。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们能够证明：
+                    <b>
+                        正则条件分布函数必定是存在的
+                    </b>
+                    。由于书上证明里很多比较重要的点都被略去或是一笔带过，我在这里对于一些不完整的证明进行一下补充。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于正则条件分布函数的构造思路主要是从可数的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BQ%7D" alt="\mathbb{Q}" eeimg="1">
+                    出发，构造
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    上的分布函数（这里的可数性之后会起到关键的作用）。
+                </p>
+                <p>
+                    即对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+r%5Cin%5Cmathbb%7BQ%7D" alt="\forall r\in\mathbb{Q}" eeimg="1">
+                    ，令
+                    <img src="https://www.zhihu.com/equation?tex=G%28x%2Cr%29%3DP%28f%5Cleq+r%7C%5Cmathscr%7BG%7D%29%28x%29%5C+a.s." alt="G(x,r)=P(f\leq r|\mathscr{G})(x)\ a.s." eeimg="1">
+                    ，先让其作为条件概率的一个版本。但是，这个函数可能有很多问题，因为我们只是简单地进行了不同条件概率之间的“拼接”工作。当固定
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=G%28x%2C%5Ccdot%29" alt="G(x,\cdot)" eeimg="1">
+                    并不一定满足分布函数的性质。一个分布函数必须是单调增、右连续的，且在正负无穷处的极限应为
+                    <img src="https://www.zhihu.com/equation?tex=1%2C0" alt="1,0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么既然
+                    <img src="https://www.zhihu.com/equation?tex=G%28x%2C%5Ccdot%29" alt="G(x,\cdot)" eeimg="1">
+                    不一定是分布函数，一个直接的想法就是把那些性质不够好的点都拿出来然后去掉。故我们定义
+                    <img src="https://www.zhihu.com/equation?tex=N_1%3D%5Cbigcup_%7Br_1%2Cr_2%5Cin%5Cmathbb%7BQ%7D%5C%5Cr_1%5Cleq+r_2%7D%5Cleft+%5C%7Bx%7CG%28x%2Cr_1%29%3EG%28x%2Cr_2%29++%5Cright+%5C%7D" alt="N_1=\bigcup_{r_1,r_2\in\mathbb{Q}\\r_1\leq r_2}\left \{x|G(x,r_1)&gt;G(x,r_2)  \right \}" eeimg="1">
+                    把所有破坏了
+                    <img src="https://www.zhihu.com/equation?tex=G%28x%2C%5Ccdot%29" alt="G(x,\cdot)" eeimg="1">
+                    的单调性的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    都拿出来；定义
+                    <img src="https://www.zhihu.com/equation?tex=N_2%3D%5Cbigcup_%7Br%5Cin%5Cmathbb%7BQ%7D%7D%5Cleft+%5C%7B+x%7CG%28x%2Cr%2B%5Cfrac%7B1%7D%7Bn%7D%29%5Cnot%5Crightarrow+G%28x%2Cr%29+%5Cright+%5C%7D" alt="N_2=\bigcup_{r\in\mathbb{Q}}\left \{ x|G(x,r+\frac{1}{n})\not\rightarrow G(x,r) \right \}" eeimg="1">
+                    把所有破坏了
+                    <img src="https://www.zhihu.com/equation?tex=G%28x%2C%5Ccdot%29" alt="G(x,\cdot)" eeimg="1">
+                    右连续性的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    都拿出来；定义
+                    <img src="https://www.zhihu.com/equation?tex=N_3%3D%5Cleft+%5C%7B++x%7CG%28x%2Cn%29%5Cnot%5Crightarrow++1%5C+or%5C+G%28x%2C-n%29%5Cnot%5Crightarrow+0%5Cright+%5C%7D" alt="N_3=\left \{  x|G(x,n)\not\rightarrow  1\ or\ G(x,-n)\not\rightarrow 0\right \}" eeimg="1">
+                    把所有破坏了分布函数在正负无穷处极限要求的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    都拿出来。那么
+                    <img src="https://www.zhihu.com/equation?tex=N%3DN_1%5Ccup+N_2%5Ccup+N_3" alt="N=N_1\cup N_2\cup N_3" eeimg="1">
+                    就是所有破坏了
+                    <img src="https://www.zhihu.com/equation?tex=G%28x%2C%5Ccdot%29" alt="G(x,\cdot)" eeimg="1">
+                    成为一个分布函数的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的集合。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们下面发现：这个集合
+                    <img src="https://www.zhihu.com/equation?tex=N%5Cin%5Cmathscr%7BG%7D" alt="N\in\mathscr{G}" eeimg="1">
+                    是零测的。（这里可以看到为何我们要先考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BQ%7D" alt="\mathbb{Q}" eeimg="1">
+                    上的情形，可数性带来了很大的便利）
+                </p>
+                <p>
+                    注意到条件概率在
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    意义下具有单调性以及
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cvarnothing%7C%5Cmathscr%7BG%7D%29%3D0%2CP%28X%7C%5Cmathscr%7BG%7D%29%3D1" alt="P(\varnothing|\mathscr{G})=0,P(X|\mathscr{G})=1" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=N_1%2CN_3" alt="N_1,N_3" eeimg="1">
+                    零测。而利用条件期望的单调收敛定理，在
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    意义下
+                    <img src="https://www.zhihu.com/equation?tex=P%28f%5Cleq+r%2B%5Cfrac%7B1%7D%7Bn%7D%7C%5Cmathscr%7BG%7D%29%5Crightarrow+P%28f%5Cleq+r%7C%5Cmathscr%7BG%7D%29" alt="P(f\leq r+\frac{1}{n}|\mathscr{G})\rightarrow P(f\leq r|\mathscr{G})" eeimg="1">
+                    成立。故
+                    <img src="https://www.zhihu.com/equation?tex=N_2" alt="N_2" eeimg="1">
+                    零测。我们去掉了的不够好的样本点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    在测度下看是充分少的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    既然保证了
+                    <img src="https://www.zhihu.com/equation?tex=G%28x%2C%5Ccdot%29" alt="G(x,\cdot)" eeimg="1">
+                    具有分布的性质，我们接下来就可以利用有理数集的稠密性将这个函数从有理数集推到实数集上去了！
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bf%7C%5Cmathscr%7BG%7D%7D%28x%2Ca%29%3D%5Cbegin%7Bcases%7D+H%28a%29%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C++%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+x%5Cin+N%5C%5C+%5Cinf%5Cleft+%5C%7B++G%28x%2Cr%29%7Cr%3Ea%2Cr%5Cin%5Cmathbb%7BQ%7D%5Cright+%5C%7D%5C+%5C+%5C+x%5Cnot%5Cin+N++%5Cend%7Bcases%7D" alt="F_{f|\mathscr{G}}(x,a)=\begin{cases} H(a)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\in N\\ \inf\left \{  G(x,r)|r&gt;a,r\in\mathbb{Q}\right \}\ \ \ x\not\in N  \end{cases}" eeimg="1">
+                    即可（其中
+                    <img src="https://www.zhihu.com/equation?tex=H" alt="H" eeimg="1">
+                    为一个任意取定的分布函数，即在
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的性质不够好时我们并不关心它的取值），对于其为正则条件分布函数的验证，完全可以利用
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    外的良好性质以及下确界的性质得证。
+                </p>
+                <hr>
+                <p>
+                    从正则条件分布函数入手研究正则条件概率的意义在于：对于形如
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++f%5Cleq+a%5Cright+%5C%7D" alt="\left \{  f\leq a\right \}" eeimg="1">
+                    的事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，正则条件分布函数的存在性得以保证！
+                </p>
+                <p>
+                    自然地，对于每个固定的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    ，我们总能利用
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bf%7C%5Cmathscr%7BG%7D%7D%28x%2C%5Ccdot%29" alt="F_{f|\mathscr{G}}(x,\cdot)" eeimg="1">
+                    这个分布函数
+                    <b>
+                        生成实数域上的Lebesgue-Stieljes测度
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_%7Bf%7C%5Cmathscr%7BG%7D%7D%28x%2CB%29" alt="\mu_{f|\mathscr{G}}(x,B)" eeimg="1">
+                    （其中
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X%2CB%5Cin%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D" alt="x\in X,B\in\mathscr{B}_{\mathbb{R}}" eeimg="1">
+                    ），其被称为
+                    <b>
+                        正则条件分布
+                    </b>
+                    ，事实上就是我们上述的那类特殊的
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    所对应的正则条件概率。其满足：
+                </p>
+                <p>
+                    1、固定住
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_%7Bf%7C%5Cmathscr%7BG%7D%7D%28x%2C%5Ccdot%29" alt="\mu_{f|\mathscr{G}}(x,\cdot)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%29" alt="(\mathbb{R},\mathscr{B}_{\mathbb{R}})" eeimg="1">
+                    上的测度。
+                </p>
+                <p>
+                    2、固定住
+                    <img src="https://www.zhihu.com/equation?tex=B%5Cin%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D" alt="B\in\mathscr{B}_{\mathbb{R}}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_%7Bf%7C%5Cmathscr%7BG%7D%7D%28%5Ccdot%2CB%29" alt="\mu_{f|\mathscr{G}}(\cdot,B)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=P%28f%5Cin+B%7C%5Cmathscr%7BG%7D%29" alt="P(f\in B|\mathscr{G})" eeimg="1">
+                    的一个版本。
+                </p>
+                <p>
+                    其
+                    <b>
+                        必定是存在
+                    </b>
+                    的！
+                </p>
+                <hr>
+                <p>
+                    至此为止，我们已经解决了形如
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++f%5Cleq+a%5Cright+%5C%7D" alt="\left \{  f\leq a\right \}" eeimg="1">
+                    的事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的正则条件概率的存在性问题，可以给出条件期望的积分表示了！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        取定随机变量
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，
+                    <b>
+                        对于任意Borel可测的函数
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        ，在
+                        <img src="https://www.zhihu.com/equation?tex=E%28g%28f%29%29" alt="E(g(f))" eeimg="1">
+                        有意义时，有
+                        <img src="https://www.zhihu.com/equation?tex=E%28g%28f%29%7C%5Cmathscr%7BG%7D%29%28%5Ccdot%29%3D%5Cint_%7B%5Cmathbb%7BR%7D%7Dg%28y%29%5C%2C%5Cmu_%7Bf%7C%5Cmathscr%7BG%7D%7D%28%5Ccdot%2Cdy%29" alt="E(g(f)|\mathscr{G})(\cdot)=\int_{\mathbb{R}}g(y)\,\mu_{f|\mathscr{G}}(\cdot,dy)" eeimg="1">
+                        成立
+                    </b>
+                    。
+                </p>
+                <p>
+                    我在这里也对于其证明略做补充：
+                </p>
+                <p>
+                    主要思路还是
+                    <b>
+                        典型方法
+                    </b>
+                    ，即从
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    为指示函数的情形开始证明。但是在这个证明中，对于
+                    <img src="https://www.zhihu.com/equation?tex=g%3DI_B%5C+%28B%5Cin%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%29" alt="g=I_B\ (B\in\mathscr{B}_{\mathbb{R}})" eeimg="1">
+                    的情形，我们初看仍会感到束手无策。那么这时，我们就应该将其拆得更细一些。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们不妨先对于
+                    <img src="https://www.zhihu.com/equation?tex=g%3DI_%7B%28-%5Cinfty%2Ca%5D%7D" alt="g=I_{(-\infty,a]}" eeimg="1">
+                    的情形进行证明。此时左侧即为
+                    <img src="https://www.zhihu.com/equation?tex=P%28f%5Cleq+a%7C%5Cmathscr%7BG%7D%29%28%5Ccdot%29" alt="P(f\leq a|\mathscr{G})(\cdot)" eeimg="1">
+                    ，右侧为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B%28-%5Cinfty%2Ca%5D%7D%5C%2C%5Cmu_%7Bf%7C%5Cmathscr%7BG%7D%7D%28%5Ccdot%2Cdy%29%3D%5Cmu_%7Bf%7C%5Cmathscr%7BG%7D%7D%28%5Ccdot%2C%28-%5Cinfty%2Ca%5D%29" alt="\int_{(-\infty,a]}\,\mu_{f|\mathscr{G}}(\cdot,dy)=\mu_{f|\mathscr{G}}(\cdot,(-\infty,a])" eeimg="1">
+                    。注意到正则条件分布总是随机变量取值在对应Borel集中这个事件的条件概率的一个版本，故左右两侧相等。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，对于
+                    <img src="https://www.zhihu.com/equation?tex=g%3DI_B%5C+%28B%5Cin%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%29" alt="g=I_B\ (B\in\mathscr{B}_{\mathbb{R}})" eeimg="1">
+                    的情形，我们不必硬着头皮证明，而可以注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%28-%5Cinfty%2Ca%5D%5Cright+%5C%7D" alt="\left \{  (-\infty,a]\right \}" eeimg="1">
+                    这个集合系生成的
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    域为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D" alt="\mathscr{B}_{\mathbb{R}}" eeimg="1">
+                    。故采取我们前面提到的思路，
+                    <b>
+                        从整体上进行考虑
+                    </b>
+                    。具体地说，我们假定对于所有满足积分等式的
+                    <img src="https://www.zhihu.com/equation?tex=g%3DI_B" alt="g=I_B" eeimg="1">
+                    ，Borel集
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    组成的集合系为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D" alt="\mathscr{H}" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%28-%5Cinfty%2Ca%5D%5Cright+%5C%7D%5Csubset+%5Cmathscr%7BH%7D" alt="\left \{  (-\infty,a]\right \}\subset \mathscr{H}" eeimg="1">
+                    。由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%28-%5Cinfty%2Ca%5D%5Cright+%5C%7D" alt="\left \{  (-\infty,a]\right \}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi" alt="\pi" eeimg="1">
+                    系，只需要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D" alt="\mathscr{H}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    系，结合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi-%5Clambda" alt="\pi-\lambda" eeimg="1">
+                    <b>
+                        定理
+                    </b>
+                    即可证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%5Csubset+%5Cmathscr%7BH%7D" alt="\mathscr{B}_{\mathbb{R}}\subset \mathscr{H}" eeimg="1">
+                    。
+                    <b>
+                        （这对于关于Borel可测函数性质的证明是一个通法，通常先考虑生成系上的性质，再利用
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi-%5Clambda" alt="\pi-\lambda" eeimg="1">
+                    <b>
+                        定理推至所有Borel集）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来便是依次考虑
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    非负简单、非负可测、一般可测的情形了，那些部分就不再赘述了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    介绍完这个定理后，我们就能够理解为何条件期望虽与期望的本质不同，但是具有如此相似的性质了。比对如下二式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%28g%28f%29%7C%5Cmathscr%7BG%7D%29%28%5Ccdot%29%3D%5Cint_%7B%5Cmathbb%7BR%7D%7Dg%28y%29%5C%2C%5Cmu_%7Bf%7C%5Cmathscr%7BG%7D%7D%28%5Ccdot%2Cdy%29" alt="E(g(f)|\mathscr{G})(\cdot)=\int_{\mathbb{R}}g(y)\,\mu_{f|\mathscr{G}}(\cdot,dy)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%28g%28f%29%29%3D%5Cint_%7B%5Cmathbb%7BR%7D%7Dg%28y%29%5C%2C%5Cmu_%7Bf%7D%28dy%29" alt="E(g(f))=\int_{\mathbb{R}}g(y)\,\mu_{f}(dy)" eeimg="1">
+                    （其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_f" alt="\mu_f" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的分布
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    诱导出的Lebesgue-Stieljes测度）
+                </p>
+                <p>
+                    发现期望与条件期望的积分表达式具有很相似的形式。唯一的不同就是在于
+                    <b>
+                        积分测度的不同
+                    </b>
+                    ！从积分表示的角度来看，我们一下子就能够理解为何条件期望与期望的性质如此相似了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在回首品味我们对于正则条件分布函数的定义。我们可以发现：我们其实在当时就想要在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D" alt="\mathscr{B}_{\mathbb{R}}" eeimg="1">
+                    上对条件概率做“测度化”的操作。只是直接这样做太难了！所以我们绕了点远路，考虑了Borel域结构非常简单的生成系
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%28-%5Cinfty%2Ca%5D%5Cright+%5C%7D" alt="\left \{  (-\infty,a]\right \}" eeimg="1">
+                    。接着，我们利用分布函数诱导出L-S测度的想法，进一步地将“测度化”的操作转化为了“分布化”的操作，这才有了正则条件分布函数。正则条件分布事实上是在保条件概率前提下对于每一点进行了局部的“测度化”的操作。且在我们讨论的Borel域中事件的范围内，这样的“测度化”操作必定是可行的。
+                </p>
+                <hr>
+                <p>
+                    最后，我们说说初等概率论中经常看到的关于一个随机变量给定值的条件期望。
+                </p>
+                <p>
+                    给定
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=%28Y%2C%5Cmathscr%7BS%7D%29" alt="(Y,\mathscr{S})" eeimg="1">
+                    的随机元（可测函数）
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    ，我们总是能得到
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7Cg%29" alt="E(f|g)" eeimg="1">
+                    ，这只要令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D%3D%5Csigma%28g%29" alt="\mathscr{G}=\sigma(g)" eeimg="1">
+                    就可以了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    即
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7Cg%29" alt="E(f|g)" eeimg="1">
+                    本质上是一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28g%29" alt="\sigma(g)" eeimg="1">
+                    可测的函数。然而，
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    这个随机元也是
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28g%29" alt="\sigma(g)" eeimg="1">
+                    可测的。由可测函数的性质，我们
+                    <b>
+                        必定能够找到一个
+                        <img src="https://www.zhihu.com/equation?tex=%28Y%2C%5Cmathscr%7BS%7D%29" alt="(Y,\mathscr{S})" eeimg="1">
+                        上的可测函数
+                        <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                        ，使得
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=h%5Ccirc+g%3DE%28f%7Cg%29" alt="h\circ g=E(f|g)" eeimg="1">
+                    。（可测函数的这条性质可以用典型方法证明）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这会带来的结果是：
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28g%29" alt="\sigma(g)" eeimg="1">
+                    中每个元素都是某个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BS%7D" alt="\mathscr{S}" eeimg="1">
+                    中元素
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    下的原像，故对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+B%5Cin+%5Cmathscr%7BS%7D%2C" alt="\forall B\in \mathscr{S}," eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bg%5E%7B-1%7DB%7DE%28f%7Cg%29%5C%2CdP%3D%5Cint_%7Bg%5E%7B-1%7DB%7Df%5C%2CdP" alt="\int_{g^{-1}B}E(f|g)\,dP=\int_{g^{-1}B}f\,dP" eeimg="1">
+                    （条件期望的定义）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bg%5E%7B-1%7DB%7DE%28f%7Cg%29%5C%2CdP%3D%5Cint_%7Bg%5E%7B-1%7DB%7Dh%5Ccirc+g%5C%2CdP%3D%5Cint_B+h%5C%2Cd%28Pg%5E%7B-1%7D%29" alt="\int_{g^{-1}B}E(f|g)\,dP=\int_{g^{-1}B}h\circ g\,dP=\int_B h\,d(Pg^{-1})" eeimg="1">
+                    （积分换元）
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=Pg%5E%7B-1%7D" alt="Pg^{-1}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%29" alt="(X,\mathscr{F})" eeimg="1">
+                    上由随机元
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    诱导出的概率测度。
+                </p>
+                <p>
+                    故我们
+                    <b>
+                        将满足：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+B%5Cin+%5Cmathscr%7BS%7D%2C" alt="\forall B\in \mathscr{S}," eeimg="1">
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bg%5E%7B-1%7DB%7Df%5C%2CdP%3D%5Cint_B+E%28f%7Cg%3Dy%29%5C%2CPg%5E%7B-1%7D%28dy%29" alt="\int_{g^{-1}B}f\,dP=\int_B E(f|g=y)\,Pg^{-1}(dy)" eeimg="1">
+                        的
+                        <img src="https://www.zhihu.com/equation?tex=E%28f%7Cg%3D%5Ccdot%29" alt="E(f|g=\cdot)" eeimg="1">
+                        定义为
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        关于
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        的给定值的条件期望
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注意到
+                    <b>
+                        由于
+                        <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                        是
+                        <img src="https://www.zhihu.com/equation?tex=Pg%5E%7B-1%7D-a.s." alt="Pg^{-1}-a.s." eeimg="1">
+                        唯一的，事实上
+                        <img src="https://www.zhihu.com/equation?tex=E%28f%7Cg%3D%5Ccdot%29" alt="E(f|g=\cdot)" eeimg="1">
+                        就是
+                        <img src="https://www.zhihu.com/equation?tex=h%28%5Ccdot%29" alt="h(\cdot)" eeimg="1">
+                        ！
+                    </b>
+                    这说明：
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7Cg%3D%5Ccdot%29" alt="E(f|g=\cdot)" eeimg="1">
+                    本身作为一个函数，描述了
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        的给定值
+                    </b>
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    <b>
+                        在给定值条件下的条件期望
+                    </b>
+                    之间的函数关系！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么，对于
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    为随机变量的特殊情形，
+                    <img src="https://www.zhihu.com/equation?tex=Pg%5E%7B-1%7D" alt="Pg^{-1}" eeimg="1">
+                    显然就是
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    的分布函数所诱导的Lebesgue-Stieljes测度了。
+                </p>
+                <p>
+                    特别地，当
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    是离散型随机变量时，假定其取值集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+a_1%2Ca_2%2C...+%5Cright+%5C%7D" alt="\left \{ a_1,a_2,... \right \}" eeimg="1">
+                    ，对应概率分布列为
+                    <img src="https://www.zhihu.com/equation?tex=p_1%2Cp_2%2C..." alt="p_1,p_2,..." eeimg="1">
+                    ，则通过考虑Borel集
+                    <img src="https://www.zhihu.com/equation?tex=B%3D%5Cleft+%5C%7B+a_i+%5Cright+%5C%7D" alt="B=\left \{ a_i \right \}" eeimg="1">
+                    ，利用上述定义，得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bg%5E%7B-1%7D%5Cleft+%5C%7B+a_i+%5Cright+%5C%7D%7Df%5C%2CdP%3D%5Cint_%5Cleft+%5C%7B+a_i+%5Cright+%5C%7D+E%28f%7Cg%3Dy%29%5C%2CPg%5E%7B-1%7D%28dy%29" alt="\int_{g^{-1}\left \{ a_i \right \}}f\,dP=\int_\left \{ a_i \right \} E(f|g=y)\,Pg^{-1}(dy)" eeimg="1">
+                </p>
+                <p>
+                    通过选取
+                    <img src="https://www.zhihu.com/equation?tex=f%3DI_A" alt="f=I_A" eeimg="1">
+                    ，显然左侧即为
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%5Ccap%5Cleft+%5C%7B+g%3Da_i+%5Cright+%5C%7D%29" alt="P(A\cap\left \{ g=a_i \right \})" eeimg="1">
+                    ，而右侧即为
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7Cg%3Da_i%29%5C+P%28g%3Da_i%29%3DP%28A%7Cg%3Da_i%29%5C+p_i" alt="P(A|g=a_i)\ P(g=a_i)=P(A|g=a_i)\ p_i" eeimg="1">
+                </p>
+                <p>
+                    从而得到：
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7Cg%3Da_i%29%3D%5Cfrac%7BP%28A%5Ccap%5Cleft+%5C%7B+g%3Da_i+%5Cright+%5C%7D%29%7D%7Bp_i%7D" alt="P(A|g=a_i)=\frac{P(A\cap\left \{ g=a_i \right \})}{p_i}" eeimg="1">
+                    ，这与我们在初等概率论中接触到的条件概率完全一致！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于条件概率作为符号测度的一个重要应用，我们就讲到这里。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

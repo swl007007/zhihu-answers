@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            概率论学习笔记（三）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-cd018a824dec9d2463e6ce95808924bc_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/45346632" target="_blank">
+                        概率论学习笔记（三）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-25
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    之前由于开学，拖更了好久2333
+                </p>
+                <p>
+                    现在打算在国庆节放假结束之前更完概率论笔记（特挖此坑）。之后打算不定期更新一些与数值分析有关的内容（这学期正好在学）。目前打算对概率论这块进行一些调整。后续的笔记可能会抽取一块略微讲一下随机过程的内容，以及概率论在某些行业中的应用。关于习题，之后若有空余时间，我将会挑选一些我认为有质量的习题供大家参阅。写笔记的初衷，一方面是帮助自己再进行一遍学习，另一方面是能为大家提供一些学习的资料，所以笔记很有可能会保持这种“详细”（可能有些啰嗦）的特点。
+                </p>
+                <p>
+                    本章主要介绍随机向量及条件分布。其实从本质上看，随机向量与随机变量差别不大，只是处理的方式要复杂一些罢了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        一、随机向量
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        已知概率空间
+                        <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2CF%2CP%29" alt="(\Omega,F,P)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C...%2CX_n" alt="X_1,X_2,...,X_n" eeimg="1">
+                        为此概率空间上的随机变量，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2CX_2%2C...%2CX_n%29" alt="\vec{X}=(X_1,X_2,...,X_n)" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        维随机向量。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，随机向量就是对随机变量进行了升维，这样我们不仅可以研究
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2" alt="X_1,X_2" eeimg="1">
+                    各自的分布，还能够研究这两个分量之间的联系。同时也为我们创造更多的随机变量提供了一些新的思路。
+                </p>
+                <p>
+                    我们在本节中的主要工作，其实是将（二）中关于随机变量的大部分性质与研究方法推广至随机向量的情况。同时，由于随机向量的结构更加复杂，我们还能得到一些在随机变量研究中所得不到的结论。
+                </p>
+                <p>
+                    在随机变量的讨论中，我们了解到了分布函数的重要性。分布函数与概率分布是相互唯一决定的。那么对于随机向量的推广我们也先从最重要的、决定概率分布的联合分布函数的定义切入。与一维（代指随机变量）情况类似地，我们定义多维（代指随机向量）情况下的分布函数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                        为随机向量，则
+                        <img src="https://www.zhihu.com/equation?tex=F%28x_1%2Cx_2%2C...%2Cx_n%29%3DP%28X_1%5Cleq+x_1%2CX_2%5Cleq+x_2%2C...%2CX_n%5Cleq+x_n%29" alt="F(x_1,x_2,...,x_n)=P(X_1\leq x_1,X_2\leq x_2,...,X_n\leq x_n)" eeimg="1">
+                        称为该随机向量的联合分布函数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注：此后若无特别说明，我们默认研究的是2维随机向量
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    ，多维情况类似。
+                </p>
+                <p>
+                    我们自然地将一维情况下分布函数的性质进行推广（读者自证）：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=0%5Cleq+F%28x%2Cy%29%5Cleq+1" alt="0\leq F(x,y)\leq 1" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    分别为单调递增右连续的函数。
+                </p>
+                <p>
+                    3、记
+                    <img src="https://www.zhihu.com/equation?tex=F%28-%5Cinfty+%2Cy%29%3D%5Clim_%7Bx%5Crightarrow+-%5Cinfty%7DF%28x%2Cy%29" alt="F(-\infty ,y)=\lim_{x\rightarrow -\infty}F(x,y)" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=F%28-%5Cinfty+%2Cy%29%3D0" alt="F(-\infty ,y)=0" eeimg="1">
+                    。同理地，
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%2C-%5Cinfty%29%3D0%2CF%28-%5Cinfty%2C-%5Cinfty%29%3D0" alt="F(x,-\infty)=0,F(-\infty,-\infty)=0" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=F%28%2B%5Cinfty%2C%2B%5Cinfty%29%3D1" alt="F(+\infty,+\infty)=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然而，联合分布描述的终究是多个随机变量混合纠缠在一起时的分布。我们自然地要发问：如何将某一个或某几个关心的随机变量分离出来，求得他们的概率分布呢？
+                </p>
+                <p>
+                    对于随机向量
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    ，由联合分布的定义，
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%2Cy%29%3DP%28X%5Cleq+x%2CY%5Cleq+y%29" alt="F(x,y)=P(X\leq x,Y\leq y)" eeimg="1">
+                    ，我们容易想到：如果我们要求得
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的概率分布，可以令
+                    <img src="https://www.zhihu.com/equation?tex=y%5Crightarrow+%2B%5Cinfty" alt="y\rightarrow +\infty" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    失去其在联合分布中的作用。
+                </p>
+                <p>
+                    事实上，由概率的连续性，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7By%5Crightarrow+%2B%5Cinfty%7DP%28X%5Cleq+x%2CY%5Cleq+y%29%3DP%28X%5Cleq+x%2C%5Cbigcup_%7By%3D1%7D%5E%5Cinfty+%5Cleft+%5C%7B+Y%5Cleq+y+%5Cright+%5C%7D%29%3DP%28X%5Cleq+x%29" alt="\lim_{y\rightarrow +\infty}P(X\leq x,Y\leq y)=P(X\leq x,\bigcup_{y=1}^\infty \left \{ Y\leq y \right \})=P(X\leq x)" eeimg="1">
+                    。所以，自然地，引出了边缘分布的定义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        随机向量
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=1%5Cleq+k%5Cleq+n-1" alt="1\leq k\leq n-1" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        为联合分布，则
+                        <img src="https://www.zhihu.com/equation?tex=%28X_1%2CX_2%2C...%2CX_k%29" alt="(X_1,X_2,...,X_k)" eeimg="1">
+                        的分布函数为
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bx_%7Bk%2B1%7D%2C...%2Cx_n%5Crightarrow+%2B%5Cinfty%7DF%28x_1%2Cx_2%2C...%2Cx_k%2Cx_%7Bk%2B1%7D.%2C...%2Cx_n%29" alt="\lim_{x_{k+1},...,x_n\rightarrow +\infty}F(x_1,x_2,...,x_k,x_{k+1}.,...,x_n)" eeimg="1">
+                        ，称为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D" alt="\vec{X}" eeimg="1">
+                        关于
+                        <img src="https://www.zhihu.com/equation?tex=%28X_1%2CX_2%2C...%2CX_k%29" alt="(X_1,X_2,...,X_k)" eeimg="1">
+                        的边缘分布。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有了边缘分布的概念后，我们便可以得到下面的关于随机向量各个分量之间独立性的定理。这部分叙述的是随机向量内部的关系，是先前讨论随机变量时不曾讨论到的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理：（随机向量分量独立性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        随机向量
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        独立的充要条件是联合分布等于关于每个分量的边缘分布的乘积，即
+                        <img src="https://www.zhihu.com/equation?tex=F%28x%2Cy%29%3DF_X%28x%29F_Y%28y%29" alt="F(x,y)=F_X(x)F_Y(y)" eeimg="1">
+                        。（
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        为联合分布，
+                        <img src="https://www.zhihu.com/equation?tex=F_X" alt="F_X" eeimg="1">
+                        为关于
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的边缘分布，之后均如此记录）
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%2Cy%29%3DF_X%28x%29F_Y%28y%29" alt="F(x,y)=F_X(x)F_Y(y)" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%5Cleq+x%2CY%5Cleq+y%29%3DP%28X%5Cleq+x%29P%28Y%5Cleq+y%29" alt="P(X\leq x,Y\leq y)=P(X\leq x)P(Y\leq y)" eeimg="1">
+                    ，符合随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    相互独立的定义。
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    独立，
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%5Cleq+x%2CY%5Cleq+y%29%3DF%28x%2Cy%29%3DP%28X%5Cleq+x%29P%28Y%5Cleq+y%29%3DF_X%28x%29F_Y%28y%29" alt="P(X\leq x,Y\leq y)=F(x,y)=P(X\leq x)P(Y\leq y)=F_X(x)F_Y(y)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个定理的证明十分简单，直接使用独立性定义即可得到。
+                </p>
+                <p>
+                    之后我们仍会接触许多判定独立性的定理。然而，联合分布与边缘分布的关系一直都将是与独立性最本质相关的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        二、离散型随机向量
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        当
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C...%2CX_n" alt="X_1,X_2,...,X_n" eeimg="1">
+                        均为离散型随机变量时，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                        为离散型随机向量。
+                    </b>
+                </p>
+                <p>
+                    我们主要关注离散型随机向量的概率分布列及其边缘分布。
+                </p>
+                <p>
+                    此处为了简化起见，我们均假设随机向量为二维的
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=X%3Dx_1%2Cx_2%2C..." alt="X=x_1,x_2,..." eeimg="1">
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dy_1%2Cy_2%2C..." alt="Y=y_1,y_2,..." eeimg="1">
+                    为这两个随机变量的所有取值，则随机向量的联合概率分布列为
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%2CY%3Dy_j%29%3Dp_%7Bij%7D" alt="P(X=x_i,Y=y_j)=p_{ij}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    同样地，由一维推广而来的结论以及联合分布与边缘分布的关系，我们迅速地得到（读者自证）：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=0%5Cleq+p_%7Bij%7D%5Cleq+1" alt="0\leq p_{ij}\leq 1" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bi%2Cj%7D+p_%7Bij%7D%3D1" alt="\sum_{i,j} p_{ij}=1" eeimg="1">
+                </p>
+                <p>
+                    3、
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%29%3D%5Csum_%7Bj%7D+p_%7Bij%7D" alt="P(X=x_i)=\sum_{j} p_{ij}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3Dy_j%29%3D%5Csum_%7Bi%7D+p_%7Bij%7D" alt="P(Y=y_j)=\sum_{i} p_{ij}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在此，我们介绍一个常用的离散型随机向量分布：多项分布。
+                </p>
+                <p>
+                    多项分布可以看作二项分布在多维情况下的推广。既然二项分布中用到了二项式系数，多项分布中也会不可避免地用到多项式系数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bpmatrix%7D++%26++%5C+%5C+%5C+n%26++%26+%5C%5C+++n_1%26+n_2+%26...++%26+n_k+%5Cend%7Bpmatrix%7D%3D%5Cbinom%7Bn%7D%7Bn_1%7D%5Cbinom%7Bn-n_1%7D%7Bn_2%7D...%5Cbinom%7Bn-n_1-...-n_%7Bk-1%7D%7D%7Bn_k%7D" alt="\begin{pmatrix}  &amp;  \ \ \ n&amp;  &amp; \\   n_1&amp; n_2 &amp;...  &amp; n_k \end{pmatrix}=\binom{n}{n_1}\binom{n-n_1}{n_2}...\binom{n-n_1-...-n_{k-1}}{n_k}" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=n_1%2B...%2Bn_k%3Dn" alt="n_1+...+n_k=n" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在此先简单地向读者介绍多项式展开（可类比二项式展开）：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28x_1%2Bx_2%2B...%2Bx_k%29%5En%3D%5Csum_%7Bn_1%3D0%7D%5E%7Bn%7D%5Csum_%7Bn_2%3D0%7D%5E%7Bn-n_1%7D%5Csum_%7Bn_3%3D0%7D%5E%7Bn-n_1-n_2%7D...%5Csum_%7Bn_k%3Dn-n_1-...-n_%7Bk-1%7D%7D+%5Cbegin%7Bpmatrix%7D++%26++%5C+%5C+%5C+n%26++%26+%5C%5C+++n_1%26+n_2+%26...++%26+n_k+%5Cend%7Bpmatrix%7D+x_1%5E%7Bn_1%7Dx_2%5E%7Bn_2%7D...x_k%5E%7Bn_k%7D" alt="(x_1+x_2+...+x_k)^n=\sum_{n_1=0}^{n}\sum_{n_2=0}^{n-n_1}\sum_{n_3=0}^{n-n_1-n_2}...\sum_{n_k=n-n_1-...-n_{k-1}} \begin{pmatrix}  &amp;  \ \ \ n&amp;  &amp; \\   n_1&amp; n_2 &amp;...  &amp; n_k \end{pmatrix} x_1^{n_1}x_2^{n_2}...x_k^{n_k}" eeimg="1">
+                </p>
+                <p>
+                    此处有一个限制条件：
+                    <img src="https://www.zhihu.com/equation?tex=n_1%2B...%2Bn_k%3Dn" alt="n_1+...+n_k=n" eeimg="1">
+                    。
+                </p>
+                <p>
+                    这个式子看上去非常复杂，实际上却很容易理解。
+                </p>
+                <p>
+                    将等号左边看成
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个括号的乘积，我们在做的实际上就是确定每个括号贡献出了
+                    <img src="https://www.zhihu.com/equation?tex=x_1" alt="x_1" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=x_k" alt="x_k" eeimg="1">
+                    中的哪一个数。在有
+                    <img src="https://www.zhihu.com/equation?tex=n_1" alt="n_1" eeimg="1">
+                    个括号拿出了
+                    <img src="https://www.zhihu.com/equation?tex=x_1" alt="x_1" eeimg="1">
+                    后，最多只能有
+                    <img src="https://www.zhihu.com/equation?tex=n-n_1" alt="n-n_1" eeimg="1">
+                    个括号能够再拿出
+                    <img src="https://www.zhihu.com/equation?tex=x_2" alt="x_2" eeimg="1">
+                    ，......，以此类推，我们得到了
+                    <img src="https://www.zhihu.com/equation?tex=x_1%5E%7Bn_1%7Dx_2%5E%7Bn_2%7D...x_k%5E%7Bn_k%7D" alt="x_1^{n_1}x_2^{n_2}...x_k^{n_k}" eeimg="1">
+                    这项。而多项式系数则是这样从括号中取数的方法数。然后分别对
+                    <img src="https://www.zhihu.com/equation?tex=n_1%2Cn_2%2C...%2Cn_k" alt="n_1,n_2,...,n_k" eeimg="1">
+                    在他们各自的范围内求和即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面我们来看多项分布：
+                </p>
+                <p>
+                    <b>
+                        多项分布：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C...%2CA_r" alt="A_1,A_2,...,A_r" eeimg="1">
+                        为完备事件组。现在独立重复试验
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        次，
+                        <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                        表示事件
+                        <img src="https://www.zhihu.com/equation?tex=A_i" alt="A_i" eeimg="1">
+                        的发生次数，
+                        <img src="https://www.zhihu.com/equation?tex=P%28A_i%29%3Dp_i%28i%3D1%2C2%2C..%2Cr%29" alt="P(A_i)=p_i(i=1,2,..,r)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=P%28X_1%3Dk_1%2CX_2%3Dk_2%2C...%2CX_r%3Dk_r%29%3D" alt="P(X_1=k_1,X_2=k_2,...,X_r=k_r)=" eeimg="1">
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bpmatrix%7D++%26++%5C+%5C+%5C+n%26++%26+%5C%5C+++k_1%26+k_2+%26...++%26+k_r+%5Cend%7Bpmatrix%7D+p_1%5E%7Bk_1%7Dp_2%5E%7Bk_2%7D...p_r%5E%7Bk_r%7D" alt="\begin{pmatrix}  &amp;  \ \ \ n&amp;  &amp; \\   k_1&amp; k_2 &amp;...  &amp; k_r \end{pmatrix} p_1^{k_1}p_2^{k_2}...p_r^{k_r}" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=k_i%5Cgeq+0%2Ck_1%2B...%2Bk_r%3Dn" alt="k_i\geq 0,k_1+...+k_r=n" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    多项分布作为概率分布的完全性的验证就交给读者自行完成。（要是理解了上述的多项式展开模型很容易给出证明）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，关于离散型随机向量分量的独立性判定，我们给出如下定理。读者可以尝试利用上一章末尾的定理以及概率的连续性进行简单的证明。
+                </p>
+                <p>
+                    <b>
+                        定理（离散型随机向量分量独立性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        为离散型随机向量，则
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        独立的充要条件是
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%2Cj%2C%5C+%5C+P%28X%3Dx_i%2CY%3Dy_j%29%3DP%28X%3Dx_i%29P%28Y%3Dy_j%29" alt="\forall i,j,\ \ P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        注意：此定理仅对离散型随机向量成立！
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        三、连续型随机向量
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                        为连续型随机向量，
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                        上的非负可积函数。若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+D%3D%5Cleft+%5C%7B%28x_1%2C...%2Cx_n%29%7Ca_i%3Cx_i%5Cleq+b_i+%2C%5C+%5C+a_i%2Cb_i%5Cin+%5Cmathbb%7BR%7D+%5Cright+%5C%7D" alt="\forall D=\left \{(x_1,...,x_n)|a_i&lt;x_i\leq b_i ,\ \ a_i,b_i\in \mathbb{R} \right \}" eeimg="1">
+                        ，都有
+                        <img src="https://www.zhihu.com/equation?tex=P%28%5Cvec%7BX%7D%5Cin+D%29%3D%5Cint_...+%5Cint_Df%28x_1%2C...%2Cx_n%29dx_1...dx_n" alt="P(\vec{X}\in D)=\int_... \int_Df(x_1,...,x_n)dx_1...dx_n" eeimg="1">
+                        成立，则随机向量为连续型随机向量，且
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        为联合密度。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们很可能在此处会产生一个疑问：为何不利用
+                    <img src="https://www.zhihu.com/equation?tex=%28X_1%2C...%2CX_n%29" alt="(X_1,...,X_n)" eeimg="1">
+                    中每个分量均为连续型随机变量来定义连续型随机向量呢？
+                </p>
+                <p>
+                    我们先保留这个问题，在后面我们将看到这样的定义是
+                    <b>
+                        错误的
+                    </b>
+                    。在此之前，我们先来关注联合密度的性质。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对一维中的密度的性质进行推广，容易得到：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_...+%5Cint_%7B%5Cmathbb%7BR%7D%5En%7Df%28x_1%2C...%2Cx_n%29dx_1...dx_n%3D1" alt="\int_... \int_{\mathbb{R}^n}f(x_1,...,x_n)dx_1...dx_n=1" eeimg="1">
+                </p>
+                <p>
+                    2、联合密度不唯一。（事实上修改联合密度在低维子集上的取值都不会改变
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    重积分的值）
+                </p>
+                <p>
+                    3、若
+                    <img src="https://www.zhihu.com/equation?tex=f%2Cg" alt="f,g" eeimg="1">
+                    均为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D" alt="\vec{X}" eeimg="1">
+                    的联合密度，且均在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3D%28x_1%2C...%2Cx_n%29" alt="\vec{x}=(x_1,...,x_n)" eeimg="1">
+                    处连续，则必有
+                    <img src="https://www.zhihu.com/equation?tex=f%28%5Cvec%7Bx%7D%29%3Dg%28%5Cvec%7Bx%7D%29" alt="f(\vec{x})=g(\vec{x})" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于连续型随机向量的边缘密度，事实上与我们给出边缘分布函数定义时给出的推导思路大同小异。
+                </p>
+                <p>
+                    在此之前，我们先不加证明地给出一个数学分析中的定理，此定理将经常在讨论连续型随机变量的性质时被用到。
+                </p>
+                <p>
+                    <b>
+                        定理（Fubini）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=f%28x_1%2Cx_2%2C...%2Cx_n%29" alt="f(x_1,x_2,...,x_n)" eeimg="1">
+                        为非负函数或者在
+                        <img src="https://www.zhihu.com/equation?tex=D%5Csubset+%5Cmathbb%7BR%7D%5En" alt="D\subset \mathbb{R}^n" eeimg="1">
+                        上绝对可积函数，则
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        上的
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        重积分可以任意交换
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        次积分的顺序。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回忆之前对于边缘分布的定义，采取同样的方法。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                    为连续型随机向量，
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    为联合密度，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+1%5Cleq+k%5Cleq+n-1%2CD_k%3D%5Cleft+%5C%7B%28x_1%2C...%2Cx_k%29%7Ca_i%3Cx_i%5Cleq+b_i+%2C%5C+%5C+a_i%2Cb_i%5Cin+%5Cmathbb%7BR%7D%2C1%5Cleq+i%5Cleq+k+%5Cright+%5C%7D" alt="\forall 1\leq k\leq n-1,D_k=\left \{(x_1,...,x_k)|a_i&lt;x_i\leq b_i ,\ \ a_i,b_i\in \mathbb{R},1\leq i\leq k \right \}" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=P%28%28X_1%2C...%2CX_k%29%5Cin+D_k%29%3D%5Cint_...+%5Cint_%7BD_k%5Ctimes+%5Cmathbb%7BR%7D%5E%7Bn-k%7D%7Df%28x_1%2C...%2Cx_n%29dx_1...dx_n" alt="P((X_1,...,X_k)\in D_k)=\int_... \int_{D_k\times \mathbb{R}^{n-k}}f(x_1,...,x_n)dx_1...dx_n" eeimg="1">
+                    。由Fubini定理，原式
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cint...+%5Cint_%7BD_k%7D%28%5Cint...%5Cint_%7B%5Cmathbb%7BR%7D%5E%7Bn-k%7D%7Df%28x_1%2C...%2Cx_k%2Cx_%7Bk%2B1%7D%2C...%2Cx_n%29dx_%7Bk%2B1%7D...dx_n%29dx_1...dx_k" alt="=\int... \int_{D_k}(\int...\int_{\mathbb{R}^{n-k}}f(x_1,...,x_k,x_{k+1},...,x_n)dx_{k+1}...dx_n)dx_1...dx_k" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由联合密度的定义，我们
+                    <b>
+                        容易知道
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint...%5Cint_%7B%5Cmathbb%7BR%7D%5E%7Bn-k%7D%7Df%28x_1%2C...%2Cx_k%2Cx_%7Bk%2B1%7D%2C...%2Cx_n%29dx_%7Bk%2B1%7D...dx_n" alt="\int...\int_{\mathbb{R}^{n-k}}f(x_1,...,x_k,x_{k+1},...,x_n)dx_{k+1}...dx_n" eeimg="1">
+                        即为关于
+                        <img src="https://www.zhihu.com/equation?tex=%28X_1%2C...%2CX_k%29" alt="(X_1,...,X_k)" eeimg="1">
+                        的边缘密度
+                    </b>
+                    。（直观地理解，关于不相关的随机变量在其可能取值区域上积分则可以消除此随机变量对于整体的概率上的影响）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面我们介绍一个有趣的问题：
+                </p>
+                <p>
+                    读者学至此处，是否曾经想到过如下问题：为啥密度函数的名字叫作“密度”呢？
+                </p>
+                <p>
+                    这个问题实际上非常有趣。我在下面尝试着给出这样的一个解释。
+                </p>
+                <p>
+                    <b>
+                        某点处密度函数的值实际上代表了这个点附近单位体积中取值的概率。
+                    </b>
+                </p>
+                <p>
+                    不妨假设
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                    的联合密度，且在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx_0%7D%3D%28x_1%5E0%2C...%2Cx_n%5E0%29" alt="\vec{x_0}=(x_1^0,...,x_n^0)" eeimg="1">
+                    处连续。
+                </p>
+                <p>
+                    取充分小的
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+x_1%2C...%2C%5CDelta+x_n" alt="\Delta x_1,...,\Delta x_n" eeimg="1">
+                    ，
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BP%28+x_1%5E0-%5Cfrac%7B%5CDelta+x_1%7D%7B2%7D%3CX_1%5Cleq++x_1%5E0%2B%5Cfrac%7B%5CDelta+x_1%7D%7B2%7D%2C...%2Cx_n%5E0-%5Cfrac%7B%5CDelta+x_n%7D%7B2%7D%3CX_n%5Cleq++x_n%5E0%2B%5Cfrac%7B%5CDelta+x_n%7D%7B2%7D++%29%7D%7B%5CDelta+x_1+%5CDelta+x_2...%5CDelta+x_n%7D" alt="\frac{P( x_1^0-\frac{\Delta x_1}{2}&lt;X_1\leq  x_1^0+\frac{\Delta x_1}{2},...,x_n^0-\frac{\Delta x_n}{2}&lt;X_n\leq  x_n^0+\frac{\Delta x_n}{2}  )}{\Delta x_1 \Delta x_2...\Delta x_n}" eeimg="1">
+                </p>
+                <p>
+                    这个值代表了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D" alt="\vec{X}" eeimg="1">
+                    取值在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx_0%7D" alt="\vec{x_0}" eeimg="1">
+                    附近单位体积中的概率。
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cfrac%7B%5Cint_%7B+x_1%5E0-%5Cfrac%7B%5CDelta+x_1%7D%7B2%7D%7D%5E%7B+x_1%5E0%2B%5Cfrac%7B%5CDelta+x_1%7D%7B2%7D%7D...%5Cint_%7B+x_n%5E0-%5Cfrac%7B%5CDelta+x_n%7D%7B2%7D%7D%5E%7B+x_n%5E0%2B%5Cfrac%7B%5CDelta+x_n%7D%7B2%7D%7Df%28x_1%2C...%2Cx_n%29dx_1...dx_n%7D%7B%5CDelta+x_1...%5CDelta+x_n%7D" alt="=\frac{\int_{ x_1^0-\frac{\Delta x_1}{2}}^{ x_1^0+\frac{\Delta x_1}{2}}...\int_{ x_n^0-\frac{\Delta x_n}{2}}^{ x_n^0+\frac{\Delta x_n}{2}}f(x_1,...,x_n)dx_1...dx_n}{\Delta x_1...\Delta x_n}" eeimg="1">
+                </p>
+                <p>
+                    由定积分第一中值定理，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Cxi_i%5Cin%5B+x_i%5E0-%5Cfrac%7B%5CDelta+x_i%7D%7B2%7D%2C+x_i%5E0%2B%5Cfrac%7B%5CDelta+x_i%7D%7B2%7D%5D%5C+%28i%3D1%2C2%2C...%2Cn%29" alt="\exists \xi_i\in[ x_i^0-\frac{\Delta x_i}{2}, x_i^0+\frac{\Delta x_i}{2}]\ (i=1,2,...,n)" eeimg="1">
+                </p>
+                <p>
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B+x_1%5E0-%5Cfrac%7B%5CDelta+x_1%7D%7B2%7D%7D%5E%7B+x_1%5E0%2B%5Cfrac%7B%5CDelta+x_1%7D%7B2%7D%7D...%5Cint_%7B+x_n%5E0-%5Cfrac%7B%5CDelta+x_n%7D%7B2%7D%7D%5E%7B+x_n%5E0%2B%5Cfrac%7B%5CDelta+x_n%7D%7B2%7D%7Df%28x_1%2C...%2Cx_n%29dx_1...dx_n%3Df%28%5Cxi_1%2C...%2C%5Cxi_n%29%5CDelta+x_1...%5CDelta+x_n" alt="\int_{ x_1^0-\frac{\Delta x_1}{2}}^{ x_1^0+\frac{\Delta x_1}{2}}...\int_{ x_n^0-\frac{\Delta x_n}{2}}^{ x_n^0+\frac{\Delta x_n}{2}}f(x_1,...,x_n)dx_1...dx_n=f(\xi_1,...,\xi_n)\Delta x_1...\Delta x_n" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BP%28+x_1%5E0-%5Cfrac%7B%5CDelta+x_1%7D%7B2%7D%3CX_1%5Cleq++x_1%5E0%2B%5Cfrac%7B%5CDelta+x_1%7D%7B2%7D%2C...%2Cx_n%5E0-%5Cfrac%7B%5CDelta+x_n%7D%7B2%7D%3CX_n%5Cleq++x_n%5E0%2B%5Cfrac%7B%5CDelta+x_n%7D%7B2%7D++%29%7D%7B%5CDelta+x_1+%5CDelta+x_2...%5CDelta+x_n%7D%3Df%28%5Cxi_1%2C...%2C%5Cxi_n%29" alt="\frac{P( x_1^0-\frac{\Delta x_1}{2}&lt;X_1\leq  x_1^0+\frac{\Delta x_1}{2},...,x_n^0-\frac{\Delta x_n}{2}&lt;X_n\leq  x_n^0+\frac{\Delta x_n}{2}  )}{\Delta x_1 \Delta x_2...\Delta x_n}=f(\xi_1,...,\xi_n)" eeimg="1">
+                </p>
+                <p>
+                    由我们假设的
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx_0%7D" alt="\vec{x_0}" eeimg="1">
+                    处的连续性，我们易知
+                    <img src="https://www.zhihu.com/equation?tex=f%28%5Cxi_1%2C...%2C%5Cxi_n%29%3Df%28%5Cvec%7Bx_0%7D%29" alt="f(\xi_1,...,\xi_n)=f(\vec{x_0})" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于联合分布与联合密度之间的关系，本质仍是以一维情况的结论为根据进行推广。在此我们一笔带过地给出结论，但是我们要注意高维情况与一维情况存在一些细微的差别。
+                </p>
+                <p>
+                    （以下为了简化讨论，总是默认随机向量为二维的
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    <b>
+                        定理（联合分布与联合密度）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        随机向量有连续的分布函数
+                        <img src="https://www.zhihu.com/equation?tex=F%28x%2Cy%29" alt="F(x,y)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3D%5Cbegin%7Bcases%7D+%5Cfrac%7B%5Cpartial%5E2+F+%7D%7B%5Cpartial+x+%5Cpartial+y%7D%5C+%5C+%5C+%5C+%5C+%5C+%5C+if%5C+%5Cfrac%7B%5Cpartial%5E2+F+%7D%7B%5Cpartial+x+%5Cpartial+y%7D%5C++exists%5C%5C+0%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+else+%5Cend%7Bcases%7D" alt="f(x,y)=\begin{cases} \frac{\partial^2 F }{\partial x \partial y}\ \ \ \ \ \ \ if\ \frac{\partial^2 F }{\partial x \partial y}\  exists\\ 0\ \ \ \ \ \ \ \ \ \ \ \ \ else \end{cases}" eeimg="1">
+                        ，若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint%5Cint_%7B%5Cmathbb%7BR%7D%5E2%7Df%28x%2Cy%29dxdy%3D1" alt="\int\int_{\mathbb{R}^2}f(x,y)dxdy=1" eeimg="1">
+                        ，则随机向量为连续型，且
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        为联合密度。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    读者可以比对这一条定理与连续型随机变量一章中的对应定理。容易发现，
+                    <b>
+                        多出了
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint%5Cint_%7B%5Cmathbb%7BR%7D%5E2%7Df%28x%2Cy%29dxdy%3D1" alt="\int\int_{\mathbb{R}^2}f(x,y)dxdy=1" eeimg="1">
+                        的约束条件
+                    </b>
+                    。我们将用反例来说明这样的条件是
+                    <b>
+                        必要
+                    </b>
+                    的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+U%280%2C1%29" alt="X\sim U(0,1)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=X%3DY" alt="X=Y" eeimg="1">
+                    ，考虑
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    的概率分布。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    做法与一维时类似，我们从分布函数入手。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%2Cy%29%3DP%28X%5Cleq+x%2CY%5Cleq+y%29%3DP%28X%5Cleq+x%2CX%5Cleq+y%29%3DP%28X%5Cleq+min%5Cleft+%5C%7Bx%2Cy++%5Cright+%5C%7D%29" alt="F(x,y)=P(X\leq x,Y\leq y)=P(X\leq x,X\leq y)=P(X\leq min\left \{x,y  \right \})" eeimg="1">
+                </p>
+                <p>
+                    得
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%2Cy%29%3D+%5Cbegin%7Bcases%7D+0%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C++%5C+min+%5Cleft+%5C%7B+x%2Cy+%5Cright+%5C%7D%5Cleq+0%5C%5C+min%5Cleft+%5C%7B+x%2Cy+%5Cright+%5C%7D%5C+%5C++%5C+0%3Cmin+%5Cleft+%5C%7B+x%2Cy+%5Cright+%5C%7D%5Cleq1+%5C%5C+1%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+min+%5Cleft+%5C%7B+x%2Cy+%5Cright+%5C%7D%3E1+%5Cend%7Bcases%7D" alt="F(x,y)= \begin{cases} 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \ min \left \{ x,y \right \}\leq 0\\ min\left \{ x,y \right \}\ \  \ 0&lt;min \left \{ x,y \right \}\leq1 \\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min \left \{ x,y \right \}&gt;1 \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    若联合密度存在，联合密度
+                    <img src="https://www.zhihu.com/equation?tex=f%3D0" alt="f=0" eeimg="1">
+                    （恒为0）
+                </p>
+                <p>
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint%5Cint_%7B%5Cmathbb%7BR%7D%5E2%7Df%28x%2Cy%29dxdy%3D1" alt="\int\int_{\mathbb{R}^2}f(x,y)dxdy=1" eeimg="1">
+                    矛盾。故联合密度不存在，
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    不是连续型随机向量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个反例同时也告诉我们：
+                    <b>
+                        即使
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        均为连续型随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        也不一定是连续型随机向量。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于连续型随机向量中分量之间的独立性，也大同小异。我们在此直接给出定理，读者可以尝试自己证明（利用Fubini定理以及定义容易证明）。
+                </p>
+                <p>
+                    <b>
+                        定理（连续型随机向量的分量间独立性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        假设
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        有边缘密度
+                        <img src="https://www.zhihu.com/equation?tex=f_X%28x%29" alt="f_X(x)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        有边缘密度
+                        <img src="https://www.zhihu.com/equation?tex=f_Y%28y%29" alt="f_Y(y)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        独立的充要条件是
+                        <img src="https://www.zhihu.com/equation?tex=f_X%28x%29f_Y%28y%29" alt="f_X(x)f_Y(y)" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        的联合密度。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，介绍两种常见的连续型随机向量的概率分布作为收尾。
+                </p>
+                <p>
+                    <b>
+                        1、均匀分布
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=D%5Csubset%5Cmathbb%7BR%7D%5E2" alt="D\subset\mathbb{R}^2" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=m%28D%29" alt="m(D)" eeimg="1">
+                        为其面积，是有限的。若
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        有联合密度
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3D%5Cbegin%7Bcases%7D+%5Cfrac%7B1%7D%7Bm%28D%29%7D%5C+%5C++%5C+%28X%2CY%29%5Cin+D%5C%5C+0%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+else+%5Cend%7Bcases%7D" alt="f(x,y)=\begin{cases} \frac{1}{m(D)}\ \  \ (X,Y)\in D\\ 0\ \ \ \ \ \ \ \ \ \ else \end{cases}" eeimg="1">
+                        ，则称其服从
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        上的均匀分布。
+                    </b>
+                </p>
+                <p>
+                    我们举均匀分布的一例，顺便作为研究分量独立性与求边缘密度的举例。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    在单位圆内部
+                    <img src="https://www.zhihu.com/equation?tex=D+" alt="D" eeimg="1">
+                    上均匀分布
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3D%5Cbegin%7Bcases%7D+%5Cfrac%7B1%7D%7B%5Cpi+%7D%5C+%5C++%5C+%28X%2CY%29%5Cin+D%5C%5C+0%5C+%5C+%5C+%5C+else+%5Cend%7Bcases%7D" alt="f(x,y)=\begin{cases} \frac{1}{\pi }\ \  \ (X,Y)\in D\\ 0\ \ \ \ else \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    则关于
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的边缘密度为
+                    <img src="https://www.zhihu.com/equation?tex=f_X%28x%29%3D%5Cint_y+f%28x%2Cy%29dy%3D%5Cint%5E%7B%5Csqrt%7B1-x%5E2%7D%7D_%7B-%5Csqrt%7B1-x%5E2%7D%7D%5Cfrac%7B1%7D%7B%5Cpi+%7Ddy%3D%5Cfrac%7B2%7D%7B%5Cpi+%7D%5Csqrt%7B1-x%5E2%7D%28-1%5Cleq+x%5Cleq+1%29" alt="f_X(x)=\int_y f(x,y)dy=\int^{\sqrt{1-x^2}}_{-\sqrt{1-x^2}}\frac{1}{\pi }dy=\frac{2}{\pi }\sqrt{1-x^2}(-1\leq x\leq 1)" eeimg="1">
+                </p>
+                <p>
+                    同理，对称地，
+                    <img src="https://www.zhihu.com/equation?tex=f_Y%28y%29%3D%5Cfrac%7B2%7D%7B%5Cpi+%7D%5Csqrt%7B1-y%5E2%7D%28-1%5Cleq+y%5Cleq+1%29" alt="f_Y(y)=\frac{2}{\pi }\sqrt{1-y^2}(-1\leq y\leq 1)" eeimg="1">
+                </p>
+                <p>
+                    容易验证
+                    <img src="https://www.zhihu.com/equation?tex=f_X%28x%29f_Y%28y%29" alt="f_X(x)f_Y(y)" eeimg="1">
+                    并不能作为联合密度，故
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    不独立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、 二维正态分布
+                    </b>
+                </p>
+                <p>
+                    此处我们只大致地谈及二维正态分布，关于任意有限维正态分布的结果我们将在最后几张详细讨论。
+                </p>
+                <p>
+                    <b>
+                        联合密度为
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3D%5Cfrac%7B1%7D%7B2%5Cpi+%5Csigma_1+%5Csigma_2+%5Csqrt%7B1-%5Crho%5E2%7D%7De%5E%7B-%5Cfrac%7B1%7D%7B2%281-%5Crho%5E2%29%7D%5B%5Cfrac%7B%28x-%5Cmu_1%29%5E2%7D%7B%5Csigma_1%5E2%7D-%5Cfrac%7B2%5Crho+%28x-%5Cmu_1%29%28y-%5Cmu_2%29%7D%7B%5Csigma_1+%5Csigma_2%7D%2B%5Cfrac%7B%28y-%5Cmu_2%29%5E2%7D%7B%5Csigma_2%5E2%7D%5D%7D" alt="f(x,y)=\frac{1}{2\pi \sigma_1 \sigma_2 \sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu_1)^2}{\sigma_1^2}-\frac{2\rho (x-\mu_1)(y-\mu_2)}{\sigma_1 \sigma_2}+\frac{(y-\mu_2)^2}{\sigma_2^2}]}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        其中
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma_1%2C%5Csigma_2%3E0%2C-1%3C%5Crho%3C1" alt="\sigma_1,\sigma_2&gt;0,-1&lt;\rho&lt;1" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        此时称随机向量服从二维正态分布，记作
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29%5Csim+N%28%5Cmu_1%2C%5Cmu_2%2C%5Csigma_1%5E2%2C%5Csigma_2%5E2%2C%5Crho%29" alt="(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    比较重要的结论是：
+                </p>
+                <p>
+                    <b>
+                        边缘密度
+                        <img src="https://www.zhihu.com/equation?tex=f_X%28x%29%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi+%7D%5Csigma_1%7De%5E%7B+-%5Cfrac%7B%28x-%5Cmu_1%29%5E2%7D%7B2%5Csigma_1%5E2%7D+%7D" alt="f_X(x)=\frac{1}{\sqrt{2\pi }\sigma_1}e^{ -\frac{(x-\mu_1)^2}{2\sigma_1^2} }" eeimg="1">
+                        ，是与
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho" alt="\rho" eeimg="1">
+                        无关的，即
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%28%5Cmu_1%2C%5Csigma_1%5E2%29" alt="X\sim N(\mu_1,\sigma_1^2)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        同理地，
+                        <img src="https://www.zhihu.com/equation?tex=Y%5Csim+N%28%5Cmu_2%2C%5Csigma_2%5E2%29" alt="Y\sim N(\mu_2,\sigma_2^2)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        的边缘分布都为正态分布，且参数分别来自二维正态分布中的四个不同参数，与
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho" alt="\rho" eeimg="1">
+                        （相关系数）无关。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，
+                    <b>
+                        二维正态分布中，
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        独立的充要条件是
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%3D0" alt="\rho=0" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    （读者可以尝试利用联合密度的性质3进行证明，此处略去）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        四、随机向量的函数的分布
+                    </b>
+                </p>
+                <p>
+                    在这一章中，为了简化过程，我们默认随机向量为二维的
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们假设随机向量的函数为二元一维的函数（形如
+                    <img src="https://www.zhihu.com/equation?tex=Z%3Dg%28X%2CY%29" alt="Z=g(X,Y)" eeimg="1">
+                    ）。
+                </p>
+                <p>
+                    与求随机变量的函数的分布的讨论类似，我们分为离散型与连续型两种情况分别研究。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        为离散型随机向量
+                    </b>
+                </p>
+                <p>
+                    有联合分布
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%2CY%3Dy_j%29%3Dp_%7Bij%7D" alt="P(X=x_i,Y=y_j)=p_{ij}" eeimg="1">
+                    ，现在要求
+                    <img src="https://www.zhihu.com/equation?tex=Z%3Dg%28X%2CY%29" alt="Z=g(X,Y)" eeimg="1">
+                    的分布。
+                </p>
+                <p>
+                    很自然地，我们只需要合并
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall%5C+i%2Cj%2C%5C+%5C+g%28x_i%2Cy_j%29" alt="\forall\ i,j,\ \ g(x_i,y_j)" eeimg="1">
+                    的相同取值，记为
+                    <img src="https://www.zhihu.com/equation?tex=z_1%2Cz_2%2C...%2Cz_k" alt="z_1,z_2,...,z_k" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=P%28Z%3Dz_k%29%3D%5Csum_%7Bg%28x_i%2Cy_j%29%3Dz_k%7D+p_%7Bij%7D" alt="P(Z=z_k)=\sum_{g(x_i,y_j)=z_k} p_{ij}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    与随机变量的情况几乎完全相同。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        为连续型随机向量
+                    </b>
+                </p>
+                <p>
+                    方法仍然是我一直在强调的：
+                    <b>
+                        分布函数法
+                    </b>
+                </p>
+                <p>
+                    为了理解分布函数法在随机向量情况下的应用，我们举一例说明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    有联合密度
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29" alt="f(x,y)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=Z%3DX%2BY" alt="Z=X+Y" eeimg="1">
+                    ，求
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    的概率分布。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    考虑分布函数
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F_Z%28z%29%3DP%28Z%5Cleq+z%29%3DP%28X%2BY%5Cleq+z%29" alt="F_Z(z)=P(Z\leq z)=P(X+Y\leq z)" eeimg="1">
+                </p>
+                <p>
+                    注意此处将
+                    <img src="https://www.zhihu.com/equation?tex=z" alt="z" eeimg="1">
+                    看作常数，利用联合密度的定义求这个概率（二重积分，积分区域即为直线
+                    <img src="https://www.zhihu.com/equation?tex=x%2By%3D+z" alt="x+y= z" eeimg="1">
+                    的下方区域【再次注意此时
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    为变量，
+                    <img src="https://www.zhihu.com/equation?tex=z" alt="z" eeimg="1">
+                    为常数】）
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%2BY%5Cleq+z%29%3D%5Cint%5Cint_%7Bx%2By%5Cleq+z%7Df%28x%2Cy%29dxdy%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Ddx%5Cint_%7B-%5Cinfty%7D%5E%7Bz-x%7Df%28x%2Cy%29dy" alt="P(X+Y\leq z)=\int\int_{x+y\leq z}f(x,y)dxdy=\int_{-\infty}^{+\infty}dx\int_{-\infty}^{z-x}f(x,y)dy" eeimg="1">
+                </p>
+                <p>
+                    进行换元
+                    <img src="https://www.zhihu.com/equation?tex=u%3Dx%2By" alt="u=x+y" eeimg="1">
+                    ，得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Ddx%5Cint_%7B-%5Cinfty%7D%5E%7Bz%7Df%28x%2Cu-x%29du" alt="\int_{-\infty}^{+\infty}dx\int_{-\infty}^{z}f(x,u-x)du" eeimg="1">
+                </p>
+                <p>
+                    由Fubini定理，得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B-%5Cinfty%7D%5E%7Bz%7Ddu%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Df%28x%2Cu-x%29dx" alt="\int_{-\infty}^{z}du\int_{-\infty}^{+\infty}f(x,u-x)dx" eeimg="1">
+                    。
+                </p>
+                <p>
+                    显然分布函数连续，
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    为连续型随机变量。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=f_Z%28z%29%3DF%5E%7B%27%7D_Z%28z%29%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Df%28x%2Cz-x%29dx" alt="f_Z(z)=F^{&#39;}_Z(z)=\int_{-\infty}^{+\infty}f(x,z-x)dx" eeimg="1">
+                </p>
+                <p>
+                    由此，我们得到了
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    的密度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，随机向量的每个分量的和的密度被称为
+                    <b>
+                        卷积
+                    </b>
+                    。
+                </p>
+                <p>
+                    <b>
+                        容易看到，若
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        有联合密度
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29" alt="f(x,y)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=Z%3DX%2BY" alt="Z=X+Y" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=f_Z%28z%29%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Df%28x%2Cz-x%29dx" alt="f_Z(z)=\int_{-\infty}^{+\infty}f(x,z-x)dx" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        进一步地，如果加上
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        独立这个更强的条件，我们知道
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%2Cz-x%29%3Df_X%28x%29f_Y%28z-x%29" alt="f(x,z-x)=f_X(x)f_Y(z-x)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        此时，
+                        <img src="https://www.zhihu.com/equation?tex=f_Z%28z%29%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Df_X%28x%29f_Y%28z-x%29dx" alt="f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)dx" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对
+                        <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                        求积分也会得到对称的结论，这些结论是等价的。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        更加广泛地，若
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        有联合密度
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29" alt="f(x,y)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=Z%3DX-Y" alt="Z=X-Y" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=f_Z%28z%29%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7D+f%28x%2Cx-z%29dx" alt="f_Z(z)=\int_{-\infty}^{+\infty} f(x,x-z)dx" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=Z%3D%5Cfrac%7BX%7D%7BY%7D" alt="Z=\frac{X}{Y}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=f_Z%28z%29%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7D%7Cy%7Cf%28yz%2Cy%29dy" alt="f_Z(z)=\int_{-\infty}^{+\infty}|y|f(yz,y)dy" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这些结论均可利用上述例子中相似的方法得到（在积分区域上进行二重积分得到
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    的分布函数，进而求出其密度），请读者自己计算，此处不再赘述。我们在此给出一个求随机向量函数分布的具体的例子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY%5Csim+N%280%2C1%29" alt="X,Y\sim N(0,1)" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    独立，求
+                    <img src="https://www.zhihu.com/equation?tex=Z%3D%5Csqrt%7BX%5E2%2BY%5E2%7D" alt="Z=\sqrt{X^2+Y^2}" eeimg="1">
+                    的概率分布。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    依旧强调要利用分布函数法。
+                </p>
+                <p>
+                    易知当
+                    <img src="https://www.zhihu.com/equation?tex=z%3C0" alt="z&lt;0" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=F_Z%28z%29%3D0" alt="F_Z(z)=0" eeimg="1">
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=z%3E0" alt="z&gt;0" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=F_Z%28z%29%3DP%28Z%5Cleq+z%29%3DP%28X%5E2%2BY%5E2%5Cleq+z%5E2%29" alt="F_Z(z)=P(Z\leq z)=P(X^2+Y^2\leq z^2)" eeimg="1">
+                </p>
+                <p>
+                    我们想要利用联合密度求概率。然而我们只清楚
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    各自的边缘分布。
+                </p>
+                <p>
+                    但是注意到
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    独立的条件，所以
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3Df_X%28x%29f_Y%28y%29%3D%5Cfrac%7B1%7D%7B2%5Cpi+%7De%5E%7B-%5Cfrac%7Bx%5E2%2By%5E2%7D%7B2%7D%7D" alt="f(x,y)=f_X(x)f_Y(y)=\frac{1}{2\pi }e^{-\frac{x^2+y^2}{2}}" eeimg="1">
+                    为联合密度。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=F_Z%28z%29%3D%5Cfrac%7B1%7D%7B2%5Cpi+%7D%5Cint%5Cint_%7Bx%5E2%2By%5E2%5Cleq+z%5E2%7De%5E%7B-%5Cfrac%7Bx%5E2%2By%5E2%7D%7B2%7D%7Ddxdy" alt="F_Z(z)=\frac{1}{2\pi }\int\int_{x^2+y^2\leq z^2}e^{-\frac{x^2+y^2}{2}}dxdy" eeimg="1">
+                </p>
+                <p>
+                    看到平方和的形式，自然地想到重积分中经常用到的极坐标变换
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F_Z%28z%29%3D%5Cfrac%7B1%7D%7B2%5Cpi+%7D%5Cint%5Cint_%7Br%5Cin+%5B0%2Cz%5D%2C%5Ctheta%5Cin+%5B0%2C2%5Cpi%29%7Dre%5E%7B-%5Cfrac%7Br%5E2%7D%7B2%7D%7Ddrd%5Ctheta" alt="F_Z(z)=\frac{1}{2\pi }\int\int_{r\in [0,z],\theta\in [0,2\pi)}re^{-\frac{r^2}{2}}drd\theta" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cint_0%5Ezre%5E%7B-%5Cfrac%7Br%5E2%7D%7B2%7D%7Ddr%3D1-e%5E%7B-%5Cfrac%7Bz%5E2%7D%7B2%7D%7D" alt="=\int_0^zre^{-\frac{r^2}{2}}dr=1-e^{-\frac{z^2}{2}}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=f_Z%28z%29%3Dze%5E%7B-%5Cfrac%7Bz%5E2%7D%7B2%7D%7D%28z%5Cgeq+0%29" alt="f_Z(z)=ze^{-\frac{z^2}{2}}(z\geq 0)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，如果一个随机变量拥有与
+                    <img src="https://www.zhihu.com/equation?tex=f_Z%28z%29" alt="f_Z(z)" eeimg="1">
+                    相同的密度，称它服从于
+                    <b>
+                        Rayleigh分布
+                    </b>
+                    。Rayleigh分布描述的是两个独立的标准正态随机变量组成的随机向量的脱靶量的分布。（看作是向二维平面的原点处射击，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7BX%5E2%2BY%5E2%7D" alt="\sqrt{X^2+Y^2}" eeimg="1">
+                    即表示实际射中的点到原点的距离，即脱靶量）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，若我们遇到了二维二元随机向量的函数，形如
+                    <img src="https://www.zhihu.com/equation?tex=%28P%2CQ%29%3D%28g%28X%2CY%29%2Ch%28X%2CY%29%29" alt="(P,Q)=(g(X,Y),h(X,Y))" eeimg="1">
+                    ，我们也同样地利用分布函数法来求其概率分布即可。（只不过限制条件多了一个，可能要进行额外的讨论）
+                </p>
+                <p>
+                    所以总结一下：
+                    <b>
+                        分布函数法是求随机变量/向量的函数的分布的通法。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        五、条件分布
+                    </b>
+                </p>
+                <p>
+                    条件分布事实上是对于条件概率在概率分布中的推广。我们在条件分布这一章中主要关注这样一个问题：对于一个二维随机向量
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    ，已知常数
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    ，我们如何求得给定条件
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dy" alt="Y=y" eeimg="1">
+                    下
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的概率分布呢？同样地，我们分成离散型随机向量与连续型随机向量两种情况分别进行研究。
+                </p>
+                <p>
+                    <b>
+                        1、离散型随机向量
+                    </b>
+                </p>
+                <p>
+                    要求条件概率，我们容易回想起曾经介绍过的乘法公式。
+                </p>
+                <p>
+                    我们假设随机向量具有概率分布列
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%2CY%3Dy_j%29%3Dp_%7Bij%7D" alt="P(X=x_i,Y=y_j)=p_{ij}" eeimg="1">
+                </p>
+                <p>
+                    我们现在要求的即为
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%7CY%3Dy_j%29" alt="P(X=x_i|Y=y_j)" eeimg="1">
+                </p>
+                <p>
+                    由乘法公式，
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%7CY%3Dy_j%29%3D%5Cfrac%7BP%28X%3Dx_i%2CY%3Dy_j%29%7D%7BP%28Y%3Dy_j%29%7D" alt="P(X=x_i|Y=y_j)=\frac{P(X=x_i,Y=y_j)}{P(Y=y_j)}" eeimg="1">
+                </p>
+                <p>
+                    我们现在只需求出
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3Dy_j%29" alt="P(Y=y_j)" eeimg="1">
+                    。回忆前几章中关于边缘分布的内容，
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3Dy_j%29%3D%5Csum_i+p_%7Bij%7D" alt="P(Y=y_j)=\sum_i p_{ij}" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        故
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%7CY%3Dy_j%29%3D%5Cfrac%7Bp_%7Bij%7D%7D%7B%5Csum_i+p_%7Bij%7D%7D" alt="P(X=x_i|Y=y_j)=\frac{p_{ij}}{\sum_i p_{ij}}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        我们称其为已知
+                        <img src="https://www.zhihu.com/equation?tex=Y%3Dy_j" alt="Y=y_j" eeimg="1">
+                        条件下，
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的条件概率分布。
+                    </b>
+                </p>
+                <p>
+                    我们试举一实例来说明条件概率分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：进行独立重复射击，单次射击时击中的概率为
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    表示第一次击中时的射击次数。
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    表示第二次击中时的射击次数。
+                </p>
+                <p>
+                    则我们容易求出概率分布列。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Di%2CY%3Dj%29%3D%281-p%29%5E%7Bi-1%7Dp%281-p%29%5E%7Bj-i-1%7Dp%3D%281-p%29%5E%7Bj-2%7Dp%5E2" alt="P(X=i,Y=j)=(1-p)^{i-1}p(1-p)^{j-i-1}p=(1-p)^{j-2}p^2" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=i%3D1%2C2%2C...%5C+%5C+j%3Di%2B1%2Ci%2B2%2C..." alt="i=1,2,...\ \ j=i+1,i+2,..." eeimg="1">
+                </p>
+                <p>
+                    若给定
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dj" alt="Y=j" eeimg="1">
+                    的条件，
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的条件概率分布为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Di%7CY%3Dj%29%3D%5Cfrac%7B%281-p%29%5E%7Bj-2%7Dp%5E2%7D%7B%5Csum_%7Bk%3D1%7D%5E%7Bj-1+%7D%281-p%29%5E%7Bj-2%7Dp%5E2%7D%3D%5Cfrac%7B1%7D%7Bj-1%7D" alt="P(X=i|Y=j)=\frac{(1-p)^{j-2}p^2}{\sum_{k=1}^{j-1 }(1-p)^{j-2}p^2}=\frac{1}{j-1}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=i%3D1%2C2%2C...%2Cj-1" alt="i=1,2,...,j-1" eeimg="1">
+                </p>
+                <p>
+                    而若给定
+                    <img src="https://www.zhihu.com/equation?tex=X%3Di" alt="X=i" eeimg="1">
+                    的条件，
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的条件概率分布为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3Dj%7CX%3Di%29%3D%5Cfrac%7B%281-p%29%5E%7Bj-2%7Dp%5E2%7D%7B%5Csum_%7Bk%3Dj%2B1%7D%5E%7B%2B%5Cinfty%7D%281-p%29%5E%7Bk-2%7Dp%5E2%7D%3Dq%5E%7Bj-i-1%7Dp" alt="P(Y=j|X=i)=\frac{(1-p)^{j-2}p^2}{\sum_{k=j+1}^{+\infty}(1-p)^{k-2}p^2}=q^{j-i-1}p" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=j%3Di%2B1%2Ci%2B2%2C..." alt="j=i+1,i+2,..." eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、连续型随机向量
+                    </b>
+                </p>
+                <p>
+                    对于连续型随机向量，情况可没有离散时那么简单。
+                </p>
+                <p>
+                    因为我们不难注意到：连续型随机变量在任何单点处取值的概率都为0，即
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3Dy_j%29%3D0" alt="P(Y=y_j)=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么，对此我们就束手无策了吗？
+                </p>
+                <p>
+                    非也，我们需要注意到：
+                    <b>
+                        概率是有连续性的！
+                    </b>
+                </p>
+                <p>
+                    这意味着：我们可以利用
+                    <b>
+                        逼近
+                    </b>
+                    的手段来处理这个问题。
+                </p>
+                <p>
+                    我们现在知道
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    具有联合密度
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29" alt="f(x,y)" eeimg="1">
+                    。我们想求在给定
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dy" alt="Y=y" eeimg="1">
+                    的条件下
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的条件概率分布。（即条件概率分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F_%7BX%7CY%7D%28x%7Cy%29%3DP%28X%5Cleq+x%7CY%3Dy%29" alt="F_{X|Y}(x|y)=P(X\leq x|Y=y)" eeimg="1">
+                    与条件概率密度函数
+                    <img src="https://www.zhihu.com/equation?tex=f_%7BX%7CY%7D%28x%7Cy%29" alt="f_{X|Y}(x|y)" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    我们总是先从最重要的分布函数入手进行研究。
+                </p>
+                <p>
+                    利用概率的连续性，我们可以得到
+                    <img src="https://www.zhihu.com/equation?tex=F_%7BX%7CY%7D%28x%7Cy%29%3D%5Clim_%7B%5Cepsilon%5Crightarrow+0%7DP%28X%5Cleq+x%7Cy-%5Cepsilon%3CY%5Cleq+y%2B%5Cepsilon%29" alt="F_{X|Y}(x|y)=\lim_{\epsilon\rightarrow 0}P(X\leq x|y-\epsilon&lt;Y\leq y+\epsilon)" eeimg="1">
+                </p>
+                <p>
+                    此时再利用边缘密度，条件概率的乘法公式对原式进行变形。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Clim_%7B%5Cepsilon%5Crightarrow+0%7D%5Cfrac%7BP%28X%5Cleq+x%2Cy-%5Cepsilon%3CY%5Cleq+y%2B%5Cepsilon%29%7D%7BP%28y-%5Cepsilon%3CY%5Cleq+y%2B%5Cepsilon%29%7D%3D%5Clim_%7B%5Cepsilon%5Crightarrow+0%7D%5Cfrac%7BF%28x%2Cy%2B%5Cepsilon%29-F%28x%2Cy-%5Cepsilon%29%7D%7BF_Y%28y%2B%5Cepsilon%29-F_Y%28y-%5Cepsilon%29%7D" alt="=\lim_{\epsilon\rightarrow 0}\frac{P(X\leq x,y-\epsilon&lt;Y\leq y+\epsilon)}{P(y-\epsilon&lt;Y\leq y+\epsilon)}=\lim_{\epsilon\rightarrow 0}\frac{F(x,y+\epsilon)-F(x,y-\epsilon)}{F_Y(y+\epsilon)-F_Y(y-\epsilon)}" eeimg="1">
+                </p>
+                <p>
+                    容易发现右边等式具有差之比形式，想到不妨将其化成微分的形式，即上下同除以
+                    <img src="https://www.zhihu.com/equation?tex=2%5Cepsilon" alt="2\epsilon" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cfrac%7B%5Cfrac%7B%5Cpartial+F%7D%7B%5Cpartial+y%7D%7C_%7B%28x%2Cy%29%7D%7D%7B%5Cfrac%7BdF_Y%28y%29%7D%7Bdy%7D%7D%3D%5Cfrac%7B%5Cint_%7B-%5Cinfty%7D%5Exf%28u%2Cy%29du%7D%7Bf_Y%28y%29%7D%3D%5Cint_%7B-%5Cinfty%7D%5Ex%5Cfrac%7Bf%28u%2Cy%29%7D%7Bf_Y%28y%29%7Ddu" alt="=\frac{\frac{\partial F}{\partial y}|_{(x,y)}}{\frac{dF_Y(y)}{dy}}=\frac{\int_{-\infty}^xf(u,y)du}{f_Y(y)}=\int_{-\infty}^x\frac{f(u,y)}{f_Y(y)}du" eeimg="1">
+                </p>
+                <p>
+                    而最后这个式子恰恰与条件概率密度的定义相符合。
+                </p>
+                <p>
+                    即
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%5Cleq+x%2CY%3Dy%29%3D%5Cint_%7B-%5Cinfty%7D%5Ex%5Cfrac%7Bf%28u%2Cy%29%7D%7Bf_Y%28y%29%7Ddu" alt="P(X\leq x,Y=y)=\int_{-\infty}^x\frac{f(u,y)}{f_Y(y)}du" eeimg="1">
+                </p>
+                <p>
+                    故条件概率密度
+                    <img src="https://www.zhihu.com/equation?tex=f_%7BX%7CY%7D%28x%7Cy%29%3D%5Cfrac%7Bf%28x%2Cy%29%7D%7Bf_Y%28y%29%7D" alt="f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}" eeimg="1">
+                </p>
+                <p>
+                    这样我们即求出了给定
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dy" alt="Y=y" eeimg="1">
+                    条件下
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的条件概率分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们下举一例，限于篇幅，具体的计算交给读者自己完成。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29%5Csim+N%28%5Cmu_1%2C%5Cmu_2%2C%5Csigma_1%5E2%2C%5Csigma_2%5E2%2C%5Crho%29" alt="(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)" eeimg="1">
+                </p>
+                <p>
+                    由计算可以得到
+                    <img src="https://www.zhihu.com/equation?tex=Y%7C_%7BX%3Dx%7D%5Csim+N%28%5Cmu_2%2B%5Crho%5Cfrac%7B%5Csigma_2%7D%7B%5Csigma_1%7D%28x-%5Cmu_1%29%2C%281-%5Crho%5E2%29%5Csigma_2%5E2%29" alt="Y|_{X=x}\sim N(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1),(1-\rho^2)\sigma_2^2)" eeimg="1">
+                </p>
+                <p>
+                    这说明：二元正态分布在给定
+                    <img src="https://www.zhihu.com/equation?tex=X%3Dx" alt="X=x" eeimg="1">
+                    条件下
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的条件分布仍旧为正态分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们来介绍一种将条件概率本身抽象为随机变量的一种方法。
+                </p>
+                <p>
+                    我们现在有事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，给定条件为
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dy" alt="Y=y" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么显然
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7CY%3Dy%29" alt="P(A|Y=y)" eeimg="1">
+                    为一个条件概率，更准确地说，它是
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    的函数。随着
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    取值的变化，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7CY%3Dy%29" alt="P(A|Y=y)" eeimg="1">
+                    的值本身也在变化。
+                </p>
+                <p>
+                    我们假设
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7CY%3Dy%29%3Dg%28y%29" alt="P(A|Y=y)=g(y)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们接下来要做的一件事是：将
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    作用在随机变量
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    上，看看会得到什么。
+                </p>
+                <p>
+                    我们惊奇地发现，我们得到了
+                    <img src="https://www.zhihu.com/equation?tex=g%28Y%29%3DP%28A%7CY%29" alt="g(Y)=P(A|Y)" eeimg="1">
+                    。值得注意的是，这个表达式不再是一个条件概率，它被抽象化成了一个随机变量。
+                    <b>
+                        这个随机变量巧妙地将
+                        <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                        的变化与其所导致的条件概率值的变化结合在了一起。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        我们称
+                        <img src="https://www.zhihu.com/equation?tex=g%28Y%29%3DP%28A%7CY%29" alt="g(Y)=P(A|Y)" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        关于
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        的条件概率。（注意：此处指的是事件关于随机变量的条件概率，得到的是一个随机变量。而事件关于事件的条件概率得到的是一个值。务必区分清楚。）
+                    </b>
+                </p>
+                <p>
+                    这样的
+                    <b>
+                        抽象
+                    </b>
+                    虽然手法简单（将条件概率值中的数
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    均替换为随机变量
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    即可），但是无疑是非常重要而又巧妙的。读者在此可能会疑惑这样做的好处。我们在此暂时不给出例子，读者将在后面的学习中愈发体会到其精妙之处。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本章的内容到此为止，谢谢各位的阅读！
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            浅谈拓扑（七）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-be81887b1f61905d346efa385b5d890f_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/107229148" target="_blank">
+                        浅谈拓扑（七）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-02-16
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    今天我们来谈谈T4公理的其它两个等价条件。这些等价条件具有深刻的含义，且并不像之前给出的等价条件一样容易看出。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（Urysohn）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        拓扑空间T4等价于对于其中任意不交闭集
+                        <img src="https://www.zhihu.com/equation?tex=A%2CB%2C%5Cexists+f%3AX%5Crightarrow+%5B0%2C1%5D" alt="A,B,\exists f:X\rightarrow [0,1]" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        上连续，且
+                        <img src="https://www.zhihu.com/equation?tex=f%28A%29%3D0%2Cf%28B%29%3D1" alt="f(A)=0,f(B)=1" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    右端显然可以推出左端。取
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D%28%5B0%2C%5Cfrac%7B1%7D%7B2%7D%29%29%2Cf%5E%7B-1%7D%28%28%5Cfrac%7B1%7D%7B2%7D%2C1%5D%29" alt="f^{-1}([0,\frac{1}{2})),f^{-1}((\frac{1}{2},1])" eeimg="1">
+                    即为不交开邻域。
+                </p>
+                <p>
+                    下面证明左端推出右端：
+                </p>
+                <p>
+                    我们需要构造一个函数，将拓扑空间中的点与实数对应起来。我们不禁联想到上一节中利用度量来构造分离性函数的方法。在这里，我们并不需要那么强的条件。我们只需要能够
+                    <b>
+                        衡量拓扑空间中的点分别到
+                        <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                        的远近
+                    </b>
+                    即可。离
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    更近的点，我们就将其函数值设定为更靠近
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ，反之则更靠近
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    注意到有理数在实数中是稠密的，故我们可以对一个有理数集的子集利用
+                    <img src="https://www.zhihu.com/equation?tex=inf%2Csup" alt="inf,sup" eeimg="1">
+                    等运算得到实数的函数值。故实际上我们只需要给出一种
+                    <b>
+                        拓扑空间中的点与
+                        <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                        中的有理数的对应方式
+                    </b>
+                    就可以了。由不可数到可数，大大简化了我们的构造。
+                </p>
+                <p>
+                    具体的做法是构造一个开集族，用于界定拓扑空间中每个点所处的位置。为什么我们要用开集族呢？回忆T4公理的等价条件，对于一个闭集及其开邻域
+                    <img src="https://www.zhihu.com/equation?tex=O" alt="O" eeimg="1">
+                    ，我们一定能找到一个包含这个闭集且被包含在开邻域
+                    <img src="https://www.zhihu.com/equation?tex=O" alt="O" eeimg="1">
+                    中的另一个开邻域
+                    <img src="https://www.zhihu.com/equation?tex=O%7B%27%7D" alt="O{&#39;}" eeimg="1">
+                    ，满足
+                    <img src="https://www.zhihu.com/equation?tex=O%7B%27%7D%5Csubset+O" alt="O{&#39;}\subset O" eeimg="1">
+                    。故通过构造开集族，我们可以充分地利用好这个等价条件。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    具体的构造方式如下：
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=Q_I%3D%5B0%2C1%5D%5Ccap%5Cmathbb%7BQ%7D" alt="Q_I=[0,1]\cap\mathbb{Q}" eeimg="1">
+                    ，显然是可数集，故可排成一列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++r_1%2Cr_2%2C...%5Cright+%5C%7D" alt="\left \{  r_1,r_2,...\right \}" eeimg="1">
+                    ，且满足
+                    <img src="https://www.zhihu.com/equation?tex=r_1%3D1%2Cr_2%3D0" alt="r_1=1,r_2=0" eeimg="1">
+                    （分别对应于
+                    <img src="https://www.zhihu.com/equation?tex=B%2CA" alt="B,A" eeimg="1">
+                    中点）
+                </p>
+                <p>
+                    接下来，我们归纳地构造开集族
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+U_r%7Cr%5Cin+Q_I+%5Cright+%5C%7D" alt="\left \{ U_r|r\in Q_I \right \}" eeimg="1">
+                    ，要求其满足两个性质：
+                </p>
+                <p>
+                    1、对于
+                    <img src="https://www.zhihu.com/equation?tex=r%3Cr%7B%27%7D%2C%5Coverline%7BU_r%7D%5Csubset+U_%7Br%7B%27%7D%7D" alt="r&lt;r{&#39;},\overline{U_r}\subset U_{r{&#39;}}" eeimg="1">
+                    （与T4等价条件相呼应）
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+r%5Cin+Q_I%2CA%5Csubset+U_r%5Csubset+B%5Ec" alt="\forall r\in Q_I,A\subset U_r\subset B^c" eeimg="1">
+                </p>
+                <p>
+                    在构造过程中，我们令
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_1%7D%3DB%5Ec" alt="U_{r_1}=B^c" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的开邻域。那么由T4公理，必定存在
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_2%7D" alt="U_{r_2}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BU_%7Br_2%7D%7D%5Csubset+U_%7Br_1%7D" alt="\overline{U_{r_2}}\subset U_{r_1}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_1%7D%2C...%2CU_%7Br_n%7D" alt="U_{r_1},...,U_{r_n}" eeimg="1">
+                    已经取定时，我们如何选取
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_%7Bn%2B1%7D%7D" alt="U_{r_{n+1}}" eeimg="1">
+                    呢？
+                </p>
+                <p>
+                    我们希望靠近
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的点函数值更小而靠近
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的点函数值更大。故我们记
+                    <img src="https://www.zhihu.com/equation?tex=r_%7Bi%28n%29%7D" alt="r_{i(n)}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=r_1%2C...%2Cr_n" alt="r_1,...,r_n" eeimg="1">
+                    中小于
+                    <img src="https://www.zhihu.com/equation?tex=r_%7Bn%2B1%7D" alt="r_{n+1}" eeimg="1">
+                    的最大数，记
+                    <img src="https://www.zhihu.com/equation?tex=r_%7Bj%28n%29%7D" alt="r_{j(n)}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=r_1%2C...%2Cr_n" alt="r_1,...,r_n" eeimg="1">
+                    中大于
+                    <img src="https://www.zhihu.com/equation?tex=r_%7Bn%2B1%7D" alt="r_{n+1}" eeimg="1">
+                    的最小数。按照我们的希望，
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_%7Bn%2B1%7D%7D" alt="U_{r_{n+1}}" eeimg="1">
+                    应该恰好被夹在
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_%7Bi%28n%29%7D%7D" alt="U_{r_{i(n)}}" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_%7Bj%28n%29%7D%7D" alt="U_{r_{j(n)}}" eeimg="1">
+                    中间！
+                </p>
+                <p>
+                    即我们取
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_%7Bn%2B1%7D%7D" alt="U_{r_{n+1}}" eeimg="1">
+                    ，使其满足：
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BU_%7Br_%7Bi%28n%29%7D%7D%7D%5Csubset+U_%7Br_%7Bn%2B1%7D%7D%2C%5Coverline%7BU_%7Br_%7Bn%2B1%7D%7D%7D%5Csubset+U_%7Br_%7Bj%28n%29%7D%7D" alt="\overline{U_{r_{i(n)}}}\subset U_{r_{n+1}},\overline{U_{r_{n+1}}}\subset U_{r_{j(n)}}" eeimg="1">
+                    。（这样的
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Br_%7Bn%2B1%7D%7D" alt="U_{r_{n+1}}" eeimg="1">
+                    的存在性是可以保证的，因为T4公理成立）
+                </p>
+                <p>
+                    直观地看，我们做了如下图的构造：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-0a2868b87d12814a275e954206566d33_r.jpg">
+                    <figcaption>
+                        开集族的构造由T4公理保证
+                    </figcaption>
+                </figure>
+                <p>
+                    对于构造过程有疑问的读者可以参考下图的例子：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-c2e50da121338ea544b2187a5400fbc2_r.jpg">
+                    <figcaption>
+                        当前四个开集已经确定时，根据r5的值确定第五个开集的位置
+                    </figcaption>
+                </figure>
+                <p>
+                    对于开集族的构造我们完成之后，接下来就可以构造这个函数了。对于这个函数的构造就十分简单了。给定拓扑空间中的一个点。我们看看它介于哪两个开集之间，那么它的函数值就会介于这两个开集对应的有理数之间。接着，我们再用
+                    <img src="https://www.zhihu.com/equation?tex=inf%2Csup" alt="inf,sup" eeimg="1">
+                    来进行逼近就可以了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    定义：
+                    <img src="https://www.zhihu.com/equation?tex=f%3AX%5Crightarrow+%5B0%2C1%5D" alt="f:X\rightarrow [0,1]" eeimg="1">
+                    ，使得对于任意
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3Dsup%5Cleft+%5C%7Br%5Cin+Q_I%7Cx%5Cnot%5Cin+U_r++%5Cright+%5C%7D%3Dinf%5Cleft+%5C%7Br%5Cin+Q_I%7Cx%5Cin+U_r++%5Cright+%5C%7D" alt="f(x)=sup\left \{r\in Q_I|x\not\in U_r  \right \}=inf\left \{r\in Q_I|x\in U_r  \right \}" eeimg="1">
+                </p>
+                <p>
+                    容易发现
+                    <img src="https://www.zhihu.com/equation?tex=f%28A%29%3D0%2Cf%28B%29%3D1" alt="f(A)=0,f(B)=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们只需要证明这个函数在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    连续即可。
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    上的开集都可以写成可数个不交开区间之并，我们只需要验证任意开区间的原像仍然是开集即可。
+                </p>
+                <p>
+                    我们先考虑最一般的情形：
+                    <img src="https://www.zhihu.com/equation?tex=%28a%2Cb%29%2C0%3Ca%3Cb%3C1" alt="(a,b),0&lt;a&lt;b&lt;1" eeimg="1">
+                </p>
+                <p>
+                    此时，考虑
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+f%5E%7B-1%7D%28%28a%2Cb%29%29" alt="x\in f^{-1}((a,b))" eeimg="1">
+                    ，我们要证明
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    为内点。
+                </p>
+                <p>
+                    基于上述开集族的构造，给定
+                    <img src="https://www.zhihu.com/equation?tex=a%2Cb" alt="a,b" eeimg="1">
+                    ，我们一定能找到
+                    <img src="https://www.zhihu.com/equation?tex=Q_I" alt="Q_I" eeimg="1">
+                    中的数
+                    <img src="https://www.zhihu.com/equation?tex=r%2Cr%7B%27%7D%2Cr%7B%27%27%7D" alt="r,r{&#39;},r{&#39;&#39;}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=a%3Cr%7B%27%7D%3Cr%7B%27%27%7D%3Cf%28x%29%3Cr%3Cb" alt="a&lt;r{&#39;}&lt;r{&#39;&#39;}&lt;f(x)&lt;r&lt;b" eeimg="1">
+                    。（这一步的目的是用开集将
+                    <img src="https://www.zhihu.com/equation?tex=a%2Cf%28x%29%2Cb" alt="a,f(x),b" eeimg="1">
+                    分别隔离开，以便于构造
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域）
+                </p>
+                <p>
+                    那么容易知道
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+U_r%2Cx%5Cnot%5Cin+%5Coverline%7BU_%7Br%7B%27%7D%7D%7D" alt="x\in U_r,x\not\in \overline{U_{r{&#39;}}}" eeimg="1">
+                    。（因为
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cnot%5Cin+U_%7Br%7B%27%27%7D%7D%2C%5Coverline%7BU_%7Br%7B%27%7D%7D%7D%5Csubset+U_%7Br%7B%27%27%7D%7D" alt="x\not\in U_{r{&#39;&#39;}},\overline{U_{r{&#39;}}}\subset U_{r{&#39;&#39;}}" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    那么我们成功地构造出了
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D%28%28a%2Cb%29%29" alt="f^{-1}((a,b))" eeimg="1">
+                    内的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U_r%5Ccap+%28%5Coverline%7BU_%7Br%7B%27%7D%7D%7D%29%5Ec" alt="U_r\cap (\overline{U_{r{&#39;}}})^c" eeimg="1">
+                    。连续性得证！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于特殊的情况如
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D0" alt="f(x)=0" eeimg="1">
+                    ，那么直接取
+                    <img src="https://www.zhihu.com/equation?tex=r%5Cin+Q_I%2Cr%3Cb" alt="r\in Q_I,r&lt;b" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=U_r" alt="U_r" eeimg="1">
+                    就是
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域。连续性得证！
+                </p>
+                <p>
+                    连续性的证明如下图：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-66fb1a56565f6c01e305716be7a1fa0c_r.jpg">
+                    <figcaption>
+                        一般情形，黄色区域即为开邻域
+                    </figcaption>
+                </figure>
+                <p>
+                    至此为止，Urysohn定理得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当我在第一次学习到Urysohn定理时，我不禁惊讶于分离公理的丰富内涵。这个定理乍看之下需要用到度量，实际则通过巧妙地构造开集族，定义函数避开了度量的使用。这也给了我们一个直观印象：T4空间虽然比度量空间差一点，但是他们有类似的性质，T4空间已经比较接近度量空间了，就好像非负可测函数比Lebesgue可积函数差了一点点一样。（究竟差在了哪里？Urysohn度量化定理将会回答这个问题。）
+                </p>
+                <p>
+                    注：Urysohn定理中的
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                    可以换为任意有限闭区间，
+                    <img src="https://www.zhihu.com/equation?tex=f%28A%29%2Cf%28B%29" alt="f(A),f(B)" eeimg="1">
+                    的值相应改变，结论仍旧成立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从Urysohn定理出发，我们可以推出下面的定理，这是另一个T4公理的等价条件。
+                </p>
+                <p>
+                    <b>
+                        定理（Tietze扩张定理）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        拓扑空间T4等价于任意定义在拓扑空间闭子集
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        上映射到
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                        的连续函数都可以连续地扩张到整个空间
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        上。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    从右侧证明左侧同样简单。如果闭子集上连续函数扩张到了整个空间，那么给定这个闭子集的一个开邻域，我们很容易找到一个介于闭子集与这个开邻域之间的另一个开邻域（通过函数的原像），且这个新的开邻域的闭包仍在原开邻域内。
+                </p>
+                <p>
+                    下面我们从左侧出发证明右侧：
+                </p>
+                <p>
+                    由于直接证明比较困难，我们先假设函数有界来证明这个定理，后面再放宽这个限制。
+                </p>
+                <p>
+                    不妨假设
+                    <img src="https://www.zhihu.com/equation?tex=f%3AF%5Crightarrow+%5Cmathbb%7BE%7D%5E1" alt="f:F\rightarrow \mathbb{E}^1" eeimg="1">
+                    连续且
+                    <img src="https://www.zhihu.com/equation?tex=f%28F%29%5Csubset+%5B-1%2C1%5D" alt="f(F)\subset [-1,1]" eeimg="1">
+                    。（如果界更宽可以通过乘以常数缩小界，不改变定理结论）
+                </p>
+                <p>
+                    要构造连续函数且保证新的函数在
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    上与原函数完全相同，我们可以用
+                    <b>
+                        函数项级数
+                    </b>
+                    达成这个要求。只需要构造函数项级数，使得其一致收敛且其中每一项在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上连续，则和函数必定也在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上连续。那么如何构造
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上连续的函数列呢？
+                </p>
+                <p>
+                    由于我们已经拥有Urysohn定理，对于
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的两个不交闭集，我们已经可以建立
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    的连续映射，且保证其在不交闭集上分别取两个常值。故我们可以通过构造
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中的不交闭集来构造
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上连续的函数列。
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中闭的，故
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    中的不交闭集也必为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中的不交闭集，故我们只需要构造
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    中的不交闭集。这个目标是容易达成的，因为我们已经拥有
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    上的连续函数了！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们具体构造如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3Df%5E%7B-1%7D%28%5B-1%2C-%5Cfrac%7B1%7D%7B3%7D%5D%29%2CB%3Df%5E%7B-1%7D%28%5B%5Cfrac%7B1%7D%7B3%7D%2C1%5D%29" alt="A=f^{-1}([-1,-\frac{1}{3}]),B=f^{-1}([\frac{1}{3},1])" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    中不交闭集。（闭集在连续函数下原像闭）
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=F-A%2CF-B" alt="F-A,F-B" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    中开的，故可以写成
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中某个开集与
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    之交。（子空间拓扑）
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    都可以写成
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中某个开集的补与
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    之交，故为
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        中的不交闭集
+                    </b>
+                    。
+                </p>
+                <p>
+                    故我们利用Urysohn定理，存在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_1%3AX%5Crightarrow%5B-%5Cfrac%7B1%7D%7B3%7D%2C%5Cfrac%7B1%7D%7B3%7D%5D" alt="\phi_1:X\rightarrow[-\frac{1}{3},\frac{1}{3}]" eeimg="1">
+                    连续，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_1%28A%29%3D-%5Cfrac%7B1%7D%7B3%7D%2C%5Cphi_1%28B%29%3D%5Cfrac%7B1%7D%7B3%7D" alt="\phi_1(A)=-\frac{1}{3},\phi_1(B)=\frac{1}{3}" eeimg="1">
+                    。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-cee034fde386b3e489b3fa2e38fe6cb4_r.jpg">
+                    <figcaption>
+                        两个映射的示意图
+                    </figcaption>
+                </figure>
+                <p>
+                    我们令
+                    <img src="https://www.zhihu.com/equation?tex=f_1%3Df-%5Cphi_1" alt="f_1=f-\phi_1" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    上函数。我们发现：对于
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+A" alt="x\in A" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f_1%28x%29%3Df%28x%29%2B%5Cfrac%7B1%7D%7B3%7D%5Cin+%5B-%5Cfrac%7B2%7D%7B3%7D%2C0%5D" alt="f_1(x)=f(x)+\frac{1}{3}\in [-\frac{2}{3},0]" eeimg="1">
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+B" alt="x\in B" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f_1%28x%29%3Df%28x%29-%5Cfrac%7B1%7D%7B3%7D%5Cin+%5B0%2C%5Cfrac%7B2%7D%7B3%7D%5D" alt="f_1(x)=f(x)-\frac{1}{3}\in [0,\frac{2}{3}]" eeimg="1">
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+F-A-B" alt="x\in F-A-B" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f_1%28x%29%5Cin+%5B-%5Cfrac%7B2%7D%7B3%7D%2C%5Cfrac%7B2%7D%7B3%7D%5D" alt="f_1(x)\in [-\frac{2}{3},\frac{2}{3}]" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=f_1%28F%29%5Csubset+%5B-%5Cfrac%7B2%7D%7B3%7D%2C%5Cfrac%7B2%7D%7B3%7D%5D" alt="f_1(F)\subset [-\frac{2}{3},\frac{2}{3}]" eeimg="1">
+                    ，我们成功地缩小了值域！（到现在我们才看出来为何取三等分点构造，这使得不同情况下
+                    <img src="https://www.zhihu.com/equation?tex=f_1" alt="f_1" eeimg="1">
+                    的值域恰好保持一致！）
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=f_1" alt="f_1" eeimg="1">
+                    ，我们又可以故技重施，利用Urysohn定理找到
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上连续的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_2" alt="\phi_2" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_2%3AX%5Crightarrow+%5B-%5Cfrac%7B2%7D%7B9%7D%2C%5Cfrac%7B2%7D%7B9%7D%5D" alt="\phi_2:X\rightarrow [-\frac{2}{9},\frac{2}{9}]" eeimg="1">
+                    。
+                </p>
+                <p>
+                    再令
+                    <img src="https://www.zhihu.com/equation?tex=f_2%3Df_1-%5Cphi_2" alt="f_2=f_1-\phi_2" eeimg="1">
+                    ，以此类推……
+                </p>
+                <p>
+                    通过这样的操作，
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    的
+                    <b>
+                        值域每经过一轮操作缩小为原先的
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B2%7D%7B3%7D" alt="\frac{2}{3}" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    中原先保留的信息被逐渐地拆分到了函数列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_1%2C%5Cphi_2%2C..." alt="\phi_1,\phi_2,..." eeimg="1">
+                    中。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    故对于
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    <b>
+                        上连续的函数列
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%5Cphi_n%5Cright+%5C%7D" alt="\left \{  \phi_n\right \}" eeimg="1">
+                    ，显然有性质：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_n%28X%29%5Csubset+%5B-%5Cfrac%7B2%5E%7Bn-1%7D%7D%7B3%5En%7D%2C%5Cfrac%7B2%5E%7Bn-1%7D%7D%7B3%5En%7D%5D" alt="\phi_n(X)\subset [-\frac{2^{n-1}}{3^n},\frac{2^{n-1}}{3^n}]" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%7Cf%28x%29-%5Csum_%7Bi%3D1%7D%5En%5Cphi_i%28x%29%7C%5Cleq+%5Cfrac%7B2%5En%7D%7B3%5En%7D%5C+%28x%5Cin+F%29" alt="|f(x)-\sum_{i=1}^n\phi_i(x)|\leq \frac{2^n}{3^n}\ (x\in F)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由Weierstrass M判别法，函数项级数
+                    <img src="https://www.zhihu.com/equation?tex=g%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty%5Cphi_n" alt="g=\sum_{n=1}^\infty\phi_n" eeimg="1">
+                    一致收敛，立马得到：
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上连续。
+                </p>
+                <p>
+                    且自然地，
+                    <img src="https://www.zhihu.com/equation?tex=%7Cf-g%7C%5Crightarrow+0%5C+%28n%5Crightarrow+%5Cinfty%2Cx%5Cin+F%29" alt="|f-g|\rightarrow 0\ (n\rightarrow \infty,x\in F)" eeimg="1">
+                    。故
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    即为
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的连续扩张，得证！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    无界的情形，可以先转化为有界情形利用结论证明。
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=f%7B%27%7D%28x%29%3D%5Cfrac%7B2%7D%7B%5Cpi%7Darctanf%28x%29" alt="f{&#39;}(x)=\frac{2}{\pi}arctanf(x)" eeimg="1">
+                    为有界且在
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    上连续的函数，
+                    <img src="https://www.zhihu.com/equation?tex=f%7B%27%7D%28F%29%5Csubset+%28-1%2C1%29" alt="f{&#39;}(F)\subset (-1,1)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    利用关于有界函数的结论，存在
+                    <img src="https://www.zhihu.com/equation?tex=f%7B%27%7D" alt="f{&#39;}" eeimg="1">
+                    的连续扩张
+                    <img src="https://www.zhihu.com/equation?tex=g%7B%27%7D" alt="g{&#39;}" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=g%7B%27%7D%28X%29%5Csubset+%5B-1%2C1%5D" alt="g{&#39;}(X)\subset [-1,1]" eeimg="1">
+                    。
+                </p>
+                <p>
+                    接下来，我们想要利用
+                    <img src="https://www.zhihu.com/equation?tex=g%7B%27%7D" alt="g{&#39;}" eeimg="1">
+                    构造
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的连续扩张。
+                </p>
+                <p>
+                    这要如何构造呢？我们不妨反过来思考：如果我们有了
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的连续扩张
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    ，那么对于
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+F" alt="x\in F" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=g%28x%29%3Df%28x%29%2Cg%7B%27%7D%28x%29%3Df%7B%27%7D%28x%29%2Cg%7B%27%7D%28x%29%3D%5Cfrac%7B2%7D%7B%5Cpi%7Darctang%28x%29" alt="g(x)=f(x),g{&#39;}(x)=f{&#39;}(x),g{&#39;}(x)=\frac{2}{\pi}arctang(x)" eeimg="1">
+                    。反解得到：
+                    <img src="https://www.zhihu.com/equation?tex=g%28x%29%3Dtan%28%5Cfrac%7B%5Cpi%7D%7B2%7Dg%7B%27%7D%28x%29%29" alt="g(x)=tan(\frac{\pi}{2}g{&#39;}(x))" eeimg="1">
+                    。这是针对闭子集
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    中的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    而言的，同时也保证了
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的连续性。但是，对于不在
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    中的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    我们要怎么办呢？
+                </p>
+                <p>
+                    在这里，我们
+                    <b>
+                        换一种看法
+                    </b>
+                    。我们将
+                    <img src="https://www.zhihu.com/equation?tex=g%28x%29%3Dtan%28%5Cfrac%7B%5Cpi%7D%7B2%7Dg%7B%27%7D%28x%29%29" alt="g(x)=tan(\frac{\pi}{2}g{&#39;}(x))" eeimg="1">
+                    看作
+                    <img src="https://www.zhihu.com/equation?tex=g%28x%29%3Dtan%28%5Cfrac%7B%5Cpi%7D%7B2%7Dg%7B%27%7D%28x%29h%28x%29%29" alt="g(x)=tan(\frac{\pi}{2}g{&#39;}(x)h(x))" eeimg="1">
+                    ，只不过
+                    <img src="https://www.zhihu.com/equation?tex=h%28F%29%3D1" alt="h(F)=1" eeimg="1">
+                    是满足的。我们立马发现：只要
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    是一个
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的连续函数，那么我们就构造成功了！也就是说，我们现在
+                    <b>
+                        只需要构造一个
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        上的连续函数
+                        <img src="https://www.zhihu.com/equation?tex=h%28x%29" alt="h(x)" eeimg="1">
+                        满足
+                        <img src="https://www.zhihu.com/equation?tex=h%28F%29%3D1" alt="h(F)=1" eeimg="1">
+                        即可
+                    </b>
+                    。这个形式的需求与Urysohn定理能够带给我们的结果完全吻合！！
+                </p>
+                <p>
+                    我们继续逆向地思考：如果要通过Urysohn定理论证这样的
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    的存在性，我们需要一对不交闭集，且其中一者应该是
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    。那么我们的问题转化为了：如何构造一个与
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    不交的闭集呢？简单！注意到
+                    <img src="https://www.zhihu.com/equation?tex=g%7B%27%7D%28F%29%5Csubset+%28-1%2C1%29" alt="g{&#39;}(F)\subset (-1,1)" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=g%7B%27%7D%28X%29%5Csubset+%5B-1%2C1%5D" alt="g{&#39;}(X)\subset [-1,1]" eeimg="1">
+                    。我们直接
+                    <b>
+                        取
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=E%3D%28g%7B%27%7D%29%5E%7B-1%7D%28%5Cleft+%5C%7B+%5Cpm1+%5Cright+%5C%7D%29" alt="E=(g{&#39;})^{-1}(\left \{ \pm1 \right \})" eeimg="1">
+                    。由于
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    无界，
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                        非空且与
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        不交！至此，我们的链条终于完整地连了起来。
+                    </b>
+                </p>
+                <p>
+                    由Urysohn定理，存在
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    连续，且
+                    <img src="https://www.zhihu.com/equation?tex=h%28F%29%3D1" alt="h(F)=1" eeimg="1">
+                    。则考虑
+                    <img src="https://www.zhihu.com/equation?tex=g%28x%29%3Dtan%28%5Cfrac%7B%5Cpi%7D%7B2%7Dg%7B%27%7D%28x%29h%28x%29%29" alt="g(x)=tan(\frac{\pi}{2}g{&#39;}(x)h(x))" eeimg="1">
+                    ，其即为
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的连续扩张。得证！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Tietze扩张定理的证明并不简单，或是精妙的构造，或是需要我们逆向地思考，包含着许多技巧。但是结果却是十分优美的。实变中的连续延拓定理在Tietze扩张定理下看就是trivial的了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后我们对于Tietze扩张定理做一些简单的推广：
+                </p>
+                <p>
+                    <b>
+                        Tietze扩张定理对于
+                        <img src="https://www.zhihu.com/equation?tex=F%5Crightarrow+%5Cmathbb%7BE%7D%5En" alt="F\rightarrow \mathbb{E}^n" eeimg="1">
+                        的向量函数也成立
+                    </b>
+                    。我们只需要将这个函数的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个分量分别取出，分别做连续扩张，再写回向量函数的形式，即可保证其为
+                    <img src="https://www.zhihu.com/equation?tex=X%5Crightarrow+%5Cmathbb%7BE%7D%5En" alt="X\rightarrow \mathbb{E}^n" eeimg="1">
+                    上的连续函数，即做了连续扩张。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    进一步地，
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5En" alt="\mathbb{E}^n" eeimg="1">
+                        的任意收缩核，T4空间闭子集上连续函数
+                        <img src="https://www.zhihu.com/equation?tex=f%3AF%5Crightarrow+D" alt="f:F\rightarrow D" eeimg="1">
+                        都可以连续地进行扩张
+                    </b>
+                    。其中
+                    <b>
+                        收缩核的定义
+                    </b>
+                    为：若存在映射
+                    <img src="https://www.zhihu.com/equation?tex=r%3AY%5Crightarrow+B" alt="r:Y\rightarrow B" eeimg="1">
+                    连续且
+                    <img src="https://www.zhihu.com/equation?tex=r%7C_B%3Did" alt="r|_B=id" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的收缩核。（容易发现收缩映射是嵌入映射的逆映射）
+                </p>
+                <p>
+                    这个定理的证明如下：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-4f540154d784b4b75618716d515ed3a3_r.jpg">
+                    <figcaption>
+                        映射的示意图
+                    </figcaption>
+                </figure>
+                <p>
+                    考虑嵌入映射
+                    <img src="https://www.zhihu.com/equation?tex=i%3AD%5Crightarrow+%5Cmathbb%7BE%7D%5En" alt="i:D\rightarrow \mathbb{E}^n" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=f%7B%27%7D%3Di%5Ccirc+f" alt="f{&#39;}=i\circ f" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=f%7B%27%7D%3AF%5Crightarrow%5Cmathbb%7BE%7D%5En" alt="f{&#39;}:F\rightarrow\mathbb{E}^n" eeimg="1">
+                    为连续映射。
+                </p>
+                <p>
+                    由Tietze扩张定理，有
+                    <img src="https://www.zhihu.com/equation?tex=g%7B%27%7D%EF%BC%9AX%5Crightarrow%5Cmathbb%7BE%7D%5En" alt="g{&#39;}：X\rightarrow\mathbb{E}^n" eeimg="1">
+                    为连续扩张。
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=r%5Ccirc+g%7B%27%7D%3AX%5Crightarrow+D" alt="r\circ g{&#39;}:X\rightarrow D" eeimg="1">
+                    即为
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的连续扩张。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5En" alt="\mathbb{E}^n" eeimg="1">
+                    事实上有非常多的收缩核，在这里，我们考虑一个特殊的例子：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D" alt="\mathbb{E}^{n+1}" eeimg="1">
+                    中的球面
+                    <img src="https://www.zhihu.com/equation?tex=S%5En" alt="S^n" eeimg="1">
+                    。
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=S%5En" alt="S^n" eeimg="1">
+                    事实上是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D-%5Cleft+%5C%7B++O%5Cright+%5C%7D" alt="\mathbb{E}^{n+1}-\left \{  O\right \}" eeimg="1">
+                    的收缩核，收缩映射可以选取为
+                    <img src="https://www.zhihu.com/equation?tex=r%28%5Cvec%7Bx%7D%29%3D%5Cfrac%7B%5Cvec%7Bx%7D%7D%7B%7C%7C%5Cvec%7Bx%7D%7C%7C%7D" alt="r(\vec{x})=\frac{\vec{x}}{||\vec{x}||}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么对于一个闭子集上的连续函数
+                    <img src="https://www.zhihu.com/equation?tex=f%3AF%5Crightarrow+S%5En" alt="f:F\rightarrow S^n" eeimg="1">
+                    ，我们还能够保证其能够连续地扩张到全空间上吗？答案是不一定。（因为缺少了原点）
+                </p>
+                <p>
+                    但是，我们可以得到一个稍弱一些的结论。
+                </p>
+                <p>
+                    考虑嵌入映射
+                    <img src="https://www.zhihu.com/equation?tex=i%3AS%5En%5Crightarrow%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D" alt="i:S^n\rightarrow\mathbb{E}^{n+1}" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=i%5Ccirc+f%3AF%5Crightarrow%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D" alt="i\circ f:F\rightarrow\mathbb{E}^{n+1}" eeimg="1">
+                    为连续映射。
+                </p>
+                <p>
+                    由Tietze扩张定理，存在连续扩张
+                    <img src="https://www.zhihu.com/equation?tex=g%3AX%5Crightarrow%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D" alt="g:X\rightarrow\mathbb{E}^{n+1}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    注意到收缩映射对于原点并没有定义，故我们在将这个扩张与收缩映射复合之前应该先确保在映射
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    下被映射到原点的元素已经被挖去。
+                </p>
+                <p>
+                    也就是说，我们可以对连续扩张进行一些小修改。我们应该考虑
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=g%5E%7B-1%7D%28%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D-%5Cleft+%5C%7B++O%5Cright+%5C%7D%29" alt="g^{-1}(\mathbb{E}^{n+1}-\left \{  O\right \})" eeimg="1">
+                    上的限制。那么
+                    <img src="https://www.zhihu.com/equation?tex=r%5Ccirc+g%7C_%7Bg%5E%7B-1%7D%28%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D-%5Cleft+%5C%7B++O%5Cright+%5C%7D%29%7D%3Ag%5E%7B-1%7D%28%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D-%5Cleft+%5C%7B++O%5Cright+%5C%7D%29%5Crightarrow+S%5En" alt="r\circ g|_{g^{-1}(\mathbb{E}^{n+1}-\left \{  O\right \})}:g^{-1}(\mathbb{E}^{n+1}-\left \{  O\right \})\rightarrow S^n" eeimg="1">
+                    就是
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的连续扩张。
+                </p>
+                <p>
+                    其中我们不难发现
+                    <img src="https://www.zhihu.com/equation?tex=g%5E%7B-1%7D%28%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D-%5Cleft+%5C%7B++O%5Cright+%5C%7D%29" alt="g^{-1}(\mathbb{E}^{n+1}-\left \{  O\right \})" eeimg="1">
+                    是闭子集
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    的开邻域（注意到
+                    <img src="https://www.zhihu.com/equation?tex=g%28F%29%3D%28i%5Ccirc+f%29%28F%29%5Csubset+%5Cmathbb%7BE%7D%5E%7Bn%2B1%7D-%5Cleft+%5C%7B++O%5Cright+%5C%7D" alt="g(F)=(i\circ f)(F)\subset \mathbb{E}^{n+1}-\left \{  O\right \}" eeimg="1">
+                    ）。
+                </p>
+                <p>
+                    故
+                    <b>
+                        对于一个T4空间的闭子集上映射到
+                        <img src="https://www.zhihu.com/equation?tex=S%5En" alt="S^n" eeimg="1">
+                        的连续函数
+                        <img src="https://www.zhihu.com/equation?tex=f%3AF%5Crightarrow+S%5En" alt="f:F\rightarrow S^n" eeimg="1">
+                        ，我们可以保证将其连续扩张到闭子集的某个开邻域上
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下次我们将会说到度量化定理，并快速过一遍紧性与列紧性。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

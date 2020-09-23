@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            数值分析学习笔记（七）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-d5d4f33e4dfd92a00d1d193bfcfb0855_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/52439947" target="_blank">
+                        数值分析学习笔记（七）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-14
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    在本章中，我们介绍一些常微分方程（ODE）的数值求解方法。
+                </p>
+                <p>
+                    对于ODE的数值求解，我们先考虑一阶常微分方程的初值问题（简便起见先考虑单个方程情形）。
+                </p>
+                <p>
+                    我们拥有的条件是：
+                </p>
+                <p>
+                    <b>
+                        已知ODE：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdy%7D%7Bdt%7D%3Df%28t%2Cy%29%2C%5C+t%5Cin%5Ba%2Cb%5D" alt="\frac{dy}{dt}=f(t,y),\ t\in[a,b]" eeimg="1">
+                        ，以及函数初值
+                        <img src="https://www.zhihu.com/equation?tex=y%28a%29%3D%5Calpha" alt="y(a)=\alpha" eeimg="1">
+                        。（总是假设
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    <b>
+                        的性质足够好）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        我们的目标是：求得函数
+                        <img src="https://www.zhihu.com/equation?tex=y%28t%29" alt="y(t)" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Ba%2Cb%5D" alt="[a,b]" eeimg="1">
+                        上每一点处的函数值
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然而，我们终究只具有函数在区间上的一阶导数信息。这导致了要直接考虑函数在区间上整体的性质对我们而言太困难了一些。通常的做法是：
+                    <b>
+                        在区间中取一些离散的点，我们的目标仅仅是求出在这些结点上的函数值。而对于不在这些结点上的点的函数值，我们利用插值方法进行进一步估计
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先，我们简单介绍一些有关于ODE的数学知识。
+                </p>
+                <p>
+                    学习过常微分方程的读者一定对于Lipschitz条件非常熟悉。Lipschitz条件在常微分方程求解理论中具有很重要的地位。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%28t%2Cy_1%29%2C%28t%2Cy_2%29%5Cin+D%2C%5C+%5Cexists+L%3E0%2C%5C+s.t.+%5C+%7Cf%28t%2Cy_1%29-f%28t%2Cy_2%29%7C%5Cleq+L%7Cy_1-y_2%7C" alt="\forall (t,y_1),(t,y_2)\in D,\ \exists L&gt;0,\ s.t. \ |f(t,y_1)-f(t,y_2)|\leq L|y_1-y_2|" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=f%28t%2Cy%29" alt="f(t,y)" eeimg="1">
+                        在区域
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        上对于变量
+                        <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                        具有Lipschitz条件。
+                    </b>
+                </p>
+                <p>
+                    我们容易发现：Lipschitz条件比连续性更强，但是比可微性更弱。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们再介绍另外一个概念：凸集。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%28t_1%2Cy_1%29%2C%28t_2%2Cy_2%29%5Cin+D%2C%5Cforall+%5Clambda%5Cin%280%2C1%29%2C%5C+%28%281-%5Clambda+t_1%29%2B%5Clambda+t_2%2C%281-%5Clambda+y_1%29%2B%5Clambda+y_2%29%5Cin+D" alt="\forall (t_1,y_1),(t_2,y_2)\in D,\forall \lambda\in(0,1),\ ((1-\lambda t_1)+\lambda t_2,(1-\lambda y_1)+\lambda y_2)\in D" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        为凸集。
+                    </b>
+                </p>
+                <p>
+                    直观地理解，凸集意味着任意取两点作为线段的端点，则线段上的所有点也都在集合内。
+                </p>
+                <p>
+                    引入凸集的概念主要是为了后文的便利，因为在多元情况下关于一个变量的Lagrange中值定理需要在凸集上才能进行推广。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此我们得到了判定函数是否具有Lipschitz条件的简便方法。
+                </p>
+                <p>
+                    <b>
+                        推论：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        为凸集，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%28t%2Cy%29%5Cin+D%2C%5Cexists+L%3E0%2C%7C%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+y%7D%28t%2Cy%29%7C%5Cleq+L" alt="\forall (t,y)\in D,\exists L&gt;0,|\frac{\partial f}{\partial y}(t,y)|\leq L" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        上对于变量
+                        <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                        具有Lipschitz条件。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    在凸集上将一元中的Lagrange中值定理推广至多元情况下关于单个变量的Lagrange中值定理。
+                </p>
+                <p>
+                    我们得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Cxi%2C%7Cf%28t%2Cy_1%29-f%28t%2Cy_2%29%7C%3D%7C%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+y%7D%28t%2C%5Cxi%29%7C%7Cy_1-y_2%7C%5Cleq+L%7Cy_1-y_2%7C" alt="\exists \xi,|f(t,y_1)-f(t,y_2)|=|\frac{\partial f}{\partial y}(t,\xi)||y_1-y_2|\leq L|y_1-y_2|" eeimg="1">
+                </p>
+                <p>
+                    从而轻松得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    但是值得注意的是：这个推论仅仅是一个充分条件。且凸集的条件是必不可少的。（虽然大多数情况下这个条件都具备）
+                </p>
+                <p>
+                    介绍这些知识，是为了引出ODE的存在唯一性定理。这也是ODE求解理论的基础之一。
+                </p>
+                <p>
+                    <b>
+                        定理（Picard存在唯一性定理）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于初值问题
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdy%7D%7Bdt%7D%3Df%28t%2Cy%29%2C%5C+t%5Cin%5Ba%2Cb%5D" alt="\frac{dy}{dt}=f(t,y),\ t\in[a,b]" eeimg="1">
+                        且
+                        <img src="https://www.zhihu.com/equation?tex=y%28a%29%3D%5Calpha" alt="y(a)=\alpha" eeimg="1">
+                        ，若
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        在矩形区域
+                        <img src="https://www.zhihu.com/equation?tex=D%3Aa%5Cleq+t%5Cleq+b%2C%5C+-%5Cinfty%3Cy%3C%2B%5Cinfty" alt="D:a\leq t\leq b,\ -\infty&lt;y&lt;+\infty" eeimg="1">
+                        上连续，且关于变量
+                        <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                        满足Lipschitz条件，则ODE的解
+                        <img src="https://www.zhihu.com/equation?tex=y%28t%29" alt="y(t)" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Ba%2Cb%5D" alt="[a,b]" eeimg="1">
+                        上存在且唯一。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    此处限于篇幅仅仅列出大致证明思路。
+                </p>
+                <p>
+                    对ODE进行等价转化，转化为积分方程形式
+                    <img src="https://www.zhihu.com/equation?tex=y%28t%29%3D%5Calpha%2B%5Cint_a%5Etf%28t%2Cy%28t%29%29dt" alt="y(t)=\alpha+\int_a^tf(t,y(t))dt" eeimg="1">
+                    。
+                </p>
+                <p>
+                    构造Picard逼近序列，
+                    <img src="https://www.zhihu.com/equation?tex=y_%7Bn%2B1%7D%3D%5Calpha%2B%5Cint_a%5Etf%28t%2Cy_n%28t%29%29dt" alt="y_{n+1}=\alpha+\int_a^tf(t,y_n(t))dt" eeimg="1">
+                    。
+                </p>
+                <p>
+                    证明Picard序列
+                    <img src="https://www.zhihu.com/equation?tex=y%3Dy_n%28t%29" alt="y=y_n(t)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    一致收敛到积分方程的解。
+                </p>
+                <p>
+                    并且最后利用反证法证明解唯一即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Picard存在唯一性定理消除了我们很多的数值求解顾虑。只需要ODE足够好，我们就不必再担心解不存在以及解有多个的问题。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在求解时，解的存在唯一性可能还不能满足我们的全部需求。数值求解ODE通常要求问题是良态的。
+                </p>
+                <p>
+                    <b>
+                        良态问题意味着ODE不但解存在唯一，而且对于初值或者方程的微小扰动并不会对解产生很大的影响
+                    </b>
+                    。
+                </p>
+                <p>
+                    后者利用数学的语言标表述即为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Cvarepsilon_0%2Ck%3E0%2C%5C+s.t.%5Cforall+%5Cvarepsilon%3E0%2C" alt="\exists \varepsilon_0,k&gt;0,\ s.t.\forall \varepsilon&gt;0," eeimg="1">
+                    对于任意满足
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cdelta%28t%29%7C%3C%5Cvarepsilon%2C%5C+t%5Cin%5Ba%2Cb%5D" alt="|\delta(t)|&lt;\varepsilon,\ t\in[a,b]" eeimg="1">
+                    的连续函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta%28t%29" alt="\delta(t)" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cdelta_0%7C%3C%5Cvarepsilon" alt="|\delta_0|&lt;\varepsilon" eeimg="1">
+                    ，对于初值问题
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdz%7D%7Bdt%7D%3Df%28t%2Cz%29%2B%5Cdelta%28t%29%2Cz%28a%29%3D%5Calpha%2B%5Cdelta_0" alt="\frac{dz}{dt}=f(t,z)+\delta(t),z(a)=\alpha+\delta_0" eeimg="1">
+                    ，其唯一解
+                    <img src="https://www.zhihu.com/equation?tex=z%28t%29" alt="z(t)" eeimg="1">
+                    满足
+                    <img src="https://www.zhihu.com/equation?tex=%7Cz%28t%29-y%28t%29%7C%3Ck%5Cvarepsilon" alt="|z(t)-y(t)|&lt;k\varepsilon" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，对于ODE：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdy%7D%7Bdt%7D%3Df%28t%2Cy%29" alt="\frac{dy}{dt}=f(t,y)" eeimg="1">
+                    ，
+                    <b>
+                        只需要
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        在区域
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        上连续，且
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        关于
+                        <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                        具有Lipschitz条件，则问题必为良态的
+                    </b>
+                    。
+                </p>
+                <p>
+                    在下面，我们均
+                    <b>
+                        假设数值求解的目标ODE为良态的
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们开始介绍ODE的数值解法。
+                </p>
+                <p>
+                    回忆我们之前所提及的ODE数值估计的思想：
+                    <b>
+                        在区间中取一些离散的点，仅需要求出在这些结点上的函数值。而对于不在这些结点上的点的函数值，我们利用插值方法进行进一步估计
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们接下来介绍的方法都将围绕如何求出这些离散结点处的函数值而展开。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最朴素的方法就是Euler方法。
+                </p>
+                <p>
+                    <b>
+                        若无特别说明，我们总是假设所取离散的估计结点等距分布，步长为
+                        <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    选取结点
+                    <img src="https://www.zhihu.com/equation?tex=t_i%3Da%2Bih%2C%5C+t_i%5Cin%5Ba%2Cb%5D" alt="t_i=a+ih,\ t_i\in[a,b]" eeimg="1">
+                </p>
+                <p>
+                    由Taylor公式，
+                    <img src="https://www.zhihu.com/equation?tex=y%28t_%7Bi%2B1%7D%29%3Dy%28t_i%29%2B%5Cfrac%7Bdy%7D%7Bdt%7Dh%2Bo%28h%5E2%29%3Dy%28t_i%29%2Bf%28t%2Cy%29h%2Bo%28h%5E2%29" alt="y(t_{i+1})=y(t_i)+\frac{dy}{dt}h+o(h^2)=y(t_i)+f(t,y)h+o(h^2)" eeimg="1">
+                </p>
+                <p>
+                    舍去高阶无穷小项，我们得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=y%28t_%7Bi%2B1%7D%29%3Dy%28t_i%29%2Bf%28t%2Cy%29h" alt="y(t_{i+1})=y(t_i)+f(t,y)h" eeimg="1">
+                </p>
+                <p>
+                    下文中我们总是用
+                    <img src="https://www.zhihu.com/equation?tex=y_i" alt="y_i" eeimg="1">
+                    来表示
+                    <img src="https://www.zhihu.com/equation?tex=y%28t_i%29" alt="y(t_i)" eeimg="1">
+                    ，为函数的真实值；用
+                    <img src="https://www.zhihu.com/equation?tex=w_i" alt="w_i" eeimg="1">
+                    表示我们数值估计ODE所得到的
+                    <img src="https://www.zhihu.com/equation?tex=t_i" alt="t_i" eeimg="1">
+                    处的函数估计值。
+                </p>
+                <p>
+                    由上面的关系式，我们得到Euler方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Euler方法：
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_0%3Dy_0%3D%5Calpha" alt="w_0=y_0=\alpha" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bf%28t_i%2Cw_i%29h" alt="w_{i+1}=w_i+f(t_i,w_i)h" eeimg="1">
+                </p>
+                <p>
+                    从几何上理解，Euler方法过
+                    <img src="https://www.zhihu.com/equation?tex=%28t_i%2Cw_i%29" alt="(t_i,w_i)" eeimg="1">
+                    作与
+                    <img src="https://www.zhihu.com/equation?tex=t_i" alt="t_i" eeimg="1">
+                    处函数切线平行的直线，并将其延长至
+                    <img src="https://www.zhihu.com/equation?tex=t_%7Bi%2B1%7D" alt="t_{i+1}" eeimg="1">
+                    ，则对应函数值即为估计值
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="w_{i+1}" eeimg="1">
+                    。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-43b80eb44482534861180767bf82f4b0_r.jpg">
+                </figure>
+                <p>
+                    如图，是对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdy%7D%7Bdt%7D%3Dy-t%5E2%2B1" alt="\frac{dy}{dt}=y-t^2+1" eeimg="1">
+                    的Euler方法执行结果，取步长
+                    <img src="https://www.zhihu.com/equation?tex=h%3D0.1" alt="h=0.1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    可以看到，蓝线代表真实值，红线代表估计值。
+                </p>
+                <p>
+                    Euler方法放大了在初值点附近的微小误差。当在
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    处时，误差已经较大
+                </p>
+                <p>
+                    可见：Euler方法由于舍去的项阶数仍旧较低，导致
+                    <b>
+                        截断误差较大，精度不佳
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面我们给出Euler方法的误差估计：
+                </p>
+                <p>
+                    <b>
+                        定理（Euler方法的误差）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%3D0%2C1%2C...%2Cn%2C%7Cy_i-w_i%7C%5Cleq%5Cfrac%7BhM%7D%7B2L%7D%5Be%5E%7BL%28t_i-a%29%7D-1%5D" alt="\forall i=0,1,...,n,|y_i-w_i|\leq\frac{hM}{2L}[e^{L(t_i-a)}-1]" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=t%5Cin%5Ba%2Cb%5D%2CL" alt="t\in[a,b],L" eeimg="1">
+                        为Lipschitz常数，
+                        <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                        为二阶导数在
+                        <img src="https://www.zhihu.com/equation?tex=%5Ba%2Cb%5D" alt="[a,b]" eeimg="1">
+                        的上界。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们考虑Taylor公式
+                    <img src="https://www.zhihu.com/equation?tex=y_%7Bi%2B1%7D%3Dy_i%2Bf%28t_i%2Cy_i%29h%2B%5Cfrac%7By%5E%7B%27%27%7D%28%5Cxi_i%29%7D%7B2%7Dh%5E2" alt="y_{i+1}=y_i+f(t_i,y_i)h+\frac{y^{&#39;&#39;}(\xi_i)}{2}h^2" eeimg="1">
+                </p>
+                <p>
+                    与Euler方法的估计式相减得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7Cy_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7C%5Cleq+%7Cy_i-w_i%7C%2Bh%7Cf%28t_i%2Cy_i%29-f%28t_i%2Cw_i%29%7C%2B%5Cfrac%7B%7Cy%5E%7B%27%27%7D%28%5Cxi_i%29%7C%7D%7B2%7Dh%5E2" alt="|y_{i+1}-w_{i+1}|\leq |y_i-w_i|+h|f(t_i,y_i)-f(t_i,w_i)|+\frac{|y^{&#39;&#39;}(\xi_i)|}{2}h^2" eeimg="1">
+                </p>
+                <p>
+                    即
+                    <img src="https://www.zhihu.com/equation?tex=%7Cy_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7C%5Cleq+%281%2BLh%29%7Cy_i-w_i%7C%2B%5Cfrac%7BM%7D%7B2%7Dh%5E2" alt="|y_{i+1}-w_{i+1}|\leq (1+Lh)|y_i-w_i|+\frac{M}{2}h^2" eeimg="1">
+                </p>
+                <p>
+                    将递推关系展开，
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7Cy_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7C%5Cleq+%281%2BLh%29%5E%7Bi%2B1%7D%7Cy_0-w_0%7C%2B%5Csum_%7Bj%3D0%7D%5Ei%281%2BLh%29%5Ej%5Cfrac%7BM%7D%7B2%7Dh%5E2" alt="|y_{i+1}-w_{i+1}|\leq (1+Lh)^{i+1}|y_0-w_0|+\sum_{j=0}^i(1+Lh)^j\frac{M}{2}h^2" eeimg="1">
+                </p>
+                <p>
+                    利用等比数列求和公式，以及Bernoulli不等式（
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cgeq+-1%2Cm%3E0%2C0%5Cleq+%281%2Bx%29%5Em%5Cleq+e%5E%7Bmx%7D" alt="\forall x\geq -1,m&gt;0,0\leq (1+x)^m\leq e^{mx}" eeimg="1">
+                    ）即可得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然而，Euler方法仍旧很有价值。它是所有后续ODE估计方法的基础。
+                </p>
+                <p>
+                    在这里需要注意的是：Euler方法与数值微分类似地，
+                    <b>
+                        并不具有舍入误差稳定性
+                    </b>
+                    。也就是说，当步长
+                    <img src="https://www.zhihu.com/equation?tex=h%5Crightarrow+0" alt="h\rightarrow 0" eeimg="1">
+                    时，舍入误差会增大，估计并不一定会更优。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，我们在前文分析Euler方法的来源时提及了Taylor公式。
+                </p>
+                <p>
+                    那么读者很自然地能够想到，不用
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    阶Taylor展开，而是利用
+                    <img src="https://www.zhihu.com/equation?tex=2%2C3%2C...%2Cn" alt="2,3,...,n" eeimg="1">
+                    阶Taylor展开都会有与之对应的ODE估计方法。且
+                    <b>
+                        展开阶数越高，截断误差将会越小
+                    </b>
+                    。
+                </p>
+                <p>
+                    这就是ODE估计的
+                    <b>
+                        Taylor方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们在此不再赘述其估计式，读者很容易根据Taylor公式自行写出，而Euler方法是阶数为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    时的特例。
+                </p>
+                <p>
+                    我们对上述同样的例子利用
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    阶Taylor方法
+                </p>
+                <p>
+                    得到结果
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-7d273d88efae583f80516c4f2e60fd30_r.jpg">
+                </figure>
+                <p>
+                    绿色曲线为二阶Taylor方法的结果。
+                </p>
+                <p>
+                    可以看到：步长为
+                    <img src="https://www.zhihu.com/equation?tex=0.1" alt="0.1" eeimg="1">
+                    时，蓝绿色线几乎重合，其估计远优于Euler方法得出的估计。
+                </p>
+                <p>
+                    Taylor方法阶数的提升确实能够减小截断误差，提高精度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    还有一点值得一提：我们之前说过，对于在区间中非估计结点处的函数值，我们进行插值从而估计出在那点处的函数值。
+                </p>
+                <p>
+                    在这里，我们不必再使用Lagrange插值，而可以利用
+                    <b>
+                        Hermite插值
+                    </b>
+                    。我们在求解ODE时，拥有了函数的一阶导数的信息。从而Hermite插值的使用可以使得估计的
+                    <b>
+                        结果更加精确
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们上文不断地在提及“截断误差”。然而，其究竟是如何定义的呢？
+                </p>
+                <p>
+                    我们现在给出衡量一个方法好坏的标准——局部截断误差阶数。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于数值估计方法
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cphi%28t_i%2Cw_i%29" alt="w_{i+1}=w_i+h\phi(t_i,w_i)" eeimg="1">
+                        ，其局部截断误差
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctau_%7Bi%2B1%7D%28h%29%3D%5Cfrac%7By_%7Bi%2B1%7D-y_i%7D%7Bh%7D-%5Cphi%28t_i%2Cy_i%29" alt="\tau_{i+1}(h)=\frac{y_{i+1}-y_i}{h}-\phi(t_i,y_i)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以这样理解。假设我们对于
+                    <img src="https://www.zhihu.com/equation?tex=y%28t_i%29" alt="y(t_i)" eeimg="1">
+                    的估计是准确的，即
+                    <img src="https://www.zhihu.com/equation?tex=y_i%3Dw_i" alt="y_i=w_i" eeimg="1">
+                    ，那么我们对于
+                    <img src="https://www.zhihu.com/equation?tex=t_%7Bi%2B1%7D" alt="t_{i+1}" eeimg="1">
+                    处的导数的估计值的偏差即为局部截断误差。
+                </p>
+                <p>
+                    局部截断误差，顾名思义，是一个
+                    <b>
+                        局部的
+                    </b>
+                    性质，甚至在每个估计结点处是不同的。
+                </p>
+                <p>
+                    其依赖于：
+                    <b>
+                        方程、步长、特定的估计结点
+                    </b>
+                    。
+                </p>
+                <p>
+                    其度量的是：
+                    <b>
+                        在这个估计结点处产生出的估计的优劣程度
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    根据此定义，容易知道
+                    <b>
+                        Euler方法局部截断误差为
+                        <img src="https://www.zhihu.com/equation?tex=O%28h%29" alt="O(h)" eeimg="1">
+                        ，为一阶方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    而
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        阶Taylor方法的局部截断误差为
+                        <img src="https://www.zhihu.com/equation?tex=O%28h%5En%29" alt="O(h^n)" eeimg="1">
+                        ，为
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        阶方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    方法阶数越高，则精度越好。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然而，
+                    <b>
+                        高阶Taylor方法需要的计算代价太大了
+                    </b>
+                    。
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=y%5E%7B%27%27%7D%2Cy%5E%7B%27%27%27%7D%2C..." alt="y^{&#39;&#39;},y^{&#39;&#39;&#39;},..." eeimg="1">
+                    等高阶导数，我们都需要运用数值微分方法进行值的估计。
+                </p>
+                <p>
+                    由此，我们引入一类不会大量增加计算代价且能提升局部截断误差阶数的方法：Runge-Kutta方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Runge-Kutta方法：
+                    </b>
+                </p>
+                <p>
+                    我们发现ODE的数值方法通常具有形式
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cphi" alt="w_{i+1}=w_i+h\phi" eeimg="1">
+                    。
+                </p>
+                <p>
+                    其中，我们可以将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi" alt="\phi" eeimg="1">
+                    理解为对应区间
+                    <img src="https://www.zhihu.com/equation?tex=%5Bt_i%2Ct_%7Bi%2B1%7D%5D" alt="[t_i,t_{i+1}]" eeimg="1">
+                    上的
+                    <b>
+                        平均变化率
+                    </b>
+                    。
+                </p>
+                <p>
+                    Euler方法利用的平均变化率就是导数
+                    <img src="https://www.zhihu.com/equation?tex=y%5E%7B%27%7D%28t_i%29" alt="y^{&#39;}(t_i)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    而Runge-Kutta方法对于平均变化率的选取进行了改变。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们在这里给出比较简单的二阶Runge-Kutta公式的推导：
+                </p>
+                <p>
+                    二阶R-K公式假设我们选取的平均变化率具有形式：
+                    <img src="https://www.zhihu.com/equation?tex=af%28t_i%2B%5Calpha%2Cy_i%2B%5Cbeta%29" alt="af(t_i+\alpha,y_i+\beta)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    则我们容易得到估计式：
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bhaf%28t_i%2B%5Calpha%2Cw_i%2B%5Cbeta%29" alt="w_{i+1}=w_i+haf(t_i+\alpha,w_i+\beta)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们想要保证：
+                    <b>
+                        这个方法是没有系统偏差的
+                    </b>
+                    。即当
+                    <img src="https://www.zhihu.com/equation?tex=w_i%3Dy_i" alt="w_i=y_i" eeimg="1">
+                    成立时，必定有
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dy_%7Bi%2B1%7D" alt="w_{i+1}=y_{i+1}" eeimg="1">
+                    成立。
+                </p>
+                <p>
+                    则容易知道
+                    <img src="https://www.zhihu.com/equation?tex=af%28t_i%2B%5Calpha%2Cy_i%2B%5Cbeta%29%3D%5Cfrac%7By_%7Bi%2B1%7D-y_i%7D%7Bh%7D" alt="af(t_i+\alpha,y_i+\beta)=\frac{y_{i+1}-y_i}{h}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们在这里将右侧用Taylor公式展开至二阶项。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7By_%7Bi%2B1%7D-y_i%7D%7Bh%7D%3Dy%5E%7B%27%7D%28t_i%29%2B%5Cfrac%7By%5E%7B%27%27%7D%28t_i%29h%7D%7B2%7D" alt="\frac{y_{i+1}-y_i}{h}=y^{&#39;}(t_i)+\frac{y^{&#39;&#39;}(t_i)h}{2}" eeimg="1">
+                </p>
+                <p>
+                    对于左侧，我们利用二元函数的Taylor公式，容易得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=af%28t_i%2B%5Calpha%2Cy_i%2B%5Cbeta%29%3Daf%28t_i%2Cy_i%29%2Ba%5Calpha%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+t%7D%2Ba%5Cbeta%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+y%7D" alt="af(t_i+\alpha,y_i+\beta)=af(t_i,y_i)+a\alpha\frac{\partial f}{\partial t}+a\beta\frac{\partial f}{\partial y}" eeimg="1">
+                    （余项均省略）
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdy%7D%7Bdt%7D%3Df%28t%2Cy%29" alt="\frac{dy}{dt}=f(t,y)" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=y%5E%7B%27%7D%28t_i%29%2B%5Cfrac%7By%5E%7B%27%27%7D%28t_i%29h%7D%7B2%7D%3Df%28t_i%2Cy_i%29%2B%5Cfrac%7Bh%7D%7B2%7D%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+t%7D%2B%5Cfrac%7Bh%7D%7B2%7D%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+y%7Df%28t%2Cy%29" alt="y^{&#39;}(t_i)+\frac{y^{&#39;&#39;}(t_i)h}{2}=f(t_i,y_i)+\frac{h}{2}\frac{\partial f}{\partial t}+\frac{h}{2}\frac{\partial f}{\partial y}f(t,y)" eeimg="1">
+                </p>
+                <p>
+                    由待定系数法，上两式左右项的系数对应相等。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+a%3D1%5C%5C+a%5Calpha%3D%5Cfrac%7Bh%7D%7B2%7D%5C%5C+a%5Cbeta%3D%5Cfrac%7Bh%7D%7B2%7Df%28t_i%2Cy_i%29+%5Cend%7Bcases%7D" alt="\begin{cases} a=1\\ a\alpha=\frac{h}{2}\\ a\beta=\frac{h}{2}f(t_i,y_i) \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    解出并带回原式得到：
+                </p>
+                <p>
+                    <b>
+                        2阶R-K方法：
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_0%3Dy_0%3D%5Calpha" alt="w_0=y_0=\alpha" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bhf%28t_i%2B%5Cfrac%7Bh%7D%7B2%7D%2Cw_i%2B%5Cfrac%7Bh%7D%7B2%7Df%28t_i%2Cw_i%29%29" alt="w_{i+1}=w_i+hf(t_i+\frac{h}{2},w_i+\frac{h}{2}f(t_i,w_i))" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注意到：虽然R-K方法的表达式看起来很复杂，但是其中却不含有导数，不必进行数值微分就可以进行估计。值得一提的是，R-K方法通常都具有如此的迭代形式。
+                </p>
+                <p>
+                    我们容易注意到：
+                    <img src="https://www.zhihu.com/equation?tex=w_i%2B%5Cfrac%7Bh%7D%7B2%7Df%28t_i%2Cw_i%29" alt="w_i+\frac{h}{2}f(t_i,w_i)" eeimg="1">
+                    实际上是对于
+                    <img src="https://www.zhihu.com/equation?tex=y%28t_i%2B%5Cfrac%7Bh%7D%7B2%7D%29" alt="y(t_i+\frac{h}{2})" eeimg="1">
+                    的Euler方法估计。
+                </p>
+                <p>
+                    2阶R-K方法的含义是：先对于
+                    <img src="https://www.zhihu.com/equation?tex=y%28t_i%2B%5Cfrac%7Bh%7D%7B2%7D%29" alt="y(t_i+\frac{h}{2})" eeimg="1">
+                    的值进行估计，再利用此估计值生成对于
+                    <img src="https://www.zhihu.com/equation?tex=y%28t_%7Bi%2B1%7D%29" alt="y(t_{i+1})" eeimg="1">
+                    的值的估计。
+                </p>
+                <p>
+                    从某种意义上来说，
+                    <b>
+                        2阶R-K方法的本质是利用
+                        <img src="https://www.zhihu.com/equation?tex=%28t_i%2Cy_i%29%2C%28t_i%2B%5Cfrac%7Bh%7D%7B2%7D%2Cy%28t_%7Bi%7D%2B%5Cfrac%7Bh%7D%7B2%7D%29%29" alt="(t_i,y_i),(t_i+\frac{h}{2},y(t_{i}+\frac{h}{2}))" eeimg="1">
+                        这两个点处函数值的加权平均对于区间
+                        <img src="https://www.zhihu.com/equation?tex=%5Bt_i%2Ct_%7Bi%2B1%7D%5D" alt="[t_i,t_{i+1}]" eeimg="1">
+                        上的平均变化率进行了估计
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    仿照上述方法，我们可以构造出三阶以及四阶R-K公式，下面直接给出。
+                </p>
+                <p>
+                    <b>
+                        三阶R-K方法：
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_0%3Dy_0%3D%5Calpha" alt="w_0=y_0=\alpha" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_%7Bi%7D%2Bh%5Cfrac%7B1%7D%7B4%7D%5Bf%28t_i%2Cw_i%29%2B3f%28t_i%2B%5Cfrac%7B2h%7D%7B3%7D%2Cw_i%2B%5Cfrac%7B2h%7D%7B3%7Df%28t_i%2B%5Cfrac%7Bh%7D%7B3%7D%2Cw_i%2B%5Cfrac%7Bh%7D%7B3%7Df%28t_i%2Cw_i%29%29%29%5D" alt="w_{i+1}=w_{i}+h\frac{1}{4}[f(t_i,w_i)+3f(t_i+\frac{2h}{3},w_i+\frac{2h}{3}f(t_i+\frac{h}{3},w_i+\frac{h}{3}f(t_i,w_i)))]" eeimg="1">
+                </p>
+                <p>
+                    3阶R-K方法的思想与2阶类似，区别仅仅是将两个点换作3个点：
+                    <img src="https://www.zhihu.com/equation?tex=%28t_i%2Cy_i%29%2C%28t_i%2B%5Cfrac%7Bh%7D%7B3%7D%2Cy%28t_%7Bi%7D%2B%5Cfrac%7Bh%7D%7B3%7D%29%29%2C%28t_i%2B%5Cfrac%7B2h%7D%7B3%7D%2Cy%28t_%7Bi%7D%2B%5Cfrac%7B2h%7D%7B3%7D%29%29" alt="(t_i,y_i),(t_i+\frac{h}{3},y(t_{i}+\frac{h}{3})),(t_i+\frac{2h}{3},y(t_{i}+\frac{2h}{3}))" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        四阶R-K方法：
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_0%3Dy_0%3D%5Calpha" alt="w_0=y_0=\alpha" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k_1%3Df%28t_i%2Cw_i%29" alt="k_1=f(t_i,w_i)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k_2%3Df%28t_i%2B%5Cfrac%7Bh%7D%7B2%7D%2Cw_i%2B%5Cfrac%7Bh%7D%7B2%7Dk_1%29" alt="k_2=f(t_i+\frac{h}{2},w_i+\frac{h}{2}k_1)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k_3%3Df%28t_i%2B%5Cfrac%7Bh%7D%7B2%7D%2Cw_i%2B%5Cfrac%7Bh%7D%7B2%7Dk_2%29" alt="k_3=f(t_i+\frac{h}{2},w_i+\frac{h}{2}k_2)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k_4%3Df%28t_i%2Bh%2Cw_i%2Bhk_3%29" alt="k_4=f(t_i+h,w_i+hk_3)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cfrac%7B1%7D%7B6%7D%28k_1%2B2k_2%2B2k_3%2Bk_4%29" alt="w_{i+1}=w_i+h\frac{1}{6}(k_1+2k_2+2k_3+k_4)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    除去R-K方法以外，这样的迭代思想也被用于改进其它一些方法。
+                </p>
+                <p>
+                    改进的Euler方法就是一个很好的例子。
+                </p>
+                <p>
+                    改进的Euler方法认为：Euler方法中将区间上的平均变化率取作
+                    <img src="https://www.zhihu.com/equation?tex=y%5E%7B%27%7D%28t_i%29" alt="y^{&#39;}(t_i)" eeimg="1">
+                    是不够好的。
+                </p>
+                <p>
+                    既然如此，不如利用类似的迭代形式先估计出
+                    <img src="https://www.zhihu.com/equation?tex=y%5E%7B%27%7D%28t_%7Bi%2B1%7D%29" alt="y^{&#39;}(t_{i+1})" eeimg="1">
+                    的值，即
+                    <img src="https://www.zhihu.com/equation?tex=f%28t_i%2Bh%2Cw_i%2Bhf%28t_i%2Cw_i%29%29" alt="f(t_i+h,w_i+hf(t_i,w_i))" eeimg="1">
+                </p>
+                <p>
+                    然后利用两个平均变化率的平均作为一个更好的平均变化率估计值。
+                </p>
+                <p>
+                    <b>
+                        改进的Euler方法：
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_0%3Dy_0%3D%5Calpha" alt="w_0=y_0=\alpha" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cfrac%7B1%7D%7B2%7D%5Bf%28t_i%2Cw_i%29%2Bf%28t_i%2Bh%2Cw_i%2Bhf%28t_i%2Cw_i%29%29%5D" alt="w_{i+1}=w_i+h\frac{1}{2}[f(t_i,w_i)+f(t_i+h,w_i+hf(t_i,w_i))]" eeimg="1">
+                </p>
+                <p>
+                    改进的Euler方法本质上是一个
+                    <b>
+                        预测-矫正
+                    </b>
+                    的过程。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%28t_i%2Bh%2Cw_i%2Bhf%28t_i%2Cw_i%29%29" alt="f(t_i+h,w_i+hf(t_i,w_i))" eeimg="1">
+                    作为预测项预测下一个结点处的导数将会如何变动。
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=f%28t_i%2Cw_i%29" alt="f(t_i,w_i)" eeimg="1">
+                    作为矫正项利用已经拥有的关于ODE的信息对于预测进行偏向事实的矫正。
+                </p>
+                <p>
+                    读者可能在此对于预测-矫正的想法比较陌生。在后面多步方法中，我们将继续介绍预测-矫正思想。改进的Euler方法以及R-K方法可以说都已经带有了这样的思想。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于这几个方法局部截断误差的阶数的结论是显而易见的。
+                </p>
+                <p>
+                    <b>
+                        2阶R-K方法，改进Euler方法局部截断误差为
+                        <img src="https://www.zhihu.com/equation?tex=O%28h%5E2%29" alt="O(h^2)" eeimg="1">
+                        ，三阶R-K方法为
+                        <img src="https://www.zhihu.com/equation?tex=O%28h%5E3%29" alt="O(h^3)" eeimg="1">
+                        ，四阶R-K方法为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=O%28h%5E4%29" alt="O(h^4)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在我们应用的数值计算软件中，大多都应用了四阶R-K方法。其中有着一些有趣的理由。
+                </p>
+                <p>
+                    其中之一便是：随着R-K方法阶数的升高，局部截断误差阶数的减小将会逐渐放缓。
+                </p>
+                <p>
+                    比如：5阶R-K为
+                    <img src="https://www.zhihu.com/equation?tex=O%28h%5E4%29" alt="O(h^4)" eeimg="1">
+                    ，8阶R-K为
+                    <img src="https://www.zhihu.com/equation?tex=O%28h%5E6%29" alt="O(h^6)" eeimg="1">
+                    ，相比于其带来的精度提升，其需要的计算代价增加的速度更快。
+                </p>
+                <p>
+                    另一个理由是：四阶R-K在精度和计算代价的权衡之下是最优的。
+                </p>
+                <p>
+                    我们知道：步长为
+                    <img src="https://www.zhihu.com/equation?tex=4h" alt="4h" eeimg="1">
+                    的四阶R-K与步长为
+                    <img src="https://www.zhihu.com/equation?tex=2h" alt="2h" eeimg="1">
+                    的二阶R-K与步长为
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    的Euler方法有近似相同的计算代价。但是，步长为
+                    <img src="https://www.zhihu.com/equation?tex=4h" alt="4h" eeimg="1">
+                    的四阶R-K方法的精度会略优于其他两者。四阶R-K成功地最优地在两者之间进行了权衡。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在结束了对于单步（仅仅利用估计值
+                    <img src="https://www.zhihu.com/equation?tex=w_i" alt="w_i" eeimg="1">
+                    生成估计值
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="w_{i+1}" eeimg="1">
+                    ）等步长的ODE估计方法的介绍后，我们介绍
+                    <b>
+                        单步的步长自适应性方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    Runge-Kutta-Fehlberg方法类似于数值积分中的自适应性积分法。其
+                    <b>
+                        想法
+                    </b>
+                    是：
+                    <b>
+                        利用现有的信息产生出一个对于估计结点处的局部截断误差的大致估计以评价上一次估计的好坏。如果上一次估计得很好，那么可以适当增大步长以节约计算资源。如果上一次估计得不够好，则减小步长以获取更高精度
+                    </b>
+                    。
+                </p>
+                <p>
+                    为了引入R-K-F方法，我们第一步要做的是
+                    <b>
+                        找到估计局部截断误差的方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    考虑若一个估计方法的局部截断误差
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau_%7Bi%2B1%7D%28h%29%3DO%28h%5En%29" alt="\tau_{i+1}(h)=O(h^n)" eeimg="1">
+                </p>
+                <p>
+                    则意味着
+                    <img src="https://www.zhihu.com/equation?tex=y_%7Bi%2B1%7D%3Dy_i%2Bh%5Cphi%28t_i%2Cy_i%2Ch%29%2BO%28h%5E%7Bn%2B1%7D%29" alt="y_{i+1}=y_i+h\phi(t_i,y_i,h)+O(h^{n+1})" eeimg="1">
+                </p>
+                <p>
+                    而另一个估计方法的局部截断误差
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7B%5Ctau%7D_%7Bi%2B1%7D%28h%29%3DO%28h%5E%7Bn%2B1%7D%29" alt="\hat{\tau}_{i+1}(h)=O(h^{n+1})" eeimg="1">
+                </p>
+                <p>
+                    则意味着
+                    <img src="https://www.zhihu.com/equation?tex=y_%7Bi%2B1%7D%3Dy_i%2Bh%5Chat%7B%5Cphi%7D%28t_i%2Cy_i%2Ch%29%2BO%28h%5E%7Bn%2B2%7D%29" alt="y_{i+1}=y_i+h\hat{\phi}(t_i,y_i,h)+O(h^{n+2})" eeimg="1">
+                </p>
+                <p>
+                    由局部截断误差的定义，易知
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau_%7Bi%2B1%7D%28h%29%3D%5Chat%7B%5Ctau%7D_%7Bi%2B1%7D%28h%29%2B%5Cfrac%7B%5Chat%7Bw%7D_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7D%7Bh%7D" alt="\tau_{i+1}(h)=\hat{\tau}_{i+1}(h)+\frac{\hat{w}_{i+1}-w_{i+1}}{h}" eeimg="1">
+                </p>
+                <p>
+                    由于两个方法的差别：
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau_%7Bi%2B1%7D%28h%29%3DO%28h%5En%29%2C+%5Chat%7B%5Ctau%7D_%7Bi%2B1%7D%28h%29%3DO%28h%5E%7Bn%2B1%7D%29" alt="\tau_{i+1}(h)=O(h^n), \hat{\tau}_{i+1}(h)=O(h^{n+1})" eeimg="1">
+                </p>
+                <p>
+                    故容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau_%7Bi%2B1%7D%28h%29" alt="\tau_{i+1}(h)" eeimg="1">
+                    中的大部分来自于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Chat%7Bw%7D_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7D%7Bh%7D" alt="\frac{\hat{w}_{i+1}-w_{i+1}}{h}" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        故近似地，我们可以认为
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctau_%7Bi%2B1%7D%28h%29%3D%5Cfrac%7B%5Chat%7Bw%7D_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7D%7Bh%7D" alt="\tau_{i+1}(h)=\frac{\hat{w}_{i+1}-w_{i+1}}{h}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    我们成功地根据已知的信息得到了对于第一个方法的局部截断误差的大致估计。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们与给定的局部截断误差容许值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    进行比较即可。若小于容许值，表示本次估计可以接受，将放大步长进行下一次估计。但是若大于容许值，表示本次估计不能接受。我们需要缩小步长重新进行本次估计直至通过误差容许值为止。那么接下来的问题自然是：
+                    <b>
+                        要将步长调整多少为宜呢
+                    </b>
+                    ？
+                </p>
+                <p>
+                    我们仍旧从局部截断误差入手考虑。
+                </p>
+                <p>
+                    若步长由
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    变为
+                    <img src="https://www.zhihu.com/equation?tex=qh" alt="qh" eeimg="1">
+                    ，则局部截断误差由
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau_%7Bi%2B1%7D%28h%29" alt="\tau_{i+1}(h)" eeimg="1">
+                    变为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau_%7Bi%2B1%7D%28qh%29" alt="\tau_{i+1}(qh)" eeimg="1">
+                    ，约等于
+                    <img src="https://www.zhihu.com/equation?tex=q%5En%5Ctau_%7Bi%2B1%7D%28h%29" alt="q^n\tau_{i+1}(h)" eeimg="1">
+                    。（注意方法为
+                    <img src="https://www.zhihu.com/equation?tex=O%28h%5En%29" alt="O(h^n)" eeimg="1">
+                    的）
+                </p>
+                <p>
+                    则我们只需要满足
+                    <img src="https://www.zhihu.com/equation?tex=q%5En%5Cfrac%7B%5Chat%7Bw%7D_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7D%7Bh%7D%5Cleq+%5Cvarepsilon" alt="q^n\frac{\hat{w}_{i+1}-w_{i+1}}{h}\leq \varepsilon" eeimg="1">
+                    即可。
+                </p>
+                <p>
+                    解得
+                    <img src="https://www.zhihu.com/equation?tex=q%5Cleq+%28%5Cfrac%7B%5Cvarepsilon+h%7D%7B%7C%5Chat%7Bw%7D_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7C%7D%29%5E%7B%5Cfrac%7B1%7D%7Bn%7D%7D" alt="q\leq (\frac{\varepsilon h}{|\hat{w}_{i+1}-w_{i+1}|})^{\frac{1}{n}}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由此，我们确定了需要将步长调整多少倍。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Runge-Kutta-Fehlberg方法：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        我们对每一个估计结点都进行一次四阶R-K方法（
+                        <img src="https://www.zhihu.com/equation?tex=O%28h%5E4%29" alt="O(h^4)" eeimg="1">
+                        ）以及一次六阶R-K方法（
+                        <img src="https://www.zhihu.com/equation?tex=O%28h%5E5%29" alt="O(h^5)" eeimg="1">
+                        ）。
+                    </b>
+                    （在实现时仅需要做一次六阶R-K即可推出四阶R-K方法的估计结果，可以节约计算量。此处为了清晰分开说明）
+                    <b>
+                        其中四阶R-K是为了得到估计值，而六阶R-K是辅助方法，用来大致估计出四阶R-K方法在每个估计结点处的局部截断误差。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        在得到了上一次估计的局部截断误差估计后，我们与给定的最大容许局部截断误差
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                        比较来决定是否接受上一次四阶R-K方法产生出的估计。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若接受，则我们接下来对下一个估计结点将步长
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    <b>
+                        调整为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=qh" alt="qh" eeimg="1">
+                    <b>
+                        ，重复进行上述步骤。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若拒绝，则我们需要将步长
+                        <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                        调整为
+                        <img src="https://www.zhihu.com/equation?tex=qh" alt="qh" eeimg="1">
+                        。其中
+                        <img src="https://www.zhihu.com/equation?tex=q%5Cleq+%28%5Cfrac%7B%5Cvarepsilon+h%7D%7B%7C%5Chat%7Bw%7D_%7Bi%2B1%7D-w_%7Bi%2B1%7D%7C%7D%29%5E%7B%5Cfrac%7B1%7D%7Bn%7D%7D" alt="q\leq (\frac{\varepsilon h}{|\hat{w}_{i+1}-w_{i+1}|})^{\frac{1}{n}}" eeimg="1">
+                        ，实际实现中可能会取得更小更保守以保证精度。调整步长后我们重新进行上一个估计结点处的函数值估计
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：对于ODE初值问题
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdy%7D%7Bdt%7D%3D%5Cfrac%7By%7D%7Bt%7D-%28%5Cfrac%7By%7D%7Bt%7D%29%5E2%2Cy%281%29%3D1%2Ct%5Cin%5B1%2C4%5D" alt="\frac{dy}{dt}=\frac{y}{t}-(\frac{y}{t})^2,y(1)=1,t\in[1,4]" eeimg="1">
+                    ，步长限制为：步长最小为
+                    <img src="https://www.zhihu.com/equation?tex=0.05" alt="0.05" eeimg="1">
+                    ，最大为
+                    <img src="https://www.zhihu.com/equation?tex=0.5" alt="0.5" eeimg="1">
+                    ，给定的容许最大局部截断误差
+                    <img src="https://www.zhihu.com/equation?tex=10%5E%7B-6%7D" alt="10^{-6}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    在这里用到的是Runge-Kutta-Verner方法（区别仅仅是利用六阶R-K方法产生估计值，用八阶R-K方法辅助估计局部截断误差，本质相同）
+                </p>
+                <p>
+                    结果如下：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-5f2e62f1f7552ac81de2553c28fa5ee5_r.jpg">
+                </figure>
+                <p>
+                    可以看到步长的动态变化过程。
+                </p>
+                <p>
+                    步长由
+                    <img src="https://www.zhihu.com/equation?tex=0.5" alt="0.5" eeimg="1">
+                    变小至
+                    <img src="https://www.zhihu.com/equation?tex=0.4249" alt="0.4249" eeimg="1">
+                    ，之后又变回
+                    <img src="https://www.zhihu.com/equation?tex=0.5" alt="0.5" eeimg="1">
+                    ，直到最后变小至
+                    <img src="https://www.zhihu.com/equation?tex=0.15" alt="0.15" eeimg="1">
+                    。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-ebcf6bdefdf4ceea541df6a30891343b_r.jpg">
+                </figure>
+                <p>
+                    绘图，曲线为解析解，星号为R-K-V方法给出的各估计结点处的估计值。发现估计得相当好，基本都恰好落在解析解曲线上。且R-K-V方法很大程度上在
+                    <b>
+                        确保了精度的情况下节省了计算资源
+                    </b>
+                    。
+                </p>
+                <p>
+                    通过这个例子我们也能够发现：在中间一段上函数相当平稳，基本没有弯曲，估计的局部截断误差相当小，故步长一直达到最大限值。
+                </p>
+                <p>
+                    而在区间的两端，函数开始略有弯曲。这导致了两端处估计的局部截断误差略微变大，需要更小的步长才能保证精度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们对于ODE初值问题的单步方法介绍就到此为止。
+                </p>
+                <p>
+                    之后，我们将简略地介绍一下
+                    <b>
+                        多步方法
+                    </b>
+                    （主要是思想而非具体推导计算）。我们能够发现多步方法中也存在着许多有趣而又启发性的思想。
+                </p>
+                <p>
+                    顾名思义，多步方法指的是在生成估计
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="w_{i+1}" eeimg="1">
+                    时不仅仅要用到
+                    <img src="https://www.zhihu.com/equation?tex=w_i" alt="w_i" eeimg="1">
+                    的值，也需要用到
+                    <img src="https://www.zhihu.com/equation?tex=w_0%2C...%2Cw_%7Bi-1%7D" alt="w_0,...,w_{i-1}" eeimg="1">
+                    中的部分值。
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                        步方法的一般形式是：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Da_%7Bm-1%7Dw_i%2B...%2Ba_0w_%7Bi%2B1-m%7D%2Bh%5Bb_mf%28t_%7Bi%2B1%7D%2Cw_%7Bi%2B1%7D%29%2B...%2Bb_0f%28t_%7Bi%2B1-m%7D%2Cw_%7Bi%2B1-m%7D%29%5D" alt="w_{i+1}=a_{m-1}w_i+...+a_0w_{i+1-m}+h[b_mf(t_{i+1},w_{i+1})+...+b_0f(t_{i+1-m},w_{i+1-m})]" eeimg="1">
+                </p>
+                <p>
+                    在这里，我们还是暂且假设
+                    <b>
+                        结点之间等步长
+                    </b>
+                    方便讨论。
+                </p>
+                <p>
+                    其中若
+                    <img src="https://www.zhihu.com/equation?tex=b_m%3D0" alt="b_m=0" eeimg="1">
+                    ，则此方法为
+                    <b>
+                        显式
+                    </b>
+                    的。反之，方法为
+                    <b>
+                        隐式
+                    </b>
+                    的。（隐式方法不能直接地求出估计结果）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于多步方法的求解，我们先介绍
+                    <b>
+                        Adams方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    Adams方法是一类方法，其大致的思想是：对于式子
+                    <img src="https://www.zhihu.com/equation?tex=y_%7Bi%2B1%7D%3Dy_i%2B%5Cint_%7Bt_i%7D%5E%7Bt_%7Bi%2B1%7D%7Df%28t%2Cy%29dt" alt="y_{i+1}=y_i+\int_{t_i}^{t_{i+1}}f(t,y)dt" eeimg="1">
+                </p>
+                <p>
+                    利用Newton后向差分公式，选取
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    个插值结点对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bt_i%7D%5E%7Bt_%7Bi%2B1%7D%7Df%28t%2Cy%29dt" alt="\int_{t_i}^{t_{i+1}}f(t,y)dt" eeimg="1">
+                    进行估计即可得到结果。
+                </p>
+                <p>
+                    其中，若选取插值结点不包含
+                    <img src="https://www.zhihu.com/equation?tex=%28t_%7Bi%2B1%7D%2Cf%28t_%7Bi%2B1%7D%2Cy_%7Bi%2B1%7D%29%29" alt="(t_{i+1},f(t_{i+1},y_{i+1}))" eeimg="1">
+                    ，则为显式方法，否则为隐式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    比较常用的两个Adams方法是：
+                </p>
+                <p>
+                    <b>
+                        四步的Adams-Bashforth方法：
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_0%3D%5Calpha%2Cw_1%3D%5Calpha_1%2Cw_2%3D%5Calpha_2%2Cw_3%3D%5Calpha_3" alt="w_0=\alpha,w_1=\alpha_1,w_2=\alpha_2,w_3=\alpha_3" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cfrac%7B1%7D%7B24%7D%5B55f%28t_i%2Cw_i%29-59f%28t_%7Bi-1%7D%2Cw_%7Bi-1%7D%29%2B37f%28t_%7Bi-2%7D%2Cw_%7Bi-2%7D%29-9f%28t_%7Bi-3%7D%2Cw_%7Bi-3%7D%29%5D" alt="w_{i+1}=w_i+h\frac{1}{24}[55f(t_i,w_i)-59f(t_{i-1},w_{i-1})+37f(t_{i-2},w_{i-2})-9f(t_{i-3},w_{i-3})]" eeimg="1">
+                </p>
+                <p>
+                    容易发现这是个显式方法，且需要四个初值。一般可以利用R-K方法生成四个初值后再利用此方法迭代估计。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        三步的Adams-Moulton方法：
+                    </b>
+                </p>
+                <p>
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=w_0%3D%5Calpha%2Cw_1%3D%5Calpha_1%2Cw_2%3D%5Calpha_2" alt="w_0=\alpha,w_1=\alpha_1,w_2=\alpha_2" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cfrac%7B1%7D%7B24%7D%5B9f%28t_%7Bi%2B1%7D%2Cw_%7Bi%2B1%7D%29%2B19f%28t_i%2Cw_i%29-5f%28t_%7Bi-1%7D%2Cw_%7Bi-1%7D%29%2Bf%28t_%7Bi-2%7D%2Cw_%7Bi-2%7D%29%5D" alt="w_{i+1}=w_i+h\frac{1}{24}[9f(t_{i+1},w_{i+1})+19f(t_i,w_i)-5f(t_{i-1},w_{i-1})+f(t_{i-2},w_{i-2})]" eeimg="1">
+                </p>
+                <p>
+                    这是个隐式方法，且需要三个初值。同样需要利用单步方法先生成三个初值后再进行估计。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有趣的是：这两个方法的局部截断误差阶数相同，且Adams-Moulton通常估计更加精确。
+                </p>
+                <p>
+                    <b>
+                        一般而言，
+                        <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                        步显式方法与
+                        <img src="https://www.zhihu.com/equation?tex=m-1" alt="m-1" eeimg="1">
+                        步隐式方法的局部截断误差均为
+                        <img src="https://www.zhihu.com/equation?tex=O%28h%5Em%29" alt="O(h^m)" eeimg="1">
+                        ，且隐式方法的估计精度总是略优于对应的显示方法，有着更优的稳定性与更小的舍入误差。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    但是随之也带来了问题：显式方法虽然便于进行估计，但是精度却不如隐式方法。而隐式方法也有着问题：我们不能直接地得到
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="w_{i+1}" eeimg="1">
+                    。我们只能得到关于
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="w_{i+1}" eeimg="1">
+                    的方程，还需要对这个方程的根进行估计，这无疑增大了计算代价以及方法的复杂性。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    如何将这两个方法各自的长处相结合呢？
+                </p>
+                <p>
+                    这里用到了
+                    <b>
+                        预测-矫正
+                    </b>
+                    的思想。
+                </p>
+                <p>
+                    既然显式方法具有便于估计的特点，不妨将其得到的结果
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bw%7D_%7Bi%2B1%7D" alt="\hat{w}_{i+1}" eeimg="1">
+                    作为对于
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="w_{i+1}" eeimg="1">
+                    的一个预测。
+                </p>
+                <p>
+                    既然隐式方法具有高精度的特点，不妨将预测值
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bw%7D_%7Bi%2B1%7D" alt="\hat{w}_{i+1}" eeimg="1">
+                    代入，利用隐式方法对于预测值进行矫正，得到我们需要的估计值
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="w_{i+1}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    预测-矫正的思想在数值分析中常常被用到。其将两种方法各自的长处发挥出来，通过方法的结合来弥补两种方法的缺点。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Adams多步预测-矫正方法：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        首先利用四阶R-K方法生成估计值
+                        <img src="https://www.zhihu.com/equation?tex=w_1%2Cw_2%2Cw_3" alt="w_1,w_2,w_3" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        在之后的每次迭代中，我们进行如下两步：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        1、利用四步Adams-Bashforth方法进行预测。用
+                        <img src="https://www.zhihu.com/equation?tex=w_i%2Cw_%7Bi-1%7D%2Cw_%7Bi-2%7D%2Cw_%7Bi-3%7D" alt="w_i,w_{i-1},w_{i-2},w_{i-3}" eeimg="1">
+                        生成预测估计值
+                        <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bw%7D_%7Bi%2B1%7D" alt="\hat{w}_{i+1}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2、利用三步Adams-Moulton方法进行矫正。用
+                        <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bw%7D_%7Bi%2B1%7D%2Cw_i%2Cw_%7Bi-1%7D%2Cw_%7Bi-2%7D" alt="\hat{w}_{i+1},w_i,w_{i-1},w_{i-2}" eeimg="1">
+                        生成矫正后的估计值
+                        <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="w_{i+1}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    虽然单独使用四步Adams-Bashforth方法或者三步Adams-Moulton方法的精度差于四阶R-K方法，但预测-矫正方法的精度可以优于四阶R-K方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    考虑
+                    <b>
+                        变步长
+                    </b>
+                    的情况，我们发现
+                    <b>
+                        Adams预测-矫正方法很容易进行推广
+                    </b>
+                    。因为我们在一次迭代中已经进行了两次估计，很自然地可以模仿Runge-Kutta-Fehlberg方法进行局部截断误差的估计与步长调整。
+                </p>
+                <p>
+                    具体计算步骤在此不再赘述。但是可以确定的是：
+                    <b>
+                        变步长的Adams预测-矫正方法比R-K-F方法更有效率。
+                    </b>
+                    因为在R-K-F方法中，六阶R-K方法生成的估计并未用来改善四阶R-K方法产生出的估计值，其仅仅被用来估计局部截断误差。而在预测-矫正方法中，真正做到了两种方法的紧密结合。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于一个方程的一阶ODE的数值解法的基本介绍就结束了。接下来我们简述一下如何处理
+                    <b>
+                        一阶ODE方程组的数值估计以及高阶ODE的数值估计
+                    </b>
+                    。
+                </p>
+                <p>
+                    对于一阶ODE方程组，具有形式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+%5Cfrac%7Bdu_1%7D%7Bdt%7D%3Df_1%28t%2Cu_1%2C...%2Cu_m%29%5C%5C+%5Cfrac%7Bdu_2%7D%7Bdt%7D%3Df_2%28t%2Cu_1%2C...%2Cu_m%29%5C%5C+%5C+%5C+%5C+%5C+%5C++%5C+%5C+%5C+%5C+%5C+%5C+%5C++%5C+...%5C%5C+%5Cfrac%7Bdu_m%7D%7Bdt%7D%3Df_m%28t%2Cu_1%2C...%2Cu_m%29+%5Cend%7Bcases%7D" alt="\begin{cases} \frac{du_1}{dt}=f_1(t,u_1,...,u_m)\\ \frac{du_2}{dt}=f_2(t,u_1,...,u_m)\\ \ \ \ \ \  \ \ \ \ \ \ \  \ ...\\ \frac{du_m}{dt}=f_m(t,u_1,...,u_m) \end{cases}" eeimg="1">
+                    ，初值条件
+                    <img src="https://www.zhihu.com/equation?tex=u_1%28a%29%3D%5Calpha_1%2C...%2Cu_m%28a%29%3D%5Calpha_m" alt="u_1(a)=\alpha_1,...,u_m(a)=\alpha_m" eeimg="1">
+                    。
+                </p>
+                <p>
+                    事实上，Lipschitz条件以及R-K方法等分析过程与解法很容易推广至方程组的情况。
+                </p>
+                <p>
+                    例如:
+                </p>
+                <p>
+                    对于四阶R-K方法，只需要变换形式为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k_%7Bi%2C1%7D%3Dhf_i%28t_0%2Cw_%7B1%2C0%7D%2Cw_%7B2%2C0%7D%29" alt="k_{i,1}=hf_i(t_0,w_{1,0},w_{2,0})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k_%7Bi%2C2%7D%3Dhf_i%28t_0%2B%5Cfrac%7Bh%7D%7B2%7D%2Cw_%7B1%2C0%7D%2B%5Cfrac%7Bk_%7B1%2C1%7D%7D%7B2%7D%2Cw_%7B2%2C0%7D%2B%5Cfrac%7Bk_%7B2%2C1%7D%7D%7B2%7D%29" alt="k_{i,2}=hf_i(t_0+\frac{h}{2},w_{1,0}+\frac{k_{1,1}}{2},w_{2,0}+\frac{k_{2,1}}{2})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k_%7Bi%2C3%7D%3Dhf_i%28t_0%2B%5Cfrac%7Bh%7D%7B2%7D%2Cw_%7B1%2C2%7D%2B%5Cfrac%7Bk_%7B1%2C2%7D%7D%7B2%7D%2Cw_%7B2%2C0%7D%2B%5Cfrac%7Bk_%7B2%2C2%7D%7D%7B2%7D%29" alt="k_{i,3}=hf_i(t_0+\frac{h}{2},w_{1,2}+\frac{k_{1,2}}{2},w_{2,0}+\frac{k_{2,2}}{2})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k_%7Bi%2C4%7D%3Dhf_i%28t_0%2Bh%2Cw_%7B1%2C0%7D%2Bk_%7B1%2C3%7D%2Cw_%7B2%2C0%7D%2Bk_%7B2%2C3%7D%29" alt="k_{i,4}=hf_i(t_0+h,w_{1,0}+k_{1,3},w_{2,0}+k_{2,3})" eeimg="1">
+                </p>
+                <p>
+                    那么可以得到下一个结点处的估计值：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2C1%7D%3Dw_%7Bi%2C0%7D%2Bh%5Cfrac%7B1%7D%7B6%7D%28k_%7Bi%2C1%7D%2B2k_%7Bi%2C2%7D%2B2k_%7Bi%2C3%7D%2Bk_%7Bi%2C4%7D%29" alt="w_{i,1}=w_{i,0}+h\frac{1}{6}(k_{i,1}+2k_{i,2}+2k_{i,3}+k_{i,4})" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        对于高阶ODE，我们的想法是：转化为一阶ODE的方程组形式。
+                    </b>
+                </p>
+                <p>
+                    如：
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5Emy%7D%7Bdt%5Em%7D%3Df%28t%2Cy%2Cy%5E%7B%27%7D%2C...%2Cy%5E%7B%28m-1%29%7D%29" alt="\frac{d^my}{dt^m}=f(t,y,y^{&#39;},...,y^{(m-1)})" eeimg="1">
+                    ，初值条件
+                    <img src="https://www.zhihu.com/equation?tex=y%28a%29%3D%5Calpha_1%2C...%2Cy%5E%7B%28m-1%29%7D%28a%29%3D%5Calpha_m" alt="y(a)=\alpha_1,...,y^{(m-1)}(a)=\alpha_m" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们进行换元
+                    <img src="https://www.zhihu.com/equation?tex=u_1%3Dy%2Cu_2%3Dy%5E%7B%27%7D%2C...%2Cu_m%3Dy%5E%7B%28m-1%29%7D" alt="u_1=y,u_2=y^{&#39;},...,u_m=y^{(m-1)}" eeimg="1">
+                </p>
+                <p>
+                    很容易将此ODE化为上面一阶ODE的方程组形式加以求解。具体由读者自行计算。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在最后，我们对于ODE的数值方法的一些性质进行进一步介绍。
+                </p>
+                <p>
+                    对于单步方法，我们进行如下定义：
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        ODE的数值方法被称为相容一致的当
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bh%5Crightarrow+0%7Dmax_%7B1%5Cleq+i%5Cleq+N%7D%7C%5Ctau_i%28h%29%7C%3D0" alt="\lim_{h\rightarrow 0}max_{1\leq i\leq N}|\tau_i(h)|=0" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        ODE的数值方法被称为收敛的当
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bh%5Crightarrow+0%7Dmax_%7B1%5Cleq+i%5Cleq+N%7D%7Cw_i-y_i%7C%3D0" alt="\lim_{h\rightarrow 0}max_{1\leq i\leq N}|w_i-y_i|=0" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        相容一致性度量的是当步长足够小时，数值求解用到的差分方程是否足够接近与原ODE。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        而收敛性度量的是当步长足够小时，数值求解得到的函数值是否与ODE的真实解的函数值足够接近。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于Euler方法，由之前的误差估计，我们有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%3D0%2C1%2C...%2Cn%2C%7Cy_i-w_i%7C%5Cleq%5Cfrac%7BhM%7D%7B2L%7D%5Be%5E%7BL%28t_i-a%29%7D-1%5D" alt="\forall i=0,1,...,n,|y_i-w_i|\leq\frac{hM}{2L}[e^{L(t_i-a)}-1]" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bh%5Crightarrow+0%7Dmax_%7B1%5Cleq+i%5Cleq+N%7D%7Cw_i-y_i%7C%3D%5Clim_%7Bh%5Crightarrow+0%7D%5Cfrac%7BhM%7D%7B2L%7D%5Be%5E%7BL%28b-a%29%7D-1%5D%3D0" alt="\lim_{h\rightarrow 0}max_{1\leq i\leq N}|w_i-y_i|=\lim_{h\rightarrow 0}\frac{hM}{2L}[e^{L(b-a)}-1]=0" eeimg="1">
+                </p>
+                <p>
+                    所以Euler方法是收敛的。
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        ODE的数值方法是稳定的当估计连续地依赖于初值条件。（初值条件的微小变动只会造成估计的微小变动）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于方法的稳定性，有一个重要的定理。
+                </p>
+                <p>
+                    <b>
+                        定理（数值方法的稳定性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于数值方法
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=w_0%3D%5Calpha" alt="w_0=\alpha" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cphi%28t_i%2Cw_i%2Ch%29" alt="w_{i+1}=w_i+h\phi(t_i,w_i,h)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi" alt="\phi" eeimg="1">
+                        连续，关于
+                        <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                        满足Lipschitz条件且Lipschitz常数为
+                        <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        此方法是稳定的。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        方法的收敛性与相容一致性等价。（即若方法满足
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%2Cy%2C0%29%3Df%28t%2Cy%29" alt="\phi(t,y,0)=f(t,y)" eeimg="1">
+                        ，则方法收敛）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个定理为我们判断数值方法的稳定性以及收敛性提供了许多便利。
+                </p>
+                <p>
+                    例如：
+                </p>
+                <p>
+                    对于改进的Euler方法，
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cfrac%7B1%7D%7B2%7D%5Bf%28t_i%2Cw_i%29%2Bf%28t_i%2Bh%2Cw_i%2Bhf%28t_i%2Cw_i%29%29%5D" alt="w_{i+1}=w_i+h\frac{1}{2}[f(t_i,w_i)+f(t_i+h,w_i+hf(t_i,w_i))]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%2Cw%2Ch%29%3D%5Cfrac%7B1%7D%7B2%7D%5Bf%28t_i%2Cw_i%29%2Bf%28t_i%2Bh%2Cw_i%2Bhf%28t_i%2Cw_i%29%29%5D" alt="\phi(t,w,h)=\frac{1}{2}[f(t_i,w_i)+f(t_i+h,w_i+hf(t_i,w_i))]" eeimg="1">
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    满足Lipschitz条件，常数为
+                    <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                    。
+                </p>
+                <p>
+                    容易证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%28t%2Cw_1%2Ch%29-%5Cphi%28t%2Cw_2%2Ch%29%7C%5Cleq%28L%2B%5Cfrac%7BhL%5E2%7D%7B2%7D%29%7Cw_1-w_2%7C" alt="|\phi(t,w_1,h)-\phi(t,w_2,h)|\leq(L+\frac{hL^2}{2})|w_1-w_2|" eeimg="1">
+                </p>
+                <p>
+                    故由上述定理，改进的Euler方法是稳定的。
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%2Cw%2C0%29%3Df%28t%2Cw%29" alt="\phi(t,w,0)=f(t,w)" eeimg="1">
+                    ，故方法是收敛的，且是相容一致的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于多步方法而言，收敛性、相容一致性、稳定性的概念可类似推广。
+                </p>
+                <p>
+                    而比单步方法更丰富的内容在于我们可以利用
+                    <b>
+                        特征方程
+                    </b>
+                    来研究ODE的数值方法。
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    步多步方法
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Da_%7Bm-1%7Dw_i%2B...%2Ba_0w_%7Bi%2B1-m%7D%2BhF%28t_i%2Ch%2Cw_%7Bi%2B1%7D%2C...%2Cw_%7Bi%2B1-m%7D%29" alt="w_{i+1}=a_{m-1}w_i+...+a_0w_{i+1-m}+hF(t_i,h,w_{i+1},...,w_{i+1-m})" eeimg="1">
+                </p>
+                <p>
+                    我们可以将其看作一个数列的递推公式。
+                </p>
+                <p>
+                    相信大家在高中都学习过
+                    <b>
+                        数列递推公式的特征方程解法
+                    </b>
+                    。
+                </p>
+                <p>
+                    类似地，我们写出其特征方程
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%5Em-a_%7Bm-1%7D%5Clambda%5E%7Bm-1%7D-...-a_1%5Clambda-a_0%3D0" alt="\lambda^m-a_{m-1}\lambda^{m-1}-...-a_1\lambda-a_0=0" eeimg="1">
+                </p>
+                <p>
+                    其在复数域内必有
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    个根
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_1%2C...%2C%5Clambda_m" alt="\lambda_1,...,\lambda_m" eeimg="1">
+                    。
+                </p>
+                <p>
+                    此时
+                    <img src="https://www.zhihu.com/equation?tex=w_i" alt="w_i" eeimg="1">
+                    可近似写成
+                    <img src="https://www.zhihu.com/equation?tex=c_1%5Clambda_1%5Ei%2B...%2Bc_m%5Clambda_m%5Ei" alt="c_1\lambda_1^i+...+c_m\lambda_m^i" eeimg="1">
+                    的形式。（不严格）
+                </p>
+                <p>
+                    则舍入误差稳定性会影响
+                    <img src="https://www.zhihu.com/equation?tex=c_1%2C...%2Cc_m" alt="c_1,...,c_m" eeimg="1">
+                    的大小，进一步影响
+                    <img src="https://www.zhihu.com/equation?tex=w_i" alt="w_i" eeimg="1">
+                    的取值。
+                </p>
+                <p>
+                    我们发现：如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+i%2C%5C+%7C%5Clambda_i%7C%3E1" alt="\exists i,\ |\lambda_i|&gt;1" eeimg="1">
+                    ，那么舍入误差会随着步数的累积对ODE数值估计的结果产生很大的影响。此时数值解法是不稳定的。
+                </p>
+                <p>
+                    退一步地，若一个模为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    的根为重根（假设为
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_i" alt="\lambda_i" eeimg="1">
+                    ），那么根据特征方程的求解公式，包含重根的项将会具有形式
+                    <img src="https://www.zhihu.com/equation?tex=c_0%5Clambda_i%5En%2Bc_1n%5Clambda_i%5E%7Bn-1%7D%2B...%2Bc_pn%28n-1%29...%28n-p%2B1%29%5Clambda_i%5E%7Bn-p%7D" alt="c_0\lambda_i^n+c_1n\lambda_i^{n-1}+...+c_pn(n-1)...(n-p+1)\lambda_i^{n-p}" eeimg="1">
+                    。这意味着方法仍旧会放大舍入误差。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    基于这样的想法，我们给出数值解法的根条件。
+                </p>
+                <p>
+                    <b>
+                        根条件：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若对于特征方程的所有根，模都不超过
+                        <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                        （包括复根），且模为
+                        <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                        的根都为单根，则称其满足根条件。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    进一步地，我们进行如下定义：
+                </p>
+                <p>
+                    若方法不满足根条件，称方法不稳定。
+                </p>
+                <p>
+                    若方法满足根条件且有不止一个根的模为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ，则称方法弱稳定。
+                </p>
+                <p>
+                    若方法满足根条件且仅有一个根的模为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ，则称方法强稳定。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们来说明在预测-矫正方法中我们为什么选择Adams方法而不是其他类似方法。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    四步Adams-Bashforth方法：
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_i%2Bh%5Cfrac%7B1%7D%7B24%7D%5B55f%28t_i%2Cw_i%29-59f%28t_%7Bi-1%7D%2Cw_%7Bi-1%7D%29%2B37f%28t_%7Bi-2%7D%2Cw_%7Bi-2%7D%29-9f%28t_%7Bi-3%7D%2Cw_%7Bi-3%7D%29%5D" alt="w_{i+1}=w_i+h\frac{1}{24}[55f(t_i,w_i)-59f(t_{i-1},w_{i-1})+37f(t_{i-2},w_{i-2})-9f(t_{i-3},w_{i-3})]" eeimg="1">
+                </p>
+                <p>
+                    其特征方程为：
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%5E4-%5Clambda%5E3" alt="\lambda^4-\lambda^3" eeimg="1">
+                </p>
+                <p>
+                    解得根为
+                    <img src="https://www.zhihu.com/equation?tex=1%2C0%2C0%2C0" alt="1,0,0,0" eeimg="1">
+                    ，容易发现满足
+                    <b>
+                        强稳定性
+                    </b>
+                    的条件。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    类似地，容易发现三步Adams-Moulton方法也是
+                    <b>
+                        强稳定
+                    </b>
+                    的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    而对于一些其它的方法（比如通过数值积分公式推导出的Milne方法）
+                </p>
+                <p>
+                    Milne方法：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D%3Dw_%7Bi-3%7D%2Bh%5Cfrac%7B4%7D%7B3%7D%5B2f%28t_i%2Cw_i%29-f%28t_%7Bi-1%7D%2Cw_%7Bi-1%7D%29%2B2f%28t_%7Bi-2%7D%2Cw_%7Bi-2%7D%29%5D" alt="w_{i+1}=w_{i-3}+h\frac{4}{3}[2f(t_i,w_i)-f(t_{i-1},w_{i-1})+2f(t_{i-2},w_{i-2})]" eeimg="1">
+                </p>
+                <p>
+                    其特征方程为：
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%5E4-1" alt="\lambda^4-1" eeimg="1">
+                </p>
+                <p>
+                    解得根为
+                    <img src="https://www.zhihu.com/equation?tex=1%2C-1%2Ci%2C-i" alt="1,-1,i,-i" eeimg="1">
+                    ，容易发现仅仅是
+                    <b>
+                        弱稳定
+                    </b>
+                    的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    强稳定性意味着数值方法会更少受到舍入误差的影响，从而具有更广泛的适用范围。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于ODE的数值解法 的内容就到此为止了。
+                </p>
+                <p>
+                    读者若感兴趣，可以进一步了解外推法，其结合了Richardson外推，用来对于单个估计结点处的局部截断误差阶数进行提升。另外一类有趣的方程是刚性方程，他们具有特别的性质，所以需要在数值估计中进行特殊的处理。
+                </p>
+                <p>
+                    在本文中很多定理的证明都已省略，读者可以自己补全作为分析类的习题。
+                </p>
+                <p>
+                    谢谢各位的阅读！
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

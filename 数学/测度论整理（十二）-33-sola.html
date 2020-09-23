@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（十二）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-b02b0a7f065e58ec09c9d19aa1fe1d78_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/143168364" target="_blank">
+                        测度论整理（十二）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-05-24
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这次我们讲讲
+                    <b>
+                        条件期望
+                    </b>
+                    的相关内容。
+                </p>
+                <p>
+                    我们下面总是在概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上讨论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    条件期望，如同我们在初等概率论中遇到的一样，其核心精神是：当我们遇到一些对于随机性有连续依赖的情形时，我们先将一些随机性用“条件”加以确定后，再来考虑条件本身带来的随机性。例如：当我们的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的分布中有参数依赖于另一个随机变量
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    时，我们往往考虑
+                    <img src="https://www.zhihu.com/equation?tex=X%7C_%7B%5Cleft+%5C%7B+Y%3Dy+%5Cright+%5C%7D%7D" alt="X|_{\left \{ Y=y \right \}}" eeimg="1">
+                    的条件分布，将
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    固定下来。在分析清楚条件分布后，我们再将关于
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的条件取消，恢复其随机性。
+                </p>
+                <hr>
+                <p>
+                    这样的精神要在严格功利化的概率体系中加以实现，我们要解决的问题是：如何描述“条件”这个概念。我们在初等概率论中遇到的条件大多有如下两种形式：其一是关于某个事件
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cin%5Cmathscr%7BF%7D" alt="A\in\mathscr{F}" eeimg="1">
+                    的条件，其二是关于某个随机变量
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    的条件（例如
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+g%3Ca+%5Cright+%5C%7D%2C%5Cleft+%5C%7Bg%3Ea++%5Cright+%5C%7D" alt="\left \{ g&lt;a \right \},\left \{g&gt;a  \right \}" eeimg="1">
+                    ）。要为这
+                    <b>
+                        两种条件寻找一种共同的描述方式
+                    </b>
+                    ，我们可以
+                    <b>
+                        利用子
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        域
+                    </b>
+                    来完成！下面我们给出具体的解释：
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注意到如果我们附加的条件是
+                    <b>
+                        事件
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cin%5Cmathscr%7BF%7D" alt="A\in\mathscr{F}" eeimg="1">
+                    ，那么我们事实上可以把原先的
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                    更换成一个
+                    <b>
+                        子
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        域
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D%3D%5Cleft+%5C%7B+%5Cvarnothing%2CA%2CA%5Ec%2CX+%5Cright+%5C%7D" alt="\mathscr{G}=\left \{ \varnothing,A,A^c,X \right \}" eeimg="1">
+                    。那么考虑在概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BG%7D%2CP%29" alt="(X,\mathscr{G},P)" eeimg="1">
+                    上的可测函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，由可测性的定义，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+B%5Cin+%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%2Cf%5E%7B-1%7D%28B%29%5Cin+%5Cmathscr%7BG%7D" alt="\forall B\in \mathscr{B}_{\mathbb{R}},f^{-1}(B)\in \mathscr{G}" eeimg="1">
+                    。这意味着
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D%28B%29" alt="f^{-1}(B)" eeimg="1">
+                    只能取值为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing%2CA%2CA%5Ec%2CX+" alt="\varnothing,A,A^c,X" eeimg="1">
+                    这四者之一。这表示：随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    必定具有形式
+                    <img src="https://www.zhihu.com/equation?tex=f%3DaI_A%2BbI_%7BA%5Ec%7D" alt="f=aI_A+bI_{A^c}" eeimg="1">
+                    ，这与关于事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的条件的含义是吻合的！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    如果我们附加的条件是一个关于
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上
+                    <b>
+                        随机变量
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    的条件。那么我们总是可以利用
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                    可测性将条件转化为一个事件
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cin%5Cmathscr%7BF%7D" alt="A\in\mathscr{F}" eeimg="1">
+                    （具体地说，对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+B%5Cin+%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%2Cg%5E%7B-1%7D%28B%29%5Cin+%5Cmathscr%7BF%7D" alt="\forall B\in \mathscr{B}_{\mathbb{R}},g^{-1}(B)\in \mathscr{F}" eeimg="1">
+                    ，即所有Borel集在
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    下的原像都是随机变量
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    所能够诱导出的事件），从而进行如同上述的条件转化。但是注意到对于不同的随机变量，其能够诱导出的事件可能是不同的（这是因为不同的随机变量的可测性会有强弱之别，例如恒为常数的随机变量所诱导出的事件只可能为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing%2CX" alt="\varnothing,X" eeimg="1">
+                    ）。故对于随机变量
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    的条件，我们
+                    <b>
+                        不妨令
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D%3D%5Csigma%28g%29%5Csubset+%5Cmathscr%7BF%7D" alt="\mathscr{G}=\sigma(g)\subset \mathscr{F}" eeimg="1">
+                        ，并以子
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        域
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                        作为条件
+                    </b>
+                    。（由定义，
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28g%29" alt="\sigma(g)" eeimg="1">
+                    为使得
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    可测的最小
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    域，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+B%5Cin+%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%2Cg%5E%7B-1%7D%28B%29%5Cin+%5Csigma%28g%29" alt="\forall B\in \mathscr{B}_{\mathbb{R}},g^{-1}(B)\in \sigma(g)" eeimg="1">
+                    显然成立！且由
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28g%29" alt="\sigma(g)" eeimg="1">
+                    的极小性，我们可以确保每个
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28g%29" alt="\sigma(g)" eeimg="1">
+                    中元素都是某个Borel集在
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    下的原像，这是一个完美的匹配！）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    通过上述操作，我们即建立了“条件”这个概念在公理化概率论中的严格描述方式：
+                    <b>
+                        通过限制在
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                        的子
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        域
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                        上看来“施加条件”
+                    </b>
+                    。那么，在概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BG%7D%2CP%29" alt="(X,\mathscr{G},P)" eeimg="1">
+                    上的可测函数本质上就带有了“以
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    为条件”的含义，这种条件可以是事件带来的，也可以是
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上的随机变量带来的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        我们在后文总是用
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                    <b>
+                        的子
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    <b>
+                        域
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    <b>
+                        表示“条件”。
+                    </b>
+                </p>
+                <hr>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们就能够引出条件期望的定义了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先回忆初等概率论中我们的处理方式。在定义
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                    时，我们总是先考虑
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%3Dy%29" alt="E(X|Y=y)" eeimg="1">
+                    （取消
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的随机性），计算得到
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%3Dy%29%3Dh%28y%29" alt="E(X|Y=y)=h(y)" eeimg="1">
+                    后，我们令
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29%3Dh%28Y%29" alt="E(X|Y)=h(Y)" eeimg="1">
+                    （恢复
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的随机性），来
+                    <b>
+                        抽象
+                    </b>
+                    得到一个“随机变量”
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                    。（这里打了引号是因为条件期望事实上并不一定是一个真正意义上的随机变量）那么
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                    本质上是一个
+                    <b>
+                        可测函数
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29%28%5Comega%29%5C+%5C+%28%5Comega%5Cin%5COmega%29" alt="E(X|Y)(\omega)\ \ (\omega\in\Omega)" eeimg="1">
+                    ，每当样本点
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    确定时，
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29%28%5Comega%29" alt="E(X|Y)(\omega)" eeimg="1">
+                    的含义就是：当
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    取值在
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    附近时
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的期望。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    进一步回忆我们上面所举出的关于条件的两个例子，我们发现：初等概率论中的条件期望本质上就是一个
+                    <b>
+                        具有
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                        可测性的函数
+                    </b>
+                    。由于对于一个可测函数而言，其定义域空间的
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    域越小，则其可测性则越强，故我们可以
+                    <b>
+                        把“条件”理解为可测性的提升
+                    </b>
+                    。可测性的提升导致了Borel集在其下原像受到了更多的限制，从而达成了“条件”含义的实现。特别地，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    可测性是强于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                    可测性的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那也就是说，要严格地定义条件期望，我们只需要找到一个
+                    <b>
+                        “恰当”的
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                        可测函数
+                    </b>
+                    就可以了。这里的“恰当性”体现在我们需要对条件期望附加一些限制。比如，我们希望如果一个
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上已经是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    可测了的函数的条件期望仍然是自身等……（因为对于这样的函数，是否附加条件并没有区别）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们从
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    出发，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BG%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2CdP" alt="\forall A\in \mathscr{G},\varphi(A)=\int_Af\,dP" eeimg="1">
+                    为符号测度，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3CP%7C_%7B%5Cmathscr%7BG%7D%7D" alt="\varphi&lt;&lt;P|_{\mathscr{G}}" eeimg="1">
+                    。由概率测度的有限性，利用Radon-Nikodym定理（在
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BG%7D%2CP%29" alt="(X,\mathscr{G},P)" eeimg="1">
+                    上看），必定存在一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    <b>
+                        可测函数
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29" alt="E(f|\mathscr{G})" eeimg="1">
+                    <b>
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29%3D%5Cint_A+E%28f%7C%5Cmathscr%7BG%7D%29%5C%2CdP" alt="\varphi(A)=\int_A E(f|\mathscr{G})\,dP" eeimg="1">
+                        ，且其为
+                        <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                        唯一的
+                    </b>
+                    。那么这样得到的
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29" alt="E(f|\mathscr{G})" eeimg="1">
+                    就是我们所希望得到的
+                    <b>
+                        随机变量
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        关于
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                        的条件期望
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    将其简化为一个
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                        上的随机变量
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                        的子
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        域，
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        如果
+                        <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29" alt="E(f|\mathscr{G})" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BG%7D%2CP%29" alt="(X,\mathscr{G},P)" eeimg="1">
+                        上积分存在的可测函数且对于
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BG%7D%2C%5Cint_A+f%5C%2CdP%3D%5Cint_A+E%28f%7C%5Cmathscr%7BG%7D%29%5C%2CdP" alt="\forall A\in \mathscr{G},\int_A f\,dP=\int_A E(f|\mathscr{G})\,dP" eeimg="1">
+                        ，那么其即为随机变量
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    <b>
+                        关于
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    <b>
+                        的条件期望
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    需要做进一步说明的几点在于：
+                </p>
+                <p>
+                    首先，条件期望
+                    <b>
+                        必定存在且是
+                        <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                        唯一的
+                    </b>
+                    。（这意味着关于条件期望的结论总是会带着一个
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    的小尾巴，之后我们将省略这个记号。而且我们总是可以通过证明一个函数
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    满足定义中的两条性质来证明
+                    <img src="https://www.zhihu.com/equation?tex=g%3DE%28f%7C%5Cmathscr%7BG%7D%29%5C+P%7C_%5Cmathscr%7BG%7D-a.s" alt="g=E(f|\mathscr{G})\ P|_\mathscr{G}-a.s" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    其次，仔细观察定义中“保积分”的那条限制。我们会发现：条件期望的定义要求其满足性质：
+                    <img src="https://www.zhihu.com/equation?tex=Ef%3DE%5BE%28f%7C%5Cmathscr%7BG%7D%29%5D" alt="Ef=E[E(f|\mathscr{G})]" eeimg="1">
+                    。而这正是我们所熟悉的
+                    <b>
+                        全期望公式
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    再者，我们仔细地分析一下条件期望
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29" alt="E(f|\mathscr{G})" eeimg="1">
+                    的性质。我们会发现：其并不一定是
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D" alt="P|_\mathscr{G}" eeimg="1">
+                    意义下几乎处处有限的，故并不一定是个随机变量。条件期望本质上是一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    <b>
+                        可测函数。
+                    </b>
+                    展开地写，即为：
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29%3A%28X%2C%5Cmathscr%7BG%7D%29%5Crightarrow+%28%5Coverline%7B%5Cmathbb%7BR%7D%7D%2C%5Cmathscr%7BB%7D_%7B%5Coverline%7B%5Cmathbb%7BR%7D%7D%7D%29" alt="E(f|\mathscr{G}):(X,\mathscr{G})\rightarrow (\overline{\mathbb{R}},\mathscr{B}_{\overline{\mathbb{R}}})" eeimg="1">
+                    ，其将
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">
+                    映射到
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29%28x%29%5Cin+%5Coverline%7B%5Cmathbb%7BR%7D%7D" alt="E(f|\mathscr{G})(x)\in \overline{\mathbb{R}}" eeimg="1">
+                    。映射的意义为：当条件
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    在样本点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    附近取定时，
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的期望为
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29%28x%29" alt="E(f|\mathscr{G})(x)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们可以利用条件期望定义
+                    <b>
+                        条件概率
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7C%5Cmathscr%7BG%7D%29%3DE%28I_A%7C%5Cmathscr%7BG%7D%29" alt="P(A|\mathscr{G})=E(I_A|\mathscr{G})" eeimg="1">
+                    。并且对于随机元
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    定义
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7Cg%29%2CP%28f%7Cg%29" alt="E(f|g),P(f|g)" eeimg="1">
+                    。（将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    取作
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28g%29" alt="\sigma(g)" eeimg="1">
+                    即可）
+                </p>
+                <hr>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    与“条件”相对地，我们也能够引入
+                    <b>
+                        独立性
+                    </b>
+                    的概念。
+                </p>
+                <p>
+                    <b>
+                        事件
+                    </b>
+                    之间的独立性与初等概率论中的定义相同。（事件之交的概率等于事件的概率之积则相互独立）更为广泛地，
+                    <b>
+                        集合系
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D_t%7C_%7Bt%5Cin+T%7D" alt="\mathscr{E}_t|_{t\in T}" eeimg="1">
+                    相互独立当且仅当在每个集合系中任取一个事件，这些事件之间均相互独立。随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    与集合系
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    相互独立当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28f%29" alt="\sigma(f)" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D" alt="\mathscr{E}" eeimg="1">
+                    相互独立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    特别地，对于与集合系
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BE%7D%5Csubset+%5Cmathscr%7BF%7D" alt="\mathscr{E}\subset \mathscr{F}" eeimg="1">
+                    独立的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BE%7D%2C+E%28fI_A%29%3DEf%5C+P%28A%29" alt="\forall A\in \mathscr{E}, E(fI_A)=Ef\ P(A)" eeimg="1">
+                    。这条性质为我们经常利用独立性的手段。
+                </p>
+                <hr>
+                <p>
+                    那么我们得以给出条件期望的一些性质，其证明都可以通过利用条件期望在
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    意义下的唯一性来完成：
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f%2Cg" alt="f,g" eeimg="1">
+                    下列性质在
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    意义下成立：
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        已为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                        可测的，则
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=E%28fg%7C%5Cmathscr%7BG%7D%29%3DgE%28f%7C%5Cmathscr%7BG%7D%29" alt="E(fg|\mathscr{G})=gE(f|\mathscr{G})" eeimg="1">
+                    （已为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    可测的部分可自由进出条件期望）
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                        独立，则
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=E%28f%7C%5Cmathscr%7BG%7D%29%3DEf" alt="E(f|\mathscr{G})=Ef" eeimg="1">
+                    （独立性使得条件无效）
+                </p>
+                <p>
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D%5Csubset+%5Cmathscr%7BG%7D_0" alt="\mathscr{G}\subset \mathscr{G}_0" eeimg="1">
+                        ，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=E%5BE%28f%7C%5Cmathscr%7BG%7D%29%7C%5Cmathscr%7BG%7D_0%5D%3DE%5BE%28f%7C%5Cmathscr%7BG%7D_0%29%7C%5Cmathscr%7BG%7D%5D%3DE%28f%7C%5Cmathscr%7BG%7D%29" alt="E[E(f|\mathscr{G})|\mathscr{G}_0]=E[E(f|\mathscr{G}_0)|\mathscr{G}]=E(f|\mathscr{G})" eeimg="1">
+                    （双重条件总是与强条件等价，注意：子
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    域越小则附加的条件越强！）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    特别地，条件期望还具有数学期望（积分）所具有的好的性质：
+                </p>
+                <p>
+                    <b>
+                        单调性、线性性、单调收敛定理、Fatou引理、控制收敛定理、Holder不等式、Minkowski不等式均对于条件数学期望成立
+                    </b>
+                    ！（只需要将原先结论中的
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Ccdot%29" alt="E(\cdot)" eeimg="1">
+                    更换为
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Ccdot%7C%5Cmathscr%7BG%7D%29" alt="E(\cdot|\mathscr{G})" eeimg="1">
+                    即可）
+                </p>
+                <p>
+                    事实上，对于
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Ccdot%29" alt="E(\cdot)" eeimg="1">
+                    的收敛性定理与对于
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Ccdot%7C%5Cmathscr%7BG%7D%29" alt="E(\cdot|\mathscr{G})" eeimg="1">
+                    的收敛性定理具有截然不同的含义。前者是积分的收敛，即实数列的收敛；而后者是可测函数的收敛，即函数列的收敛。能够
+                    <b>
+                        继承积分诸多良好性质
+                    </b>
+                    是条件期望之所以如此重要的关键所在！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    进一步地，由条件期望定义所得的条件概率就也就具有了良好的性质。
+                </p>
+                <p>
+                    诸如：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cvarnothing%7C%5Cmathscr%7BG%7D%29%3D0%2CP%28X%7C%5Cmathscr%7BG%7D%29%3D1" alt="P(\varnothing|\mathscr{G})=0,P(X|\mathscr{G})=1" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=A%2CB%5Cin+%5Cmathscr%7BF%7D%2CA%5Csubset+B%2CP%28A%7C%5Cmathscr%7BG%7D%29%5Cleq+P%28B%7C%5Cmathscr%7BG%7D%29" alt="A,B\in \mathscr{F},A\subset B,P(A|\mathscr{G})\leq P(B|\mathscr{G})" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                        的可列可测分割
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+A_n%7C%5Cmathscr%7BG%7D%29%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty+P%28A_n%7C%5Cmathscr%7BG%7D%29" alt="P(\bigcup_{n=1}^\infty A_n|\mathscr{G})=\sum_{n=1}^\infty P(A_n|\mathscr{G})" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们会发现：条件概率好像满足测度定义所要求的所有性质。
+                </p>
+                <p>
+                    但是很遗憾，条件概率所满足的三条性质
+                    <b>
+                        均只在
+                        <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                        的意义下成立
+                    </b>
+                    ，而并非完全地成立。更细微的问题是：在性质“
+                    <b>
+                        对于
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB%5Cin+%5Cmathscr%7BF%7D%2CA%5Csubset+B%2CP%28A%7C%5Cmathscr%7BG%7D%29%5Cleq+P%28B%7C%5Cmathscr%7BG%7D%29" alt="A,B\in \mathscr{F},A\subset B,P(A|\mathscr{G})\leq P(B|\mathscr{G})" eeimg="1">
+                    ”中，
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    <b>
+                        的意义是依赖于我们对于
+                        <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                        的选取
+                    </b>
+                    的！即：我们总是先固定
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    ，然后找到一个
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D" alt="P|_\mathscr{G}" eeimg="1">
+                    下的零测集，使得在这个零测集之外，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7C%5Cmathscr%7BG%7D%29%5Cleq+P%28B%7C%5Cmathscr%7BG%7D%29" alt="P(A|\mathscr{G})\leq P(B|\mathscr{G})" eeimg="1">
+                    成立。而一旦我们固定的
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    发生改变，那么我们先前所选定的
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D" alt="P|_\mathscr{G}" eeimg="1">
+                    下的零测集很可能需要跟着改变才能保证性质的成立。同样的事情对于性质“
+                    <b>
+                        对于
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                    <b>
+                        的可列可测分割
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    <b>
+                        ，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+A_n%7C%5Cmathscr%7BG%7D%29%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty+P%28A_n%7C%5Cmathscr%7BG%7D%29" alt="P(\bigcup_{n=1}^\infty A_n|\mathscr{G})=\sum_{n=1}^\infty P(A_n|\mathscr{G})" eeimg="1">
+                    ”也会发生。
+                </p>
+                <p>
+                    这其实告诉我们：
+                    <b>
+                        要想将条件概率修补成一个真正意义上的概率测度并没有那么简单
+                    </b>
+                    。要想去除
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D-a.s." alt="P|_\mathscr{G}-a.s." eeimg="1">
+                    意义下的限制，我们要先考虑
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    的选取，再在
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    已经固定了的情形下把不满足性质的
+                    <img src="https://www.zhihu.com/equation?tex=P%7C_%5Cmathscr%7BG%7D" alt="P|_\mathscr{G}" eeimg="1">
+                    零测集统统收集起来以后一起去除才行。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下次我们接着讲讲剩下的正则条件概率问题以及特殊的正则条件概率的存在性问题。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

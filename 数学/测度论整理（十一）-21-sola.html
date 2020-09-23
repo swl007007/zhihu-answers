@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（十一）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-08a3a3596e4520cef393b1d95cda6866_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/138244754" target="_blank">
+                        测度论整理（十一）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-05-05
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    趁着我校五一放十天长假，趁机多补一篇笔记。（这肯定不是为了炫耀我们放假时间长才说的233
+                </p>
+                <p>
+                    这次我们说说
+                    <b>
+                        Lebesgue分解
+                    </b>
+                    。同样地，我们下面总是在
+                    <b>
+                        测度空间
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    上讨论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先，我们回忆上次提到的
+                    <b>
+                        符号测度关于测度
+                    </b>
+                    的绝对连续性。即对于符号测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    以及测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cmu" alt="\varphi&lt;&lt;\mu" eeimg="1">
+                    当且仅当对任意的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    -零测集，其必为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    -零测集。
+                </p>
+                <p>
+                    作为推广，我们可以将绝对连续性的定义拓宽到
+                    <b>
+                        两个符号测度之间
+                    </b>
+                    。我们定义对于两个符号测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%2C%5Cphi" alt="\varphi,\phi" eeimg="1">
+                    ，有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cphi" alt="\varphi&lt;&lt;\phi" eeimg="1">
+                    当且仅当对任意的
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%7C" alt="|\phi|" eeimg="1">
+                    -零测集，其必为
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C" alt="|\varphi|" eeimg="1">
+                    -零测集。（这里的
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5C+%7C" alt="|\ |" eeimg="1">
+                    指的是全变差不是绝对值哦！）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么一个自然的问题是：这两个定义是一致的吗？比如，对于符号测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%2C%5Cphi" alt="\varphi,\phi" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cphi" alt="\varphi&lt;&lt;\phi" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%7C%5Cphi%7C" alt="\varphi&lt;&lt;|\phi|" eeimg="1">
+                    等价吗？（注意到对前者我们应该用符号测度间的绝对连续性的定义，而对后者我们应该用符号测度对测度的绝对连续性的定义）
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cphi" alt="\varphi&lt;&lt;\phi" eeimg="1">
+                    ，则取任意
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%7C" alt="|\phi|" eeimg="1">
+                    -零测集，其必为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi" alt="\phi" eeimg="1">
+                    -零测的，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    -零测。
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%7C%5Cphi%7C" alt="\varphi&lt;&lt;|\phi|" eeimg="1">
+                    ，则取任意
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%7C" alt="|\phi|" eeimg="1">
+                    -零测集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，其
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    -零测。考虑Jordan分解
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3D%5Cvarphi%5E%2B-%5Cvarphi%5E-" alt="\varphi=\varphi^+-\varphi^-" eeimg="1">
+                    。以及
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+B%5Csubset+A%2CB%5Cin+%5Cmathscr%7BF%7D" alt="\forall B\subset A,B\in \mathscr{F}" eeimg="1">
+                    ，我们有
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%7C%28B%29%3D0" alt="|\phi|(B)=0" eeimg="1">
+                    （测度单调性），故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28B%29%3D0" alt="\varphi(B)=0" eeimg="1">
+                    。由此我们得到：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%2B%28A%29%3D0" alt="\varphi^+(A)=0" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C" alt="|\varphi|" eeimg="1">
+                    -零测的。（注意使用Jordan分解中上下变差的特殊性）
+                </p>
+                <p>
+                    由此我们验证了这个定义是个合理的推广，其与原定义是
+                    <b>
+                        一致
+                    </b>
+                    的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    其次，我们给出符号测度
+                    <b>
+                        相互奇异
+                    </b>
+                    的定义。若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+N%5Cin%5Cmathscr%7BF%7D%2C%7C%5Cvarphi%7C%28N%29%3D%7C%5Cphi%7C%28N%5Ec%29%3D0" alt="\exists N\in\mathscr{F},|\varphi|(N)=|\phi|(N^c)=0" eeimg="1">
+                    ，则这两个符号测度相互奇异，记
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5Cperp%5Cphi" alt="\varphi\perp\phi" eeimg="1">
+                    。这个定义等价于说：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+N%5Cin%5Cmathscr%7BF%7D%2C%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%5Ccap+N%29%3D%5Cphi%28A%5Ccap+N%5Ec%29%3D0" alt="\exists N\in\mathscr{F},\forall A\in \mathscr{F},\varphi(A\cap N)=\phi(A\cap N^c)=0" eeimg="1">
+                    。即总是能找到一个可测集，使得这两个符号测度中的其中一个在这个可测集内部无作用，而另一个在这个可测集外部无作用，它们恰好是交错的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们再来说说绝对连续性和相互奇异性的进一步的含义。
+                </p>
+                <p>
+                    首先，我们来说说绝对连续性。回忆到之前我们就已经数次接触过绝对连续性，例如Lebesgue积分的绝对连续性、概率空间中随机变量集合的绝对连续性等等。我们能够大概地认识到绝对连续性的意义在于：对充分小的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    ，总是能够找到一个固定的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    ，使得某个量小于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    时，总是有依赖于这个量的另一个量小于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在这里也是同样的。
+                    <b>
+                        对于符号测度
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%2C%5Cphi" alt="\varphi,\phi" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cphi" alt="\varphi&lt;&lt;\phi" eeimg="1">
+                        成立且
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        有限的话，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cexists+%5Cdelta%3E0" alt="\forall \varepsilon &gt;0,\exists \delta&gt;0" eeimg="1">
+                        ，使得对于可测集
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        如果有
+                        <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%7C%28A%29%3C%5Cdelta" alt="|\phi|(A)&lt;\delta" eeimg="1">
+                        ，那么
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C%28A%29%3C%5Cvarepsilon" alt="|\varphi|(A)&lt;\varepsilon" eeimg="1">
+                    。
+                </p>
+                <p>
+                    这条性质可以利用反证法证明。若其不成立，我们能够将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    实现为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%5En%7D" alt="\frac{1}{2^n}" eeimg="1">
+                    。即得到一列充分坏的集合
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists%5Cvarepsilon_0%3E0%2C%5Cexists+A_n%5Cin+%5Cmathscr%7BF%7D%2C%7C%5Cphi%7C%28A_n%29%3C%5Cfrac%7B1%7D%7B2%5En%7D%2C%7C%5Cvarphi%7C%28A_n%29%5Cgeq%5Cvarepsilon_0" alt="\exists\varepsilon_0&gt;0,\exists A_n\in \mathscr{F},|\phi|(A_n)&lt;\frac{1}{2^n},|\varphi|(A_n)\geq\varepsilon_0" eeimg="1">
+                    。从而考虑
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C%28%5Coverline%7B%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%7DA_n%29" alt="|\varphi|(\overline{\lim_{n\rightarrow\infty}}A_n)" eeimg="1">
+                    的矛盾即可！（因为
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%7DA_n" alt="\overline{\lim_{n\rightarrow\infty}}A_n" eeimg="1">
+                    中元素都是在
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    中出现过无穷多次的元素，故由
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C%28A_n%29%5Cgeq%5Cvarepsilon_0" alt="|\varphi|(A_n)\geq\varepsilon_0" eeimg="1">
+                    ，这个集合的
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C" alt="|\varphi|" eeimg="1">
+                    测度不会太小，但是由于
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%7C%28A_n%29%3C%5Cfrac%7B1%7D%7B2%5En%7D" alt="|\phi|(A_n)&lt;\frac{1}{2^n}" eeimg="1">
+                    以及绝对连续性保证了这个集合的
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C" alt="|\varphi|" eeimg="1">
+                    测度不会太大，故矛盾！）注意到这里将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    实现为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%5En%7D" alt="\frac{1}{2^n}" eeimg="1">
+                    的小技巧成功地保证了级数的收敛性从而保证了
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cvarphi%7C%28%5Coverline%7B%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%7DA_n%29" alt="|\varphi|(\overline{\lim_{n\rightarrow\infty}}A_n)" eeimg="1">
+                    不会太大！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    另一种理解方式可以从Radon-Nikodym定理的角度出发。
+                </p>
+                <p>
+                    在此，我们不妨进一步假定测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限的。那么其上符号测度都可以不定积分化。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu%2C%5Cphi%28A%29%3D%5Cint_Ag%5C%2Cd%5Cmu" alt="\forall A\in\mathscr{F},\varphi(A)=\int_Af\,d\mu,\phi(A)=\int_Ag\,d\mu" eeimg="1">
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin%5Cmathscr%7BF%7D%2C%7C%5Cvarphi%7C%28A%29%3D%5Cint_A%7Cf%7C%5C%2Cd%5Cmu%2C%7C%5Cphi%7C%28A%29%3D%5Cint_A%7Cg%7C%5C%2Cd%5Cmu" alt="\forall A\in\mathscr{F},|\varphi|(A)=\int_A|f|\,d\mu,|\phi|(A)=\int_A|g|\,d\mu" eeimg="1">
+                </p>
+                <p>
+                    从而绝对连续性告诉我们：如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_A%7Cg%7C%5C%2Cd%5Cmu%3D0" alt="\int_A|g|\,d\mu=0" eeimg="1">
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_A%7Cf%7C%5C%2Cd%5Cmu%3D0" alt="\int_A|f|\,d\mu=0" eeimg="1">
+                </p>
+                <p>
+                    即：如果
+                    <img src="https://www.zhihu.com/equation?tex=g%7C_A%3D0%5C+a.e." alt="g|_A=0\ a.e." eeimg="1">
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=f%7C_A%3D0%5C+a.e." alt="f|_A=0\ a.e." eeimg="1">
+                    。
+                </p>
+                <p>
+                    故我更倾向于将绝对连续性理解为
+                    <b>
+                        函数空间中的dominance
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    类似地，如果有相互奇异性
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5Cperp%5Cphi" alt="\varphi\perp\phi" eeimg="1">
+                    ，同样进行上述不定积分化，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+N%5Cin%5Cmathscr%7BF%7D" alt="\exists N\in\mathscr{F}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_N%7Cf%7C%5C%2Cd%5Cmu%3D%5Cint_%7BN%5Ec%7D%7Cg%7C%5C%2Cd%5Cmu%3D0" alt="\int_N|f|\,d\mu=\int_{N^c}|g|\,d\mu=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=f%7C_N%3D0%2Cg%7C_%7BN%5Ec%7D%3D0%5C+a.e." alt="f|_N=0,g|_{N^c}=0\ a.e." eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=fg%3D0%5C+a.e." alt="fg=0\ a.e." eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_X%5C+fg%5C%2Cd%5Cmu%3D0" alt="\int_X\ fg\,d\mu=0" eeimg="1">
+                    。回忆
+                    <img src="https://www.zhihu.com/equation?tex=L_2" alt="L_2" eeimg="1">
+                    空间作为Hilbert空间的其上内积，我们就容易理解为何相互奇异要用“垂直”符号来表示。因为这本质上就是
+                    <b>
+                        函数空间中的正交性
+                    </b>
+                    ！
+                </p>
+                <hr>
+                <p>
+                    接下来，我们很自然地引入
+                    <b>
+                        Lebesgue分解
+                    </b>
+                    ：其目的是在测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    上将一个符号测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    分解为两个符号测度之和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3D%5Cvarphi_c%2B%5Cvarphi_s" alt="\varphi=\varphi_c+\varphi_s" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_c%3C%3C%5Cmu%2C%5Cvarphi_s%5Cperp+%5Cmu" alt="\varphi_c&lt;&lt;\mu,\varphi_s\perp \mu" eeimg="1">
+                    。不难发现，Lebesgue分解其实与函数空间中的正交分解相呼应，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_c" alt="\varphi_c" eeimg="1">
+                    可以理解为一个被
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    控制住的符号测度（平行方向），
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_s" alt="\varphi_s" eeimg="1">
+                    可以理解为一个与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    正交的符号测度（正交方向）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    要直接证明Lebesgue分解定理是困难的，故我们模仿Radon-Nikodym定理的证明，步步推进，有如下推广链：
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu%2C%5Cvarphi" alt="\mu,\varphi" eeimg="1">
+                        为有限测度-&gt;
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu%2C%5Cvarphi" alt="\mu,\varphi" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限测度-&gt;
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限符号测度
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由于推广过程与RN证明过程中几乎完全一致，在此我只叙述一下对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%2C%5Cvarphi" alt="\mu,\varphi" eeimg="1">
+                    <b>
+                        为有限测度
+                    </b>
+                    的情形的证明。
+                </p>
+                <p>
+                    这个证明的出发点是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cmu%2B%5Cvarphi" alt="\varphi&lt;&lt;\mu+\varphi" eeimg="1">
+                    这个不起眼的式子。利用这个式子的动机是
+                    <b>
+                        利用
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        来控制住
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    ，只需要在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    能控制住
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    的地方对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    进行限制就可以得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_c" alt="\varphi_c" eeimg="1">
+                    ，在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    控制不住的地方对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    进行限制就可以得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_s" alt="\varphi_s" eeimg="1">
+                    。
+                </p>
+                <p>
+                    利用Radon-Nikodym定理做不定积分化，得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%28%5Cmu%2B%5Cvarphi%29" alt="\forall A\in\mathscr{F},\varphi(A)=\int_Af\,d(\mu+\varphi)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%2C%5Cvarphi" alt="\mu,\varphi" eeimg="1">
+                    均为测度，容易发现
+                    <img src="https://www.zhihu.com/equation?tex=0%5Cleq+%5Cvarphi%28A%29%5Cleq+%28%5Cmu%2B%5Cvarphi%29%28A%29" alt="0\leq \varphi(A)\leq (\mu+\varphi)(A)" eeimg="1">
+                    对任意可测集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    成立。故我们得到：
+                    <img src="https://www.zhihu.com/equation?tex=0%5Cleq+f%5Cleq+1%5C+a.e." alt="0\leq f\leq 1\ a.e." eeimg="1">
+                    （所有可测集上的积分确定几乎处处意义下可测函数的所有信息）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    问题是：我们要怎么对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    做限制来进行分割呢？
+                </p>
+                <p>
+                    注意到：当
+                    <img src="https://www.zhihu.com/equation?tex=f%3D1%5C+a.e." alt="f=1\ a.e." eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29%3D%5Cint_A%5C%2Cd%28%5Cmu%2B%5Cvarphi%29%3D%28%5Cmu%2B%5Cvarphi%29%28A%29" alt="\varphi(A)=\int_A\,d(\mu+\varphi)=(\mu+\varphi)(A)" eeimg="1">
+                    ，得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28A%29%3D0" alt="\mu(A)=0" eeimg="1">
+                    。此时，无法用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    来控制住
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    。
+                </p>
+                <p>
+                    但是，在
+                    <img src="https://www.zhihu.com/equation?tex=f%3Da%3C1%5C+a.e." alt="f=a&lt;1\ a.e." eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29%3D%5Cint_Aa%5C%2Cd%28%5Cmu%2B%5Cvarphi%29%3Da%28%5Cmu%2B%5Cvarphi%29%28A%29" alt="\varphi(A)=\int_Aa\,d(\mu+\varphi)=a(\mu+\varphi)(A)" eeimg="1">
+                    ，得到
+                    <img src="https://www.zhihu.com/equation?tex=a%5Cmu%28A%29%3D%281-a%29%5Cvarphi%28A%29" alt="a\mu(A)=(1-a)\varphi(A)" eeimg="1">
+                    ，可以用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    来控制住
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    故我们自然地设
+                    <img src="https://www.zhihu.com/equation?tex=N%3D%5Cleft+%5C%7B+x%5Cin+X%7Cf%28x%29%3D1+%5Cright+%5C%7D" alt="N=\left \{ x\in X|f(x)=1 \right \}" eeimg="1">
+                    。并令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_c%28A%29%3D%5Cvarphi%28A%5Ccap+N%5Ec%29%2C%5Cvarphi_s%28A%29%3D%5Cvarphi%28A%5Ccap+N%29" alt="\varphi_c(A)=\varphi(A\cap N^c),\varphi_s(A)=\varphi(A\cap N)" eeimg="1">
+                    即可完成测度的分割！后面简单的验证我就不在此赘述了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此进行推广，我们最终可以得到Lebesgue分解定理。
+                </p>
+                <p>
+                    <b>
+                        定理（Lebesgue分解）：
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    <b>
+                        为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    <b>
+                        有限测度，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    <b>
+                        为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    <b>
+                        有限符号测度，则存在
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    <b>
+                        有限符号测度
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_c%2C%5Cvarphi_s" alt="\varphi_c,\varphi_s" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3D%5Cvarphi_c%2B%5Cvarphi_s" alt="\varphi=\varphi_c+\varphi_s" eeimg="1">
+                    <b>
+                        且有
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_c%3C%3C%5Cmu%2C%5Cvarphi_s%5Cperp+%5Cmu" alt="\varphi_c&lt;&lt;\mu,\varphi_s\perp \mu" eeimg="1">
+                        ，且这样的分解是唯一的
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，Lebesgue分解定理还能再弱化：事实上
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    <b>
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限符号测度
+                    </b>
+                    也可以保证Lebesgue分解存在唯一。具体的证明我们可以利用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cmu%7C" alt="|\mu|" eeimg="1">
+                    做上述Lebesgue分解即可证明。
+                </p>
+                <hr>
+                <p>
+                    Lebesgue分解定理的重要应用就是
+                    <b>
+                        对随机变量进行分类
+                    </b>
+                    （一个初等概率论中说不清楚的事情）
+                </p>
+                <p>
+                    考虑概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    上的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    。其总是诱导了
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%29" alt="(\mathbb{R},\mathscr{B}_{\mathbb{R}})" eeimg="1">
+                    上的概率测度
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D" alt="Pf^{-1}" eeimg="1">
+                    。注意到
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%29" alt="(\mathbb{R},\mathscr{B}_{\mathbb{R}})" eeimg="1">
+                    上又有Lebesgue测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限的，故我们可以将
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D" alt="Pf^{-1}" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    做Lebesgue分解得到
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%3D%5Cmu_1%2B%5Cmu_s%2C%5Cmu_1%3C%3C%5Clambda%2C%5Cmu_s%5Cperp%5Clambda" alt="Pf^{-1}=\mu_1+\mu_s,\mu_1&lt;&lt;\lambda,\mu_s\perp\lambda" eeimg="1">
+                    。
+                </p>
+                <p>
+                    对于有限测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_s" alt="\mu_s" eeimg="1">
+                    ，考虑
+                    <img src="https://www.zhihu.com/equation?tex=D%3D%5Cleft+%5C%7B+x%5Cin+X%7C%5Cmu_s%28%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%3E0+%5Cright+%5C%7D" alt="D=\left \{ x\in X|\mu_s(\left \{ x \right \})&gt;0 \right \}" eeimg="1">
+                    为
+                    <b>
+                        至多可数的
+                    </b>
+                    （为什么？）。那么令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_2%3D%5Cmu_s%7C_D%2C%5Cmu_3%3D%5Cmu_s%7C_%7BD%5Ec%7D" alt="\mu_2=\mu_s|_D,\mu_3=\mu_s|_{D^c}" eeimg="1">
+                    ，得到
+                    <b>
+                        测度的唯一Lebesgue分解式
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%3D%5Cmu_1%2B%5Cmu_2%2B%5Cmu_3" alt="Pf^{-1}=\mu_1+\mu_2+\mu_3" eeimg="1">
+                </p>
+                <p>
+                    其中的右侧三者均为有限测度！
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_2%2C%5Cmu_3" alt="\mu_2,\mu_3" eeimg="1">
+                    恒为零，则
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%3C%3C%5Clambda" alt="Pf^{-1}&lt;&lt;\lambda" eeimg="1">
+                    ，此时由Radon-Nikodym定理，进行不定积分化得到几乎处处非负的可测函数
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%28A%29%3D%5Cint_%7BA%7Dp%5C%2Cd%5Clambda" alt="Pf^{-1}(A)=\int_{A}p\,d\lambda" eeimg="1">
+                    。我们发现，
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    就是
+                    <b>
+                        概率密度
+                    </b>
+                    ！此时，随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    就是一个
+                    <b>
+                        连续型随机变量
+                    </b>
+                    ！（同时我们得到概率密度在几乎处处意义下是唯一的）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_1%2C%5Cmu_3" alt="\mu_1,\mu_3" eeimg="1">
+                    恒为零，则
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%3D%5Cmu_2%5Cperp+%5Clambda" alt="Pf^{-1}=\mu_2\perp \lambda" eeimg="1">
+                    。且
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%3D%5Cmu_s%7C_D" alt="Pf^{-1}=\mu_s|_D" eeimg="1">
+                    。这意味着：仅
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    中至多可数个元素处的取值就能够完全决定
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D" alt="Pf^{-1}" eeimg="1">
+                    的整体结构。故不妨令
+                    <img src="https://www.zhihu.com/equation?tex=D%3D%5Cleft+%5C%7B+x_1%2Cx_2%2C...+%5Cright+%5C%7D%2Cp_i%3DPf%5E%7B-1%7D%28%5Cleft+%5C%7B+x_i+%5Cright+%5C%7D%29" alt="D=\left \{ x_1,x_2,... \right \},p_i=Pf^{-1}(\left \{ x_i \right \})" eeimg="1">
+                    。则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+p_i+%5Cright+%5C%7D" alt="\left \{ p_i \right \}" eeimg="1">
+                    即为随机变量的
+                    <b>
+                        概率分布列
+                    </b>
+                    ，此时随机变量为
+                    <b>
+                        离散型随机变量
+                    </b>
+                    （其取值集合即为
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    ，至多可数，与初等概率论吻合
+                    <b>
+                        ）
+                    </b>
+                    ！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_1%2C%5Cmu_2" alt="\mu_1,\mu_2" eeimg="1">
+                    恒为零，则
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%3D%5Cmu_s%7C_%7BD%5Ec%7D%3D%5Cmu_3%5Cperp%5Clambda" alt="Pf^{-1}=\mu_s|_{D^c}=\mu_3\perp\lambda" eeimg="1">
+                    。此时比较奇特的一点是：任意至多可数集的
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D" alt="Pf^{-1}" eeimg="1">
+                    测度均为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    但是其还是与Lebesgue测度相互奇异。这样的随机变量为
+                    <b>
+                        奇异型随机变量
+                    </b>
+                    ！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，我们在上面证明了
+                    <b>
+                        任意随机变量都是这三种随机变量的组合
+                    </b>
+                    ！
+                </p>
+                <p>
+                    读者可能还是会很疑惑为什么我们要考虑对于随机变量诱导出的概率测度
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D" alt="Pf^{-1}" eeimg="1">
+                    进行分解。事实上，我们只需要注意到：
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%3D%5Clambda_F%5C+%28f%5Csim+F%29" alt="Pf^{-1}=\lambda_F\ (f\sim F)" eeimg="1">
+                    就可以理解这一点。因为随机变量诱导出的概率测度本质上说与随机变量分布函数诱导出的Lebesgue-Stieljes测度是一致的！从这个角度来看，我们可以容易地论证
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    至多可数（
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    中点对应了
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    的间断点，而单调函数的间断点至多只有可数个）。由初等概率论的学习，我们知道对随机变量分类事实上就是观察随机变量的分布函数。如果分布函数在
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    处发生了跳跃，那么这意味着随机变量在这个点处有离散取值。对应地，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_F" alt="\lambda_F" eeimg="1">
+                    中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+a+%5Cright+%5C%7D" alt="\left \{ a \right \}" eeimg="1">
+                    就会是一个正测度集合。故
+                    <b>
+                        研究分布函数诱导的Lebesgue-Stieljes测度的Lebesgue分解本质上等价于研究随机变量的分类问题
+                    </b>
+                    ！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我想对连续型与离散型随机变量各举一个简单的例子。
+                </p>
+                <p>
+                    例：考虑概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5B0%2C1%5D%2C%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%5Ccap+%5B0%2C1%5D%2C%5Clambda%29" alt="([0,1],\mathscr{B}_{\mathbb{R}}\cap [0,1],\lambda)" eeimg="1">
+                    上的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3Dx" alt="f(x)=x" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么容易发现其分布为：
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29%3D%5Clambda%28f%5Cleq+x%29%3Dx" alt="F(x)=\lambda(f\leq x)=x" eeimg="1">
+                </p>
+                <p>
+                    故其诱导的Lebesgue-Stieljes测度就是Lebesgue测度本身！
+                </p>
+                <p>
+                    显然
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%3C%3C%5Clambda" alt="\lambda&lt;&lt;\lambda" eeimg="1">
+                    ，故为
+                    <b>
+                        连续型
+                    </b>
+                    随机变量。
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5Clambda%7D%7Bd%5Clambda%7D%3D1" alt="\frac{d\lambda}{d\lambda}=1" eeimg="1">
+                    ，且由Radon-Nikodym定理，RN导数几乎处处唯一，故该随机变量的概率密度函数为
+                    <img src="https://www.zhihu.com/equation?tex=p%3D1%5C+a.e." alt="p=1\ a.e." eeimg="1">
+                    ，容易发现这就是一个
+                    <b>
+                        均匀分布
+                    </b>
+                    的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f%5Csim+U%280%2C1%29" alt="f\sim U(0,1)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：考虑概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5B0%2C1%5D%2C%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%5Ccap+%5B0%2C1%5D%2C%5Clambda%29" alt="([0,1],\mathscr{B}_{\mathbb{R}}\cap [0,1],\lambda)" eeimg="1">
+                    上的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty+a_nI_%7BA_n%7D" alt="f(x)=\sum_{n=1}^\infty a_nI_{A_n}" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=a_1%2Ca_2%2C..." alt="a_1,a_2,..." eeimg="1">
+                    为互异的实数且
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                    的可测分割。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+B%5Cin+%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%2CPf%5E%7B-1%7D%28B%29%3D%5Csum_%7Bi%3Aa_i%5Cin+B%7D%5Clambda%28A_i%29" alt="\forall B\in \mathscr{B}_{\mathbb{R}},Pf^{-1}(B)=\sum_{i:a_i\in B}\lambda(A_i)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=N%3D%5Cleft+%5C%7B+a_1%2Ca_2%2C...+%5Cright+%5C%7D" alt="N=\left \{ a_1,a_2,... \right \}" eeimg="1">
+                    可数，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%28N%29%3D0" alt="\lambda(N)=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    显然我们有
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%28N%5Ec%29%3D0" alt="Pf^{-1}(N^c)=0" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=Pf%5E%7B-1%7D%5Cperp+%5Clambda" alt="Pf^{-1}\perp \lambda" eeimg="1">
+                    ，为
+                    <b>
+                        离散型
+                    </b>
+                    随机变量。
+                </p>
+                <p>
+                    其分布列为
+                    <img src="https://www.zhihu.com/equation?tex=p_i%3DPf%5E%7B-1%7D%28%5Cleft+%5C%7B++a_i%5Cright+%5C%7D%29%3D%5Clambda%28A_i%29" alt="p_i=Pf^{-1}(\left \{  a_i\right \})=\lambda(A_i)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：考虑概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5B0%2C1%5D%2C%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%5Ccap+%5B0%2C1%5D%2C%5Clambda%29" alt="([0,1],\mathscr{B}_{\mathbb{R}}\cap [0,1],\lambda)" eeimg="1">
+                    上的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，其具有分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29%3DC%28x%29" alt="F(x)=C(x)" eeimg="1">
+                    （
+                    <b>
+                        Cantor函数
+                    </b>
+                    ）。Cantor函数具体而言是一个
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D%5Crightarrow+%5B0%2C1%5D" alt="[0,1]\rightarrow [0,1]" eeimg="1">
+                    的函数，其连续、单调增，故为一个分布函数。而由之前的结论，对于任意一个分布函数，都存在概率空间上服从这个分布函数的随机变量，故这样的
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    必定是存在的。
+                </p>
+                <p>
+                    那么考虑由其生成的Lebesgue-Stieljes测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_F" alt="\lambda_F" eeimg="1">
+                    。存在Cantor集
+                    <img src="https://www.zhihu.com/equation?tex=C%5Cin%5Cmathscr%7BF%7D" alt="C\in\mathscr{F}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%28C%29%3D0" alt="\lambda(C)=0" eeimg="1">
+                    （Cantor集Lebesgue零测）且
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_F%28C%5Ec%29%3D0" alt="\lambda_F(C^c)=0" eeimg="1">
+                    （因为对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%28a%2Cb%29%5Csubset+C%5Ec%2CC%7C_%7B%28a%2Cb%29%7D" alt="\forall (a,b)\subset C^c,C|_{(a,b)}" eeimg="1">
+                    为常值的，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%28a%2Cb%29%5Csubset+C%5Ec%2C%5Clambda_F%28%28a%2Cb%29%29%3D0" alt="\forall (a,b)\subset C^c,\lambda_F((a,b))=0" eeimg="1">
+                    。而
+                    <img src="https://www.zhihu.com/equation?tex=C%5Ec" alt="C^c" eeimg="1">
+                    可以分解为若干个不交区间之并，而不交开区间至多只有可数个，故由测度的可列可加性，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_F%28C%5Ec%29%3D0" alt="\lambda_F(C^c)=0" eeimg="1">
+                    ）。即得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_F%5Cperp%5Clambda" alt="\lambda_F\perp\lambda" eeimg="1">
+                    <b>
+                        相互奇异
+                    </b>
+                    。
+                </p>
+                <p>
+                    但是，奇特的是，
+                    <b>
+                        任意单点集在
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda_F" alt="\lambda_F" eeimg="1">
+                        下都是零测的
+                    </b>
+                    。考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+%5B0%2C1%5D%2C%5Cleft+%5C%7B+x%5Cright+%5C%7D%3D%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%28x-%5Cfrac%7B1%7D%7Bn%7D%2Cx%5D" alt="\forall x\in [0,1],\left \{ x\right \}=\lim_{n\rightarrow \infty}(x-\frac{1}{n},x]" eeimg="1">
+                    。则由Cantor函数的连续性以及测度的上连续性，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_F%28%5Cleft+%5C%7B+x%5Cright+%5C%7D%29%3D0" alt="\lambda_F(\left \{ x\right \})=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故由我们上述的分类准则，这个随机变量是个
+                    <b>
+                        奇异型随机变量
+                    </b>
+                    ，其服从
+                    <b>
+                        Cantor分布
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，通过上述两个例子，我们已经能够生成出任意连续型、离散型、奇异型以及混合型随机变量了。因为只要我们有分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    ，我们总是能够求出其左连续逆
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%7B%5Cleftarrow%7D" alt="F^{\leftarrow}" eeimg="1">
+                    。从而左连续逆复合上均匀分布的随机变量就是一个服从
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    分布的随机变量了！
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

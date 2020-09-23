@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            浅谈拓扑（八）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-1d7cf351f483e5281f1f344ef35fea80_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/108620745" target="_blank">
+                        浅谈拓扑（八）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-02-23
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这次我们讲Urysohn度量化定理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在开始前，我有必要说明一下：我们介绍的分离性公理和可数性公理本质上都是
+                    <b>
+                        拓扑性质
+                    </b>
+                    ！（
+                    <b>
+                        在同胚下保持
+                    </b>
+                    ）具体的证明却是很容易的，这里就不给出了。
+                </p>
+                <p>
+                    拓扑性质的判断可以帮助我们判断两个拓扑空间是否同胚。（若他们在某一个拓扑性质方面表现不同则必定不同胚，若同胚则在任意拓扑性质方面表现相同）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们进入正题。但是在具体介绍这个定理之前，我们先介绍
+                    <b>
+                        Hilbert空间
+                    </b>
+                    （事实上这仅是Hilbert空间的一个特例），这与度量化定理关系紧密。
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=X%3D%5Cleft+%5C%7B+%5Cleft+%5C%7B++x_n%5Cright+%5C%7D%7C%5Csum_%7Bn%3D1%7D%5E%5Cinfty+x_n%5E2%3C%5Cinfty%2Cx_n%5Cin+%5Cmathbb%7BR%7D+%5Cright+%5C%7D" alt="X=\left \{ \left \{  x_n\right \}|\sum_{n=1}^\infty x_n^2&lt;\infty,x_n\in \mathbb{R} \right \}" eeimg="1">
+                    ，为所有平方和收敛的实数列组成的集合。
+                </p>
+                <p>
+                    在这之上定义内积：
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cleft+%5C%7B++x_n%5Cright+%5C%7D%2C%5Cleft+%5C%7B++y_n%5Cright+%5C%7D%29%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty+x_ny_n" alt="(\left \{  x_n\right \},\left \{  y_n\right \})=\sum_{n=1}^\infty x_ny_n" eeimg="1">
+                    。由Cauchy不等式，立马得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty+x_ny_n%3C%5Cinfty" alt="\sum_{n=1}^\infty x_ny_n&lt;\infty" eeimg="1">
+                    ，故内积总是有定义的。
+                </p>
+                <p>
+                    有了内积，那么自然地我们就有了度量：
+                    <img src="https://www.zhihu.com/equation?tex=d%28%5Cleft+%5C%7B++x_n%5Cright+%5C%7D%2C%5Cleft+%5C%7B++y_n%5Cright+%5C%7D%29%3D%5Csqrt%7B%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%28x_n-y_n%29%5E2%7D" alt="d(\left \{  x_n\right \},\left \{  y_n\right \})=\sqrt{\sum_{n=1}^\infty (x_n-y_n)^2}" eeimg="1">
+                </p>
+                <p>
+                    那么我们就相当于定义了
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的度量拓扑。记这个拓扑空间为
+                    <img src="https://www.zhihu.com/equation?tex=E%5E%5Comega" alt="E^\omega" eeimg="1">
+                    ，即为Hilbert空间。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Hilbert空间在数学的很多领域也有不同的推广，比如：可以定义
+                    <img src="https://www.zhihu.com/equation?tex=X%3D%5Cleft+%5C%7B+Y%7CE+Y%5E2%3C%5Cinfty+%5Cright+%5C%7D" alt="X=\left \{ Y|E Y^2&lt;\infty \right \}" eeimg="1">
+                    为所有二阶矩有限的随机变量组成的集合。那么可以类似地定义内积
+                    <img src="https://www.zhihu.com/equation?tex=%28Y%2CZ%29%3DE%28YZ%29" alt="(Y,Z)=E(YZ)" eeimg="1">
+                    ，从而搭建起随机变量的度量空间。当然这是题外话了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们容易发现：Hilbert空间具有很好的性质。由于其为度量拓扑，故
+                    <b>
+                        满足T1-T4以及C1公理
+                    </b>
+                    。考虑集合
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cleft+%5C%7B+%5Cleft+%5C%7B++x_n%5Cright+%5C%7D%5Cin+E%5E%5Comega%7C+x_n%5Cin+%5Cmathbb%7BQ%7D%2Cx_n%E4%BB%85%E6%9C%89%E6%9C%89%E9%99%90%E9%A1%B9%E9%9D%9E%E9%9B%B6%5Cright+%5C%7D" alt="A=\left \{ \left \{  x_n\right \}\in E^\omega| x_n\in \mathbb{Q},x_n仅有有限项非零\right \}" eeimg="1">
+                    。则对任意Hilbert空间中的数列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    ，总是存在
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中的序列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++y_n%5Cright+%5C%7D" alt="\left \{  y_n\right \}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%28x_n-y_n%29%5E2" alt="\sum_{n=1}^\infty (x_n-y_n)^2" eeimg="1">
+                    充分小。（由于Hilbert空间中的数列平方级数收敛，这总是可以做到的）故
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=E%5E%5Comega" alt="E^\omega" eeimg="1">
+                    的可数稠密子集。可分的度量空间为C2的，故
+                    <b>
+                        满足C2公理
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们介绍Urysohn可度量化定理。我们先介绍定理及其证明，再说明其与Hilbert空间的关系。
+                    <b>
+                        Urysohn可度量化化定理的本质就是将拓扑空间嵌入到Hilbert空间中去，从而利用Hilbert空间的度量
+                    </b>
+                    ！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（Urysohn可度量化）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        满足所有分离公理与可数公理的拓扑空间可度量化。（意味着存在一个度量，使得度量导出的拓扑与原拓扑相等）
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们的证明分为两步：先要构造出一个度量，然后证明这个度量导出的拓扑和原拓扑相同。
+                </p>
+                <p>
+                    要如何构造拓扑空间中不同两点之间的距离呢？这是一个难题。但是回忆Urysohn定理的意义：它告诉我们T4空间与度量空间很像。T4公理就可以保证我们找到一个连续函数度量拓扑空间中的点到两个不交闭集之间的远近程度！
+                </p>
+                <p>
+                    很自然地，我们希望用Urysohn定理构造出这样的函数，再通过这样的函数来构造度量。那么问题就转化为：不交闭集怎么选？我们自然希望不交闭集能够与拓扑基中的集合有关。一来拓扑基中集合是本原的开集，以这些集合作为度量远近的基准是比较好的。二来我们可以充分利用C2的性质。
+                </p>
+                <p>
+                    由于C2公理，存在可数拓扑基
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    。要构造出不交的闭集，我们定义：若拓扑基中集合
+                    <img src="https://www.zhihu.com/equation?tex=B%2CB%7B%27%7D" alt="B,B{&#39;}" eeimg="1">
+                    满足
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BB%7D%5Csubset+B%7B%27%7D" alt="\overline{B}\subset B{&#39;}" eeimg="1">
+                    ，则称
+                    <img src="https://www.zhihu.com/equation?tex=%28B%2CB%7B%27%7D%29" alt="(B,B{&#39;})" eeimg="1">
+                    为一个
+                    <b>
+                        典型对
+                    </b>
+                    。我们总是可以适当地选取这个可数拓扑基，使得典型对必定存在（想想看为什么？）。对于典型对，我们可以将其理解为：
+                    <b>
+                        对于拓扑空间中的点的位置的标准化的度量
+                    </b>
+                    。对于典型对
+                    <img src="https://www.zhihu.com/equation?tex=%28B%2CB%7B%27%7D%29" alt="(B,B{&#39;})" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BB%7D%2CB%7B%27%7D%5Ec" alt="\overline{B},B{&#39;}^c" eeimg="1">
+                    是不交闭集，故利用Urysohn定理，可以构造函数度量点到
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BB%7D%2CB%7B%27%7D%5Ec" alt="\overline{B},B{&#39;}^c" eeimg="1">
+                    之间的远近程度。而
+                    <img src="https://www.zhihu.com/equation?tex=B%2CB%7B%27%7D" alt="B,B{&#39;}" eeimg="1">
+                    又都在我们选定的拓扑基中，故我称其为“标准化”的。
+                </p>
+                <p>
+                    那么记
+                    <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                    为所有典型对组成的集合，其一定是可数的，故我们可以将所有典型对排成一列：
+                    <img src="https://www.zhihu.com/equation?tex=P%3D%5Cleft+%5C%7B++%28B_n%2CB_n%7B%27%7D%29%7Cn%5Cin+%5Cmathbb%7BN%7D%5Cright+%5C%7D" alt="P=\left \{  (B_n,B_n{&#39;})|n\in \mathbb{N}\right \}" eeimg="1">
+                    。利用
+                    <b>
+                        Urysohn定理
+                    </b>
+                    ，对每个
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    ，存在
+                    <img src="https://www.zhihu.com/equation?tex=f_n%3AX%5Crightarrow+%5B0%2C1%5D" alt="f_n:X\rightarrow [0,1]" eeimg="1">
+                    连续，且
+                    <img src="https://www.zhihu.com/equation?tex=f_n%28%5Coverline%7BB%7D_n%29%3D0%2Cf%28B_n%7B%27%7D%5Ec%29%3D1" alt="f_n(\overline{B}_n)=0,f(B_n{&#39;}^c)=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    现在我们可以度量每个点关于这可数对典型对的位置关系，这类似于我们得到了每个点的一个坐标
+                    <img src="https://www.zhihu.com/equation?tex=%28x_1%2Cx_2%2C...%29" alt="(x_1,x_2,...)" eeimg="1">
+                    。（每个分量是关于对应典型对的，且共有可数个分量）那么，我们利用这些信息就能够给出拓扑空间上的一个度量。
+                </p>
+                <p>
+                    具体的做法如下：对两点
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    ，我们用
+                    <img src="https://www.zhihu.com/equation?tex=%7Cf_n%28x%29-f_n%28y%29%7C%5E2" alt="|f_n(x)-f_n(y)|^2" eeimg="1">
+                    来衡量其关于第
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    对典型对的远近，其取值总是在
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                    中。由于共有可数个典型对，我们自然地想到构造级数来包括所有典型对提供的信息。但是
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty%7Cf_n%28x%29-f_n%28y%29%7C%5E2" alt="\sum_{n=1}^\infty|f_n(x)-f_n(y)|^2" eeimg="1">
+                    并不一定是收敛的级数，故采取一个小技巧：
+                    <b>
+                        构造
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2Cy%29%3D%5Csqrt%7B%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%5Cfrac%7B%7Cf_n%28x%29-f_n%28y%29%7C%5E2%7D%7Bn%5E2%7D%7D" alt="d(x,y)=\sqrt{\sum_{n=1}^\infty \frac{|f_n(x)-f_n(y)|^2}{n^2}}" eeimg="1">
+                    。由
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty%5Cfrac%7B1%7D%7Bn%5E2%7D" alt="\sum_{n=1}^\infty\frac{1}{n^2}" eeimg="1">
+                    的收敛性来保证级数的收敛性。至此，我们的构造完成了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们需要验证这个
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    确实是一个度量。对称性和三角不等式是显然满足的，且其非负也是显然的。我们需要验证其正定性：即
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cneq+y%2Cd%28x%2Cy%29%3E0" alt="\forall x\neq y,d(x,y)&gt;0" eeimg="1">
+                    。要证明
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2Cy%29" alt="d(x,y)" eeimg="1">
+                    非零，事实上我们只需要证明
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    在某一个典型对上的远近判断是不一致的即可。那么我们可以利用分离公理，将问题转化到拓扑基中的集合上，再利用典型对，转化到度量上。
+                </p>
+                <p>
+                    注意到由Hausdorff性质以及拓扑基的性质，必定存在
+                    <img src="https://www.zhihu.com/equation?tex=B%5Cin+%5Cmathbb%7BB%7D" alt="B\in \mathbb{B}" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+B%2Cy%5Cnot%5Cin+%5Coverline%7BB%7D" alt="x\in B,y\not\in \overline{B}" eeimg="1">
+                    。（这类似于T4公理的等价条件，容易证明）由T4公理成立，必定存在
+                    <img src="https://www.zhihu.com/equation?tex=B%5E%2A%5Cin+%5Cmathbb%7BB%7D%2Cx%5Cin+B%5E%2A%5Csubset+%5Coverline%7BB%5E%2A%7D%5Csubset+B" alt="B^*\in \mathbb{B},x\in B^*\subset \overline{B^*}\subset B" eeimg="1">
+                    。从而，我们找到了一个典型对
+                    <img src="https://www.zhihu.com/equation?tex=%28B%5E%2A%2CB%29" alt="(B^*,B)" eeimg="1">
+                    将
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    分开。由于典型对至多有可数个，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+n%2C%28B%5E%2A%2CB%29%3D%28B_n%2CB_n%7B%27%7D%29" alt="\exists n,(B^*,B)=(B_n,B_n{&#39;})" eeimg="1">
+                    。那么
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2Cy%29%5Cgeq+%5Cfrac%7B1%7D%7Bn%7D%3E0" alt="d(x,y)\geq \frac{1}{n}&gt;0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    注意到关于度量正定性的证明等价于证明了：
+                    <b>
+                        通过以所有的典型对为标准，就已经可以足够细致地区分出所有不同点的位置了！
+                    </b>
+                    这是非常神奇的！我们也同时证明了
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    确实是一个度量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    完成了第一步后，第二步就容易些了。假设
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    导出拓扑
+                    <img src="https://www.zhihu.com/equation?tex=T_d" alt="T_d" eeimg="1">
+                    ，原拓扑为
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    ，我们只要证明：
+                    <img src="https://www.zhihu.com/equation?tex=T_d" alt="T_d" eeimg="1">
+                    中的开集在
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中开，
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中的开集在
+                    <img src="https://www.zhihu.com/equation?tex=T_d" alt="T_d" eeimg="1">
+                    中开即可。
+                </p>
+                <p>
+                    我们取
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=T_d" alt="T_d" eeimg="1">
+                    中开，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+U%2C%5Cexists+%5Cdelta%3E0%2CB%28x%2C%5Cdelta%29%5Csubset+U" alt="\forall x\in U,\exists \delta&gt;0,B(x,\delta)\subset U" eeimg="1">
+                    。我们想要构造出
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    中的在
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中开的开邻域。要构造
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中的开集且使得其中点与
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    充分接近，我们又可以利用典型对的意义来构造。注意到取定
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    后，对于任意
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中点
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=J_i%28y%29%3D%7Cf_i%28y%29-f_i%28x%29%7C" alt="J_i(y)=|f_i(y)-f_i(x)|" eeimg="1">
+                    都为连续函数，度量了
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    关于第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    对典型对的远近差别。那么我们只需要
+                    <b>
+                        取一个
+                        <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                        中充分靠近
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                        处的开集，则其在
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=J_i" alt="J_i" eeimg="1">
+                    <b>
+                        原像必定为
+                        <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                        中开集，且其中的点在第
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                        对典型对的判断标准下都只有充分小的差别
+                    </b>
+                    。对于度量的放缩，我们可以将级数分为有限与无限两部分。无限部分可以运用级数收敛的性质进行放缩，使其落在
+                    <img src="https://www.zhihu.com/equation?tex=B%28x%2C%5Cdelta%29" alt="B(x,\delta)" eeimg="1">
+                    内。使有限部分为有限个原像集之交，从而在保证开性的同时确保有限部分也落在
+                    <img src="https://www.zhihu.com/equation?tex=B%28x%2C%5Cdelta%29" alt="B(x,\delta)" eeimg="1">
+                    内。
+                </p>
+                <p>
+                    为此，我们做如下构造：取
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    充分大，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3DN%7D%5E%5Cinfty%5Cfrac%7B1%7D%7Bn%5E2%7D%3C%5Cfrac%7B%5Cdelta%5E2%7D%7B2%7D" alt="\sum_{n=N}^\infty\frac{1}{n^2}&lt;\frac{\delta^2}{2}" eeimg="1">
+                    （由于级数收敛这肯定能做到），那么取充分靠近
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    处的开集
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C%5Cfrac%7B%5Cdelta%7D%7B%5Csqrt%7B2N%7D%7D%29" alt="(0,\frac{\delta}{\sqrt{2N}})" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=W_i%3DJ_i%5E%7B-1%7D%28%280%2C%5Cfrac%7B%5Cdelta%7D%7B%5Csqrt%7B2N%7D%7D%29%29" alt="W_i=J_i^{-1}((0,\frac{\delta}{\sqrt{2N}}))" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中开集。那么
+                    <img src="https://www.zhihu.com/equation?tex=W_1%5Ccap+W_2%5Ccap+...%5Ccap+W_N" alt="W_1\cap W_2\cap ...\cap W_N" eeimg="1">
+                    即为
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中开集，且对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+y%5Cin+W_1%5Ccap+W_2%5Ccap+...%5Ccap+W_N" alt="\forall y\in W_1\cap W_2\cap ...\cap W_N" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2Cy%29%3D%5Csqrt%7B+%5Csum_%7Bn%3D1%7D%5EN...%2B+%5Csum_%7Bn%3DN%2B1%7D%5E%5Cinfty...+%7D%3C%5Csqrt%7B+%5Csum_%7Bn%3D1%7D%5EN%5Cfrac%7B%5Cdelta%5E2%7D%7B2N%7D%2B+%5Cfrac%7B%5Cdelta%5E2%7D%7B2%7D%7D%3D%5Cdelta" alt="d(x,y)=\sqrt{ \sum_{n=1}^N...+ \sum_{n=N+1}^\infty... }&lt;\sqrt{ \sum_{n=1}^N\frac{\delta^2}{2N}+ \frac{\delta^2}{2}}=\delta" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=W_1%5Ccap+W_2%5Ccap+...%5Ccap+W_N%5Csubset+B%28x%2C%5Cdelta%29%5Csubset+U" alt="W_1\cap W_2\cap ...\cap W_N\subset B(x,\delta)\subset U" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中的开邻域。故
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中开。（任意点均为内点）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    反之，我们取
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中开。由拓扑基性质，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+U%2C%5Cexists+B%5Cin%5Cmathbb%7BB%7D%2Cx%5Cin+B%5Csubset+U" alt="\forall x\in U,\exists B\in\mathbb{B},x\in B\subset U" eeimg="1">
+                    。如同我们在构造度量时一样地使用Hausdorff和T4公理性质来寻找一对典型对，得到：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+B%5E%2A%5Cin+%5Cmathbb%7BB%7D%2Cx%5Cin+B%5E%2A%5Csubset+%5Coverline%7BB%5E%2A%7D%5Csubset+B" alt="\exists B^*\in \mathbb{B},x\in B^*\subset \overline{B^*}\subset B" eeimg="1">
+                    。由于典型对至多只有可数个，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+n%2C%28B%5E%2A%2CB%29%3D%28B_n%2CB_n%7B%27%7D%29" alt="\exists n,(B^*,B)=(B_n,B_n{&#39;})" eeimg="1">
+                    。那么任意
+                    <img src="https://www.zhihu.com/equation?tex=y%5Cin+B_n%7B%27%7D%5Ec" alt="y\in B_n{&#39;}^c" eeimg="1">
+                    ，都有
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2Cy%29%3E%5Cfrac%7B1%7D%7Bk%7D" alt="d(x,y)&gt;\frac{1}{k}" eeimg="1">
+                    （利用一个典型对进行分离，从而构造出
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域）。这说明：
+                    <img src="https://www.zhihu.com/equation?tex=B%28x%2C%5Cfrac%7B1%7D%7Bk%7D%29%5Csubset+U" alt="B(x,\frac{1}{k})\subset U" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    中内点（
+                    <img src="https://www.zhihu.com/equation?tex=T_d" alt="T_d" eeimg="1">
+                    意义下），即
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=T_d" alt="T_d" eeimg="1">
+                    中开。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    至此为止，Urysohn可度量化定理得证！
+                </p>
+                <p>
+                    这个定理证明的主要想法就是运用拓扑基中的典型对作为参照物。
+                    <b>
+                        典型对的存在性是由分离性公理而保证的，而基于典型对判断的度量构造是由可数性公理保证的（级数收敛性）
+                    </b>
+                    ！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么这个定理与Hilbert空间有什么关联呢？
+                </p>
+                <p>
+                    满足Urysohn可度量化定理条件，就一定可以嵌入Hilbert空间。
+                </p>
+                <p>
+                    回忆刚刚的证明中：对于每个
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    ，存在
+                    <img src="https://www.zhihu.com/equation?tex=f_n%3AX%5Crightarrow+%5B0%2C1%5D" alt="f_n:X\rightarrow [0,1]" eeimg="1">
+                    连续，且
+                    <img src="https://www.zhihu.com/equation?tex=f_n%28%5Coverline%7BB%7D_n%29%3D0%2Cf%28B_n%7B%27%7D%5Ec%29%3D1" alt="f_n(\overline{B}_n)=0,f(B_n{&#39;}^c)=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么考虑
+                    <img src="https://www.zhihu.com/equation?tex=g%3AX%5Crightarrow+E%5E%5Comega%2C%5C+g%28x%29%3D%5Cleft+%5C%7B+%5Cfrac%7Bf_n%28x%29%7D%7Bn%7D+%5Cright+%5C%7D" alt="g:X\rightarrow E^\omega,\ g(x)=\left \{ \frac{f_n(x)}{n} \right \}" eeimg="1">
+                </p>
+                <p>
+                    容易看出这个映射连续、为单射，且保证了
+                    <img src="https://www.zhihu.com/equation?tex=X%5Ccong+g%28X%29" alt="X\cong g(X)" eeimg="1">
+                    。即：映射
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    就是
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    到Hilbert空间的嵌入映射。
+                </p>
+                <p>
+                    如此一来，我们就可以利用Hilbert空间上的度量构造
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的度量了。即令
+                    <img src="https://www.zhihu.com/equation?tex=d_X%28x%2Cx%7B%27%7D%29%3Dd_%7BE%5E%5Comega%7D%28g%28x%29%2Cg%28x%7B%27%7D%29%29" alt="d_X(x,x{&#39;})=d_{E^\omega}(g(x),g(x{&#39;}))" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故我们相当于证明了：满足所有分离性可数性公理，则必定可以嵌入Hilbert空间。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然而，我们容易发现这个命题的逆也成立。如果一个空间可以嵌入Hilbert空间，那么其必定同胚于Hilbert空间的某个子空间。那么其必定可度量化（满足T1-T4,C1公理）。由于Hilbert空间C2，且C2公理有遗传性，故子空间拓扑C2。由于同胚保持可数性公理，故原空间也必定C2。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此，得到：
+                    <b>
+                        拓扑空间满足所有分离性可数性公理当且仅当其可以嵌入Hilbert空间
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，作为对于分离性可数性公理的总结，我们看几个实数上拓扑的例子。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    分别考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1%2CT_c%2CT_f%2CT_1%2CT_2" alt="\mathbb{E}^1,T_c,T_f,T_1,T_2" eeimg="1">
+                    满足的分离性与可数性公理。
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=T_1%3D%5Cleft+%5C%7B+%28-%5Cinfty+%2Ca%29%7Ca%5Cin%5Cmathbb%7BR%7D+%5Cright+%5C%7D%5Ccup%5Cleft+%5C%7B+%5Cvarnothing%2C%5Cmathbb%7BR%7D+%5Cright+%5C%7D%2CT_2" alt="T_1=\left \{ (-\infty ,a)|a\in\mathbb{R} \right \}\cup\left \{ \varnothing,\mathbb{R} \right \},T_2" eeimg="1">
+                    为由
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+%5Ba%2Cb%29%7Ca%2Cb%5Cin+%5Cmathbb%7BR%7D+%5Cright+%5C%7D" alt="\left \{ [a,b)|a,b\in \mathbb{R} \right \}" eeimg="1">
+                    作为拓扑基生成的拓扑（下限拓扑）。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_c%2CT_f" alt="T_c,T_f" eeimg="1">
+                    分别为余可数，余有限拓扑。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    显然
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    满足所有公理，且可度量化。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_1" alt="T_1" eeimg="1">
+                    <b>
+                        不满足T1公理
+                    </b>
+                    。考虑
+                    <img src="https://www.zhihu.com/equation?tex=0%2C1" alt="0,1" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    的开邻域必定包含
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    。类似地，其也
+                    <b>
+                        不满足T2，T3公理
+                    </b>
+                    ，但是其
+                    <b>
+                        是T4的
+                    </b>
+                    （所有非空闭集不交导致的奇异性，注意到我一再提醒要在T1公理前提下T4才能推出T3，T3推出T2，这里是个明显的反例）。其
+                    <b>
+                        满足C2公理。
+                    </b>
+                    自然地，其也
+                    <b>
+                        满足C1公理
+                    </b>
+                    ，也
+                    <b>
+                        可分。
+                    </b>
+                    其
+                    <b>
+                        不可度量化。
+                    </b>
+                    （非T1）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_2" alt="T_2" eeimg="1">
+                    <b>
+                        是Hausdorff的
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%3Cy%2C%5Bx%2C%5Cfrac%7Bx%2By%7D%7B2%7D%29%2C%5B%5Cfrac%7Bx%2By%7D%7B2%7D%2Cy%2B1%29" alt="\forall x&lt;y,[x,\frac{x+y}{2}),[\frac{x+y}{2},y+1)" eeimg="1">
+                    总为不交开邻域。其自然也
+                    <b>
+                        是T1的
+                    </b>
+                    。其也
+                    <b>
+                        是T4的
+                    </b>
+                    （这里证略）。注意到下限拓扑是
+                    <b>
+                        可分的
+                    </b>
+                    ，因为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BQ%7D" alt="\mathbb{Q}" eeimg="1">
+                    为可数稠密子集。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%2C%5Cleft+%5C%7B+%5Bx%2C%5Cfrac%7B1%7D%7Bn%7D%29%7Cn%5Cin%5Cmathbb%7BQ%7D+%5Cright+%5C%7D" alt="\forall x,\left \{ [x,\frac{1}{n})|n\in\mathbb{Q} \right \}" eeimg="1">
+                    为可数邻域基（注意到其中元素均为拓扑基中元素），故为
+                    <b>
+                        C1的
+                    </b>
+                    。我们在之前的笔记中已经证明了其
+                    <b>
+                        不是C2的
+                    </b>
+                    。（利用到实数域的映射）故其也
+                    <b>
+                        必不可度量化
+                    </b>
+                    。（可分度量空间必定C2，矛盾！）这里值得一提的是：
+                    <img src="https://www.zhihu.com/equation?tex=T_2%5Ctimes+T_2" alt="T_2\times T_2" eeimg="1">
+                    并不是T4的，这也是T4公理不满足可乘性的反例！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_f" alt="T_f" eeimg="1">
+                    <b>
+                        是T1的
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D-%5Cleft+%5C%7B++y%5Cright+%5C%7D" alt="\mathbb{R}-\left \{  y\right \}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域且不包含
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    。其
+                    <b>
+                        不是Hausdorff的
+                    </b>
+                    。取
+                    <img src="https://www.zhihu.com/equation?tex=0%2C1" alt="0,1" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV" alt="U,V" eeimg="1">
+                    分别为
+                    <img src="https://www.zhihu.com/equation?tex=0%2C1" alt="0,1" eeimg="1">
+                    的不交开邻域，则
+                    <img src="https://www.zhihu.com/equation?tex=U%5Ec" alt="U^c" eeimg="1">
+                    有限，但是
+                    <img src="https://www.zhihu.com/equation?tex=V%5Csubset+U%5Ec" alt="V\subset U^c" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    有限。但是
+                    <img src="https://www.zhihu.com/equation?tex=T_f" alt="T_f" eeimg="1">
+                    中的开集都是不可数的，矛盾！容易知道其也
+                    <b>
+                        不是T3，T4的
+                    </b>
+                    。故不可度量化。
+                    <img src="https://www.zhihu.com/equation?tex=T_f" alt="T_f" eeimg="1">
+                    <b>
+                        不是C1的
+                    </b>
+                    ，故也
+                    <b>
+                        不是C2的
+                    </b>
+                    。这是因为我们可以假设在
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    处有可数开邻域基
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BU%7D%3D%5Cleft+%5C%7B+U_1%2CU_2%2C...+%5Cright+%5C%7D" alt="\mathbb{U}=\left \{ U_1,U_2,... \right \}" eeimg="1">
+                    。而
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D-%5Cleft+%5C%7B++a%5Cright+%5C%7D%5C+%5C+%28%5Cforall+a%5Cneq+0%29" alt="\mathbb{R}-\left \{  a\right \}\ \ (\forall a\neq 0)" eeimg="1">
+                    都是
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    的开邻域，故总是存在
+                    <img src="https://www.zhihu.com/equation?tex=U_n" alt="U_n" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=U_n%5Csubset+%5Cmathbb%7BR%7D-%5Cleft+%5C%7B++a%5Cright+%5C%7D" alt="U_n\subset \mathbb{R}-\left \{  a\right \}" eeimg="1">
+                    。从而当
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    取遍
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C1%29" alt="(0,1)" eeimg="1">
+                    中的不可数个数时，对每个固定的
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    ，总是存在
+                    <img src="https://www.zhihu.com/equation?tex=U_n" alt="U_n" eeimg="1">
+                    不包含
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    。故
+                    <img src="https://www.zhihu.com/equation?tex=U_1%5Ec%5Ccup+U_2%5Ec%5Ccup..." alt="U_1^c\cup U_2^c\cup..." eeimg="1">
+                    应是不可数的。但是由于
+                    <img src="https://www.zhihu.com/equation?tex=U_n" alt="U_n" eeimg="1">
+                    均为开集，
+                    <img src="https://www.zhihu.com/equation?tex=U_n%5Ec" alt="U_n^c" eeimg="1">
+                    有限，故
+                    <img src="https://www.zhihu.com/equation?tex=U_1%5Ec%5Ccup+U_2%5Ec%5Ccup..." alt="U_1^c\cup U_2^c\cup..." eeimg="1">
+                    至多可数，矛盾！然而余有限拓扑
+                    <b>
+                        可分
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BQ%7D" alt="\mathbb{Q}" eeimg="1">
+                    稠密可数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_c" alt="T_c" eeimg="1">
+                    <b>
+                        是T1的
+                    </b>
+                    且
+                    <b>
+                        不是Hausdorff的
+                    </b>
+                    ，证明类似于
+                    <img src="https://www.zhihu.com/equation?tex=T_f" alt="T_f" eeimg="1">
+                    ，故
+                    <b>
+                        非T3，T4，不可度量化
+                    </b>
+                    。同样可以类似证明其
+                    <b>
+                        不是C1
+                    </b>
+                    的，故
+                    <b>
+                        非C2
+                    </b>
+                    。（这里我们也可以用C1,C2的遗传性来方便地论证）然而不同的是，
+                    <img src="https://www.zhihu.com/equation?tex=T_c" alt="T_c" eeimg="1">
+                    <b>
+                        不可分
+                    </b>
+                    ！这是因为任意可数集都必定是闭集，从而闭包必定是自身，故无法生成出不可数个实数，任意可数集不稠密！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    所以我们得到结论：
+                    <b>
+                        这五个拓扑空间相互都不是同胚的！
+                    </b>
+                    当然仅仅用分离性和可数性公理来判断不同胚是很麻烦的，所以我们后续会引入其它拓扑性质方便我们的判断。
+                </p>
+                <p>
+                    关于分离性与可数性公理，我们就介绍到这吧。之后我们谈谈其它拓扑性质。（可能最近时间有点紧，会拖挺久再更啦）
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

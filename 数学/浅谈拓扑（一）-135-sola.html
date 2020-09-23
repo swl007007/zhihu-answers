@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            浅谈拓扑（一）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-c38e02cd7df98731a42840e4cd37e12e_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/88909067" target="_blank">
+                        浅谈拓扑（一）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-10-28
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    经过了几个月的“消失”，我终究还是回来了2333
+                </p>
+                <p>
+                    这里要首先对大家说一下抱歉因为之前模形式与渗流理论的笔记一直拖着没有更完，有点虎头蛇尾的感觉（请允许我再拖一拖，过了申请季应该时间会充裕不少，那时我会再回来把欠的债都还上
+                </p>
+                <p>
+                    这个学期虽然本应该是忙于申请的学期，可我其实还是在上不少数学课的。（当然，我不是很喜欢考试所以我都选择了旁听而没有选课）大致有应用随机分析、拓扑、随机过程、实变……按照惯例，我都会选择这些课程中最有趣的一门写一些感想。看到标题想必大家都知道我最终还是选择了拓扑来写一点东西。
+                </p>
+                <p>
+                    说实话，我个人之前没怎么接触过拓扑的内容，所学也仅局限于数分、复变里的那些简单的拓扑知识。因此，过去的我总是认为拓扑、尤其是点集拓扑，是比较琐碎无趣的。但是，在门外看一个事物与亲身体验一个事物之间总是存在着巨大的落差。现在的我感觉拓扑颇有趣味，并且时常感慨过去自己的无知。拓扑学的建立仅仅依赖于三条如此广泛的拓扑公理，竟然能够得到如此美妙的结论，颇有实数域基本定理建立起数学分析的意味在其中。
+                </p>
+                <p>
+                    由于最近我的时间也不甚充裕，这个系列还是会以
+                    <b>
+                        简洁
+                    </b>
+                    为主。我几乎
+                    <b>
+                        不会
+                    </b>
+                    在这个系列中写出任何
+                    <b>
+                        严格的
+                    </b>
+                    论证过程，而是用介绍定理证明思路来取代。（在拓扑中，想清楚证明思路后写下严格证明的能力可以经过反复的训练提高）我也可能会采取画图的方式来清晰地展现处一些不易用文字清晰表达的概念。总之，
+                    <b>
+                        想仅仅通过阅读这些笔记就学好拓扑那是不可能的！！！
+                    </b>
+                    其实这句话对于我所有笔记中的任何一篇都是成立的。大家想学好数学务必勤动手，多投入时间仔细琢磨。（但是可能可以建立一个大概的概念上的认识233）对了，大家最好能够有一些最基本的拓扑知识（
+                    <b>
+                        数分
+                    </b>
+                    里那些即可），那样会大大方便大家的阅读。
+                </p>
+                <p>
+                    这个系列都将会参考
+                    <i>
+                        <b>
+                            尤承业的《基础拓扑学讲义》
+                        </b>
+                    </i>
+                    ，包含一些课上的笔记与个人的思考。如有错误，欢迎大家指出。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    “废话”就到此为止。下面我们进入正题：
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    ——
+                    <b>
+                        拓扑学要干啥？
+                    </b>
+                </p>
+                <p>
+                    可以说是研究形变。特别是
+                    <b>
+                        连续的
+                    </b>
+                    形变。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    ——连续的形变本质上是什么？
+                </p>
+                <p>
+                    两个集合间的
+                    <b>
+                        连续映射
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    ——连续映射在数分里不是已经研究过了吗？
+                </p>
+                <p>
+                    没错！数分里的定义告诉我们：如果
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    足够接近一个取定的
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    时都有
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    足够靠近
+                    <img src="https://www.zhihu.com/equation?tex=f%28x_0%29" alt="f(x_0)" eeimg="1">
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    连续。但是这个定义依赖于度量！我们需要用
+                    <img src="https://www.zhihu.com/equation?tex=%7Cx-x_0%7C" alt="|x-x_0|" eeimg="1">
+                    来描述“足够靠近”这个性质。拓扑学要干的事正是
+                    <b>
+                        摆脱度量的束缚
+                    </b>
+                    （后面我们看到度量拓扑有很多好性质，它的条件太强了）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    ——那么要怎么不用度量这个概念说清楚连续是怎么回事？
+                </p>
+                <p>
+                    我们只需要将“靠近”这个概念说清楚就行了。换句话说，我们要找到一个概念，这个概念可以表达“邻近”、“周边”的含义。数分中的
+                    <b>
+                        “开集”
+                    </b>
+                    就表达了这样的含义。如果对集合中任意一点，以其为中心存在一个充分小的圆被包含在集合中，那这个集合就是一个开集。对任意开集中的点
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，离
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    足够近的所有点必定也都在这个开集中。
+                    <b>
+                        开集关于“邻近”这个概念是封闭的
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    ——但是数分中的开集还是依赖于度量啊！
+                </p>
+                <p>
+                    对，所以拓扑学首先要做的事就是把
+                    <b>
+                        开集的概念推广
+                    </b>
+                    。
+                </p>
+                <p>
+                    对于任意一个集合
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，我们都可以指定
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的一些子集作为开集。以这些开集作为元素的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    。那么
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                    就是一个
+                    <b>
+                        拓扑空间
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    给出了
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的拓扑。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    ——那对于
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    的选取有什么要求吗？
+                </p>
+                <p>
+                    我们要求其与我们最熟悉的欧式空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的开集性质相似。
+                </p>
+                <p>
+                    对于欧式空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    ，由数分中的结论，我们知道：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En%2C%5Cvarnothing" alt="\mathbb{R}^n,\varnothing" eeimg="1">
+                    均为开集。
+                </p>
+                <p>
+                    2、任意多个开集之并为开。
+                </p>
+                <p>
+                    3、有限多个开集之交为开。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    所以对于
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    的选取，我们类似地有
+                    <b>
+                        三条拓扑公理
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=X%2C%5Cvarnothing" alt="X,\varnothing" eeimg="1">
+                        均为开的，即这两者属于
+                        <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                        中任意多个元素之并在
+                        <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                        中。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        3、
+                        <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                        中有限多个元素之交在
+                        <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                        中。
+                    </b>
+                </p>
+                <p>
+                    以上就是
+                    <b>
+                        拓扑空间的定义
+                    </b>
+                    。在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上建立拓扑，说到底，就是指定
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的哪些子集是开集。这样的指定需要满足三条拓扑公理，以与人们在欧式空间中的几何直观相匹配。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    容易发现：对于任意给定的
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=T%3D%5Cleft+%5C%7B+%5Cvarnothing%2CX+%5Cright+%5C%7D" alt="T=\left \{ \varnothing,X \right \}" eeimg="1">
+                    是所有拓扑里最小的（
+                    <b>
+                        平凡拓扑
+                    </b>
+                    ），
+                    <img src="https://www.zhihu.com/equation?tex=T%3DP%28X%29" alt="T=P(X)" eeimg="1">
+                    是所有拓扑里最大的（
+                    <b>
+                        离散拓扑
+                    </b>
+                    ）。顾名思义，离散拓扑是离散化程度最大的拓扑。其中每个子集都是开集，即每个子集都关于“邻近”这个概念封闭，边界很清楚。相对地，平凡拓扑是最“拥挤”的拓扑，所有子集都挤成一团，边界模糊。这就是为什么如果拓扑
+                    <img src="https://www.zhihu.com/equation?tex=T_1%5Csubset+T_2" alt="T_1\subset T_2" eeimg="1">
+                    ，我们就称
+                    <img src="https://www.zhihu.com/equation?tex=T_2" alt="T_2" eeimg="1">
+                    是更加
+                    <b>
+                        精细
+                    </b>
+                    的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <b>
+                        （一些
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                        上的重要拓扑）
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_e%3D%5Cleft+%5C%7B+%5Cvarnothing%2C%5Cmathbb%7BR%7D+%5Cright+%5C%7D%5Ccup+%5Cleft+%5C%7B++A%7CA%E4%B8%BA%E8%8B%A5%E5%B9%B2%E4%B8%AA%E5%BC%80%E5%8C%BA%E9%97%B4%E4%B9%8B%E5%B9%B6%5Cright+%5C%7D" alt="T_e=\left \{ \varnothing,\mathbb{R} \right \}\cup \left \{  A|A为若干个开区间之并\right \}" eeimg="1">
+                    为
+                    <b>
+                        Euclid拓扑
+                    </b>
+                    ，即我们数分中讨论过的也是最符合几何直观的拓扑，通常简记拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2CT_e%29" alt="(\mathbb{R},T_e)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_f%3D%5Cleft+%5C%7B+%5Cvarnothing%2C%5Cmathbb%7BR%7D+%5Cright+%5C%7D%5Ccup%5Cleft+%5C%7BA%5Csubset+%5Cmathbb%7BR%7D%7C%5C+%7CA%5Ec%7C%3C%5Cinfty++%5Cright+%5C%7D" alt="T_f=\left \{ \varnothing,\mathbb{R} \right \}\cup\left \{A\subset \mathbb{R}|\ |A^c|&lt;\infty  \right \}" eeimg="1">
+                    为
+                    <b>
+                        余有限拓扑
+                    </b>
+                    ，顾名思义，开集的补集都是有限集。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_c%3D%5Cleft+%5C%7B+%5Cvarnothing%2C%5Cmathbb%7BR%7D+%5Cright+%5C%7D%5Ccup%5Cleft+%5C%7BA%5Csubset+%5Cmathbb%7BR%7D%7C%5C+A%5Ec%E5%8F%AF%E6%95%B0+%5Cright+%5C%7D" alt="T_c=\left \{ \varnothing,\mathbb{R} \right \}\cup\left \{A\subset \mathbb{R}|\ A^c可数 \right \}" eeimg="1">
+                    为
+                    <b>
+                        余可数拓扑
+                    </b>
+                    ，顾名思义，开集的补集都是可数集。
+                </p>
+                <p>
+                    显然：
+                    <img src="https://www.zhihu.com/equation?tex=T_e%2CT_c" alt="T_e,T_c" eeimg="1">
+                    都是
+                    <img src="https://www.zhihu.com/equation?tex=T_f" alt="T_f" eeimg="1">
+                    的加细，但是
+                    <img src="https://www.zhihu.com/equation?tex=T_e%2CT_c" alt="T_e,T_c" eeimg="1">
+                    彼此不为加细。（
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D-%5Cleft+%5C%7B++%5Cfrac%7B1%7D%7Bn%7D%7Cn%5Cin%5Cmathbb%7BN%7D%5Cright+%5C%7D%5Cin+T_c" alt="\mathbb{R}-\left \{  \frac{1}{n}|n\in\mathbb{N}\right \}\in T_c" eeimg="1">
+                    但不为
+                    <img src="https://www.zhihu.com/equation?tex=T_e" alt="T_e" eeimg="1">
+                    中开集，
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C1%29" alt="(0,1)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=T_e" alt="T_e" eeimg="1">
+                    开但在
+                    <img src="https://www.zhihu.com/equation?tex=T_c" alt="T_c" eeimg="1">
+                    不开）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们类似地把数分中其它概念的定义推广过来。
+                </p>
+                <p>
+                    开集之补即为
+                    <b>
+                        闭集
+                    </b>
+                    。
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin++X" alt="x\in  X" eeimg="1">
+                    ，若有开集
+                    <img src="https://www.zhihu.com/equation?tex=U%2C+%5C+x%5Cin+U%5Csubset+A" alt="U, \ x\in U\subset A" eeimg="1">
+                    。则
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    为
+                    <b>
+                        内点
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为
+                    <b>
+                        邻域
+                    </b>
+                    。（很自然，因为邻域肯定要保证关于“邻近”概念封闭嘛！）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的所有内点组成的集合为
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%5Ccirc" alt="A^\circ" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的
+                    <b>
+                        内部
+                    </b>
+                    ，是
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中的最大开集。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    值得注意的是：
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%5Ccirc%5Ccup+B%5E%5Ccirc%5Csubset+%28A%5Ccup+B%29%5E%5Ccirc" alt="A^\circ\cup B^\circ\subset (A\cup B)^\circ" eeimg="1">
+                    中等号并不一直成立。
+                </p>
+                <p>
+                    反例：取
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cmathbb%7BQ%7D%2C%5C+B%3D%5Cmathbb%7BR%7D-A" alt="A=\mathbb{Q},\ B=\mathbb{R}-A" eeimg="1">
+                    （这是由于
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    可能恰好可以填补彼此的空隙）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    若对于
+                    <img src="https://www.zhihu.com/equation?tex=A%5Csubset+X" alt="A\subset X" eeimg="1">
+                    ，存在
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的任意领域含有
+                    <img src="https://www.zhihu.com/equation?tex=A-%5Cleft+%5C%7B+x+%5Cright+%5C%7D" alt="A-\left \{ x \right \}" eeimg="1">
+                    中点，则
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的
+                    <b>
+                        聚点
+                    </b>
+                    。记
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    所有聚点构成集合
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%7B%27%7D" alt="A^{&#39;}" eeimg="1">
+                    ，为其
+                    <b>
+                        导集
+                    </b>
+                    。记
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D%3DA%5Ccup+A%5E%7B%27%7D" alt="\overline{A}=A\cup A^{&#39;}" eeimg="1">
+                    为其
+                    <b>
+                        闭包
+                    </b>
+                    ，是包含
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的最小闭集。
+                </p>
+                <p>
+                    <b>
+                        注意：
+                    </b>
+                    此处聚点的概念可能与以往我们在数分中看到的不太相同。数分中的聚点定义要求“使得
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的任意领域含有
+                    <img src="https://www.zhihu.com/equation?tex=A-%5Cleft+%5C%7B+x+%5Cright+%5C%7D" alt="A-\left \{ x \right \}" eeimg="1">
+                    中无穷多个不同点”。这将会导致欧式空间中的有限集都没有聚点但是有限拓扑可以有聚点。我起初也有这样的疑问，但是这实际上是
+                    <b>
+                        欧式拓扑上的
+                        <img src="https://www.zhihu.com/equation?tex=T_1" alt="T_1" eeimg="1">
+                        分离性公理
+                    </b>
+                    成立所带来的结果，这两个定义并不矛盾，在后面我们会提及。拓扑中的聚点定义实则是更一般的，我们在这里应该接受前者。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%5Csubset+X" alt="A\subset X" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D%3DX" alt="\overline{A}=X" eeimg="1">
+                    ，则
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        中稠密
+                    </b>
+                    。
+                </p>
+                <p>
+                    若一个拓扑存在可数的稠密子集，则这个拓扑
+                    <b>
+                        可分
+                    </b>
+                    。
+                </p>
+                <p>
+                    显然
+                    <img src="https://www.zhihu.com/equation?tex=T_e%2CT_f" alt="T_e,T_f" eeimg="1">
+                    都有稠密子集
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BQ%7D" alt="\mathbb{Q}" eeimg="1">
+                    可数，故可分。
+                </p>
+                <p>
+                    但是对于
+                    <img src="https://www.zhihu.com/equation?tex=T_c" alt="T_c" eeimg="1">
+                    则不然。
+                    <img src="https://www.zhihu.com/equation?tex=T_c" alt="T_c" eeimg="1">
+                    中的开集其补集可数，故对于任何一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    的可数真子集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%28A%5Ec%29%5Ec%3DA" alt="(A^c)^c=A" eeimg="1">
+                    可数，故
+                    <img src="https://www.zhihu.com/equation?tex=A%5Ec" alt="A^c" eeimg="1">
+                    开，故
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    闭。从而
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D%3DA%5Cneq%5Cmathbb%7BR%7D" alt="\overline{A}=A\neq\mathbb{R}" eeimg="1">
+                    ，故不可分。
+                </p>
+                <p>
+                    以上关于这些概念的基本结论读者都可以在数分中找到，此处就不多说了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有趣的是拓扑中的
+                    <b>
+                        收敛性定义：
+                    </b>
+                </p>
+                <p>
+                    与数分中类似地，数列
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+x" alt="x_n\rightarrow x" eeimg="1">
+                    的收敛在拓扑中定义为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的任意邻域至多不包含
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+x_n+%5Cright+%5C%7D" alt="\left \{ x_n \right \}" eeimg="1">
+                    中有限项。
+                </p>
+                <p>
+                    然而，由于拓扑空间对于
+                    <b>
+                        度量概念的缺失
+                    </b>
+                    ，收敛性会产生出很
+                    <b>
+                        怪异的表现
+                    </b>
+                    ，其性质与数分中的收敛性大相径庭！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们不妨试着看看实数域上的余有限拓扑
+                    <img src="https://www.zhihu.com/equation?tex=T_f" alt="T_f" eeimg="1">
+                    中的收敛性是怎么样的：
+                </p>
+                <p>
+                    任意在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    中取一数列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    我们看看：如果
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+x" alt="x_n\rightarrow x" eeimg="1">
+                    ，那么对于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    会有什么要求？
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+X" alt="\forall x\in X" eeimg="1">
+                    ，取
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+U%2CU%5Ec" alt="x\in U,U^c" eeimg="1">
+                    有限。
+                </p>
+                <p>
+                    等等！既然
+                    <img src="https://www.zhihu.com/equation?tex=U%5Ec" alt="U^c" eeimg="1">
+                    是有限的，那么只需要
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    中不存在重复出现无穷多次的值，那么
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，自然地，至多只可能遗漏
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    中有限项啊！
+                </p>
+                <p>
+                    这意味着
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+x" alt="x_n\rightarrow x" eeimg="1">
+                    恒成立！
+                </p>
+                <p>
+                    <b>
+                        在实数域上的余有限拓扑
+                        <img src="https://www.zhihu.com/equation?tex=T_f" alt="T_f" eeimg="1">
+                        中，只要数列
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                        中不存在重复出现了无穷多次的值，那么它可以收敛到任一实数！
+                    </b>
+                    这实在是太怪异了！！！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们不妨试着看看实数域上的余可数拓扑
+                    <img src="https://www.zhihu.com/equation?tex=T_c" alt="T_c" eeimg="1">
+                    中的收敛性是怎么样的：
+                </p>
+                <p>
+                    任意在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    中取一数列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+x" alt="x_n\rightarrow x" eeimg="1">
+                    。记
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    在数列中最后一次出现时的项数为
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=x_i%3Dx%2Cx_j%5Cneq+x%28%5Cforall+j%3Ei%29" alt="x_i=x,x_j\neq x(\forall j&gt;i)" eeimg="1">
+                </p>
+                <p>
+                    那么集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D-%5Cleft+%5C%7B++x_%7Bi%2B1%7D%2Cx_%7Bi%2B2%7D%2C...%2Cx_n%2C...%5Cright+%5C%7D" alt="\mathbb{R}-\left \{  x_{i+1},x_{i+2},...,x_n,...\right \}" eeimg="1">
+                    总是包含
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    ，但是其不包含数列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    中无限项。故为了保证
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+x" alt="x_n\rightarrow x" eeimg="1">
+                    ，这样的
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    必定不存在（
+                    <img src="https://www.zhihu.com/equation?tex=i%3D%5Cinfty" alt="i=\infty" eeimg="1">
+                    ）！
+                </p>
+                <p>
+                    这等价于：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+N%2Cn%3EN%2Cx_n%3Dx" alt="\exists N,n&gt;N,x_n=x" eeimg="1">
+                    （序列在无穷远处是恒等于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的常序列）
+                </p>
+                <p>
+                    <b>
+                        在实数域上的余可数拓扑
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=T_c" alt="T_c" eeimg="1">
+                    <b>
+                        中，只有当数列
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    <b>
+                        中只有有限项不为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    <b>
+                        时，它才可能收敛到
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    <b>
+                        ！
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    度量的缺失导致一般拓扑上的收敛性连唯一性都无法保证！事实上，我们之后会看到：
+                    <img src="https://www.zhihu.com/equation?tex=T_f%2CT_c" alt="T_f,T_c" eeimg="1">
+                    都是
+                    <b>
+                        不可度量化的拓扑
+                    </b>
+                    ，这与它们之上收敛性的奇异性恰好吻合。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            概率论学习笔记（四）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-6b4e4f4155ac8d770bd7910e769cf64d_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/45720457" target="_blank">
+                        概率论学习笔记（四）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-30
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    在这一章中，我们主要关注一些重要的数据特征，如期望，方差，协方差……对于这些数据特征，我们不但要理解概念，会计算，更要了解它们的性质，方才能最大限度地突出这些概念的精妙之处。在本章中，我们还将对笔记（一）中的示性函数进行更深入的理解。
+                </p>
+                <p>
+                    接下来，开始进入正题。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        一、数学期望与方差
+                    </b>
+                </p>
+                <p>
+                    对数学期望引入的动机是已知一个概率分布，我们需要一个量来反映随机变量的平均取值。很自然地，若一个随机变量在取某一个/某一段取值的概率更大，这个取值应该对这样的平均量产生更大的影响。那么，用概率进行加权平均不失为一个满足上述条件的好的做法。
+                </p>
+                <p>
+                    我们接下来同时给出离散型与连续型随机变量的数学期望的定义。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为离散型随机变量，概率分布为
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_j%29%3Dp_j" alt="P(X=x_j)=p_j" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=j%3D0%2C1%2C..." alt="j=0,1,..." eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D0%7D%5E%7B%2B%5Cinfty%7D%7Cx_j%7Cp_j" alt="\sum_{j=0}^{+\infty}|x_j|p_j" eeimg="1">
+                        收敛，则称数学期望存在，且数学期望
+                        <img src="https://www.zhihu.com/equation?tex=EX%3D%5Csum_%7Bj%3D0%7D%5E%7B%2B%5Cinfty%7Dx_jp_j" alt="EX=\sum_{j=0}^{+\infty}x_jp_j" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为连续型，密度为
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7D%7Cx%7Cf%28x%29dx" alt="\int_{-\infty}^{+\infty}|x|f(x)dx" eeimg="1">
+                        收敛，则称数学期望存在，且数学期望
+                        <img src="https://www.zhihu.com/equation?tex=EX%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dxf%28x%29dx" alt="EX=\int_{-\infty}^{+\infty}xf(x)dx" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        数学期望也常常用
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        来表示。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    读者可能会疑惑：为何要求级数/积分绝对收敛呢？事实上，绝对收敛的级数是具有交换律的。也就是说，若将
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D0%7D%5E%7B%2B%5Cinfty%7Dx_jp_j+" alt="\sum_{j=0}^{+\infty}x_jp_j" eeimg="1">
+                    中的任意两项交换次序，我们认为这个随机变量的平均取值并没有发生改变。所以我们想要保证：这个级数的求和中任意两项的交换不影响级数的敛散性也不影响级数之值。为了满足此条件，绝对收敛的条件就是必要的了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于数学期望的计算，相信大家在高中时期已经很熟练了。此处列出常用的分布的数学期望并且挑选一些作为计算的举例。（其中超几何分布的期望不作硬性要求，我们将在数学期望的性质一章中介绍更简便的做法）
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%281%2Cp%29%2C%5C+EX%3Dp" alt="X\sim B(1,p),\ EX=p" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%28n%2Cp%29%2C%5C+EX%3Dnp" alt="X\sim B(n,p),\ EX=np" eeimg="1">
+                </p>
+                <p>
+                    3、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+P%28%5Clambda%29%2C%5C+EX%3D%5Clambda" alt="X\sim P(\lambda),\ EX=\lambda" eeimg="1">
+                </p>
+                <p>
+                    4、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+G%28p%29%2C%5C+EX%3D%5Cfrac%7B1%7D%7Bp%7D" alt="X\sim G(p),\ EX=\frac{1}{p}" eeimg="1">
+                </p>
+                <p>
+                    5、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+Pas%28r%2Cp%29%2C%5C+EX%3D%5Cfrac%7Br%7D%7Bp%7D" alt="X\sim Pas(r,p),\ EX=\frac{r}{p}" eeimg="1">
+                </p>
+                <p>
+                    6、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+H%28n%2CM%2CN%29%2C%5C+EX%3Dn%5Cfrac%7BM%7D%7BN%7D" alt="X\sim H(n,M,N),\ EX=n\frac{M}{N}" eeimg="1">
+                </p>
+                <p>
+                    7、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+U%28a%2Cb%29%2C%5C+EX%3D%5Cfrac%7Ba%2Bb%7D%7B2%7D" alt="X\sim U(a,b),\ EX=\frac{a+b}{2}" eeimg="1">
+                </p>
+                <p>
+                    8、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Clambda%29%2C%5C+EX%3D%5Cfrac%7B1%7D%7B%5Clambda%7D" alt="X\sim \varepsilon(\lambda),\ EX=\frac{1}{\lambda}" eeimg="1">
+                </p>
+                <p>
+                    9、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%28%5Cmu%2C%5Csigma%5E2%29%2C%5C+EX%3D%5Cmu" alt="X\sim N(\mu,\sigma^2),\ EX=\mu" eeimg="1">
+                </p>
+                <p>
+                    10、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5CGamma%28%5Calpha%2C%5Cbeta%29%2C%5C+EX%3D%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%7D" alt="X\sim \Gamma(\alpha,\beta),\ EX=\frac{\alpha}{\beta}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们举几个不那么显然的计算作为示例。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：（二项分布的期望）
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%28n%2Cp%29%2CP%28X%3Dk%29%3D%5Cbinom%7Bn%7D%7Bk%7Dp%5Ek%281-p%29%5E%7Bn-k%7D%2C%5C+%28k%3D0%2C1%2C...%2Cn%29" alt="X\sim B(n,p),P(X=k)=\binom{n}{k}p^k(1-p)^{n-k},\ (k=0,1,...,n)" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=EX%3D%5Csum_%7Bk%3D0%7D%5Enk%5Cbinom%7Bn%7D%7Bk%7Dp%5Ek%281-p%29%5E%7Bn-k%7D" alt="EX=\sum_{k=0}^nk\binom{n}{k}p^k(1-p)^{n-k}" eeimg="1">
+                </p>
+                <p>
+                    看到求和式中带有
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    ，想到将组合数展开后将
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    并入组合数中。（
+                    <b>
+                        这样的技巧十分常用
+                    </b>
+                    ，再求多项分布的期望时也会用到）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k%5Cbinom%7Bn%7D%7Bk%7D%3Dk%5Cfrac%7Bn%21%7D%7Bk%21%28n-k%29%21%7D%3Dn%5Cfrac%7B%28n-1%29%21%7D%7B%28k-1%29%21%28n-k%29%21%7D%3Dn%5Cbinom%7Bn-1%7D%7Bk-1%7D" alt="k\binom{n}{k}=k\frac{n!}{k!(n-k)!}=n\frac{(n-1)!}{(k-1)!(n-k)!}=n\binom{n-1}{k-1}" eeimg="1">
+                </p>
+                <p>
+                    所以我们得到
+                    <img src="https://www.zhihu.com/equation?tex=EX%3D%5Csum_%7Bk%3D0%7D%5Enn%5Cbinom%7Bn-1%7D%7Bk-1%7Dp%5Ek%281-p%29%5E%7Bn-k%7D" alt="EX=\sum_{k=0}^nn\binom{n-1}{k-1}p^k(1-p)^{n-k}" eeimg="1">
+                </p>
+                <p>
+                    联想到二项式定理的形式，由于前面的组合数为从
+                    <img src="https://www.zhihu.com/equation?tex=n-1" alt="n-1" eeimg="1">
+                    个中取得的方法数，我们要将
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=1-p" alt="1-p" eeimg="1">
+                    的指数之和凑为
+                    <img src="https://www.zhihu.com/equation?tex=n-1" alt="n-1" eeimg="1">
+                    ，就可逆用二项式定理。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EX%3Dnp%5Csum_%7Bk%3D1%7D%5En%5Cbinom%7Bn-1%7D%7Bk-1%7Dp%5E%7Bk-1%7D%281-p%29%5E%7Bn-k%7D%3Dnp%28p%2B1-p%29%5E%7Bn-1%7D%3Dnp" alt="EX=np\sum_{k=1}^n\binom{n-1}{k-1}p^{k-1}(1-p)^{n-k}=np(p+1-p)^{n-1}=np" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例（几何分布的期望）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+G%28p%29%2C+%5C+P%28X%3Dk%29%3D%281-p%29%5E%7Bk-1%7Dp%2C%5C+%28k%3D1%2C2%2C...%29" alt="X\sim G(p), \ P(X=k)=(1-p)^{k-1}p,\ (k=1,2,...)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EX%3D%5Csum_%7Bk%3D1%7D%5E%7B%2B%5Cinfty%7Dk%281-p%29%5E%7Bk-1%7Dp" alt="EX=\sum_{k=1}^{+\infty}k(1-p)^{k-1}p" eeimg="1">
+                </p>
+                <p>
+                    对这个级数，我们好像束手无策。
+                </p>
+                <p>
+                    但是回想我们学过的有关级数的知识，不难证明这个级数在
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cin%280%2C1%29" alt="p\in(0,1)" eeimg="1">
+                    上
+                    <b>
+                        内闭一致收敛
+                    </b>
+                    。
+                </p>
+                <p>
+                    这意味着我们可以对级数
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bk%3D1%7D%5E%7B%2B%5Cinfty%7Dp%5Ek%3D%5Cfrac%7Bp%7D%7B1-p%7D" alt="\sum_{k=1}^{+\infty}p^k=\frac{p}{1-p}" eeimg="1">
+                    两边同时求导。
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bp%3D1%7D%5E%7B%2B%5Cinfty%7Dkp%5E%7Bk-1%7D%3D%5Cfrac%7B1%7D%7B%281-p%29%5E2%7D" alt="\sum_{p=1}^{+\infty}kp^{k-1}=\frac{1}{(1-p)^2}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=EX%3Dp%5Cfrac%7B1%7D%7B%5B1-%281-p%29%5D%5E2%7D%3D%5Cfrac%7B1%7D%7Bp%7D" alt="EX=p\frac{1}{[1-(1-p)]^2}=\frac{1}{p}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于连续型随机变量，我认为大家可能对伽马函数不是那么的熟悉。
+                </p>
+                <p>
+                    例（伽马分布的期望）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5CGamma%28%5Calpha%2C%5Cbeta%29%2C%5C+f%28x%29%3D%5Cfrac%7B%5Cbeta%5E%7B%5Calpha%7D%7D%7B%5CGamma%28%5Calpha%29%7Dx%5E%7B%5Calpha-1%7De%5E%7B-%5Cbeta+x%7D%28x%3E0%29" alt="X\sim \Gamma(\alpha,\beta),\ f(x)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}(x&gt;0)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EX%3D%5Cint+_0%5E%7B%2B%5Cinfty%7D%5Cfrac%7B%5Cbeta%5E%7B%5Calpha%7D%7D%7B%5CGamma%28%5Calpha%29%7Dx%5E%5Calpha+e%5E%7B-%5Cbeta+x%7Ddx" alt="EX=\int _0^{+\infty}\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^\alpha e^{-\beta x}dx" eeimg="1">
+                </p>
+                <p>
+                    这个形式很接近
+                    <b>
+                        伽马函数
+                    </b>
+                    的形式：
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma%28s%29%3D%5Cint_0%5E%7B%2B%5Cinfty%7Dx%5E%7Bs-1%7De%5E%7B-x%7Ddx%28s%3E0%29" alt="\Gamma(s)=\int_0^{+\infty}x^{s-1}e^{-x}dx(s&gt;0)" eeimg="1">
+                </p>
+                <p>
+                    故我们进行换元，令
+                    <img src="https://www.zhihu.com/equation?tex=t%3D%5Cbeta+x" alt="t=\beta x" eeimg="1">
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=EX%3D%5Cfrac%7B1%7D%7B%5CGamma%28%5Calpha%29%5Cbeta%7D%5Cint_0%5E%7B%2B%5Cinfty%7Dt%5E%5Calpha+e%5E%7B-t%7Ddt%3D%5Cfrac%7B%5CGamma%28%5Calpha%2B1%29%7D%7B%5Cbeta+%5CGamma%28%5Calpha%29%7D" alt="EX=\frac{1}{\Gamma(\alpha)\beta}\int_0^{+\infty}t^\alpha e^{-t}dt=\frac{\Gamma(\alpha+1)}{\beta \Gamma(\alpha)}" eeimg="1">
+                </p>
+                <p>
+                    利用伽马函数的性质
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma%28%5Calpha%2B1%29%3D%5Calpha%5CGamma%28%5Calpha%29" alt="\Gamma(\alpha+1)=\alpha\Gamma(\alpha)" eeimg="1">
+                </p>
+                <p>
+                    即可得到结论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们介绍方差。
+                </p>
+                <p>
+                    方差是在有了期望来度量随机变量的平均取值后被引入的。方差的作用的用来度量随机变量的分布有多靠近平均取值，即其在平均值周围分布的稀疏程度。那么很自然地，我们会考虑随机变量离数学期望的距离
+                    <img src="https://www.zhihu.com/equation?tex=X-%5Cmu+" alt="X-\mu" eeimg="1">
+                    ，然而，所有这样的距离用概率进行加权平均必定等于0。所以其中一个做法就是利用
+                    <img src="https://www.zhihu.com/equation?tex=%28X-%5Cmu%29%5E2" alt="(X-\mu)^2" eeimg="1">
+                    用概率进行加权平均，这正是方差。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有些读者可能会问：为何不选用
+                    <img src="https://www.zhihu.com/equation?tex=%7CX-%5Cmu%7C" alt="|X-\mu|" eeimg="1">
+                    这样的距离来定义方差呢？我们现在在看到利用平方定义的方差的优秀性质前感到不解是很正常的。但是事实上，一个重要的理由就是：绝对值函数在两段的连接点处虽然连续但是不可微，而二次函数则是处处可微的。我们日后将会体会到可微性的重要性。
+                </p>
+                <p>
+                    下面，我们进入正题，给出方差的定义。（后文用到的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    均代表
+                    <img src="https://www.zhihu.com/equation?tex=EX" alt="EX" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若随机变量
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        数学期望
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        存在且有限，
+                        <img src="https://www.zhihu.com/equation?tex=VarX%3DE%28X-%5Cmu%29%5E2" alt="VarX=E(X-\mu)^2" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的方差。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        方差也可记为
+                        <img src="https://www.zhihu.com/equation?tex=DX" alt="DX" eeimg="1">
+                        或
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma_%7BXX%7D" alt="\sigma_{XX}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若方差有限，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma_X%3D%5Csqrt%7BVarX%7D" alt="\sigma_X=\sqrt{VarX}" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的标准差。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        注：
+                        <img src="https://www.zhihu.com/equation?tex=E%28X-%5Cmu%29%5E2" alt="E(X-\mu)^2" eeimg="1">
+                        意味着
+                        <img src="https://www.zhihu.com/equation?tex=E%5B%28X-%5Cmu%29%5E2%5D" alt="E[(X-\mu)^2]" eeimg="1">
+                        ，而
+                        <img src="https://www.zhihu.com/equation?tex=%5BE%28X-%5Cmu%29%5D%5E2" alt="[E(X-\mu)]^2" eeimg="1">
+                        通常记作
+                        <img src="https://www.zhihu.com/equation?tex=E%5E2%28X-%5Cmu%29" alt="E^2(X-\mu)" eeimg="1">
+                        ，读者务必进行区分。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于方差的计算，我们可以利用数学期望的线性性质。（下章会着重介绍，即
+                    <img src="https://www.zhihu.com/equation?tex=E%28a%2BbX%29%3Da%2BbEX" alt="E(a+bX)=a+bEX" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=E%28X-%5Cmu%29%5E2%3DE%28X%5E2-2%5Cmu+X%2B%5Cmu%5E2%29%3DEX%5E2-2%5Cmu+EX%2B%5Cmu%5E2" alt="E(X-\mu)^2=E(X^2-2\mu X+\mu^2)=EX^2-2\mu EX+\mu^2" eeimg="1">
+                </p>
+                <p>
+                    不要忘记了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%3DEX" alt="\mu=EX" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=VarX%3DEX%5E2-E%5E2X" alt="VarX=EX^2-E^2X" eeimg="1">
+                        。这是求方差时非常常用的一个等式。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2" alt="EX^2" eeimg="1">
+                    的计算，我们只需要再假设随机变量
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=Y%3DX%5E2" alt="Y=X^2" eeimg="1">
+                    ，可求出其概率分布。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2%3DEY" alt="EX^2=EY" eeimg="1">
+                    即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    至此为止，方差的计算已经被拆分成了两个数学期望的计算，不再具有难度。
+                </p>
+                <p>
+                    下面给出常用分布的方差，计算由读者自己完成。（同样地，超几何分布我们会介绍更简单的做法，读者不必勉强233、、）
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%281%2Cp%29%2C%5C+VarX%3Dp%281-p%29" alt="X\sim B(1,p),\ VarX=p(1-p)" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%28n%2Cp%29%2C%5C+VarX%3Dnp%281-p%29" alt="X\sim B(n,p),\ VarX=np(1-p)" eeimg="1">
+                </p>
+                <p>
+                    3、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+P%28%5Clambda%29%2C%5C+VarX%3D%5Clambda" alt="X\sim P(\lambda),\ VarX=\lambda" eeimg="1">
+                </p>
+                <p>
+                    4、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+G%28p%29%2C%5C+VarX%3D%5Cfrac%7B1-p%7D%7Bp%5E2%7D" alt="X\sim G(p),\ VarX=\frac{1-p}{p^2}" eeimg="1">
+                </p>
+                <p>
+                    5、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+Pas%28r%2Cp%29%2C%5C+VarX%3D%5Cfrac%7Br%281-p%29%7D%7Bp%5E2%7D" alt="X\sim Pas(r,p),\ VarX=\frac{r(1-p)}{p^2}" eeimg="1">
+                </p>
+                <p>
+                    6、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+H%28n%2CM%2CN%29%2C%5C+VarX%3Dn%5Cfrac%7BM%7D%7BN%7D%281-%5Cfrac%7BM%7D%7BN%7D%29%5Cfrac%7BN-n%7D%7BN-1%7D" alt="X\sim H(n,M,N),\ VarX=n\frac{M}{N}(1-\frac{M}{N})\frac{N-n}{N-1}" eeimg="1">
+                </p>
+                <p>
+                    7、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+U%28a%2Cb%29%2C%5C+VarX%3D%5Cfrac%7B%28b-a%29%5E2%7D%7B12%7D" alt="X\sim U(a,b),\ VarX=\frac{(b-a)^2}{12}" eeimg="1">
+                </p>
+                <p>
+                    8、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Clambda%29%2C%5C+VarX%3D%5Cfrac%7B1%7D%7B%5Clambda%5E2%7D" alt="X\sim \varepsilon(\lambda),\ VarX=\frac{1}{\lambda^2}" eeimg="1">
+                </p>
+                <p>
+                    9、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%28%5Cmu%2C%5Csigma%5E2%29%2C%5C+VarX%3D%5Csigma%5E2" alt="X\sim N(\mu,\sigma^2),\ VarX=\sigma^2" eeimg="1">
+                </p>
+                <p>
+                    10、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5CGamma%28%5Calpha%2C%5Cbeta%29%2C%5C+VarX%3D%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%5E2%7D" alt="X\sim \Gamma(\alpha,\beta),\ VarX=\frac{\alpha}{\beta^2}" eeimg="1">
+                </p>
+                <p>
+                    本章关于期望和方差的基本介绍就到此为止。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        二、数学期望与方差的性质
+                    </b>
+                </p>
+                <p>
+                    本章是很重要的一章，我们将会介绍很多期望与方差的性质，并给出他们实际/理论上的应用。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先，我们更深入地讨论数学期望。
+                </p>
+                <p>
+                    我们先介绍一下随机变量的函数的期望的求法。
+                </p>
+                <p>
+                    如果大家真的在上一章动手按我说的步骤进行过方差的计算，大家会发现我之前所提到的求
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2" alt="EX^2" eeimg="1">
+                    的做法十分繁琐。（其实我是故意的嘿嘿嘿）
+                </p>
+                <p>
+                    我们需要先求出
+                    <img src="https://www.zhihu.com/equation?tex=Y%3DX%5E2" alt="Y=X^2" eeimg="1">
+                    的概率分布（这很耗时间），再计算其数学期望（可能根本不会算233）。
+                </p>
+                <p>
+                    所以，我们需要一种方法简便快捷地计算随机变量函数的数学期望。
+                </p>
+                <p>
+                    在此，我们不加证明地给出期望公式来解决这一问题。
+                </p>
+                <p>
+                    <b>
+                        定理（期望公式）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                        为随机向量，
+                        <img src="https://www.zhihu.com/equation?tex=g%3A%5Cmathbb%7BR%7D%5E2%5Crightarrow+%5Cmathbb%7BR%7D" alt="g:\mathbb{R}^2\rightarrow \mathbb{R}" eeimg="1">
+                        ，现在有
+                        <img src="https://www.zhihu.com/equation?tex=Z%3Dg%28X%2CY%29" alt="Z=g(X,Y)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若随机向量为离散型的，有分布列
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%2CY%3Dy_j%29%3Dp_%7Bij%7D" alt="P(X=x_i,Y=y_j)=p_{ij}" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=EZ%3DEg%28X%2CY%29%3D%5Csum_%7Bi%2Cj%7Dp_%7Bij%7Dg%28x_i%2Cy_j%29" alt="EZ=Eg(X,Y)=\sum_{i,j}p_{ij}g(x_i,y_j)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若随机向量为连续型的，有联合密度
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29" alt="f(x,y)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=EZ%3DEg%28X%2CY%29%3D%5Cint%5Cint_%7B%5Cmathbb%7BR%7D%5E2%7D+g%28x%2Cy%29f%28x%2Cy%29dxdy" alt="EZ=Eg(X,Y)=\int\int_{\mathbb{R}^2} g(x,y)f(x,y)dxdy" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    简单地说，直接把随机变量/向量的函数看成一个整体值，对原先的概率做加权平均即可。
+                </p>
+                <p>
+                    这意味着，如果
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为连续型随机变量，有密度
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    ，我们现在只需要通过
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dx%5E2f%28x%29dx" alt="EX^2=\int_{-\infty}^{+\infty}x^2f(x)dx" eeimg="1">
+                    即可求得，比原先的做法简单得多。
+                </p>
+                <p>
+                    对二维随机向量，方法是相同的，只不过有时需要我们稍加变换即可。
+                </p>
+                <p>
+                    <b>
+                        值得一提的是，
+                        <img src="https://www.zhihu.com/equation?tex=g%28x%2Cy%29" alt="g(x,y)" eeimg="1">
+                        的表达式中不一定要显式地包含
+                        <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                        两个变量。
+                    </b>
+                    举个例子，
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    的联合密度为
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29" alt="f(x,y)" eeimg="1">
+                    ，现在要求
+                    <img src="https://www.zhihu.com/equation?tex=EX" alt="EX" eeimg="1">
+                    ，你会如何做？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    大多数人的反应会是通过联合密度求出边缘密度
+                    <img src="https://www.zhihu.com/equation?tex=f_X%28x%29" alt="f_X(x)" eeimg="1">
+                    ，再求出
+                    <img src="https://www.zhihu.com/equation?tex=EX" alt="EX" eeimg="1">
+                    。
+                </p>
+                <p>
+                    可是，事实上，你只需要求积分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint%5Cint_%7B%5Cmathbb%7BR%5E2%7D%7Dxf%28x%2Cy%29dxdy" alt="\int\int_{\mathbb{R^2}}xf(x,y)dxdy" eeimg="1">
+                    即可。（很多初学者都会潜意识地忽略这一点）
+                </p>
+                <p>
+                    我们接下来举几个例子进一步说明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    独立，且均服从标准正态分布，
+                    <img src="https://www.zhihu.com/equation?tex=Z%3D%28X%5E2%2BY%5E2%29%5E%5Calpha%2C%5Calpha%3E-1" alt="Z=(X^2+Y^2)^\alpha,\alpha&gt;-1" eeimg="1">
+                    ，求
+                    <img src="https://www.zhihu.com/equation?tex=EZ" alt="EZ" eeimg="1">
+                    。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    由连续型随机向量各分量独立的充要条件，
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3Df_X%28x%29f_Y%28y%29%3D%5Cfrac%7B1%7D%7B2%5Cpi+%7De%5E%7B-%5Cfrac%7Bx%5E2%2By%5E2%7D%7B2%7D%7D" alt="f(x,y)=f_X(x)f_Y(y)=\frac{1}{2\pi }e^{-\frac{x^2+y^2}{2}}" eeimg="1">
+                    为联合密度。
+                </p>
+                <p>
+                    由期望公式，
+                    <img src="https://www.zhihu.com/equation?tex=EZ%3D%5Cint%5Cint_%7B%5Cmathbb%7BR%7D%5E2%7Df%28x%2Cy%29%28x%5E2%2By%5E2%29%5E%5Calpha+dxdy%3D%5Cfrac%7B1%7D%7B2%5Cpi+%7D%5Cint%5Cint_%7B%5Cmathbb%7BR%7D%5E2%7D%28x%5E2%2By%5E2%29%5E%5Calpha+e%5E%7B-%5Cfrac%7Bx%5E2%2By%5E2%7D%7B2%7Ddxdy%7D" alt="EZ=\int\int_{\mathbb{R}^2}f(x,y)(x^2+y^2)^\alpha dxdy=\frac{1}{2\pi }\int\int_{\mathbb{R}^2}(x^2+y^2)^\alpha e^{-\frac{x^2+y^2}{2}dxdy}" eeimg="1">
+                </p>
+                <p>
+                    看到
+                    <img src="https://www.zhihu.com/equation?tex=x%5E2%2By%5E2" alt="x^2+y^2" eeimg="1">
+                    这样的结构，很自然地进行极坐标变换。
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=EZ%3D%5Cint_0%5E%7B%2B%5Cinfty%7Dr%5E%7B2%5Calpha+%2B1%7De%5E%7B-%5Cfrac%7Br%5E2%7D%7B2%7D%7Ddr" alt="EZ=\int_0^{+\infty}r^{2\alpha +1}e^{-\frac{r^2}{2}}dr" eeimg="1">
+                </p>
+                <p>
+                    发现这个积分类似于伽马函数，进行换元
+                    <img src="https://www.zhihu.com/equation?tex=t%3D%5Cfrac%7Br%5E2%7D%7B2%7D" alt="t=\frac{r^2}{2}" eeimg="1">
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=EZ%3D%5Cint_0%5E%7B%2B%5Cinfty%7D%282t%29%5E%5Calpha+e%5E%7B-t%7Ddt%3D2%5E%5Calpha+%5CGamma%28%5Calpha%2B1%29" alt="EZ=\int_0^{+\infty}(2t)^\alpha e^{-t}dt=2^\alpha \Gamma(\alpha+1)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    特殊地，
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha%3D%5Cfrac%7B1%7D%7B2%7D" alt="\alpha=\frac{1}{2}" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    服从Rayleigh分布，此时期望为
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B2%7D%5CGamma%28%5Cfrac%7B3%7D%7B2%7D%29" alt="\sqrt{2}\Gamma(\frac{3}{2})" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由伽马函数的性质（余元公式），
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+0%3Cp%3C1%2C%5CGamma%28p%29%5CGamma%281-p%29%3D%5Cfrac%7B%5Cpi%7D%7Bsinp%5Cpi%7D" alt="\forall 0&lt;p&lt;1,\Gamma(p)\Gamma(1-p)=\frac{\pi}{sinp\pi}" eeimg="1">
+                </p>
+                <p>
+                    故此时Rayleigh分布的期望为
+                    <img src="https://www.zhihu.com/equation?tex=EZ%3D%5Cfrac%7B%5Csqrt%7B2%5Cpi%7D%7D%7B2%7D" alt="EZ=\frac{\sqrt{2\pi}}{2}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们来介绍
+                    <b>
+                        数学期望的重要性质
+                    </b>
+                    。
+                </p>
+                <p>
+                    以下有些性质若包含证明，我们都
+                    <b>
+                        只证明对随机变量为连续型的情况成立
+                    </b>
+                    。（否则过于复杂）
+                </p>
+                <p>
+                    <b>
+                        1、（数学期望的线性性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+a_0%2Ca_1%2C...%2Ca_n%5Cin+%5Cmathbb%7BR%7D%2CE%28a_0%2B%5Csum_%7Bi%3D1%7D%5Ena_iX_i%29%3Da_0%2B%5Csum_%7Bi%3D1%7D%5Ena_iEX_i" alt="\forall a_0,a_1,...,a_n\in \mathbb{R},E(a_0+\sum_{i=1}^na_iX_i)=a_0+\sum_{i=1}^na_iEX_i" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个定理的证明十分简单，但是值得注意的是
+                    <b>
+                        有关数学期望的证明要首先关注数学期望的存在性
+                    </b>
+                    。即对积分进行估计，证明其绝对收敛。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、（相互独立随机变量积的期望等于期望之积）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        相互独立且数学期望均存在，则
+                        <img src="https://www.zhihu.com/equation?tex=EX_1X_2...X_n%3DEX_1EX_2...EX_n" alt="EX_1X_2...X_n=EX_1EX_2...EX_n" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    不妨设
+                    <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                    的密度为
+                    <img src="https://www.zhihu.com/equation?tex=f_%7Bi%7D" alt="f_{i}" eeimg="1">
+                    ，则由相互独立性可知
+                    <img src="https://www.zhihu.com/equation?tex=f%28x_1%2C...%2Cx_n%29%3Df_%7B1%7D%28x_1%29...f_%7Bn%7D%28x_n%29" alt="f(x_1,...,x_n)=f_{1}(x_1)...f_{n}(x_n)" eeimg="1">
+                    为联合密度。
+                </p>
+                <p>
+                    则对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint...%5Cint_%7B%5Cmathbb%7BR%7D%5En%7D%7Cx_1x_2...x_n%7Cf%28x_1%2C...%2Cx_n%29dx_1...dx_n" alt="\int...\int_{\mathbb{R}^n}|x_1x_2...x_n|f(x_1,...,x_n)dx_1...dx_n" eeimg="1">
+                </p>
+                <p>
+                    由Fubini定理，
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cint+_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7D%7Cx_1%7Cf_1%28x_1%29dx_1...%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7D%7Cx_n%7Cf_n%28x_n%29dx_n%3DE%7CX_1%7C...E%7CX_n%7C%3C%5Cinfty" alt="=\int _{-\infty}^{+\infty}|x_1|f_1(x_1)dx_1...\int_{-\infty}^{+\infty}|x_n|f_n(x_n)dx_n=E|X_1|...E|X_n|&lt;\infty" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=X_1X_2...X_n" alt="X_1X_2...X_n" eeimg="1">
+                    数学期望存在。
+                </p>
+                <p>
+                    由Fubini定理，
+                    <img src="https://www.zhihu.com/equation?tex=x_1x_2...x_nf%28x_1%2C...%2Cx_n%29" alt="x_1x_2...x_nf(x_1,...,x_n)" eeimg="1">
+                    绝对收敛，故
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint...%5Cint_%7B%5Cmathbb%7BR%7D%5En%7D%7Cx_1x_2...x_n%7Cf%28x_1%2C...%2Cx_n%29dx_1...dx_n%3D%5Cint+_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dx_1f_1%28x_1%29dx_1...%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dx_nf_n%28x_n%29dx_n" alt="\int...\int_{\mathbb{R}^n}|x_1x_2...x_n|f(x_1,...,x_n)dx_1...dx_n=\int _{-\infty}^{+\infty}x_1f_1(x_1)dx_1...\int_{-\infty}^{+\infty}x_nf_n(x_n)dx_n" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3DEX_1EX_2...EX_n" alt="=EX_1EX_2...EX_n" eeimg="1">
+                </p>
+                <p>
+                    得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、（单调性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X_1%5Cleq+X_2+%5C+a.s." alt="X_1\leq X_2 \ a.s." eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=EX_1%5Cleq+EX_2%5C+a.s." alt="EX_1\leq EX_2\ a.s." eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    这个性质的证明很简单，此处略去。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    用这些性质能够干些什么呢？
+                </p>
+                <p>
+                    我们下面来介绍数学期望这些性质的应用。
+                </p>
+                <p>
+                    第一个作用就是
+                    <b>
+                        对一些以传统方法难以求出期望/概率分布难以写出的随机变量求期望
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们下面直接用例子进行说明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例（
+                    <b>
+                        超几何分布的数学期望
+                    </b>
+                    ）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+H%28n%2CM%2CN%29" alt="X\sim H(n,M,N)" eeimg="1">
+                    ，回忆其实际模型为：
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    个产品，其中
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    个次品，从中任取
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个。
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为这
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个中的次品数。
+                </p>
+                <p>
+                    我们下面略施技巧，定义一列用以示性的随机变量列。
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_i%3D%5Cbegin%7Bcases%7D+1%5C+%5C+%E7%AC%ACi%E6%AC%A1%E5%8F%96%E5%88%B0%E7%9A%84%E5%95%86%E5%93%81%E4%B8%BA%E6%AC%A1%E5%93%81%5C%5C+0%5C+%5C+%E7%AC%ACi%E6%AC%A1%E5%8F%96%E5%88%B0%E7%9A%84%E5%95%86%E5%93%81%E4%B8%8D%E4%B8%BA%E6%AC%A1%E5%93%81+%5Cend%7Bcases%7D" alt="\xi_i=\begin{cases} 1\ \ 第i次取到的商品为次品\\ 0\ \ 第i次取到的商品不为次品 \end{cases}" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=i%3D1%2C2%2C...%2Cn" alt="i=1,2,...,n" eeimg="1">
+                </p>
+                <p>
+                    那么，我们可以发现
+                    <img src="https://www.zhihu.com/equation?tex=X%3D%5Cxi_1%2B%5Cxi_2%2B...%2B%5Cxi_n" alt="X=\xi_1+\xi_2+...+\xi_n" eeimg="1">
+                </p>
+                <p>
+                    由数学期望的线性性质，
+                    <img src="https://www.zhihu.com/equation?tex=EX%3D%5Csum_%7Bi%3D1%7D%5EnE%5Cxi_i" alt="EX=\sum_{i=1}^nE\xi_i" eeimg="1">
+                </p>
+                <p>
+                    而因为是无放回地抽取，这个模型与抽签模型完全相同，即
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cxi_i%3D1%29%3D%5Cfrac%7BM%7D%7BN%7D" alt="P(\xi_i=1)=\frac{M}{N}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%3D1%2C2%2C...%2Cn%2C%5C+E%5Cxi_i%3D%5Cfrac%7BM%7D%7BN%7D" alt="\forall i=1,2,...,n,\ E\xi_i=\frac{M}{N}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EX%3Dn%5Cfrac%7BM%7D%7BN%7D" alt="EX=n\frac{M}{N}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上例是对期望计算复杂的随机变量求期望的一例。我们接下来不妨再看一例对难以求得概率分布的随机变量求数学期望。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例（
+                    <b>
+                        匹配
+                    </b>
+                    ）：将
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    封不同信放入
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个不同信封，每封信有且只有一个信封与其匹配，求正确匹配的信的平均数量。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    我们同样地，利用上例中的手法定义一列随机变量。
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为正确匹配的信的数量。
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_i%3D%5Cbegin%7Bcases%7D+1%5C+%5C+%E7%AC%ACi%E5%B0%81%E4%BF%A1%E5%8C%B9%E9%85%8D%5C%5C+0%5C+%5C+%E7%AC%ACi%E5%B0%81%E4%BF%A1%E4%B8%8D%E5%8C%B9%E9%85%8D+%5Cend%7Bcases%7D" alt="\xi_i=\begin{cases} 1\ \ 第i封信匹配\\ 0\ \ 第i封信不匹配 \end{cases}" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=i%3D1%2C2%2C...%2Cn" alt="i=1,2,...,n" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=X%3D%5Csum_%7Bi%3D1%7D%5En%5Cxi_n" alt="X=\sum_{i=1}^n\xi_n" eeimg="1">
+                    。由期望线性性，
+                    <img src="https://www.zhihu.com/equation?tex=EX%3D%5Csum_%7Bi%3D1%7D%5EnE%5Cxi_i" alt="EX=\sum_{i=1}^nE\xi_i" eeimg="1">
+                    。
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cxi_i%3D1%29%3D%5Cfrac%7B%28n-1%29%21%7D%7Bn%21%7D%3D%5Cfrac%7B1%7D%7Bn%7D" alt="P(\xi_i=1)=\frac{(n-1)!}{n!}=\frac{1}{n}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%3D1%2C2%2C...%2Cn%2C%5C+%5C+E%5Cxi_i%3D%5Cfrac%7B1%7D%7Bn%7D" alt="\forall i=1,2,...,n,\ \ E\xi_i=\frac{1}{n}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=EX%3D1" alt="EX=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们不难发现，通过这种方式求数学期望大同小异，定义随机变量列的方式也大同小异。读者应该比较容易掌握。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    数学期望还有一个重要的性质：
+                    <b>
+                        它可以将事件的示性函数与概率联系在一起
+                    </b>
+                    。由此，我们可以得到很多重要的不等式/等式。
+                </p>
+                <p>
+                    我们考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5Cin%5COmega%2CA%5Csubset%5COmega" alt="\omega\in\Omega,A\subset\Omega" eeimg="1">
+                    ，示性函数
+                    <img src="https://www.zhihu.com/equation?tex=I_A%28%5Comega%29%3D%5Cbegin%7Bcases%7D+1%5C+%5C+%5Comega%5Cin+A%5C%5C+0%5C+%5C+%5Comega%5Cnot%5Cin+A+%5Cend%7Bcases%7D" alt="I_A(\omega)=\begin{cases} 1\ \ \omega\in A\\ 0\ \ \omega\not\in A \end{cases}" eeimg="1">
+                    ，我们发现示性函数本质上是一个只能取值为0或1的随机变量。
+                </p>
+                <p>
+                    对其求期望，得到
+                    <img src="https://www.zhihu.com/equation?tex=E%28I_A%29%3DP%28A%29" alt="E(I_A)=P(A)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们惊奇地发现，
+                    <b>
+                        关于事件
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        的示性函数的数学期望就是事件
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        发生的概率
+                    </b>
+                    。
+                </p>
+                <p>
+                    关于其应用，我们举Jordan公式的例子，读者即可清楚地感受到其威力。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例（
+                    <b>
+                        Jordan
+                    </b>
+                    ）：证明：
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2C...%2CA_n" alt="A_1,...,A_n" eeimg="1">
+                    均为事件，则
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bi%3D1%7D%5EnA_i%29%3D%5Csum_%7Bk%3D1%7D%5En%28-1%29%5E%7Bk-1%7D+%5B%5Csum_%7B1%5Cleq+j_1%3Cj_2%3C...%3Cj_k%5Cleq+n%7DP%28A_%7Bj_1%7D...A_%7Bj_n%7D%29%5D" alt="P(\bigcup_{i=1}^nA_i)=\sum_{k=1}^n(-1)^{k-1} [\sum_{1\leq j_1&lt;j_2&lt;...&lt;j_k\leq n}P(A_{j_1}...A_{j_n})]" eeimg="1">
+                </p>
+                <p>
+                    证明：
+                    <img src="https://www.zhihu.com/equation?tex=I%5BA_i%5D" alt="I[A_i]" eeimg="1">
+                    即为事件
+                    <img src="https://www.zhihu.com/equation?tex=A_i" alt="A_i" eeimg="1">
+                    的示性函数。
+                </p>
+                <p>
+                    由事件之间的运算，我们容易知道
+                    <img src="https://www.zhihu.com/equation?tex=I%5BA%5D%3D1-I%5B%5Coverline%7BA%7D%5D%2CI%5BAB%5D%3DI%5BA%5DI%5BB%5D" alt="I[A]=1-I[\overline{A}],I[AB]=I[A]I[B]" eeimg="1">
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=I%5B%5Cbigcup_%7Bj%3D1%7D%5EnA_j%5D%3D1-I%5B%5Cbigcap_%7Bi%3D1%7D%5En%5Coverline%7BA_j%7D%5D%3D1-%5Cprod+_%7Bj%3D1%7D%5EnI%5B%5Coverline%7BA_j%7D%5D" alt="I[\bigcup_{j=1}^nA_j]=1-I[\bigcap_{i=1}^n\overline{A_j}]=1-\prod _{j=1}^nI[\overline{A_j}]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D1-%5Cprod_%7Bj%3D1%7D%5En%281-I%5BA_j%5D%29%3D%5Csum_%7Bk%3D1%7D%5En%28-1%29%5E%7Bk-1%7D+%5Csum_%7B1%5Cleq+j_1%3Cj_2%3C...%3Cj_k%5Cleq+n%7DI%5BA_%7Bj_1%7D...A_%7Bj_n%7D%5D" alt="=1-\prod_{j=1}^n(1-I[A_j])=\sum_{k=1}^n(-1)^{k-1} \sum_{1\leq j_1&lt;j_2&lt;...&lt;j_k\leq n}I[A_{j_1}...A_{j_n}]" eeimg="1">
+                </p>
+                <p>
+                    此时对等式两边都求数学期望，由数学期望的线性性质，得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于数学期望的这一应用，我们最后给出非常重要的Markov不等式。
+                </p>
+                <p>
+                    <b>
+                        定理（Markov）
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为随机变量，满足
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%5Cgeq+0%29%3D1" alt="P(X\geq 0)=1" eeimg="1">
+                        （即
+                        <img src="https://www.zhihu.com/equation?tex=X%5Cgeq+0%5C+a.s." alt="X\geq 0\ a.s." eeimg="1">
+                        ）,则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+c%3E0%2C%5Calpha%3E0%2C%5C+P%28X%5Cgeq+c%29%5Cleq+%5Cfrac%7BEX%5E%5Calpha%7D%7Bc%5E%5Calpha%7D" alt="\forall c&gt;0,\alpha&gt;0,\ P(X\geq c)\leq \frac{EX^\alpha}{c^\alpha}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=I%5BX%5Cgeq+c%5D" alt="I[X\geq c]" eeimg="1">
+                    ，当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=X%5Cgeq+c" alt="X\geq c" eeimg="1">
+                    时其值为1。
+                </p>
+                <p>
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=I%5BX%5Cgeq+c%5D%5Cleq+1%5Cleq++%5Cfrac%7BX%5E%5Calpha%7D%7Bc%5E%5Calpha%7D" alt="I[X\geq c]\leq 1\leq  \frac{X^\alpha}{c^\alpha}" eeimg="1">
+                </p>
+                <p>
+                    对两边同时求数学期望，就得到
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%5Cgeq+c%29%5Cleq+%5Cfrac%7BEX%5E%5Calpha%7D%7Bc%5E%5Calpha%7D" alt="P(X\geq c)\leq \frac{EX^\alpha}{c^\alpha}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    值得注意的是，Markov不等式是一个很松的不等式。在大多数情况下，Markov不等式得出的概率的上界通常都与真实的概率相去甚远。但是Markov不等式需要的条件非常之少，所以它还是概率论中应用最广泛、最重要的不等式之一。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    特别地，令
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%7CX-EX%7C" alt="|X-EX|" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha%3D2" alt="\alpha=2" eeimg="1">
+                    ，我们得到如下的Chebyshev不等式。
+                </p>
+                <p>
+                    <b>
+                        定理（Chebyshev）
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+c%3E0%2CP%28%7CX-EX%7C%5Cgeq+c%29%5Cleq+%5Cfrac%7BVarX%7D%7Bc%5E2%7D" alt="\forall c&gt;0,P(|X-EX|\geq c)\leq \frac{VarX}{c^2}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    事实上，这两个不等式是等价的，可以相互推出。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    另外一个重要的不等式就是内积不等式。
+                </p>
+                <p>
+                    <b>
+                        定理（内积不等式）
+                        <img src="https://www.zhihu.com/equation?tex=EX%5E2%2CEY%5E2%3C%5Cinfty" alt="EX^2,EY^2&lt;\infty" eeimg="1">
+                        ，则有
+                        <img src="https://www.zhihu.com/equation?tex=%7CEXY%7C%5Cleq+%5Csqrt%7BEX%5E2EY%5E2%7D" alt="|EXY|\leq \sqrt{EX^2EY^2}" eeimg="1">
+                        ，且等号成立当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+a%2Cb" alt="\exists a,b" eeimg="1">
+                        不全为
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=aX%2BbY%3D0%5C+a.s." alt="aX+bY=0\ a.s." eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：这里用到了二次型的技巧，类似于利用一元二次方程判别式大于等于0而证明不等式成立的思想。
+                </p>
+                <p>
+                    取
+                    <img src="https://www.zhihu.com/equation?tex=a%2Cb" alt="a,b" eeimg="1">
+                    不全为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ，考虑
+                    <img src="https://www.zhihu.com/equation?tex=E%28aX%2BbY%29%5E2%3Da%5E2EX%5E2%2B2abEXEY%2Bb%5E2EY%5E2" alt="E(aX+bY)^2=a^2EX^2+2abEXEY+b^2EY^2" eeimg="1">
+                    ，将其化为矩阵乘法的形式。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+a+%26b++%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+EX%5E2+%26EXY+%5C%5C++EXY+%26+EY%5E2+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+a+%26b++%5Cend%7Bbmatrix%7D%5ET" alt="\begin{bmatrix} a &amp;b  \end{bmatrix} \begin{bmatrix} EX^2 &amp;EXY \\  EXY &amp; EY^2 \end{bmatrix} \begin{bmatrix} a &amp;b  \end{bmatrix}^T" eeimg="1">
+                    ，容易知道这个值是非负的。
+                </p>
+                <p>
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+EX%5E2+%26EXY+%5C%5C++EXY+%26+EY%5E2+%5Cend%7Bbmatrix%7D" alt="\begin{bmatrix} EX^2 &amp;EXY \\  EXY &amp; EY^2 \end{bmatrix}" eeimg="1">
+                    非负定。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=det%3DEX%5E2EY%5E2-E%5E2XY%5Cgeq+0" alt="det=EX^2EY^2-E^2XY\geq 0" eeimg="1">
+                    ，且行列式为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    当且仅当此矩阵退化。
+                </p>
+                <p>
+                    所以等号成立当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=aX%2BbY%3D0%5C+a.s." alt="aX+bY=0\ a.s." eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，这个不等式之所以叫作内积不等式是因为
+                    <img src="https://www.zhihu.com/equation?tex=E%28XY%29" alt="E(XY)" eeimg="1">
+                    可以作为随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    的内积的一种定义。
+                </p>
+                <p>
+                    我们知道，内积需要满足正定性，对称性，双线性。我们下面来验证这一点：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2%5Cgeq+0" alt="EX^2\geq 0" eeimg="1">
+                    ，故满足正定性。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EXY%3DEYX" alt="EXY=EYX" eeimg="1">
+                    ，故满足对称性。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%28k_1X_1%2Bk_2X_2%29Y%3Dk_1EX_1Y%2Bk_2EX_2Y" alt="E(k_1X_1+k_2X_2)Y=k_1EX_1Y+k_2EX_2Y" eeimg="1">
+                    ，对第一个变量满足线性。同理地，对第二个变量也满足线性。故满足双线性。（数学期望线性性）
+                </p>
+                <p>
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=EXY" alt="EXY" eeimg="1">
+                    可以定义为一种内积。
+                </p>
+                <p>
+                    <b>
+                        那随机变量的内积不等式事实上就等
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=c%5Cneq%5Cmu" alt="c\neq\mu" eeimg="1">
+                    <b>
+                        价于由
+                        <img src="https://www.zhihu.com/equation?tex=EXY" alt="EXY" eeimg="1">
+                        定义的内积空间中的Cauchy-Schwarz不等式。等号成立的条件也自然就很容易理解了。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们再来简单地了解一下方差的性质，并给出其应用方式。
+                </p>
+                <p>
+                    以下总是假设
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%3DEX%2CVarX%3C%5Cinfty%2C%5Cmu_j%3DEX_j%2CVarX_j%3C%5Cinfty" alt="\mu=EX,VarX&lt;\infty,\mu_j=EX_j,VarX_j&lt;\infty" eeimg="1">
+                </p>
+                <p>
+                    方差具有以下性质：
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=Var%28a%2BbX%29%3Db%5E2VarX" alt="Var(a+bX)=b^2VarX" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、若
+                        <img src="https://www.zhihu.com/equation?tex=c%5Cneq+%5Cmu" alt="c\neq \mu" eeimg="1">
+                        ，必有
+                        <img src="https://www.zhihu.com/equation?tex=VarX%3CE%28X-c%29%5E2" alt="VarX&lt;E(X-c)^2" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%28X-c%29%5E2%3DE%28X-%5Cmu%2B%5Cmu-c%29%5E2%3DE%28X-%5Cmu%29%5E2%2B2E%28X-%5Cmu%29%28%5Cmu-c%29%2B%28%5Cmu-c%29%5E2" alt="E(X-c)^2=E(X-\mu+\mu-c)^2=E(X-\mu)^2+2E(X-\mu)(\mu-c)+(\mu-c)^2" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3DVarX%2B%28%5Cmu-c%29%5E2" alt="=VarX+(\mu-c)^2" eeimg="1">
+                </p>
+                <p>
+                    得证。
+                </p>
+                <p>
+                    这个性质告诉我们：方差当且仅当随机变量取到数学期望时取到最小值。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、
+                        <img src="https://www.zhihu.com/equation?tex=VarX%3D0" alt="VarX=0" eeimg="1">
+                        的充要条件是
+                        <img src="https://www.zhihu.com/equation?tex=X%3D%5Cmu%5C+a.s." alt="X=\mu\ a.s." eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    这个性质既可以利用性质2也可以直接用Chebyshev不等式证明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        4、
+                        <img src="https://www.zhihu.com/equation?tex=Var%28%5Csum_%7Bj%3D1%7D%5EnX_j%29%3D%5Csum_%7Bi%3D1%7D%5En%5Csum_%7Bj%3D1%7D%5En%28EX_iX_j-EX_iEX_j%29" alt="Var(\sum_{j=1}^nX_j)=\sum_{i=1}^n\sum_{j=1}^n(EX_iX_j-EX_iEX_j)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    由数学期望的线性性，
+                    <img src="https://www.zhihu.com/equation?tex=Var%28%5Csum_%7Bj%3D1%7D%5EnX_j%29%3DE%28%5Csum_%7Bj%3D1%7D%5EnX_j%29%5E2-E%5E2%5Csum_%7Bj%3D1%7D%5EnX_j%3DE%28%5Csum_%7Bi%3D1%7D%5En%5Csum_%7Bj%3D1%7D%5EnX_iX_j%29-%5Csum_%7Bi%3D1%7D%5En%5Csum_%7Bj%3D1%7D%5EnEX_iEX_j" alt="Var(\sum_{j=1}^nX_j)=E(\sum_{j=1}^nX_j)^2-E^2\sum_{j=1}^nX_j=E(\sum_{i=1}^n\sum_{j=1}^nX_iX_j)-\sum_{i=1}^n\sum_{j=1}^nEX_iEX_j" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Csum_%7Bi%3D1%7D%5En%5Csum_%7Bj%3D1%7D%5En%28EX_iX_j-EX_iEX_j%29" alt="=\sum_{i=1}^n\sum_{j=1}^n(EX_iX_j-EX_iEX_j)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        5、若
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        相互独立，
+                        <img src="https://www.zhihu.com/equation?tex=Var%28%5Csum_%7Bj%3D1%7D%5EnX_j%29%3D%5Csum_%7Bj%3D1%7D%5EnVarX_j" alt="Var(\sum_{j=1}^nX_j)=\sum_{j=1}^nVarX_j" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    性质5其实只是性质4的特殊情况，但是由于比较常用，特别单独拿出。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于方差的应用，同样地也是
+                    <b>
+                        用来处理以传统方法难以求出方差的/概率分布难以求出的随机变量的方差。
+                    </b>
+                    我们举求超几何分布方差一例来说明。事实上，匹配问题的方差也可以类似计算，请读者自行完成。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例（
+                    <b>
+                        超几何分布的方差
+                    </b>
+                    ）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+H%28n%2CM%2CN%29" alt="X\sim H(n,M,N)" eeimg="1">
+                    ，回忆其实际模型为：
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    个产品，其中
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    个次品，从中任取
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个。
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为这
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个中的次品数。
+                </p>
+                <p>
+                    与求数学期望时同样地，我们定义随机变量列。
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_i%3D%5Cbegin%7Bcases%7D+1%5C+%5C+%E7%AC%ACi%E6%AC%A1%E5%8F%96%E5%88%B0%E7%9A%84%E5%95%86%E5%93%81%E4%B8%BA%E6%AC%A1%E5%93%81%5C%5C+0%5C+%5C+%E7%AC%ACi%E6%AC%A1%E5%8F%96%E5%88%B0%E7%9A%84%E5%95%86%E5%93%81%E4%B8%8D%E4%B8%BA%E6%AC%A1%E5%93%81+%5Cend%7Bcases%7D" alt="\xi_i=\begin{cases} 1\ \ 第i次取到的商品为次品\\ 0\ \ 第i次取到的商品不为次品 \end{cases}" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=i%3D1%2C2%2C...%2Cn" alt="i=1,2,...,n" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=VarX%3DVar%28%5Csum_%7Bj%3D1%7D%5En%5Cxi_j%29" alt="VarX=Var(\sum_{j=1}^n\xi_j)" eeimg="1">
+                </p>
+                <p>
+                    由方差的性质，
+                    <img src="https://www.zhihu.com/equation?tex=VarX%3D%5Csum_%7Bi%3D1%7D%5En%5Csum_%7Bj%3D1%7D%5En%28E%5Cxi_i%5Cxi_j-E%5Cxi_iE%5Cxi_j%29" alt="VarX=\sum_{i=1}^n\sum_{j=1}^n(E\xi_i\xi_j-E\xi_iE\xi_j)" eeimg="1">
+                </p>
+                <p>
+                    而所有的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_i" alt="\xi_i" eeimg="1">
+                    都同分布，且
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cxi_i%3D1%29%3D%5Cfrac%7BM%7D%7BN%7D" alt="P(\xi_i=1)=\frac{M}{N}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=VarX%3DnVar%5Cxi_1%2B%28n%5E2-n%29%28E%5Cxi_1%5Cxi_2-E%5Cxi_1E%5Cxi_2%29" alt="VarX=nVar\xi_1+(n^2-n)(E\xi_1\xi_2-E\xi_1E\xi_2)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Var%5Cxi_1%3DE%5Cxi_1%5E2-E%5E2%5Cxi_1%3D%5Cfrac%7BM%7D%7BN%7D-%28%5Cfrac%7BM%7D%7BN%7D%29%5E2" alt="Var\xi_1=E\xi_1^2-E^2\xi_1=\frac{M}{N}-(\frac{M}{N})^2" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5Cxi_1%5Cxi_2-E%5Cxi_1E%5Cxi_2%3D%5Cfrac%7BM%7D%7BN%7D%5Cfrac%7BM-1%7D%7BN-1%7D-%28%5Cfrac%7BM%7D%7BN%7D%29%5E2" alt="E\xi_1\xi_2-E\xi_1E\xi_2=\frac{M}{N}\frac{M-1}{N-1}-(\frac{M}{N})^2" eeimg="1">
+                </p>
+                <p>
+                    代入，得到
+                    <img src="https://www.zhihu.com/equation?tex=VarX%3Dn%5Cfrac%7BM%7D%7BN%7D%281-%5Cfrac%7BM%7D%7BN%7D%29%5Cfrac%7BN-n%7D%7BN-1%7D" alt="VarX=n\frac{M}{N}(1-\frac{M}{N})\frac{N-n}{N-1}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，数学期望与方差在数理统计中仍旧有很多好的性质，若篇幅多余我们再额外介绍。但是读者应熟练掌握目前为止这些性质的运用，对于后续的学习是非常有帮助的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        三、协方差，相关系数
+                    </b>
+                </p>
+                <p>
+                    协方差的相关系数的出现都是为了对两个随机变量之间的关系进行描述。下面我们先给出它们的定义。
+                </p>
+                <p>
+                    以后若无特别说明，均
+                    <b>
+                        假设随机变量的期望、方差均存在且有限
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu_X%3DEX%2C%5Cmu_Y%3DEY" alt="\mu_X=EX,\mu_Y=EY" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=E%7C%28X-EX%29%28Y-EY%29%7C%3C%5Cinfty" alt="E|(X-EX)(Y-EY)|&lt;\infty" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=cov%28X%2CY%29%3DE%28X-EX%29%28Y-EY%29" alt="cov(X,Y)=E(X-EX)(Y-EY)" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        的协方差，也记作
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma_%7BXY%7D" alt="\sigma_{XY}" eeimg="1">
+                        。当
+                        <img src="https://www.zhihu.com/equation?tex=cov%28X%2CY%29%3D0" alt="cov(X,Y)=0" eeimg="1">
+                        ，称两个随机变量不相关。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho_%7BXY%7D%3D%5Cfrac%7B%5Csigma_%7BXY%7D%7D%7B%5Csigma_X%5Csigma_Y%7D" alt="\rho_{XY}=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        的相关系数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注意到由数学期望的线性性，
+                    <img src="https://www.zhihu.com/equation?tex=cov%28X%2CY%29%3DEXY-%5Cmu_YEX-%5Cmu_XEY%2B%5Cmu_X%5Cmu_Y%3DEXY-EXEY" alt="cov(X,Y)=EXY-\mu_YEX-\mu_XEY+\mu_X\mu_Y=EXY-EXEY" eeimg="1">
+                </p>
+                <p>
+                    与方差公式类似，这也是求协方差经常用到的等式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于不相关性，值得注意的是：
+                    <b>
+                        独立的随机变量必定是不相关的
+                    </b>
+                    。
+                </p>
+                <p>
+                    回忆数学期望的性质，当
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    独立时，我们有
+                    <img src="https://www.zhihu.com/equation?tex=EXY%3DEXEY" alt="EXY=EXEY" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=cov%28X%2CY%29%3D0" alt="cov(X,Y)=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    然而，
+                    <b>
+                        不相关的随机变量却不一定独立
+                    </b>
+                    。下举一例。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例
+                    <b>
+                        （不相关且不独立）
+                    </b>
+                </p>
+                <p>
+                    考虑随机向量
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    在单位圆内部
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    上均匀分布。
+                </p>
+                <p>
+                    容易求得
+                    <img src="https://www.zhihu.com/equation?tex=EX%3DEY%3D0" alt="EX=EY=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=EXY%3D%5Cint%5Cint_%7BD%7D%5Cfrac%7Bxy%7D%7B%5Cpi%7Ddxdy%3D0" alt="EXY=\int\int_{D}\frac{xy}{\pi}dxdy=0" eeimg="1">
+                </p>
+                <p>
+                    故不相关。
+                </p>
+                <p>
+                    然而边缘密度之积
+                    <img src="https://www.zhihu.com/equation?tex=f_X%28x%29f_Y%28y%29" alt="f_X(x)f_Y(y)" eeimg="1">
+                    不能作为联合密度，故不独立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于相关系数的性质，我们作简要介绍：
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=%7C%5Crho_%7BXY%7D%7C%5Cleq+1" alt="|\rho_{XY}|\leq 1" eeimg="1">
+                        ，等号成立当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+a%2Cb%2C%5C+s.t.%5C+%5C+Y%3Da%2BbX%5C+%5C+a.s." alt="\exists a,b,\ s.t.\ \ Y=a+bX\ \ a.s." eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2、若
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        独立，
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho_%7BXY%7D%3D0" alt="\rho_{XY}=0" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    对性质1，我们给出如下证明：
+                </p>
+                <p>
+                    由内积不等式，
+                    <img src="https://www.zhihu.com/equation?tex=E%5E2%28X-EX%29%28Y-EY%29%5Cleq+E%28X-EX%29%5E2E%28Y-EY%29%5E2" alt="E^2(X-EX)(Y-EY)\leq E(X-EX)^2E(Y-EY)^2" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=cov%5E2%28X%2CY%29%5Cleq+VarXVarY" alt="cov^2(X,Y)\leq VarXVarY" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho_%7BXY%7D%5E2%5Cleq+1" alt="\rho_{XY}^2\leq 1" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    其中等号成立当且仅当内积不等式等号成立，当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+a%2Cb" alt="\exists a,b" eeimg="1">
+                    不全为零，使得
+                    <img src="https://www.zhihu.com/equation?tex=a%28X-EX%29%2Bb%28Y-EY%29%3D0" alt="a(X-EX)+b(Y-EY)=0" eeimg="1">
+                    。得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从相关系数的性质，不难看出：如此定义出的相关系数度量的实际上是两个随机变量之间的
+                    <b>
+                        线性关系
+                    </b>
+                    。且相关系数的正负决定了两个随机变量是正相关还是负相关的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在很多情况下，我们实际上会需要关心一个随机向量的很多分量之间的协方差。因此，我们对协方差做一个推广，利用矩阵来简便地表示一个随机向量中任意两个分量之间的协方差。这就是协方差矩阵。我们先对向量与矩阵的数学期望进行定义，再引出协方差矩阵的定义。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7B%5Cmu%7D%3DE%5Cvec%7BX%7D%3D%28EX_1%2C...%2CEX_n%29" alt="\vec{\mu}=E\vec{X}=(EX_1,...,EX_n)" eeimg="1">
+                        为随机向量的数学期望。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        类似地，若
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbegin%7Bbmatrix%7D+X_%7B11%7D+%26...++%26X_%7B1n%7D+%5C%5C++...+%26...++%26...+%5C%5C++X_%7Bm1%7D+%26...++%26X_%7Bmn%7D++%5Cend%7Bbmatrix%7D" alt="Y=\begin{bmatrix} X_{11} &amp;...  &amp;X_{1n} \\  ... &amp;...  &amp;... \\  X_{m1} &amp;...  &amp;X_{mn}  \end{bmatrix}" eeimg="1">
+                        为随机变量组成的矩阵
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cbegin%7Bbmatrix%7D+EX_%7B11%7D+%26...++%26EX_%7B1n%7D+%5C%5C++...+%26...++%26...+%5C%5C++EX_%7Bm1%7D+%26...++%26EX_%7Bmn%7D++%5Cend%7Bbmatrix%7D" alt="EY=\begin{bmatrix} EX_{11} &amp;...  &amp;EX_{1n} \\  ... &amp;...  &amp;... \\  EX_{m1} &amp;...  &amp;EX_{mn}  \end{bmatrix}" eeimg="1">
+                        为其数学期望。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    如此定义的数学期望，事实上，保留了数学期望的重要性质，下面进行验证。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Ba%7D" alt="\vec{a}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维常数行向量，
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=m%5Ctimes+n" alt="m\times n" eeimg="1">
+                    常数矩阵。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Cvec%7Ba%7D%5Cvec%7BX%7D%5ET%29%3DE%5Csum_%7Bj%3D1%7D%5Ena_jX_j%3D%5Csum_%7Bj%3D1%7D%5Ena_jEX_j%3D%5Cvec%7Ba%7DE%5Cvec%7BX%7D%5ET" alt="E(\vec{a}\vec{X}^T)=E\sum_{j=1}^na_jX_j=\sum_{j=1}^na_jEX_j=\vec{a}E\vec{X}^T" eeimg="1">
+                </p>
+                <p>
+                    同样地，我们有
+                    <img src="https://www.zhihu.com/equation?tex=%28E%5Cvec%7BY%7D%29%5ET%3DE%5Cvec%7BY%7D%5ET" alt="(E\vec{Y})^T=E\vec{Y}^T" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=E%28AYB%29%3DA%28EY%29B" alt="E(AYB)=A(EY)B" eeimg="1">
+                    ，由读者自己验证。
+                </p>
+                <p>
+                    这告诉我们：如此进行推广后的数学期望仍旧
+                    <b>
+                        保留了线性性
+                    </b>
+                    。（注意到矩阵乘法实质上是线性表出）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来，定义协方差矩阵。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5CSigma%3DE%28%5Cvec%7BX%7D-%5Cvec%7B%5Cmu%7D%29%5ET%28%5Cvec%7BX%7D-%5Cvec%7B%5Cmu%7D%29" alt="\Sigma=E(\vec{X}-\vec{\mu})^T(\vec{X}-\vec{\mu})" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D" alt="\vec{X}" eeimg="1">
+                        的协方差矩阵。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    其中假设协方差矩阵第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    行
+                    <img src="https://www.zhihu.com/equation?tex=j" alt="j" eeimg="1">
+                    列的元素为
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma_%7Bij%7D" alt="\sigma_{ij}" eeimg="1">
+                    ，则我们不难发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma_%7Bij%7D%3DE%28X_i-EX_i%29%28X_j-EX_j%29%3Dcov%28X_i%2CX_j%29" alt="\sigma_{ij}=E(X_i-EX_i)(X_j-EX_j)=cov(X_i,X_j)" eeimg="1">
+                    。这表明，协方差矩阵中的每一个元素都是随机向量某两个分量的协方差。且容易知道 ：协方差矩阵必定是对称矩阵。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于协方差矩阵，我们简单地介绍其性质：
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=%5CSigma" alt="\Sigma" eeimg="1">
+                        非负定。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    要证明一个矩阵的非负定性，不妨将其化为二次型。
+                </p>
+                <p>
+                    任意取行向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Ba%7D%3D%28a_1%2C...%2Ca_n%29" alt="\vec{a}=(a_1,...,a_n)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Ba%7D%5CSigma%5Cvec%7Ba%7D%5ET%3D%5Csum_%7Bi%3D1%7D%5En%5Csum_%7Bj%3D1%7D%5Ena_i%5Csigma_%7Bij%7Da_j%3DE%5B%5Csum_%7Bi%3D1%7D%5En%5Csum_%7Bj%3D1%7D%5Ena_ia_j%28X_i-%5Cmu_i%29%28X_j-%5Cmu_j%29%5D" alt="\vec{a}\Sigma\vec{a}^T=\sum_{i=1}^n\sum_{j=1}^na_i\sigma_{ij}a_j=E[\sum_{i=1}^n\sum_{j=1}^na_ia_j(X_i-\mu_i)(X_j-\mu_j)]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3DE%5B%5Csum_%7Bj%3D1%7D%5Ena_j%28X_j-%5Cmu_j%29%5D%5E2%3DVar%5B%5Csum_%7Bj%3D1%7D%5Ena_j%28X_j-%5Cmu_j%29%5D%5Cgeq+0" alt="=E[\sum_{j=1}^na_j(X_j-\mu_j)]^2=Var[\sum_{j=1}^na_j(X_j-\mu_j)]\geq 0" eeimg="1">
+                </p>
+                <p>
+                    得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=%5CSigma" alt="\Sigma" eeimg="1">
+                        退化当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C...%2CX_n" alt="X_1,X_2,...,X_n" eeimg="1">
+                        线性相关。（即
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+a_1%2C...%2Ca_n" alt="\exists a_1,...,a_n" eeimg="1">
+                        不全为零，
+                        <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D1%7D%5Ena_j%28X_j-EX_j%29%3D0%5C+a.s." alt="\sum_{j=1}^na_j(X_j-EX_j)=0\ a.s." eeimg="1">
+                        ）
+                    </b>
+                </p>
+                <p>
+                    协方差矩阵退化当且仅当1中等号成立。回忆方差的性质：
+                    <img src="https://www.zhihu.com/equation?tex=VarX%3D0" alt="VarX=0" eeimg="1">
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=X%3D0%5C+a.s." alt="X=0\ a.s." eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        四、条件数学期望
+                    </b>
+                </p>
+                <p>
+                    在笔记（三）中，我们曾经介绍过条件概率分布。
+                </p>
+                <p>
+                    在本章中，我们假设
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29" alt="(X,Y)" eeimg="1">
+                    为连续型随机向量，
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    为联合密度。离散型随机向量也可以类似处理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回忆已知
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dy" alt="Y=y" eeimg="1">
+                    条件下
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的条件密度
+                    <img src="https://www.zhihu.com/equation?tex=f_%7BX%7CY%7D%28x%7Cy%29%3D%5Cfrac%7Bf%28x%2Cy%29%7D%7Bf_Y%28y%29%7D" alt="f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么结合数学期望的定义进行推广，我们不难知道
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%3Dy%29%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dxf_%7BX%7CY%7D%28x%7Cy%29dx" alt="E(X|Y=y)=\int_{-\infty}^{+\infty}xf_{X|Y}(x|y)dx" eeimg="1">
+                    。
+                </p>
+                <p>
+                    回忆在笔记（三）末尾我们提及的将条件概率值抽象为条件概率随机变量的方法。记
+                    <img src="https://www.zhihu.com/equation?tex=g%28y%29%3DE%28X%7CY%3Dy%29" alt="g(y)=E(X|Y=y)" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=g%28Y%29%3DE%28X%7CY%29" alt="g(Y)=E(X|Y)" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                    是一个与
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    相关的随机变量，它反映了
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    取值变动时，
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%3Dy%29" alt="E(X|Y=y)" eeimg="1">
+                    会如何变动。
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                    即称为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的条件数学期望。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这样定义所得的条件数学期望
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    具有数学期望所具备的一切性质。
+                </p>
+                <p>
+                    我们先来研究条件数学期望的性质，再来关注它的诸多应用。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    性质：
+                </p>
+                <p>
+                    <b>
+                        1、（线性性）
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+a_0%2Ca_1%2C...%2Ca_n%5Cin+%5Cmathbb%7BR%7D%2CE%28a_0%2B%5Csum_%7Bi%3D1%7D%5Ena_iX_i%29%3Da_0%2B%5Csum_%7Bi%3D1%7D%5Ena_iEX_i+" alt="\forall a_0,a_1,...,a_n\in \mathbb{R},E(a_0+\sum_{i=1}^na_iX_i)=a_0+\sum_{i=1}^na_iEX_i" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=E%5Bh%28Y%29g%28X%29%7CY%5D%3Dh%28Y%29E%5Bg%28X%29%7CY%5D" alt="E[h(Y)g(X)|Y]=h(Y)E[g(X)|Y]" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5Bh%28Y%29g%28X%29%7CY%3Dy%5D%3DE%5Bh%28y%29g%28X%29%7CY%3Dy%5D%3Dh%28y%29E%5Bg%28X%29%7CY%3Dy%5D" alt="E[h(Y)g(X)|Y=y]=E[h(y)g(X)|Y=y]=h(y)E[g(X)|Y=y]" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    此性质表明：以
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    为条件的条件期望中，任何
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的函数均可作为常数提出。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        独立，则
+                        <img src="https://www.zhihu.com/equation?tex=E%5Bg%28X%29%7CY%5D%3DE%5Bg%28X%29%5D" alt="E[g(X)|Y]=E[g(X)]" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        4、（全期望公式）
+                        <img src="https://www.zhihu.com/equation?tex=E%5BE%28g%28X%29%7CY%29%5D%3DEg%28X%29" alt="E[E(g(X)|Y)]=Eg(X)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5Bg%28X%29%7CY%3Dy%5D%3D%5Cint_%7B%5Cmathbb%7BR%7D%7Dg%28x%29f_%7BX%7CY%7D%28x%7Cy%29dx%3D%5Cint+_%7B%5Cmathbb%7BR%7D%7Dg%28x%29%5Cfrac%7Bf%28x%2Cy%29%7D%7Bf_Y%28y%29%7Ddx" alt="E[g(X)|Y=y]=\int_{\mathbb{R}}g(x)f_{X|Y}(x|y)dx=\int _{\mathbb{R}}g(x)\frac{f(x,y)}{f_Y(y)}dx" eeimg="1">
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=E%28g%28X%29%7CY%3Dy%29" alt="E(g(X)|Y=y)" eeimg="1">
+                    实质上是
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    的函数，故对
+                    <img src="https://www.zhihu.com/equation?tex=E%28g%28X%29%7CY%29" alt="E(g(X)|Y)" eeimg="1">
+                    再求期望相当于对
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    再求期望。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5BE%28g%28X%29%7CY%29%5D%3D%5Cint_%7B%5Cmathbb%7BR%7D%7DE%28g%28X%29%7CY%3Dy%29f_Y%28y%29dy%3D%5Cint%5Cint_%7B%5Cmathbb%7BR%7D%5E2%7Dg%28x%29f%28x%2Cy%29dxdy%3DE%5Bg%28X%29%5D" alt="E[E(g(X)|Y)]=\int_{\mathbb{R}}E(g(X)|Y=y)f_Y(y)dy=\int\int_{\mathbb{R}^2}g(x)f(x,y)dxdy=E[g(X)]" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    全期望公式看似复杂，实际上在说一件很简单的事：期望与概率相似，也能够进行拆分再求和。例如：
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dy_1%2Fy_2%2Fy_3" alt="Y=y_1/y_2/y_3" eeimg="1">
+                    一共有三个取值，那么
+                    <img src="https://www.zhihu.com/equation?tex=EX%3DP%28Y%3Dy_1%29E%28X%7CY%3Dy_1%29%2BP%28Y%3Dy_2%29E%28X%7CY%3Dy_2%29%2BP%28Y%3Dy_3%29E%28X%7CY%3Dy_3%29" alt="EX=P(Y=y_1)E(X|Y=y_1)+P(Y=y_2)E(X|Y=y_2)+P(Y=y_3)E(X|Y=y_3)" eeimg="1">
+                </p>
+                <p>
+                    事实上，
+                    <b>
+                        全期望公式就是期望版的全概公式
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    此处不妨多提一句：方差也能够如此进行推广，得到条件方差
+                    <img src="https://www.zhihu.com/equation?tex=Var%28X%7CY%29" alt="Var(X|Y)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    显然地，
+                    <img src="https://www.zhihu.com/equation?tex=Var%28X%7CY%29%3DE%28X%5E2%7CY%29-E%5E2%28X%7CY%29" alt="Var(X|Y)=E(X^2|Y)-E^2(X|Y)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    然而，
+                    <b>
+                        条件方差可没有对应的“全方差公式”
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们在之后谈及概率论应用中涉及到混合分布时会深入了解到其原因。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    条件数学期望的应用非常广泛。首先，
+                    <b>
+                        条件数学期望经常用来解决一些条件分布以及期望的求解问题。很多情况下，通过全期望公式求解期望远比先求得分布再求出期望要简单。
+                    </b>
+                    我们直接通过一个经典的例子来阐述这种方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：超时某日的顾客总数为
+                    <img src="https://www.zhihu.com/equation?tex=N%2CN%5Csim+P%28%5Clambda%29" alt="N,N\sim P(\lambda)" eeimg="1">
+                    ，顾客之间消费额独立同分布，且与
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    独立。
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    为全天营业额。顾客平均消费为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    ，求该日平均营业额。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                    为第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    个客人的消费额，则
+                    <img src="https://www.zhihu.com/equation?tex=S%3DX_1%2BX_2%2B...%2BX_N" alt="S=X_1+X_2+...+X_N" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=EX_i%3D%5Cmu" alt="EX_i=\mu" eeimg="1">
+                    。
+                </p>
+                <p>
+                    然而难题是：
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                    有关，而
+                    <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                    的个数又取决于
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    ，这个时候我们自然地联想到研究
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    为固定值的条件下
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    的条件分布。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%28S%7CN%3Dn%29%3DE%28X_1%2B...%2BX_n%7CN%3Dn%29" alt="E(S|N=n)=E(X_1+...+X_n|N=n)" eeimg="1">
+                </p>
+                <p>
+                    由于顾客消费额与顾客人数独立，利用条件数学期望的性质，
+                    <img src="https://www.zhihu.com/equation?tex=E%28S%7CN%3Dn%29%3DE%28X_1%2B...%2BX_n%29%3Dn%5Cmu" alt="E(S|N=n)=E(X_1+...+X_n)=n\mu" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%28S%7CN%29%3DN%5Cmu" alt="E(S|N)=N\mu" eeimg="1">
+                </p>
+                <p>
+                    再利用全期望公式，
+                    <img src="https://www.zhihu.com/equation?tex=ES%3DE%5BE%28S%7CN%29%5D%3DE%28N%5Cmu%29%3D%5Cmu+EN%3D%5Cmu%5Clambda" alt="ES=E[E(S|N)]=E(N\mu)=\mu EN=\mu\lambda" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个例子其实证明了一个直觉上很显然的事实：在这样的条件下，平均顾客数乘以每个人的平均消费额等于平均营业额。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    条件数学期望的理论应用是更加有趣的：
+                </p>
+                <p>
+                    事实上，
+                    <b>
+                        条件数学期望
+                        <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                        是所有用
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        的函数对
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        进行预测中均方差意义下最优的
+                    </b>
+                    。读者可能现在完全不能理解这句话的意思，我们先从简单的意义开始深入介绍。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们先来看条件期望的一个性质：
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2%3C%5Cinfty%2CEh%5E2%28Y%29%3C%5Cinfty" alt="EX^2&lt;\infty,Eh^2(Y)&lt;\infty" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    为实函数，则
+                    <img src="https://www.zhihu.com/equation?tex=E%5B%28X-E%28X%7CY%29%29h%28Y%29%5D%3D0" alt="E[(X-E(X|Y))h(Y)]=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们想对上式进行线性拆分，则先需要证明数学期望
+                    <img src="https://www.zhihu.com/equation?tex=E%28Xh%28Y%29%29" alt="E(Xh(Y))" eeimg="1">
+                    的存在性。
+                </p>
+                <p>
+                    由内积不等式，
+                    <img src="https://www.zhihu.com/equation?tex=E%7CXh%28Y%29%7C%5Cleq+%5Csqrt%7BEX%5E2Eh%5E2%28Y%29%7D%3C%5Cinfty" alt="E|Xh(Y)|\leq \sqrt{EX^2Eh^2(Y)}&lt;\infty" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=E%5B%28X-E%28X%7CY%29%29h%28Y%29%5D%3DE%5BXh%28Y%29%5D-E%5BE%28Xh%28Y%29%7CY%29%5D" alt="E[(X-E(X|Y))h(Y)]=E[Xh(Y)]-E[E(Xh(Y)|Y)]" eeimg="1">
+                </p>
+                <p>
+                    由全期望公式，
+                    <img src="https://www.zhihu.com/equation?tex=%3DE%5BXh%28Y%29%5D-E%5BXh%28Y%29%5D%3D0" alt="=E[Xh(Y)]-E[Xh(Y)]=0" eeimg="1">
+                </p>
+                <p>
+                    得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们现在来解释这条性质的意义。
+                </p>
+                <p>
+                    回忆我们在之前内积不等式处证明中提及的，
+                    <img src="https://www.zhihu.com/equation?tex=EXY" alt="EXY" eeimg="1">
+                    可以作为
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    的一个内积，从而形成线性空间。我们现在对这个线性空间进行一些拓展。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7BEX%5E2%7D" alt="\sqrt{EX^2}" eeimg="1">
+                    即为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    代表的向量在此空间中的长度。
+                </p>
+                <p>
+                    我们翻译一下上述条件数学期望的性质：
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    （代表的向量）长度有限且
+                    <img src="https://www.zhihu.com/equation?tex=h%28Y%29" alt="h(Y)" eeimg="1">
+                    长度有限时，
+                    <img src="https://www.zhihu.com/equation?tex=X-E%28X%7CY%29" alt="X-E(X|Y)" eeimg="1">
+                    总是与
+                    <img src="https://www.zhihu.com/equation?tex=h%28Y%29" alt="h(Y)" eeimg="1">
+                    正交。
+                </p>
+                <p>
+                    我们突然发现：
+                    <b>
+                        条件数学期望
+                        <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                        的实质是
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        在平面
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=h%28Y%29" alt="h(Y)" eeimg="1">
+                    <b>
+                        上的正交投影。
+                    </b>
+                    这是非常重要的性质，这意味着我们在线性空间中对正交投影的性质都可以推广到条件数学期望上。
+                </p>
+                <p>
+                    从
+                    <b>
+                        线性空间的角度去看待条件数学期望
+                    </b>
+                    ，我们可以得出一大堆条件数学期望的性质。
+                </p>
+                <p>
+                    如：
+                    <b>
+                        勾股定理：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=E%5BE%5E2%28X%7CY%29%5D%2BE%5B%28X-E%28X%7CY%29%29%5E2%5D%3DEX%5E2" alt="E[E^2(X|Y)]+E[(X-E(X|Y))^2]=EX^2" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        直角三角形斜边大于直角边：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2%5Cgeq+E%5BX-E%28X%7CY%29%5D%5E2%2CEX%5E2%5Cgeq+E%28E%5E2%28X%7CY%29%29" alt="EX^2\geq E[X-E(X|Y)]^2,EX^2\geq E(E^2(X|Y))" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们下面介绍为何条件数学期望是最佳的预测。
+                </p>
+                <p>
+                    先给出定理，然后我们分别从线性空间的角度与代数的角度去证明其正确性。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（最佳预测）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=EX%5E2%3C%5Cinfty%2Cg%28y%29" alt="EX^2&lt;\infty,g(y)" eeimg="1">
+                        为任意实函数，则
+                        <img src="https://www.zhihu.com/equation?tex=E%5BX-E%28X%7CY%29%5D%5E2%5Cleq+E%5BX-g%28Y%29%5D%5E2" alt="E[X-E(X|Y)]^2\leq E[X-g(Y)]^2" eeimg="1">
+                        。等号成立当且仅当
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=g%28Y%29%3DE%28X%7CY%29%5C+a.s." alt="g(Y)=E(X|Y)\ a.s." eeimg="1">
+                </p>
+                <p>
+                    证1：
+                </p>
+                <p>
+                    从线性空间的角度去看，左侧即为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=g%28Y%29" alt="g(Y)" eeimg="1">
+                    平面的最短正交距离的平方。右侧为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=g%28Y%29" alt="g(Y)" eeimg="1">
+                    平面上某一点的距离的平方。显然地，正交距离在欧氏距离意义下是所有距离中最短的，定理得证。
+                </p>
+                <p>
+                    证2：
+                </p>
+                <p>
+                    从代数计算的角度看问题。
+                </p>
+                <p>
+                    需要讨论
+                    <img src="https://www.zhihu.com/equation?tex=Eg%5E2%28Y%29" alt="Eg^2(Y)" eeimg="1">
+                    是否有限。
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=Eg%5E2%28Y%29%3D%5Cinfty" alt="Eg^2(Y)=\infty" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=Eg%5E2%28Y%29%5Cleq+2E%5BX-g%28Y%29%5D%5E2%2B2EX%5E2%2CE%5BX-g%28Y%29%5D%5E2%3D%5Cinfty" alt="Eg^2(Y)\leq 2E[X-g(Y)]^2+2EX^2,E[X-g(Y)]^2=\infty" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=Eg%5E2%28Y%29%3C%5Cinfty" alt="Eg^2(Y)&lt;\infty" eeimg="1">
+                    ，由内积不等式，
+                    <img src="https://www.zhihu.com/equation?tex=E%5E2%28X%7CY%3Dy%29%5Cleq+E%28X%5E2%7CY%3Dy%29" alt="E^2(X|Y=y)\leq E(X^2|Y=y)" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=E%5E2%28X%7CY%29%5Cleq+E%28X%5E2%7CY%29" alt="E^2(X|Y)\leq E(X^2|Y)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=E%5BE%5E2%28X%7CY%29%5D%5Cleq+EX%5E2%3C%5Cinfty" alt="E[E^2(X|Y)]\leq EX^2&lt;\infty" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=E%5BE%28X%7CY%29-g%28Y%29%5D%5E2%3C%5Cinfty" alt="E[E(X|Y)-g(Y)]^2&lt;\infty" eeimg="1">
+                    。
+                </p>
+                <p>
+                    做完了预备工作，我们进入正题。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5BX-g%28Y%29%5D%5E2%3DE%5BX-E%28X%7CY%29%2BE%28X%7CY%29-g%28Y%29%5D%5E2" alt="E[X-g(Y)]^2=E[X-E(X|Y)+E(X|Y)-g(Y)]^2" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3DE%5BX-E%28X%7CY%29%5D%5E2%2BE%5BE%28X%7CY%29-g%28Y%29%5D%5E2%2B2E%5B%28X-E%28X%7CY%29%29%28E%28X%7CY%29-g%28Y%29%29%5D" alt="=E[X-E(X|Y)]^2+E[E(X|Y)-g(Y)]^2+2E[(X-E(X|Y))(E(X|Y)-g(Y))]" eeimg="1">
+                </p>
+                <p>
+                    由前面例题中介绍的条件期望的性质，
+                    <img src="https://www.zhihu.com/equation?tex=E%5B%28X-E%28X%7CY%29%29%28E%28X%7CY%29-g%28Y%29%29%5D%3D0" alt="E[(X-E(X|Y))(E(X|Y)-g(Y))]=0" eeimg="1">
+                </p>
+                <p>
+                    故原式
+                    <img src="https://www.zhihu.com/equation?tex=%3DE%5BX-E%28X%7CY%29%5D%5E2%2BE%5BE%28X%7CY%29-g%28Y%29%5D%5E2%5Cgeq+E%5BX-E%28X%7CY%29%5D%5E2" alt="=E[X-E(X|Y)]^2+E[E(X|Y)-g(Y)]^2\geq E[X-E(X|Y)]^2" eeimg="1">
+                </p>
+                <p>
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=g%28Y%29%3DE%28X%7CY%29" alt="g(Y)=E(X|Y)" eeimg="1">
+                    时，等号成立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以清晰地感受到利用条件数学期望在线性空间中的性质可以直观而又简便地得到很强的结论。（利用我们对线性空间性质已有的透彻研究）
+                </p>
+                <p>
+                    <b>
+                        最佳预测性质告诉我们：我们现在想利用随机变量
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        的函数去拟合逼近随机变量
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        ，那么
+                        <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                        在均方差最小的意义下（残差平方和的平均最小）是最优的。
+                    </b>
+                </p>
+                <p>
+                    这个性质事实上在数理统计中有着非常广泛的应用。
+                </p>
+                <p>
+                    我们下举一例让读者进行体会：
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CY%29%5Csim+N%28%5Cmu_1%2C%5Cmu_2%2C%5Csigma_1%5E2%2C%5Csigma_2%5E2%2C%5Crho%29" alt="(X,Y)\sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)" eeimg="1">
+                    ，我们通过计算可以求得
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29%3D%5Cmu_1%2B%5Crho%5Cfrac%7B%5Csigma_1%7D%7B%5Csigma_2%7D%28Y-%5Cmu_2%29" alt="E(X|Y)=\mu_1+\rho\frac{\sigma_1}{\sigma_2}(Y-\mu_2)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    有趣的是：
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CY%29" alt="E(X|Y)" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的线性函数。所以此时，最佳预测的问题就转化为了最佳线性预测的问题。
+                </p>
+                <p>
+                    这告诉我们：
+                    <b>
+                        对正态分布而言，最佳预测就是最佳线性预测。事实上，与后文要提到的中心极限定理相结合，我们就能理解之所以线性回归被如此广泛应用的原因。
+                    </b>
+                    （在我高中自学统计时，学习到线性回归时一度以为这是前人为了简化回归模型而应用线性的。事实上，很多方法真的不是拍脑袋想出来的，而是有确凿的数学推断与原因的。我认为真正的逻辑是：独立同分布的随机变量的均值选择了正态分布，而正态分布选择了线性模型作为其最佳预测。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们不加证明地给出一个求条件数学期望
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CA%29" alt="E(X|A)" eeimg="1">
+                    的公式。
+                </p>
+                <p>
+                    <b>
+                        定理：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        为事件，
+                        <img src="https://www.zhihu.com/equation?tex=P%28A%29%3E0%2CE%28X%7CA%29" alt="P(A)&gt;0,E(X|A)" eeimg="1">
+                        存在，则
+                        <img src="https://www.zhihu.com/equation?tex=E%28X%7CA%29%3D%5Cfrac%7BE%28XI%5BA%5D%29%7D%7BP%28A%29%7D" alt="E(X|A)=\frac{E(XI[A])}{P(A)}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们举一例阐释其如何应用。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Clambda%29%2C%5Cforall+a%3E0%2C" alt="X\sim \varepsilon(\lambda),\forall a&gt;0," eeimg="1">
+                    证明
+                    <img src="https://www.zhihu.com/equation?tex=E%28X-a%7CX%3Ea%29%3DEX" alt="E(X-a|X&gt;a)=EX" eeimg="1">
+                    。
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%28X%7CX%3Ea%29%3D%5Cfrac%7BE%28XI%5BX%3Ea%5D%29%7D%7BP%28X%3Ea%29%7D%3D%5Cfrac%7B%5Cint_a%5E%7B%2B%5Cinfty%7Dx%5Clambda+e%5E%7B-%5Clambda+x%7Ddx%7D%7Be%5E%7B-%5Clambda+a%7D%7D" alt="E(X|X&gt;a)=\frac{E(XI[X&gt;a])}{P(X&gt;a)}=\frac{\int_a^{+\infty}x\lambda e^{-\lambda x}dx}{e^{-\lambda a}}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cfrac%7B1%7D%7B%5Clambda%7D%2Ba%3DEX%2Ba" alt="=\frac{1}{\lambda}+a=EX+a" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，
+                    <b>
+                        回忆指数分布的无记忆性。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        我们容易知道：若
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Clambda%29" alt="X\sim \varepsilon(\lambda)" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=X-a%7C_%7BX%3Ea%7D" alt="X-a|_{X&gt;a}" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        是同分布的。
+                    </b>
+                </p>
+                <p>
+                    这个例子与指数分布的无记忆性是统一的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本章笔记到此为止，谢谢各位阅读！
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

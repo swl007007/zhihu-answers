@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（十）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-a35ac21f09761414b1ca1da4386d50a5_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/137954689" target="_blank">
+                        测度论整理（十）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-05-03
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这次我们讲讲
+                    <b>
+                        Radon-Nikodym定理
+                    </b>
+                    。其动机，如同上一节中提到的，是想将符号测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    表示成一个可测函数的不定积分形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_A+f%5C%2Cd%5Cmu" alt="\int_A f\,d\mu" eeimg="1">
+                    ，从而定义测度论中微分的概念。
+                </p>
+                <p>
+                    我们下面总是假设在
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    这个
+                    <b>
+                        测度空间
+                    </b>
+                    上讨论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先，注意到若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\forall A\in \mathscr{F},\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                    成立，则对于任意
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    -零测集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，都必须有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29" alt="\varphi(A)" eeimg="1">
+                    成立。故我们引入这样的定义：对符号测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    以及测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    ，若所有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    -零测集也为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    -零测的，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cmu" alt="\varphi&lt;&lt;\mu" eeimg="1">
+                    ，
+                    <b>
+                        称为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    <b>
+                        对
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        绝对连续
+                    </b>
+                    。其次，我们可以利用不定积分与求导互为逆运算，类似地定义Radon-Nikodym导数：若存在几乎处处唯一的可测函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\forall A\in \mathscr{F},\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                    成立，那么记
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5Cvarphi%7D%7Bd%5Cmu%7D%3Df" alt="\frac{d\varphi}{d\mu}=f" eeimg="1">
+                    为
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        对
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        的Radon-Nikodym导数
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于对绝对连续性含义的理解，我打算放到下次与相互奇异做个对比一起写。故在这里就先不多提了。但是容易注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    绝对连续是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    能够表示成可测函数在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    下的不定积分的必要条件。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Radon-Nikodym定理的条件事实上很弱，
+                    <b>
+                        只要求
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为一个
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限测度
+                    </b>
+                    即可保证任意符号测度对其的RN导数存在。但是要直接从那么弱的条件出发进行证明十分困难。我们不妨
+                    <b>
+                        先对于较强的条件证明，再逐步放宽条件进行推广
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们遵循以下链条进行证明：
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%2C%5Cmu" alt="\varphi,\mu" eeimg="1">
+                        为有限测度-&gt;
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        为有限符号测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为有限测度-&gt;-&gt;
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限符号测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为有限测度-&gt;
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        为符号测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为有限测度-&gt;
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        为符号测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限测度
+                    </b>
+                </p>
+                <p>
+                    注意到：
+                </p>
+                <p>
+                    条件
+                    <b>
+                        从有限性削弱至
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限性
+                    </b>
+                    时，我们都可以通过取一个可测分割并且限制在可测分割的集合上来看，从而将
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限性提升为有限性。
+                </p>
+                <p>
+                    条件
+                    <b>
+                        从
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限性削弱至无有限性假设
+                    </b>
+                    时，我们可以找一个集合系，其中每个元素都由可列个两两不交且（符号）测度有限的可测集相并而成。那么我们限制在这样的一个集合系上看就可以将无有限性假设提升为
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限性。
+                </p>
+                <p>
+                    条件
+                    <b>
+                        从测度削弱至符号测度
+                    </b>
+                    时，我们可以通过Jordan分解，将符号测度分解为两个测度之差并分别处理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有了上述的推广思路之后，我们剩下的唯一难以解决的事情就是证明
+                    <b>
+                        当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%2C%5Cmu" alt="\varphi,\mu" eeimg="1">
+                        为有限测度
+                    </b>
+                    时，定理成立。（毕竟万事开头难233
+                </p>
+                <p>
+                    <b>
+                        命题：当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%2C%5Cmu" alt="\varphi,\mu" eeimg="1">
+                        为有限测度时，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cmu" alt="\varphi&lt;&lt;\mu" eeimg="1">
+                        ，则存在非负
+                        <img src="https://www.zhihu.com/equation?tex=L_1" alt="L_1" eeimg="1">
+                        的
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\forall A\in \mathscr{F},\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                        成立，且
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        唯一
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=a.e." alt="a.e." eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以巧妙地构造一个可测函数组成的集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BL%7D%3D%5Cleft+%5C%7B+g%5Cin+L_1%7Cg%5Cgeq+0%2C%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cint_Ag%5C%2Cd%5Cmu%5Cleq+%5Cvarphi%28A%29+%5Cright+%5C%7D" alt="\mathscr{L}=\left \{ g\in L_1|g\geq 0,\forall A\in \mathscr{F},\int_Ag\,d\mu\leq \varphi(A) \right \}" eeimg="1">
+                    。我们的意图是：对每个可测集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，
+                    <b>
+                        从
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29" alt="\varphi(A)" eeimg="1">
+                        的下侧利用非负
+                        <img src="https://www.zhihu.com/equation?tex=L_1" alt="L_1" eeimg="1">
+                        可测函数的积分来逼近
+                    </b>
+                    。那么自然地，我们需要考察
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%3D%5Csup%5Cleft+%5C%7B++%5Cint_Xg%5C%2Cd%5Cmu%7Cg%5Cin%5Cmathscr%7BL%7D%5Cright+%5C%7D" alt="\beta=\sup\left \{  \int_Xg\,d\mu|g\in\mathscr{L}\right \}" eeimg="1">
+                    。因为我们要达到“逼近”的效果，就需要使得我们从
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BL%7D" alt="\mathscr{L}" eeimg="1">
+                    中选取的可测函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的积分能够充分地接近所有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BL%7D" alt="\mathscr{L}" eeimg="1">
+                    中可测函数积分的上确界。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    自然地，我们取一列
+                    <img src="https://www.zhihu.com/equation?tex=g_1%2Cg_2%2C...%5Cin%5Cmathscr%7BL%7D%2C%5Cint_Xg_n%5C%2Cd%5Cmu%5Crightarrow+%5Cbeta" alt="g_1,g_2,...\in\mathscr{L},\int_Xg_n\,d\mu\rightarrow \beta" eeimg="1">
+                    。那么考虑
+                    <img src="https://www.zhihu.com/equation?tex=f_n%3D%5Cmax%5Cleft+%5C%7B++g_1%2Cg_2%2C...%2Cg_n%5Cright+%5C%7D" alt="f_n=\max\left \{  g_1,g_2,...,g_n\right \}" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=f%3D%5Csup%5Cleft+%5C%7B++g_1%2Cg_2%2C...%5Cright+%5C%7D" alt="f=\sup\left \{  g_1,g_2,...\right \}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么我们立马得到：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Xf%5C%2Cd%5Cmu%5Cgeq+%5Cbeta" alt="\int_Xf\,d\mu\geq \beta" eeimg="1">
+                    。现在我们只需要证明
+                    <img src="https://www.zhihu.com/equation?tex=f%5Cin%5Cmathscr%7BL%7D" alt="f\in\mathscr{L}" eeimg="1">
+                    那么这样的选取就是完美的了，即我们想证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cint_Af%5C%2Cd%5Cmu%5Cleq+%5Cvarphi%28A%29" alt="\forall A\in \mathscr{F},\int_Af\,d\mu\leq \varphi(A)" eeimg="1">
+                    。此时，考虑到
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Cnearrow+f" alt="f_n\nearrow f" eeimg="1">
+                    以及非负性，利用单调收敛定理，只需证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_A+f_n%5C%2Cd%5Cmu%5Cleq+%5Cvarphi%28A%29" alt="\int_A f_n\,d\mu\leq \varphi(A)" eeimg="1">
+                    即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这是容易做到的，因为
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    本质上是由
+                    <img src="https://www.zhihu.com/equation?tex=g_1%2Cg_2%2C...%2Cg_n" alt="g_1,g_2,...,g_n" eeimg="1">
+                    分段拼接而成的。即我们总是能够找到
+                    <img src="https://www.zhihu.com/equation?tex=A_%7Bn%2C1%7D%2CA_%7Bn%2C2%7D%2C...%2CA_%7Bn%2Cn%7D" alt="A_{n,1},A_{n,2},...,A_{n,n}" eeimg="1">
+                    为两两不交的可测集合列，使得
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+A_%7Bn%2Ck%7D" alt="x\in A_{n,k}" eeimg="1">
+                    时我们有
+                    <img src="https://www.zhihu.com/equation?tex=f_n%3Dg_k" alt="f_n=g_k" eeimg="1">
+                    成立。那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_A+f_n%5C%2Cd%5Cmu%3D%5Csum_%7Bk%3D1%7D%5En%5Cint_%7BA%5Ccap+A_%7Bn%2Ck%7D%7Df_n%5C%2Cd%5Cmu%3D%5Csum_%7Bk%3D1%7D%5En%5Cint_%7BA%5Ccap+A_%7Bn%2Ck%7D%7Dg_k%5C%2Cd%5Cmu%5Cleq%5Csum_%7Bk%3D1%7D%5En%5Cvarphi%28A%5Ccap+A_%7Bn%2Ck%7D%29%3D%5Cvarphi%28A%29" alt="\int_A f_n\,d\mu=\sum_{k=1}^n\int_{A\cap A_{n,k}}f_n\,d\mu=\sum_{k=1}^n\int_{A\cap A_{n,k}}g_k\,d\mu\leq\sum_{k=1}^n\varphi(A\cap A_{n,k})=\varphi(A)" eeimg="1">
+                    ，即得证！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    至此为止，我们得以取一个充分好的
+                    <img src="https://www.zhihu.com/equation?tex=f%5Cin%5Cmathscr%7BL%7D" alt="f\in\mathscr{L}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Xf%5C%2Cd%5Cmu%3D%5Cbeta" alt="\int_Xf\,d\mu=\beta" eeimg="1">
+                    。这个函数“好”在哪呢？它好在它是所有能够从
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29" alt="\varphi(A)" eeimg="1">
+                    的下侧利用积分进行逼近的非负
+                    <img src="https://www.zhihu.com/equation?tex=L_1" alt="L_1" eeimg="1">
+                    可测函数中逼近得最好的！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们取这样的
+                    <img src="https://www.zhihu.com/equation?tex=f%5Cin%5Cmathscr%7BL%7D" alt="f\in\mathscr{L}" eeimg="1">
+                    ，并且来证明它会使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\forall A\in \mathscr{F},\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                    成立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这等价于证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu%28A%29%3D%5Cvarphi%28A%29-%5Cint_Af%5C%2Cd%5Cmu" alt="\nu(A)=\varphi(A)-\int_Af\,d\mu" eeimg="1">
+                    这个测度（为什么是测度？）是恒零的。那么只需证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu%28X%29%3D0" alt="\nu(X)=0" eeimg="1">
+                    。然而直接证明是困难的。这里我们用一个技巧：
+                    <b>
+                        利用一个符号测度列
+                        <img src="https://www.zhihu.com/equation?tex=%5Cnu_n%3D%5Cnu-%5Cfrac%7B1%7D%7Bn%7D%5Cmu" alt="\nu_n=\nu-\frac{1}{n}\mu" eeimg="1">
+                        来逼近测度
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu" alt="\nu" eeimg="1">
+                    。容易发现：如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu_n%5Cleq+0" alt="\nu_n\leq 0" eeimg="1">
+                    ，那么由测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    的有限性，当
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    充分大时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu" alt="\nu" eeimg="1">
+                    会被夹逼为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    。所以我们不妨考虑所有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu_n" alt="\nu_n" eeimg="1">
+                    诱导的Hahn分解：
+                    <img src="https://www.zhihu.com/equation?tex=X_n%5E%2B%2CX_n%5E-" alt="X_n^+,X_n^-" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=X%5E-%3D%5Cbigcap_%7Bn%3D1%7D%5E%5Cinfty+X_n%5E-" alt="X^-=\bigcap_{n=1}^\infty X_n^-" eeimg="1">
+                    ，根据我们上述解释，在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu" alt="\nu" eeimg="1">
+                    下就是零测的了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu%28X%29%3D0" alt="\nu(X)=0" eeimg="1">
+                    ，只需要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup+_%7Bn%3D1%7D%5E%5Cinfty+X_n%5E%2B" alt="\bigcup _{n=1}^\infty X_n^+" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu" alt="\nu" eeimg="1">
+                    下是零测的。那么只需要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup+_%7Bn%3D1%7D%5E%5Cinfty+X_n%5E%2B" alt="\bigcup _{n=1}^\infty X_n^+" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    下是零测的即可（
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    非负），再利用绝对连续性，只需要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup+_%7Bn%3D1%7D%5E%5Cinfty+X_n%5E%2B" alt="\bigcup _{n=1}^\infty X_n^+" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    下是零测的即可。由测度的可列可加性，这相当于证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28X_n%5E%2B%29%3D0" alt="\mu(X_n^+)=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们发现：我们迟迟没有用到
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    <b>
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BL%7D" alt="\mathscr{L}" eeimg="1">
+                        中的特殊性
+                    </b>
+                    ：其积分达到了上确界。故由此联想到：将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28X_n%5E%2B%29" alt="\mu(X_n^+)" eeimg="1">
+                    用积分表示出来。即我们考虑
+                    <img src="https://www.zhihu.com/equation?tex=f%2B%5Cfrac%7B1%7D%7Bn%7DI_%7BX_n%5E%2B%7D" alt="f+\frac{1}{n}I_{X_n^+}" eeimg="1">
+                    。一方面，对其积分后我们可以得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28X_n%5E%2B%29" alt="\mu(X_n^+)" eeimg="1">
+                    ；另一方面，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7Bn%7DI_%7BX_n%5E%2B%7D" alt="\frac{1}{n}I_{X_n^+}" eeimg="1">
+                    的形式很好地与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnu_n" alt="\nu_n" eeimg="1">
+                    的定义相吻合。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Af%2B%5Cfrac%7B1%7D%7Bn%7DI_%7BX_n%5E%2B%7D%5C%2Cd%5Cmu%3D%5Cvarphi%28A%29-%5Cnu%28A%29%2B%5Cfrac%7B1%7D%7Bn%7D%5Cmu%28A%5Ccap+X_n%5E%2B%29" alt="\int_Af+\frac{1}{n}I_{X_n^+}\,d\mu=\varphi(A)-\nu(A)+\frac{1}{n}\mu(A\cap X_n^+)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleq+%5Cvarphi%28A%29-%5Cnu_n%28A%5Ccap+X_n%5E%2B%29%5Cleq%5Cvarphi%28A%29" alt="\leq \varphi(A)-\nu_n(A\cap X_n^+)\leq\varphi(A)" eeimg="1">
+                    （Hahn分解的性质）
+                </p>
+                <p>
+                    即我们有
+                    <img src="https://www.zhihu.com/equation?tex=f%2B%5Cfrac%7B1%7D%7Bn%7DI_%7BX_n%5E%2B%7D%5Cin+%5Cmathscr%7BL%7D" alt="f+\frac{1}{n}I_{X_n^+}\in \mathscr{L}" eeimg="1">
+                    。结合
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的特殊性，立马推出
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28X_n%5E%2B%29%3D0" alt="\mu(X_n^+)=0" eeimg="1">
+                    ，定理得证！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有了这个链条开头的命题后，我们不停地运用前文提及的推广方法即可。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    <b>
+                        为有限符号测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为有限测度
+                    </b>
+                    的情形可以将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    做Jordan分解得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%5E%5Cpm" alt="\varphi^\pm" eeimg="1">
+                    ，分别利用上述命题得到两个可测函数
+                    <img src="https://www.zhihu.com/equation?tex=f_1%2Cf_2" alt="f_1,f_2" eeimg="1">
+                    。容易证明
+                    <img src="https://www.zhihu.com/equation?tex=f%3Df_1-f_2" alt="f=f_1-f_2" eeimg="1">
+                    就是我们所需要用来做不定积分表示的可测函数。（在这一步我们显然不能再保证
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的非负
+                    <img src="https://www.zhihu.com/equation?tex=L_1" alt="L_1" eeimg="1">
+                    的性质，但是却可以保证
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Xf%5E-%5C%2Cd%5Cmu%3C%5Cinfty" alt="\int_Xf^-\,d\mu&lt;\infty" eeimg="1">
+                    。值得注意的是，这是与我们之前对于符号测度有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3E-%5Cinfty" alt="\varphi&gt;-\infty" eeimg="1">
+                    的假定相呼应的。在
+                    <img src="https://www.zhihu.com/equation?tex=-%5Cinfty+%5Cleq%5Cvarphi%3C%2B%5Cinfty" alt="-\infty \leq\varphi&lt;+\infty" eeimg="1">
+                    的情形下，我们应将这个条件修改为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Xf%5E%2B%5C%2Cd%5Cmu%3C%5Cinfty" alt="\int_Xf^+\,d\mu&lt;\infty" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    <b>
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限符号测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为有限测度
+                    </b>
+                    的情形可以取一个可测分割
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    ，保证
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A_n%29%3C%5Cinfty" alt="\varphi(A_n)&lt;\infty" eeimg="1">
+                    。从而在
+                    <img src="https://www.zhihu.com/equation?tex=%28A_n%2C%5Cmathscr%7BF%7D%5Ccap+A_n%29" alt="(A_n,\mathscr{F}\cap A_n)" eeimg="1">
+                    上分别应用上述命题得到可测函数
+                    <img src="https://www.zhihu.com/equation?tex=f_1%2Cf_2%2C..." alt="f_1,f_2,..." eeimg="1">
+                    后定义
+                    <img src="https://www.zhihu.com/equation?tex=f%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty+f_nI_%7BA_n%7D" alt="f=\sum_{n=1}^\infty f_nI_{A_n}" eeimg="1">
+                    对其进行拼接。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    <b>
+                        为符号测度，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    <b>
+                        为有限测度
+                    </b>
+                    的情形下的推广可能稍有一些繁琐。我们应先定义集合系
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D%3D%5Cleft+%5C%7B+%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+A_n%7CA_1%2CA_2%2C...%5Cin%5Cmathscr%7BF%7D%E4%B8%A4%E4%B8%A4%E4%B8%8D%E4%BA%A4%2C%5Cvarphi%28A_n%29%3C%5Cinfty+%5Cright+%5C%7D" alt="\mathscr{G}=\left \{ \bigcup_{n=1}^\infty A_n|A_1,A_2,...\in\mathscr{F}两两不交,\varphi(A_n)&lt;\infty \right \}" eeimg="1">
+                    ，其显然为一个
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        环
+                    </b>
+                    。
+                </p>
+                <p>
+                    接下来的一步，我们要选取一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    中元素
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    ，将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%2C%5Cmu" alt="\varphi,\mu" eeimg="1">
+                    都限制在
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    上来看。那么这个
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    应该如何选取呢？当然是
+                    <b>
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        下看越大越好
+                    </b>
+                    。即我们选取
+                    <img src="https://www.zhihu.com/equation?tex=B%5Cin%5Cmathscr%7BG%7D" alt="B\in\mathscr{G}" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28B%29%3D%5Csup%5Cleft+%5C%7B+%5Cmu%28A%29+%7CA%5Cin%5Cmathscr%7BG%7D%5Cright+%5C%7D%3C%5Cinfty" alt="\mu(B)=\sup\left \{ \mu(A) |A\in\mathscr{G}\right \}&lt;\infty" eeimg="1">
+                    （思考为何可以取到？模仿第一个命题中证明即可。）
+                </p>
+                <p>
+                    那么限制在
+                    <img src="https://www.zhihu.com/equation?tex=%28B%2CB%5Ccap+%5Cmathscr%7BF%7D%29" alt="(B,B\cap \mathscr{F})" eeimg="1">
+                    上，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限符号测度，利用上面的命题，能找到
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    进行不定积分化。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    问题是
+                    <img src="https://www.zhihu.com/equation?tex=B%5Ec" alt="B^c" eeimg="1">
+                    上我们要怎么办？这并不用担心。由于我们对
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的特殊取法，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    <b>
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=B%5Ec" alt="B^c" eeimg="1">
+                        上具有十分清晰的结构
+                    </b>
+                    ！
+                </p>
+                <p>
+                    具体地说，对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+C%5Cin%5Cmathscr%7BF%7D%2CC%5Csubset+B%5Ec" alt="\forall C\in\mathscr{F},C\subset B^c" eeimg="1">
+                    ，如果有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28C%29%3D0" alt="\mu(C)=0" eeimg="1">
+                    ，由绝对连续性我们总是有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28C%29%3D0" alt="\varphi(C)=0" eeimg="1">
+                    。否则，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28C%29%3E0" alt="\mu(C)&gt;0" eeimg="1">
+                    ，我们总是有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28C%29%3D%5Cinfty" alt="\varphi(C)=\infty" eeimg="1">
+                    。否则
+                    <img src="https://www.zhihu.com/equation?tex=B%5Ccup+C" alt="B\cup C" eeimg="1">
+                    就会变成一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BG%7D" alt="\mathscr{G}" eeimg="1">
+                    中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    测度大于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28B%29" alt="\mu(B)" eeimg="1">
+                    的元素，这和
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的取法是矛盾的！（再回过去品味
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的取法，我们可以发现这个取法实际上意味着将所有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    具有
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限性的地方都挖走了，故剩下的
+                    <img src="https://www.zhihu.com/equation?tex=B%5Ec" alt="B^c" eeimg="1">
+                    具有很清楚的结构）
+                </p>
+                <p>
+                    那么在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上令
+                    <img src="https://www.zhihu.com/equation?tex=f%3DgI_B%2B%5Cinfty+I_%7BB%5Ec%7D" alt="f=gI_B+\infty I_{B^c}" eeimg="1">
+                    即可在全空间上做不定积分化。值得一提的是，在这样的条件下，我们并不能保证
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    几乎处处有限。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    <b>
+                        为符号测度，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    <b>
+                        为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    <b>
+                        有限测度
+                    </b>
+                    的情形的推广是简单的，我就不在此细说了。事实上，从有限性推广到
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限性都是一样的套路：分割、不定积分化、拼接即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此，我们得到下述定理：
+                </p>
+                <p>
+                    <b>
+                        定理（Radon-Nikodym）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        为符号测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限测度，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cmu" alt="\varphi&lt;&lt;\mu" eeimg="1">
+                        ，则存在
+                        <img src="https://www.zhihu.com/equation?tex=a.e." alt="a.e." eeimg="1">
+                        唯一的可测函数
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint_Xf%5E-%5C%2Cd%5Cmu%3C%5Cinfty" alt="\int_Xf^-\,d\mu&lt;\infty" eeimg="1">
+                        ，且
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\forall A\in \mathscr{F},\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                        。特别地，当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        有限的时，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f%3C%5Cinfty%5C+a.e." alt="f&lt;\infty\ a.e." eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    可以看到Radon-Nikodym定理的条件是十分宽松的！但是，其不能够再被进一步减弱了。当
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    无法保证
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限性时，不一定可以做不定积分化。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    反例：
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BF%7D%29" alt="(\mathbb{R},\mathscr{F})" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D" alt="\mathscr{F}" eeimg="1">
+                    包含所有可数子集以及余可数子集。
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28A%29" alt="\mu(A)" eeimg="1">
+                    为计数测度（值为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的元素个数，且不区分可数的无穷与不可数的无穷），
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29" alt="\varphi(A)" eeimg="1">
+                    仅在
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为可数子集时值为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ，其余时候值
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    。容易验证
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cmu" alt="\varphi&lt;&lt;\mu" eeimg="1">
+                    。
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\forall A\in \mathscr{F},\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                    ，那么考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cleft+%5C%7B++x%5Cright+%5C%7D%29%3Df%28x%29%5Cmu%28%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%3Df%28x%29%3D0" alt="\varphi(\left \{  x\right \})=f(x)\mu(\left \{ x \right \})=f(x)=0" eeimg="1">
+                    ，得到
+                    <img src="https://www.zhihu.com/equation?tex=f%3D0" alt="f=0" eeimg="1">
+                    。但是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    不恒为零，矛盾！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    其实，函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    也可能非常奇异，特别是在当
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    无法保证
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限性时。
+                </p>
+                <p>
+                    例子：
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%29" alt="(\mathbb{R},\mathscr{B}_{\mathbb{R}})" eeimg="1">
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28A%29" alt="\mu(A)" eeimg="1">
+                    为计数测度，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29" alt="\varphi(A)" eeimg="1">
+                    仅在
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cvarnothing" alt="A=\varnothing" eeimg="1">
+                    时值为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ，其余时候值
+                    <img src="https://www.zhihu.com/equation?tex=%2B%5Cinfty" alt="+\infty" eeimg="1">
+                    。容易验证
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3C%3C%5Cmu" alt="\varphi&lt;&lt;\mu" eeimg="1">
+                    。
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\forall A\in \mathscr{F},\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                    ，那么考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cleft+%5C%7B++x%5Cright+%5C%7D%29%3Df%28x%29%5Cmu%28%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%3Df%28x%29%3D%2B%5Cinfty" alt="\varphi(\left \{  x\right \})=f(x)\mu(\left \{ x \right \})=f(x)=+\infty" eeimg="1">
+                    ，得到
+                    <img src="https://www.zhihu.com/equation?tex=f%3D%2B%5Cinfty" alt="f=+\infty" eeimg="1">
+                    。发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+%5Cmathscr%7BF%7D%2C%5Cvarphi%28A%29%3D%5Cint_Af%5C%2Cd%5Cmu" alt="\forall A\in \mathscr{F},\varphi(A)=\int_Af\,d\mu" eeimg="1">
+                    成立！
+                </p>
+                <p>
+                    虽然
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    不是
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限的，但是还是能够进行不定积分化。但是作为代价，
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    几乎处处等于
+                    <img src="https://www.zhihu.com/equation?tex=%2B%5Cinfty" alt="+\infty" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，值得一提的是
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    之所以叫Radon-Nikodym导数，就是因为其具有许多与导数类似的性质。比如：导数的四则运算法则、链式法则等等。这些法则在
+                    <img src="https://www.zhihu.com/equation?tex=a.e." alt="a.e." eeimg="1">
+                    意义下且RN导数有定义时都是正确的。
+                </p>
+                <p>
+                    Radon-Nikodym导数的出现可以说很大程度上拓宽了人们对于导数这个概念的认知。过去我们只会对一个函数定义其关于某个变量的导数，但是现在我们居然能够定义
+                    <b>
+                        一个函数关于另一个函数的导数
+                    </b>
+                    了！（我们可以暂时将绝对连续性大致理解为某种意义上的“平行性”与“占优性”）这是一个富有意义且非平凡的认知上的突破！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下次我们讲讲精彩的Lebesgue分解。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

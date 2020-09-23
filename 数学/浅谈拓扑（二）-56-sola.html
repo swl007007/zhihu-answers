@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            浅谈拓扑（二）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-c377cf82b7070fc17ebbea6fdd82865e_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/93036920" target="_blank">
+                        浅谈拓扑（二）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-11-21
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    今日偶有空闲，于是想着又可以写一点东西（实际上是抄一抄书哈哈哈），谈一谈拓扑的后面一些概念。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先是关于子空间拓扑。给定拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                    ，以及
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的子集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，要怎么把
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的拓扑移植到
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    上呢？一个简单的做法就是让
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    <b>
+                        中的所有元素与
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        做交
+                    </b>
+                    ，这样得到的所有元素组成集合
+                    <img src="https://www.zhihu.com/equation?tex=T_A" alt="T_A" eeimg="1">
+                    。由于
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    满足拓扑公理，显然
+                    <img src="https://www.zhihu.com/equation?tex=T_A" alt="T_A" eeimg="1">
+                    也满足拓扑公理。这就是
+                    <b>
+                        由子集
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        诱导出的子空间拓扑
+                    </b>
+                    。简单地说，定义子集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    上的拓扑中的开集为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    与原空间某个开集之交，是最为自然的。
+                </p>
+                <p>
+                    在这里值得提醒的是：
+                    <b>
+                        我们时刻要注意开、闭等概念是针对哪个空间而言的！
+                    </b>
+                </p>
+                <p>
+                    比如：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E1" alt="\mathbb{R}^1" eeimg="1">
+                    上的欧式拓扑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    中，
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C2%29" alt="(0,2)" eeimg="1">
+                    为开集，但是选取子集
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%28-1%2C1%5D" alt="A=(-1,1]" eeimg="1">
+                    。根据定义，
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C1%5D" alt="(0,1]" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    诱导的子空间拓扑上的开集，但是其显然不是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    中的开集。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上一次我们也提到，拓扑中的收敛性概念之所以很奇怪是因为度量的缺失。反之，如果一个拓扑是由度量诱导出的，那么其就会具有极好的性质。
+                </p>
+                <p>
+                    度量拓扑的定义来源于欧式空间中的几何直观。
+                </p>
+                <p>
+                    假定我们现在具有度量
+                    <img src="https://www.zhihu.com/equation?tex=d%3AX%5Ctimes+X%5Crightarrow+%5Cmathbb%7BR%7D%5E%2B%5Ccup+%5Cleft+%5C%7B++0%5Cright+%5C%7D" alt="d:X\times X\rightarrow \mathbb{R}^+\cup \left \{  0\right \}" eeimg="1">
+                    ，即我们将
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy%5Cin+X" alt="x,y\in X" eeimg="1">
+                    之间的距离定义为
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2Cy%29" alt="d(x,y)" eeimg="1">
+                    。（不要忘了度量函数要具有正定性、对称性、三角不等式哦！）
+                </p>
+                <p>
+                    回忆数学分析中的内容：在欧式拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5En" alt="\mathbb{E}^n" eeimg="1">
+                    中，定义以点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    为球心，
+                    <img src="https://www.zhihu.com/equation?tex=r" alt="r" eeimg="1">
+                    为半径的开球为
+                    <img src="https://www.zhihu.com/equation?tex=B%28x%2Cr%29" alt="B(x,r)" eeimg="1">
+                    ，则欧式空间中的任意一个开集可以分解为若干个开球之并。
+                </p>
+                <p>
+                    模仿这条性质进行度量拓扑的定义：不妨定义开球
+                    <img src="https://www.zhihu.com/equation?tex=B%28x%2Cr%29%3D%5Cleft+%5C%7B++a%5Cin+X%7C+d%28a%2Cx%29%3Cr%5Cright+%5C%7D" alt="B(x,r)=\left \{  a\in X| d(a,x)&lt;r\right \}" eeimg="1">
+                    ，其代表
+                    <b>
+                        度量
+                        <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                        下球心
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        ，半径
+                        <img src="https://www.zhihu.com/equation?tex=r" alt="r" eeimg="1">
+                        的开球
+                    </b>
+                    。
+                </p>
+                <p>
+                    那么我们定义：
+                    <b>
+                        如果一个集合为空或可以写成度量
+                        <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                        下若干个开球之并，其即为度量拓扑之中的开集
+                    </b>
+                    。那么这个定义是否合理呢？
+                </p>
+                <p>
+                    拓扑公理中的空集与全集为开显然成立，若干个开集之并仍为开也成立。
+                </p>
+                <p>
+                    我们需要验证：“任意两个开集之交也必为开”
+                </p>
+                <p>
+                    假设有开集
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    。则根据定义：
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cbigcup+_%7Ba%7DB%28x_a%2Cr_a%29%2CB%3D%5Cbigcup+_%7Bb%7DB%28x_b%2Cr_b%29" alt="A=\bigcup _{a}B(x_a,r_a),B=\bigcup _{b}B(x_b,r_b)" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=A%5Ccap+B+%3D+%5Cbigcup+_%7Ba%2Cb%7D%28B%28x_a%2Cr_a%29%5Ccap+B%28x_b%2Cr_b%29%29" alt="A\cap B = \bigcup _{a,b}(B(x_a,r_a)\cap B(x_b,r_b))" eeimg="1">
+                    。我们只需要考虑两个开球之交即可。我们希望说明：
+                    <b>
+                        任两个开球之交为若干个开球之并
+                    </b>
+                    。
+                </p>
+                <p>
+                    这个证明的构造时简单的：对于开球
+                    <img src="https://www.zhihu.com/equation?tex=B%28x_1%2Cr_1%29%2CB%28x_2%2Cr_2%29" alt="B(x_1,r_1),B(x_2,r_2)" eeimg="1">
+                    ，我们在
+                    <img src="https://www.zhihu.com/equation?tex=B%28x_1%2Cr_1%29%5Ccap+B%28x_2%2Cr_2%29" alt="B(x_1,r_1)\cap B(x_2,r_2)" eeimg="1">
+                    中任取一点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    。想方设法使得以
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    为球心的开球位于
+                    <img src="https://www.zhihu.com/equation?tex=B%28x_1%2Cr_1%29%5Ccap+B%28x_2%2Cr_2%29" alt="B(x_1,r_1)\cap B(x_2,r_2)" eeimg="1">
+                    内，但是尽可能地去撑满这个交集区域。（这等价于半径尽可能大，同时等价于触碰到这两个开球之交的边界）。故通过这样我们可以选取半径
+                    <img src="https://www.zhihu.com/equation?tex=r" alt="r" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=B%28x%2Cr%29%5Csubset+B%28x_1%2Cr_1%29%5Ccap+B%28x_2%2Cr_2%29" alt="B(x,r)\subset B(x_1,r_1)\cap B(x_2,r_2)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    以此类推，不停地这样进行下去，我们可以得到一族开球
+                    <img src="https://www.zhihu.com/equation?tex=B%28x_a%2Cr_a%29%2Ca%5Cin+%5CLambda" alt="B(x_a,r_a),a\in \Lambda" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们容易证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup+_%7Ba%7DB%28x_a%2Cr_a%29%3DB%28x_1%2Cr_1%29%5Ccap+B%28x_2%2Cr_2%29" alt="\bigcup _{a}B(x_a,r_a)=B(x_1,r_1)\cap B(x_2,r_2)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故上述命题成立。故我们定义的度量拓扑满足拓扑公理！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于连续映射，虽然这是个重要的概念，但是由于我们已经很熟悉了，所以我还是不打算多说。
+                </p>
+                <p>
+                    拓扑学中选取的
+                    <b>
+                        连续性
+                    </b>
+                    定义是
+                    <b>
+                        开集/邻域定义
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=f%3AX%5Crightarrow+Y" alt="f:X\rightarrow Y" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    处连续若对于任意
+                    <img src="https://www.zhihu.com/equation?tex=f%28x_0%29" alt="f(x_0)" eeimg="1">
+                    的邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D%28U%29" alt="f^{-1}(U)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    的邻域。
+                </p>
+                <p>
+                    直观地看：如果在
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    下的像靠近
+                    <img src="https://www.zhihu.com/equation?tex=f%28x_0%29" alt="f(x_0)" eeimg="1">
+                    ，那么原像也要足够靠近
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    才行，这是一个
+                    <b>
+                        局部性质
+                    </b>
+                    。不难发现：
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        在整个
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        上连续，则对任意
+                        <img src="https://www.zhihu.com/equation?tex=U%5Csubset+Y" alt="U\subset Y" eeimg="1">
+                        开（闭），
+                        <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D%28U%29%5Csubset+X" alt="f^{-1}(U)\subset X" eeimg="1">
+                        为开（闭）（这是在拓扑中最最常用的连续性定义！！！）
+                    </b>
+                    。这些定义与欧式空间中基于度量的连续性定义是
+                    <b>
+                        相容的
+                    </b>
+                    ！
+                </p>
+                <p>
+                    至于连续性为什么不利用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon-N" alt="\varepsilon-N" eeimg="1">
+                    语言定义或者序列收敛性定义呢？我想读者们应该很清楚了。这是由于拓扑缺乏度量的概念！换句话说，
+                    <b>
+                        对于度量拓扑，这三种连续性定义是完全等价的
+                    </b>
+                    。（为什么？我之后会提到）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在这里值得一提的是：连续映射的复合仍然连续（利用开集定义立即得到）。对于
+                    <img src="https://www.zhihu.com/equation?tex=f%3AX%5Crightarrow+Y" alt="f:X\rightarrow Y" eeimg="1">
+                    ，如果
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    上拓扑是平凡拓扑，那么
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    必定连续（任意
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的开集只可能是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing%2CY" alt="\varnothing,Y" eeimg="1">
+                    ，其原像显然是开的）。类似地，若
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上拓扑是离散拓扑，那么
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    必定连续（
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    任意子集都开）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那如果我们需要分段地构造连续函数呢？我们是否可以在小区域上构造完连续函数再拼接起来呢？（好比构造
+                    <img src="https://www.zhihu.com/equation?tex=y%3D%7Cx%7C" alt="y=|x|" eeimg="1">
+                    ）以下粘接引理提供了回答。
+                </p>
+                <p>
+                    <b>
+                        定理（粘接引理）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的一个有限闭覆盖
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+A_1%2C...%2CA_n+%5Cright+%5C%7D" alt="\left \{ A_1,...,A_n \right \}" eeimg="1">
+                        ，若
+                        <img src="https://www.zhihu.com/equation?tex=f%3AX%5Crightarrow+Y" alt="f:X\rightarrow Y" eeimg="1">
+                        在每个
+                        <img src="https://www.zhihu.com/equation?tex=A_i" alt="A_i" eeimg="1">
+                        的限制都连续，则
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        上连续。
+                    </b>
+                </p>
+                <p>
+                    读者可以尝试利用连续性定义证明
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后是拓扑学中最关心的同胚定义。
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=f%3AX%5Crightarrow+Y" alt="f:X\rightarrow Y" eeimg="1">
+                    满足为双射，连续，且
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D" alt="f^{-1}" eeimg="1">
+                    连续，则称其为一个
+                    <b>
+                        同胚
+                    </b>
+                    ，记
+                    <img src="https://www.zhihu.com/equation?tex=X%5Ccong+Y" alt="X\cong Y" eeimg="1">
+                    。在拓扑学中，我们认为同胚的两个拓扑空间在结构上是完全相同的！
+                </p>
+                <p>
+                    <b>
+                        注意：
+                        <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D" alt="f^{-1}" eeimg="1">
+                        连续性不可缺少且不蕴含于连续双射之中！
+                    </b>
+                </p>
+                <p>
+                    下面举几个简单的例子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28-1%2C1%29%5Ccong+%5Cmathbb%7BE%7D%5E1" alt="(-1,1)\cong \mathbb{E}^1" eeimg="1">
+                    ，构造同胚函数
+                    <img src="https://www.zhihu.com/equation?tex=y%3Dtan%28%5Cfrac%7B%5Cpi%7D%7B2%7Dx%29" alt="y=tan(\frac{\pi}{2}x)" eeimg="1">
+                    ，其为连续双射且逆也连续。如此，容易知道任何开区间都与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    同胚。
+                </p>
+                <p>
+                    考虑
+                    <b>
+                        球极映射
+                    </b>
+                    。一个球挖去北极后映射到一个与其南极相切的平面，这个映射在欧式空间中为连续双射，且其逆同样连续。这说明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E3" alt="\mathbb{E}^3" eeimg="1">
+                    <b>
+                        中的球面去掉一点后与
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E2" alt="\mathbb{E}^2" eeimg="1">
+                        同胚
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们常常记
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E3" alt="\mathbb{E}^3" eeimg="1">
+                    中单位球面为
+                    <img src="https://www.zhihu.com/equation?tex=S%5E2" alt="S^2" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=S%5E2-%5Cleft+%5C%7B++N%5Cright+%5C%7D%5Ccong+%5Cmathbb%7BE%7D%5E2" alt="S^2-\left \{  N\right \}\cong \mathbb{E}^2" eeimg="1">
+                    。
+                </p>
+                <p>
+                    从这几个例子可以看出：
+                    <b>
+                        同胚的空间都是可以通过连续的形变相互得到的
+                    </b>
+                    ！记
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E2" alt="\mathbb{E}^2" eeimg="1">
+                    中单位圆盘内部为
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2" alt="D^2" eeimg="1">
+                    。则直觉告诉我们：凸多边形内部都是同胚于
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2" alt="D^2" eeimg="1">
+                    的；在平面上去掉一个点和去掉一个洞是同胚的（
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E2-%5Cleft+%5C%7B++O%5Cright+%5C%7D%5Ccong%5Cmathbb%7BE%7D%5E2-D%5E2" alt="\mathbb{E}^2-\left \{  O\right \}\cong\mathbb{E}^2-D^2" eeimg="1">
+                    ）。这些例子的构造大家可思考一下。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        更新：
+                    </b>
+                    我后来感觉当时这一章写得过于表面与草率了，故想还是补充几个例子好让大家有更深的体会。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于连续性，我们可以看一下在非欧式拓扑中，连续函数会是怎么样的。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    考虑实数域上的拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=T%3D%5Cleft+%5C%7B+%5Cvarnothing%2C%5Cmathbb%7BR%7D%2C%28a%2C%2B%5Cinfty%29%2C%5Ba%2C%2B%5Cinfty%5D%5C+%7C+%5C+a%5Cin+%5Cmathbb%7BR%7D%5Cright+%5C%7D" alt="T=\left \{ \varnothing,\mathbb{R},(a,+\infty),[a,+\infty]\ | \ a\in \mathbb{R}\right \}" eeimg="1">
+                    。我们容易验证这个集合满足三条拓扑公理，故其是实数域上的一个拓扑。在这个拓扑中，从任意实数到正无穷的开区间与闭区间都是开集。
+                </p>
+                <p>
+                    我们接下来看一下对于任意实数域上的实值函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，若其在上述拓扑的意义下连续，这意味着任意开集
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    的原像
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D%28U%29" alt="f^{-1}(U)" eeimg="1">
+                    都是开集。即任意区间
+                    <img src="https://www.zhihu.com/equation?tex=%28a%2C%2B%5Cinfty%29%2C%5Ba%2C%2B%5Cinfty%5D" alt="(a,+\infty),[a,+\infty]" eeimg="1">
+                    的原像仍形如区间
+                    <img src="https://www.zhihu.com/equation?tex=%28a%2C%2B%5Cinfty%29%2C%5Ba%2C%2B%5Cinfty%5D" alt="(a,+\infty),[a,+\infty]" eeimg="1">
+                    。
+                </p>
+                <p>
+                    容易证明这样的
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    必定是
+                    <b>
+                        单调递增
+                    </b>
+                    的。在这个拓扑之下的连续性和单调递增性是完全等价的！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    另外我还想补充一个
+                    <b>
+                        素数有无穷多个的拓扑证明
+                    </b>
+                    方法：
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%5Cin+%5Cmathbb%7BZ%7D%2Cb%5Cin+%5Cmathbb%7BZ%7D%5E%2B%2CS_%7Ba%2Cb%7D%3D%5Cleft+%5C%7B+...%2Ca-2b%2Ca-b%2Ca%2Ca%2Bb%2Ca%2B2b%2C...+%5Cright+%5C%7D" alt="\forall a\in \mathbb{Z},b\in \mathbb{Z}^+,S_{a,b}=\left \{ ...,a-2b,a-b,a,a+b,a+2b,... \right \}" eeimg="1">
+                </p>
+                <p>
+                    定义整数集上的拓扑：
+                    <img src="https://www.zhihu.com/equation?tex=T%3D%5Cleft+%5C%7B+%5Cvarnothing%2C%5Cmathbb%7BZ%7D%5Cright+%5C%7D%5Ccup+%5Cleft+%5C%7B++S%5Csubset+%5Cmathbb%7BZ%7D%5C+%7C%5C+%5Cforall+a%5Cin+S%2C%5Cexists+b%3E0%2C+S_%7Ba%2Cb%7D%5Csubset+S%5Cright+%5C%7D" alt="T=\left \{ \varnothing,\mathbb{Z}\right \}\cup \left \{  S\subset \mathbb{Z}\ |\ \forall a\in S,\exists b&gt;0, S_{a,b}\subset S\right \}" eeimg="1">
+                </p>
+                <p>
+                    即如果一个集合满足：任意集合中的元素
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    ，总是存在正整数
+                    <img src="https://www.zhihu.com/equation?tex=b" alt="b" eeimg="1">
+                    ，使得以
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    为起点，
+                    <img src="https://www.zhihu.com/equation?tex=b" alt="b" eeimg="1">
+                    为公差的双向等差数列全部被包含在集合中，那么这个集合就是一个开集。
+                </p>
+                <p>
+                    我们容易验证其满足三条拓扑公理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    显然，
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=S_%7Ba%2Cb%7D" alt="S_{a,b}" eeimg="1">
+                        是开集
+                    </b>
+                    （在
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    中）
+                    <b>
+                        且是闭集
+                    </b>
+                    （对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D-S_%7Ba%2Cb%7D" alt="\mathbb{Z}-S_{a,b}" eeimg="1">
+                    ，只需要取公差为
+                    <img src="https://www.zhihu.com/equation?tex=b" alt="b" eeimg="1">
+                    ，那么以任意其中元素为起点的双向等差数列仍在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D-S_%7Ba%2Cb%7D" alt="\mathbb{Z}-S_{a,b}" eeimg="1">
+                    中，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D-S_%7Ba%2Cb%7D%5Cin+T" alt="\mathbb{Z}-S_{a,b}\in T" eeimg="1">
+                    ）。
+                </p>
+                <p>
+                    接下来，我们将这个拓扑与素数关联起来。
+                </p>
+                <p>
+                    我们知道：在所有整数中，除去
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpm+1" alt="\pm 1" eeimg="1">
+                    外，每个数都至少含有一个素因子。
+                </p>
+                <p>
+                    这意味着：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup_p+S_%7B0%2Cp%7D%3D%5Cmathbb%7BZ%7D-%5Cleft+%5C%7B++%5Cpm+1%5Cright+%5C%7D" alt="\bigcup_p S_{0,p}=\mathbb{Z}-\left \{  \pm 1\right \}" eeimg="1">
+                    ，这里我们对所有素数
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    取可列并。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        如果素数仅有有限个
+                    </b>
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup_p+S_%7B0%2Cp%7D" alt="\bigcup_p S_{0,p}" eeimg="1">
+                    ，特别地，为
+                    <b>
+                        有限并
+                    </b>
+                    。
+                </p>
+                <p>
+                    由拓扑公理，有限个闭集之并仍为闭集，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D-%5Cleft+%5C%7B++%5Cpm+1%5Cright+%5C%7D" alt="\mathbb{Z}-\left \{  \pm 1\right \}" eeimg="1">
+                    闭，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%5Cpm+1%5Cright+%5C%7D" alt="\left \{  \pm 1\right \}" eeimg="1">
+                    <b>
+                        开
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们得到：
+                    <b>
+                        如果素数仅有有限个，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%5Cpm+1%5Cright+%5C%7D" alt="\left \{  \pm 1\right \}" eeimg="1">
+                        开！
+                    </b>
+                </p>
+                <p>
+                    然而，在我们定义的拓扑中，
+                    <b>
+                        开集要么是无穷集，要么是空集
+                    </b>
+                    ，矛盾！
+                </p>
+                <p>
+                    故得证！
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

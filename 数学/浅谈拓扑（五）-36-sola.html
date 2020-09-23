@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            浅谈拓扑（五）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-e4269b572c79908da19ddd47c56ea544_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/104525216" target="_blank">
+                        浅谈拓扑（五）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-01-31
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    其实我最近的更新用了很多“清凉”的图片是有原因的。这些图都是夏天的时候抠的，当时想着多写点东西，可惜未能如愿。想着放着也是放着，不如拿出来当封面，所以就干脆直接用啦|ू･ω･` )
+                </p>
+                <p>
+                    希望大家不要对封面有啥误会呀，当成是欣赏艺术就行了。反正数学也是一种艺术，从这种意味上来看还是挺合适的（并不。因为误会点进来的读者也可以读一读再放弃治疗，万一对数学还挺有兴趣的呢是不哈哈。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们进入正题，来说说上次落下的
+                    <b>
+                        可数性公理
+                    </b>
+                    。
+                </p>
+                <p>
+                    <b>
+                        C1公理：任意拓扑空间中的点都具有可数邻域基。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        C2公理：拓扑空间具有可数拓扑基。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在这里，我们有必要解释一下邻域基是什么。
+                </p>
+                <p>
+                    取定一点
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">
+                    ，如果
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的若干个邻域能够组成一个集合，使得任意
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的邻域
+                    <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                    ，总是能够找到这个集合中的某个元素
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=U%5Csubset+W" alt="U\subset W" eeimg="1">
+                    ，那么这个集合就称为点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    处的一组
+                    <b>
+                        邻域基
+                    </b>
+                    。
+                </p>
+                <p>
+                    回忆一下拓扑基的定义：
+                </p>
+                <p>
+                    对任意开集
+                    <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                    ，如果都存在集合中元素
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=U%5Csubset+W" alt="U\subset W" eeimg="1">
+                    ，那么这个集合就被称为一组拓扑基。
+                </p>
+                <p>
+                    很相似吧！
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的邻域基中的元素事实上都是“最本原的”邻域，类比于拓扑基的定义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        关于C1公理：
+                    </b>
+                </p>
+                <p>
+                    我们最熟悉的欧氏拓扑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    自然是C1的，因为对于任意实数
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+B%28x%2C%5Cdelta%29+%7C%5Cdelta%5Cin%5Cmathbb%7BQ%7D%5Cright+%5C%7D" alt="\left \{ B(x,\delta) |\delta\in\mathbb{Q}\right \}" eeimg="1">
+                    都是一组邻域基（有理数的稠密性），显然是可数的。
+                </p>
+                <p>
+                    理解C1公理的含义并不是一件容易的事，但是我们可以慢慢深入理解。
+                </p>
+                <p>
+                    首先，注意到在任意点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    处的可数邻域基本质上也都是
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的邻域。假设邻域基为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++U_1%2CU_2%2C...%5Cright+%5C%7D" alt="\left \{  U_1,U_2,...\right \}" eeimg="1">
+                    ，那么我们可以稍做变换：
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=V_1%3DU_1%2CV_2%3DU_1%5Ccap+U_2%2C...%2CV_n%3DU_1%5Ccap...%5Ccap+U_n%2C..." alt="V_1=U_1,V_2=U_1\cap U_2,...,V_n=U_1\cap...\cap U_n,..." eeimg="1">
+                </p>
+                <p>
+                    我们立马发现：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++V_n%5Cright+%5C%7D" alt="\left \{  V_n\right \}" eeimg="1">
+                    是一个单调递减的集合列，且列中每个元素都仍为
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的邻域。
+                </p>
+                <p>
+                    利用邻域基的性质，对于任意
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的邻域
+                    <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                    ，存在
+                    <img src="https://www.zhihu.com/equation?tex=U_n%2CU_n%5Csubset+W" alt="U_n,U_n\subset W" eeimg="1">
+                </p>
+                <p>
+                    那么也就有
+                    <img src="https://www.zhihu.com/equation?tex=V_n%5Csubset+W" alt="V_n\subset W" eeimg="1">
+                    。得到：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++V_n%5Cright+%5C%7D" alt="\left \{  V_n\right \}" eeimg="1">
+                    为
+                    <b>
+                        一组单调递减的邻域基
+                    </b>
+                    。（C1公理的等价条件）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由单调递减的一组
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    邻域，我们不难联想到序列的收敛性。是否可以附加一些条件，使得
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    可以被一个序列逼近呢？
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+%5Coverline%7BA%7D" alt="x\in \overline{A}" eeimg="1">
+                    时，其中
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为拓扑空间的子集，由聚点定义，任意
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的领域
+                    <img src="https://www.zhihu.com/equation?tex=V_n" alt="V_n" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%28V_n-%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%5Ccap+A+%5Cneq%5Cvarnothing+" alt="(V_n-\left \{ x \right \})\cap A \neq\varnothing" eeimg="1">
+                </p>
+                <p>
+                    这说明我们可以从每个
+                    <img src="https://www.zhihu.com/equation?tex=V_n%5Ccap+A" alt="V_n\cap A" eeimg="1">
+                    中任意取出异于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的一点
+                    <img src="https://www.zhihu.com/equation?tex=x_n" alt="x_n" eeimg="1">
+                    组成
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中的一个序列。
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的任意邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，总存在
+                    <img src="https://www.zhihu.com/equation?tex=V_n%5Csubset+U" alt="V_n\subset U" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=x_n%2Cx_%7Bn%2B1%7D%2C...%5Cin+U" alt="x_n,x_{n+1},...\in U" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    外总是只有序列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    中的有限项，得到
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+x" alt="x_n\rightarrow x" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        C1空间中，若
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        的聚点，则必定存在
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        中序列以
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        为极限！
+                    </b>
+                    这又回到了我们在数学分析中见到的聚点与收敛性之间的联系。事实上，聚点与收敛性的统一是通过C1公理而实现的！
+                </p>
+                <p>
+                    事实上由于上述性质，在C1空间中，我们对于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    处函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    连续性可以利用任意
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+x" alt="x_n\rightarrow x" eeimg="1">
+                    ，都有
+                    <img src="https://www.zhihu.com/equation?tex=f%28x_n%29%5Crightarrow+f%28x%29" alt="f(x_n)\rightarrow f(x)" eeimg="1">
+                    成立来进行判别（与连续性的序列定义吻合）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        关于C2公理：
+                    </b>
+                </p>
+                <p>
+                    C2公理可能是比较难以理解的公理，也是比较难以证明的公理。我们都知道欧氏拓扑是C2的，那么不满足C2公理的空间长啥样呢？
+                </p>
+                <p>
+                    最简单的例子就是
+                    <b>
+                        实数域上的离散拓扑
+                    </b>
+                    。
+                </p>
+                <p>
+                    在离散拓扑中，任意实数域的子集都是开的。我们知道其拓扑基必须包含
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+%5Cleft+%5C%7B++x%5Cright+%5C%7D%7Cx%5Cin+%5Cmathbb%7BR%7D+%5Cright+%5C%7D" alt="\left \{ \left \{  x\right \}|x\in \mathbb{R} \right \}" eeimg="1">
+                    。（否则对于单点集，我们会找不到一个包含在其中的更小开集，这与拓扑基定义矛盾）这个拓扑基显然是不可数的！非C2！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    再举一个不那么平凡的例子，我们也能够从中学习到证明C2不成立的技巧：
+                </p>
+                <p>
+                    考虑实数域上由拓扑基
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D%3D%5Cleft+%5C%7B++%5Ba%2Cb%29%7Ca%3Cb%2Ca%2Cb%5Cin%5Cmathbb%7BR%7D%5Cright+%5C%7D" alt="\mathbb{B}=\left \{  [a,b)|a&lt;b,a,b\in\mathbb{R}\right \}" eeimg="1">
+                    生成的拓扑。
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Ba%2Ca%2B1%29" alt="[a,a+1)" eeimg="1">
+                    都是开集。若该拓扑有拓扑基
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BA%7D" alt="\mathbb{A}" eeimg="1">
+                    ，则存在
+                    <img src="https://www.zhihu.com/equation?tex=U_a%5Cin+%5Cmathbb%7BA%7D" alt="U_a\in \mathbb{A}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=a%5Cin+U_a%5Csubset+%5Ba%2Ca%2B1%29" alt="a\in U_a\subset [a,a+1)" eeimg="1">
+                    。注意到在这里
+                    <img src="https://www.zhihu.com/equation?tex=U_a" alt="U_a" eeimg="1">
+                    自身也为开集，故其必定以
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    作为集合的最小元。
+                </p>
+                <p>
+                    只需要考虑映射
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    将每个实数
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    映射到对应拓扑基中元素
+                    <img src="https://www.zhihu.com/equation?tex=U_a" alt="U_a" eeimg="1">
+                    。注意到这样的映射是单的（集合最小元不同）。故这说明拓扑基的大小至少与实数域一样大，不可数！
+                </p>
+                <p>
+                    这个例子中证明C2不成立是通过
+                    <b>
+                        寻找拓扑基中开集特征+建立不可数集合到拓扑基的单射
+                    </b>
+                    完成的。不幸的是这样的方法常常难以构造，故之后我们会借助一些定理得到其它的证明非C2的方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        关于两条可数性公理之间的关系：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        C2可以推出C1
+                    </b>
+                    。这是显然的，取含
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的拓扑基中元素构成集合，则必定为一个
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的邻域基。（注意到拓扑基比邻域基要求更严格）
+                </p>
+                <p>
+                    <b>
+                        C2空间必定可分。
+                    </b>
+                    （可分指存在可数稠密子集）在每个拓扑基元素中各任取一点构成集合
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，则由于C2，
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    可数。由于每个元素均在拓扑基中，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+X" alt="\forall x\in X" eeimg="1">
+                    ，任意
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，总是存在拓扑基中元素
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=V%5Csubset+U" alt="V\subset U" eeimg="1">
+                    。则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+a%5Cin+A%2Ca%5Cin+V" alt="\exists a\in A,a\in V" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=a%5Cin%28U-%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%5Ccap+A" alt="a\in(U-\left \{ x \right \})\cap A" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%28U-%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%5Ccap+A%5Cneq+%5Cvarnothing" alt="(U-\left \{ x \right \})\cap A\neq \varnothing" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D%3DX" alt="\overline{A}=X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为可数稠密子集，拓扑空间可分。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    另外，
+                    <b>
+                        C1与C2公理都具有遗传性与可乘性
+                    </b>
+                    ，读者容易自证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来我会说说Lindelof定理，公理之间更多的联系，以及度量拓扑所具有的良好性质。下一次我可能会补充更多例题。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

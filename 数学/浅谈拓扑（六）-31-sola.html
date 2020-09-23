@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            浅谈拓扑（六）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-490f9314c910fa99b689c56bbc7d0163_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/107092089" target="_blank">
+                        浅谈拓扑（六）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-02-15
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    前几天本想接着写，却又被毕业的事情搞得团团转。不过也不妨碍，慢慢地写总有一天能写完的（现在看来可能再需要一个月才能结束了哈哈）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这次要说的内容是公理之间的相互联系。
+                </p>
+                <p>
+                    首先，由于我们之前一直强调由度量诱导的拓扑具有好的性质，那么我们来看看从分离公理和可数公理的角度出发，
+                    <b>
+                        度量拓扑
+                    </b>
+                    究竟好在哪里。
+                </p>
+                <p>
+                    度量拓扑显然是C1的，因为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+X" alt="\forall x\in X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++B%28x%2C%5Cfrac%7B1%7D%7Bn%7D%29%5Cright+%5C%7D_%7Bn%3D1%7D%5E%5Cinfty" alt="\left \{  B(x,\frac{1}{n})\right \}_{n=1}^\infty" eeimg="1">
+                    都可以作为其一组可数的邻域基。
+                </p>
+                <p>
+                    度量拓扑显然是T1的，因为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+X" alt="\forall x\in X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=X-%5Cleft+%5C%7B++x%5Cright+%5C%7D" alt="X-\left \{  x\right \}" eeimg="1">
+                    总是可以写作若干个开球的并。故
+                    <img src="https://www.zhihu.com/equation?tex=X-%5Cleft+%5C%7B++x%5Cright+%5C%7D" alt="X-\left \{  x\right \}" eeimg="1">
+                    开，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x%5Cright+%5C%7D" alt="\left \{  x\right \}" eeimg="1">
+                    闭。我们知道：所有单点集闭等价于T1，故得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    度量拓扑也是T4的。由于拓扑被赋予了度量，事实上任意两个点之间的“分离性”都是很容易通过度量来界定的。难题在于如何通过度量描述不同元素之间“分离”的性质。
+                </p>
+                <p>
+                    给定不交闭集
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    ，对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+X" alt="\forall x\in X" eeimg="1">
+                    ，我们不妨定义
+                    <b>
+                        点到集合之间的距离
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2CA%29%3Dinf_%7By%5Cin+A%7D%5Cleft+%5C%7B+d%28x%2Cy%29+%5Cright+%5C%7D" alt="d(x,A)=inf_{y\in A}\left \{ d(x,y) \right \}" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中所有元素距离的下确界。
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    为闭集，故他们必定包含了自身的边界。由于两个闭集不交，故一个拓扑空间中的点不可能同时处于
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    的边界上。这使得我们
+                    <b>
+                        通过度量分离不同点
+                    </b>
+                    成为可能。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-21a7a9154c516e5c7fff6e810961d2b4_r.jpg">
+                    <figcaption>
+                        对于两个不交闭集，下图所示情形（存在一点同时在两个闭集边界上）不可能发生
+                    </figcaption>
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    要证明其满足T4公理，我们想把所有靠近
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的点拿到一起组成
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的开邻域，把所有靠近
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的点拿到一起组成
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的开邻域。这意味着：我们只要利用度量定义一个衡量一个点是更靠近
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    还是更靠近
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的标准即可。
+                </p>
+                <p>
+                    我们构造函数：
+                    <img src="https://www.zhihu.com/equation?tex=f%3AX%5Crightarrow+%5B0%2C1%5D" alt="f:X\rightarrow [0,1]" eeimg="1">
+                    ，其中默认
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                    继承了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    的子空间拓扑。其将拓扑空间中点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    映射为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%28x%2CA%29%7D%7Bd%28x%2CA%29%2Bd%28x%2CB%29%7D" alt="\frac{d(x,A)}{d(x,A)+d(x,B)}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    容易验证这个函数在度量拓扑中是连续的。（我们可以利用数学分析中的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    语言定义验证）
+                </p>
+                <p>
+                    那么考虑
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D%28%5B0%2C%5Cfrac%7B1%7D%7B2%7D%29%29%2Cf%5E%7B-1%7D%28%28%5Cfrac%7B1%7D%7B2%7D%2C1%5D%29" alt="f^{-1}([0,\frac{1}{2})),f^{-1}((\frac{1}{2},1])" eeimg="1">
+                    ，由于
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C%5Cfrac%7B1%7D%7B2%7D%29%2C%28%5Cfrac%7B1%7D%7B2%7D%2C1%5D" alt="[0,\frac{1}{2}),(\frac{1}{2},1]" eeimg="1">
+                    在子空间拓扑中均为开集，故这两个集合在连续映射下的原像必为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中开集。
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=f%28A%29%3D0" alt="f(A)=0" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=A%5Csubset+f%5E%7B-1%7D%280%29" alt="A\subset f^{-1}(0)" eeimg="1">
+                    。同理，
+                    <img src="https://www.zhihu.com/equation?tex=B%5Csubset+f%5E%7B-1%7D%281%29" alt="B\subset f^{-1}(1)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%7B-1%7D%28%5B0%2C%5Cfrac%7B1%7D%7B2%7D%29%29%2Cf%5E%7B-1%7D%28%28%5Cfrac%7B1%7D%7B2%7D%2C1%5D%29" alt="f^{-1}([0,\frac{1}{2})),f^{-1}((\frac{1}{2},1])" eeimg="1">
+                    分别为
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    的开邻域，且不交，故满足T4公理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    总结一下，
+                    <b>
+                        度量拓扑必定满足T1，T2，T3，T4，C1性质
+                    </b>
+                    ，而且
+                    <b>
+                        利用度量可以做到元素的恰当分离
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么，度量拓扑一定是C2的吗？
+                </p>
+                <p>
+                    回答是否定的。简单的反例就是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    上的离散拓扑，其可以看作是度量
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2Cy%29%3D+%5Cbegin%7Bcases%7D+0%5C+%5C+%5C+%5C+x%3Dy%5C%5C+1%5C+%5C+%5C+%5C+x%5Cneq+y+%5Cend%7Bcases%7D" alt="d(x,y)= \begin{cases} 0\ \ \ \ x=y\\ 1\ \ \ \ x\neq y \end{cases}" eeimg="1">
+                    诱导的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由于直接证明或证否C2性质都不是一件很简单的工作，我们介绍一些证明与证否C2公理的方法。他们由定理的形式给出。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理：可分的度量空间是C2的。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    要证明C2，构造可数拓扑基即可。
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为可数子集，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D%3DX" alt="\overline{A}=X" eeimg="1">
+                    。
+                </p>
+                <p>
+                    直觉告诉我们：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D%3D%5Cleft+%5C%7B+B%28a%2C%5Cfrac%7B1%7D%7Bn%7D%29%7Ca%5Cin+A%2Cn%5Cin+%5Cmathbb%7BN%7D+%5Cright+%5C%7D" alt="\mathbb{B}=\left \{ B(a,\frac{1}{n})|a\in A,n\in \mathbb{N} \right \}" eeimg="1">
+                    为一组可数拓扑基。
+                </p>
+                <p>
+                    下面我们证明这一点。
+                </p>
+                <p>
+                    对于任意开集
+                    <img src="https://www.zhihu.com/equation?tex=U%2C%5Cforall+x%5Cin+U%2C%5Cexists+%5Cvarepsilon+%3E0%2CB%28x%2C%5Cvarepsilon%29%5Csubset+U" alt="U,\forall x\in U,\exists \varepsilon &gt;0,B(x,\varepsilon)\subset U" eeimg="1">
+                    。（度量拓扑中开集可以任意地小）
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D%3DX" alt="\overline{A}=X" eeimg="1">
+                    ，我们可以知道在
+                    <img src="https://www.zhihu.com/equation?tex=B%28x%2C%5Cvarepsilon%29" alt="B(x,\varepsilon)" eeimg="1">
+                    中必定存在不同于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中点
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-caec260734e0f329ea73ff190ed71977_r.jpg">
+                    <figcaption>
+                        现在的情形（a点我们还未选定）
+                    </figcaption>
+                </figure>
+                <p>
+                    回忆我们的目标是：找到
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    中的开球，其以
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中点为圆心，以
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7Bn%7D" alt="\frac{1}{n}" eeimg="1">
+                    为半径，且包含
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    。
+                </p>
+                <p>
+                    所以在这里，我们需要小心地选取这个
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    点。
+                </p>
+                <p>
+                    我们
+                    <b>
+                        希望
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=B%28a%2C%5Cfrac%7B1%7D%7Bn%7D%29" alt="B(a,\frac{1}{n})" eeimg="1">
+                    被包含在
+                    <img src="https://www.zhihu.com/equation?tex=B%28x%2C%5Cvarepsilon%29" alt="B(x,\varepsilon)" eeimg="1">
+                    中（这样其就被包含于
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    中），且
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+B%28a%2C%5Cfrac%7B1%7D%7Bn%7D%29" alt="x\in B(a,\frac{1}{n})" eeimg="1">
+                    。
+                </p>
+                <p>
+                    也就是说，我们的理想情形如下图所示：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-0ce72a1bc459120956c8b82f53cb5ff2_r.jpg">
+                    <figcaption>
+                        理想中的情形（此时a已经选定）
+                    </figcaption>
+                </figure>
+                <p>
+                    故我们希望
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    能满足如下性质：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=d%28x%2Ca%29%3C%5Cfrac%7B1%7D%7Bn%7D%2C%5Cvarepsilon-d%28x%2Ca%29%3E%5Cfrac%7B1%7D%7Bn%7D" alt="d(x,a)&lt;\frac{1}{n},\varepsilon-d(x,a)&gt;\frac{1}{n}" eeimg="1">
+                </p>
+                <p>
+                    为了满足后一个条件，我们可以
+                    <b>
+                        取
+                        <img src="https://www.zhihu.com/equation?tex=n%3E%5Cfrac%7B2%7D%7B%5Cvarepsilon%7D" alt="n&gt;\frac{2}{\varepsilon}" eeimg="1">
+                    </b>
+                    。为了满足前一个条件，我们可以
+                    <b>
+                        取
+                        <img src="https://www.zhihu.com/equation?tex=a%5Cin+A" alt="a\in A" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=d%28x%2Ca%29%3C%5Cfrac%7B1%7D%7Bn%7D" alt="d(x,a)&lt;\frac{1}{n}" eeimg="1">
+                    </b>
+                    （这一定能取到，因为
+                    <b>
+                        在度量拓扑中开集可以充分地小
+                    </b>
+                    ，而对于每个含
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域，其中都必然含有不同于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中点
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    ）。
+                </p>
+                <p>
+                    如此一来，我们理想中的情形得以实现。
+                </p>
+                <p>
+                    即
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+B%28a%2C%5Cfrac%7B1%7D%7Bn%7D%29%5Csubset+U" alt="x\in B(a,\frac{1}{n})\subset U" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    为拓扑基，且显然可数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注意到在证明过程中，我们用到了度量拓扑的性质：其中开集可以充分地小。这是度量所带来的非常强大且非常本质的性质！
+                </p>
+                <p>
+                    由这个定理，我们多了一条证明C2公理成立的途径。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面，我们再介绍Lindelof定理。
+                </p>
+                <p>
+                    <b>
+                        定理（Lindelof）：C2，T3空间是T4的。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们取可数拓扑基
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    。一对不交闭集
+                    <img src="https://www.zhihu.com/equation?tex=E%2CF" alt="E,F" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们想要利用T3公理，故很自然地，取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+E" alt="\forall x\in E" eeimg="1">
+                    ，则存在
+                    <img src="https://www.zhihu.com/equation?tex=x%2CF" alt="x,F" eeimg="1">
+                    的不交开邻域
+                    <img src="https://www.zhihu.com/equation?tex=Y%2CZ" alt="Y,Z" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    为拓扑基，故存在
+                    <img src="https://www.zhihu.com/equation?tex=B%5Cin+%5Cmathbb%7BB%7D%2Cx%5Cin+B%5Csubset+Y" alt="B\in \mathbb{B},x\in B\subset Y" eeimg="1">
+                    。注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BY%7D%2CF" alt="\overline{Y},F" eeimg="1">
+                    不交（因为中间隔了个开集
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    ）。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-cf8e4b8b5cd07e074e7be7c53bd4c4a6_r.jpg">
+                    <figcaption>
+                        示意图，B为拓扑基中元素
+                    </figcaption>
+                </figure>
+                <p>
+                    接下来为了证明T4公理成立，我们想构造
+                    <img src="https://www.zhihu.com/equation?tex=E%2CF" alt="E,F" eeimg="1">
+                    的不交开邻域。
+                </p>
+                <p>
+                    我们取出
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    中所有闭包与
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    不交的元素，构成集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+B_1%2CB_2%2C...+%5Cright+%5C%7D" alt="\left \{ B_1,B_2,... \right \}" eeimg="1">
+                    ，取出
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    中所有闭包与
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    不交的元素，构成集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+B_1%7B%27%7D%2CB_2%7B%27%7D%2C...+%5Cright+%5C%7D" alt="\left \{ B_1{&#39;},B_2{&#39;},... \right \}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=F%5Csubset+%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+B_n%2CE%5Csubset+%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+B_n%7B%27%7D" alt="F\subset \bigcup_{n=1}^\infty B_n,E\subset \bigcup_{n=1}^\infty B_n{&#39;}" eeimg="1">
+                    。（因为两个闭集有不交开邻域）
+                </p>
+                <p>
+                    要构造
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    的开邻域，我们需要选取的元素在
+                    <img src="https://www.zhihu.com/equation?tex=B_n" alt="B_n" eeimg="1">
+                    中但是并不能在
+                    <img src="https://www.zhihu.com/equation?tex=B_n%7B%27%7D" alt="B_n{&#39;}" eeimg="1">
+                    中。
+                </p>
+                <p>
+                    不妨令
+                    <img src="https://www.zhihu.com/equation?tex=U_n%3DB_n-%5Cbigcup_%7Bi%3D1%7D%5En%5Coverline%7BB_i%7B%27%7D%7D" alt="U_n=B_n-\bigcup_{i=1}^n\overline{B_i{&#39;}}" eeimg="1">
+                    ，则其即可作为生成
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    的开邻域的一组集合。
+                </p>
+                <p>
+                    同理地，令
+                    <img src="https://www.zhihu.com/equation?tex=V_n%3DB_n%7B%27%7D-%5Cbigcup_%7Bi%3D1%7D%5En%5Coverline%7BB_i%7D" alt="V_n=B_n{&#39;}-\bigcup_{i=1}^n\overline{B_i}" eeimg="1">
+                    ，作为生成
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    的开邻域的一组集合。
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=U_n%2CV_n" alt="U_n,V_n" eeimg="1">
+                    都是
+                    <b>
+                        开集
+                    </b>
+                    （开集去除了一个闭集），且任意
+                    <img src="https://www.zhihu.com/equation?tex=U_m" alt="U_m" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=V_n" alt="V_n" eeimg="1">
+                    <b>
+                        不交
+                    </b>
+                    （已经相互去除）。
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-ca62da02337f54f748ab0bca29d1d551_r.jpg">
+                    <figcaption>
+                        蓝色区域即为V，红色区域即为U，注意到E最终会全部被蓝色覆盖，F最终会全部被红色覆盖
+                    </figcaption>
+                </figure>
+                <p>
+                    接下来，只需要令
+                    <img src="https://www.zhihu.com/equation?tex=U%3D%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+U_n%2CV%3D%5Cbigcup_%7Bn%3D1%7D%5E%5Cinfty+V_n" alt="U=\bigcup_{n=1}^\infty U_n,V=\bigcup_{n=1}^\infty V_n" eeimg="1">
+                    ，则其即为
+                    <img src="https://www.zhihu.com/equation?tex=F%2CE" alt="F,E" eeimg="1">
+                    的不交开邻域（注意到对于任意
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+F" alt="x\in F" eeimg="1">
+                    ，由拓扑基性质，存在
+                    <img src="https://www.zhihu.com/equation?tex=B_n" alt="B_n" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+B_n%5Csubset+U_n%5Csubset+U" alt="x\in B_n\subset U_n\subset U" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=F%5Csubset+U" alt="F\subset U" eeimg="1">
+                    ）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Lindelof定理告诉我们：T3且非T4的空间一定不是C2的！
+                    </b>
+                    这是另一个判定非C2的重要方法！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们看一个有趣的题目。它会教会我们灵活运用至今为止的知识来认识拓扑空间。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    <b>
+                        为无理数集，定义
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                        上的开集具有形式
+                        <img src="https://www.zhihu.com/equation?tex=U-A" alt="U-A" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                        中开集，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A%5Csubset+S" alt="A\subset S" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在这个拓扑中的所有开集都是欧氏拓扑中的某个开集挖去无理数集的某个子集得到的。
+                </p>
+                <p>
+                    容易验证这个定义满足三条拓扑公理，故确实构成拓扑空间。
+                </p>
+                <p>
+                    接下来，我们来思考其是否满足分离公理与可数公理。
+                </p>
+                <p>
+                    注意到这个空间是
+                    <b>
+                        Hausdorff的
+                    </b>
+                    。因为对于任意两个不同实数
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    ，由于欧氏拓扑是Hausdorff的，故存在分别对应的不交开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV" alt="U,V" eeimg="1">
+                    。（开性是针对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    而言的）然而
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    中开集在这个拓扑中必定仍为开的（取
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cvarnothing" alt="A=\varnothing" eeimg="1">
+                    即可），故
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV" alt="U,V" eeimg="1">
+                    的开性在这个拓扑空间中也成立。
+                </p>
+                <p>
+                    注意到这个空间
+                    <b>
+                        并不是T3的
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BQ%7D%3D%5Cmathbb%7BR%7D-S" alt="\mathbb{Q}=\mathbb{R}-S" eeimg="1">
+                    为开集，故
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    为闭集。考虑实数
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    与闭集
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    ，他们不交。假设他们各自有不交开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV" alt="U,V" eeimg="1">
+                    。则
+                    <img src="https://www.zhihu.com/equation?tex=S%5Csubset+V" alt="S\subset V" eeimg="1">
+                    ，这意味着
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    </b>
+                    必定为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    中包含所有无理数且不含
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    的开集，即为稠密开集。则容易知道
+                    <img src="https://www.zhihu.com/equation?tex=V%5Ccap+%5Cmathbb%7BQ%7D" alt="V\cap \mathbb{Q}" eeimg="1">
+                    也为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    中稠密开集。假设
+                    <img src="https://www.zhihu.com/equation?tex=U%3DZ-Y" alt="U=Z-Y" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=V%5Ccap%5Cmathbb%7BQ%7D%5Ccap+Z%5Csubset+V%5Ccap%28Z-Y%29" alt="V\cap\mathbb{Q}\cap Z\subset V\cap(Z-Y)" eeimg="1">
+                    。由于
+                    <b>
+                        拓扑空间的每个非空开集与稠密子集交集非空
+                    </b>
+                    ，故得到：
+                    <img src="https://www.zhihu.com/equation?tex=V%5Ccap%5Cmathbb%7BQ%7D%5Ccap+Z" alt="V\cap\mathbb{Q}\cap Z" eeimg="1">
+                    非空，即
+                    <img src="https://www.zhihu.com/equation?tex=V%2CU" alt="V,U" eeimg="1">
+                    交集非空。
+                </p>
+                <p>
+                    这个空间
+                    <b>
+                        是C1的
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+X%EF%BC%8C%5Cleft+%5C%7B+%28x-%5Cfrac%7B1%7D%7Bn%7D%2Cx%2B%5Cfrac%7B1%7D%7Bn%7D%29%5Ccap%5Cmathbb%7BQ%7D+%5Cright+%5C%7D_%7Bn%3D1%7D%5E%5Cinfty+%5Ccup%5Cleft+%5C%7B++x%5Cright+%5C%7D" alt="\forall x\in X，\left \{ (x-\frac{1}{n},x+\frac{1}{n})\cap\mathbb{Q} \right \}_{n=1}^\infty \cup\left \{  x\right \}" eeimg="1">
+                    都是一组可数邻域基。
+                </p>
+                <p>
+                    不仅如此，这个空间还是
+                    <b>
+                        可分的
+                    </b>
+                    。考虑可数子集
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BQ%7D" alt="\mathbb{Q}" eeimg="1">
+                    ，其也为稠密子集。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    但是问题是：我们要如何判断其是否是C2的呢？
+                </p>
+                <p>
+                    这个空间不是T3的，这断绝了我们想通过满足T3不满足T4来论证非C2的想法。这个空间也并不一定能够通过度量诱导，这也断绝了我们利用可分+度量论证C2的想法。
+                </p>
+                <p>
+                    但是，我们做一个巧妙的转化，问题就能够解决了。
+                </p>
+                <p>
+                    考虑这个拓扑
+                    <b>
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                        上的子空间拓扑
+                    </b>
+                    。其中所有开集都是这个拓扑空间中的开集与
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    之交。对于任意无理数集的子集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=U-%28S-A%29" alt="U-(S-A)" eeimg="1">
+                    为拓扑空间中开集。故
+                    <img src="https://www.zhihu.com/equation?tex=S%5Ccap%28U-%28S-A%29%29" alt="S\cap(U-(S-A))" eeimg="1">
+                    为子空间拓扑中开集。注意到
+                    <img src="https://www.zhihu.com/equation?tex=S%5Ccap%28U-%28S-A%29%29%3DA" alt="S\cap(U-(S-A))=A" eeimg="1">
+                    ，这说明任意无理数集子集都是子空间拓扑中的开集！即
+                    <b>
+                        在
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    <b>
+                        上的子空间拓扑为离散拓扑!
+                    </b>
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    上的离散拓扑而言，其必定是
+                    <b>
+                        不可分
+                    </b>
+                    的，因为任何子集也都是闭集，故闭包仍旧等于自身。由于
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    不可数，故不存在可数稠密子集。
+                </p>
+                <p>
+                    若原拓扑空间满足C2公理，由其
+                    <b>
+                        遗传性
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    上的子空间拓扑也满足C2公理，故必定可分，矛盾！这告诉我们：原拓扑空间
+                    <b>
+                        不满足C2公理
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有时候，
+                    <b>
+                        运用子空间拓扑、乘积拓扑，结合公理的遗传性、可乘性
+                    </b>
+                    ，我们也能够巧妙地证明各种结论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下一次，我准备讲一些更有意思的定理。包括Urysohn定理，Tietze扩张定理，以及Urysohn度量化定理。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

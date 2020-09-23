@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            概率论学习笔记（五）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-030bb53caf8b3f679976c358d52756db_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/45861728" target="_blank">
+                        概率论学习笔记（五）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-02
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    终于迎来了第五篇笔记。在这篇笔记中，我们将会讨论一些概率论中十分重要的定理。我们会先介绍几类概率论常用函数，紧接着用这些函数来解决诸如
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维正态分布、大数律、中心极限定理等问题。特别地，我们将会给出中心极限定理的特征函数法证明，读者将会感受到正态分布之所以在现实生活中如此常见的原因。与此相伴地，本章内容可能比较艰深，需要读者自行多加体会。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们先介绍三种概率论中常用的函数。这三种函数都是为了方便地计算独立随机变量的和的分布而被引入的。
+                </p>
+                <p>
+                    <b>
+                        一、概率母函数
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为非负，取整数值的离散型随机变量。
+                        <img src="https://www.zhihu.com/equation?tex=s%5Cin+%5B-1%2C1%5D" alt="s\in [-1,1]" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=g%28s%29%3DEs%5EX" alt="g(s)=Es^X" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的概率母函数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    若将概率母函数的表达式展开，我们可以得到
+                    <img src="https://www.zhihu.com/equation?tex=g%28s%29%3D%5Csum_%7Bj%3D0%7D%5E%7B%5Cinfty%7Ds%5EjP%28X%3Dj%29" alt="g(s)=\sum_{j=0}^{\infty}s^jP(X=j)" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=g%28s%29" alt="g(s)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5B-1%2C1%5D" alt="[-1,1]" eeimg="1">
+                    上是绝对收敛的。
+                </p>
+                <p>
+                    那么为何这个函数叫作概率母函数呢？事实上，由概率母函数我们可以把这个分布唯一地确定下来。
+                </p>
+                <p>
+                    我们来看一些其重要的性质：
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+k%5Cin+%5Cmathbb%7BN%7D%2C%5C+P%28X%3Dk%29%3D%5Cfrac%7Bg%5E%7B%28k%29%7D%280%29%7D%7Bk%21%7D" alt="\forall k\in \mathbb{N},\ P(X=k)=\frac{g^{(k)}(0)}{k!}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    容易看出
+                    <img src="https://www.zhihu.com/equation?tex=g%28s%29" alt="g(s)" eeimg="1">
+                    及其导数级数均在
+                    <img src="https://www.zhihu.com/equation?tex=%5B-1%2C1%5D" alt="[-1,1]" eeimg="1">
+                    中内闭一致收敛，故可逐项求导。（事实上，可以证明
+                    <img src="https://www.zhihu.com/equation?tex=g%28s%29" alt="g(s)" eeimg="1">
+                    可以无穷次逐项求导）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bg%5E%7B%28k%29%7D%28s%29%7D%7Bk%21%7D%3D%5Cfrac%7B1%7D%7Bk%21%7D%5Csum_%7Bj%3Dk%7D%5E%7B%5Cinfty%7D%5Cfrac%7Bd%5Eks%5Ej%7D%7Bds%5Ek%7DP%28X%3Dj%29" alt="\frac{g^{(k)}(s)}{k!}=\frac{1}{k!}\sum_{j=k}^{\infty}\frac{d^ks^j}{ds^k}P(X=j)" eeimg="1">
+                </p>
+                <p>
+                    故可得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bg%5E%7B%28k%29%7D%280%29%7D%7Bk%21%7D%3DP%28X%3Dk%29" alt="\frac{g^{(k)}(0)}{k!}=P(X=k)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=EX%3Dg%5E%7B%27%7D%281%29" alt="EX=g^{&#39;}(1)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g%5E%7B%27%7D%281%29%3D%5Csum_%7Bj%3D1%7D%5E%7B%5Cinfty%7DjP%28X%3Dj%29%3DEX" alt="g^{&#39;}(1)=\sum_{j=1}^{\infty}jP(X=j)=EX" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、若
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        相互独立，
+                        <img src="https://www.zhihu.com/equation?tex=g_i%28s%29" alt="g_i(s)" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                        的概率母函数，则
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Csum_%7Bj%3D1%7D%5EnX_j" alt="Y=\sum_{j=1}^nX_j" eeimg="1">
+                        有概率母函数
+                        <img src="https://www.zhihu.com/equation?tex=g_Y%28s%29%3D%5Cprod_%7Bj%3D1%7D%5Eng_j%28s%29" alt="g_Y(s)=\prod_{j=1}^ng_j(s)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                    相互独立，容易知道
+                    <img src="https://www.zhihu.com/equation?tex=s%5E%7BX_1%7D%2C...%2Cs%5E%7BX_n%7D" alt="s^{X_1},...,s^{X_n}" eeimg="1">
+                    相互独立。
+                </p>
+                <p>
+                    由数学期望的性质，
+                    <img src="https://www.zhihu.com/equation?tex=g_Y%28s%29%3DEs%5E%7B%5Csum_%7Bj%3D1%7D%5EnX_j%7D%3D%5Cprod_%7Bj%3D1%7D%5EnEs%5E%7BX_j%7D%3D%5Cprod_%7Bj%3D1%7D%5Eng_i%28s%29" alt="g_Y(s)=Es^{\sum_{j=1}^nX_j}=\prod_{j=1}^nEs^{X_j}=\prod_{j=1}^ng_i(s)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这三个性质都是很有用的。性质1告诉我们：
+                    <b>
+                        概率母函数与概率分布是相互唯一决定的。
+                    </b>
+                    概率母函数的各阶导数在
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    处的取值对应着概率。
+                </p>
+                <p>
+                    对于性质2，实际上各阶原点矩都是可以求出的。读者可以自行验证
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2%3Dg%5E%7B%27%27%7D%281%29%2Bg%5E%7B%27%7D%281%29" alt="EX^2=g^{&#39;&#39;}(1)+g^{&#39;}(1)" eeimg="1">
+                    。要求
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    阶中心矩，只需要考虑
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    阶导数在
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    处的取值即可。
+                </p>
+                <p>
+                    对于性质3，则是最重要的性质。
+                    <b>
+                        它为我们提供了一种手段研究独立随机变量之和：先求出随机变量之和的概率母函数，再由概率母函数与概率分布的一一对应性反过来研究概率分布。
+                    </b>
+                    这样的性质与思想也会贯穿后面我们要提到的矩母函数以及特征函数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来，给出常用离散分布的概率母函数，并且介绍概率母函数的应用。
+                </p>
+                <p>
+                    常用离散分布的概率母函数，请读者自行计算：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%28n%2Cp%29%2Cg%28s%29%3D%281-p%2Bsp%29%5En" alt="X\sim B(n,p),g(s)=(1-p+sp)^n" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+P%28%5Clambda%29%2Cg%28s%29%3De%5E%7B%5Clambda%28s-1%29%7D" alt="X\sim P(\lambda),g(s)=e^{\lambda(s-1)}" eeimg="1">
+                </p>
+                <p>
+                    3、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+G%28p%29%2Cg%28s%29%3D%5Cfrac%7Bsp%7D%7B1-s%281-p%29%7D" alt="X\sim G(p),g(s)=\frac{sp}{1-s(1-p)}" eeimg="1">
+                </p>
+                <p>
+                    4、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+Pas%28r%2Cp%29%2Cg%28s%29%3D%28%5Cfrac%7Bsp%7D%7B1-s%281-p%29%7D%29%5Er" alt="X\sim Pas(r,p),g(s)=(\frac{sp}{1-s(1-p)})^r" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        概率母函数的一个重要应用就是证明概率分布关于某些参数具有独立可加性。
+                    </b>
+                </p>
+                <p>
+                    我们举例说明这一点：
+                </p>
+                <p>
+                    例
+                    <b>
+                        （二项分布关于
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        的独立可加性）
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_k%2C%5C+X_i%5Csim+B%28n_i%2Cp%29" alt="X_1,...,X_k,\ X_i\sim B(n_i,p)" eeimg="1">
+                    ，均相互独立。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=Y%3D%5Csum_%7Bj%3D1%7D%5EkX_j%2Cg_Y%28s%29%3D%5Cprod_%7Bj%3D1%7D%5Ekg_i%28s%29" alt="Y=\sum_{j=1}^kX_j,g_Y(s)=\prod_{j=1}^kg_i(s)" eeimg="1">
+                </p>
+                <p>
+                    求得
+                    <img src="https://www.zhihu.com/equation?tex=g_Y%28s%29%3D%281-p%2Bsp%29%5E%7B%5Csum_%7Bi%3D1%7D%5Ekn_i%7D" alt="g_Y(s)=(1-p+sp)^{\sum_{i=1}^kn_i}" eeimg="1">
+                </p>
+                <p>
+                    我们发现
+                    <img src="https://www.zhihu.com/equation?tex=B%28%5Csum_%7Bi%3D1%7D%5Ekn_i%2Cp%29" alt="B(\sum_{i=1}^kn_i,p)" eeimg="1">
+                    的概率母函数与
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的概率母函数完全相同。
+                </p>
+                <p>
+                    由概率母函数与概率分布一一对应，
+                    <img src="https://www.zhihu.com/equation?tex=Y%5Csim+B%28%5Csum_%7Bi%3D1%7D%5Ekn_i%2Cp%29" alt="Y\sim B(\sum_{i=1}^kn_i,p)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们再举一个稍复杂点的例子。细心的读者一定注意到了帕斯卡分布的概率母函数是
+                    <img src="https://www.zhihu.com/equation?tex=r" alt="r" eeimg="1">
+                    个几何分布的概率母函数的乘积。那我们不妨证明如下命题：
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_r%2CX_i%5Csim+G%28p%29" alt="X_1,...,X_r,X_i\sim G(p)" eeimg="1">
+                    ，均相互独立，证明：
+                    <img src="https://www.zhihu.com/equation?tex=Y%3D%5Csum_%7Bi%3D1%7D%5ErX_i%5Csim+Pas%28r%2Cp%29" alt="Y=\sum_{i=1}^rX_i\sim Pas(r,p)" eeimg="1">
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    由概率母函数的性质3，容易求出
+                    <img src="https://www.zhihu.com/equation?tex=g_Y%28s%29%3D%28%5Cfrac%7Bsp%7D%7B1-s%281-p%29%7D%29%5Er" alt="g_Y(s)=(\frac{sp}{1-s(1-p)})^r" eeimg="1">
+                    。
+                </p>
+                <p>
+                    进行Taylor展开，得到
+                    <img src="https://www.zhihu.com/equation?tex=g_Y%28s%29%3D%28sp%29%5Er%5Csum_%7Bj%3D0%7D%5E%5Cinfty+%5Cbinom%7Br%2Bj-1%7D%7Br-1%7D%28s-sp%29%5Ej%3D%5Csum_%7Bk%3Dr%7D%5E%5Cinfty%5Cbinom%7Bk-1%7D%7Br-1%7Dp%5Er%281-p%29%5E%7Bk-r%7Ds%5Ek" alt="g_Y(s)=(sp)^r\sum_{j=0}^\infty \binom{r+j-1}{r-1}(s-sp)^j=\sum_{k=r}^\infty\binom{k-1}{r-1}p^r(1-p)^{k-r}s^k" eeimg="1">
+                </p>
+                <p>
+                    我们容易看出，概率母函数经过变形后有了
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D0%7D%5E%5Cinfty+P%28X%3Dj%29s%5Ej" alt="\sum_{j=0}^\infty P(X=j)s^j" eeimg="1">
+                    的形式。那么同样地，利用概率母函数与概率分布一一对应的性质，我们知道
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3Dk%29%3D%5Cbinom%7Bk-1%7D%7Br-1%7Dp%5Er%28q-p%29%5E%7Bk-r%7D%5C+%28k%3Dr%2Cr%2B1%2C...%29" alt="P(Y=k)=\binom{k-1}{r-1}p^r(q-p)^{k-r}\ (k=r,r+1,...)" eeimg="1">
+                    ，为帕斯卡分布
+                    <img src="https://www.zhihu.com/equation?tex=Pas%28r%2Cp%29" alt="Pas(r,p)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在此我列出了
+                    <b>
+                        常用离散分布关于某些参数具有的独立可加性
+                    </b>
+                    ，读者可以自己用概率母函数进行验证：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=B%28n%2Cp%29" alt="B(n,p)" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Clambda%29" alt="P(\lambda)" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                </p>
+                <p>
+                    3、
+                    <img src="https://www.zhihu.com/equation?tex=Pas%28r%2Cp%29" alt="Pas(r,p)" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=r" alt="r" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    概率母函数的另一个应用便是
+                    <b>
+                        在计算繁琐的概率时往往能够提供便利
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们以例子阐释方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：投掷
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    颗骰子，求总点数为
+                    <img src="https://www.zhihu.com/equation?tex=k%3Dn%2B6" alt="k=n+6" eeimg="1">
+                    的概率。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                    分别为第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    颗骰子的点数，相互独立且同分布。
+                    <img src="https://www.zhihu.com/equation?tex=Y%3D%5Csum_%7Bi%3D1%7D%5EnX_i" alt="Y=\sum_{i=1}^nX_i" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g_%7BX_i%7D%28s%29%3DEs%5E%7BX_i%7D%3D%5Cfrac%7B1%7D%7B6%7D%28s%2Bs%5E2%2B...%2Bs%5E6%29%3D%5Cfrac%7Bs%281-s%5E6%29%7D%7B6%281-s%29%7D" alt="g_{X_i}(s)=Es^{X_i}=\frac{1}{6}(s+s^2+...+s^6)=\frac{s(1-s^6)}{6(1-s)}" eeimg="1">
+                </p>
+                <p>
+                    故由概率母函数的性质，
+                    <img src="https://www.zhihu.com/equation?tex=g_Y%28s%29%3D%5Cfrac%7Bs%5En%281-s%5E6%29%5En%7D%7B6%5En%281-s%29%5En%7D" alt="g_Y(s)=\frac{s^n(1-s^6)^n}{6^n(1-s)^n}" eeimg="1">
+                </p>
+                <p>
+                    回忆概率母函数的性质，
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3Dk%29%3D%5Cfrac%7Bg_Y%5E%7B%28k%29%7D%280%29%7D%7Bk%21%7D" alt="P(Y=k)=\frac{g_Y^{(k)}(0)}{k!}" eeimg="1">
+                    ，即为
+                    <img src="https://www.zhihu.com/equation?tex=g_Y%28s%29" alt="g_Y(s)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    处Taylor展开式中
+                    <img src="https://www.zhihu.com/equation?tex=s%5Ek" alt="s^k" eeimg="1">
+                    的系数。
+                </p>
+                <p>
+                    对概率母函数进行Taylor展开，
+                    <img src="https://www.zhihu.com/equation?tex=g_Y%28s%29%3D%5Cfrac%7Bs%5En%281-s%5E6%29%5En%7D%7B6%5En%7D%5Csum_%7Bi%3D0%7D%5E%5Cinfty%5Cbinom%7Bi%2Bn-1%7D%7Bn-1%7Ds%5Ei" alt="g_Y(s)=\frac{s^n(1-s^6)^n}{6^n}\sum_{i=0}^\infty\binom{i+n-1}{n-1}s^i" eeimg="1">
+                </p>
+                <p>
+                    可以求出
+                    <img src="https://www.zhihu.com/equation?tex=s%5E%7Bn%2B6%7D" alt="s^{n+6}" eeimg="1">
+                    项的系数为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cbinom%7Bn%2B5%7D%7Bn-1%7D-n%7D%7B6%5En%7D" alt="\frac{\binom{n+5}{n-1}-n}{6^n}" eeimg="1">
+                    ，即为所求概率。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        二、特征函数
+                    </b>
+                </p>
+                <p>
+                    对于特征函数，我们可能要利用到一些复数的知识。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        为实随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                        为虚数单位，
+                        <img src="https://www.zhihu.com/equation?tex=Z%3DX%2BiY" alt="Z=X+iY" eeimg="1">
+                        。若
+                        <img src="https://www.zhihu.com/equation?tex=EX%2CEY" alt="EX,EY" eeimg="1">
+                        存在，则
+                        <img src="https://www.zhihu.com/equation?tex=EZ%3DEX%2BiEY" alt="EZ=EX+iEY" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于随机变量
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29%3DEe%5E%7BitX%7D%2Ct%5Cin+%5Cmathbb%7BR%7D" alt="\phi(t)=Ee^{itX},t\in \mathbb{R}" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的特征函数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    容易知道，对于离散型随机变量，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29%3D%5Csum_ke%5E%7Bitk%7DP%28X%3Dx_k%29" alt="\phi(t)=\sum_ke^{itk}P(X=x_k)" eeimg="1">
+                    。对于连续型随机变量，假设密度为
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29%3D%5Cint_%7B%5Cmathbb%7BR%7D%7De%5E%7Bitx%7Df%28x%29dx" alt="\phi(t)=\int_{\mathbb{R}}e^{itx}f(x)dx" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于概率母函数，我们知道其与概率分布唯一地相互对应。那么问题是：特征函数是否与概率分布唯一地相互对应呢？答案是肯定的。我们由特征函数的定义知道给定了概率分布一定能计算出特征函数，下面我们介绍由特征函数如何反推出概率分布。
+                </p>
+                <p>
+                    我们不加证明地给出逆转公式。
+                </p>
+                <p>
+                    <b>
+                        定理（逆转公式）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29" alt="\phi(t)" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的特征函数，
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        为分布函数，则对于任意的
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        的连续点
+                        <img src="https://www.zhihu.com/equation?tex=a%2Cb" alt="a,b" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=F%28b%29-F%28a%29%3D%5Cfrac%7B1%7D%7B2%5Cpi%7D%5Clim_%7BT%5Crightarrow%5Cinfty%7D%5Cint_%7B-T%7D%5ET%5Cfrac%7Be%5E%7B-ita%7D-e%5E%7B-itb%7D%7D%7Bit%7D%5Cphi%28t%29dt" alt="F(b)-F(a)=\frac{1}{2\pi}\lim_{T\rightarrow\infty}\int_{-T}^T\frac{e^{-ita}-e^{-itb}}{it}\phi(t)dt" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    逆转公式的本质是一个Fourier变换，有兴趣的读者可以自行查阅其证明。
+                </p>
+                <p>
+                    事实上，对逆转公式还能进行一下推广。更一般地，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%2Cb" alt="\forall a,b" eeimg="1">
+                    （不必是连续点），
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%5Cpi%7D%5Clim_%7BT%5Crightarrow%5Cinfty%7D%5Cint_%7B-T%7D%5ET%5Cfrac%7Be%5E%7B-ita%7D-e%5E%7B-itb%7D%7D%7Bit%7D%5Cphi%28t%29dt%3DP%28a%3CX%3Cb%29%2B%5Cfrac%7BP%28X%3Da%29%2BP%28X%3Db%29%7D%7B2%7D" alt="\frac{1}{2\pi}\lim_{T\rightarrow\infty}\int_{-T}^T\frac{e^{-ita}-e^{-itb}}{it}\phi(t)dt=P(a&lt;X&lt;b)+\frac{P(X=a)+P(X=b)}{2}" eeimg="1">
+                </p>
+                <p>
+                    可以得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%5Cpi%7D%5Clim_%7BT%5Crightarrow%5Cinfty%7D%5Cint_%7B-T%7D%5ET%5Cfrac%7Be%5E%7B-ita%7D-e%5E%7B-itb%7D%7D%7Bit%7D%5Cphi%28t%29dt%3D%5Cfrac%7BF%28b%29-F%28a%29%2BF%28b-0%29-F%28a-0%29%7D%7B2%7D" alt="\frac{1}{2\pi}\lim_{T\rightarrow\infty}\int_{-T}^T\frac{e^{-ita}-e^{-itb}}{it}\phi(t)dt=\frac{F(b)-F(a)+F(b-0)-F(a-0)}{2}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们给出逆转公式的目的事实上是为了说明：由特征函数也可以唯一地确定概率分布。特征函数与概率分布是唯一地相互决定的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于特征函数的性质，我们给出如下这几点：（均仅对连续型随机变量的情形证明）
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%280%29%3D1%2C%7C%5Cphi%28t%29%7C%5Cleq+1%2C%5Coverline%7B%5Cphi%28t%29%7D%3D%5Cphi%28-t%29" alt="\phi(0)=1,|\phi(t)|\leq 1,\overline{\phi(t)}=\phi(-t)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    由内积不等式与Euler公式，
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%28t%29%7C%3D%7CEcostX%2BiEsintX%7C%5Cleq+%5Csqrt%7B%7CEcos%5E2tX%2BEsin%5E2tX%7C%7D%3D1" alt="|\phi(t)|=|EcostX+iEsintX|\leq \sqrt{|Ecos^2tX+Esin^2tX|}=1" eeimg="1">
+                </p>
+                <p>
+                    同样地，由Euler公式，
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Cphi%28t%29%7D%3DEcostX-iEsintX%3D%5Cphi%28-t%29" alt="\overline{\phi(t)}=EcostX-iEsintX=\phi(-t)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29" alt="\phi(t)" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                        上一致连续。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    要证明一致连续性，我们只需要对
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%28t%29-%5Cphi%28s%29%7C" alt="|\phi(t)-\phi(s)|" eeimg="1">
+                    进行估计。
+                </p>
+                <p>
+                    容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%28t%29-%5Cphi%28s%29%7C%3D%7CE%28e%5E%7BitX%7D-e%5E%7BisX%7D%29%7C%3D%7C%5Cint_%7B%5Cmathbb%7BR%7D%7D%28e%5E%7BitX%7D-e%5E%7BisX%7D%29f%28x%29dx%7C" alt="|\phi(t)-\phi(s)|=|E(e^{itX}-e^{isX})|=|\int_{\mathbb{R}}(e^{itX}-e^{isX})f(x)dx|" eeimg="1">
+                </p>
+                <p>
+                    那么我们的任务转变为了对这个定积分进行估计。
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cint_%7B%5Cmathbb%7BR%7D%7D%28e%5E%7BitX%7D-e%5E%7BisX%7D%29f%28x%29dx%7C%5Cleq%5Cint_%7B%5Cmathbb%7BR%7D%7D%7Ce%5E%7BitX%7D-e%5E%7BisX%7D%7Cf%28x%29dx" alt="|\int_{\mathbb{R}}(e^{itX}-e^{isX})f(x)dx|\leq\int_{\mathbb{R}}|e^{itX}-e^{isX}|f(x)dx" eeimg="1">
+                </p>
+                <p>
+                    对于后面的定积分，我们注意到：当
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的绝对值很大时，我们可以利用
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    无穷积分的收敛性进行估计。而当
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的绝对值较小时，我们可以利用
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7Bix%7D" alt="e^{ix}" eeimg="1">
+                    的连续型进行估计。故我们将积分分为两部分。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B%5Cmathbb%7BR%7D%7D%7Ce%5E%7BitX%7D-e%5E%7BisX%7D%7Cf%28x%29dx%3D%5Cint_%7B%7Cx%7C%5Cleq+M%7D%7Ce%5E%7Bi%28t-s%29X%7D-1%7Cf%28x%29dx%2B%5Cint_%7B%7Cx%7C%3EM%7D%7Ce%5E%7Bi%28t-s%29X%7D-1%7Cf%28x%29dx" alt="\int_{\mathbb{R}}|e^{itX}-e^{isX}|f(x)dx=\int_{|x|\leq M}|e^{i(t-s)X}-1|f(x)dx+\int_{|x|&gt;M}|e^{i(t-s)X}-1|f(x)dx" eeimg="1">
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B%7Cx%7C%5Cleq+M%7D%7Ce%5E%7Bi%28t-s%29X%7D-1%7Cf%28x%29dx" alt="\int_{|x|\leq M}|e^{i(t-s)X}-1|f(x)dx" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon%3E0%2C%5Cexists+%5Cdelta%3E0%2C%5C+s.t.%5C+%7Cx%7C%5Cleq+%5Cdelta" alt="\forall \epsilon&gt;0,\exists \delta&gt;0,\ s.t.\ |x|\leq \delta" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%7Ce%5E%7B-ixM%7D-1%7C%3C%5Cfrac%7B%5Cepsilon%7D%7B2%7D" alt="|e^{-ixM}-1|&lt;\frac{\epsilon}{2}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    另一方面，由
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    无穷积分收敛的Cauchy准则，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon%3E0%2C%5Cexists+M%2Cs.t.%5C+%5Cint_%7B%7Cx%7C%3EM%7Df%28x%29dx%3C%5Cfrac%7B%5Cepsilon%7D%7B2%7D" alt="\forall \epsilon&gt;0,\exists M,s.t.\ \int_{|x|&gt;M}f(x)dx&lt;\frac{\epsilon}{2}" eeimg="1">
+                </p>
+                <p>
+                    故综上所述，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon%3E0%2C%5Cexists+M%3E0%2C%5Cdelta%3E0%2Cs.t.%5C+%7Cs-t%7C%3C%5Cdelta" alt="\forall \epsilon&gt;0,\exists M&gt;0,\delta&gt;0,s.t.\ |s-t|&lt;\delta" eeimg="1">
+                    时，有
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cphi%28s%29-%5Cphi%28t%29%7C%3C%5Cepsilon" alt="|\phi(s)-\phi(t)|&lt;\epsilon" eeimg="1">
+                    成立，得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、 若
+                        <img src="https://www.zhihu.com/equation?tex=EX%5Ek" alt="EX^k" eeimg="1">
+                        存在，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%5E%7B%28k%29%7D%28t%29%3Di%5EkE%28X%5Eke%5E%7BitX%7D%29" alt="\phi^{(k)}(t)=i^kE(X^ke^{itX})" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    容易证明含参变量无穷积分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B-%5Cinfty%7D%5E%5Cinfty+e%5E%7Bitx%7Df%28x%29dx" alt="\int_{-\infty}^\infty e^{itx}f(x)dx" eeimg="1">
+                    对
+                    <img src="https://www.zhihu.com/equation?tex=t%5Cin+%5Cmathbb%7BR%7D" alt="t\in \mathbb{R}" eeimg="1">
+                    一致收敛，可证明求导能够与积分交换顺序。
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%5E%7B%28k%29%7D%28t%29%3D%5Cint_%7B%5Cmathbb%7BR%7D%7D%5Cfrac%7Bd%5Ek%7D%7Bdt%5Ek%7De%5E%7Bitx%7Df%28x%29dx%3Di%5Ek%5Cint_%7B%5Cmathbb%7BR%7D%7Dx%5Eke%5E%7Bitx%7Df%28x%29dx%3Di%5EkE%28X%5Eke%5E%7BitX%7D%29" alt="\phi^{(k)}(t)=\int_{\mathbb{R}}\frac{d^k}{dt^k}e^{itx}f(x)dx=i^k\int_{\mathbb{R}}x^ke^{itx}f(x)dx=i^kE(X^ke^{itX})" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        一个重要的推论是：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%5E%7B%28k%29%7D%280%29%3Di%5EkEX%5Ek" alt="\phi^{(k)}(0)=i^kEX^k" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        4、若
+                        <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                        相互独立，分别有特征函数
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi_i%28t%29" alt="\phi_i(t)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Csum_%7Bi%3D1%7D%5EnX_i" alt="Y=\sum_{i=1}^nX_i" eeimg="1">
+                        有特征函数
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi_Y%28t%29%3D%5Cprod_%7Bi%3D1%7D%5En%5Cphi_i%28t%29" alt="\phi_Y(t)=\prod_{i=1}^n\phi_i(t)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    类似地，性质4是核心的性质。是我们利用特征函数来研究独立随机变量之和的分布的便利所在。我们接下来给出常见分布的特征函数，并且阐释其应用。
+                </p>
+                <p>
+                    <b>
+                        常用分布的特征函数
+                    </b>
+                    ，请读者自己验证：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%28n%2Cp%29%2C%5Cphi%28t%29%3D%281-p%2Bpe%5E%7Bit%7D%29%5En" alt="X\sim B(n,p),\phi(t)=(1-p+pe^{it})^n" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+P%28%5Clambda%29%2C%5Cphi%28t%29%3De%5E%7B%5Clambda%28e%5E%7Bit%7D-1%29%7D" alt="X\sim P(\lambda),\phi(t)=e^{\lambda(e^{it}-1)}" eeimg="1">
+                </p>
+                <p>
+                    3、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+G%28p%29%2C%5Cphi%28t%29%3D%5Cfrac%7Bpe%5E%7Bit%7D%7D%7B1-%281-p%29e%5E%7Bit%7D%7D" alt="X\sim G(p),\phi(t)=\frac{pe^{it}}{1-(1-p)e^{it}}" eeimg="1">
+                </p>
+                <p>
+                    4、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+Pas%28r%2Cp%29%2C%5Cphi%28t%29%3D%28%5Cfrac%7Bpe%5E%7Bit%7D%7D%7B1-%281-p%29e%5E%7Bit%7D%7D%29%5Er" alt="X\sim Pas(r,p),\phi(t)=(\frac{pe^{it}}{1-(1-p)e^{it}})^r" eeimg="1">
+                </p>
+                <p>
+                    5、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+U%28a%2Cb%29%2C%5Cphi%28t%29%3D%5Cfrac%7Be%5E%7Bibt%7D-e%5E%7Biat%7D%7D%7Bit%28b-a%29%7D" alt="X\sim U(a,b),\phi(t)=\frac{e^{ibt}-e^{iat}}{it(b-a)}" eeimg="1">
+                </p>
+                <p>
+                    6、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Clambda%29%2C%5Cphi%28t%29%3D%281-%5Cfrac%7Bit%7D%7B%5Clambda%7D%29%5E%7B-1%7D" alt="X\sim \varepsilon(\lambda),\phi(t)=(1-\frac{it}{\lambda})^{-1}" eeimg="1">
+                </p>
+                <p>
+                    7、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5CGamma%28%5Calpha%2C%5Cbeta%29%2C%5Cphi%28t%29%3D%281-%5Cfrac%7Bit%7D%7B%5Cbeta%7D%29%5E%7B-%5Calpha%7D" alt="X\sim \Gamma(\alpha,\beta),\phi(t)=(1-\frac{it}{\beta})^{-\alpha}" eeimg="1">
+                </p>
+                <p>
+                    8、
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%28%5Cmu%2C%5Csigma%5E2%29%2C%5Cphi%28t%29%3De%5E%7Bi%5Cmu+t-%5Cfrac%7B%5Csigma%5E2t%5E2%7D%7B2%7D%7D" alt="X\sim N(\mu,\sigma^2),\phi(t)=e^{i\mu t-\frac{\sigma^2t^2}{2}}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    其中，我们将给出正态分布的特征函数的计算过程，因为这是特别重要的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例
+                    <b>
+                        （正态分布的特征函数）
+                    </b>
+                </p>
+                <p>
+                    对于正态分布直接上手求
+                    <img src="https://www.zhihu.com/equation?tex=N%28%5Cmu%2C%5Csigma%5E2%29" alt="N(\mu,\sigma^2)" eeimg="1">
+                    是困难的。不妨先求出标准正态分布的特征函数，再反推出一般正态分布的特征函数。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%280%2C1%29" alt="X\sim N(0,1)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29%3DEe%5E%7BitX%7D%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cint_%7B%5Cmathbb%7BR%7D%7De%5E%7Bitx-%5Cfrac%7Bx%5E2%7D%7B2%7D%7Ddx" alt="\phi(t)=Ee^{itX}=\frac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}e^{itx-\frac{x^2}{2}}dx" eeimg="1">
+                </p>
+                <p>
+                    对于这样类型的积分，自然的做法就是对指数进行配方。
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bt%5E2%7D%7B2%7D%7D%5Cint_%7B%5Cmathbb%7BR%7D%7De%5E%7B-%5Cfrac%7B%28x-it%29%5E2%7D%7B2%7D%7Ddx%3De%5E%7B-%5Cfrac%7Bt%5E2%7D%7B2%7D%7D" alt="\frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}\int_{\mathbb{R}}e^{-\frac{(x-it)^2}{2}}dx=e^{-\frac{t^2}{2}}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    此处值得一提的是，这只是一种形式地做法。（真正严谨的做法要利用到微分方程
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%5E%7B%27%7D%28t%29%3D-t%5Cphi%28t%29" alt="\phi^{&#39;}(t)=-t\phi(t)" eeimg="1">
+                    以及初值条件
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%280%29%3D1" alt="\phi(0)=1" eeimg="1">
+                    来解出）
+                </p>
+                <p>
+                    那么对于
+                    <img src="https://www.zhihu.com/equation?tex=Y%5Csim+N%28%5Cmu%2C%5Csigma%5E2%29" alt="Y\sim N(\mu,\sigma^2)" eeimg="1">
+                    ，容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BY-%5Cmu%7D%7B%5Csigma%7D%5Csim+N%280%2C1%29" alt="\frac{Y-\mu}{\sigma}\sim N(0,1)" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_Y%28t%29%3DEe%5E%7BitY%7D%3DEe%5E%7Bit%28%5Cmu%2B%5Csigma+X%29%7D%3De%5E%7Bit%5Cmu%7D%5Cphi_X%28%5Csigma+t%29%3De%5E%7Bit%5Cmu-%5Cfrac%7B%5Csigma%5E2t%5E2%7D%7B2%7D%7D" alt="\phi_Y(t)=Ee^{itY}=Ee^{it(\mu+\sigma X)}=e^{it\mu}\phi_X(\sigma t)=e^{it\mu-\frac{\sigma^2t^2}{2}}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于特征函数的应用，与概率母函数的类似，可以
+                    <b>
+                        证明概率分布关于某个参数具有独立可加性
+                    </b>
+                    。（事实上，离散型分布均可用概率母函数处理，只有连续型随机变量需要利用特征函数处理）
+                </p>
+                <p>
+                    下面给出常用连续型分布关于参数的独立可加性，读者可以模仿概率母函数处的证明利用特征函数性质4自行证明：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=N%28%5Cmu%2C%5Csigma%5E2%29" alt="N(\mu,\sigma^2)" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%2C%5Csigma%5E2" alt="\mu,\sigma^2" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma%28%5Calpha%2C%5Cbeta%29" alt="\Gamma(\alpha,\beta)" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，在这一章我们为后面要介绍的大数律以及中心极限定理进行一些准备工作，引出一些定义。这些定义都是关于一列随机变量的收敛性的。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的 分布函数，
+                        <img src="https://www.zhihu.com/equation?tex=F_n" alt="F_n" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X_n" alt="X_n" eeimg="1">
+                        的分布函数，若
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=F%28x%29" alt="F(x)" eeimg="1">
+                        连续点，且
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7DF_n%28x%29%3DF%28x%29" alt="\lim_{n\rightarrow\infty}F_n(x)=F(x)" eeimg="1">
+                        ，则称
+                        <img src="https://www.zhihu.com/equation?tex=X_n" alt="X_n" eeimg="1">
+                        依分布收敛到
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        ,记
+                        <img src="https://www.zhihu.com/equation?tex=X_n%5Coverset%7Bd%7D%7B%5Crightarrow%7DX" alt="X_n\overset{d}{\rightarrow}X" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    容易看到依分布收敛意味着当
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    充分大时，我们能用
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的分布近似为
+                    <img src="https://www.zhihu.com/equation?tex=X_n" alt="X_n" eeimg="1">
+                    的分布。
+                </p>
+                <p>
+                    我们接下来不加证明地给出连续性定理。
+                </p>
+                <p>
+                    <b>
+                        定理（连续性定理）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi_n%28t%29" alt="\phi_n(t)" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X_n" alt="X_n" eeimg="1">
+                        特征函数，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29" alt="\phi(t)" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        特征函数。
+                        <img src="https://www.zhihu.com/equation?tex=X_n%5Coverset%7Bd%7D%7B%5Crightarrow%7DX" alt="X_n\overset{d}{\rightarrow}X" eeimg="1">
+                        当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+t%2C%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cphi_n%28t%29%3D%5Cphi%28t%29" alt="\forall t,\lim_{n\rightarrow\infty}\phi_n(t)=\phi(t)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们将会在中心极限定理的证明中利用到连续性定理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于随机向量，其特征函数可由一维情况推广而来。
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29" alt="\vec{X}=(X_1,...,X_n)" eeimg="1">
+                        为随机向量，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bt%7D%3D%28x_1%2C...%2Cx_n%29" alt="\vec{t}=(x_1,...,x_n)" eeimg="1">
+                        ，则特征函数
+                        <img src="https://www.zhihu.com/equation?tex=%5Cphi%28%5Cvec%7Bt%7D%29%3DEe%5E%7Bi%5Cvec%7Bt%7D%5Cvec%7BX%5ET%7D%7D" alt="\phi(\vec{t})=Ee^{i\vec{t}\vec{X^T}}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        三、多元正态分布
+                    </b>
+                </p>
+                <p>
+                    在本章中，我们将用特征函数、矩阵来研究多元正态分布的性质，给出其密度。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7B%5Cmu%7D%3D%28%5Cmu_1%2C...%2C%5Cmu_n%29%5ET%2CB_%7Bn%5Ctimes+m%7D" alt="\vec{\mu}=(\mu_1,...,\mu_n)^T,B_{n\times m}" eeimg="1">
+                        为常数矩阵，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cepsilon_1%2C...%2C%5Cepsilon_m" alt="\epsilon_1,...,\epsilon_m" eeimg="1">
+                        为相互独立且服从标准正态分布的随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7B%5Cepsilon%7D%3D%28%5Cepsilon_1%2C...%2C%5Cepsilon_m%29%5ET" alt="\vec{\epsilon}=(\epsilon_1,...,\epsilon_m)^T" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29%5ET" alt="\vec{X}=(X_1,...,X_n)^T" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%5Cvec%7B%5Cmu%7D%2BB%5Cvec%7B%5Cepsilon%7D" alt="\vec{X}=\vec{\mu}+B\vec{\epsilon}" eeimg="1">
+                        ，称
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D" alt="\vec{X}" eeimg="1">
+                        服从
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        维正态分布，记
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%28%5Cvec%7B%5Cmu%7D%2CBB%5ET%29" alt="X\sim N(\vec{\mu},BB^T)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    读者容易发现，由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon_1%2C...%2C%5Cepsilon_m" alt="\epsilon_1,...,\epsilon_m" eeimg="1">
+                    为相互独立且服从标准正态分布的随机变量，其协方差矩阵
+                    <img src="https://www.zhihu.com/equation?tex=E%5Cvec%7B%5Cepsilon%7D%5Cvec%7B%5Cepsilon%7D%5ET%3DI" alt="E\vec{\epsilon}\vec{\epsilon}^T=I" eeimg="1">
+                    为单位矩阵。
+                </p>
+                <p>
+                    所以我们的可以得到：
+                    <img src="https://www.zhihu.com/equation?tex=E%5Cvec%7BX%7D%3D%5Cvec%7B%5Cmu%7D%2C%5CSigma%3DE%28%5Cvec%7BX%7D-%5Cvec%7B%5Cmu%7D%29%28%5Cvec%7BX%7D-%5Cvec%7B%5Cmu%7D%29%5ET%3DBB%5ET" alt="E\vec{X}=\vec{\mu},\Sigma=E(\vec{X}-\vec{\mu})(\vec{X}-\vec{\mu})^T=BB^T" eeimg="1">
+                    。这就是多元正态分布被记作
+                    <img src="https://www.zhihu.com/equation?tex=N%28%5Cvec%7B%5Cmu%7D%2CBB%5ET%29" alt="N(\vec{\mu},BB^T)" eeimg="1">
+                    的理由。
+                </p>
+                <p>
+                    我们接下来来求得
+                    <b>
+                        多元正态分布的特征函数
+                    </b>
+                    。
+                </p>
+                <p>
+                    容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_%7B%5Cepsilon%7D%28%5Cvec%7Bt%7D%29%3DEe%5E%7Bi%5Cvec%7Bt%7D%5ET%5Cvec%7B%5Cepsilon%7D%7D%3De%5E%7B-%5Cfrac%7B%5Cvec%7Bt%7D%5ET%5Cvec%7Bt%7D%7D%7B2%7D%7D" alt="\phi_{\epsilon}(\vec{t})=Ee^{i\vec{t}^T\vec{\epsilon}}=e^{-\frac{\vec{t}^T\vec{t}}{2}}" eeimg="1">
+                </p>
+                <p>
+                    利用同样的手法，计算
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D" alt="\vec{X}" eeimg="1">
+                    的特征函数，得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_X%28%5Cvec%7Bt%7D%29%3DEe%5E%7Bi%5Cvec%7Bt%7D%5ET%5Cvec%7BX%7D%7D%3De%5E%7Bi%5Cvec%7Bt%7D%5ET%5Cvec%7B%5Cmu%7D%7DEe%5E%7Bi%5Cvec%7Bt%7D%5ETB%5Cvec%7B%5Cepsilon%7D%7D" alt="\phi_X(\vec{t})=Ee^{i\vec{t}^T\vec{X}}=e^{i\vec{t}^T\vec{\mu}}Ee^{i\vec{t}^TB\vec{\epsilon}}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3De%5E%7Bi%5Cvec%7Bt%7D%5ET%5Cvec%7B%5Cmu%7D-%5Cfrac%7B%5Cvec%7Bt%7D%5ETBB%5ET%5Cvec%7Bt%7D%7D%7B2%7D%7D%3De%5E%7Bi%5Cvec%7Bt%7D%5ET%5Cvec%7B%5Cmu%7D-%5Cfrac%7B%5Cvec%7Bt%7D%5ET%5CSigma%5Cvec%7Bt%7D%7D%7B2%7D%7D" alt="=e^{i\vec{t}^T\vec{\mu}-\frac{\vec{t}^TBB^T\vec{t}}{2}}=e^{i\vec{t}^T\vec{\mu}-\frac{\vec{t}^T\Sigma\vec{t}}{2}}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于多元正态分布的性质，在此多数都直接给出结论，读者可以尝试自己证明。
+                </p>
+                <p>
+                    <b>
+                        多元正态分布的性质：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29%5ET%5Csim+N%28%5Cvec%7B%5Cmu%7D%2C%5CSigma%29" alt="\vec{X}=(X_1,...,X_n)^T\sim N(\vec{\mu},\Sigma)" eeimg="1">
+                        当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvec%7Ba%7D%3D%28a_1%2C...%2Ca_n%29%5ET%2C%5Cvec%7Ba%7D%5ET%5Cvec%7BX%7D%5Csim+N%28%5Cvec%7Ba%7D%5ET%5Cvec%7B%5Cmu%7D%2C%5Cvec%7Ba%7D%5ET%5CSigma%5Cvec%7Ba%7D%29" alt="\forall \vec{a}=(a_1,...,a_n)^T,\vec{a}^T\vec{X}\sim N(\vec{a}^T\vec{\mu},\vec{a}^T\Sigma\vec{a})" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （利用特征函数进行变形即可）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%5Csim+N%28%5Cvec%7B%5Cmu%7D%2C%5CSigma%29%2C" alt="\vec{X}\sim N(\vec{\mu},\Sigma)," eeimg="1">
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        相互独立当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5CSigma%3Ddiag%5Cleft+%5C%7B%5Csigma_1%5E2%2C...%2C%5Csigma_n%5E2++%5Cright+%5C%7D" alt="\Sigma=diag\left \{\sigma_1^2,...,\sigma_n^2  \right \}" eeimg="1">
+                        为对角矩阵。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、当
+                        <img src="https://www.zhihu.com/equation?tex=%5CSigma" alt="\Sigma" eeimg="1">
+                        正定时，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D" alt="\vec{X}" eeimg="1">
+                        为连续型随机向量，联合密度存在。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        联合密度：
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D%5Cfrac%7B1%7D%7B%282%5Cpi%29%5E%7B%5Cfrac%7Bn%7D%7B2%7D%7D%5Csqrt%7Bdet%28%5CSigma%29%7D%7De%5E%7B-%5Cfrac%7B%28%5Cvec%7Bx%7D-%5Cvec%7B%5Cmu%7D%29%5ET%5CSigma%5E%7B-1%7D%28%5Cvec%7Bx%7D-%5Cvec%7B%5Cmu%7D%29++%7D%7B2%7D%7D" alt="f(x)=\frac{1}{(2\pi)^{\frac{n}{2}}\sqrt{det(\Sigma)}}e^{-\frac{(\vec{x}-\vec{\mu})^T\Sigma^{-1}(\vec{x}-\vec{\mu})  }{2}}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们介绍一种新的常用分布：卡方分布。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        独立同分布，均服从标准正态分布，则
+                        <img src="https://www.zhihu.com/equation?tex=Z%3D%5Csum_%7Bi%3D1%7D%5EnX_i%5E2" alt="Z=\sum_{i=1}^nX_i^2" eeimg="1">
+                        具有概率密度
+                        <img src="https://www.zhihu.com/equation?tex=f_n%28z%29%3D%5Cfrac%7B1%7D%7B2%5E%7B%5Cfrac%7Bn%7D%7B2%7D%7D%5CGamma%28%5Cfrac%7Bn%7D%7B2%7D%29%7Dz%5E%7B%5Cfrac%7Bn%7D%7B2%7D-1%7De%5E%7B-%5Cfrac%7Bz%7D%7B2%7D%7D%28z%5Cgeq+0%29" alt="f_n(z)=\frac{1}{2^{\frac{n}{2}}\Gamma(\frac{n}{2})}z^{\frac{n}{2}-1}e^{-\frac{z}{2}}(z\geq 0)" eeimg="1">
+                        ，称
+                        <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                        服从自由度为
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        的卡方分布，
+                        <img src="https://www.zhihu.com/equation?tex=Z%5Csim+%5Cchi%5E2%28n%29" alt="Z\sim \chi^2(n)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    细心的读者会发现：
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cchi%5E2%28n%29" alt="\chi^2(n)" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=%5CGamma%28%5Cfrac%7Bn%7D%7B2%7D%2C%5Cfrac%7B1%7D%7B2%7D%29" alt="\Gamma(\frac{n}{2},\frac{1}{2})" eeimg="1">
+                        是等价的。
+                    </b>
+                </p>
+                <p>
+                    关于其证明，传统的方法是利用数学归纳法，证明密度的递推关系是正确的。
+                </p>
+                <p>
+                    我们在这里利用
+                    <b>
+                        特征函数
+                    </b>
+                    进行处理，以显示其威力。
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    设
+                    <img src="https://www.zhihu.com/equation?tex=Y_1%3DX_1%5E2" alt="Y_1=X_1^2" eeimg="1">
+                    ，利用分布函数法求随机变量的函数的分布，可以容易地求得
+                    <img src="https://www.zhihu.com/equation?tex=Y_1%5Csim+%5CGamma%28%5Cfrac%7B1%7D%7B2%7D%2C%5Cfrac%7B1%7D%7B2%7D%29" alt="Y_1\sim \Gamma(\frac{1}{2},\frac{1}{2})" eeimg="1">
+                    。（交给读者自己验证）
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=Z%3D%5Csum_%7Bi%3D1%7D%5EnY_i" alt="Z=\sum_{i=1}^nY_i" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=Y_i" alt="Y_i" eeimg="1">
+                    独立同分布。
+                </p>
+                <p>
+                    这样的独立的随机变量之和的形式利用特征函数处理再简单不过。
+                </p>
+                <p>
+                    回忆我们之前曾经求得过
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5CGamma%28%5Calpha%2C%5Cbeta%29%2C%5Cphi%28t%29%3D%281-%5Cfrac%7Bit%7D%7B%5Cbeta%7D%29%5E%7B-%5Calpha%7D" alt="X\sim \Gamma(\alpha,\beta),\phi(t)=(1-\frac{it}{\beta})^{-\alpha}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_Y%28t%29%3D%281-2it%29%5E%7B-%5Cfrac%7B1%7D%7B2%7D%7D" alt="\phi_Y(t)=(1-2it)^{-\frac{1}{2}}" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_Z%28t%29%3D%281-2it%29%5E%7B-%5Cfrac%7Bn%7D%7B2%7D%7D" alt="\phi_Z(t)=(1-2it)^{-\frac{n}{2}}" eeimg="1">
+                </p>
+                <p>
+                    由特征函数与概率分布相互唯一决定，
+                    <img src="https://www.zhihu.com/equation?tex=Z%5Csim+%5CGamma%28%5Cfrac%7Bn%7D%7B2%7D%2C%5Cfrac%7B1%7D%7B2%7D%29" alt="Z\sim \Gamma(\frac{n}{2},\frac{1}{2})" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    我们可以发现，证明过程事实上就是在证明伽马分布对于第一个参数的独立可加性。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们通过例子给出一个数理统计中的有趣结果。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例
+                    <b>
+                        （样本均值与样本方差）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        独立同分布，
+                        <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BX_n%7D%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5EnX_i%7D%7Bn%7D" alt="\overline{X_n}=\frac{\sum_{i=1}^nX_i}{n}" eeimg="1">
+                        为样本均值，
+                        <img src="https://www.zhihu.com/equation?tex=s%5E2%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5En%28X_i-%5Coverline%7BX_n%7D%29%5E2%7D%7Bn-1%7D" alt="s^2=\frac{\sum_{i=1}^n(X_i-\overline{X_n})^2}{n-1}" eeimg="1">
+                        为样本方差。证明：
+                        <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                        服从标准正态分布时，
+                        <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BX_n%7D" alt="\overline{X_n}" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=s%5E2" alt="s^2" eeimg="1">
+                        独立，且
+                        <img src="https://www.zhihu.com/equation?tex=%28n-1%29s%5E2%5Csim+%5Cchi%5E2%28n-1%29" alt="(n-1)s^2\sim \chi^2(n-1)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们不妨定义正交矩阵
+                    <img src="https://www.zhihu.com/equation?tex=T%3D%5Cfrac%7B1%7D%7B%5Csqrt%7Bn%7D%7D%5Cbegin%7Bbmatrix%7D+1+%26+1+%26+...+%261+%5C%5C+++...%26++...%26...++%26+...%5C%5C+++...%26...++%26++...%26...++%5Cend%7Bbmatrix%7D" alt="T=\frac{1}{\sqrt{n}}\begin{bmatrix} 1 &amp; 1 &amp; ... &amp;1 \\   ...&amp;  ...&amp;...  &amp; ...\\   ...&amp;...  &amp;  ...&amp;...  \end{bmatrix}" eeimg="1">
+                    。（我们只关心第一行均为1，这样经过矩阵乘法后可以得到
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2B...%2BX_n" alt="X_1+...+X_n" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BX%7D%3D%28X_1%2C...%2CX_n%29%5Csim+N%28%5Cvec%7B0%7D%2CI%29" alt="\vec{X}=(X_1,...,X_n)\sim N(\vec{0},I)" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BY%7D%3DT%5Cvec%7BX%7D%5Csim+N%28%5Cvec%7B0%7D%2CI%29" alt="\vec{Y}=T\vec{X}\sim N(\vec{0},I)" eeimg="1">
+                </p>
+                <p>
+                    我们知道了变换后的
+                    <img src="https://www.zhihu.com/equation?tex=Y_1%2C...%2CY_n" alt="Y_1,...,Y_n" eeimg="1">
+                    独立同分布且均服从标准正态分布，且
+                    <img src="https://www.zhihu.com/equation?tex=Y_1%3D%5Csqrt%7Bn%7D%5Coverline%7BX_n%7D" alt="Y_1=\sqrt{n}\overline{X_n}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们成功地利用正交矩阵的变换将样本均值变为了一个随机变量的同时，保持了其余分量独立同分布，均服从标准正态分布。
+                </p>
+                <p>
+                    又注意到，正交变换还是保持度量的，故我们有
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5EnX_i%5E2%3D%5Csum_%7Bi%3D1%7D%5EnY_i%5E2" alt="\sum_{i=1}^nX_i^2=\sum_{i=1}^nY_i^2" eeimg="1">
+                    。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=%28n-1%29s%5E2%3D%5Csum_%7Bi%3D1%7D%5EnX_i%5E2-n%5Coverline%7BX_n%7D%5E2%3D%5Csum_%7Bi%3D1%7D%5EnY_i%5E2-Y_1%5E2%3D%5Csum_%7Bi%3D2%7D%5EnY_i%5E2%5Csim%5Cchi%5E2%28n-1%29" alt="(n-1)s^2=\sum_{i=1}^nX_i^2-n\overline{X_n}^2=\sum_{i=1}^nY_i^2-Y_1^2=\sum_{i=2}^nY_i^2\sim\chi^2(n-1)" eeimg="1">
+                </p>
+                <p>
+                    而且
+                    <img src="https://www.zhihu.com/equation?tex=%28n-1%29s%5E2" alt="(n-1)s^2" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=Y_2%2C...%2CY_n" alt="Y_2,...,Y_n" eeimg="1">
+                    的函数，且
+                    <img src="https://www.zhihu.com/equation?tex=Y_i" alt="Y_i" eeimg="1">
+                    相互独立。故其与
+                    <img src="https://www.zhihu.com/equation?tex=Y_1" alt="Y_1" eeimg="1">
+                    独立。
+                </p>
+                <p>
+                    所以样本均值与样本方差独立 。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个例子告诉我们十分有趣的一个结论：若样本是独立同为正态分布，样本均值竟然与样本方差互不影响。而且我们从这个结论其实已能得到样本方差的无偏性结论。（
+                    <img src="https://www.zhihu.com/equation?tex=Es%5E2%3D%5Csigma%5E2" alt="Es^2=\sigma^2" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        四、大数律
+                    </b>
+                </p>
+                <p>
+                    大数律主要研究的是当满足一定条件的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                    的个数足够多
+                    <img src="https://www.zhihu.com/equation?tex=%28n%5Crightarrow%5Cinfty%29" alt="(n\rightarrow\infty)" eeimg="1">
+                    时，这些随机变量的均值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n%7D%7Bn%7D%28S_n%3D%5Csum_%7Bi%3D1%7D%5EnX_i%29" alt="\frac{S_n}{n}(S_n=\sum_{i=1}^nX_i)" eeimg="1">
+                    将会如何收敛到其数学期望。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在进入正题之前，我们先介绍一会儿将会用到的两种随机变量序列的收敛性。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n" alt="\xi_n" eeimg="1">
+                        为一列随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">
+                        为随机变量，若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon%3E0%2C%5Clim_%7Bn%5Crightarrow%5Cinfty%7DP%28%7C%5Cxi_n-%5Cxi%7C%5Cgeq+%5Cepsilon%29%3D0" alt="\forall \epsilon&gt;0,\lim_{n\rightarrow\infty}P(|\xi_n-\xi|\geq \epsilon)=0" eeimg="1">
+                        ，称
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n" alt="\xi_n" eeimg="1">
+                        依概率收敛到
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">
+                        ，记
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Bp%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{p}{\rightarrow}\xi" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n" alt="\xi_n" eeimg="1">
+                        为一列随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">
+                        为随机变量，若
+                        <img src="https://www.zhihu.com/equation?tex=P%28%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%5Cxi_n%3D%5Cxi%29%3D1" alt="P(\lim_{n\rightarrow \infty}\xi_n=\xi)=1" eeimg="1">
+                        ，称
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n" alt="\xi_n" eeimg="1">
+                        几乎处处收敛到
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">
+                        ，记
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Ba.s.%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{a.s.}{\rightarrow}\xi" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    读者现在可能还体会不到这两种收敛性之间的差别。我们在后面还将对两种收敛性进行区分。
+                </p>
+                <p>
+                    读者现在可以理解的是：依概率收敛意味着当
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    充分大时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n" alt="\xi_n" eeimg="1">
+                    离
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">
+                    足够近的概率是很大的。
+                </p>
+                <p>
+                    而几乎处处收敛意味着满足
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%5Cxi_n%28%5Comega%29%3D%5Cxi%28%5Comega%29" alt="\lim_{n\rightarrow \infty}\xi_n(\omega)=\xi(\omega)" eeimg="1">
+                    条件的样本点
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    组成的集合的概率测度为1。其实关键问题在于
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim" alt="\lim" eeimg="1">
+                    与概率测度的位置的不同导致了这两种收敛性的根本区别。
+                </p>
+                <p>
+                    我们现在可能能够模糊地体会到几乎处处收敛比依概率收敛要更强一些。在本章末，我们将会给出证明与反例。届时，我们将能够更加深入地理解这两种收敛性的区别。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们先来介绍弱大数律。
+                </p>
+                <p>
+                    <b>
+                        定理（Chebyshev弱大数律）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C..." alt="X_1,X_2,..." eeimg="1">
+                        为一列两两不相关的随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=EX_i%3D%5Cmu_i" alt="EX_i=\mu_i" eeimg="1">
+                        存在且有限，
+                        <img src="https://www.zhihu.com/equation?tex=VarX_i%3D%5Csigma_i%5E2" alt="VarX_i=\sigma_i^2" eeimg="1">
+                        有限
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        ，满足
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+c%5Cin+%5Cmathbb%7BR%7D%2C%5C+%5Cforall+i%2C%5C+%5Csigma_i%5E2%5Cleq+c" alt="\exists c\in \mathbb{R},\ \forall i,\ \sigma_i^2\leq c" eeimg="1">
+                        （所有方差有共同上界）。则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n-ES_n%7D%7Bn%7D++%5Coverset%7Bp%7D%7B%5Crightarrow%7D0%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n-ES_n}{n}  \overset{p}{\rightarrow}0(n\rightarrow\infty)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    由于随机变量列两两不相关，
+                    <img src="https://www.zhihu.com/equation?tex=VarS_n%3D%5Csum_%7Bi%3D1%7D%5EnVarX_i%5Cleq+nc" alt="VarS_n=\sum_{i=1}^nVarX_i\leq nc" eeimg="1">
+                </p>
+                <p>
+                    下面验证依概率收敛的正确性：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon%3E0%2CP%28%7C%5Cfrac%7BS_n-ES_n%7D%7Bn%7D%7C%5Cgeq+%5Cepsilon%29%3DP%28%7CS_n-ES_n%7C%5Cgeq+n%5Cepsilon%29" alt="\forall \epsilon&gt;0,P(|\frac{S_n-ES_n}{n}|\geq \epsilon)=P(|S_n-ES_n|\geq n\epsilon)" eeimg="1">
+                </p>
+                <p>
+                    回忆我们之前提到过的Chebyshev不等式，我们有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%7CS_n-ES_n%7C%5Cgeq+n%5Cepsilon%29%5Cleq+%5Cfrac%7BVarS_n%7D%7Bn%5E2%5Cepsilon%5E2%7D%5Cleq+%5Cfrac%7Bc%7D%7Bn%5Cepsilon%5E2%7D%5Crightarrow+0%28n%5Crightarrow%5Cinfty%29" alt="P(|S_n-ES_n|\geq n\epsilon)\leq \frac{VarS_n}{n^2\epsilon^2}\leq \frac{c}{n\epsilon^2}\rightarrow 0(n\rightarrow\infty)" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n-ES_n%7D%7Bn%7D++%5Coverset%7Bp%7D%7B%5Crightarrow%7D0%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n-ES_n}{n}  \overset{p}{\rightarrow}0(n\rightarrow\infty)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以看到，
+                    <b>
+                        对于特殊情况，当随机变量列中每个随机变量有相同期望
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        时，我们可以得到
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n%7D%7Bn%7D%5Coverset%7Bp%7D%7B%5Crightarrow%7D%5Cmu%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n}{n}\overset{p}{\rightarrow}\mu(n\rightarrow\infty)" eeimg="1">
+                        。
+                    </b>
+                    这也是经常使用的一种形式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来再给出一个弱大数律，它将会回答为何实验次数无限多次时我们可以用频率来逼近概率。
+                </p>
+                <p>
+                    <b>
+                        定理（Bernoulli弱大数律）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        事件
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        发生的概率为
+                        <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                        。做独立重复试验，前
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        次试验中
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        发生
+                        <img src="https://www.zhihu.com/equation?tex=v_n" alt="v_n" eeimg="1">
+                        次，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bv_n%7D%7Bn%7D%5Coverset%7Bp%7D%7B%5Crightarrow%7Dp%5C+%28n%5Crightarrow%5Cinfty%29" alt="\frac{v_n}{n}\overset{p}{\rightarrow}p\ (n\rightarrow\infty)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=X_i%3D%5Cbegin%7Bcases%7D+0%5C+%5C+%E7%AC%ACi%E6%AC%A1%E5%8F%91%E7%94%9F%5C%5C+1%5C+%5C+%E7%AC%ACi%E6%AC%A1%E4%B8%8D%E5%8F%91%E7%94%9F+%5Cend%7Bcases%7D" alt="X_i=\begin{cases} 0\ \ 第i次发生\\ 1\ \ 第i次不发生 \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v_n%3D%5Csum_%7Bi%3D1%7D%5EnX_i" alt="v_n=\sum_{i=1}^nX_i" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                    独立同分布。
+                </p>
+                <p>
+                    由Chebyshev大数律且
+                    <img src="https://www.zhihu.com/equation?tex=EX_i%3Dp" alt="EX_i=p" eeimg="1">
+                    ，得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bv_n%7D%7Bn%7D%5Coverset%7Bp%7D%7B%5Crightarrow%7Dp%5C+%28n%5Crightarrow%5Cinfty%29" alt="\frac{v_n}{n}\overset{p}{\rightarrow}p\ (n\rightarrow\infty)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Bernoulli弱大数律告诉我们：独立重复试验次数足够多时，频率将会依概率收敛到概率。
+                    </b>
+                </p>
+                <p>
+                    事实上，弱大数律仍有许多不同的版本。不同版本的弱大数律或多或少对某一个条件进行了放宽的同时收紧了另一个条件。
+                </p>
+                <p>
+                    我们不加证明地给出：
+                </p>
+                <p>
+                    <b>
+                        定理（Khinchine弱大数律）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C..." alt="X_1,X_2,..." eeimg="1">
+                        为一列独立同分布的随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu_i%3DEX_i" alt="\mu_i=EX_i" eeimg="1">
+                        存在且有限，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n%7D%7Bn%7D%5Coverset%7Bp%7D%7B%5Crightarrow%7D%5Cmu%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n}{n}\overset{p}{\rightarrow}\mu(n\rightarrow\infty)" eeimg="1">
+                        。（注意到不再需要方差有限的条件）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这里要提醒读者：务必记清每个大数律的适用条件。比如：
+                    <b>
+                        数学期望有限的条件是不可舍去的。
+                    </b>
+                    读者可以自行验证：对于Cauchy分布，其数学期望为
+                    <img src="https://www.zhihu.com/equation?tex=%2B%5Cinfty" alt="+\infty" eeimg="1">
+                    ，而弱大数律对其不成立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    进行一个总结的话：弱大数律说的是对于满足一定条件的随机变量列，若取出的随机变量个数足够多，这些被取出的随机变量的平均值依概率收敛到其期望。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来来看强大数律。
+                </p>
+                <p>
+                    <b>
+                        定理（Cantelli强大数律）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C..." alt="X_1,X_2,..." eeimg="1">
+                        为一列独立的随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=EX_i%3D%5Cmu_i" alt="EX_i=\mu_i" eeimg="1">
+                        存在且有限，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+M%2C%5C+%5Cforall+i%2C%5C+E%28X_i-%5Cmu_i%29%5E4%5Cleq+M" alt="\exists M,\ \forall i,\ E(X_i-\mu_i)^4\leq M" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n-ES_n%7D%7Bn%7D%5Coverset%7Ba.s.%7D%7B%5Crightarrow%7D0%5C+%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n-ES_n}{n}\overset{a.s.}{\rightarrow}0\ (n\rightarrow\infty)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    这个定理的证明比较冗长。我们先证明一个之后证明的估计中要用到的引理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    引理：
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C..." alt="X_1,X_2,..." eeimg="1">
+                    为一列独立的随机变量，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%2C%5C+EX_i%3D0%2CEX_i%5E4%5Cleq+M" alt="\forall i,\ EX_i=0,EX_i^4\leq M" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+C%2Cs.t.%5C+E%28%5Csum_%7Bi%3D1%7D%5EnX_i%29%5E4%5Cleq+Cn%5E2" alt="\exists C,s.t.\ E(\sum_{i=1}^nX_i)^4\leq Cn^2" eeimg="1">
+                    。
+                </p>
+                <p>
+                    引理证明：
+                </p>
+                <p>
+                    将式子展开，得到
+                    <img src="https://www.zhihu.com/equation?tex=E%28%5Csum_%7Bi%3D1%7D%5EnX_i%29%5E4%3DE%28%5Csum_%7Bi%3D1%7D%5EnX_i%5E2%29%5E2%2B4E%28%5Csum_%7Bi%3Cj%7DX_iX_j%29%5E2%2B4E%28%5Csum_kX_k%5E2%5Csum_%7Bi%3Cj%7DX_iX_j%29" alt="E(\sum_{i=1}^nX_i)^4=E(\sum_{i=1}^nX_i^2)^2+4E(\sum_{i&lt;j}X_iX_j)^2+4E(\sum_kX_k^2\sum_{i&lt;j}X_iX_j)" eeimg="1">
+                </p>
+                <p>
+                    由于随机变量列相互独立，
+                    <img src="https://www.zhihu.com/equation?tex=4E%28%5Csum_kX_k%5E2%5Csum_%7Bi%3Cj%7DX_iX_j%29%3D0" alt="4E(\sum_kX_k^2\sum_{i&lt;j}X_iX_j)=0" eeimg="1">
+                </p>
+                <p>
+                    故原式
+                    <img src="https://www.zhihu.com/equation?tex=%3DE%5Csum_%7Bi%3D1%7D%5EnX_i%5E2%2B6%5Csum_%7Bi%3Cj%7DEXi%5E2X_j%5E2" alt="=E\sum_{i=1}^nX_i^2+6\sum_{i&lt;j}EXi^2X_j^2" eeimg="1">
+                </p>
+                <p>
+                    由内积不等式，
+                    <img src="https://www.zhihu.com/equation?tex=EX_i%5E2X_j%5E2%5Cleq+%5Csqrt%7BEX_i%5E4EX_j%5E4%7D%5Cleq+M" alt="EX_i^2X_j^2\leq \sqrt{EX_i^4EX_j^4}\leq M" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+C%2Cs.t.%5C+E%28%5Csum_%7Bi%3D1%7D%5EnX_i%29%5E4%5Cleq+Cn%5E2" alt="\exists C,s.t.\ E(\sum_{i=1}^nX_i)^4\leq Cn^2" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回到强大数律的证明，我们取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon_n%3Dn%5E%7B-%5Cfrac%7B1%7D%7B8%7D%7D" alt="\epsilon_n=n^{-\frac{1}{8}}" eeimg="1">
+                </p>
+                <p>
+                    考虑级数
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty+P%28%7C%5Cfrac%7BS_n-ES_n%7D%7Bn%7D%7C%5Cgeq+%5Cepsilon_n%29" alt="\sum_{n=1}^\infty P(|\frac{S_n-ES_n}{n}|\geq \epsilon_n)" eeimg="1">
+                </p>
+                <p>
+                    由Markov不等式，原式
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleq+%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%5Cfrac%7BE%28S_n-ES_n%29%5E4%7D%7Bn%5E4%5Cepsilon_n%5E4%7D%5Cleq+%5Csum_%7Bn%3D1%7D%5E%5Cinfty%5Cfrac%7BC%7D%7Bn%5E2%5Cepsilon_n%5E4%7D" alt="\leq \sum_{n=1}^\infty \frac{E(S_n-ES_n)^4}{n^4\epsilon_n^4}\leq \sum_{n=1}^\infty\frac{C}{n^2\epsilon_n^4}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty%5Cfrac%7BC%7D%7Bn%5E2%5Cepsilon_n%5E4%7D%3DC%5Csum_%7Bn%3D1%7D%5E%5Cinfty%5Cfrac%7B1%7D%7Bn%5E%7B%5Cfrac%7B3%7D%7B2%7D%7D%7D%3C%5Cinfty" alt="\sum_{n=1}^\infty\frac{C}{n^2\epsilon_n^4}=C\sum_{n=1}^\infty\frac{1}{n^{\frac{3}{2}}}&lt;\infty" eeimg="1">
+                    ，级数收敛。
+                </p>
+                <p>
+                    由Borel-Cantelli引理，我们知道
+                    <img src="https://www.zhihu.com/equation?tex=+P%28%7C%5Cfrac%7BS_n-ES_n%7D%7Bn%7D%7C%5Cgeq+%5Cepsilon_n%5C+%5C+i.o.%29%3D0" alt="P(|\frac{S_n-ES_n}{n}|\geq \epsilon_n\ \ i.o.)=0" eeimg="1">
+                </p>
+                <p>
+                    这意味着
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%5Cfrac%7BS_n-ES_n%7D%7Bn%7D%3D0%29%3D1" alt="P(\lim_{n\rightarrow \infty}\frac{S_n-ES_n}{n}=0)=1" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n-ES_n%7D%7Bn%7D%5Coverset%7Ba.s.%7D%7B%5Crightarrow%7D0%5C+%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n-ES_n}{n}\overset{a.s.}{\rightarrow}0\ (n\rightarrow\infty)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Cantelli强大数律的证明是我所认为的概率论中比较有启发意义的一个证明。它的思想是利用一个趋向于
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    的与
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    有关的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon_n" alt="\epsilon_n" eeimg="1">
+                    ，并且证明不可能有无限项大于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon_n" alt="\epsilon_n" eeimg="1">
+                    ，逐渐减小上界，以达到证明几乎处处收敛的目的。其中也巧妙地取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon_n%3Dn%5E%7B-%5Cfrac%7B1%7D%7B8%7D%7D" alt="\epsilon_n=n^{-\frac{1}{8}}" eeimg="1">
+                    ，凑出了分母为
+                    <img src="https://www.zhihu.com/equation?tex=n%5E%7B%5Cfrac%7B3%7D%7B2%7D%7D" alt="n^{\frac{3}{2}}" eeimg="1">
+                    的收敛级数，过渡到了Borel-Cantelli引理，巧妙地将级数的敛散性与infinitely often的概念连接在了一起。这样连贯的逻辑外加巧妙的设计与取值是值得我们去细细品味的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Cantelli强大数律的一个推论便是Borel强大数律。
+                </p>
+                <p>
+                    <b>
+                        定理（Borel强大数律）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        事件
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        发生的概率为
+                        <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                        。做独立重复试验，前
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        次试验中
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        发生
+                        <img src="https://www.zhihu.com/equation?tex=v_n" alt="v_n" eeimg="1">
+                        次，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bv_n%7D%7Bn%7D%5Coverset%7Ba.s.%7D%7B%5Crightarrow%7Dp%5C+%28n%5Crightarrow%5Cinfty%29" alt="\frac{v_n}{n}\overset{a.s.}{\rightarrow}p\ (n\rightarrow\infty)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Borel强大数律给了我们一个关于频率与概率的关系的更强结果：
+                    <b>
+                        独立重复试验次数足够多时，频率将会几乎处处收敛到概率。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    与o弱大数律类似地，强大数律也有很多不同的形式。
+                </p>
+                <p>
+                    以下再给出几个形式。
+                </p>
+                <p>
+                    <b>
+                        定理（Kolmogorov强大数律）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C..." alt="X_1,X_2,..." eeimg="1">
+                        为一列独立同分布随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=EX_i%3D%5Cmu" alt="EX_i=\mu" eeimg="1">
+                        存在且有限，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n%7D%7Bn%7D%5Coverset%7Ba.s.%7D%7B%5Crightarrow%7D%5Cmu%5C+%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n}{n}\overset{a.s.}{\rightarrow}\mu\ (n\rightarrow\infty)" eeimg="1">
+                        。（注意到不再需要Cantelli中的四阶中心矩有界的条件）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来来继续深入讨论一下依概率收敛与几乎处处收敛这两种收敛性之间的关系。
+                </p>
+                <p>
+                    <b>
+                        定理（几乎处处收敛强于依概率收敛）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Ba.s.%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{a.s.}{\rightarrow}\xi" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Bp%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{p}{\rightarrow}\xi" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    首先在这里给出几乎处处收敛的一个充要条件。读者可以尝试着自行证明。
+                </p>
+                <p>
+                    <b>
+                        引理：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Ba.s.%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{a.s.}{\rightarrow}\xi" eeimg="1">
+                        当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon%3E0%2CP%28%5Cbigcap_%7Bn%3D1%7D%5E%5Cinfty%5Cbigcup_%7Bk%3Dn%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7C%5Cxi_k-%5Cxi%7C%5Cgeq+%5Cepsilon+%5Cright+%5C%7D%29%3D0" alt="\forall \epsilon&gt;0,P(\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty \left \{ |\xi_k-\xi|\geq \epsilon \right \})=0" eeimg="1">
+                        （注意到右侧与
+                        <img src="https://www.zhihu.com/equation?tex=P%28%7C%5Cxi_n-%5Cxi%7C%5Cgeq+%5Cepsilon%5C+%5C+i.o.%29%3D0" alt="P(|\xi_n-\xi|\geq \epsilon\ \ i.o.)=0" eeimg="1">
+                        等价）
+                    </b>
+                </p>
+                <p>
+                    在这里，我们有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon%3E0%2CP%28%5Cbigcap_%7Bn%3D1%7D%5E%5Cinfty%5Cbigcup_%7Bk%3Dn%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7C%5Cxi_k-%5Cxi%7C%5Cgeq+%5Cepsilon+%5Cright+%5C%7D%29%3D0" alt="\forall \epsilon&gt;0,P(\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty \left \{ |\xi_k-\xi|\geq \epsilon \right \})=0" eeimg="1">
+                </p>
+                <p>
+                    利用概率的连续性，注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7DP%28%5Cbigcup_%7Bk%3Dn%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7C%5Cxi_k-%5Cxi%7C%5Cgeq+%5Cepsilon+%5Cright+%5C%7D%29%5Cgeq+%5Clim_%7Bn%5Crightarrow%5Cinfty%7DP%28%7C%5Cxi_n-%5Cxi%7C%5Cgeq+%5Cepsilon%29" alt="\lim_{n\rightarrow\infty}P(\bigcup_{k=n}^\infty \left \{ |\xi_k-\xi|\geq \epsilon \right \})\geq \lim_{n\rightarrow\infty}P(|\xi_n-\xi|\geq \epsilon)" eeimg="1">
+                </p>
+                <p>
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7DP%28%7C%5Cxi_n-%5Cxi%7C%5Cgeq+%5Cepsilon%29%3D0" alt="\lim_{n\rightarrow\infty}P(|\xi_n-\xi|\geq \epsilon)=0" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Bp%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{p}{\rightarrow}\xi" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    为了充分地说明依概率收敛弱于几乎处处收敛，我们在此举一个反例。
+                </p>
+                <p>
+                    例
+                    <b>
+                        （依概率收敛但不几乎处处收敛）
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+U%280%2C1%29" alt="X\sim U(0,1)" eeimg="1">
+                    ，考虑样本空间
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%3D%5B0%2C1%5D" alt="\Omega=[0,1]" eeimg="1">
+                    ，事件域
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                    中的Borel可测集全体。对事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，概率测度
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3DP%28X%5Cin+A%29" alt="P(A)=P(X\in A)" eeimg="1">
+                    。（事实上，此处取的是Lebesgue测度，即用区间的长度度量概率）
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=A_%7Bij%7D%3D%5B%5Cfrac%7Bj-1%7D%7Bi%7D%2C%5Cfrac%7Bj%7D%7Bi%7D%5D%28j%3D1%2C2%2C...%2Ci%29" alt="A_{ij}=[\frac{j-1}{i},\frac{j}{i}](j=1,2,...,i)" eeimg="1">
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=B_1%3DA_%7B11%7D%2CB_2%3DA_%7B21%7D%2CB_3%3DA_%7B22%7D%2CB_4%3DA_%7B31%7D%2C..." alt="B_1=A_{11},B_2=A_{21},B_3=A_{22},B_4=A_{31},..." eeimg="1">
+                    以此类推
+                </p>
+                <p>
+                    定义随机变量
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%28%5Comega%29%3D%5Cbegin%7Bcases%7D+1%5C+%5C+%5C+%5Comega%5Cin+B_n%5C%5C+0%5C+%5C+%5C+else++%5Cend%7Bcases%7D" alt="\xi_n(\omega)=\begin{cases} 1\ \ \ \omega\in B_n\\ 0\ \ \ else  \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon%5Cin+%280%2C1%29%2C%5C+P%28%5Cxi_n%3E%5Cepsilon%29%3DP%28%5Comega%5Cin+B_n%29%5Crightarrow+0" alt="\forall \epsilon\in (0,1),\ P(\xi_n&gt;\epsilon)=P(\omega\in B_n)\rightarrow 0" eeimg="1">
+                    （因为
+                    <img src="https://www.zhihu.com/equation?tex=B_n" alt="B_n" eeimg="1">
+                    的长度趋向于0）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Bp%7D%7B%5Crightarrow%7D0" alt="\xi_n\overset{p}{\rightarrow}0" eeimg="1">
+                    成立。
+                </p>
+                <p>
+                    但是，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Comega%2C%5Cxi_n%28%5Comega%29%5Crightarrow0" alt="\forall \omega,\xi_n(\omega)\rightarrow0" eeimg="1">
+                    不成立，故不是几乎处处收敛的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        五、中心极限定理
+                    </b>
+                </p>
+                <p>
+                    研究中心极限定理的动机是人们发现：取独立同分布的随机变量，当取的数量很多时，这些随机变量的和的概率分布总是与正态分布的概率密度\p
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_X%28t%29%3DEe%5E%7BitX%7D" alt="\phi_X(t)=Ee^{itX}" eeimg="1">
+                    图形很相似。
+                </p>
+                <p>
+                    我们接下来给出中心极限定理及其证明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（Linderberg-Levy中心极限定理）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C..." alt="X_1,X_2,..." eeimg="1">
+                        为一列独立同分布的随机变量，有着相同的数学期望
+                        <img src="https://www.zhihu.com/equation?tex=EX_i%3D%5Cmu" alt="EX_i=\mu" eeimg="1">
+                        ，相同的方差
+                        <img src="https://www.zhihu.com/equation?tex=VarX_i%3D%5Csigma%5E2" alt="VarX_i=\sigma^2" eeimg="1">
+                        均是有限的。则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%3D%5Cfrac%7BS_n-n%5Cmu%7D%7B%5Csqrt%7Bn%5Csigma%5E2%7D%7D+%5Coverset%7Bd%7D%7B%5Crightarrow%7DN%280%2C1%29%5C+%28n%5Crightarrow%5Cinfty%29" alt="\xi_n=\frac{S_n-n\mu}{\sqrt{n\sigma^2}} \overset{d}{\rightarrow}N(0,1)\ (n\rightarrow\infty)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    回忆我们讨论特征函数时，讲到过的连续性定理。
+                </p>
+                <p>
+                    这个定理告诉我们
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n" alt="\xi_n" eeimg="1">
+                    依分布收敛到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cphi_%7B%5Cxi_n%7D%28t%29%3D%5Cphi_%5Cxi%28t%29" alt="\lim_{n\rightarrow\infty}\phi_{\xi_n}(t)=\phi_\xi(t)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们先对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%3D0%2C%5Csigma%5E2%3D1" alt="\mu=0,\sigma^2=1" eeimg="1">
+                    的情形进行证明。
+                </p>
+                <p>
+                    此时
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29%3DEe%5E%7BitX_1%7D" alt="\phi(t)=Ee^{itX_1}" eeimg="1">
+                </p>
+                <p>
+                    由特征函数的性质，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%280%29%3D1%2C%5Cphi%5E%7B%27%7D%280%29%3DiEX_1%2C%5Cphi%5E%7B%27%27%7D%280%29%3Di%5E2EX_1%5E2" alt="\phi(0)=1,\phi^{&#39;}(0)=iEX_1,\phi^{&#39;&#39;}(0)=i^2EX_1^2" eeimg="1">
+                </p>
+                <p>
+                    容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%280%29%3D1%2C%5Cphi%5E%7B%27%7D%280%29%3D0%2C%5Cphi%5E%7B%27%27%7D%280%29%3D-1" alt="\phi(0)=1,\phi^{&#39;}(0)=0,\phi^{&#39;&#39;}(0)=-1" eeimg="1">
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29" alt="\phi(t)" eeimg="1">
+                    进行Taylor展开，得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%28t%29%3D1-%5Cfrac%7Bt%5E2%7D%7B2%7D%2Bo%28t%5E2%29%5C+%5C+%28t%5Crightarrow+0%29" alt="\phi(t)=1-\frac{t^2}{2}+o(t^2)\ \ (t\rightarrow 0)" eeimg="1">
+                </p>
+                <p>
+                    此时
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5EnX_i%7D%7B%5Csqrt%7Bn%7D%7D" alt="\xi_n=\frac{\sum_{i=1}^nX_i}{\sqrt{n}}" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_%5Cxi%28t%29%3DEe%5E%7Bit%5Cxi_n%7D%3D%5Cprod_%7Bi%3D1%7D%5EnEe%5E%7Bi%5Cfrac%7Bt%7D%7B%5Csqrt%7Bn%7D%7DX_i%7D%3D%5Cphi%5En%28%5Cfrac%7Bt%7D%7B%5Csqrt%7Bn%7D%7D%29" alt="\phi_\xi(t)=Ee^{it\xi_n}=\prod_{i=1}^nEe^{i\frac{t}{\sqrt{n}}X_i}=\phi^n(\frac{t}{\sqrt{n}})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi_%5Cxi%28t%29%3D%5B1-%5Cfrac%7Bt%5E2%7D%7B2n%7D%2Bo%28t%5E2%29%5D%5En" alt="\phi_\xi(t)=[1-\frac{t^2}{2n}+o(t^2)]^n" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cphi_%5Cxi%28t%29%3D%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5B1-%5Cfrac%7Bt%5E2%7D%7B2n%7D%2Bo%28t%5E2%29%5D%5En%3De%5E%7B-%5Cfrac%7Bt%5E2%7D%7B2%7D%7D" alt="\lim_{n\rightarrow\infty}\phi_\xi(t)=\lim_{n\rightarrow\infty}[1-\frac{t^2}{2n}+o(t^2)]^n=e^{-\frac{t^2}{2}}" eeimg="1">
+                </p>
+                <p>
+                    由连续性定理，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%3D%5Cfrac%7BS_n%7D%7B%5Csqrt%7Bn%7D%7D%5Coverset%7Bd%7D%7B%5Crightarrow%7DN%280%2C1%29" alt="\xi_n=\frac{S_n}{\sqrt{n}}\overset{d}{\rightarrow}N(0,1)" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%2C%5Csigma%5E2" alt="\mu,\sigma^2" eeimg="1">
+                    随意取值的一般情况，考虑其标准化
+                    <img src="https://www.zhihu.com/equation?tex=Y_i%3D%5Cfrac%7BX_i-%5Cmu%7D%7B%5Csigma%7D" alt="Y_i=\frac{X_i-\mu}{\sigma}" eeimg="1">
+                    ，很容易证明结论的正确性。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    中心极限定理具有极其重要的意义。它告诉我们：只要有足够多的独立同分布的随机变量，我知道了数学期望与方差，我便已经能够求出他们之和的概率分布。今后在遇到大样本（ 一般认为
+                    <img src="https://www.zhihu.com/equation?tex=n%5Cgeq+30" alt="n\geq 30" eeimg="1">
+                    ）的独立同分布随机变量，我们如果要求和的分布，它们各自的分布已经无足轻重。两个数字特征（期望与方差）就能够决定和的分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，独立但是不同分布的随机变量列也具有中心极限定理。
+                </p>
+                <p>
+                    下面我们总是假设
+                    <img src="https://www.zhihu.com/equation?tex=B_n%5E2%3D%5Csum_%7Bi%3D1%7D%5EnVarX_i" alt="B_n^2=\sum_{i=1}^nVarX_i" eeimg="1">
+                    （为列中所有随机变量方差之和）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们不加证明地给出如下中心极限定理。
+                </p>
+                <p>
+                    <b>
+                        定理（Linderberg-Feller中心极限定理）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C..." alt="X_1,X_2,..." eeimg="1">
+                        为一列独立的随机变量且满足
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7DB_n%3D%5Cinfty%2C%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cfrac%7BVarX_n%7D%7BB_n%5E2%7D%3D0" alt="\lim_{n\rightarrow\infty}B_n=\infty,\lim_{n\rightarrow\infty}\frac{VarX_n}{B_n^2}=0" eeimg="1">
+                        （随机变量列中每一个随机变量都没有决定性作用，方差趋向于
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=%5Cinfty" alt="\infty" eeimg="1">
+                        都不太快），则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n-ES_n%7D%7BB_n%7D+%5Coverset%7Bd%7D%7B%5Crightarrow%7DN%280%2C1%29%5C+%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n-ES_n}{B_n} \overset{d}{\rightarrow}N(0,1)\ (n\rightarrow\infty)" eeimg="1">
+                        的充要条件是Linderberg条件成立。（
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cfrac%7B1%7D%7BB_n%5E2%7D%5Csum_%7Bi%3D1%7D%5EnE%28%28X_i-%5Cmu_i%29%5E2I%5B%7CX_i-%5Cmu_i%7C%5Cgeq+%5Cepsilon+B_n%5D%29%3D0" alt="\lim_{n\rightarrow\infty}\frac{1}{B_n^2}\sum_{i=1}^nE((X_i-\mu_i)^2I[|X_i-\mu_i|\geq \epsilon B_n])=0" eeimg="1">
+                        ）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    作为推论，我们还能够得到Liapunoff中心极限定理。
+                </p>
+                <p>
+                    <b>
+                        定理（Liapunoff中心极限定理）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C..." alt="X_1,X_2,..." eeimg="1">
+                        为一列独立随机变量，若存在常数
+                        <img src="https://www.zhihu.com/equation?tex=%5Cdelta%3E0" alt="\delta&gt;0" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cfrac%7B1%7D%7BB_n%5E%7B2%2B%5Cdelta%7D%7D%5Csum_%7Bi%3D1%7D%5EnE%7CX_i-%5Cmu_i%7C%5E%7B2%2B%5Cdelta%7D%3D0" alt="\lim_{n\rightarrow\infty}\frac{1}{B_n^{2+\delta}}\sum_{i=1}^nE|X_i-\mu_i|^{2+\delta}=0" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BS_n-ES_n%7D%7BB_n%7D+%5Coverset%7Bd%7D%7B%5Crightarrow%7DN%280%2C1%29%5C+%28n%5Crightarrow%5Cinfty%29" alt="\frac{S_n-ES_n}{B_n} \overset{d}{\rightarrow}N(0,1)\ (n\rightarrow\infty)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    事实上，只需要验证Linderberg条件成立即可。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cfrac%7B1%7D%7BB_n%5E2%7D%5Csum_%7Bi%3D1%7D%5EnE%28%28X_i-%5Cmu_i%29%5E2I%5B%7CX_i-%5Cmu_i%7C%5Cgeq+%5Cepsilon+B_n%5D%29%5Cleq+%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cfrac%7B1%7D%7BB_n%5E2%7D%5Csum_%7Bi%3D1%7D%5EnE%28%5Cfrac%7B%28X_i-%5Cmu_i%29%5E%7B2%2B%5Cdelta%7D%7D%7B%28%5Cepsilon+B_n%29%5E%5Cdelta%7DI%5B%7CX_i-%5Cmu_i%7C%5Cgeq+%5Cepsilon+B_n%5D%29" alt="\lim_{n\rightarrow\infty}\frac{1}{B_n^2}\sum_{i=1}^nE((X_i-\mu_i)^2I[|X_i-\mu_i|\geq \epsilon B_n])\leq \lim_{n\rightarrow\infty}\frac{1}{B_n^2}\sum_{i=1}^nE(\frac{(X_i-\mu_i)^{2+\delta}}{(\epsilon B_n)^\delta}I[|X_i-\mu_i|\geq \epsilon B_n])" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleq%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cfrac%7B1%7D%7BB_n%5E%7B2%2B%5Cdelta%7D%5Cepsilon%5E%5Cdelta%7D%5Csum_%7Bi%3D1%7D%5EnE%7CX_i-%5Cmu_i%7C%5E%7B2%2B%5Cdelta%7D%3D0" alt="\leq\lim_{n\rightarrow\infty}\frac{1}{B_n^{2+\delta}\epsilon^\delta}\sum_{i=1}^nE|X_i-\mu_i|^{2+\delta}=0" eeimg="1">
+                </p>
+                <p>
+                    故得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们再讨论一下依分布收敛与依概率收敛、几乎处处收敛的关系。
+                </p>
+                <p>
+                    <b>
+                        定理（依概率收敛强于依分布收敛）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Bp%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{p}{\rightarrow}\xi" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Bd%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{d}{\rightarrow}\xi" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n" alt="\xi_n" eeimg="1">
+                    分布函数为
+                    <img src="https://www.zhihu.com/equation?tex=F_n" alt="F_n" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">
+                    分布函数为
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    。
+                </p>
+                <p>
+                    对任意
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    的连续点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    ，取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta%3E0" alt="\delta&gt;0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F_n%28x%29-F%28x%29%3DP%28%5Cxi_n%5Cleq+x%29-F%28x%29%3DP%28%5Cxi_n%5Cleq+x%2C%5Cxi%3Ex%2B%5Cdelta%29%2BP%28%5Cxi_n%5Cleq+x%2C%5Cxi%5Cleq+x%2B%5Cdelta%29-F%28x%29" alt="F_n(x)-F(x)=P(\xi_n\leq x)-F(x)=P(\xi_n\leq x,\xi&gt;x+\delta)+P(\xi_n\leq x,\xi\leq x+\delta)-F(x)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleq+P%28%7C%5Cxi_n-%5Cxi%7C%3E%5Cdelta%29%2BF%28x%2B%5Cdelta%29-F%28x%29" alt="\leq P(|\xi_n-\xi|&gt;\delta)+F(x+\delta)-F(x)" eeimg="1">
+                </p>
+                <p>
+                    同理地，
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29-F_n%28x%29%3DP%28%5Cxi_n%3Ex%29-P%28%5Cxi%3Ex%29%3DP%28%5Cxi_n%3Ex%2C%5Cxi%5Cleq+x-%5Cdelta%29%2BP%28%5Cxi_n%5Cleq+x%2C%5Cxi%3Ex-%5Cdelta%29-P%28%5Cxi%3Ex%29" alt="F(x)-F_n(x)=P(\xi_n&gt;x)-P(\xi&gt;x)=P(\xi_n&gt;x,\xi\leq x-\delta)+P(\xi_n\leq x,\xi&gt;x-\delta)-P(\xi&gt;x)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleq+P%28%7C%5Cxi_n-%5Cxi%7C%3E%5Cdelta%29%2BF%28x%29-F%28x-%5Cdelta%29" alt="\leq P(|\xi_n-\xi|&gt;\delta)+F(x)-F(x-\delta)" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=n%5Crightarrow%5Cinfty" alt="n\rightarrow\infty" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%7D%7CF_n%28x%29-F%28x%29%7C%5Cleq+F%28x%2B%5Cdelta%29-F%28x-%5Cdelta%29" alt="\overline{\lim_{n\rightarrow\infty}}|F_n(x)-F(x)|\leq F(x+\delta)-F(x-\delta)" eeimg="1">
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta%5Crightarrow+0" alt="\delta\rightarrow 0" eeimg="1">
+                    ，由
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    处
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    的连续性，得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%7D%7CF_n%28x%29-F%28x%29%7C%3D0" alt="\overline{\lim_{n\rightarrow\infty}}|F_n(x)-F(x)|=0" eeimg="1">
+                </p>
+                <p>
+                    由上极限的性质，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7DF_n%28x%29%3DF%28x%29" alt="\lim_{n\rightarrow\infty}F_n(x)=F(x)" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    为了更充分地说明这一点，我们举一个反例。
+                </p>
+                <p>
+                    例
+                    <b>
+                        （依分布收敛但是不依概率收敛）
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n" alt="\xi_n" eeimg="1">
+                    为一列独立同分布的随机变量，都服从标准正态分布，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi%5Csim+N%280%2C1%29" alt="\xi\sim N(0,1)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    则显然
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n%5Coverset%7Bd%7D%7B%5Crightarrow%7D%5Cxi" alt="\xi_n\overset{d}{\rightarrow}\xi" eeimg="1">
+                    。
+                </p>
+                <p>
+                    但是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_n-%5Cxi%5Csim+N%280%2C2%29" alt="\xi_n-\xi\sim N(0,2)" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=P%28%7C%5Cxi_n-%5Cxi%7C%5Cgeq+1%29%3E0" alt="P(|\xi_n-\xi|\geq 1)&gt;0" eeimg="1">
+                    ，所以不依概率收敛。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本章内容到此为止。下一篇笔记中，我将向大家简略地介绍概率论在保险精算中的初级应用。
+                </p>
+                <p>
+                    谢谢各位的阅读！
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

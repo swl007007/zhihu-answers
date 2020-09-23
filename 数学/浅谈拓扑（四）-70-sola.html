@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            浅谈拓扑（四）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-b93751c523b5b164e36f10b3a39d9a1a_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/104409997" target="_blank">
+                        浅谈拓扑（四）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-01-30
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    接下来我们简单地介绍一下分离性公理，可数性公理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    先来看看四条不同的
+                    <b>
+                        分离性公理
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <b>
+                        T1
+                    </b>
+                    ：任意拓扑空间中两个不同点，总存在两个点各自的邻域，使得一个点的邻域不包含另一个点。
+                </p>
+                <p>
+                    <b>
+                        T2（Hausdorff）
+                    </b>
+                    ：任意拓扑空间中两个不同点，总存在两个点各自的邻域，使得这两个邻域不交。
+                </p>
+                <p>
+                    <b>
+                        T3
+                    </b>
+                    ：任意拓扑空间中一点与一不包含此点的闭集，总存在这个点与这个闭集各自的邻域，使得这两个邻域不交。
+                </p>
+                <p>
+                    <b>
+                        T4
+                    </b>
+                    ：任意拓扑空间中两个不交闭集，总存在各自的邻域，使得这两个邻域不交。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    直观上，我们可以用图片来理解：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-6314e1500e7d1ac739ada645e464d89a_r.jpg">
+                </figure>
+                <p>
+                    读者容易产生一种直觉：从T1到T4，分离性公理是越来越强的。但是这样的直觉是
+                    <b>
+                        有问题
+                    </b>
+                    的。具体有何问题，我们之后再说，现在先来看看每条分离性公理的成立会给我们带来些什么。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        关于T1公理：
+                    </b>
+                </p>
+                <p>
+                    当T1公理成立时，我们看看拓扑空间中的单点集
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cleft+%5C%7B+x+%5Cright+%5C%7D" alt="A=\left \{ x \right \}" eeimg="1">
+                    会是什么样的结构。
+                </p>
+                <p>
+                    由T1公理，任意
+                    <img src="https://www.zhihu.com/equation?tex=y%5Cnot%5Cin+A" alt="y\not\in A" eeimg="1">
+                    ，都存在
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    各自的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U_x%2CU_y" alt="U_x,U_y" eeimg="1">
+                    （注意到一个点的邻域在定义上要求这个邻域包含了一个包含这个点的开集，故可以将邻域特别地取为开邻域），使得
+                    <img src="https://www.zhihu.com/equation?tex=y%5Cnot%5Cin+U_x%2Cx%5Cnot%5Cin+U_y" alt="y\not\in U_x,x\not\in U_y" eeimg="1">
+                    。容易知道
+                    <img src="https://www.zhihu.com/equation?tex=U_y%5Csubset+A%5Ec" alt="U_y\subset A^c" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    <b>
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=A%5Ec" alt="A^c" eeimg="1">
+                        的内点
+                    </b>
+                    。这告诉我们：
+                    <img src="https://www.zhihu.com/equation?tex=A%5Ec" alt="A^c" eeimg="1">
+                    开，故
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    闭。
+                </p>
+                <p>
+                    即：T1空间中的任意单点集都是闭的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们反过来看。如果拓扑空间中的任意单点集都是闭的，那么这个拓扑空间是否是T1的呢？
+                </p>
+                <p>
+                    对于拓扑空间中任意不同两点
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    ，由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+x+%5Cright+%5C%7D%2C%5Cleft+%5C%7B++y%5Cright+%5C%7D" alt="\left \{ x \right \},\left \{  y\right \}" eeimg="1">
+                    闭，故令
+                    <img src="https://www.zhihu.com/equation?tex=U_y%3D%5Cleft+%5C%7B+x+%5Cright+%5C%7D%5Ec%2CU_x%3D%5Cleft+%5C%7B++y%5Cright+%5C%7D%5Ec" alt="U_y=\left \{ x \right \}^c,U_x=\left \{  y\right \}^c" eeimg="1">
+                    均为开的。且
+                    <img src="https://www.zhihu.com/equation?tex=y%5Cnot%5Cin+U_x%2Cx%5Cnot%5Cin+U_y" alt="y\not\in U_x,x\not\in U_y" eeimg="1">
+                    成立，故拓扑空间T1。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们得到了
+                    <b>
+                        T1公理成立的充要条件：任意单点集都是闭的！
+                    </b>
+                    这个条件还等价于：
+                    <b>
+                        任意有限集合都是闭的！
+                    </b>
+                    （由拓扑公理，任意有限个闭集之并仍为闭集）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当T1公理成立时，聚点也会具有特殊的性质，变成我们所熟悉的数学分析中的聚点。
+                </p>
+                <p>
+                    如果
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    是集合
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的聚点，根据拓扑中的定义，任意
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U_x" alt="U_x" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%28U_x-%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%5Ccap+A" alt="(U_x-\left \{ x \right \})\cap A" eeimg="1">
+                    非空。
+                </p>
+                <p>
+                    我们考虑集合
+                    <img src="https://www.zhihu.com/equation?tex=%28U_x-%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%5Ccap+A" alt="(U_x-\left \{ x \right \})\cap A" eeimg="1">
+                    ，若其为闭集，则
+                    <img src="https://www.zhihu.com/equation?tex=U_x%5Ccap+A" alt="U_x\cap A" eeimg="1">
+                    闭，则
+                    <img src="https://www.zhihu.com/equation?tex=U_x%5Ccap+A%5Ec" alt="U_x\cap A^c" eeimg="1">
+                    开。注意到
+                    <img src="https://www.zhihu.com/equation?tex=U_x%5Ccap+A%5Ec" alt="U_x\cap A^c" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的开邻域且
+                    <img src="https://www.zhihu.com/equation?tex=%28U_x%5Ccap+A%5Ec-%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%5Ccap+A" alt="(U_x\cap A^c-\left \{ x \right \})\cap A" eeimg="1">
+                    为空，故与
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    是集合
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的聚点矛盾！
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%28U_x-%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%5Ccap+A" alt="(U_x-\left \{ x \right \})\cap A" eeimg="1">
+                    不能是闭集！由于T1空间中任意有限集合闭，故
+                    <img src="https://www.zhihu.com/equation?tex=%28U_x-%5Cleft+%5C%7B+x+%5Cright+%5C%7D%29%5Ccap+A" alt="(U_x-\left \{ x \right \})\cap A" eeimg="1">
+                    必为无限集合！
+                </p>
+                <p>
+                    得到：
+                    <b>
+                        T1空间中集合聚点的任意邻域内必含该集合中无穷多个点
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        关于T2公理：
+                    </b>
+                </p>
+                <p>
+                    T2公理又被称为Hausdorff公理，最为重要，其与其它拓扑性质结合可以推出很多良好的性质。在后面介绍中会多次遇到。
+                </p>
+                <p>
+                    在Hausdorff空间中，收敛性这一概念会变得与我们的直觉相一致。
+                </p>
+                <p>
+                    假设Hausdorff空间中的序列
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+x" alt="x_n\rightarrow x" eeimg="1">
+                    ，即对于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的任意开邻域，开邻域外总是只有序列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    中的有限项。（收敛性的定义）
+                </p>
+                <p>
+                    我们知道在拓扑空间中，一个序列可能收敛到两个不同的极限。我们不妨假设
+                    <img src="https://www.zhihu.com/equation?tex=x_n%5Crightarrow+y" alt="x_n\rightarrow y" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cneq+y" alt="x\neq y" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么由Hausdorff性质，存在
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    的不交开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U_x%2CU_y" alt="U_x,U_y" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=U_x%5Ec%2CU_y%5Ec" alt="U_x^c,U_y^c" eeimg="1">
+                    中均只有序列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    中的有限项。注意到
+                    <img src="https://www.zhihu.com/equation?tex=U_y%5Csubset+U_x%5Ec" alt="U_y\subset U_x^c" eeimg="1">
+                    ，这意味着
+                    <img src="https://www.zhihu.com/equation?tex=U_y%2CU_y%5Ec" alt="U_y,U_y^c" eeimg="1">
+                    中均只有序列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    中的有限项，即序列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++x_n%5Cright+%5C%7D" alt="\left \{  x_n\right \}" eeimg="1">
+                    只有有限项。这显然是矛盾的！
+                </p>
+                <p>
+                    故
+                    <b>
+                        Hausdorff空间中的收敛序列极限值唯一！
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        关于T3，T4公理：
+                    </b>
+                </p>
+                <p>
+                    在这里，我只想先简单地说说这两个公理的一个简单等价条件。T4公理的其他等价条件（Urysohn,Tietze定理）我会另开一篇详细地说说，这在我看来很值得一提。
+                </p>
+                <p>
+                    <b>
+                        T4公理成立的充要条件是：任意闭集
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    <b>
+                        与其开邻域
+                        <img src="https://www.zhihu.com/equation?tex=U_A" alt="U_A" eeimg="1">
+                        ，总存在
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        的开邻域
+                        <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BU%7D%5Csubset+U_A" alt="\overline{U}\subset U_A" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    T3公理成立的充要条件读者可以模仿上述定理自己给出。（把闭集换成单点集即可）
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    若T4公理成立，那么
+                    <img src="https://www.zhihu.com/equation?tex=U_A%5Ec" alt="U_A^c" eeimg="1">
+                    为闭集且与
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    不交，由T4性质，存在
+                    <img src="https://www.zhihu.com/equation?tex=A%2CU_A%5Ec" alt="A,U_A^c" eeimg="1">
+                    的不交开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV" alt="U,V" eeimg="1">
+                    。为了简明起见，可参考下图：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-cb0757a16c957942f42067af81d93d0a_r.jpg">
+                    <figcaption>
+                        注意图片中，集合均指代其内部部分。由于V为向外包含的，故图上画出的V补事实上是向内包含的。
+                    </figcaption>
+                </figure>
+                <p>
+                    那么显然
+                    <img src="https://www.zhihu.com/equation?tex=U%5Csubset+V%5Ec" alt="U\subset V^c" eeimg="1">
+                    。由于
+                    <img src="https://www.zhihu.com/equation?tex=V%5Ec" alt="V^c" eeimg="1">
+                    闭，有
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BU%7D%5Csubset+%5Coverline%7BV%5Ec%7D%3DV%5Ec%5Csubset+U_A" alt="\overline{U}\subset \overline{V^c}=V^c\subset U_A" eeimg="1">
+                    ，得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    反之，若任意闭集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    与其开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U_A" alt="U_A" eeimg="1">
+                    ，总存在
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BU%7D%5Csubset+U_A" alt="\overline{U}\subset U_A" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么对于不交闭集
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=B%5Ec" alt="B^c" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的开邻域，则存在
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BU%7D%5Csubset+B%5Ec" alt="\overline{U}\subset B^c" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BU%7D%5Ec" alt="\overline{U}^c" eeimg="1">
+                    又可以看作
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的开邻域，故存在
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BV%7D%5Csubset+%5Coverline%7BU%7D%5Ec" alt="\overline{V}\subset \overline{U}^c" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们显然可以发现
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV" alt="U,V" eeimg="1">
+                    为两个闭集的不交开邻域，故T4成立。
+                </p>
+                <p>
+                    还不太清楚的读者可见下图：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-053f24e3e1e3138b3f186a30d3b0a9b5_r.jpg">
+                    <figcaption>
+                        注意图片中，集合均指代其内部部分。
+                    </figcaption>
+                </figure>
+                <p>
+                    至此为止，我们大致地介绍了几条分离性公理。
+                </p>
+                <p>
+                    我们接下来看一看他们之间的
+                    <b>
+                        相互关系
+                    </b>
+                    ，并且看一些例子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先，
+                    <b>
+                        T2可以推出T1
+                    </b>
+                    。（显然地更强）
+                </p>
+                <p>
+                    其次，
+                    <b>
+                        在T1成立的条件下，T4推出T3，T3推出T2
+                    </b>
+                    。（注意到T1成立时，有限集合均闭，恰好与T3，T4条件中的闭集相呼应）
+                </p>
+                <p>
+                    一个自然的问题是：没有“T1成立”的条件限定时，“T4推出T3，T3推出T2”还成立吗？
+                </p>
+                <p>
+                    答案是否定的！我们给出一个反例。这个反例甚至可以做到满足T4却不满足T1！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        反例
+                    </b>
+                    ：
+                </p>
+                <p>
+                    考虑实数域上的拓扑，规定开集为空集或实数域或所有负无穷到某个实数的开区间。
+                </p>
+                <p>
+                    注意到在这样的拓扑下，闭集只有空集，实数域，所有某个实数到正无穷的左闭右开区间。
+                </p>
+                <p>
+                    若取任意两个不交闭集，其中必定有一个是空集！（所有形如
+                    <img src="https://www.zhihu.com/equation?tex=%5Ba%2C%2B%5Cinfty%29" alt="[a,+\infty)" eeimg="1">
+                    的集合都彼此相交，这个性质是这个拓扑之所以奇异的根本原因）这自然是
+                    <b>
+                        满足T4公理
+                    </b>
+                    的。
+                </p>
+                <p>
+                    但是任意有限非空集合在这个拓扑下都不是闭的，说明这个拓扑
+                    <b>
+                        不满足T1公理
+                    </b>
+                    。那自然地，其也必定
+                    <b>
+                        不满足T2公理
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们可以取
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C%2B%5Cinfty+%29" alt="[0,+\infty )" eeimg="1">
+                    为闭集，
+                    <img src="https://www.zhihu.com/equation?tex=-1" alt="-1" eeimg="1">
+                    为不在其中的一点。若一个开集包含
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C%2B%5Cinfty+%29" alt="[0,+\infty )" eeimg="1">
+                    ，那必定只能是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    ，故必定含
+                    <img src="https://www.zhihu.com/equation?tex=-1" alt="-1" eeimg="1">
+                    。这告诉我们
+                    <b>
+                        T3公理不成立
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由反例可知：我们后面叙述关于T4公理的条件时，常常会加上Hausdorff或T1成立的条件，就是为了避免这样的奇异性！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        T1，T2，T3公理具有遗传性
+                    </b>
+                    。（这意味着一个T3空间的子空间拓扑也是T3的）
+                </p>
+                <p>
+                    又一个自然的问题：T4公理有遗传性吗？答案是否定的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        反例
+                    </b>
+                    ：
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=X%3D%5Cleft+%5C%7B++a%2Cb%2Cc%2Cd%5Cright+%5C%7D" alt="X=\left \{  a,b,c,d\right \}" eeimg="1">
+                    上的拓扑，规定开集为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing%2CX%2C%5Cleft+%5C%7B++b%5Cright+%5C%7D%2C%5Cleft+%5C%7B+a%2Cb+%5Cright+%5C%7D%2C%5Cleft+%5C%7B+b%2Cc+%5Cright+%5C%7D%2C%5Cleft+%5C%7B+a%2Cb%2Cc+%5Cright+%5C%7D" alt="\varnothing,X,\left \{  b\right \},\left \{ a,b \right \},\left \{ b,c \right \},\left \{ a,b,c \right \}" eeimg="1">
+                    。（可以验证满足三条拓扑公理）
+                </p>
+                <p>
+                    我们发现：非空闭集必定包含了
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    ，故必定两两相交。故若存在两个不交的闭集，必有一者为空集。（与上面一个例子异曲同工）这是
+                    <b>
+                        满足T4公理
+                    </b>
+                    的。
+                </p>
+                <p>
+                    我们考虑子集
+                    <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cleft+%5C%7B+a%2Cb%2Cc+%5Cright+%5C%7D" alt="Y=\left \{ a,b,c \right \}" eeimg="1">
+                    。由子空间拓扑的定义，开集为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing%2C%5Cleft+%5C%7B++b%5Cright+%5C%7D%2C%5Cleft+%5C%7B+a%2Cb+%5Cright+%5C%7D%2C%5Cleft+%5C%7B+b%2Cc+%5Cright+%5C%7D%2CY" alt="\varnothing,\left \{  b\right \},\left \{ a,b \right \},\left \{ b,c \right \},Y" eeimg="1">
+                    。但是此时存在不交闭集
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+a+%5Cright+%5C%7D%2C%5Cleft+%5C%7B++c%5Cright+%5C%7D" alt="\left \{ a \right \},\left \{  c\right \}" eeimg="1">
+                    。其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7Ba+%5Cright+%5C%7D" alt="\left \{a \right \}" eeimg="1">
+                    的开邻域只有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+a%2Cb+%5Cright+%5C%7D%2CY" alt="\left \{ a,b \right \},Y" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7Bc+%5Cright+%5C%7D" alt="\left \{c \right \}" eeimg="1">
+                    的开邻域只有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+b%2Cc+%5Cright+%5C%7D%2CY" alt="\left \{ b,c \right \},Y" eeimg="1">
+                    。其开领域均含
+                    <img src="https://www.zhihu.com/equation?tex=b" alt="b" eeimg="1">
+                    ，不可能不交！故
+                    <b>
+                        子空间拓扑非T4
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        T1，T2，T3公理都具有可乘性
+                    </b>
+                    。（这意味着两个T3空间的乘积拓扑是T3的）
+                </p>
+                <p>
+                    T4还是不具有可乘性！（这个反例有些复杂故不在此给出了）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于可乘性的证明，我在这仅用图来说明下述命题的证明思路就足够了：
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X%5Ctimes+Y" alt="X\times Y" eeimg="1">
+                        为Hausdorff的的充要条件是
+                        <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                        均为Hausdorff的。
+                    </b>
+                </p>
+                <p>
+                    若乘积拓扑Hausdorff，
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-26ee24b037711ec319ca5348b0cf2cec_r.jpg">
+                </figure>
+                <p>
+                    固定
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    中元素
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    ，取不同
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中元素
+                    <img src="https://www.zhihu.com/equation?tex=x_1%2Cx_2" alt="x_1,x_2" eeimg="1">
+                </p>
+                <p>
+                    则存在这两点的不交开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV" alt="U,V" eeimg="1">
+                </p>
+                <p>
+                    由乘积拓扑定义，其是由
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中所有开集与
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    中所有开集的笛卡尔积作为拓扑基生成的！
+                </p>
+                <p>
+                    故必定存在拓扑基中元素
+                    <img src="https://www.zhihu.com/equation?tex=A_1%5Ctimes+B_1%2CA_2%5Ctimes+B_2" alt="A_1\times B_1,A_2\times B_2" eeimg="1">
+                    ，分别包含于
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV" alt="U,V" eeimg="1">
+                    。（
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2" alt="A_1,A_2" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中开集，
+                    <img src="https://www.zhihu.com/equation?tex=B_1%2CB_2" alt="B_1,B_2" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    中开的，且容易发现
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2" alt="A_1,A_2" eeimg="1">
+                    不交）
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2" alt="A_1,A_2" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=x_1%2Cx_2" alt="x_1,x_2" eeimg="1">
+                    不交开邻域，故
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为Hausdorff的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    反之，若
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    均为Hausdorff的，则对于任意不同两点
+                    <img src="https://www.zhihu.com/equation?tex=%28x_1%2Cy_1%29%2C%28x_2%2Cy_2%29" alt="(x_1,y_1),(x_2,y_2)" eeimg="1">
+                    。若
+                    <img src="https://www.zhihu.com/equation?tex=x_1%3Dx_2" alt="x_1=x_2" eeimg="1">
+                    或
+                    <img src="https://www.zhihu.com/equation?tex=y_1%3Dy_2" alt="y_1=y_2" eeimg="1">
+                    ，则在值不同的坐标上（不妨设
+                    <img src="https://www.zhihu.com/equation?tex=x_1%5Cneq+x_2" alt="x_1\neq x_2" eeimg="1">
+                    ）运用Hausdorff性质得到不交开邻域
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2" alt="A_1,A_2" eeimg="1">
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=A_1%5Ctimes+Y%2CA_2%5Ctimes+Y" alt="A_1\times Y,A_2\times Y" eeimg="1">
+                    即为乘积拓扑中的不交开邻域。否则，只需要分别关于两个坐标运用Hausdorff性质，再将开邻域做笛卡尔积即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这节关于分离性公理我们就说到这里吧。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

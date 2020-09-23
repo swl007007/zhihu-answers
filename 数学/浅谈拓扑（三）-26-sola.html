@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            浅谈拓扑（三）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-e3f204a454862dfe44b8fc4db320a514_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/104034046" target="_blank">
+                        浅谈拓扑（三）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-01-26
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    前几天本想将模形式的笔记补充完整的，谁想竟把笔记和书本都留在了宿舍里，且正巧碰上面试。这几天正好无法出门，想着不如慢慢补完之前落下的内容。但是模形式的最后一部分内容可能得等我开学回到北京再补上了，我到时会将我们期末考试的试卷以及我自己写的一些解答一同放上来供大家参考。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这之前还是先写点拓扑的内容吧，正好作为复习。不过由于时间和篇幅问题，我现在不是很确定代数拓扑的部分是不是还来得及写，不过至少我会把点集拓扑的东西写完。最近大概是在第四遍看Stein的实分析了（之前也都只读了前三章而且读得不够仔细，这次可能会读得更多更细一些），所以可能会写一点实变的东西趁着还没忘掉记录一下。另外，我在想着是否要写一点我读过的paper（可能是算法和优化）里的东西，或者是写一点科普性质的文章？不知道大家有没有兴趣。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    话说我在
+                    <b>
+                        上一篇笔记的末尾补充了素数有无穷多个的拓扑证明方法
+                    </b>
+                    ，大家有兴趣可以看一下。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这次我们会提及一些关于拓扑基和乘积空间的知识，我会快速地带大家过一遍概念。
+                </p>
+                <p>
+                    <b>
+                        拓扑基
+                    </b>
+                    的引入基于一个问题：我们是否可以用尽可能少的集合来生成一个空间上的拓扑（即所有开集）？换种说法，我们想要找到：
+                    <b>
+                        最本原的开集
+                    </b>
+                    有哪些？
+                </p>
+                <p>
+                    举个例子，在欧氏拓扑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    中，
+                    <img src="https://www.zhihu.com/equation?tex=%281%2C2%29%5Ccup+%283%2C4%29" alt="(1,2)\cup (3,4)" eeimg="1">
+                    确实是一个开集。但是它长得不够优雅以致于我们一眼就看出来它是
+                    <img src="https://www.zhihu.com/equation?tex=%281%2C2%29" alt="(1,2)" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%283%2C4%29" alt="(3,4)" eeimg="1">
+                    这两个开集的并。也就是说：
+                    <img src="https://www.zhihu.com/equation?tex=%281%2C2%29%5Ccup+%283%2C4%29" alt="(1,2)\cup (3,4)" eeimg="1">
+                    并不是一个最本原的开集，它本质上是两个更加本原的开集的并。我们的任务就是：找到所有的最本原的开集，这些开集的集合就被称为拓扑基。
+                </p>
+                <p>
+                    由于拓扑空间需要满足三条拓扑公理，故这里的“生成”我们用并集运算来描述，因为任意个开集之并仍是开的。由此，我们有：
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        集合
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的子集族
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                        为集合的拓扑基若
+                        <img src="https://www.zhihu.com/equation?tex=T%3D%5Cleft+%5C%7B++%5Cbigcup_%7Ba%7D+B_a%5C+%7C%5C++B_a%5Cin+%5Cmathbb%7BB%7D+%5Cright+%5C%7D" alt="T=\left \{  \bigcup_{a} B_a\ |\  B_a\in \mathbb{B} \right \}" eeimg="1">
+                        为集合
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        上的拓扑。
+                    </b>
+                    对记号进行一个解释：我们将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    中所有元素任意选取进行并集运算后（可以是不可列个元素之并），使得生成的集合
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    满足三条拓扑公理。
+                </p>
+                <p>
+                    <b>
+                        拓扑空间
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                        的子集族
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                        为拓扑空间的拓扑基若
+                        <img src="https://www.zhihu.com/equation?tex=T%3D%5Cleft+%5C%7B++%5Cbigcup_%7Ba%7D+B_a%5C+%7C%5C++B_a%5Cin+%5Cmathbb%7BB%7D+%5Cright+%5C%7D" alt="T=\left \{  \bigcup_{a} B_a\ |\  B_a\in \mathbb{B} \right \}" eeimg="1">
+                        成立。
+                    </b>
+                    即：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    中任意多个元素经过任意多次并集运算后恰好得到拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们这里需要区分一下集合的拓扑基与拓扑空间的拓扑基的定义。
+                </p>
+                <p>
+                    集合的拓扑基仅仅要求：拓扑基生成的集合是个拓扑就可以了，它并没有对于拓扑空间有任何要求。
+                </p>
+                <p>
+                    而拓扑空间的拓扑基要求：拓扑基生成的拓扑空间必须恰好是我给定的拓扑空间，而不能是其它的拓扑空间，这是更严格的要求。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    比如：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%28a%2Cb%29%7Ca%3Cb%2Ca%2Cb%5Cin+%5Cmathbb%7BR%7D%5Cright+%5C%7D" alt="\left \{  (a,b)|a&lt;b,a,b\in \mathbb{R}\right \}" eeimg="1">
+                    显然是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    的拓扑基。它既是拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    的拓扑基，也同时是集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    的拓扑基。
+                </p>
+                <p>
+                    但是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%5Ba%2C%2B%5Cinfty%29%2C%28a%2C%2B%5Cinfty%29%7C%2Ca%5Cin+%5Cmathbb%7BR%7D%5Cright+%5C%7D" alt="\left \{  [a,+\infty),(a,+\infty)|,a\in \mathbb{R}\right \}" eeimg="1">
+                    是集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    的拓扑基，但是不是拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    的拓扑基。我们发现这个拓扑显然与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    是不同的。毕竟
+                    <img src="https://www.zhihu.com/equation?tex=%281%2C2%29%5Ccup+%283%2C4%29" alt="(1,2)\cup (3,4)" eeimg="1">
+                    在这个拓扑空间下都并非开集。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那接下来，我们来看一下成为集合的拓扑基与拓扑空间的拓扑基的充要条件：
+                </p>
+                <p>
+                    <b>
+                        命题：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        集合
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    <b>
+                        的子集族
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    <b>
+                        为集合的拓扑基的充要条件是：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup_%7BB%5Cin+%5Cmathbb%7BB%7D%7D+B+%3DX" alt="\bigcup_{B\in \mathbb{B}} B =X" eeimg="1">
+                    <b>
+                        且若有
+                        <img src="https://www.zhihu.com/equation?tex=B_1%2CB_2%5Cin+%5Cmathbb%7BB%7D" alt="B_1,B_2\in \mathbb{B}" eeimg="1">
+                        ，则
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+B_1%5Ccap+B_2%2C+%5Cexists+B%5Cin+%5Cmathbb%7BB%7D%2C+x%5Cin+B%5Csubset+B_1%5Ccap+B_2" alt="\forall x\in B_1\cap B_2, \exists B\in \mathbb{B}, x\in B\subset B_1\cap B_2" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个命题的证明可以直接从定义推出。在这里值得一说的是这两个条件的含义：前面一个条件保证了拓扑基中所有集合并集为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，即拓扑基足够大以致于
+                    <b>
+                        没有遗漏
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        中的元素
+                    </b>
+                    。后一个条件表明任意两个本原的开集的交集总是能写成若干个本原的开集（拓扑基中元素）之并，即保证了
+                    <b>
+                        拓扑基中开集都是最为细致本原的开集
+                    </b>
+                    ，且保证了
+                    <b>
+                        关于交的拓扑公理的成立性
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        命题：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        拓扑空间
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                    <b>
+                        的子集族
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    <b>
+                        为拓扑空间的拓扑基的充要条件是
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D%5Csubset+T" alt="\mathbb{B}\subset T" eeimg="1">
+                        且每个
+                        <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                        中元素均为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                        中某些元素之并
+                    </b>
+                    。
+                </p>
+                <p>
+                    同样地，这个命题也可以由定义直接推出。第一个条件要求拓扑基中的本原的开集也都是拓扑空间中的开集（确保拓扑基不会太大）。第二个条件确保了所有拓扑空间中的开集都可以由拓扑基中的本原开集通过并集的手段生成。（确保拓扑基不会太小）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当然，有时候，我们会遇到特殊的情况：两个不同的拓扑基生成的拓扑空间却是一模一样的。在这样的情形下，我们称
+                    <b>
+                        拓扑基等价
+                    </b>
+                    。特别地，我们希望拓扑基越小越好！因为我们想知道一个拓扑空间最少能够由多少集合生成出来，这是他复杂程度的一种体现。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    比如：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=+%5Cleft+%5C%7B++%28a%2Cb%29%7Ca%3Cb%2Ca%2Cb%5Cin+%5Cmathbb%7BR%7D%5Cright+%5C%7D" alt="\left \{  (a,b)|a&lt;b,a,b\in \mathbb{R}\right \}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    的拓扑基，但是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%28a%2Cb%29%7Ca%3Cb%2Ca%2Cb%5Cin+%5Cmathbb%7BQ%7D%5Cright+%5C%7D" alt="\left \{  (a,b)|a&lt;b,a,b\in \mathbb{Q}\right \}" eeimg="1">
+                    也是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E1" alt="\mathbb{E}^1" eeimg="1">
+                    的拓扑基。然而前者不可数，后者却是可数的！故
+                    <b>
+                        欧氏拓扑是可以由可数拓扑基生成的
+                    </b>
+                    ！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有了拓扑基，我们还能够将空间的拓扑继承给它的子空间！
+                </p>
+                <p>
+                    如果拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                    的子集族
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    为拓扑空间的拓扑基，且给定
+                    <img src="https://www.zhihu.com/equation?tex=A%5Csubset+X" alt="A\subset X" eeimg="1">
+                    。那么考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D_A%3D%5Cleft+%5C%7B+B%5Ccap+A%7CB%5Cin+%5Cmathbb%7BB%7D+%5Cright+%5C%7D" alt="\mathbb{B}_A=\left \{ B\cap A|B\in \mathbb{B} \right \}" eeimg="1">
+                    ，其必定为集合
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的拓扑基（由上述命题）。那么由
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D_A" alt="\mathbb{B}_A" eeimg="1">
+                    为拓扑基生成的拓扑空间即为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    上的
+                    <b>
+                        子空间拓扑
+                    </b>
+                    ！
+                </p>
+                <p>
+                    容易发现：若
+                    <img src="https://www.zhihu.com/equation?tex=U%5Csubset+A" alt="U\subset A" eeimg="1">
+                    为开集，那么
+                    <img src="https://www.zhihu.com/equation?tex=U%3D%5Cbigcup_%7BC%5Cin+%5Cmathbb%7BB%7D_A%7D+C" alt="U=\bigcup_{C\in \mathbb{B}_A} C" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=U%3D%5Cbigcup_%7BB%5Cin+%5Cmathbb%7BB%7D%7D+%28B%5Ccap+A%29%3D%28%5Cbigcup_%7BB%5Cin+%5Cmathbb%7BB%7D%7D+B%29%5Ccap+A" alt="U=\bigcup_{B\in \mathbb{B}} (B\cap A)=(\bigcup_{B\in \mathbb{B}} B)\cap A" eeimg="1">
+                    ，而
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup_%7BB%5Cin+%5Cmathbb%7BB%7D%7D+B" alt="\bigcup_{B\in \mathbb{B}} B" eeimg="1">
+                    为原拓扑空间中的某个开集。
+                </p>
+                <p>
+                    由此，我们知道：
+                    <b>
+                        对于子空间
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        上的子空间拓扑，其中的开集一定是原拓扑空间中的某个开集与
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        的交集！
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们对子空间拓扑与原拓扑空间中的区别再多提几句。注意到开集、闭集等拓扑概念都是需要说明
+                    <b>
+                        在哪个空间中看
+                    </b>
+                    的。
+                </p>
+                <p>
+                    如：若
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    为子空间拓扑
+                    <img src="https://www.zhihu.com/equation?tex=%28A%2CT_A%29" alt="(A,T_A)" eeimg="1">
+                    中的开集，则
+                    <img src="https://www.zhihu.com/equation?tex=U%3DV%5Ccap+A" alt="U=V\cap A" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    为拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                    中某个开集，显然
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    并不一定是拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                    中的开集。
+                </p>
+                <p>
+                    但是若
+                    <img src="https://www.zhihu.com/equation?tex=U%5Csubset+A" alt="U\subset A" eeimg="1">
+                    是拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2CT%29" alt="(X,T)" eeimg="1">
+                    中的开集，则
+                    <img src="https://www.zhihu.com/equation?tex=U%3DU%5Ccap+A" alt="U=U\cap A" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    为子空间拓扑
+                    <img src="https://www.zhihu.com/equation?tex=%28A%2CT_A%29" alt="(A,T_A)" eeimg="1">
+                    中的开集。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    同理地，关于闭集，我们可以转化为开集来看。
+                </p>
+                <p>
+                    <b>
+                        命题：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=C%5Csubset+A%5Csubset+X" alt="C\subset A\subset X" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        中的闭集当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的某个闭集之交
+                    </b>
+                    。
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中的闭集
+                </p>
+                <p>
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=A-C" alt="A-C" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中开集
+                </p>
+                <p>
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=A-C%3DU%5Ccap+A" alt="A-C=U\cap A" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中开集
+                </p>
+                <p>
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=C%3D%28U%5Ec%5Ccap+A%29" alt="C=(U^c\cap A)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=U%5Ec" alt="U^c" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中闭集
+                </p>
+                <p>
+                    得证！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们再来看看乘积空间的有关内容。
+                </p>
+                <p>
+                    <b>
+                        乘积空间
+                    </b>
+                    的定义基于一个很自然的问题：我们有了
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2" alt="X_1,X_2" eeimg="1">
+                    上的拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X_1%2CT_1%29%2C%28X_2%2CT_2%29" alt="(X_1,T_1),(X_2,T_2)" eeimg="1">
+                    ，我们要如何定义
+                    <img src="https://www.zhihu.com/equation?tex=X_1%5Ctimes+X_2" alt="X_1\times X_2" eeimg="1">
+                    上的拓扑空间？
+                </p>
+                <p>
+                    我们最直观的想法可能会告诉我们：定义
+                    <img src="https://www.zhihu.com/equation?tex=X_1%5Ctimes+X_2" alt="X_1\times X_2" eeimg="1">
+                    上的开集为
+                    <img src="https://www.zhihu.com/equation?tex=X_1" alt="X_1" eeimg="1">
+                    中开集与
+                    <img src="https://www.zhihu.com/equation?tex=X_2" alt="X_2" eeimg="1">
+                    中开集的笛卡尔积。但是这样的定义太狭隘了！
+                </p>
+                <p>
+                    我们假设按照上述定义来看，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BE%7D%5E2" alt="\mathbb{E}^2" eeimg="1">
+                    中的单位圆盘内部甚至都不是一个开集！这样定义的话开集的数量太少，且不符合我们的直观。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    还记得我们上面说的拓扑基吗？我们用那个就可以简单地解决这个问题！
+                </p>
+                <p>
+                    我们取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D%3D%5Cleft+%5C%7B++U%5Ctimes+V%7C+U%5Cin+T_1%2CV%5Cin+T_2%5Cright+%5C%7D" alt="\mathbb{B}=\left \{  U\times V| U\in T_1,V\in T_2\right \}" eeimg="1">
+                    ，为
+                    <b>
+                        所有
+                        <img src="https://www.zhihu.com/equation?tex=X_1" alt="X_1" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=X_2" alt="X_2" eeimg="1">
+                        中开集的笛卡尔积
+                    </b>
+                    ，然后
+                    <b>
+                        以其为拓扑基
+                    </b>
+                    生成拓扑，生成的拓扑即定义为
+                    <img src="https://www.zhihu.com/equation?tex=X_1%5Ctimes+X_2" alt="X_1\times X_2" eeimg="1">
+                    上的拓扑空间。显然
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                    满足集合的拓扑基的充要条件，故确实可以生成一个满足拓扑公理的拓扑空间，其即被定义为
+                    <img src="https://www.zhihu.com/equation?tex=X_1%5Ctimes+X_2" alt="X_1\times X_2" eeimg="1">
+                    的
+                    <b>
+                        乘积拓扑
+                    </b>
+                    。
+                </p>
+                <p>
+                    这样生成的乘积拓扑事实上比直接简单粗暴地定义开集为两个开集的笛卡尔积要广泛得多。而且其还具有一些好的性质。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们定义：
+                    <img src="https://www.zhihu.com/equation?tex=j_i%3AX_1%5Ctimes+X_2%5Crightarrow+X_i" alt="j_i:X_1\times X_2\rightarrow X_i" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=j_i%28%28x_1%2Cx_2%29%29%3Dx_i" alt="j_i((x_1,x_2))=x_i" eeimg="1">
+                    为乘积空间
+                    <img src="https://www.zhihu.com/equation?tex=X_1%5Ctimes+X_2" alt="X_1\times X_2" eeimg="1">
+                    到空间
+                    <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                    的一个
+                    <b>
+                        投射
+                    </b>
+                    。我们可以证明：
+                    <b>
+                        上述定义下的乘积拓扑是使得投射
+                        <img src="https://www.zhihu.com/equation?tex=j_1%2Cj_2" alt="j_1,j_2" eeimg="1">
+                        都连续的最小拓扑！
+                    </b>
+                </p>
+                <p>
+                    如果我们要使得投射
+                    <img src="https://www.zhihu.com/equation?tex=j_1%2Cj_2" alt="j_1,j_2" eeimg="1">
+                    都连续，那我们应该保证任意
+                    <img src="https://www.zhihu.com/equation?tex=U%5Csubset+X_1" alt="U\subset X_1" eeimg="1">
+                    为开集，
+                    <img src="https://www.zhihu.com/equation?tex=j_1%5E%7B-1%7D%28U%29%5Csubset+X_1%5Ctimes+X_2" alt="j_1^{-1}(U)\subset X_1\times X_2" eeimg="1">
+                    为开集。这要求：两个分量中任意一个分量的取值范围为开集时，整个向量的取值范围都应该是开集。这与我们要求的：以所有开集的笛卡尔积作为拓扑基生成拓扑空间完全吻合！而且拓扑基的生成在某种程度上保证了这样的拓扑空间是
+                    <b>
+                        “最小的”
+                    </b>
+                    ！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下一次，我会介绍分离公理，可数公理，以及一些基本推论。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

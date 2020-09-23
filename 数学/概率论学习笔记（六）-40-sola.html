@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            概率论学习笔记（六）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-bf1a804ba5b6abf2f789db2d93a06b6b_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/45954178" target="_blank">
+                        概率论学习笔记（六）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-04
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    作为概率论笔记的收尾，我准备在最后介绍一些概率论偏向于实际的应用。具体地来说，先对需要用到的概率论知识进行些许补充，然后介绍一些风险管理的基础知识。
+                </p>
+                <p>
+                    若之后仍有空余时间，我将补充一篇额外的笔记包含一些经典习题以及其解题思路给读者作为参考。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们先来介绍一些补充知识。这其中有些是后文将会用到的，另一些则是对概率论相关内容的扩展。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        一、分位数，众数，矩母函数，数学期望的其它性质
+                    </b>
+                </p>
+                <p>
+                    关于数据特征，我们此处额外介绍一下分位数、众数。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为随机变量。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=0%3Cp%3C1%2C" alt="0&lt;p&lt;1," eeimg="1">
+                        若存在
+                        <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                        使得
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%5Cleq+c%29%5Cgeq+p%2CP%28X%5Cgeq+c%29%5Cgeq+1-p" alt="P(X\leq c)\geq p,P(X\geq c)\geq 1-p" eeimg="1">
+                        ，则称
+                        <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的
+                        <img src="https://www.zhihu.com/equation?tex=p-" alt="p-" eeimg="1">
+                        分位数。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        在点
+                        <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                        处取值的概率最大，称
+                        <img src="https://www.zhihu.com/equation?tex=c+" alt="c" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的众数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    特别地，
+                    <img src="https://www.zhihu.com/equation?tex=0.5-" alt="0.5-" eeimg="1">
+                    分位数就是中位数。
+                </p>
+                <p>
+                    对于众数
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    而言，若
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为离散型随机变量，
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dc%29" alt="P(X=c)" eeimg="1">
+                    应该是概率分布列中的最大值。而若
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为连续型随机变量，容易知道在
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    处密度
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    取最大值。
+                </p>
+                <p>
+                    需要注意的是：分位数与众数并不是唯一的。下举一例说明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3D1%29%3DP%28X%3D2%29%3D%5Cfrac%7B1%7D%7B2%7D" alt="P(X=1)=P(X=2)=\frac{1}{2}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    考虑中位数，我们发现按照如上定义，任何
+                    <img src="https://www.zhihu.com/equation?tex=%5B1%2C2%5D" alt="[1,2]" eeimg="1">
+                    中实数均为中位数。而
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    均为众数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们介绍与特征函数具有相似定义与性质的矩母函数。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                        <img src="https://www.zhihu.com/equation?tex=M_X%28t%29%3DEe%5E%7BtX%7D" alt="M_X(t)=Ee^{tX}" eeimg="1">
+                        称为随机变量
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的矩母函数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于其性质，我们简单地介绍两条。（事实上，所有性质都可由特征函数推广而来）
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=M_X%280%29%3D1%2CM_X%5E%7B%28n%29%7D%280%29%3DEX%5En" alt="M_X(0)=1,M_X^{(n)}(0)=EX^n" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        为相互独立的随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                        矩母函数为
+                        <img src="https://www.zhihu.com/equation?tex=M_i%28t%29" alt="M_i(t)" eeimg="1">
+                        ，则对于
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Csum_%7Bi%3D1%7D%5EnX_i" alt="Y=\sum_{i=1}^nX_i" eeimg="1">
+                        ，其有矩母函数
+                        <img src="https://www.zhihu.com/equation?tex=M_Y%28t%29%3D%5Cprod_%7Bi%3D1%7D%5EnM_i%28t%29" alt="M_Y(t)=\prod_{i=1}^nM_i(t)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    容易看到矩母函数同样很适合处理独立的随机变量之和的分布的问题。
+                </p>
+                <p>
+                    与特征函数类似地，
+                    <b>
+                        矩母函数也与概率分布相互唯一决定
+                    </b>
+                    。且矩母函数在
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    处的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    阶导数值即为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    阶原点矩，这就是“矩母函数”这个名称的由来。为理解这些性质，在此举一例进行说明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：已知矩母函数
+                    <img src="https://www.zhihu.com/equation?tex=M_X%28t%29%3De%5E%7B2e%5Et-2%7D" alt="M_X(t)=e^{2e^t-2}" eeimg="1">
+                    ，求
+                    <img src="https://www.zhihu.com/equation?tex=EX%2CVarX%2CP%28X%3D2%29" alt="EX,VarX,P(X=2)" eeimg="1">
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EX%3DM_X%5E%7B%27%7D%28t%29%7C_%7Bt%3D0%7D%3D2" alt="EX=M_X^{&#39;}(t)|_{t=0}=2" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EX%5E2%3DM_X%5E%7B%27%27%7D%28t%29%7C_%7Bt%3D0%7D%3D6" alt="EX^2=M_X^{&#39;&#39;}(t)|_{t=0}=6" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=VarX%3DEX%5E2-E%5E2X%3D2" alt="VarX=EX^2-E^2X=2" eeimg="1">
+                </p>
+                <p>
+                    此处要如何求得概率分布呢？
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=M_X%28t%29%3DEe%5E%7BtX%7D" alt="M_X(t)=Ee^{tX}" eeimg="1">
+                    ，要是我们能将矩母函数写成
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3D0%29e%5E%7Bt0%7D%2BP%28X%3D1%29e%5E%7Bt%7D%2BP%28X%3D2%29e%5E%7B2t%7D%2B..." alt="P(X=0)e^{t0}+P(X=1)e^{t}+P(X=2)e^{2t}+..." eeimg="1">
+                    的形式，问题就迎刃而解了。
+                </p>
+                <p>
+                    仔细观察矩母函数的形式，我们发现进行Taylor展开可以将指数上的指数函数拿下来，编变为上述形式。
+                </p>
+                <p>
+                    故我们在
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    处进行Taylor展开。
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=M_X%28t%29%3De%5E%7B-2%7De%5E%7B2e%5Et%7D%3De%5E%7B-2%7D%281%2B2e%5Et%2B%5Cfrac%7B%282e%5Et%29%5E2%7D%7B2%21%7D%2B...%29" alt="M_X(t)=e^{-2}e^{2e^t}=e^{-2}(1+2e^t+\frac{(2e^t)^2}{2!}+...)" eeimg="1">
+                </p>
+                <p>
+                    则易知
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3D2%29%3D%5Cfrac%7B2%7D%7Be%5E2%7D" alt="P(X=2)=\frac{2}{e^2}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接着，我们再介绍一下数学期望的其他性质。
+                </p>
+                <p>
+                    我们知道在定义数学期望时，我们将离散型随机变量和连续型随机变量进行了分开定义，而且我们还遗漏了对于混合型随机变量的数学期望定义。（是我故意的233）那么，是否存在一种统一定义对于这三种随机变量具有相同的形式呢？我们给出数学期望的另一种定义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        性质：（数学期望等价定义）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        假设
+                        <img src="https://www.zhihu.com/equation?tex=X%5Cin+%5Ba%2C%5Cinfty%29%5C+a.s." alt="X\in [a,\infty)\ a.s." eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=F+" alt="F" eeimg="1">
+                        为分布函数，那么
+                        <img src="https://www.zhihu.com/equation?tex=EX%3Da%2B%5Cint+_a%5E%5Cinfty%281-F%28x%29%29dx" alt="EX=a+\int _a^\infty(1-F(x))dx" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们在此仅对于连续型随机变量进行证明，离散型与混合型的证明由读者完成。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=a%2B%5Cint+_a%5E%5Cinfty%281-F%28x%29%29dx%3Da%2B%5Cint_a%5E%5Cinfty+P%28X%3Ex%29dx%3Da%2B%5Cint_a%5E%5Cinfty+dx%5Cint_x%5E%5Cinfty+f%28t%29dt" alt="a+\int _a^\infty(1-F(x))dx=a+\int_a^\infty P(X&gt;x)dx=a+\int_a^\infty dx\int_x^\infty f(t)dt" eeimg="1">
+                </p>
+                <p>
+                    由Fubini定理，可以进行二重积分变序，得到
+                    <img src="https://www.zhihu.com/equation?tex=%3Da%2B%5Cint_a%5E%5Cinfty+f%28t%29dt%5Cint_a%5Etdx" alt="=a+\int_a^\infty f(t)dt\int_a^tdx" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3Da%2B%5Cint_a%5E%5Cinfty+t++f%28t%29dt-a%5Cint_a%5E%5Cinfty+f%28t%29dt%3D%5Cint_a%5E%5Cinfty+tf%28t%29dt%3DEX" alt="=a+\int_a^\infty t  f(t)dt-a\int_a^\infty f(t)dt=\int_a^\infty tf(t)dt=EX" eeimg="1">
+                </p>
+                <p>
+                    得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    值得一提的是，这个形式可以进行推广。当
+                    <img src="https://www.zhihu.com/equation?tex=X%5Cin%5Ba%2Cb%5D%5C+a.s." alt="X\in[a,b]\ a.s." eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=EX%3Da%2B%5Cint_a%5Eb%281-F%28x%29%29dx" alt="EX=a+\int_a^b(1-F(x))dx" eeimg="1">
+                    。证明由读者自行完成。
+                </p>
+                <p>
+                    这个等价定义利用了分布函数，好处是
+                    <b>
+                        对离散型、连续型、混合型随机变量的数学期望求解具有统一的定义形式。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于，数学期望的性质，我们再补充一下Jensen不等式的数学期望形式。这在证明一些与期望相关的关系式时往往很有用。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（Jensen不等式的数学期望形式）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                        为实函数，二阶可导。则若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5E2%7D%7Bdx%5E2%7Dh%28x%29%5Cgeq+0" alt="\frac{d^2}{dx^2}h(x)\geq 0" eeimg="1">
+                        对任意
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的取值概率/密度非零点成立，则
+                        <img src="https://www.zhihu.com/equation?tex=Eh%28X%29%5Cgeq+h%28EX%29" alt="Eh(X)\geq h(EX)" eeimg="1">
+                        。反之，若
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5E2%7D%7Bdx%5E2%7Dh%28x%29%5Cleq+0" alt="\frac{d^2}{dx^2}h(x)\leq 0" eeimg="1">
+                        对任意
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的取值概率/密度非零点成立，则
+                        <img src="https://www.zhihu.com/equation?tex=Eh%28X%29%5Cleq+h%28EX%29" alt="Eh(X)\leq h(EX)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    略去此定理的证明。
+                </p>
+                <p>
+                    我们知道在分析学课程中我们接触到的Jensen不等式比较的是
+                    <img src="https://www.zhihu.com/equation?tex=f%28%5Cfrac%7Bx_1%2B...%2Bx_n%7D%7Bn%7D%29" alt="f(\frac{x_1+...+x_n}{n})" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bf%28x_1%29%2B...%2Bf%28x_n%29%7D%7Bn%7D" alt="\frac{f(x_1)+...+f(x_n)}{n}" eeimg="1">
+                    的大小关系。这其实仅仅是上述定理的特殊情况。（取概率分布为
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_i%29%3D%5Cfrac%7B1%7D%7Bn%7D%28i%3D1%2C2%2C...%2Cn%29" alt="P(X=x_i)=\frac{1}{n}(i=1,2,...,n)" eeimg="1">
+                    即可）
+                </p>
+                <p>
+                    事实上，期望本身也带有加权平均的意义，因此Jensen不等式在期望意义下也可以进行推广。
+                </p>
+                <p>
+                    我们如果
+                    <b>
+                        取
+                        <img src="https://www.zhihu.com/equation?tex=h%28x%29%3Dx%5E2" alt="h(x)=x^2" eeimg="1">
+                        ，则可以得到
+                        <img src="https://www.zhihu.com/equation?tex=EX%5E2%5Cgeq+E%5E2X" alt="EX^2\geq E^2X" eeimg="1">
+                        ，事实上，这与方差
+                        <img src="https://www.zhihu.com/equation?tex=VarX%3DEX%5E2-E%5E2X%5Cgeq+0" alt="VarX=EX^2-E^2X\geq 0" eeimg="1">
+                        是统一的。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        取
+                        <img src="https://www.zhihu.com/equation?tex=h%28x%29%3D%5Csqrt%7Bx%7D" alt="h(x)=\sqrt{x}" eeimg="1">
+                        ，则对于非负随机变量
+                        <img src="https://www.zhihu.com/equation?tex=X+" alt="X" eeimg="1">
+                        ，得到
+                        <img src="https://www.zhihu.com/equation?tex=E%5Csqrt%7BX%7D%3C%5Csqrt%7BEX%7D" alt="E\sqrt{X}&lt;\sqrt{EX}" eeimg="1">
+                        。（此处二阶导数不为
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                        ，为严格上凸函数，可以改为严格不等号），这也是一个很有用的关系式。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        二、次序统计量，混合分布
+                    </b>
+                </p>
+                <p>
+                    次序统计量这个概念的产生源于人们想求得若干个独立的随机变量在排序之后所具有的概率分布。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        为随机变量，对
+                        <img src="https://www.zhihu.com/equation?tex=%5Comega%5Cin%5COmega" alt="\omega\in\Omega" eeimg="1">
+                        ，将
+                        <img src="https://www.zhihu.com/equation?tex=X_1%28%5Comega%29%2C...%2CX_n%28%5Comega%29" alt="X_1(\omega),...,X_n(\omega)" eeimg="1">
+                        从小到大进行排序，得到的
+                        <img src="https://www.zhihu.com/equation?tex=X_%7B%281%29%7D%28%5Comega%29%2C...%2CX_%7B%28n%29%7D%28%5Comega%29" alt="X_{(1)}(\omega),...,X_{(n)}(\omega)" eeimg="1">
+                        称为原随机变量的次序统计量。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    特别地，在实际应用中我们最常碰到的情况是连续型的独立同分布随机变量的次序统计量。
+                </p>
+                <p>
+                    为了简化，我们仅仅研究
+                    <b>
+                        当
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_n" alt="X_1,...,X_n" eeimg="1">
+                        为独立同分布的连续型随机变量
+                    </b>
+                    时的情况。
+                </p>
+                <p>
+                    以下假设出现的随机变量都是独立同分布的连续型随机变量，所有
+                    <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                    有公共的密度
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    与分布
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29" alt="F(x)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们容易证明：
+                    <img src="https://www.zhihu.com/equation?tex=%28X_%7B%281%29%7D%2C...%2CX_%7B%28n%29%7D%29" alt="(X_{(1)},...,X_{(n)})" eeimg="1">
+                    在这样的条件下为
+                    <b>
+                        连续型随机向量
+                    </b>
+                    。（读者自证）其联合分布假设为
+                    <img src="https://www.zhihu.com/equation?tex=F_n%28x_1%2C...%2Cx_n%29" alt="F_n(x_1,...,x_n)" eeimg="1">
+                    ，则联合分布函数连续。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们现在想要求得每一个次序统计量所具有的分布，不妨从联合密度入手。先求出联合密度，再求边缘密度。我们下面开始推导其联合密度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由于
+                    <img src="https://www.zhihu.com/equation?tex=%28X_%7B%281%29%7D%2C...%2CX_%7B%28n%29%7D%29" alt="(X_{(1)},...,X_{(n)})" eeimg="1">
+                    为连续型随机向量，可得
+                    <img src="https://www.zhihu.com/equation?tex=P%28X_%7B%281%29%7D%3CX_%7B%282%29%7D%3C...%3CX_%7B%28n%29%7D%29%3D1" alt="P(X_{(1)}&lt;X_{(2)}&lt;...&lt;X_{(n)})=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    对于区域
+                    <img src="https://www.zhihu.com/equation?tex=D%3D%5Cleft+%5C%7B%28x_1%2C...%2Cx_n%29%7Ca_i%3Cx_i%5Cleq+b_i%2Ci%3D1%2C2%2C...%2Cn++%5Cright+%5C%7D" alt="D=\left \{(x_1,...,x_n)|a_i&lt;x_i\leq b_i,i=1,2,...,n  \right \}" eeimg="1">
+                </p>
+                <p>
+                    考虑概率
+                    <img src="https://www.zhihu.com/equation?tex=P%28%28X_%7B%281%29%7D%2C...%2CX_%7B%28n%29%7D%29%5Cin+D%29%3DP%28%28X_%7B%281%29%7D%2C...%2CX_%7B%28n%29%7D%29%5Cin+D%2CX_%7B%281%29%7D%3CX_%7B%282%29%7D%3C...%3CX_%7B%28n%29%7D%29" alt="P((X_{(1)},...,X_{(n)})\in D)=P((X_{(1)},...,X_{(n)})\in D,X_{(1)}&lt;X_{(2)}&lt;...&lt;X_{(n)})" eeimg="1">
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=i_1%2Ci_2%2C...%2Ci_n" alt="i_1,i_2,...,i_n" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=1%2C2%2C...%2Cn" alt="1,2,...,n" eeimg="1">
+                    的一个全排列，则
+                </p>
+                <p>
+                    原式
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Csum_%7Bi_1%2C...%2Ci_n%7D+P%28%28X_%7Bi_1%7D%2C...%2CX_%7Bi_n%7D%29%5Cin+D%2CX_%7Bi_1%7D%3CX_%7Bi_2%7D%3C...%3CX_%7Bi_n%7D%29" alt="=\sum_{i_1,...,i_n} P((X_{i_1},...,X_{i_n})\in D,X_{i_1}&lt;X_{i_2}&lt;...&lt;X_{i_n})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3Dn%21P%28%28X_%7B1%7D%2C...%2CX_%7Bn%7D%29%5Cin+D%2CX_%7B1%7D%3CX_%7B2%7D%3C...%3CX_%7Bn%7D%29" alt="=n!P((X_{1},...,X_{n})\in D,X_{1}&lt;X_{2}&lt;...&lt;X_{n})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cint...%5Cint_Dn%21f%28x_1%29f%28x_2%29...f%28x_n%29I%5Bx_1%3Cx_2%3C...%3Cx_n%5Ddx_1...dx_n" alt="=\int...\int_Dn!f(x_1)f(x_2)...f(x_n)I[x_1&lt;x_2&lt;...&lt;x_n]dx_1...dx_n" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由联合密度的定义，我们得到了一个重要的结果：
+                </p>
+                <p>
+                    <b>
+                        随机向量
+                        <img src="https://www.zhihu.com/equation?tex=%28X_%7B%281%29%7D%2C...%2CX_%7B%28n%29%7D%29" alt="(X_{(1)},...,X_{(n)})" eeimg="1">
+                        具有联合密度
+                        <img src="https://www.zhihu.com/equation?tex=f_n%28x_1%2C...%2Cx_n%29%3D%5Cbegin%7Bcases%7D+n%21f%28x_1%29...f%28x_n%29%5C+%5C+%5C+%5C+x_1%3Cx_2%3C...%3Cx_n%5C%5C+0%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+else+%5Cend%7Bcases%7D" alt="f_n(x_1,...,x_n)=\begin{cases} n!f(x_1)...f(x_n)\ \ \ \ x_1&lt;x_2&lt;...&lt;x_n\\ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ else \end{cases}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么对于我们所关注的
+                    <img src="https://www.zhihu.com/equation?tex=X_%7B%28k%29%7D" alt="X_{(k)}" eeimg="1">
+                    的概率分布，我们只需要求边缘密度即可。设其密度为
+                    <img src="https://www.zhihu.com/equation?tex=f_k%28x_k%29" alt="f_k(x_k)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=f_k%28x_k%29%3Dn%21f%28x_k%29%5Cint...%5Cint_%7B-%5Cinfty%3Cx_1%3C...%3Cx_k%7Df%28x_1%29...f%28x_%7Bk-1%7D%29dx_1...dx_%7Bk-1%7D" alt="f_k(x_k)=n!f(x_k)\int...\int_{-\infty&lt;x_1&lt;...&lt;x_k}f(x_1)...f(x_{k-1})dx_1...dx_{k-1}" eeimg="1">
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctimes+%5Cint...%5Cint_%7Bx_k%3Cx_%7Bk%2B1%7D%3C...%3Cx_n%3C%2B%5Cinfty%7Df%28x_%7Bk%2B1%7D%29...f%28x_n%29dx_%7Bk%2B1%7D...dx_n" alt="\times \int...\int_{x_k&lt;x_{k+1}&lt;...&lt;x_n&lt;+\infty}f(x_{k+1})...f(x_n)dx_{k+1}...dx_n" eeimg="1">
+                </p>
+                <p>
+                    那么问题转化为了如何求这个积分。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在此我们给出如下
+                    <b>
+                        引理：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=-%5Cinfty%5Cleq+a%3Cx_1%3Cx_2%3C...%3Cx_k%3Cb%5Cleq+%2B%5Cinfty" alt="-\infty\leq a&lt;x_1&lt;x_2&lt;...&lt;x_k&lt;b\leq +\infty" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        为分布，
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        为密度，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint...%5Cint_%7Ba%3Cx_1%3C...%3Cx_k%3Cb%7Df%28x_1%29...f%28x_k%29dx_1...dx_k%3D%5Cfrac%7B%28F%28b%29-F%28a%29%29%5Ek%7D%7Bk%21%7D" alt="\int...\int_{a&lt;x_1&lt;...&lt;x_k&lt;b}f(x_1)...f(x_k)dx_1...dx_k=\frac{(F(b)-F(a))^k}{k!}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    这个引理交给读者利用数学归纳法与Fubini定理完成证明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    利用这个引理，我们便可以求出上述积分，
+                    <b>
+                        得到
+                        <img src="https://www.zhihu.com/equation?tex=X_%7B%28k%29%7D" alt="X_{(k)}" eeimg="1">
+                        的密度
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=f%28x_k%29%3Dn%21f%28x_k%29%5Cfrac%7BF%5E%7Bk-1%7D%28x_k%29%7D%7B%28k-1%29%21%7D%5Cfrac%7B%5B1-F%28x_k%29%5D%5E%7Bn-k%7D%7D%7B%28n-k%29%21%7D" alt="f(x_k)=n!f(x_k)\frac{F^{k-1}(x_k)}{(k-1)!}\frac{[1-F(x_k)]^{n-k}}{(n-k)!}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    至此，我们已经求出了
+                    <b>
+                        每一个次序统计量的概率分布
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们举例来进一步说明。
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2C...%2CX_4%5Csim%5Cvarepsilon%28%5Clambda%29" alt="X_1,...,X_4\sim\varepsilon(\lambda)" eeimg="1">
+                    ，独立同分布，求
+                    <img src="https://www.zhihu.com/equation?tex=min%28X_1%2C...%2CX_4%29" alt="min(X_1,...,X_4)" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=max%28X_1%2C...%2CX_4%29" alt="max(X_1,...,X_4)" eeimg="1">
+                    的密度。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X_%7B%281%29%7D%3Dmin%28X_1%2C...%2CX_4%29" alt="X_{(1)}=min(X_1,...,X_4)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=X_%7B%284%29%7D%3Dmax%28X_1%2C...%2CX_4%29" alt="X_{(4)}=max(X_1,...,X_4)" eeimg="1">
+                </p>
+                <p>
+                    利用我们上面得到的关于次序统计量的密度的结论。
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D%5Clambda+e%5E%7B-%5Clambda+x%7D%2CF%28x%29%3D1-e%5E%7B-%5Clambda+x%7D" alt="f(x)=\lambda e^{-\lambda x},F(x)=1-e^{-\lambda x}" eeimg="1">
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=f_1%28x%29%3D4%5Clambda+e%5E%7B-4%5Clambda+x%7D" alt="f_1(x)=4\lambda e^{-4\lambda x}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X_%7B%281%29%7D" alt="X_{(1)}" eeimg="1">
+                    的密度。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f_4%28x%29%3D4%5Clambda+e%5E%7B-%5Clambda+x%7D%281-e%5E%7B-%5Clambda+x%7D%29%5E3" alt="f_4(x)=4\lambda e^{-\lambda x}(1-e^{-\lambda x})^3" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X_%7B%284%29%7D" alt="X_{(4)}" eeimg="1">
+                    的密度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们发现：
+                    <img src="https://www.zhihu.com/equation?tex=min%28X_1%2C...%2CX_4%29%5Csim%5Cvarepsilon%284%5Clambda%29" alt="min(X_1,...,X_4)\sim\varepsilon(4\lambda)" eeimg="1">
+                    。这告诉我们：若干个独立同分布的指数分布随机变量，其最小值仍服从指数分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这里值得一提的一点是：应用得最多的往往是
+                    <img src="https://www.zhihu.com/equation?tex=X_%7B%281%29%7D%2CX_%7B%28n%29%7D" alt="X_{(1)},X_{(n)}" eeimg="1">
+                    <b>
+                        （最大值与最小值）
+                    </b>
+                    这两个次序统计量的分布。然而，这两者的分布却有着更加容易求出的方法：
+                    <b>
+                        分布函数法
+                    </b>
+                    。
+                </p>
+                <p>
+                    此处利用分布函数法重新计算上例中
+                    <img src="https://www.zhihu.com/equation?tex=X_%7B%281%29%7D" alt="X_{(1)}" eeimg="1">
+                    的密度作为示范：
+                </p>
+                <p>
+                    假设其分布函数为
+                    <img src="https://www.zhihu.com/equation?tex=F_1" alt="F_1" eeimg="1">
+                    ，密度为
+                    <img src="https://www.zhihu.com/equation?tex=f_1" alt="f_1" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F_1%28x%29%3DP%28min%28X_1%2C...%2CX_4%29%5Cleq+x%29%3D1-P%28min%28X_1%2C...%2CX_4%29%3Ex%29" alt="F_1(x)=P(min(X_1,...,X_4)\leq x)=1-P(min(X_1,...,X_4)&gt;x)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D1-P%28X_1%3Ex%29...P%28X_4%3Ex%29%3D1-P%5E4%28X_1%3Ex%29" alt="=1-P(X_1&gt;x)...P(X_4&gt;x)=1-P^4(X_1&gt;x)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D1-%28e%5E%7B-%5Clambda+x%7D%29%5E4" alt="=1-(e^{-\lambda x})^4" eeimg="1">
+                </p>
+                <p>
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=f_1%3DF_1%5E%7B%27%7D%3D4%5Clambda+e%5E%7B-4%5Clambda+x%7D" alt="f_1=F_1^{&#39;}=4\lambda e^{-4\lambda x}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这样的方法是更加简便容易计算的。
+                    <img src="https://www.zhihu.com/equation?tex=X_%7B%284%29%7D" alt="X_{(4)}" eeimg="1">
+                    的密度的计算作为练习留给读者。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    接下来，我们再来介绍一下混合分布的概念。
+                </p>
+                <p>
+                    混合分布是一个很有趣的概念。它被定义的出发点是为了解决这样一个问题：已知
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2" alt="X_1,X_2" eeimg="1">
+                    这两个随机变量的概率分布，现在有随机变量
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    有概率
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    具有和
+                    <img src="https://www.zhihu.com/equation?tex=X_1" alt="X_1" eeimg="1">
+                    同样的分布，有概率
+                    <img src="https://www.zhihu.com/equation?tex=1-p" alt="1-p" eeimg="1">
+                    具有和
+                    <img src="https://www.zhihu.com/equation?tex=X_2" alt="X_2" eeimg="1">
+                    同样的分布，那么
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的分布如何求出？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在接下来的讨论中，我们
+                    <b>
+                        假设
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2" alt="X_1,X_2" eeimg="1">
+                        均为连续型随机变量，密度为
+                        <img src="https://www.zhihu.com/equation?tex=f_1%2Cf_2" alt="f_1,f_2" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        有概率
+                        <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                        具有和
+                        <img src="https://www.zhihu.com/equation?tex=X_1" alt="X_1" eeimg="1">
+                        同样的分布，有概率
+                        <img src="https://www.zhihu.com/equation?tex=1-p" alt="1-p" eeimg="1">
+                        具有和
+                        <img src="https://www.zhihu.com/equation?tex=X_2" alt="X_2" eeimg="1">
+                        同样的分布。
+                    </b>
+                </p>
+                <p>
+                    读者容易证明
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        必定为连续型随机变量，设其密度为
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们现在来求出密度
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由密度的定义，我们考虑对于区间
+                    <img src="https://www.zhihu.com/equation?tex=%28a%2Cb%5D" alt="(a,b]" eeimg="1">
+                    ，
+                </p>
+                <p>
+                    考虑概率
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%5Cin%28a%2Cb%5D%29" alt="P(Y\in(a,b])" eeimg="1">
+                    ，利用全概公式，得到其
+                    <img src="https://www.zhihu.com/equation?tex=%3DpP%28X_1%5Cin%28a%2Cb%5D%29%2B%281-p%29P%28X_2%5Cin%28a%2Cb%5D%29" alt="=pP(X_1\in(a,b])+(1-p)P(X_2\in(a,b])" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3Dp%5Cint_a%5Ebf_1%28x%29dx%2B%281-p%29%5Cint_a%5Ebf_2%28x%29dx%3D%5Cint_a%5Eb%5Bpf_1%28x%29%2B%281-p%29f_2%28x%29%5Ddx" alt="=p\int_a^bf_1(x)dx+(1-p)\int_a^bf_2(x)dx=\int_a^b[pf_1(x)+(1-p)f_2(x)]dx" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        由密度定义，密度
+                        <img src="https://www.zhihu.com/equation?tex=f%28y%29%3Dpf_1%28y%29%2B%281-p%29f_2%28y%29" alt="f(y)=pf_1(y)+(1-p)f_2(y)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们发现对于这样的随机变量，其密度为
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2" alt="X_1,X_2" eeimg="1">
+                    的密度的加权平均，权重为
+                    <img src="https://www.zhihu.com/equation?tex=p%2C1-p" alt="p,1-p" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <b>
+                        我们称这样的随机变量
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2" alt="X_1,X_2" eeimg="1">
+                        以权重
+                        <img src="https://www.zhihu.com/equation?tex=p%2C1-p" alt="p,1-p" eeimg="1">
+                        生成的混合分布随机变量。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    需要注意的是：同样含有“混合”二字，具有混合分布的随机变量与混合型随机变量的含义截然不同。（不清楚的读者请翻阅前几篇笔记）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于混合分布随机变量，有很多有趣而常用的性质：
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=EY%5Ek%3DpEX_1%5Ek%2B%281-p%29EX_2%5Ek" alt="EY^k=pEX_1^k+(1-p)EX_2^k" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=EY%5Ek%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7D+y%5Ekf%28y%29dy%3Dp%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dy%5Ekf_1%28y%29dy%2B%281-p%29%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Dy%5Ekf_2%28y%29dy" alt="EY^k=\int_{-\infty}^{+\infty} y^kf(y)dy=p\int_{-\infty}^{+\infty}y^kf_1(y)dy+(1-p)\int_{-\infty}^{+\infty}y^kf_2(y)dy" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3DpEX_1%5Ek%2B%281-p%29EX_2%5Ek" alt="=pEX_1^k+(1-p)EX_2^k" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=P%28Y%5Cleq+y%29%3DpP%28X_1%5Cleq+y%29%2B%281-p%29P%28X_2%5Cleq+y%29" alt="P(Y\leq y)=pP(X_1\leq y)+(1-p)P(X_2\leq y)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F%28y%29%3D%5Cint_%7B-%5Cinfty%7D%5Eyf%28t%29dt%3Dp%5Cint_%7B-%5Cinfty%7D%5Eyf_1%28t%29dt%2B%281-p%29%5Cint_%7B-%5Cinfty%7D%5Eyf_2%28t%29dt" alt="F(y)=\int_{-\infty}^yf(t)dt=p\int_{-\infty}^yf_1(t)dt+(1-p)\int_{-\infty}^yf_2(t)dt" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3DpF_1%28y%29%2B%281-p%29F_2%28y%29" alt="=pF_1(y)+(1-p)F_2(y)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、
+                        <img src="https://www.zhihu.com/equation?tex=M_Y%28t%29%3DpM_1%28t%29%2B%281-p%29M_2%28t%29" alt="M_Y(t)=pM_1(t)+(1-p)M_2(t)" eeimg="1">
+                        ，其中
+                        <img src="https://www.zhihu.com/equation?tex=M_i%28t%29" alt="M_i(t)" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X_i" alt="X_i" eeimg="1">
+                        的矩母函数。
+                    </b>
+                </p>
+                <p>
+                    （矩母函数本质也是数学期望，同理得证）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们看到：
+                    <b>
+                        混合分布随机变量关于两个生成的随机变量在概率、分布函数、任意阶原点矩上均为线性组合，这为计算提供了很大的便利。这些性质产生的本质原因就是因为其密度是线性组合。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    需要注意的是：
+                    <b>
+                        这并不意味着
+                        <img src="https://www.zhihu.com/equation?tex=Y%3DpX_1%2B%281-p%29X_2" alt="Y=pX_1+(1-p)X_2" eeimg="1">
+                        。
+                    </b>
+                    牢记混合分部随机变量指的是密度的线性组合，而非随机变量的线性组合。
+                </p>
+                <p>
+                    这也
+                    <b>
+                        不意味着混合分布随机变量的方差是生成随机变量方差的线性组合
+                    </b>
+                    。（回忆方差为二阶中心矩，读者很容易找到反例）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    一种常常应用的特殊情形是
+                    <img src="https://www.zhihu.com/equation?tex=X_1" alt="X_1" eeimg="1">
+                    恒为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    的情况。
+                </p>
+                <p>
+                    此时
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    有概率
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ，有概率
+                    <img src="https://www.zhihu.com/equation?tex=1-p" alt="1-p" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=X_2" alt="X_2" eeimg="1">
+                    同分布。
+                </p>
+                <p>
+                    特别地，这种情形下我们有
+                    <img src="https://www.zhihu.com/equation?tex=EY%5Ek%3D%281-p%29EX_2%5Ek" alt="EY^k=(1-p)EX_2^k" eeimg="1">
+                    等性质，此处不再赘述。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        三、风险管理
+                    </b>
+                </p>
+                <p>
+                    在这一章中，我们介绍一些风险管理中的基本概念与知识，作为概率论在实际生活中的应用。（虽然实际的模型会远比这些复杂）
+                </p>
+                <p>
+                    我们向大家介绍一些
+                    <b>
+                        简单的保险模型
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们都知道保险的工作机制是：购买保险的人需事先交保费。若损失发生，则保险将会进行赔付。
+                </p>
+                <p>
+                    接下来，我们
+                    <b>
+                        总是用
+                        <img src="https://www.zhihu.com/equation?tex=X+" alt="X" eeimg="1">
+                        作为表示损失数额的随机变量，用
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    <b>
+                        作为表示赔付数额的随机变量，总是假设
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">
+                    <b>
+                        均为连续型随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的密度为
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                        。
+                    </b>
+                    若无特别说明，我们总是假设保险会赔付全部损失额
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，那么容易知道纯保费（保险费中用于支付保险赔偿金的部分）与期望的赔付都应该为
+                    <img src="https://www.zhihu.com/equation?tex=EX" alt="EX" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来主要想研究的则是部分保险（赔付损失额不完全等于损失额
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的保险）
+                </p>
+                <p>
+                    <b>
+                        1、免赔额保险（deductible insurance）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        免赔额保险均设有一个免赔额
+                        <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                        。当损失发生时，如果损失低于免赔额，不进行赔付；如果损失高于免赔额，赔付
+                        <img src="https://www.zhihu.com/equation?tex=X-d" alt="X-d" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        即
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbegin%7Bcases%7D+0%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+X%5Cleq+d%5C%5C+X-d%5C+%5C+%5C+X%3Ed+%5Cend%7Bcases%7D+%3Dmax%28X-d%2C0%29" alt="Y=\begin{cases} 0\ \ \ \ \ \ \ \ \ \ \ X\leq d\\ X-d\ \ \ X&gt;d \end{cases} =max(X-d,0)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    我们关心的是：期望赔付额
+                    <img src="https://www.zhihu.com/equation?tex=EY" alt="EY" eeimg="1">
+                    将会是多少。
+                </p>
+                <p>
+                    首先，容易发现
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    是我们前面讲到过的
+                    <b>
+                        混合分布随机变量
+                    </b>
+                    。
+                </p>
+                <p>
+                    其有
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%5Cleq+d%29" alt="P(X\leq d)" eeimg="1">
+                    的概率为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ，有
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Ed%29" alt="P(X&gt;d)" eeimg="1">
+                    的概率与
+                    <img src="https://www.zhihu.com/equation?tex=X-d" alt="X-d" eeimg="1">
+                    同分布。
+                </p>
+                <p>
+                    由混合分布随机变量对于期望线性可拆分的性质，（也可以利用全期望公式）
+                </p>
+                <p>
+                    我们有
+                    <img src="https://www.zhihu.com/equation?tex=EY%3DP%28X%3Ed%29E%28X-d%7CX%3Ed%29" alt="EY=P(X&gt;d)E(X-d|X&gt;d)" eeimg="1">
+                </p>
+                <p>
+                    回忆我们在条件数学期望中介绍的定理：
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        为事件，
+                        <img src="https://www.zhihu.com/equation?tex=P%28A%29%3E0%2CE%28X%7CA%29" alt="P(A)&gt;0,E(X|A)" eeimg="1">
+                        存在，则
+                        <img src="https://www.zhihu.com/equation?tex=E%28X%7CA%29%3D%5Cfrac%7BE%28XI%5BA%5D%29%7D%7BP%28A%29%7D" alt="E(X|A)=\frac{E(XI[A])}{P(A)}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    我们得到
+                    <img src="https://www.zhihu.com/equation?tex=E%28X-d%7CX%3Ed%29%3D%5Cfrac%7BE%28%28X-d%29I%5BX%3Ed%5D%29%7D%7BP%28X%3Ed%29%7D" alt="E(X-d|X&gt;d)=\frac{E((X-d)I[X&gt;d])}{P(X&gt;d)}" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        故
+                        <img src="https://www.zhihu.com/equation?tex=EY%3DE%28%28X-d%29I%5BX%3Ed%5D%29%3D%5Cint_d%5E%7B%2B%5Cinfty%7D%28x-d%29f%28x%29dx" alt="EY=E((X-d)I[X&gt;d])=\int_d^{+\infty}(x-d)f(x)dx" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    利用期望的等价定义（分布函数），我们也可以证明
+                    <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cint_d%5E%7B%2B%5Cinfty%7D%5B1-F_X%28x%29%5Ddx" alt="EY=\int_d^{+\infty}[1-F_X(x)]dx" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在此处，我们再补充几种其它的免赔额类型的保险，但是不作详细展开，读者可以自行验证其期望赔付额作为练习。
+                </p>
+                <p>
+                    <b>
+                        （1）：起赔式免赔额保险（Franchise deductible）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        免赔额为
+                        <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                        。当损失额小于免赔额，不赔付。当损失额超过免赔额，赔付全部损失。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        即
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbegin%7Bcases%7D+0%5C+%5C+%5C+%5C+X%5Cleq+d%5C%5C+X%5C+%5C+%5C+X%3Ed+%5Cend%7Bcases%7D+" alt="Y=\begin{cases} 0\ \ \ \ X\leq d\\ X\ \ \ X&gt;d \end{cases}" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cint_d%5E%7B%2B%5Cinfty%7Dxf%28x%29dx" alt="EY=\int_d^{+\infty}xf(x)dx" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        （2）：隐藏式免赔额保险（Disappearing deductible）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        设有免赔额下限
+                        <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                        ，免赔额上限
+                        <img src="https://www.zhihu.com/equation?tex=d%27" alt="d&#39;" eeimg="1">
+                        （
+                        <img src="https://www.zhihu.com/equation?tex=d%3Cd%27" alt="d&lt;d&#39;" eeimg="1">
+                        ）。若损失额小于免赔额下限，不赔付。若损失额大于免赔额上限，赔付全部损失。若损失额处于二者之间，赔付
+                        <img src="https://www.zhihu.com/equation?tex=d%27%5Cfrac%7BX-d%7D%7Bd%27-d%7D" alt="d&#39;\frac{X-d}{d&#39;-d}" eeimg="1">
+                        （线性调整）。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        即
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbegin%7Bcases%7D+0%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+X%5Cleq+d%5C%5C+d%27%5Cfrac%7BX-d%7D%7Bd%27-d%7D%5C+%5C+%5C+d%3CX%5Cleq+d%27%5C%5C+X%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+X%3Ed%27+%5Cend%7Bcases%7D" alt="Y=\begin{cases} 0\ \ \ \ \ \ \ \ \ \ \ X\leq d\\ d&#39;\frac{X-d}{d&#39;-d}\ \ \ d&lt;X\leq d&#39;\\ X\ \ \ \ \ \ \ \ \ \ X&gt;d&#39; \end{cases}" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cint_d%5E%7Bd%27%7Dd%27%5Cfrac%7Bx-d%7D%7Bd%27-d%7Df%28x%29dx%2B%5Cint_%7Bd%27%7D%5E%7B%2B%5Cinfty%7Dxf%28x%29dx" alt="EY=\int_d^{d&#39;}d&#39;\frac{x-d}{d&#39;-d}f(x)dx+\int_{d&#39;}^{+\infty}xf(x)dx" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们不难发现：一般的免赔额保险与隐藏式免赔额保险的赔付额随机变量
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    为关于损失额
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的连续函数。
+                </p>
+                <p>
+                    我们试举一例帮助读者理解。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    损失额随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    服从指数分布，且其数学期望为
+                    <img src="https://www.zhihu.com/equation?tex=1000" alt="1000" eeimg="1">
+                    ，保险免赔额为
+                    <img src="https://www.zhihu.com/equation?tex=200" alt="200" eeimg="1">
+                    ，求损失发生时的期望赔付额。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    由于指数分布
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon%28%5Clambda%29" alt="\varepsilon(\lambda)" eeimg="1">
+                    的数学期望为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B%5Clambda%7D" alt="\frac{1}{\lambda}" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Cfrac%7B1%7D%7B1000%7D%29" alt="X\sim \varepsilon(\frac{1}{1000})" eeimg="1">
+                    。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cint_%7B200%7D%5E%7B%2B%5Cinfty%7D%28x-200%29%5Cfrac%7Be%5E%7B-%5Cfrac%7Bx%7D%7B1000%7D%7D%7D%7B1000%7Ddx" alt="EY=\int_{200}^{+\infty}(x-200)\frac{e^{-\frac{x}{1000}}}{1000}dx" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D-xe%5E%7B-%5Cfrac%7Bx%7D%7B1000%7D%7D-1000e%5E%7B-%5Cfrac%7Bx%7D%7B1000%7D%7D%2B200e%5E%7B-%5Cfrac%7Bx%7D%7B1000%7D%7D%7C_%7Bx%3D200%7D%5E%5Cinfty%3D1000e%5E%7B-%5Cfrac%7B1%7D%7B5%7D%7D" alt="=-xe^{-\frac{x}{1000}}-1000e^{-\frac{x}{1000}}+200e^{-\frac{x}{1000}}|_{x=200}^\infty=1000e^{-\frac{1}{5}}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、带有保险限额的保险（Policy limit）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        此类保险设有保险限额
+                        <img src="https://www.zhihu.com/equation?tex=u" alt="u" eeimg="1">
+                        。若损失额小于保险限额，赔付所有损失。若损失额大于保险限额，赔付额等于保险限额。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        即
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbegin%7Bcases%7D+X%5C+%5C+%5C+%5C+X%5Cleq+u%5C%5C+u%5C+%5C+%5C+%5C+%5C+X%3Eu+%5Cend%7Bcases%7D" alt="Y=\begin{cases} X\ \ \ \ X\leq u\\ u\ \ \ \ \ X&gt;u \end{cases}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        同样地，利用混合分布随机变量的性质以及条件数学期望的性质，容易算出
+                        <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cint_0%5Euxf%28x%29dx%2Bu%5Cint_u%5E%7B%2B%5Cinfty%7Df%28x%29dx" alt="EY=\int_0^uxf(x)dx+u\int_u^{+\infty}f(x)dx" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        利用数学期望的分布函数等价定义来表示，得到
+                        <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cint_0%5Eu%5B1-F_X%28x%29%5Ddx" alt="EY=\int_0^u[1-F_X(x)]dx" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    计算和证明都交给读者自己完成。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    更复杂一些地，我们可以将免赔额与保险限额相结合起来。
+                </p>
+                <p>
+                    <b>
+                        3、同时带有免赔额和保险限额的保险
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        设有免赔额
+                        <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                        ，保险限额
+                        <img src="https://www.zhihu.com/equation?tex=u" alt="u" eeimg="1">
+                        ，那么赔付额
+                        <img src="https://www.zhihu.com/equation?tex=Y%3D%5Cbegin%7Bcases%7D+0%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+X%5Cleq+d%5C%5C+X-d+%5C+%5C+%5C+d%3CX%5Cleq+u%5C%5C+u-d++%5C+%5C+%5C+%5C+X%3Eu+%5Cend%7Bcases%7D" alt="Y=\begin{cases} 0\ \ \ \ \ \ \ \ \ \ \ X\leq d\\ X-d \ \ \ d&lt;X\leq u\\ u-d  \ \ \ \ X&gt;u \end{cases}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        这里注意需要先考虑保险限额的限制，再加上免赔额的限制。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        容易得到赔付额的期望
+                        <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cint_d%5Eu%28x-d%29f%28x%29dx%2B%28u-d%29%5Cint_u%5E%7B%2B%5Cinfty%7Df%28x%29dx" alt="EY=\int_d^u(x-d)f(x)dx+(u-d)\int_u^{+\infty}f(x)dx" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        利用等价定义，可以得到
+                        <img src="https://www.zhihu.com/equation?tex=EY%3D%5Cint_d%5Eu%5B1-F_X%28x%29%5Ddx" alt="EY=\int_d^u[1-F_X(x)]dx" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以上便就是几种简单的保险模型。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们介绍一下保险政策的总理赔额模型。
+                </p>
+                <p>
+                    我们先引入
+                    <b>
+                        个人风险模型
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们
+                    <b>
+                        假设共有
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        个人购买了保险，其赔付额分别为
+                        <img src="https://www.zhihu.com/equation?tex=P_1%2CP_2%2C...%2CP_n" alt="P_1,P_2,...,P_n" eeimg="1">
+                        。以下总是假定每个人的赔付额相互独立。
+                    </b>
+                </p>
+                <p>
+                    我们
+                    <b>
+                        用
+                        <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                        来表示保险公司总的赔付额，则
+                        <img src="https://www.zhihu.com/equation?tex=S%3D%5Csum_%7Bi%3D1%7D%5EnP_i" alt="S=\sum_{i=1}^nP_i" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    由于相互独立性，我们同时有
+                    <img src="https://www.zhihu.com/equation?tex=ES%3D%5Csum_%7Bi%3D1%7D%5EnEP_i%2CVarS%3D%5Csum_%7Bi%3D1%7D%5EnVarP_i" alt="ES=\sum_{i=1}^nEP_i,VarS=\sum_{i=1}^nVarP_i" eeimg="1">
+                    。
+                </p>
+                <p>
+                    当购买保险的人数足够多时
+                    <img src="https://www.zhihu.com/equation?tex=%28n%5Crightarrow%5Cinfty%29" alt="(n\rightarrow\infty)" eeimg="1">
+                    ，我们就可以
+                    <b>
+                        利用Linderberg-Levy中心极限定理对于
+                        <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                        的分布进行正态近似（实际应用数量大于
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=30" alt="30" eeimg="1">
+                    <b>
+                        即可）。
+                    </b>
+                    （回忆：当中心极限定理适用条件成立时，我们只需要知道
+                    <img src="https://www.zhihu.com/equation?tex=ES" alt="ES" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=VarS" alt="VarS" eeimg="1">
+                    便可以确定
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    的概率分布）
+                </p>
+                <p>
+                    通常，我们这里
+                    <b>
+                        取
+                        <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                        的
+                        <img src="https://www.zhihu.com/equation?tex=0.95-" alt="0.95-" eeimg="1">
+                        分位数
+                        <img src="https://www.zhihu.com/equation?tex=Q" alt="Q" eeimg="1">
+                        。
+                    </b>
+                    （意味着
+                    <img src="https://www.zhihu.com/equation?tex=Q" alt="Q" eeimg="1">
+                    有
+                    <img src="https://www.zhihu.com/equation?tex=0.95" alt="0.95" eeimg="1">
+                    的概率比
+                    <img src="https://www.zhihu.com/equation?tex=S+" alt="S" eeimg="1">
+                    更大）
+                </p>
+                <p>
+                    如果
+                    <b>
+                        保险公式收集到的保费不少于
+                        <img src="https://www.zhihu.com/equation?tex=Q" alt="Q" eeimg="1">
+                        ，那么保险公司就有
+                        <img src="https://www.zhihu.com/equation?tex=0.95" alt="0.95" eeimg="1">
+                        的概率会盈利。
+                    </b>
+                </p>
+                <p>
+                    实际中的情况是：
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=P_i" alt="P_i" eeimg="1">
+                        往往不是同分布的。（保险公司在投保人投保之前往往会对其风险进行评估，让不同风险等级的人购买不同的保险）但是，处理方法是类似的，我们仍然可以利用Linderberg-Feller中心极限定理
+                    </b>
+                    。我们用例子来说明这样的处理方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        例：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        保险公司有三种独立的保险政策（每个人仅能同时投保其中一种）。以下是这些政策与顾客的投保情况：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        政策1：
+                        <img src="https://www.zhihu.com/equation?tex=500" alt="500" eeimg="1">
+                        人投保，每个个体发生损失的概率为
+                        <img src="https://www.zhihu.com/equation?tex=0.05" alt="0.05" eeimg="1">
+                        ，若个体的损失发生，则赔付额的期望为
+                        <img src="https://www.zhihu.com/equation?tex=5" alt="5" eeimg="1">
+                        ，方差为
+                        <img src="https://www.zhihu.com/equation?tex=5" alt="5" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        政策2：
+                        <img src="https://www.zhihu.com/equation?tex=1000" alt="1000" eeimg="1">
+                        人投保，每个个体发生损失的概率为
+                        <img src="https://www.zhihu.com/equation?tex=0.1" alt="0.1" eeimg="1">
+                        ，若个体的损失发生，则赔付额的期望为
+                        <img src="https://www.zhihu.com/equation?tex=10" alt="10" eeimg="1">
+                        ，方差为
+                        <img src="https://www.zhihu.com/equation?tex=10" alt="10" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        政策3：
+                        <img src="https://www.zhihu.com/equation?tex=500" alt="500" eeimg="1">
+                        人投保，每个个体发生损失的概率为
+                        <img src="https://www.zhihu.com/equation?tex=0.15" alt="0.15" eeimg="1">
+                        ，若个体的损失发生，则赔付额的期望为
+                        <img src="https://www.zhihu.com/equation?tex=5" alt="5" eeimg="1">
+                        ，方差为
+                        <img src="https://www.zhihu.com/equation?tex=5" alt="5" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        现在已知收取的总保费与总理赔额的期望成正比例，比例系数为
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="\theta" eeimg="1">
+                        。求
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="\theta" eeimg="1">
+                        最小为多少时可以保证保险公司亏本的概率不高于
+                        <img src="https://www.zhihu.com/equation?tex=0.05" alt="0.05" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    共有
+                    <img src="https://www.zhihu.com/equation?tex=2000" alt="2000" eeimg="1">
+                    人投保，设投保政策1的人的每个人的赔付额分别为
+                    <img src="https://www.zhihu.com/equation?tex=P_1%2C...%2CP_%7B500%7D" alt="P_1,...,P_{500}" eeimg="1">
+                    ，政策2为
+                    <img src="https://www.zhihu.com/equation?tex=P_%7B501%7D%2C...%2CP_%7B1500%7D" alt="P_{501},...,P_{1500}" eeimg="1">
+                    ，政策3为
+                    <img src="https://www.zhihu.com/equation?tex=P_%7B1501%7D%2C...%2CP_%7B2000%7D" alt="P_{1501},...,P_{2000}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    设总保费为
+                    <img src="https://www.zhihu.com/equation?tex=Q" alt="Q" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=Q%3D%5Ctheta+S" alt="Q=\theta S" eeimg="1">
+                    。
+                </p>
+                <p>
+                    现在要保证
+                    <img src="https://www.zhihu.com/equation?tex=P%28Q%5Cgeq+S%29%3D0.95" alt="P(Q\geq S)=0.95" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们要求出
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    的概率分布，自然要利用中心极限定理。这意味着，我们只需要求出
+                    <img src="https://www.zhihu.com/equation?tex=ES%2CVarS" alt="ES,VarS" eeimg="1">
+                    即可确定其分布。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=ES%3D500EP_1%2B1000EP_%7B1500%7D%2B500EP_%7B2000%7D" alt="ES=500EP_1+1000EP_{1500}+500EP_{2000}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=VarS%3D500VarP_1%2B1000VarP_%7B1500%7D%2B500VarP_%7B2000%7D" alt="VarS=500VarP_1+1000VarP_{1500}+500VarP_{2000}" eeimg="1">
+                </p>
+                <p>
+                    但是，
+                    <img src="https://www.zhihu.com/equation?tex=P_i" alt="P_i" eeimg="1">
+                    本质上是一个混合分布的随机变量。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P_1" alt="P_1" eeimg="1">
+                    有
+                    <img src="https://www.zhihu.com/equation?tex=0.95" alt="0.95" eeimg="1">
+                    的概率为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ，有
+                    <img src="https://www.zhihu.com/equation?tex=0.05" alt="0.05" eeimg="1">
+                    的概率与
+                    <img src="https://www.zhihu.com/equation?tex=B_1" alt="B_1" eeimg="1">
+                    同分布。而我们知道的是：
+                    <img src="https://www.zhihu.com/equation?tex=EB_1%3D5%2CVarB_1%3D5" alt="EB_1=5,VarB_1=5" eeimg="1">
+                    。
+                </p>
+                <p>
+                    回忆混合分布随机变量的期望的线性可分性。
+                </p>
+                <p>
+                    我们得到：
+                    <img src="https://www.zhihu.com/equation?tex=EP_1%3D0.05EB_1%2CEP_1%5E2%3D0.05EB_1%5E2" alt="EP_1=0.05EB_1,EP_1^2=0.05EB_1^2" eeimg="1">
+                    （计算二阶原点矩是为了计算方差，注意到方差并不具有线性可分性）
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=EB_1%5E2%3DVarB_1%2BE%5E2B_1%3D30" alt="EB_1^2=VarB_1+E^2B_1=30" eeimg="1">
+                </p>
+                <p>
+                    故我们求得
+                    <img src="https://www.zhihu.com/equation?tex=EP_1%3D0.25%2CEP_1%5E2%3D1.5" alt="EP_1=0.25,EP_1^2=1.5" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=VarP_1%3DEP_1%5E2-E%5E2P_1%3D1.4375" alt="VarP_1=EP_1^2-E^2P_1=1.4375" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=P_%7B1500%7D%2CP_%7B2000%7D" alt="P_{1500},P_{2000}" eeimg="1">
+                    ，我们进行同样的操作。可以算出
+                    <img src="https://www.zhihu.com/equation?tex=EP_%7B1500%7D%3D1%2CVarP_%7B1500%7D%3D10" alt="EP_{1500}=1,VarP_{1500}=10" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=EP_%7B2000%7D%3D0.75%2CVarP_%7B2000%7D%3D3.9375" alt="EP_{2000}=0.75,VarP_{2000}=3.9375" eeimg="1">
+                    。
+                </p>
+                <p>
+                    所以我们得到
+                    <img src="https://www.zhihu.com/equation?tex=ES%3D1500%2CVarS%3D12687.5" alt="ES=1500,VarS=12687.5" eeimg="1">
+                    。
+                </p>
+                <p>
+                    这告诉我们：
+                    <img src="https://www.zhihu.com/equation?tex=S%5Coverset%7Bd%7D%7B%5Crightarrow%7DN%281500%2C12687.5%29" alt="S\overset{d}{\rightarrow}N(1500,12687.5)" eeimg="1">
+                </p>
+                <p>
+                    回忆利用正态分布求概率的技巧（化为标准正态分布求解）
+                </p>
+                <p>
+                    我们得到：
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi%28%5Cfrac%7BQ-1500%7D%7B%5Csqrt%7B12687.5%7D%7D%29%3D0.95" alt="\Phi(\frac{Q-1500}{\sqrt{12687.5}})=0.95" eeimg="1">
+                </p>
+                <p>
+                    解得
+                    <img src="https://www.zhihu.com/equation?tex=Q%3D1685.29" alt="Q=1685.29" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta%3D1.1235" alt="\theta=1.1235" eeimg="1">
+                    为其最小值。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    概率论笔记到此就全部结束了，限于篇幅，有更多有趣的内容无法全部写出。限于个人所学，若文中有错误或者不清晰之处烦请各位点出。
+                </p>
+                <p>
+                    再次感谢各位的阅读！
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

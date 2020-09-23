@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（七）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-70c708d28185b70c49f35b649262d4d7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/129033407" target="_blank">
+                        测度论整理（七）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-04-11
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这次的内容是关于
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    <b>
+                        空间
+                    </b>
+                    的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    取定测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    后，其上有可测函数，且我们为所有可测函数定义了积分。
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    空间则是考虑一些特殊的可测函数构成的空间，从整体上来研究它们的结构。
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    空间也是拓扑和泛函中的重要内容。鉴于我对拓扑、泛函了解不深，若大家有不同的见解也欢迎在评论中提出！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    空间，我们先考虑
+                    <b>
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=1%5Cleq+p%3C%5Cinfty" alt="1\leq p&lt;\infty" eeimg="1">
+                        时
+                    </b>
+                    的定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=L_p%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="L_p(X,\mathscr{F},\mu)" eeimg="1">
+                    表示
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    上
+                    <b>
+                        所有满足
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint+%7Cf%7C%5Ep%5C%2Cd%5Cmu%3C%5Cinfty" alt="\int |f|^p\,d\mu&lt;\infty" eeimg="1">
+                        的可测函数
+                    </b>
+                    组成的集合，后简记为
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    。定义
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    上的
+                    <b>
+                        “范数”
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf%7C%7C_p%3D%28%5Cint+%7Cf%7C%5Ep%5C%2Cd%5Cmu%29%5E%7B%5Cfrac%7B1%7D%7Bp%7D%7D" alt="||f||_p=(\int |f|^p\,d\mu)^{\frac{1}{p}}" eeimg="1">
+                    。（后面我们会看到其确实是一个范数）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由定义我们立马可以得到：
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    <b>
+                        关于加法与数乘封闭
+                    </b>
+                    。这是由于在
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cgeq+1" alt="p\geq 1" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%7Cf%2Bg%7C%5Ep" alt="|f+g|^p" eeimg="1">
+                    总是能够被
+                    <img src="https://www.zhihu.com/equation?tex=2%5E%7Bp-1%7D%28%7Cf%7C%5Ep%2B%7Cg%7C%5Ep%29" alt="2^{p-1}(|f|^p+|g|^p)" eeimg="1">
+                    控制。（Jensen不等式）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    除此之外，我们还有
+                    <b>
+                        Young不等式
+                    </b>
+                    ：对于
+                    <img src="https://www.zhihu.com/equation?tex=1%3Cp%2Cq%3C%5Cinfty%2C%5Cfrac%7B1%7D%7Bp%7D%2B%5Cfrac%7B1%7D%7Bq%7D%3D1" alt="1&lt;p,q&lt;\infty,\frac{1}{p}+\frac{1}{q}=1" eeimg="1">
+                    （后文中我将称其为一对
+                    <b>
+                        共轭的
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=p%2Cq" alt="p,q" eeimg="1">
+                    ），则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%2Cb%5Cgeq+0%2Ca%5E%7B%5Cfrac%7B1%7D%7Bp%7D%7Db%5E%7B%5Cfrac%7B1%7D%7Bq%7D%7D%5Cleq+%5Cfrac%7Ba%7D%7Bp%7D%2B%5Cfrac%7Bb%7D%7Bq%7D" alt="\forall a,b\geq 0,a^{\frac{1}{p}}b^{\frac{1}{q}}\leq \frac{a}{p}+\frac{b}{q}" eeimg="1">
+                    。（这实际上可以理解为均值不等式的一个推广，左边是加权后的几何均值，右边是加权后的算术均值）
+                </p>
+                <p>
+                    利用Young不等式，我们可以推出
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    中重要的
+                    <b>
+                        Holder不等式：对一对共轭的
+                        <img src="https://www.zhihu.com/equation?tex=p%2Cq" alt="p,q" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=f%5Cin+L_p%2Cg%5Cin+L_q" alt="f\in L_p,g\in L_q" eeimg="1">
+                        ，有
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7Cfg%7C%7C_1%5Cleq+%7C%7Cf%7C%7C_p%7C%7Cg%7C%7C_q" alt="||fg||_1\leq ||f||_p||g||_q" eeimg="1">
+                        ，等号成立当且仅当存在不全为零且非负的
+                        <img src="https://www.zhihu.com/equation?tex=a%2Cb" alt="a,b" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=a%7Cf%7C%5Ep%3Db%7Cg%7C%5Eq%5C+a.e." alt="a|f|^p=b|g|^q\ a.e." eeimg="1">
+                    </b>
+                    。
+                </p>
+                <p>
+                    Holder不等式可以从范数的角度来看。如果我们暂且接受
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%7C%7C_p" alt="||\ ||_p" eeimg="1">
+                    为一个范数，那么我们很自然地会意识到
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%7C%7C_q" alt="||\ ||_q" eeimg="1">
+                    为其对偶范数。那么Holder不等式其实就是广义的Cauchy-Schwarz不等式罢了。等号成立当且仅当它们在几乎处处的意义下“共线”。
+                </p>
+                <p>
+                    事实上，在
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    空间中，我们总是将
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    当作一个包含了所有与其几乎处处相同的可测函数的
+                    <b>
+                        等价类
+                    </b>
+                    。几乎处处相同的函数的积分也必定相同，而
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    空间的定义正是依赖于积分，故这样的视角是合理而自然的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    利用Holder不等式，我们能够推出
+                    <b>
+                        Minkowski不等式
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf%2Bg%7C%7C_p%5Cleq+%7C%7Cf%7C%7C_p%2B%7C%7Cg%7C%7C_p" alt="||f+g||_p\leq ||f||_p+||g||_p" eeimg="1">
+                    。
+                </p>
+                <p>
+                    推理的主要过程是考虑
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf%2Bg%7C%7C_p%5Ep%3D%5Cint+%7Cf%2Bg%7C%5Ep%5C%2Cd%5Cmu%5Cleq%5Cint%28%7Cf%7C%2B%7Cg%7C%29%7Cf%2Bg%7C%5E%7Bp-1%7D%5C%2Cd%5Cmu" alt="||f+g||_p^p=\int |f+g|^p\,d\mu\leq\int(|f|+|g|)|f+g|^{p-1}\,d\mu" eeimg="1">
+                </p>
+                <p>
+                    再将其看作
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf%28f%2Bg%29%5E%7Bp-1%7D%7C%7C_1%2C%7C%7Cg%28f%2Bg%29%5E%7Bp-1%7D%7C%7C_1" alt="||f(f+g)^{p-1}||_1,||g(f+g)^{p-1}||_1" eeimg="1">
+                    利用Holder不等式进行估计，并且最后注意到
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%28f%2Bg%29%5E%7Bp-1%7D%7C%7C_%7B%5Cfrac%7Bp%7D%7Bp-1%7D%7D%3D%28%5Cint%7Cf%2Bg%7C%5E%7Bp%7D%5C%2Cd%5Cmu%29%5E%7B%5Cfrac%7Bp-1%7D%7Bp%7D%7D%3D%7C%7Cf%2Bg%7C%7C_p%5E%7Bp-1%7D" alt="||(f+g)^{p-1}||_{\frac{p}{p-1}}=(\int|f+g|^{p}\,d\mu)^{\frac{p-1}{p}}=||f+g||_p^{p-1}" eeimg="1">
+                    即可。
+                </p>
+                <p>
+                    值得一提的是：Minkowski不等式的等号成立要求我们运用的两次Holder不等式中等号均成立，故在
+                    <img src="https://www.zhihu.com/equation?tex=p%3E1" alt="p&gt;1" eeimg="1">
+                    时，Minkowski不等式的等号成立条件同Holder不等式。然而在
+                    <img src="https://www.zhihu.com/equation?tex=p%3D1" alt="p=1" eeimg="1">
+                    时，等号成立条件只需要
+                    <img src="https://www.zhihu.com/equation?tex=fg%5Cgeq+0%5C+a.e." alt="fg\geq 0\ a.e." eeimg="1">
+                    即可。
+                    <b>
+                        Minkowski不等式等号成立条件依赖于
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    是由于
+                    <img src="https://www.zhihu.com/equation?tex=1%2C%5Cinfty" alt="1,\infty" eeimg="1">
+                    这对共轭数的特殊性所导致的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    到此为止，我们不难发现
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%7C%7C_p" alt="||\ ||_p" eeimg="1">
+                    满足成为
+                    <b>
+                        范数
+                    </b>
+                    的三个条件。需要再次强调的是，成为范数的前提条件是将
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    中所有元素看成在
+                    <img src="https://www.zhihu.com/equation?tex=a.e." alt="a.e." eeimg="1">
+                    关系下的等价类！
+                </p>
+                <p>
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=p%3D%5Cinfty" alt="p=\infty" eeimg="1">
+                    时的推广，我们可以模仿我们所熟悉的向量的范数来进行。注意到对于向量范数，
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5Cvec%7Bx%7D%7C%7C_p%5Crightarrow%7C%7C%5Cvec%7Bx%7D%7C%7C_%5Cinfty%5C+%28p%5Crightarrow%5Cinfty%29" alt="||\vec{x}||_p\rightarrow||\vec{x}||_\infty\ (p\rightarrow\infty)" eeimg="1">
+                    。而由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%28x_1%5En%2B...%2Bx_n%5En%29%5E%7B%5Cfrac%7B1%7D%7Bn%7D%7D%3D%5Cmax%5Cleft+%5C%7B+%7Cx_1%7C%2C...%2C%7Cx_n%7C+%5Cright+%5C%7D" alt="\lim_{n\rightarrow\infty}(x_1^n+...+x_n^n)^{\frac{1}{n}}=\max\left \{ |x_1|,...,|x_n| \right \}" eeimg="1">
+                    ，我们才将向量的无穷范数定义为等号右侧。在这里我们即可类比地定义：
+                    <img src="https://www.zhihu.com/equation?tex=L_%5Cinfty" alt="L_\infty" eeimg="1">
+                    为所有
+                    <b>
+                        几乎处处有界的可测函数
+                    </b>
+                    组成的集合，且
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf%7C%7C_%5Cinfty" alt="||f||_\infty" eeimg="1">
+                    <b>
+                        定义为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cinf%5Cleft+%5C%7Ba%3E0%7C%7Cf%7C%5Cleq+a%5C+%5C+a.e.++%5Cright+%5C%7D" alt="\inf\left \{a&gt;0||f|\leq a\ \ a.e.  \right \}" eeimg="1">
+                    （几乎处处意义下的最紧界）。
+                </p>
+                <p>
+                    容易发现Holder不等式与Minkowski不等式对于
+                    <img src="https://www.zhihu.com/equation?tex=p%3D1%2C%5Cinfty" alt="p=1,\infty" eeimg="1">
+                    的情形依然成立，唯一的差别就是等号成立的条件。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=0%3Cp%3C1" alt="0&lt;p&lt;1" eeimg="1">
+                    的情形，我们也能够定义
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    为
+                    <b>
+                        所有满足
+                        <img src="https://www.zhihu.com/equation?tex=%5Cint+%7Cf%7C%5Ep%5C%2Cd%5Cmu%3C%5Cinfty" alt="\int |f|^p\,d\mu&lt;\infty" eeimg="1">
+                        的可测函数
+                    </b>
+                    组成的集合。但是可惜的是：我们
+                    <b>
+                        定义的“范数”
+                    </b>
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%7C%7C_p%3D%5Cint+%7Cf%7C%5Ep%5C%2Cd%5Cmu" alt="||\ ||_p=\int |f|^p\,d\mu" eeimg="1">
+                    ，而这并不满足范数的齐次性，故其
+                    <b>
+                        并不是一个范数
+                    </b>
+                    。事实上，按照
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cgeq+1" alt="p\geq 1" eeimg="1">
+                    的情形进行定义的话，我们所得到的
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%7C%7C_p" alt="||\ ||_p" eeimg="1">
+                    的性质并不会更好，只会变得更加糟糕！这样的定义虽然牺牲了齐次性，但是保全了三角不等式的性质。这使得我们虽然无法在
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    上定义范数，却可以
+                    <b>
+                        定义距离
+                    </b>
+                    ！我们可以定义
+                    <img src="https://www.zhihu.com/equation?tex=d%28f%2Cg%29%3D%7C%7Cf-g%7C%7C_p" alt="d(f,g)=||f-g||_p" eeimg="1">
+                    。容易发现其是正定、对称、满足三角不等式的。这是因为在
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cin%280%2C1%29" alt="p\in(0,1)" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%7Ca%2Bb%7C%5Ep%3C%7Ca%7C%5Ep%2B%7Cb%7C%5Ep" alt="|a+b|^p&lt;|a|^p+|b|^p" eeimg="1">
+                    ，故Minkowski不等式实际上对于
+                    <img src="https://www.zhihu.com/equation?tex=0%3Cp%5Cleq+%5Cinfty" alt="0&lt;p\leq \infty" eeimg="1">
+                    都是成立的！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Riesz-Fisher定理
+                    </b>
+                    告诉我们
+                    <img src="https://www.zhihu.com/equation?tex=L_p%280%3Cp%5Cleq+%5Cinfty%29" alt="L_p(0&lt;p\leq \infty)" eeimg="1">
+                    都是
+                    <b>
+                        关于其上距离
+                        <img src="https://www.zhihu.com/equation?tex=d%28f%2Cg%29%3D%7C%7Cf-g%7C%7C_p" alt="d(f,g)=||f-g||_p" eeimg="1">
+                        完备
+                    </b>
+                    的！
+                </p>
+                <p>
+                    这个定理的证明所用到的方法也是数学分析中常用的构造级数的技巧。若有Cauchy列
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0" alt="\forall \varepsilon &gt;0" eeimg="1">
+                    ，对充分大的
+                    <img src="https://www.zhihu.com/equation?tex=m%2Cn" alt="m,n" eeimg="1">
+                    ，都有
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf_m-f_n%7C%7C_p%3C%5Cvarepsilon" alt="||f_m-f_n||_p&lt;\varepsilon" eeimg="1">
+                    。那么我们可以取一个足够好的子列
+                    <img src="https://www.zhihu.com/equation?tex=f_%7Bn_k%7D" alt="f_{n_k}" eeimg="1">
+                    （将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    实现为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%5Ek%7D" alt="\frac{1}{2^k}" eeimg="1">
+                    ），使得
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf_%7Bn_k%2B1%7D-f_%7Bn_k%7D%7C%7C%3C%5Cfrac%7B1%7D%7B2%5Ek%7D" alt="||f_{n_k+1}-f_{n_k}||&lt;\frac{1}{2^k}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么我们就可以
+                    <b>
+                        考虑
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=g_k%3D%7Cf_%7Bn_1%7D%7C%2B%5Csum_%7Bi%3D1%7D%5Ek%7Cf_%7Bn_i%2B1%7D-f_%7Bn_i%7D%7C" alt="g_k=|f_{n_1}|+\sum_{i=1}^k|f_{n_i+1}-f_{n_i}|" eeimg="1">
+                    ，以及其极限
+                    <img src="https://www.zhihu.com/equation?tex=g%3D%7Cf_%7Bn_1%7D%7C%2B%5Csum_%7Bi%3D1%7D%5E%5Cinfty%7Cf_%7Bn_i%2B1%7D-f_%7Bn_i%7D%7C" alt="g=|f_{n_1}|+\sum_{i=1}^\infty|f_{n_i+1}-f_{n_i}|" eeimg="1">
+                    。我们只需要证明
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    中级数几乎处处收敛，则就可以考虑
+                    <img src="https://www.zhihu.com/equation?tex=f%3Df_%7Bn_1%7D%2B%5Csum_%7Bi%3D1%7D%5E%5Cinfty%28f_%7Bn_i%2B1%7D-f_%7Bn_i%7D%29" alt="f=f_{n_1}+\sum_{i=1}^\infty(f_{n_i+1}-f_{n_i})" eeimg="1">
+                    作为
+                    <img src="https://www.zhihu.com/equation?tex=f_%7Bn_k%7D" alt="f_{n_k}" eeimg="1">
+                    的极限。（一个常用的级数构造技巧，论证其绝对值级数的收敛性）
+                </p>
+                <p>
+                    而
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    的收敛性是可以由单调收敛定理保证的，且同时保证了
+                    <img src="https://www.zhihu.com/equation?tex=g%5Cin+L_p" alt="g\in L_p" eeimg="1">
+                    。故上述
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    是个几乎处处有定义且在
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    中的函数。最后，要估计
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf_%7Bn_k%7D-f%7C%7C_p" alt="||f_{n_k}-f||_p" eeimg="1">
+                    ，即考虑
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint%7Cf_%7Bn_k%7D-f%7C%5Ep%5C%2Cd%5Cmu" alt="\int|f_{n_k}-f|^p\,d\mu" eeimg="1">
+                    ，利用Fatou引理可以立马得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    故我们得到关于
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    空间的结构：在
+                    <img src="https://www.zhihu.com/equation?tex=0%3Cp%3C1" alt="0&lt;p&lt;1" eeimg="1">
+                    时其为
+                    <b>
+                        完备的距离空间
+                    </b>
+                    ，而
+                    <img src="https://www.zhihu.com/equation?tex=1%5Cleq+p%5Cleq+%5Cinfty" alt="1\leq p\leq \infty" eeimg="1">
+                    时其为
+                    <b>
+                        Banach空间
+                    </b>
+                    。特别地，考虑内积
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint+fg+%5C%2Cd%5Cmu" alt="\int fg \,d\mu" eeimg="1">
+                    ，这表明了
+                    <img src="https://www.zhihu.com/equation?tex=L_2" alt="L_2" eeimg="1">
+                    实际上是个
+                    <b>
+                        Hilbert空间
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    空间之间的关联，我们还有下述结论：
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=0%3Cp%3Cq%3Cr%5Cleq+%5Cinfty" alt="0&lt;p&lt;q&lt;r\leq \infty" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=L_p%5Ccap+L_r%5Csubset+L_q%5Csubset+L_p%2BL_r" alt="L_p\cap L_r\subset L_q\subset L_p+L_r" eeimg="1">
+                    。规定
+                    <img src="https://www.zhihu.com/equation?tex=L_p%5Ccap+L_r" alt="L_p\cap L_r" eeimg="1">
+                    上范数
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf%7C%7C%3D%7C%7Cf%7C%7C_p%2B%7C%7Cf%7C%7C_r" alt="||f||=||f||_p+||f||_r" eeimg="1">
+                    ，规定
+                    <img src="https://www.zhihu.com/equation?tex=L_p%2BL_r" alt="L_p+L_r" eeimg="1">
+                    上范数
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf%7C%7C%3D%5Cinf%5Cleft+%5C%7B++%7C%7Cg%7C%7C_p%2B%7C%7Ch%7C%7C_r%7Cf%3Dg%2Bh%5Cright+%5C%7D" alt="||f||=\inf\left \{  ||g||_p+||h||_r|f=g+h\right \}" eeimg="1">
+                    后，其均为
+                    <b>
+                        Banach空间
+                    </b>
+                    。
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=0%3Cp%3Cq%3C%5Cinfty" alt="0&lt;p&lt;q&lt;\infty" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=L_p%5Csubset+L_q" alt="L_p\subset L_q" eeimg="1">
+                    <b>
+                        不成立当且仅当测度空间中存在测度任意小的正测度可测集
+                    </b>
+                    。反之，
+                    <img src="https://www.zhihu.com/equation?tex=L_q%5Csubset+L_p" alt="L_q\subset L_p" eeimg="1">
+                    <b>
+                        不成立当且仅当测度空间中存在测度任意大的有限测度可测集
+                    </b>
+                    。（利用好测度的下连续性我们就可以给出简单的证明）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    作为一些具体的例子，对于
+                    <img src="https://www.zhihu.com/equation?tex=0%3Cp%3Cq%3C%5Cinfty" alt="0&lt;p&lt;q&lt;\infty" eeimg="1">
+                    ，
+                </p>
+                <p>
+                    将实数域上的Lebesgue测度限制在
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                    上得到的测度空间中，
+                    <img src="https://www.zhihu.com/equation?tex=L_q%5Csubset+L_p" alt="L_q\subset L_p" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在概率空间中，
+                    <img src="https://www.zhihu.com/equation?tex=L_q%5Csubset+L_p" alt="L_q\subset L_p" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BN%7D" alt="\mathbb{N}" eeimg="1">
+                    上的计数测度空间中（集合测度为所含元素个数），
+                    <img src="https://www.zhihu.com/equation?tex=L_p%5Csubset+L_q" alt="L_p\subset L_q" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在实数域上的Lebesgue测度中，
+                    <img src="https://www.zhihu.com/equation?tex=L_p%2CL_q" alt="L_p,L_q" eeimg="1">
+                    之间没有包含关系。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们利用
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7C%5C+%7C%7C_p" alt="||\ ||_p" eeimg="1">
+                    给出两种新的收敛模式：
+                </p>
+                <p>
+                    定义
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7BL_p%7D%5Crightarrow+f" alt="f_n\overset{L_p}\rightarrow f" eeimg="1">
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=0%3Cp%3C%5Cinfty" alt="0&lt;p&lt;\infty" eeimg="1">
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%7C%7Cf_n-f%7C%7C_p%3D0" alt="\lim_{n\rightarrow\infty}||f_n-f||_p=0" eeimg="1">
+                    ，为
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                        （强）收敛
+                    </b>
+                    。
+                </p>
+                <p>
+                    定义
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7B%28w%29L_p%7D%5Crightarrow+f" alt="f_n\overset{(w)L_p}\rightarrow f" eeimg="1">
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=1%3Cp%3C%5Cinfty" alt="1&lt;p&lt;\infty" eeimg="1">
+                    或者
+                    <img src="https://www.zhihu.com/equation?tex=p%3D1" alt="p=1" eeimg="1">
+                    且测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限当且仅当对于
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    的共轭数
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+g%5Cin+L_q%2C%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cint+f_ng%5C%2Cd%5Cmu%3D%5Cint+fg%5C%2Cd%5Cmu" alt="\forall g\in L_q,\lim_{n\rightarrow\infty}\int f_ng\,d\mu=\int fg\,d\mu" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    <b>
+                        弱收敛
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    其与其它收敛模式有如下关联：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    <b>
+                        收敛强于依测度收敛，且可以推出
+                        <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                        范数的收敛（
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7Cf_n%7C%7C_p%5Crightarrow+%7C%7Cf%7C%7C_p" alt="||f_n||_p\rightarrow ||f||_p" eeimg="1">
+                        ）
+                    </b>
+                    。
+                </p>
+                <p>
+                    反之，
+                    <b>
+                        当已经有几乎处处收敛或者依测度收敛时，
+                        <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                        范数的收敛可以推出
+                        <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                        收敛
+                    </b>
+                    。
+                </p>
+                <p>
+                    <b>
+                        当
+                        <img src="https://www.zhihu.com/equation?tex=1%3Cp%3C%5Cinfty" alt="1&lt;p&lt;\infty" eeimg="1">
+                        时，若有几乎处处收敛或者依测度收敛，且
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7Cf_n%7C%7C_p" alt="||f_n||_p" eeimg="1">
+                        有界，则
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7B%28w%29L_p%7D%5Crightarrow+f%2C%5C+f%5Cin+L_p" alt="f_n\overset{(w)L_p}\rightarrow f,\ f\in L_p" eeimg="1">
+                    。
+                </p>
+                <p>
+                    特别地，
+                    <b>
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=p%3D1" alt="p=1" eeimg="1">
+                        的情形，若有几乎处处收敛或者依测度收敛，且
+                        <img src="https://www.zhihu.com/equation?tex=%7C%7Cf_n%7C%7C_1%5Crightarrow+%7C%7Cf%7C%7C_1" alt="||f_n||_1\rightarrow ||f||_1" eeimg="1">
+                        ，则
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7B%28w%29L_1%7D%5Crightarrow+f%2Cf_n%5Coverset%7BL_1%7D%5Crightarrow+f" alt="f_n\overset{(w)L_1}\rightarrow f,f_n\overset{L_1}\rightarrow f" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    特别注意：
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    弱收敛需要对
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    是否为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    进行讨论！一个反例是：考虑自然数域上的计数测度，其
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    有限。
+                    <img src="https://www.zhihu.com/equation?tex=f_n%3D%5Cfrac%7B1%7D%7Bn%7DI_%7Bx%3Cn%7D%2C%5C+f%3D0" alt="f_n=\frac{1}{n}I_{x&lt;n},\ f=0" eeimg="1">
+                    。则显然
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf_n%7C%7C_1%3D%5Cint%7Cf_n%7C%5C%2Cd%5Cmu%3D1" alt="||f_n||_1=\int|f_n|\,d\mu=1" eeimg="1">
+                    有界，但是
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7Cf_n%7C%7C_1%5Crightarrow+%7C%7Cf%7C%7C_1" alt="||f_n||_1\rightarrow ||f||_1" eeimg="1">
+                    并不成立，
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Ba.e.%7D%5Crightarrow+f" alt="f_n\overset{a.e.}\rightarrow f" eeimg="1">
+                    。取
+                    <img src="https://www.zhihu.com/equation?tex=g+%3D1%5Cin+L_%5Cinfty" alt="g =1\in L_\infty" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cint+f_ng%5C%2Cd%5Cmu%3D1" alt="\lim_{n\rightarrow\infty}\int f_ng\,d\mu=1" eeimg="1">
+                    ，但
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint+fg%5C%2Cd%5Cmu%3D0" alt="\int fg\,d\mu=0" eeimg="1">
+                    ，弱收敛不成立！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此可以看出
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    <b>
+                        收敛蕴含了
+                        <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                        弱收敛
+                    </b>
+                    。因为
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    收敛可以推出依测度收敛与
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    范数收敛，进一步，
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    范数有界，故可推出
+                    <img src="https://www.zhihu.com/equation?tex=L_p" alt="L_p" eeimg="1">
+                    弱收敛。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我打算用一张图总结一下至今为止出现的收敛模式：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-f2bcc70d15b46ff12f9ff8ac9b0d47fb_r.jpg">
+                    <figcaption>
+                        黑色表示无条件推出，红色表示有条件推出
+                    </figcaption>
+                </figure>
+                <p>
+                    那么这次的内容就到此为止。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

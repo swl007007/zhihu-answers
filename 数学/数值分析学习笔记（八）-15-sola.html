@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            数值分析学习笔记（八）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-f5ff2deece3b79433d1a988e0923f367_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/54449125" target="_blank">
+                        数值分析学习笔记（八）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-01-09
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    在这一章中，我们介绍非线性方程组的数值解法。
+                </p>
+                <p>
+                    非线性方程组的数值求解方法一方面可以从函数零点求解方法出发进行推广得到（不动点法，Newton方法）。另一方面，也有一些广泛而又有启发性的新方法的引入。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们加下来讨论的问题限定于
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个未知数
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个方程的情况，且假设方程所涉及到的函数有足够好的性质，方程有解。
+                </p>
+                <p>
+                    即具有形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+f_1%28x_1%2C...%2Cx_n%29%3D0%5C%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+...%5C%5C+f_n%28x_1%2C...%2Cx_n%29%3D0+%5Cend%7Bcases%7D" alt="\begin{cases} f_1(x_1,...,x_n)=0\\ \ \ \ \ \ \ \ \ \ \ ...\\ f_n(x_1,...,x_n)=0 \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        1、不动点法
+                    </b>
+                </p>
+                <p>
+                    我们在求解线性方程的方法一章中将不动点迭代进行了推广得到了Jacobi方法。
+                </p>
+                <p>
+                    其实，不动点迭代方法也能够很容易推广至非线性方程的求解。
+                </p>
+                <p>
+                    为了能够清晰地看出不动点函数，我们先对于方程组进行形式改写。
+                </p>
+                <p>
+                    假设向量函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BF%7D%3A%5Cmathbb%7BR%7D%5En%5Crightarrow%5Cmathbb%7BR%7D%5En" alt="\vec{F}:\mathbb{R}^n\rightarrow\mathbb{R}^n" eeimg="1">
+                    使得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BF%7D%28x_1%2C...%2Cx_n%29%3D%28f_1%28x_1%2C...%2Cx_n%29%2C...%2Cf_n%28x_1%2C...%2Cx_n%29%29" alt="\vec{F}(x_1,...,x_n)=(f_1(x_1,...,x_n),...,f_n(x_1,...,x_n))" eeimg="1">
+                </p>
+                <p>
+                    并且假设
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%3D%28x_1%2C...%2Cx_n%29" alt="\vec{x}=(x_1,...,x_n)" eeimg="1">
+                </p>
+                <p>
+                    则非线性方程组可以统一地表示成
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BF%7D%28%5Cvec%7Bx%7D%29%3D%5Cvec%7B0%7D" alt="\vec{F}(\vec{x})=\vec{0}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们成功地将非线性方程组写成了函数零点求解的形式。
+                </p>
+                <p>
+                    接下来，很自然地，我们可以进行类似于一元情形的不动点迭代重构非线性方程不动点迭代的求解理论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                    的
+                    <b>
+                        不动点
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bp%7D" alt="\vec{p}" eeimg="1">
+                    为使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D%28%5Cvec%7Bp%7D%29%3D%5Cvec%7Bp%7D" alt="\vec{G}(\vec{p})=\vec{p}" eeimg="1">
+                    成立的点（实际是向量）。
+                </p>
+                <p>
+                    类似地，我们将一元的压缩映照定理进行推广。
+                </p>
+                <p>
+                    <b>
+                        定理（压缩映照定理的向量函数形式）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=D%3D%5Ba_1%2Cb_1%5D%5Ctimes%5Ba_2%2Cb_2%5D%5Ctimes...%5Ctimes%5Ba_n%2Cb_n%5D" alt="D=[a_1,b_1]\times[a_2,b_2]\times...\times[a_n,b_n]" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                        的一个区域。假设
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        上连续函数，将
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        映射到
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                        。且
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvec%7Bx%7D%5Cin+D%2C%5Cvec%7BG%7D%28%5Cvec%7Bx%7D%29%5Cin+D" alt="\forall \vec{x}\in D,\vec{G}(\vec{x})\in D" eeimg="1">
+                        （自身映射性质）。则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        中的不动点存在。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        进一步地，如果
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                        的各个分量
+                        <img src="https://www.zhihu.com/equation?tex=g_i%28x_1%2C...%2Cx_n%29" alt="g_i(x_1,...,x_n)" eeimg="1">
+                        均有连续偏导，且
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+K%3C1%2C%5Cforall+%5Cvec%7Bx%7D%5Cin+D%2C%7C%5Cfrac%7B%5Cpartial+g_i%7D%7B%5Cpartial+x_j%7D%7C%5Cleq+%5Cfrac%7BK%7D%7Bn%7D" alt="\exists K&lt;1,\forall \vec{x}\in D,|\frac{\partial g_i}{\partial x_j}|\leq \frac{K}{n}" eeimg="1">
+                        对于
+                        <img src="https://www.zhihu.com/equation?tex=j%3D1%2C2%2C...%2Cn" alt="j=1,2,...,n" eeimg="1">
+                        成立，（偏导有界）则不动点存在唯一。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        值得注意的是：压缩映照条件中偏导数的上界不是
+                        <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                        而是
+                        <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7Bn%7D" alt="\frac{1}{n}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    那么，自然地，我们对于向量函数的不动点迭代有如下形式。
+                </p>
+                <p>
+                    取定初值
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D_0" alt="\vec{x}_0" eeimg="1">
+                    ，定义向量列
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D_k%3D%5Cvec%7BG%7D%28%5Cvec%7Bx%7D_%7Bk-1%7D%29" alt="\vec{x}_k=\vec{G}(\vec{x}_{k-1})" eeimg="1">
+                    。则
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bk%5Crightarrow+%5Cinfty%7D%5Cvec%7Bx%7D_k%3D%5Cvec%7Bp%7D" alt="\lim_{k\rightarrow \infty}\vec{x}_k=\vec{p}" eeimg="1">
+                    。（假设收敛）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    一元情况下对于不动点迭代收敛情况的讨论也可以为我们所用。
+                </p>
+                <p>
+                    <b>
+                        定理（不动点迭代收敛性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        只需要满足压缩映照条件，则对于任意初值，不动点迭代必定收敛到不动点。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们直接在例子中体会即可。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=3x_1-cos%28x_2x_3%29-%5Cfrac%7B1%7D%7B2%7D%3D0" alt="3x_1-cos(x_2x_3)-\frac{1}{2}=0" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x_1%5E2-81%28x_2%2B0.1%29%5E2%2Bsinx_3%2B1.06%3D0" alt="x_1^2-81(x_2+0.1)^2+sinx_3+1.06=0" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7B-x_1x_2%7D%2B20x_3%2B%5Cfrac%7B10%5Cpi-3%7D%7B3%7D%3D0" alt="e^{-x_1x_2}+20x_3+\frac{10\pi-3}{3}=0" eeimg="1">
+                </p>
+                <p>
+                    在区域
+                    <img src="https://www.zhihu.com/equation?tex=D%3D%5B-1%2C1%5D%5Ctimes%5B-1%2C1%5D%5Ctimes%5B-1%2C1%5D" alt="D=[-1,1]\times[-1,1]\times[-1,1]" eeimg="1">
+                    上求解。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    先构造向量函数（显式地将
+                    <img src="https://www.zhihu.com/equation?tex=x_1%2Cx_2%2Cx_3" alt="x_1,x_2,x_3" eeimg="1">
+                    分别解出后化为不动点迭代函数）。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g_1%3D%5Cfrac%7B2cosx_2x_3%2B1%7D%7B6%7D" alt="g_1=\frac{2cosx_2x_3+1}{6}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g_2%3D%5Cfrac%7B%5Csqrt%7Bx_1%5E2%2Bsinx_3%2B1.06%7D%7D%7B9%7D-0.1" alt="g_2=\frac{\sqrt{x_1^2+sinx_3+1.06}}{9}-0.1" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g_3%3D-%5Cfrac%7Be%5E%7B-x_1x_2%7D%7D%7B20%7D-%5Cfrac%7B10%5Cpi-3%7D%7B60%7D" alt="g_3=-\frac{e^{-x_1x_2}}{20}-\frac{10\pi-3}{60}" eeimg="1">
+                </p>
+                <p>
+                    容易发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D%3D%28g_1%2Cg_2%2Cg_3%29%3D%28x_1%2Cx_2%2Cx_3%29" alt="\vec{G}=(g_1,g_2,g_3)=(x_1,x_2,x_3)" eeimg="1">
+                    即为我们所求非线性方程组。
+                </p>
+                <p>
+                    容易验证其满足自身映射性质。即
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5Cin+D%2Cg_1%2Cg_2%2Cg_3%5Cin%5B-1%2C1%5D" alt="\vec{x}\in D,g_1,g_2,g_3\in[-1,1]" eeimg="1">
+                    。
+                </p>
+                <p>
+                    接着再考虑其各个分量函数关于
+                    <img src="https://www.zhihu.com/equation?tex=x_1%2Cx_2%2Cx_3" alt="x_1,x_2,x_3" eeimg="1">
+                    的偏导数。
+                </p>
+                <p>
+                    容易验证：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%2Cj%2C%5C+%7C%5Cfrac%7B%5Cpartial+g_i%7D%7B%5Cpartial+x_j%7D%7C%3C+%5Cfrac%7B1%7D%7B3%7D" alt="\forall i,j,\ |\frac{\partial g_i}{\partial x_j}|&lt; \frac{1}{3}" eeimg="1">
+                    。故满足压缩映射条件。
+                </p>
+                <p>
+                    说明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                    的不动点在
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    上存在唯一，且不动点迭代对于任何初值收敛。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x_1%5E%7B%28k%29%7D%3Dg_1%28x_1%5E%7B%28k-1%29%7D%2Cx_2%5E%7B%28k-1%29%7D%2Cx_3%5E%7B%28k-1%29%7D%29" alt="x_1^{(k)}=g_1(x_1^{(k-1)},x_2^{(k-1)},x_3^{(k-1)})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x_2%5E%7B%28k%29%7D%3Dg_2%28x_1%5E%7B%28k-1%29%7D%2Cx_2%5E%7B%28k-1%29%7D%2Cx_3%5E%7B%28k-1%29%7D%29" alt="x_2^{(k)}=g_2(x_1^{(k-1)},x_2^{(k-1)},x_3^{(k-1)})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x_3%5E%7B%28k%29%7D%3Dg_3%28x_1%5E%7B%28k-1%29%7D%2Cx_2%5E%7B%28k-1%29%7D%2Cx_3%5E%7B%28k-1%29%7D%29" alt="x_3^{(k)}=g_3(x_1^{(k-1)},x_2^{(k-1)},x_3^{(k-1)})" eeimg="1">
+                </p>
+                <p>
+                    若我们取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D_0%3D%280.1%2C0.1%2C-0.1%29" alt="\vec{x}_0=(0.1,0.1,-0.1)" eeimg="1">
+                    ，则5次迭代后即可收敛到
+                    <img src="https://www.zhihu.com/equation?tex=10%5E%7B-5%7D" alt="10^{-5}" eeimg="1">
+                    以下的绝对误差。（向量无穷范数标准下）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    到此为止，一些敏锐的读者可能已经发现了：我们可以略施技巧
+                    <b>
+                        加速不动点迭代的收敛
+                    </b>
+                    。
+                </p>
+                <p>
+                    回忆Gauss-Seidel方法对于Jacobi方法进行的改进：当最新的估计已经可用时，我们使用最新的估计值，而非上一次的估计值。
+                </p>
+                <p>
+                    这里其实是一样的。注意到在估计
+                    <img src="https://www.zhihu.com/equation?tex=x_2%5E%7B%28k%29%7D" alt="x_2^{(k)}" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=x_1%5E%7B%28k%29%7D" alt="x_1^{(k)}" eeimg="1">
+                    已经被求出了。对于
+                    <img src="https://www.zhihu.com/equation?tex=x_3%5E%7B%28k%29%7D" alt="x_3^{(k)}" eeimg="1">
+                    也是同样的。
+                </p>
+                <p>
+                    故在进行这个小小的优化后，估计式为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x_1%5E%7B%28k%29%7D%3Dg_1%28x_1%5E%7B%28k-1%29%7D%2Cx_2%5E%7B%28k-1%29%7D%2Cx_3%5E%7B%28k-1%29%7D%29" alt="x_1^{(k)}=g_1(x_1^{(k-1)},x_2^{(k-1)},x_3^{(k-1)})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x_2%5E%7B%28k%29%7D%3Dg_2%28x_1%5E%7B%28k%29%7D%2Cx_2%5E%7B%28k-1%29%7D%2Cx_3%5E%7B%28k-1%29%7D%29" alt="x_2^{(k)}=g_2(x_1^{(k)},x_2^{(k-1)},x_3^{(k-1)})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x_3%5E%7B%28k%29%7D%3Dg_3%28x_1%5E%7B%28k%29%7D%2Cx_2%5E%7B%28k%29%7D%2Cx_3%5E%7B%28k-1%29%7D%29" alt="x_3^{(k)}=g_3(x_1^{(k)},x_2^{(k)},x_3^{(k-1)})" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    额外需要注意的一些地方是：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    上不动点存在唯一并
+                    <b>
+                        不意味
+                    </b>
+                    着原方程组在
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    上解唯一。（一元情况也是类似）且类似Gauss-Seidel方法，利用最新估计并
+                    <b>
+                        不总是
+                    </b>
+                    能保证收敛的加速。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、Newton方法
+                    </b>
+                </p>
+                <p>
+                    在我们推广了不动点迭代后，读者自然地能想到对于Newton法的推广形式。
+                </p>
+                <p>
+                    我们下面将再一次说明：
+                    <b>
+                        二阶收敛选择了Newton方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们的目标是：找到一个函数具有形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D%28%5Cvec%7Bx%7D%29%3D%5Cvec%7Bx%7D-A%5E%7B-1%7D%28%5Cvec%7Bx%7D%29%5Cvec%7BF%7D%28%5Cvec%7Bx%7D%29" alt="\vec{G}(\vec{x})=\vec{x}-A^{-1}(\vec{x})\vec{F}(\vec{x})" eeimg="1">
+                    ，使得方法具有二阶收敛的性质。
+                </p>
+                <p>
+                    回忆一元情况，二阶收敛的条件是不动点迭代函数在不动点
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    处的一阶导数为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    。在向量函数情况中，二阶收敛的条件变为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+i%2Cj%5C+%5Cfrac%7B%5Cpartial+g_i%28%5Cvec%7Bp%7D%29%7D%7B%5Cpartial+x_j%7D%3D0" alt="\forall i,j\ \frac{\partial g_i(\vec{p})}{\partial x_j}=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    不妨假设矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%7B-1%7D%28%5Cvec%7Bx%7D%29" alt="A^{-1}(\vec{x})" eeimg="1">
+                    中第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    行
+                    <img src="https://www.zhihu.com/equation?tex=j" alt="j" eeimg="1">
+                    列的元素为
+                    <img src="https://www.zhihu.com/equation?tex=a_%7Bij%7D" alt="a_{ij}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=g_i%3Dx_i-%5Csum_%7Bj%3D1%7D%5Ena_%7Bij%7Df_j" alt="g_i=x_i-\sum_{j=1}^na_{ij}f_j" eeimg="1">
+                </p>
+                <p>
+                    则当
+                    <img src="https://www.zhihu.com/equation?tex=i%5Cneq+k" alt="i\neq k" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+g_i%28%5Cvec%7Bx%7D%29%7D%7B%5Cpartial+x_k%7D%3D-%5Csum_%7Bj%3D1%7D%5En%28a_%7Bij%7D%5Cfrac%7B%5Cpartial+f_j%28%5Cvec%7Bx%7D%29%7D%7B%5Cpartial+x_k%7D%2B%5Cfrac%7B%5Cpartial+a_%7Bij%7D%28%5Cvec%7Bx%7D%29%7D%7B%5Cpartial+x_k%7Df_j%29" alt="\frac{\partial g_i(\vec{x})}{\partial x_k}=-\sum_{j=1}^n(a_{ij}\frac{\partial f_j(\vec{x})}{\partial x_k}+\frac{\partial a_{ij}(\vec{x})}{\partial x_k}f_j)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=i%3Dk" alt="i=k" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+g_i%28%5Cvec%7Bx%7D%29%7D%7B%5Cpartial+x_k%7D%3D1-%5Csum_%7Bj%3D1%7D%5En%28a_%7Bij%7D%5Cfrac%7B%5Cpartial+f_j%28%5Cvec%7Bx%7D%29%7D%7B%5Cpartial+x_k%7D%2B%5Cfrac%7B%5Cpartial+a_%7Bij%7D%28%5Cvec%7Bx%7D%29%7D%7B%5Cpartial+x_k%7Df_j%29" alt="\frac{\partial g_i(\vec{x})}{\partial x_k}=1-\sum_{j=1}^n(a_{ij}\frac{\partial f_j(\vec{x})}{\partial x_k}+\frac{\partial a_{ij}(\vec{x})}{\partial x_k}f_j)" eeimg="1">
+                </p>
+                <p>
+                    由二阶收敛的条件，当
+                    <img src="https://www.zhihu.com/equation?tex=i%5Cneq+k" alt="i\neq k" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=0%3D%5Csum_%7Bj%3D1%7D%5En+a_%7Bij%7D%28%5Cvec%7Bp%7D%29%5Cfrac%7B%5Cpartial+f_j%28%5Cvec%7Bp%7D%29%7D%7B%5Cpartial+x_k%7D" alt="0=\sum_{j=1}^n a_{ij}(\vec{p})\frac{\partial f_j(\vec{p})}{\partial x_k}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=i%3Dk" alt="i=k" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=1%3D%5Csum_%7Bj%3D1%7D%5En+a_%7Bij%7D%28%5Cvec%7Bp%7D%29%5Cfrac%7B%5Cpartial+f_j%28%5Cvec%7Bp%7D%29%7D%7B%5Cpartial+x_k%7D" alt="1=\sum_{j=1}^n a_{ij}(\vec{p})\frac{\partial f_j(\vec{p})}{\partial x_k}" eeimg="1">
+                </p>
+                <p>
+                    写成矩阵乘法形式，得到
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%7B-1%7DJ%3DI" alt="A^{-1}J=I" eeimg="1">
+                    。
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=J" alt="J" eeimg="1">
+                    为Jacobi矩阵，满足
+                    <img src="https://www.zhihu.com/equation?tex=J_%7Bij%7D%28%5Cvec%7Bx%7D%29%3D%5Cfrac%7B%5Cpartial+f_i%28%5Cvec%7Bx%7D%29%7D%7B%5Cpartial+x_j%7D" alt="J_{ij}(\vec{x})=\frac{\partial f_i(\vec{x})}{\partial x_j}" eeimg="1">
+                </p>
+                <p>
+                    故得到：
+                    <img src="https://www.zhihu.com/equation?tex=A%28%5Cvec%7Bx%7D%29%3DJ%28%5Cvec%7Bx%7D%29" alt="A(\vec{x})=J(\vec{x})" eeimg="1">
+                    。
+                </p>
+                <p>
+                    这说明了一个简单的事实：
+                    <b>
+                        在向量函数情况下，Jacobi矩阵代替了导数在Newton方法中的作用。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们得到了Newton方法的估计式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D%3D%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D-J%5E%7B-1%7D%28%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%29%5Cvec%7BF%7D%28%5Cvec%7Bx%7D%5E%7B%28k-1%29%7D%29" alt="\vec{x}^{(k)}=\vec{x}^{(k-1)}-J^{-1}(\vec{x}^{(k-1)})\vec{F}(\vec{x}^{(k-1)})" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在具体实现中，求逆通常用解线性方程组来代替。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    牛顿法的
+                    <b>
+                        优点是非常快的收敛速度，但是其收敛性是初值依赖的，需要初值足够靠近真实解的前提下才能保证收敛。此外，计算Jacobi矩阵中各个元素的值需要利用数值微分，计算代价十分巨大。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    为此，一些近似Newton方法被引入。如Broyden方法，可以看作是割线法在向量函数情况下的推广。类似地，其不再需要每次迭代都计算Jacobi矩阵的值，大大减少了计算代价。但是其不再是二阶收敛，而仅仅是超线性收敛，且其失去了对于舍入误差的自修正性。Broyden的具体实现就不在此赘述了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、最速下降法
+                    </b>
+                </p>
+                <p>
+                    牛顿方法与Broyden方法收敛的前提条件都是：迭代的初值足够靠近方程零点。
+                </p>
+                <p>
+                    那么是否有一种方法能保证在一般情况下的收敛性呢？
+                </p>
+                <p>
+                    最速下降法便具有这样的优良性质，其在一般情况下对于任意迭代初值均能保证收敛。
+                </p>
+                <p>
+                    我们在共轭梯度法处已经提及：
+                    <b>
+                        梯度方向是函数的值增加得最快的方向
+                    </b>
+                    。很自然地，我们联想到当在估计一个函数的最小值时，在每一点处均沿着负梯度方向前进一定使得函数值下降得最快。
+                </p>
+                <p>
+                    而对于一个非线性方程组，我们不难将零点求解问题转化为一个辅助函数
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    的最小值求解问题。
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=g%28x_1%2C...%2Cx_n%29%3D%5Csum_%7Bi%3D1%7D%5En+f_i%5E2%28x_1%2C...%2Cx_n%29" alt="g(x_1,...,x_n)=\sum_{i=1}^n f_i^2(x_1,...,x_n)" eeimg="1">
+                </p>
+                <p>
+                    显然，
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=g%28%5Cvec%7Bx%7D%29" alt="g(\vec{x})" eeimg="1">
+                        取最小值
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                        当且仅当
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D" alt="\vec{x}" eeimg="1">
+                        为非线性方程的零点
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在，我们清晰地知道了最速下降法的原理；我们也知道了在每一步迭代中我们应该向哪个方向前进。剩下的唯一问题便是：在具体实现中，每一步前进的距离长度为多少？
+                </p>
+                <p>
+                    我们总是希望每一步的函数值能够尽可能多得下降。即对于给定的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D" alt="\vec{x}^{(k)}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%2B1%29%7D%3D%5Cvec%7Bx%7D%5E%7B%28k%29%7D%2B%5Calpha%5C++%5Cnabla+g%28%5Cvec%7Bx%7D%5E%7B%28k%29%7D%29" alt="\vec{x}^{(k+1)}=\vec{x}^{(k)}+\alpha\  \nabla g(\vec{x}^{(k)})" eeimg="1">
+                    ，我们希望取得的
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=h%28%5Calpha%29%3Dg%28%5Cvec%7Bx%7D%5E%7B%28k%29%7D%2B%5Calpha%5C++%5Cnabla+g%28%5Cvec%7Bx%7D%5E%7B%28k%29%7D%29%29" alt="h(\alpha)=g(\vec{x}^{(k)}+\alpha\  \nabla g(\vec{x}^{(k)}))" eeimg="1">
+                    尽可能地小。
+                </p>
+                <p>
+                    <b>
+                        具体做法是：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于给定的
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%28k%29%7D" alt="\vec{x}^{(k)}" eeimg="1">
+                        ，先求得
+                        <img src="https://www.zhihu.com/equation?tex=%5Cnabla+g%28%5Cvec%7Bx%7D%5E%7B%28k%29%7D%29" alt="\nabla g(\vec{x}^{(k)})" eeimg="1">
+                        并单位化后得到向量
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7By%7D" alt="\vec{y}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        接下来，取
+                        <img src="https://www.zhihu.com/equation?tex=%5Calpha_1%3D0" alt="\alpha_1=0" eeimg="1">
+                        ，取
+                        <img src="https://www.zhihu.com/equation?tex=%5Calpha_3" alt="\alpha_3" eeimg="1">
+                        为使得
+                        <img src="https://www.zhihu.com/equation?tex=h%28%5Calpha_3%29%3Ch%28%5Calpha_1%29" alt="h(\alpha_3)&lt;h(\alpha_1)" eeimg="1">
+                        的最大的具有
+                        <img src="https://www.zhihu.com/equation?tex=2%5E%7B-k%7D" alt="2^{-k}" eeimg="1">
+                        形式的数。（
+                        <img src="https://www.zhihu.com/equation?tex=0%3C%5Calpha_3%5Cleq+1" alt="0&lt;\alpha_3\leq 1" eeimg="1">
+                        ），取
+                        <img src="https://www.zhihu.com/equation?tex=%5Calpha_2%3D%5Cfrac%7B%5Calpha_3%7D%7B2%7D" alt="\alpha_2=\frac{\alpha_3}{2}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        我们的目的是：求出
+                        <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                        使得
+                        <img src="https://www.zhihu.com/equation?tex=h%28%5Calpha%29" alt="h(\alpha)" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5B%5Calpha_1%2C%5Calpha_3%5D" alt="[\alpha_1,\alpha_3]" eeimg="1">
+                        取值最小。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        由于
+                        <img src="https://www.zhihu.com/equation?tex=h%28%5Calpha%29" alt="h(\alpha)" eeimg="1">
+                        的形式通常过于复杂，我们进行大致估算：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        利用
+                        <img src="https://www.zhihu.com/equation?tex=%5Calpha_1%2C%5Calpha_2%2C%5Calpha_3" alt="\alpha_1,\alpha_2,\alpha_3" eeimg="1">
+                        三点处的函数值进行插值多项式拟合（得到二次插值多项式），再考虑此二次函数在区间上的最小值点作为
+                        <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                        的取值
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最速下降法的完整步骤到此为止就介绍完了。
+                </p>
+                <p>
+                    值得注意的是：最速下降法一般而言收敛，但是却未必收敛到理想结果。由于
+                    <b>
+                        辅助函数
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        的凸性
+                    </b>
+                    无法保证，导致最速下降法可能陷入局部最小值中“无法自拔”，而错失全局最小值。由此，我们得以理解为何通常在方程组求解时取
+                    <img src="https://www.zhihu.com/equation?tex=g%28x_1%2C...%2Cx_n%29%3D%5Csum_%7Bi%3D1%7D%5En+f_i%5E2%28x_1%2C...%2Cx_n%29" alt="g(x_1,...,x_n)=\sum_{i=1}^n f_i^2(x_1,...,x_n)" eeimg="1">
+                    。这是因为函数
+                    <img src="https://www.zhihu.com/equation?tex=y%3Dx_1%5E2%2B...%2Bx_n%5E2" alt="y=x_1^2+...+x_n^2" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的凸函数。
+                </p>
+                <p>
+                    另外，最速下降法仅仅是
+                    <b>
+                        线性收敛
+                    </b>
+                    的。故其在实际中常常作为
+                    <b>
+                        为牛顿方法或Broyden方法寻找良好迭代初值的方法
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        四、同伦延展法
+                    </b>
+                </p>
+                <p>
+                    在第一次学习到同伦延展法时，我一直很疑惑：同伦作为拓扑中的概念，要如何与方程组的求解问题联系起来呢？
+                </p>
+                <p>
+                    我们先进行一些简单的定义：
+                </p>
+                <p>
+                    <b>
+                        假定
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D%3A%5B0%2C1%5D%5Ctimes+%5Cmathbb%7BR%7D%5En%5Crightarrow%5Cmathbb%7BR%7D%5En" alt="\vec{G}:[0,1]\times \mathbb{R}^n\rightarrow\mathbb{R}^n" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        即对于任意一个固定的
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda%5Cin%5B0%2C1%5D" alt="\lambda\in[0,1]" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                        都是一个向量函数
+                    </b>
+                    。
+                </p>
+                <p>
+                    这意味着随着
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    的连续变化，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                    作为
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维向量之间的映射也会相应连续地改变。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        假定
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%28%5Clambda%29" alt="\vec{x}(\lambda)" eeimg="1">
+                        表示方程
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D%28%5Clambda%2C%5Cvec%7Bx%7D%29%3D%5Cvec%7B0%7D" alt="\vec{G}(\lambda,\vec{x})=\vec{0}" eeimg="1">
+                        的解
+                    </b>
+                    。
+                </p>
+                <p>
+                    <b>
+                        我们的意图是将非线性方程组的求解问题转化为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%28%5Clambda%29" alt="\vec{x}(\lambda)" eeimg="1">
+                        随着
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda%5Cin%5B0%2C1%5D" alt="\lambda\in[0,1]" eeimg="1">
+                        连续地变化的过程。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则我们不妨假设
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%280%29" alt="\vec{x}(0)" eeimg="1">
+                        为给定的迭代初值，
+                    </b>
+                    则我们的想法就是
+                    <b>
+                        将
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%281%29" alt="\vec{x}(1)" eeimg="1">
+                        构造为原方程
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BF%7D%28%5Cvec%7Bx%7D%29%3D%5Cvec%7B0%7D" alt="\vec{F}(\vec{x})=\vec{0}" eeimg="1">
+                        的解
+                    </b>
+                    ，通过寻找
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%28%5Clambda%29" alt="\vec{x}(\lambda)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                    上连续地变化的规律对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%281%29" alt="\vec{x}(1)" eeimg="1">
+                    进行估计。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    基于上述意图，我们可以如下地简单地
+                    <b>
+                        构造出
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D" alt="\vec{G}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D%28%5Clambda%2C%5Cvec%7Bx%7D%29%3D%5Clambda%5Cvec%7BF%7D%28%5Cvec%7Bx%7D%29%2B%281-%5Clambda%29%5B%5Cvec%7BF%7D%28%5Cvec%7Bx%7D%29-%5Cvec%7BF%7D%28%5Cvec%7Bx%7D%280%29%29%5D" alt="\vec{G}(\lambda,\vec{x})=\lambda\vec{F}(\vec{x})+(1-\lambda)[\vec{F}(\vec{x})-\vec{F}(\vec{x}(0))]" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来的工作是：寻找到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%28%5Clambda%29" alt="\vec{x}(\lambda)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C1%5D" alt="[0,1]" eeimg="1">
+                    上连续地变化的规律，从而得到估计
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%281%29" alt="\vec{x}(1)" eeimg="1">
+                    作为原方程组的解。
+                </p>
+                <p>
+                    要得到规律，直接的想法就是对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7BG%7D%28%5Clambda%2C%5Cvec%7Bx%7D%29%3D%5Cvec%7B0%7D" alt="\vec{G}(\lambda,\vec{x})=\vec{0}" eeimg="1">
+                    等式两边对
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    求偏导。
+                </p>
+                <p>
+                    得到：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+%5Cvec%7BG%7D%7D%7B%5Cpartial+%5Clambda%7D%2B%5Cfrac%7B%5Cpartial+%5Cvec%7BG%7D%7D%7B%5Cpartial+%5Cvec%7Bx%7D%7D%5Cvec%7Bx%7D%5E%7B%27%7D%28%5Clambda%29%3D0" alt="\frac{\partial \vec{G}}{\partial \lambda}+\frac{\partial \vec{G}}{\partial \vec{x}}\vec{x}^{&#39;}(\lambda)=0" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        化简得到矩阵形式：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%5E%7B%27%7D%28%5Clambda%29%3D-J%5E%7B-1%7D%28%5Cvec%7Bx%7D%28%5Clambda%29%29%5Cvec%7BF%7D%28%5Cvec%7Bx%7D%280%29%29%2C%5C+%5Clambda%5Cin%5B0%2C1%5D" alt="\vec{x}^{&#39;}(\lambda)=-J^{-1}(\vec{x}(\lambda))\vec{F}(\vec{x}(0)),\ \lambda\in[0,1]" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们惊奇地发现：
+                    <b>
+                        这是
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%28%5Clambda%29" alt="\vec{x}(\lambda)" eeimg="1">
+                        关于
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                        的ODE初值问题。初值
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%280%29" alt="\vec{x}(0)" eeimg="1">
+                        已经给定
+                    </b>
+                    。
+                </p>
+                <p>
+                    这表示：我们成功地利用同伦的性质将一个方程组求解问题转化为了一个ODE的初值问题。
+                </p>
+                <p>
+                    接下来的步骤中，我们只需要数值地估计常微分方程组即可，Runge-Kutta的推广方法可以被使用来产生出
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvec%7Bx%7D%281%29" alt="\vec{x}(1)" eeimg="1">
+                    的估计，即为原方程的解。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    同伦延展方法将
+                    <b>
+                        函数抽象为函数族
+                    </b>
+                    ，以使得曲线能够随参数的连续变化而连续变化，从而将方程组求解问题转化为了连续变化的ODE初值问题。如此一来，各种先前提及的ODE数值方法就可以被应用来产生估计。
+                </p>
+                <p>
+                    值得一提的是：
+                    <b>
+                        同伦延展法本身可以作为一个完整方法来使用，且对于初值的选取无要求，但是计算代价往往很大
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于非线性方程组求解方法的叙述，到此为止就告一段落了。
+                </p>
+                <p>
+                    事实上，原本我还想阐述一些数值求解特征值的方法，但是后来发现诸如幂法及其推广、Householder变换、Q-R方法、SVD等等均在高代课程中有了比较完备的概述，读者若有兴趣可以自行查找资料学习。
+                </p>
+                <p>
+                    那么，
+                    <b>
+                        数值分析这个系列的学习笔记就到此为止了
+                    </b>
+                    。个人感觉，数值分析是一门很应用也很有趣的数学课。学习数值分析，最应该把握的是某种特定方法为何会出现、具有什么优缺点、能够进行哪些改进等等问题，而非一味地追求实践。只有对于各种方法有了宏观层面的把握，才能够对每一个方法的适用场合与实现细节了如指掌。
+                </p>
+                <p>
+                    最后，谢谢各位对于数值分析系列学习笔记的阅读！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        另外：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        谢谢
+                        <a class="member_mention" href="https://www.zhihu.com/people/f72a3a70fb153164bdbec981372b7536" data-hash="f72a3a70fb153164bdbec981372b7536" data-hovercard="p$b$f72a3a70fb153164bdbec981372b7536">
+                            @一条大BASS
+                        </a>
+                        为我指出了文章的错误！
+                    </b>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

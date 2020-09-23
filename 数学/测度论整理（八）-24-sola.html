@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（八）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-f2f0239bc47c0fd70e8ee0e5a6704df2_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/133749865" target="_blank">
+                        测度论整理（八）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-04-20
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这一章我们介绍
+                    <b>
+                        概率空间上的积分
+                    </b>
+                    的性质，并且为积分这一章做个总结。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面我们假设
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2CP%29" alt="(X,\mathscr{F},P)" eeimg="1">
+                    为一个概率空间，
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    为其上随机变量。
+                </p>
+                <p>
+                    那么我们最熟悉的
+                    <b>
+                        数学期望
+                    </b>
+                    就被定义为
+                    <img src="https://www.zhihu.com/equation?tex=Ef%3D%5Cint+_Xf%5C%2CdP" alt="Ef=\int _Xf\,dP" eeimg="1">
+                    （
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    积分存在）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    值得一提的是，这个定义与我们在初等概率论中的定义是吻合的。对于随机变量的函数的期望，我们可以化为实数域上的Lebesgue-Stieljes积分来计算。
+                </p>
+                <p>
+                    即我们考虑随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    ，以及
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    上的Borel可测函数
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    。那么若我们要求
+                    <img src="https://www.zhihu.com/equation?tex=g%5Ccirc+f" alt="g\circ f" eeimg="1">
+                    这个随机变量的期望，即求
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Xg%5Ccirc+f%5C%2CdP" alt="\int_Xg\circ f\,dP" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们可以考虑
+                    <b>
+                        由分布
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        诱导出的Lebesgue-Stieljes测度
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_F" alt="\lambda_F" eeimg="1">
+                    ，并且考虑
+                    <b>
+                        由随机变量
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        诱导出的
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BB%7D_%5Cmathbb%7BR%7D%29" alt="(\mathbb{R},\mathscr{B}_\mathbb{R})" eeimg="1">
+                        上测度
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    。那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    所为
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    诱导出的测度，定义为：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+B+%5Cin%5Cmathscr%7BB%7D_%5Cmathbb%7BR%7D%2C%5Cmu%28B%29%3DP%28f%5E%7B-1%7DB%29" alt="\forall B \in\mathscr{B}_\mathbb{R},\mu(B)=P(f^{-1}B)" eeimg="1">
+                    。由积分的换元，我们立马得到：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Xg%5Ccirc+f%5C%2CdP%3D%5Cint_%7B%5Cmathbb%7BR%7D%7D+g+%5C%2Cd%5Cmu" alt="\int_Xg\circ f\,dP=\int_{\mathbb{R}} g \,d\mu" eeimg="1">
+                    。
+                </p>
+                <p>
+                    注意到在半环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%28a%2Cb%5D%5Cright+%5C%7D" alt="\left \{  (a,b]\right \}" eeimg="1">
+                    上，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%3D%5Clambda_F" alt="\mu=\lambda_F" eeimg="1">
+                    成立。故我们可以将这两个测度看作半环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%28a%2Cb%5D%5Cright+%5C%7D" alt="\left \{  (a,b]\right \}" eeimg="1">
+                    上的某个测度到此半环生成的
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    域的扩张。注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%3D+%5Cbigcup_%7Bn%5Cin%5Cmathbb%7BZ%7D%7D%28n%2Cn%2B1%5D" alt="\mathbb{R}= \bigcup_{n\in\mathbb{Z}}(n,n+1]" eeimg="1">
+                    且每个
+                    <img src="https://www.zhihu.com/equation?tex=%28n%2Cn%2B1%5D" alt="(n,n+1]" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_F" alt="\lambda_F" eeimg="1">
+                    下测度为
+                    <img src="https://www.zhihu.com/equation?tex=F%28n%2B1%29-F%28n%29" alt="F(n+1)-F(n)" eeimg="1">
+                    有限（利用分布的性质）。故测度扩张唯一性条件满足，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%3D%5Clambda_F" alt="\mu=\lambda_F" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BB%7D_%5Cmathbb%7BR%7D" alt="\mathscr{B}_\mathbb{R}" eeimg="1">
+                    上成立！（
+                    <b>
+                        通常要证明在
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        域上直接证明两个测度相等是困难的，此时不妨将其看作一个半环的测度扩张，利用测度扩张唯一性条件
+                    </b>
+                    ）
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B%5Cmathbb%7BR%7D%7D+g+%5C%2Cd%5Cmu%3D%5Cint_%7B%5Cmathbb%7BR%7D%7D+g+%5C%2Cd%5Clambda_F" alt="\int_{\mathbb{R}} g \,d\mu=\int_{\mathbb{R}} g \,d\lambda_F" eeimg="1">
+                    。即为期望的计算公式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，
+                    <b>
+                        随机变量
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        的积分存在有限的充要条件
+                    </b>
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bn%3D1%7D%5E%5Cinfty+P%28%7Cf%7C%5Cgeq+n%29%3C%5Cinfty" alt="\sum_{n=1}^\infty P(|f|\geq n)&lt;\infty" eeimg="1">
+                    。这一点可以利用
+                    <img src="https://www.zhihu.com/equation?tex=E%7Cf%7C%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%5Cint_%7Bn-1%5Cleq+f%3Cn%7D%7Cf%7C%5C%2CdP" alt="E|f|=\sum_{n=1}^\infty \int_{n-1\leq f&lt;n}|f|\,dP" eeimg="1">
+                    进行估计。其中注意到：对于
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的可测分割
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    ，我们总是有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_Xf%5C%2CdP%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty%5Cint_%7BA_n%7Df%5C%2CdP" alt="\int_Xf\,dP=\sum_{n=1}^\infty\int_{A_n}f\,dP" eeimg="1">
+                    。（利用单调收敛定理）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    利用期望，我们还能够构造出
+                    <b>
+                        所有随机变量组成的度量空间
+                    </b>
+                    。定义距离：
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28f%2Cg%29%3DE%5Cfrac%7B%7Cf-g%7C%7D%7B1%2B%7Cf-g%7C%7D" alt="\rho(f,g)=E\frac{|f-g|}{1+|f-g|}" eeimg="1">
+                    。则对于一列随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    ，若有
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Bp%7D%5Crightarrow+f" alt="f_n\overset{p}\rightarrow f" eeimg="1">
+                    ，则利用有界收敛定理，
+                    <img src="https://www.zhihu.com/equation?tex=E%5Cfrac%7B%7Cf_n-f%7C%7D%7B1%2B%7Cf_n-f%7C%7D%5Crightarrow+0" alt="E\frac{|f_n-f|}{1+|f_n-f|}\rightarrow 0" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28f%2Cf_n%29%5Crightarrow+0" alt="\rho(f,f_n)\rightarrow 0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    相反地，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28f%2Cf_n%29%5Crightarrow+0" alt="\rho(f,f_n)\rightarrow 0" eeimg="1">
+                    ，假设存在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon_0+%3E0" alt="\varepsilon_0 &gt;0" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=P%28%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon_0%29%5Crightarrow+a%3E0" alt="P(|f_n-f|\geq \varepsilon_0)\rightarrow a&gt;0" eeimg="1">
+                    。那么由
+                    <img src="https://www.zhihu.com/equation?tex=P%28%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon_0%29%5Cleq+P%28%5Cfrac%7B%7Cf_n-f%7C%7D%7B1%2B%7Cf_n-f%7C%7D%5Cgeq+%5Cfrac%7B%5Cvarepsilon_0%7D%7B1%2B%5Cvarepsilon_0%7D%29" alt="P(|f_n-f|\geq \varepsilon_0)\leq P(\frac{|f_n-f|}{1+|f_n-f|}\geq \frac{\varepsilon_0}{1+\varepsilon_0})" eeimg="1">
+                    一并利用Markov不等式，矛盾！故
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Bp%7D%5Crightarrow+f" alt="f_n\overset{p}\rightarrow f" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由此，我们看到：
+                    <b>
+                        在概率空间中，依概率收敛本质上等价于随机变量构成的度量空间中的依度量
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho" alt="\rho" eeimg="1">
+                        收敛！
+                    </b>
+                    这是一个不错的直观解释。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    概率空间由其特殊性，其上的一致可积性与绝对连续性有着紧密的关系。
+                </p>
+                <p>
+                    其中，随机变量集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++f_t%7Ct%5Cin+T%5Cright+%5C%7D" alt="\left \{  f_t|t\in T\right \}" eeimg="1">
+                    <b>
+                        一致可积
+                    </b>
+                    的定义为：
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7B%5Clambda%5Crightarrow%5Cinfty%7D%5Csup_%7Bt%5Cin+T%7DE%5B%7Cf_t%7CI_%7B%7Cf_t%7C%5Cgeq+%5Clambda+%7D%5D%3D0" alt="\lim_{\lambda\rightarrow\infty}\sup_{t\in T}E[|f_t|I_{|f_t|\geq \lambda }]=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    将其用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon-N" alt="\varepsilon-N" eeimg="1">
+                    语言表达：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cexists+N%3E0" alt="\forall \varepsilon &gt;0,\exists N&gt;0" eeimg="1">
+                    ，当
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%5Cgeq+N" alt="\lambda\geq N" eeimg="1">
+                    时，对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+t%5Cin+T" alt="\forall t\in T" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=E%5B%7Cf_t%7CI_%7B%7Cf_t%7C%5Cgeq+%5Clambda+%7D%5D%3C%5Cvarepsilon" alt="E[|f_t|I_{|f_t|\geq \lambda }]&lt;\varepsilon" eeimg="1">
+                    。
+                </p>
+                <p>
+                    直观地说，在
+                    <img src="https://www.zhihu.com/equation?tex=%7Cf_t%7C" alt="|f_t|" eeimg="1">
+                    充分大的时候，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++f_t%7Ct%5Cin+T%5Cright+%5C%7D" alt="\left \{  f_t|t\in T\right \}" eeimg="1">
+                    中所有随机变量的期望
+                    <b>
+                        一致地
+                    </b>
+                    充分小。这里的一致性体现在
+                    <img src="https://www.zhihu.com/equation?tex=%5Csup_%7Bt%5Cin+T%7D" alt="\sup_{t\in T}" eeimg="1">
+                    中以及
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    无关中！显然若随机变量集合
+                    <b>
+                        一致有界
+                    </b>
+                    ，则必定一致可积。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    随机变量集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++f_t%7Ct%5Cin+T%5Cright+%5C%7D" alt="\left \{  f_t|t\in T\right \}" eeimg="1">
+                    <b>
+                        绝对连续
+                    </b>
+                    的定义为：
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7BP%28A%29%5Crightarrow+0%7D%5Csup_%7Bt%5Cin+T%7DE%5B%7Cf_t%7CI_%7BA+%7D%5D%3D0" alt="\lim_{P(A)\rightarrow 0}\sup_{t\in T}E[|f_t|I_{A }]=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    将其用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon-N" alt="\varepsilon-N" eeimg="1">
+                    语言表达：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cexists+%5Cdelta%3E0" alt="\forall \varepsilon &gt;0,\exists \delta&gt;0" eeimg="1">
+                    ，当
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cin+%5Cmathscr%7BF%7D%2CP%28A%29%5Cleq%5Cdelta" alt="A\in \mathscr{F},P(A)\leq\delta" eeimg="1">
+                    时，对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+t%5Cin+T" alt="\forall t\in T" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=E%5B%7Cf_t%7CI_%7BA+%7D%5D%3C%5Cvarepsilon" alt="E[|f_t|I_{A }]&lt;\varepsilon" eeimg="1">
+                    。
+                </p>
+                <p>
+                    直观地说，在
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的测度充分小的时候，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++f_t%7Ct%5Cin+T%5Cright+%5C%7D" alt="\left \{  f_t|t\in T\right \}" eeimg="1">
+                    中所有随机变量在
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    上的积分
+                    <b>
+                        一致地
+                    </b>
+                    充分小。这里的一致性体现在
+                    <img src="https://www.zhihu.com/equation?tex=%5Csup_%7Bt%5Cin+T%7D" alt="\sup_{t\in T}" eeimg="1">
+                    中以及
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    无关中！准确地说，这里的“绝对连续”本质上是“一致绝对连续”。由积分的绝对连续性，
+                    <b>
+                        任何单个可积的随机变量都是绝对连续的
+                    </b>
+                    。（事实上，任何有限个可积随机变量也都绝对连续，取最大的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    即可）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    要举出概率空间中并非一致可积或者绝对连续的随机变量列是容易的。我们考虑
+                    <img src="https://www.zhihu.com/equation?tex=%28%5B0%2C1%29%2C%5Cmathscr%7BB%7D_%7B%5B0%2C1%29%7D%2C%5Clambda%29" alt="([0,1),\mathscr{B}_{[0,1)},\lambda)" eeimg="1">
+                    上的随机变量列
+                    <img src="https://www.zhihu.com/equation?tex=f_n%3DnI_%7B%5B0%2C%5Cfrac%7B1%7D%7Bn%7D%29%7D" alt="f_n=nI_{[0,\frac{1}{n})}" eeimg="1">
+                    。即使在
+                    <img src="https://www.zhihu.com/equation?tex=%7Cf_n%7C" alt="|f_n|" eeimg="1">
+                    已经充分大时，其积分仍为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ，故非一致可积。
+                </p>
+                <p>
+                    同样，其并非绝对连续。对于取定的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta%3E0" alt="\delta&gt;0" eeimg="1">
+                    ，我们总是能够取
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5B0%2C%5Cdelta%29" alt="A=[0,\delta)" eeimg="1">
+                    ，其Lebesgue测度恰好为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    。但是
+                    <img src="https://www.zhihu.com/equation?tex=E%5B%7Cf_t%7CI_%7BA+%7D%5D%3D%5Cmin%5Cleft+%5C%7B1%2Cn%5Cdelta++%5Cright+%5C%7D" alt="E[|f_t|I_{A }]=\min\left \{1,n\delta  \right \}" eeimg="1">
+                    ，显然不可能一致地收敛到
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        在概率空间中，一致可积性等价于绝对连续性且
+                        <img src="https://www.zhihu.com/equation?tex=L_1" alt="L_1" eeimg="1">
+                        有界
+                    </b>
+                    。
+                </p>
+                <p>
+                    若一致可积性成立，考虑
+                    <img src="https://www.zhihu.com/equation?tex=E%5B%7Cf_t%7CI_A%5D%3DE%5B%7Cf_t%7CI_%7B%7Cf_t%7C%5Cgeq+%5Clambda+%7DI_A%5D%2BE%5B%7Cf_t%7CI_%7B%7Cf_t%7C%3C+%5Clambda+%7DI_A%5D" alt="E[|f_t|I_A]=E[|f_t|I_{|f_t|\geq \lambda }I_A]+E[|f_t|I_{|f_t|&lt; \lambda }I_A]" eeimg="1">
+                    ，其中右侧第一项在
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    充分大时一致地充分小，右侧第二项不超过
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+P%28A%29" alt="\lambda P(A)" eeimg="1">
+                    可以通过
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29" alt="P(A)" eeimg="1">
+                    进行一致的控制（因为
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    不依赖于
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    ）。
+                </p>
+                <p>
+                    若绝对连续性以及
+                    <img src="https://www.zhihu.com/equation?tex=L_1" alt="L_1" eeimg="1">
+                    有界性成立，我们想使得
+                    <img src="https://www.zhihu.com/equation?tex=P%28%7Cf_t%7C%3E%5Clambda%29" alt="P(|f_t|&gt;\lambda)" eeimg="1">
+                    充分小。由Markov不等式，只需要使得
+                    <img src="https://www.zhihu.com/equation?tex=E%7Cf_t%7C" alt="E|f_t|" eeimg="1">
+                    充分小即可。由于
+                    <img src="https://www.zhihu.com/equation?tex=L_1" alt="L_1" eeimg="1">
+                    有界性以及
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    的一致性，这是可以一致地做到的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    利用这条性质，我们得到：
+                </p>
+                <p>
+                    任何有限个可积随机变量的集合一致可积。
+                </p>
+                <p>
+                    随机变量集合若被一个非负可积随机变量控制，则也必一致可积。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于一致可积性与收敛模式之间的关联：
+                </p>
+                <p>
+                    <b>
+                        在概率空间中，若
+                        <img src="https://www.zhihu.com/equation?tex=f_n%5Cin+L_p" alt="f_n\in L_p" eeimg="1">
+                        且
+                        <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Bp%7D%5Crightarrow+f" alt="f_n\overset{p}\rightarrow f" eeimg="1">
+                        ，则以下等价：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=f%5Cin+L_p%2Cf_n%5Coverset%7BL_p%7D%5Crightarrow+f" alt="f\in L_p,f_n\overset{L_p}\rightarrow f" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=f%5Cin+L_p%2C%7C%7Cf_n%7C%7C_p%5Crightarrow+%7C%7Cf%7C%7C_p" alt="f\in L_p,||f_n||_p\rightarrow ||f||_p" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++%7Cf_n%7C%5Ep%5Cright+%5C%7D" alt="\left \{  |f_n|^p\right \}" eeimg="1">
+                        一致可积
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，关于随机变量，值得一提的是：若
+                    <img src="https://www.zhihu.com/equation?tex=f%5Coverset%7Bd%7D%3Dg" alt="f\overset{d}=g" eeimg="1">
+                    ，则这两个随机变量有
+                    <b>
+                        同样的期望、
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        阶原点矩或中心矩
+                    </b>
+                    （事实上任意Borel可测函数复合后的期望都相同 ）。这是因为对于
+                    <img src="https://www.zhihu.com/equation?tex=f%5Csim+F%2Cg%5Csim+G" alt="f\sim F,g\sim G" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_X+f%5C%2CdP%3D%5Cint_%5Cmathbb%7BR%7D+x%5C%2Cd%5Clambda_F%3D%5Cint_%5Cmathbb%7BR%7D+x%5C%2Cd%5Clambda_G%3D%5Cint_X+g%5C%2CdP" alt="\int_X f\,dP=\int_\mathbb{R} x\,d\lambda_F=\int_\mathbb{R} x\,d\lambda_G=\int_X g\,dP" eeimg="1">
+                    导致的。
+                </p>
+                <p>
+                    进一步地，若
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Bd%7D%3Dg_n%2C%5Cforall+n%5Cin+%5Cmathbb%7BN%7D" alt="f_n\overset{d}=g_n,\forall n\in \mathbb{N}" eeimg="1">
+                    ，那么这两个随机变量列有
+                    <b>
+                        同样的一致可积性
+                    </b>
+                    。（一致可积性本质上也依赖于期望而定义）
+                </p>
+                <p>
+                    由此，一些情形下，
+                    <b>
+                        Skorokhod定理
+                    </b>
+                    将会是从
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Bd%7D%5Crightarrow+f" alt="f_n\overset{d}\rightarrow f" eeimg="1">
+                    为出发点证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++f_n+%5Cright+%5C%7D" alt="\left \{  f_n \right \}" eeimg="1">
+                    一致可积的有力工具。（特别是已经有了
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    阶原点矩的收敛性条件）
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

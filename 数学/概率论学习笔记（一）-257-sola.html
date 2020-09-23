@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            概率论学习笔记（一）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-7a308e8798c91458164108b20aa92fc9_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/42859784" target="_blank">
+                        概率论学习笔记（一）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-08-24
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    前言：之所以考虑在现在这个时间点写概率论笔记，其中一个重要的原因就是9月开头会有场概率论的考试，加之上个学期刚好完成了概率论的学习，最近也将概率论大概地过了一遍，不妨再梳理一遍并且将一些想法记录下来。需要提及的是，概率论从主流的观点来说可以分成组合（初等）部分，分析部分与测度部分。本系列笔记主要讨论分析部分的内容，对于初等的组合部分将快速带过。本系列笔记一般地来说，仅仅需要读者具备高中数学知识，以及分析学中有关积分和级数的知识即可。当然，我会将重点放在概念的解释，应用和一些传统概率统计课程所不太会关注之处。本系列笔记不会包含习题（实际上习题会在之后单独地进行整理），作为替代，文中实例会多一些（与初等数论笔记正好风格相反）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么接下来，开始进行正文第一部分的引入。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        古典概型，概率空间以及一些基本定理
+                    </b>
+                </h2>
+                <p>
+                    如前言中所提到的，在概率论的组合部分，我将比较快速地阐释一些定义，而不会花较多篇幅举例（相信大家高中基础都很扎实233）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        一、基本概念
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        随机试验中出现的可能结果称为样本点，记作
+                        <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        所有样本点组成的集合称为样本空间，记作
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega%3D%5Cleft+%5C%7B+%5Comega%7C%5Comega%E4%B8%BA%E6%A0%B7%E6%9C%AC%E7%82%B9+%5Cright+%5C%7D" alt="\Omega=\left \{ \omega|\omega为样本点 \right \}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        当样本空间
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        仅有有限个元素时，称其子集为一个事件，用大写字母表示，如
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    若样本点
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5Cin+A" alt="\omega\in A" eeimg="1">
+                    ，称事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    <b>
+                        发生
+                    </b>
+                    ，否则称事件
+                    <b>
+                        不发生
+                    </b>
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D%3D%5COmega-A" alt="\overline{A}=\Omega-A" eeimg="1">
+                    称为事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的
+                    <b>
+                        对立事件
+                    </b>
+                    。容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5Cin+A%5CLeftrightarrow+%5Comega%5Cnot%5Cin+%5Coverline%7BA%7D" alt="\omega\in A\Leftrightarrow \omega\not\in \overline{A}" eeimg="1">
+                    ，反之亦然。
+                </p>
+                <p>
+                    特别地，
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cvarnothing+" alt="A=\varnothing" eeimg="1">
+                    时，事件称为
+                    <b>
+                        不可能事件
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5COmega" alt="A=\Omega" eeimg="1">
+                    时，事件称为
+                    <b>
+                        必然事件
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：进行随机试验，掷一枚均匀的骰子1次。
+                </p>
+                <p>
+                    由上述定义，样本点为试验的可能结果，为
+                    <img src="https://www.zhihu.com/equation?tex=1%2C2%2C3%2C4%2C5%2C6" alt="1,2,3,4,5,6" eeimg="1">
+                    。
+                </p>
+                <p>
+                    则样本空间为
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%3D%5Cleft+%5C%7B+1%2C2%2C3%2C4%2C5%2C6+%5Cright+%5C%7D" alt="\Omega=\left \{ 1,2,3,4,5,6 \right \}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cleft+%5C%7B+1%2C2%2C3+%5Cright+%5C%7D" alt="A=\left \{ 1,2,3 \right \}" eeimg="1">
+                    为一个事件，且既不是不可能事件又不是必然事件。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    可能很多人看到这里都会认为将事件用集合来严谨地定义没有必要。事实上，这是我们稍后定义事件域，定义概率测度等等一切的基础。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    既然我们知道了事件的本质是集合，自然地，我们会想到集合之间可以进行运算，那么事件之间也可以进行运算。
+                </p>
+                <p>
+                    在此我们不详细地展开，只提及日后比较常用且重要的事件之间的运算。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    设
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    为事件。
+                </p>
+                <p>
+                    我们之后
+                    <b>
+                        用
+                        <img src="https://www.zhihu.com/equation?tex=AB" alt="AB" eeimg="1">
+                        来表示
+                        <img src="https://www.zhihu.com/equation?tex=A%5Ccap+B" alt="A\cap B" eeimg="1">
+                    </b>
+                    。特别地，当
+                    <img src="https://www.zhihu.com/equation?tex=AB%3D%5Cvarnothing" alt="AB=\varnothing" eeimg="1">
+                    时，我们称这两个事件
+                    <b>
+                        互斥（不相容）
+                    </b>
+                    。对多于两个事件，我们称这些事件互斥当且仅当这些事件中的
+                    <b>
+                        任意两个
+                    </b>
+                    都互斥。
+                </p>
+                <p>
+                    <b>
+                        而当
+                        <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                        为互斥事件时，我们记
+                        <img src="https://www.zhihu.com/equation?tex=A%5Ccup+B" alt="A\cup B" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=A%2BB" alt="A+B" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来给出几个很常用的事件之间的运算公式，读者容易自证。
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=A%5Ccup+B%3DA%2B%5Coverline%7BA%7DB%2C+%5C+A%3DAB%2BA%5Coverline%7BB%7D" alt="A\cup B=A+\overline{A}B, \ A=AB+A\overline{B}" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B+%5Cbigcup_%7Bj%3D1%7D%5En+A_j+%7D%3D%5Cbigcap+_%7Bj%3D1%7D%5En+%5Coverline%7BA_j%7D" alt="\overline{ \bigcup_{j=1}^n A_j }=\bigcap _{j=1}^n \overline{A_j}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B+%5Cbigcap_%7Bj%3D1%7D%5En+A_j+%7D%3D%5Cbigcup+_%7Bj%3D1%7D%5En+%5Coverline%7BA_j%7D" alt="\overline{ \bigcap_{j=1}^n A_j }=\bigcup _{j=1}^n \overline{A_j}" eeimg="1">
+                    。（De-Morgan）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        二、古典概型
+                    </b>
+                </p>
+                <p>
+                    对一个有限集合
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%7CA%7C" alt="|A|" eeimg="1">
+                    表示其中的元素个数。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        试验的样本空间
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        有限，
+                        <img src="https://www.zhihu.com/equation?tex=A%5Csubseteq+%5COmega" alt="A\subseteq \Omega" eeimg="1">
+                        ，若
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        中的每个样本点的发生的可能性相同，则称
+                        <img src="https://www.zhihu.com/equation?tex=P%28A%29%3D%5Cfrac%7B%7CA%7C%7D%7B%7C%5COmega%7C%7D" alt="P(A)=\frac{|A|}{|\Omega|}" eeimg="1">
+                        为事件
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        发生的概率。
+                    </b>
+                </p>
+                <p>
+                    由以上定义的概率模型便称为古典概型。
+                </p>
+                <p>
+                    <b>
+                        需要再一次强调的是：每个样本点的发生的可能性相同
+                    </b>
+                    ，这是前提条件，如果忽视条件直接套用古典概型就会犯错。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于如此定义出的概率
+                    <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                    的性质，我们列出以下几条，读者自证。
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%5Cgeq+0" alt="P(A)\geq 0" eeimg="1">
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5COmega%29%3D1" alt="P(\Omega)=1" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cvarnothing%29%3D0" alt="P(\varnothing)=0" eeimg="1">
+                </p>
+                <p>
+                    3、若
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C...%2CA_n" alt="A_1,A_2,...,A_n" eeimg="1">
+                    互斥，则
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Csum_%7Bj%3D1%7D%5EnA_j%29%3D%5Csum_%7Bj%3D1%7D%5EnP%28A_j%29" alt="P(\sum_{j=1}^nA_j)=\sum_{j=1}^nP(A_j)" eeimg="1">
+                    。（有限可加性）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    可以看到对于古典概型而言，问题转化为了求集合中的元素个数（组合问题）。具体的计算将会利用到排列组合的知识，此处不做详细展开，在例题中对常用到的排列组合数进行举例。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：计算以下方法数：（假设不同排列均等可能）有
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个不同的球，每次抽取抽取1个球
+                </p>
+                <p>
+                    （1）：有放回地抽取，抽取
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    个排成一列，求不同排列总数。
+                </p>
+                <p>
+                    （2）：无放回地抽取，抽取
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    个排成一列，求不同排列总数。
+                </p>
+                <p>
+                    （3）：无放回地抽取，抽取
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    个忽视次序地组成一组，求不同组合总数。
+                </p>
+                <p>
+                    （4）：将所有球分成
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    个不同的组，忽视每一组中元素的次序，且每组恰好有
+                    <img src="https://www.zhihu.com/equation?tex=n_1%2Cn_2%2C...%2Cn_k" alt="n_1,n_2,...,n_k" eeimg="1">
+                    个球（
+                    <img src="https://www.zhihu.com/equation?tex=n_1%2Bn_2%2B...%2Bn_k%3Dn" alt="n_1+n_2+...+n_k=n" eeimg="1">
+                    ），求不同分组结果数。
+                </p>
+                <p>
+                    （5）：方程
+                    <img src="https://www.zhihu.com/equation?tex=x_1%2Bx_2%2B...%2Bx_n%3Dm" alt="x_1+x_2+...+x_n=m" eeimg="1">
+                    的非负整数解的个数。
+                </p>
+                <p>
+                    （6）：方程
+                    <img src="https://www.zhihu.com/equation?tex=x_1%2Bx_2%2B...%2Bx_n%3Dm" alt="x_1+x_2+...+x_n=m" eeimg="1">
+                    的正整数解的个数。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    （1）：乘法原理，
+                    <img src="https://www.zhihu.com/equation?tex=n%5Em" alt="n^m" eeimg="1">
+                </p>
+                <p>
+                    （2）：排列数，
+                    <img src="https://www.zhihu.com/equation?tex=P_n%5Em%3D%5Cfrac%7Bn%21%7D%7B%28n-m%29%21%7D" alt="P_n^m=\frac{n!}{(n-m)!}" eeimg="1">
+                </p>
+                <p>
+                    （3）：组合数，
+                    <img src="https://www.zhihu.com/equation?tex=C_n%5Em%3D%5Cfrac%7Bn%21%7D%7Bm%21%28n-m%29%21%7D" alt="C_n^m=\frac{n!}{m!(n-m)!}" eeimg="1">
+                </p>
+                <p>
+                    （4）：方法数为
+                    <img src="https://www.zhihu.com/equation?tex=C_n%5E%7Bn_1%7DC_%7Bn-n_1%7D%5E%7Bn_2%7D...C_%7Bn-n_1-...-n_%7Bk-1%7D%7D%5E%7Bn_k%7D" alt="C_n^{n_1}C_{n-n_1}^{n_2}...C_{n-n_1-...-n_{k-1}}^{n_k}" eeimg="1">
+                    =
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bn%21%7D%7Bn_1%21n_2%21...n_k%21%7D" alt="\frac{n!}{n_1!n_2!...n_k!}" eeimg="1">
+                    （利用组合数的公式）
+                </p>
+                <p>
+                    通常将这个数记作
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbinom%7Bn%7D%7Bn_1%2Cn_2%2C...%2Cn_k%7D" alt="\binom{n}{n_1,n_2,...,n_k}" eeimg="1">
+                    。实际上，其为多项式
+                    <img src="https://www.zhihu.com/equation?tex=%28x_1%2Bx_2%2B...%2Bx_k%29%5En" alt="(x_1+x_2+...+x_k)^n" eeimg="1">
+                    中
+                    <img src="https://www.zhihu.com/equation?tex=x_1%5E%7Bn_1%7Dx_2%5E%7Bn_2%7D...x_k%5E%7Bn_k%7D" alt="x_1^{n_1}x_2^{n_2}...x_k^{n_k}" eeimg="1">
+                    的展开系数，称为多项式系数。
+                </p>
+                <p>
+                    （5）：利用隔板法，有
+                    <img src="https://www.zhihu.com/equation?tex=n-1" alt="n-1" eeimg="1">
+                    块有序的隔板，第一块板左边的球数就是
+                    <img src="https://www.zhihu.com/equation?tex=x_1" alt="x_1" eeimg="1">
+                    ，第一块与第二块之间的球数为
+                    <img src="https://www.zhihu.com/equation?tex=x_2" alt="x_2" eeimg="1">
+                    ，以此类推。
+                </p>
+                <p>
+                    现在有
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    个球，
+                    <img src="https://www.zhihu.com/equation?tex=n-1" alt="n-1" eeimg="1">
+                    块有序的板排成一列，只需要确定所有板的位置即可。
+                </p>
+                <p>
+                    故方法数为
+                    <img src="https://www.zhihu.com/equation?tex=C_%7Bm%2Bn-1%7D%5E%7Bn-1%7D" alt="C_{m+n-1}^{n-1}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    （6）：插空法，将
+                    <img src="https://www.zhihu.com/equation?tex=n-1" alt="n-1" eeimg="1">
+                    块有序的板插入
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    个球之间的缝隙中（除去首尾的缝隙）即可保证所有
+                    <img src="https://www.zhihu.com/equation?tex=x_i%3E0" alt="x_i&gt;0" eeimg="1">
+                    。第一块板左边的球数就是
+                    <img src="https://www.zhihu.com/equation?tex=x_1" alt="x_1" eeimg="1">
+                    ，第一块与第二块之间的球数为
+                    <img src="https://www.zhihu.com/equation?tex=x_2" alt="x_2" eeimg="1">
+                    ，以此类推。
+                </p>
+                <p>
+                    则现有
+                    <img src="https://www.zhihu.com/equation?tex=m-1" alt="m-1" eeimg="1">
+                    个位置可以插板，确定
+                    <img src="https://www.zhihu.com/equation?tex=n-1" alt="n-1" eeimg="1">
+                    个板的位置即可。、
+                </p>
+                <p>
+                    方法数为
+                    <img src="https://www.zhihu.com/equation?tex=C_%7Bm-1%7D%5E%7Bn-1%7D" alt="C_{m-1}^{n-1}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    作为古典概型的实际问题，以下再举一例。
+                </p>
+                <p>
+                    例：
+                </p>
+                <p>
+                    求
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个人中至少两人同生日的概率（一年365天）。（假设每个人出生在每天概率相同）
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    很经典的问题，用到了考虑对立事件的方法。（对于含有“至少”这样字眼的问题适用）
+                </p>
+                <p>
+                    考虑对立事件
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    :任意两个人生日不同天   的概率，符合古典概型的要求。
+                </p>
+                <p>
+                    容易知道
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5COmega%7C%3D365%5En" alt="|\Omega|=365^n" eeimg="1">
+                </p>
+                <p>
+                    又可求出
+                    <img src="https://www.zhihu.com/equation?tex=%7CA%7C%3DP_%7B365%7D%5En" alt="|A|=P_{365}^n" eeimg="1">
+                </p>
+                <p>
+                    故所求概率为
+                    <img src="https://www.zhihu.com/equation?tex=1-%5Cfrac%7BP_%7B365%7D%5En%7D%7B365%5En%7D" alt="1-\frac{P_{365}^n}{365^n}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        三、几何概型
+                    </b>
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=A%5Csubseteq+%5Cmathbb%7BR%7D%5Er" alt="A\subseteq \mathbb{R}^r" eeimg="1">
+                    ，设
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的体积存在，记为
+                    <img src="https://www.zhihu.com/equation?tex=m%28A%29" alt="m(A)" eeimg="1">
+                    ，后文可能也会称其为
+                    <b>
+                        测度（不严格意义上）
+                    </b>
+                    。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        试验的样本空间
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    <b>
+                        ，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=m%28%5COmega%29%3E0" alt="m(\Omega)&gt;0" eeimg="1">
+                    <b>
+                        ，
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A%5Csubseteq+%5COmega" alt="A\subseteq \Omega" eeimg="1">
+                    <b>
+                        ，若每个样本点等可能地落在
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    <b>
+                        中，则称
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3D%5Cfrac%7Bm%28A%29%7D%7Bm%28%5COmega%29%7D" alt="P(A)=\frac{m(A)}{m(\Omega)}" eeimg="1">
+                    <b>
+                        为事件
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    <b>
+                        发生的概率。
+                    </b>
+                </p>
+                <p>
+                    由以上定义的概率模型便称为几何概型。
+                </p>
+                <p>
+                    <b>
+                        类似于古典概型，需要再一次强调的是：每个样本点等可能地落在
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    <b>
+                        中
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    容易看出古典概型的三条性质对几何概型也成立。
+                </p>
+                <p>
+                    关于几何概型比较经典的应用，不得不提到
+                    <b>
+                        等待-相遇问题
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：两人某天1点到2点之间等可能地在随机时间到达某地点会面且两人的到达时间相互不影响，先到者等20min后离去，求两人能相遇的概率。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    设
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    为两人分别到达的时间
+                </p>
+                <p>
+                    样本空间
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%3D%5Cleft+%5C%7B+%28x%2Cy%29%7C0%5Cleq+x%2Cy%5Cleq+60+%5Cright+%5C%7D" alt="\Omega=\left \{ (x,y)|0\leq x,y\leq 60 \right \}" eeimg="1">
+                    ，符合几何概型要求。
+                </p>
+                <p>
+                    事件
+                    <img src="https://www.zhihu.com/equation?tex=A%EF%BC%9A%E4%B8%A4%E4%BA%BA%E8%83%BD%E5%A4%9F%E7%9B%B8%E9%81%87" alt="A：两人能够相遇" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=A%5Csubseteq+%5COmega" alt="A\subseteq \Omega" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cleft+%5C%7B+%28x%2Cy%29%7C%7Cx-y%7C%5Cleq+20%5Cright+%5C%7D" alt="A=\left \{ (x,y)||x-y|\leq 20\right \}" eeimg="1">
+                </p>
+                <p>
+                    画图得
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-abae587e4b867d45db91a54c7dc15745_r.jpg">
+                </figure>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=m%28A%29" alt="m(A)" eeimg="1">
+                    即为围成的六边形面积
+                    <img src="https://www.zhihu.com/equation?tex=%3D60%5E2-40%5E2" alt="=60^2-40^2" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=m%28%5COmega%29%3D60%5E2" alt="m(\Omega)=60^2" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3D%5Cfrac%7B5%7D%7B9%7D" alt="P(A)=\frac{5}{9}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在介绍完最基本的两个概型后，我们可以发现
+                    <b>
+                        概型的差别的根源是等可能假设之间的差别
+                    </b>
+                    。
+                </p>
+                <p>
+                    为了进一步体会这一点，举有趣的Bertrand问题作为例子来说明这一点。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例（
+                    <b>
+                        Bertrand
+                    </b>
+                    ）：
+                </p>
+                <p>
+                    在半径为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    的圆内任意取一条弦，求弦长度大于等于
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B3%7D" alt="\sqrt{3}" eeimg="1">
+                    的概率。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    这个问题乍看之下让人手足无措，其原因就在于题中完全没有说明弦要按照怎么样的方式来选取。我们可以通过确定弦的两个端点来确定弦，也可以通过确定弦的中点来确定弦。更深入地，在讨论关于弦的中点的问题时，我们既可以假设中点在圆中等可能分布，也可以假设弦在圆的直径上等可能分布。
+                </p>
+                <p>
+                    下面我们举出三种常见的等可能假设并分别求概率。
+                </p>
+                <p>
+                    设事件
+                    <img src="https://www.zhihu.com/equation?tex=A%EF%BC%9A%E5%BC%A6%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8E+%5Csqrt%7B3%7D" alt="A：弦长度大于等于 \sqrt{3}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <i>
+                        情况1：弦的端点等可能地落在圆周上。
+                    </i>
+                </p>
+                <p>
+                    则我们可以假设一个端点固定，则另一个端点也等可能地落在圆周上。
+                </p>
+                <p>
+                    如图：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-fb6bd097599a43ef7e21327994e15c97_b.jpg">
+                </figure>
+                <p>
+                    固定点
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    ，假设
+                    <img src="https://www.zhihu.com/equation?tex=%7CCB%7C%3D%7CCD%7C%3D%5Csqrt%7B3%7D" alt="|CB|=|CD|=\sqrt{3}" eeimg="1">
+                    ，则另一个端点只需要在
+                    <img src="https://www.zhihu.com/equation?tex=B%2CD" alt="B,D" eeimg="1">
+                    所夹劣弧之上都满足要求。则样本空间
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%3D%5Cleft+%5C%7B+%5Ctheta%7C%5Ctheta%5Cin+%5B0%2C2%5Cpi+%29+%5Cright+%5C%7D" alt="\Omega=\left \{ \theta|\theta\in [0,2\pi ) \right \}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5Cleft+%5C%7B+%5Ctheta%7C%5Ctheta%5Cin+%5B%5Cfrac%7B2%7D%7B3%7D%5Cpi+%2C%5Cfrac%7B4%7D%7B3%7D%5Cpi+%5D+%5Cright+%5C%7D" alt="A=\left \{ \theta|\theta\in [\frac{2}{3}\pi ,\frac{4}{3}\pi ] \right \}" eeimg="1">
+                    ，
+                </p>
+                <p>
+                    容易求出
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3D%5Cfrac%7B1%7D%7B3%7D" alt="P(A)=\frac{1}{3}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <i>
+                        情况2：弦的中点等可能地落在一个小圆内。
+                    </i>
+                </p>
+                <p>
+                    如图：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-8867261d39ec200e76f040bb033d2cb0_r.jpg">
+                </figure>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7CBC%7C%3D%7CEF%7C%3D%5Csqrt%7B3%7D" alt="|BC|=|EF|=\sqrt{3}" eeimg="1">
+                    ，则这两条弦的中点在同一个小圆上，容易知道当弦的中点在小圆上或内时，弦长必定符合条件要求。
+                </p>
+                <p>
+                    利用几何概型，
+                    <img src="https://www.zhihu.com/equation?tex=m%28%5COmega%29%3D%5Cpi+%2Cm%28A%29%3D%5Cfrac%7B%5Cpi%7D%7B4%7D" alt="m(\Omega)=\pi ,m(A)=\frac{\pi}{4}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3D%5Cfrac%7B1%7D%7B4%7D" alt="P(A)=\frac{1}{4}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <i>
+                        情况3：弦中点等可能地落在与之垂直的直径上。
+                    </i>
+                </p>
+                <p>
+                    如图：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-85f57e04fdf7cd429b7b92bf5ad5deb1_r.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7CBC%7C%3D%5Csqrt%7B3%7D" alt="|BC|=\sqrt{3}" eeimg="1">
+                    ，容易知道当弦中点在小圆之内时，满足条件要求。
+                </p>
+                <p>
+                    由于沿着直径等可能分布。
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3D%5Cfrac%7B1%7D%7B2%7D" alt="P(A)=\frac{1}{2}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以看到不同的
+                    <b>
+                        等可能假设
+                    </b>
+                    导致了最后截然不同的结果。
+                </p>
+                <p>
+                    然而，这些结果之间并无对错之分，只是从
+                    <b>
+                        不同角度
+                    </b>
+                    看同一个问题得到了不同的结果。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        四、概率空间
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        本章若对概率空间的系统化定义没有兴趣可以跳过
+                    </b>
+                </p>
+                <p>
+                    在数学分析中，我们在多重积分的可积性理论处对体积有过定义，也曾证明过一些体积的性质。此处不加证明地直接给出。
+                </p>
+                <p>
+                    此处再次提醒：
+                    <b>
+                        下文的“测度”均不是严格意义上的测度，仅是代指体积。
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    为测度存在的事件，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D%2CA%5Ccup+B%2CA%5Ccap+B%2CA-B" alt="\overline{A},A\cup B,A\cap B,A-B" eeimg="1">
+                    也都可测。
+                </p>
+                <p>
+                    故
+                    <b>
+                        可测事件事件经过有限次集合运算后得到的事件也必定可测
+                    </b>
+                    。
+                </p>
+                <p>
+                    现在若有事件列
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    互斥且均可测，则由体积的性质，
+                    <img src="https://www.zhihu.com/equation?tex=m%28%5Cbigcup+_%7Bj%3D1%7D%5E%7B%5Cinfty%7DA_j%29%3D%5Csum_%7Bj%3D1%7D%5E%7B%5Cinfty%7Dm%28A_j%29" alt="m(\bigcup _{j=1}^{\infty}A_j)=\sum_{j=1}^{\infty}m(A_j)" eeimg="1">
+                    ，故互斥的可测事件经过可列并后仍旧可测。
+                </p>
+                <p>
+                    现在考虑，更广泛地，事件列
+                    <img src="https://www.zhihu.com/equation?tex=B_1%2CB_2%2C..." alt="B_1,B_2,..." eeimg="1">
+                    ，均可测（不一定互斥）。
+                </p>
+                <p>
+                    我们进行变换
+                    <img src="https://www.zhihu.com/equation?tex=A_1%3DB_1%2CA_2%3DB_2-B_1%2C...%2CA_j%3DB_j-B_%7Bj-1%7D-...-B_1" alt="A_1=B_1,A_2=B_2-B_1,...,A_j=B_j-B_{j-1}-...-B_1" eeimg="1">
+                </p>
+                <p>
+                    则事件列
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    互斥且均可测，且有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DA_j%3D%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DB_j" alt="\bigcup_{j=1}^{\infty}A_j=\bigcup_{j=1}^{\infty}B_j" eeimg="1">
+                    ，利用上述结论，可以得到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DB_j" alt="\bigcup_{j=1}^{\infty}B_j" eeimg="1">
+                    可测。故
+                    <b>
+                        可测事件经过可列并后仍旧可测
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    值得一提的是，我们在上述分析过程中利用到的变换是重要的。其
+                    <b>
+                        能够将有关互斥事件的结论推广到一般事件
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    自然地，我们引出如下
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        为样本空间，
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        的子集构成的集合，若
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        满足：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega%5Cin+F" alt="\Omega\in F" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2、若
+                        <img src="https://www.zhihu.com/equation?tex=A%5Cin+F%2C%5Coverline%7BA%7D%5Cin+F" alt="A\in F,\overline{A}\in F" eeimg="1">
+                        （对补集运算封闭）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        3、若
+                        <img src="https://www.zhihu.com/equation?tex=A_j%5Cin+F%2C%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DA_j%5Cin+F" alt="A_j\in F,\bigcup_{j=1}^{\infty}A_j\in F" eeimg="1">
+                        （对可列并运算封闭）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        的事件域/
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                        域，称
+                        <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2CF%29" alt="(\Omega,F)" eeimg="1">
+                        为可测空间。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    则由之前的分析容易知道只要
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    可测，
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    中所有元素都可测。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在可测空间上，我们得以严格定义概率，作为一种测度而存在。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2CF%29" alt="(\Omega,F)" eeimg="1">
+                        为可测空间，
+                        <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                        为 定义在
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        上的函数，若满足：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        1、
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+A%5Cin+F%2CP%28A%29%5Cgeq+0" alt="\forall A\in F,P(A)\geq 0" eeimg="1">
+                        （非负性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2、
+                        <img src="https://www.zhihu.com/equation?tex=P%28%5COmega%29%3D1" alt="P(\Omega)=1" eeimg="1">
+                        （完全性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        3、对
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        中的互斥事件列，有
+                        <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup+_%7Bj%3D1%7D%5E%7B%5Cinfty%7DA_j%29%3D%5Csum_%7Bj%3D1%7D%5E%7B%5Cinfty%7DP%28A_j%29" alt="P(\bigcup _{j=1}^{\infty}A_j)=\sum_{j=1}^{\infty}P(A_j)" eeimg="1">
+                        （可列可加性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        上的概率测度，简称概率，
+                        <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2CF%2CP%29" alt="(\Omega,F,P)" eeimg="1">
+                        称为概率空间。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        为事件，若
+                        <img src="https://www.zhihu.com/equation?tex=P%28A%29%3D1" alt="P(A)=1" eeimg="1">
+                        ，称
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        几乎必然发生，记作
+                        <img src="https://www.zhihu.com/equation?tex=A+%5C+a.s." alt="A \ a.s." eeimg="1">
+                        。 （almost surely）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接下来反过来验证一下概率测度的概念与一般的古典概型是否统一。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                    为概率测度，证明：
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cvarnothing%29%3D0" alt="P(\varnothing)=0" eeimg="1">
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    利用可列可加性及完全性，对互斥事件
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%2C%5Cvarnothing%2C%5Cvarnothing%2C..." alt="\Omega,\varnothing,\varnothing,..." eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=1%3DP%28%5COmega%2B%5Cvarnothing%2B%5Cvarnothing%2B...%29%3DP%28%5COmega%29%2BP%28%5Cvarnothing%29%2BP%28%5Cvarnothing%29%2B..." alt="1=P(\Omega+\varnothing+\varnothing+...)=P(\Omega)+P(\varnothing)+P(\varnothing)+..." eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cvarnothing%29%3D0" alt="P(\varnothing)=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：对于互斥事件
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C...%2CA_n" alt="A_1,A_2,...,A_n" eeimg="1">
+                    ，我们有
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_1%2B...%2BA_n%29%3DP%28A_1%2B...%2BA_n%2B%5Cvarnothing%2B%5Cvarnothing%2B...%29" alt="P(A_1+...+A_n)=P(A_1+...+A_n+\varnothing+\varnothing+...)" eeimg="1">
+                    。由概率测度的可列可加性，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_1%2B...%2BA_n%29%3DP%28A_1%29%2B...%2BP%28A_n%29%2BP%28%5Cvarnothing%29%2BP%28%5Cvarnothing%29%2B...%3DP%28A_1%29%2B...%2BP%28A_n%29" alt="P(A_1+...+A_n)=P(A_1)+...+P(A_n)+P(\varnothing)+P(\varnothing)+...=P(A_1)+...+P(A_n)" eeimg="1">
+                </p>
+                <p>
+                    故概率测度也具备
+                    <b>
+                        有限可加性
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们同时验证了概率测度与我们之前定义的古典概型，几何概型中的概率是统一的，他们都具有有限可加性，完全性，非负性等性质。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        五、概率的性质
+                    </b>
+                </p>
+                <p>
+                    关于概率的
+                    <b>
+                        加法
+                    </b>
+                    性质
+                </p>
+                <p>
+                    给出以下性质：
+                </p>
+                <p>
+                    （大写字母均代表事件）
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%5Ccup+B%29%3DP%28A%29%2BP%28B%29-P%28AB%29" alt="P(A\cup B)=P(A)+P(B)-P(AB)" eeimg="1">
+                </p>
+                <p>
+                    2、若
+                    <img src="https://www.zhihu.com/equation?tex=B%5Csubseteq+A%2CP%28A-B%29%3DP%28A%29-P%28B%29%2CP%28A%29%5Cgeq+P%28B%29" alt="B\subseteq A,P(A-B)=P(A)-P(B),P(A)\geq P(B)" eeimg="1">
+                </p>
+                <p>
+                    3、
+                    <b>
+                        （Jordan公式）
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup+_%7Bj%3D1%7D%5EnA_j%29%3D%5Csum_%7Bk%3D1%7D%5En%28-1%29%5E%7Bk-1%7D%5Csum_%7B1%5Cleq+j_1%3Cj_2%3C...%3Cj_k%5Cleq+n%7DP%28A_%7Bj_1%7DA_%7Bj_2%7D...A_%7Bj_k%7D%29" alt="P(\bigcup _{j=1}^nA_j)=\sum_{k=1}^n(-1)^{k-1}\sum_{1\leq j_1&lt;j_2&lt;...&lt;j_k\leq n}P(A_{j_1}A_{j_2}...A_{j_k})" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    其中1与2都容易证明，读者可自证。3的证明较为繁琐，读者现在可以尝试利用数学归纳法和容斥原理证明。事实上，在对数学期望的性质有了解后，我们可以利用数学期望与概率之间的联系给出容易的证明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于概率的
+                    <b>
+                        连续性
+                    </b>
+                    ，可能是我们较为陌生的方面，但是十分重要。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=A_1%5Csubseteq+A_2%5Csubseteq..." alt="A_1\subseteq A_2\subseteq..." eeimg="1">
+                        ，称此事件列单调递增。类似地，可以定义单调递减的事件列。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理：（概率的连续性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                        为单调递增事件列，
+                        <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DA_j%29%3D%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DP%28A_n%29" alt="P(\bigcup_{j=1}^{\infty}A_j)=\lim_{n\rightarrow \infty}P(A_n)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=B_1%2CB_2%2C..." alt="B_1,B_2,..." eeimg="1">
+                        为单调递减事件列，
+                        <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcap_%7Bj%3D1%7D%5E%7B%5Cinfty%7DB_j%29%3D%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DP%28B_n%29" alt="P(\bigcap_{j=1}^{\infty}B_j)=\lim_{n\rightarrow \infty}P(B_n)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    先证明上一条。
+                </p>
+                <p>
+                    想法是利用上文提到的变换将事件列变为互斥事件列寻求简化。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=C_1%3DA_1%2CC_2%3DA_2-A_1%2C...%2CC_j%3DA_j-A_%7Bj-1%7D-...-A_1" alt="C_1=A_1,C_2=A_2-A_1,...,C_j=A_j-A_{j-1}-...-A_1" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=C_1%2CC_2%2C..." alt="C_1,C_2,..." eeimg="1">
+                    为互斥事件列，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DA_j%3D%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DC_j" alt="\bigcup_{j=1}^{\infty}A_j=\bigcup_{j=1}^{\infty}C_j" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DA_j%29%3DP%28%5Cbigcup_%7Bj%3D1%7D%5E%7B%5Cinfty%7DC_j%29%3D%5Csum_%7Bj%3D1%7D%5E%7B%5Cinfty%7DP%28C_j%29%3D%5Clim+_%7Bn%5Crightarrow+%5Cinfty%7D%5Csum_%7Bj%3D1%7D%5En%5BP%28A_j%29-P%28A_%7Bj-1%7D%29%5D%3D%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DP%28A_n%29" alt="P(\bigcup_{j=1}^{\infty}A_j)=P(\bigcup_{j=1}^{\infty}C_j)=\sum_{j=1}^{\infty}P(C_j)=\lim _{n\rightarrow \infty}\sum_{j=1}^n[P(A_j)-P(A_{j-1})]=\lim_{n\rightarrow \infty}P(A_n)" eeimg="1">
+                </p>
+                <p>
+                    第二条只需要利用De-Morgan定律与第一条的性质即可得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    之所以称为连续性是因为定理表达了如下含义：
+                    <b>
+                        递增事件列的概率的极限等于事件列的极限（可列并）的概率，也就是说概率测度与极限是可交换的
+                    </b>
+                    。
+                </p>
+                <p>
+                    形象地理解，如果一个递减事件列，其中事件发生概率越来越小，那么所有事件同时发生的概率等于最小的那个事件发生的概率。如果一个递增事件列，其中事件发生概率越来越大，那么所有事件中至少有一个事件发生的概率等于最大的那个事件发生的概率。事实上，概率的连续性定理仅仅是将这样的想法严格化了而已。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        六、条件概率、乘法公式
+                    </b>
+                </p>
+                <p>
+                    考虑如下问题：掷一次骰子，已知投掷出的点数为偶数，求投出2的概率。
+                </p>
+                <p>
+                    我们注意到在附加了“投掷出的点数为偶数”的条件后，利用古典概型时，事件“投出2”并未改变。变化的是样本空间，它被缩小了。所以
+                    <b>
+                        条件概率的本质其实是对样本空间的限制
+                    </b>
+                    。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                        为事件，则
+                        <img src="https://www.zhihu.com/equation?tex=P%28B%7CA%29" alt="P(B|A)" eeimg="1">
+                        指的是在条件
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        下
+                        <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                        发生的条件概率。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    自然地，我们想建立条件概率与一般概率之间的联系。
+                </p>
+                <p>
+                    我们不妨设
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3E0" alt="P(A)&gt;0" eeimg="1">
+                    ，否则条件概率必为0。
+                </p>
+                <p>
+                    我们先考虑简单的情况：古典概型下的情况。
+                </p>
+                <p>
+                    此时
+                    <img src="https://www.zhihu.com/equation?tex=P%28B%7CA%29%3DP%28AB%7CA%29%3D%5Cfrac%7B%7CAB%7C%7D%7B%7CA%7C%7D%3D%5Cfrac%7B%5Cfrac%7B%7CAB%7C%7D%7B%7C%5COmega%7C%7D%7D%7B%5Cfrac%7B%7CA%7C%7D%7B%7C%5COmega%7C%7D%7D%3D%5Cfrac%7BP%28AB%29%7D%7BP%28A%29%7D" alt="P(B|A)=P(AB|A)=\frac{|AB|}{|A|}=\frac{\frac{|AB|}{|\Omega|}}{\frac{|A|}{|\Omega|}}=\frac{P(AB)}{P(A)}" eeimg="1">
+                </p>
+                <p>
+                    由此，我们得到了重要的乘法公式。
+                </p>
+                <p>
+                    乘法公式：
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3E0" alt="P(A)&gt;0" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28B%7CA%29%3D%5Cfrac%7BP%28AB%29%7D%7BP%28A%29%7D" alt="P(B|A)=\frac{P(AB)}{P(A)}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    有趣的是，模仿概率测度的定义，我们可以定义条件概率测度。
+                </p>
+                <p>
+                    读者可以自行验证如下事实：
+                    <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2CF%29" alt="(\Omega,F)" eeimg="1">
+                    为可测空间，
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB%5Cin+F" alt="A,B\in F" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3E0" alt="P(A)&gt;0" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P_A" alt="P_A" eeimg="1">
+                    为 定义在
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    上的函数，
+                    <img src="https://www.zhihu.com/equation?tex=P_A%28B%29%3DP%28B%7CA%29" alt="P_A(B)=P(B|A)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P_A" alt="P_A" eeimg="1">
+                    满足概率测度的定义。
+                </p>
+                <p>
+                    所以事实上，对概率测度成立的性质对条件概率测度同样成立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们给出几条常用的性质，读者可自证。
+                </p>
+                <p>
+                    1、若
+                    <img src="https://www.zhihu.com/equation?tex=P%28AB%29%3E0" alt="P(AB)&gt;0" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P_A%28C%7CB%29%3DP%28C%7CAB%29" alt="P_A(C|B)=P(C|AB)" eeimg="1">
+                </p>
+                <p>
+                    2、若
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_1A_2...A_%7Bn-1%7D%29%3E0" alt="P(A_1A_2...A_{n-1})&gt;0" eeimg="1">
+                    ，有
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_1A_2...A_n%29%3DP%28A_1%29P%28A_2%7CA_1%29...P%28A_n%7CA_1A_2...A_%7Bn-1%7D%29" alt="P(A_1A_2...A_n)=P(A_1)P(A_2|A_1)...P(A_n|A_1A_2...A_{n-1})" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        七、事件的独立性
+                    </b>
+                </p>
+                <p>
+                    独立性，顾名思义，指的是两个事件相互不产生影响。换句话说，可以理解为有无
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    事件发生作为条件都不影响
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    事件发生的概率。
+                </p>
+                <p>
+                    即
+                    <img src="https://www.zhihu.com/equation?tex=P%28B%7CA%29%3DP%28B%29" alt="P(B|A)=P(B)" eeimg="1">
+                    ，同乘
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29" alt="P(A)" eeimg="1">
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=P%28AB%29%3DP%28A%29P%28B%29" alt="P(AB)=P(A)P(B)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    所以很自然地引出如下定义：
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若事件
+                        <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                        满足
+                        <img src="https://www.zhihu.com/equation?tex=P%28AB%29%3DP%28A%29P%28B%29" alt="P(AB)=P(A)P(B)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                        独立。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在这里需要注意的是事件多于两个的情况。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若事件
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C...%2CA_n" alt="A_1,A_2,...,A_n" eeimg="1">
+                        满足
+                        <img src="https://www.zhihu.com/equation?tex=P%28A_1A_2...A_n%29%3DP%28A_1%29P%28A_2%29...P%28A_n%29" alt="P(A_1A_2...A_n)=P(A_1)P(A_2)...P(A_n)" eeimg="1">
+                        ，则称这些事件相互独立。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们有必要区分两两独立和相互独立的概念。
+                </p>
+                <p>
+                    事实上，
+                    <b>
+                        相互独立则必定两两独立，但是反之不成立
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    反例：考虑一个四面体，一面红色，一面黄色，一面蓝色，一面三种颜色都有。现在掷此四面体。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ：朝下面包含红色
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    ：朝下面包含黄色
+                    <img src="https://www.zhihu.com/equation?tex=C+" alt="C" eeimg="1">
+                    ：朝下面包含蓝色。
+                </p>
+                <p>
+                    则容易得到
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%29%3DP%28B%29%3DP%28C%29%3D%5Cfrac%7B1%7D%7B2%7D" alt="P(A)=P(B)=P(C)=\frac{1}{2}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28AB%29%3DP%28AC%29%3DP%28BC%29%3D%5Cfrac%7B1%7D%7B4%7D" alt="P(AB)=P(AC)=P(BC)=\frac{1}{4}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28ABC%29%3D%5Cfrac%7B1%7D%7B4%7D" alt="P(ABC)=\frac{1}{4}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=P%28AB%29%3DP%28A%29P%28B%29" alt="P(AB)=P(A)P(B)" eeimg="1">
+                    。同理另外两个式子成立，故这三个事件两两独立。
+                </p>
+                <p>
+                    但是
+                    <img src="https://www.zhihu.com/equation?tex=P%28ABC%29%5Cneq+P%28A%29P%28B%29P%28C%29" alt="P(ABC)\neq P(A)P(B)P(C)" eeimg="1">
+                    ，不相互独立。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        八、全概公式，Bayes公式
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定理（全概率公式）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        事件
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C...%2CA_n" alt="A_1,A_2,...,A_n" eeimg="1">
+                        互斥，
+                        <img src="https://www.zhihu.com/equation?tex=B%5Csubseteq+%5Cbigcup+_%7Bj%3D1%7D%5EnA_j" alt="B\subseteq \bigcup _{j=1}^nA_j" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=P%28B%29%3D%5Csum_%7Bj%3D1%7D%5EnP%28A_j%29P%28B%7CA_j%29" alt="P(B)=\sum_{j=1}^nP(A_j)P(B|A_j)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    利用概率的有限可加性，逆用条件概率乘法公式。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28B%29%3DP%28%5Cbigcup+_%7Bj%3D1%7D%5EnBA_j%29%3D%5Csum_%7Bj%3D1%7D%5EnP%28BA_j%29%3D%5Csum_%7Bj%3D1%7D%5EnP%28A_j%29P%28B%7CA_j%29" alt="P(B)=P(\bigcup _{j=1}^nBA_j)=\sum_{j=1}^nP(BA_j)=\sum_{j=1}^nP(A_j)P(B|A_j)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    全概率公式也可以理解为
+                    <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C...%2CA_n" alt="A_1,A_2,...,A_n" eeimg="1">
+                    提供了事件
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的一个两两不交的划分，所以
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    发生的概率就被拆成了
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个小块的概率之和。全概公式看上去简单，实际非常常用。比如：抽签的公平性就可以用全概公式加以证明。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <b>
+                        （抽签公平性）
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个球，
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    个黑，剩下全为白，球除了颜色外没有任何差别。求证：无放回地依次抽取球，每一次抽中黑球的概率都是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bm%7D%7Bn%7D" alt="\frac{m}{n}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    利用数学归纳法。这里着重证明数学归纳法的第二步。
+                </p>
+                <p>
+                    事件
+                    <img src="https://www.zhihu.com/equation?tex=A_j" alt="A_j" eeimg="1">
+                    表示第
+                    <img src="https://www.zhihu.com/equation?tex=j" alt="j" eeimg="1">
+                    次抽到了黑球。
+                </p>
+                <p>
+                    由归纳假设，对一切
+                    <img src="https://www.zhihu.com/equation?tex=m%5Cleq+n" alt="m\leq n" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_%7Bj-1%7D%29%3D%5Cfrac%7Bm%7D%7Bn%7D" alt="P(A_{j-1})=\frac{m}{n}" eeimg="1">
+                </p>
+                <p>
+                    已知
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_%7B1%7D%29%3D%5Cfrac%7Bm%7D%7Bn%7D" alt="P(A_{1})=\frac{m}{n}" eeimg="1">
+                </p>
+                <p>
+                    由全概公式，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_j%29%3DP%28A_1%29P%28A_j%7CA_1%29%2BP%28%5Coverline%7BA_1%7D%29P%28A_j%7C%5Coverline%7BA_1%7D%29" alt="P(A_j)=P(A_1)P(A_j|A_1)+P(\overline{A_1})P(A_j|\overline{A_1})" eeimg="1">
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cfrac%7Bm%7D%7Bn%7D%5Cfrac%7Bm-1%7D%7Bn-1%7D%2B%5Cfrac%7Bn-m%7D%7Bn%7D%5Cfrac%7Bm%7D%7Bn-1%7D%3D%5Cfrac%7Bm%7D%7Bn%7D" alt="=\frac{m}{n}\frac{m-1}{n-1}+\frac{n-m}{n}\frac{m}{n-1}=\frac{m}{n}" eeimg="1">
+                </p>
+                <p>
+                    故得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们接着再来介绍全概公式一个有趣的应用：为何赌博者无限赌下去总是倾向于破产？在这个例子中，我们同时介绍一种在概率论中常用的方法：
+                    <b>
+                        递推公式法
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：
+                    <b>
+                        （赌徒破产）
+                    </b>
+                </p>
+                <p>
+                    一个人有
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    的本金，打算再赢
+                    <img src="https://www.zhihu.com/equation?tex=b" alt="b" eeimg="1">
+                    元就停止赌博，设每局
+                    <img src="https://www.zhihu.com/equation?tex=p%3D%5Cfrac%7B1%7D%7B2%7D" alt="p=\frac{1}{2}" eeimg="1">
+                    概率赢，输赢对金钱影响都是
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ，输光后自然地停止赌博，求输光的概率
+                    <img src="https://www.zhihu.com/equation?tex=q%28a%29" alt="q(a)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ：第一局赢
+                    <img src="https://www.zhihu.com/equation?tex=B_k" alt="B_k" eeimg="1">
+                    ：有本金
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    时最后输光
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=q%280%29%3D1%2Cq%28a%2Bb%29%3D0" alt="q(0)=1,q(a+b)=0" eeimg="1">
+                </p>
+                <p>
+                    利用全概率公式，有
+                    <img src="https://www.zhihu.com/equation?tex=q%28k%29%3DP%28B_k%29%3DP%28A%29P%28B_k%7CA%29%2BP%28%5Coverline%7BA%7D%29P%28B_k%7C%5Coverline%7BA%7D%29" alt="q(k)=P(B_k)=P(A)P(B_k|A)+P(\overline{A})P(B_k|\overline{A})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cfrac%7Bq%28k%2B1%29%2Bq%28k-1%29%7D%7B2%7D" alt="=\frac{q(k+1)+q(k-1)}{2}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=q%28k%2B1%29-q%28k%29%3Dq%28k%29-q%28k-1%29%3D...%3Dq%281%29-q%280%29%3Dq%281%29-1" alt="q(k+1)-q(k)=q(k)-q(k-1)=...=q(1)-q(0)=q(1)-1" eeimg="1">
+                </p>
+                <p>
+                    对上式进行累加，得到
+                    <img src="https://www.zhihu.com/equation?tex=q%28n%29-1%3Dn%28q%281%29-1%29" alt="q(n)-1=n(q(1)-1)" eeimg="1">
+                </p>
+                <p>
+                    取
+                    <img src="https://www.zhihu.com/equation?tex=n%3Da%2Bb%2C" alt="n=a+b," eeimg="1">
+                    可求得
+                    <img src="https://www.zhihu.com/equation?tex=q%281%29-1%3D%5Cfrac%7B-1%7D%7Ba%2Bb%7D" alt="q(1)-1=\frac{-1}{a+b}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=q%28a%29%3D%5Cfrac%7Bb%7D%7Ba%2Bb%7D" alt="q(a)=\frac{b}{a+b}" eeimg="1">
+                </p>
+                <p>
+                    我们发现有趣的是
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bb%5Crightarrow+%5Cinfty%7Dq%28a%29%3D1" alt="\lim_{b\rightarrow \infty}q(a)=1" eeimg="1">
+                    。这说明，就算赌博在规则上完全公平，越贪心则越有可能会输光。
+                    <b>
+                        在规则上公平的赌博中如果本金有限，一直赌下去，则必定输光。
+                    </b>
+                    这是一个违反直觉却又无法辩驳的结论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面引入Bayes公式
+                </p>
+                <p>
+                    <b>
+                        定理（Bayes公式）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        事件
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C...%2CA_n" alt="A_1,A_2,...,A_n" eeimg="1">
+                        互斥，
+                        <img src="https://www.zhihu.com/equation?tex=B%5Csubseteq+%5Cbigcup+_%7Bj%3D1%7D%5EnA_j" alt="B\subseteq \bigcup _{j=1}^nA_j" eeimg="1">
+                        ，若
+                        <img src="https://www.zhihu.com/equation?tex=P%28B%29%3E0" alt="P(B)&gt;0" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=P%28A_j%7CB%29%3D%5Cfrac%7BP%28A_j%29P%28B%7CA_j%29%7D%7B%5Csum_%7Bj%3D1%7D%5EnP%28A_j%29P%28B%7CA_j%29%7D" alt="P(A_j|B)=\frac{P(A_j)P(B|A_j)}{\sum_{j=1}^nP(A_j)P(B|A_j)}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    利用全概公式，逆用条件概率乘法公式即可。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_j%7CB%29%3D%5Cfrac%7BP%28BA_j%29%7D%7BP%28B%29%7D%3D%5Cfrac%7BP%28A_j%29P%28B%7CA_j%29%7D%7B%5Csum_%7Bj%3D1%7D%5EnP%28A_j%29P%28B%7CA_j%29%7D" alt="P(A_j|B)=\frac{P(BA_j)}{P(B)}=\frac{P(A_j)P(B|A_j)}{\sum_{j=1}^nP(A_j)P(B|A_j)}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    同样地，Bayes公式推导也很简单，但是却有着丰富的含义。
+                </p>
+                <p>
+                    Bayes公式描述的是一个“学习”与“逆推”的过程，
+                    <img src="https://www.zhihu.com/equation?tex=A_j" alt="A_j" eeimg="1">
+                    可以看作是诱发了事件
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的原因，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_j%29" alt="P(A_j)" eeimg="1">
+                    就代表了每个原因可能发生的概率，是我们先天便已经具备的知识，称为
+                    <b>
+                        先验概率
+                    </b>
+                    。而当发生了事件
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    后，我们对引发其的原因会产生新的认识，便就是
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_j%7CB%29" alt="P(A_j|B)" eeimg="1">
+                    ，称为
+                    <b>
+                        后验概率
+                    </b>
+                    。我们
+                    <b>
+                        拿着先天的经验或知识来进行实践，得到结果后又反过来用来更新那些我们本来具有的经验知识，重复这一过程我们就可以越来越靠近真理
+                    </b>
+                    ，这便是Bayes公式表现出的“学习性”的含义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    鉴于Bayes公式的重要性，我们给出例子体会其实际应用。
+                </p>
+                <p>
+                    例：调查发现肺癌病人中吸烟人群占
+                    <img src="https://www.zhihu.com/equation?tex=99.7" alt="99.7" eeimg="1">
+                    %，无肺癌人群中有
+                    <img src="https://www.zhihu.com/equation?tex=95.8" alt="95.8" eeimg="1">
+                    %吸烟。若在所有人群中，肺癌的发病率都为
+                    <img src="https://www.zhihu.com/equation?tex=10%5E%7B-4%7D" alt="10^{-4}" eeimg="1">
+                    ，求吸烟人群发病率是不吸烟人群的多少倍？
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    在做类似问题时应该先合理定义事件。
+                </p>
+                <p>
+                    此处定义
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ：有肺癌
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    ：吸烟
+                </p>
+                <p>
+                    由Bayes公式，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7CB%29%3D%5Cfrac%7BP%28A%29P%28B%7CA%29%7D%7BP%28A%29P%28B%7CA%29%2BP%28%5Coverline%7BA%7D%29P%28B%7C%5Coverline%7BA%7D%29%7D" alt="P(A|B)=\frac{P(A)P(B|A)}{P(A)P(B|A)+P(\overline{A})P(B|\overline{A})}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cfrac%7B10%5E%7B-4%7D%5Ctimes+0.997%7D%7B10%5E%7B-4%7D%5Ctimes+0.997%2B%281-10%5E%7B-4%7D%29%5Ctimes+0.958%7D%3D1.041%5Ctimes10%5E%7B-4%7D" alt="=\frac{10^{-4}\times 0.997}{10^{-4}\times 0.997+(1-10^{-4})\times 0.958}=1.041\times10^{-4}" eeimg="1">
+                </p>
+                <p>
+                    同理地，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A%7C%5Coverline%7BB%7D%29%3D%5Cfrac%7BP%28A%29P%28%5Coverline%7BB%7D%7CA%29%7D%7BP%28A%29P%28%5Coverline%7BB%7D%7CA%29%2BP%28%5Coverline%7BA%7D%29P%28%5Coverline%7BB%7D%7C%5Coverline%7BA%7D%29%7D%3D7.1438%5Ctimes+10%5E%7B-6%7D" alt="P(A|\overline{B})=\frac{P(A)P(\overline{B}|A)}{P(A)P(\overline{B}|A)+P(\overline{A})P(\overline{B}|\overline{A})}=7.1438\times 10^{-6}" eeimg="1">
+                </p>
+                <p>
+                    故吸烟人群发病率是不吸烟人群的
+                    <img src="https://www.zhihu.com/equation?tex=14.57" alt="14.57" eeimg="1">
+                    倍。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可能认为吸烟率所差无几，所以结果不应该有那么大的患病率差别。但是我们同时也应该注意到肺癌的自然发病率极其小，在这种情况下，吸烟率的差别被放大了。能够得到很多凭借直觉所得不到的结论也是学习概率论的乐趣之一。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        九、事件列的上下极限，Borel-Cantelli引理
+                    </b>
+                </p>
+                <p>
+                    本章同样地基本不涉及应用方面，若对理论方面无兴趣可以跳过
+                </p>
+                <p>
+                    我们在先前定义了单调集合列的极限（回忆在概率连续性处提到的内容）
+                </p>
+                <p>
+                    现在我们来引入集合列的上、下极限的定义：
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对事件列
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        设
+                        <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+C_n%3D%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%5C%5C+D_n%3D%5Cbigcap_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j+%5Cend%7Bcases%7D" alt="\begin{cases} C_n=\bigcup_{j=n}^{\infty}A_j\\ D_n=\bigcap_{j=n}^{\infty}A_j \end{cases}" eeimg="1">
+                        ，容易知道
+                        <img src="https://www.zhihu.com/equation?tex=C_n" alt="C_n" eeimg="1">
+                        单调递减，
+                        <img src="https://www.zhihu.com/equation?tex=D_n" alt="D_n" eeimg="1">
+                        单调递增，则极限存在。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DC_n%3D%5Cbigcap_%7Bn%3D1%7D%5E%7B%5Cinfty%7D+C_n%3D%5Cbigcap_%7Bn%3D1%7D%5E%7B%5Cinfty%7D+%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j" alt="\lim_{n\rightarrow \infty}C_n=\bigcap_{n=1}^{\infty} C_n=\bigcap_{n=1}^{\infty} \bigcup_{j=n}^{\infty}A_j" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=A_n" alt="A_n" eeimg="1">
+                        的上极限，记为
+                        <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n" alt="\overline{\lim_{n\rightarrow \infty}}A_n" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DD_n%3D%5Cbigcup_%7Bn%3D1%7D%5E%7B%5Cinfty%7DD_n%3D%5Cbigcup_%7Bn%3D1%7D%5E%7B%5Cinfty%7D%5Cbigcap_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j" alt="\lim_{n\rightarrow \infty}D_n=\bigcup_{n=1}^{\infty}D_n=\bigcup_{n=1}^{\infty}\bigcap_{j=n}^{\infty}A_j" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=A_n" alt="A_n" eeimg="1">
+                        的下极限，记为
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7B%5Coverline%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n" alt="\lim_{\overline{n\rightarrow \infty}}A_n" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从定义之中，我们不难推出的是下极限是上极限的子集，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7B%5Coverline%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n%5Csubseteq+%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n" alt="\lim_{\overline{n\rightarrow \infty}}A_n\subseteq \overline{\lim_{n\rightarrow \infty}}A_n" eeimg="1">
+                    。
+                </p>
+                <p>
+                    进一步地理解，可以发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n" alt="\overline{\lim_{n\rightarrow \infty}}A_n" eeimg="1">
+                    发生当且仅当有无穷个
+                    <img src="https://www.zhihu.com/equation?tex=A_j" alt="A_j" eeimg="1">
+                    发生；而
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7B%5Coverline%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n" alt="\lim_{\overline{n\rightarrow \infty}}A_n" eeimg="1">
+                    发生当且仅当最多有限个
+                    <img src="https://www.zhihu.com/equation?tex=A_j" alt="A_j" eeimg="1">
+                    不发生。
+                </p>
+                <p>
+                    由概率的连续性（根本上来说就是概率测度与极限可交换），我们容易得到以下结论：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n%29%3D%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DP%28%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29" alt="P(\overline{\lim_{n\rightarrow \infty}}A_n)=\lim_{n\rightarrow \infty}P(\bigcup_{j=n}^{\infty}A_j)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Clim_%7B%5Coverline%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n%29%3D%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DP%28%5Cbigcap_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29" alt="P(\lim_{\overline{n\rightarrow \infty}}A_n)=\lim_{n\rightarrow \infty}P(\bigcap_{j=n}^{\infty}A_j)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    特别地，
+                    <b>
+                        由于
+                        <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n" alt="\overline{\lim_{n\rightarrow \infty}}A_n" eeimg="1">
+                        发生当且仅当有无穷个
+                        <img src="https://www.zhihu.com/equation?tex=A_j" alt="A_j" eeimg="1">
+                        发生，上极限符号常常被记作
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+A_n%5C+i.o.+%5Cright+%5C%7D" alt="\left \{ A_n\ i.o. \right \}" eeimg="1">
+                        ，即
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+A_n%5C+i.o.+%5Cright+%5C%7D%3D%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n" alt="\left \{ A_n\ i.o. \right \}=\overline{\lim_{n\rightarrow \infty}}A_n" eeimg="1">
+                        （
+                        <img src="https://www.zhihu.com/equation?tex=i.o." alt="i.o." eeimg="1">
+                        表示
+                        <img src="https://www.zhihu.com/equation?tex=infinitely+%5C+%5C+often" alt="infinitely \ \ often" eeimg="1">
+                        ）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理（Borel-Cantelli）：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对事件列
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C..." alt="A_1,A_2,..." eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （1）：若
+                        <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D1%7D%5E%7B%5Cinfty%7DP%28A_j%29%3C%5Cinfty" alt="\sum_{j=1}^{\infty}P(A_j)&lt;\infty" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=P%28A_n%5C+i.o.%29%3D0" alt="P(A_n\ i.o.)=0" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        （2）：若事件列中事件相互独立，
+                        <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D1%7D%5E%7B%5Cinfty%7DP%28A_j%29%3D%5Cinfty" alt="\sum_{j=1}^{\infty}P(A_j)=\infty" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=P%28A_n%5C+i.o.%29%3D1" alt="P(A_n\ i.o.)=1" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    （1）：由
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n%29%3D%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DP%28%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29" alt="P(\overline{\lim_{n\rightarrow \infty}}A_n)=\lim_{n\rightarrow \infty}P(\bigcup_{j=n}^{\infty}A_j)" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29%5Cleq+%5Csum_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DP%28A_j%29" alt="P(\bigcup_{j=n}^{\infty}A_j)\leq \sum_{j=n}^{\infty}P(A_j)" eeimg="1">
+                </p>
+                <p>
+                    得到
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n%29%5Cleq+%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%5Csum_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DP%28A_j%29" alt="P(\overline{\lim_{n\rightarrow \infty}}A_n)\leq \lim_{n\rightarrow \infty}\sum_{j=n}^{\infty}P(A_j)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由级数收敛的Cauchy准则，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%5Csum_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DP%28A_j%29%3D0" alt="\lim_{n\rightarrow \infty}\sum_{j=n}^{\infty}P(A_j)=0" eeimg="1">
+                </p>
+                <p>
+                    故得到
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_n%5C+i.o.%29%3D0" alt="P(A_n\ i.o.)=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    （2）：想方设法利用独立的条件，则需要事件之交的形式。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Coverline%7B%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D%7DA_n%29%3D%5Clim_%7Bn%5Crightarrow+%5Cinfty%7DP%28%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29" alt="P(\overline{\lim_{n\rightarrow \infty}}A_n)=\lim_{n\rightarrow \infty}P(\bigcup_{j=n}^{\infty}A_j)" eeimg="1">
+                    ，故可以先估计
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29" alt="P(\bigcup_{j=n}^{\infty}A_j)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    想到可以利用De-Morgan定律将并换为交，从而利用独立的条件。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29%3D1-%5Clim_%7Bm%5Crightarrow%5Cinfty%7DP%28%5Cbigcap_%7Bj%3Dn%7D%5E%7Bm%7D%5Coverline%7BA_j%7D%29%3D1-%5Clim_%7Bm%5Crightarrow%5Cinfty%7D%5Cprod_%7Bj%3Dn%7D%5EmP%28%5Coverline%7BA_j%7D%29" alt="P(\bigcup_{j=n}^{\infty}A_j)=1-\lim_{m\rightarrow\infty}P(\bigcap_{j=n}^{m}\overline{A_j})=1-\lim_{m\rightarrow\infty}\prod_{j=n}^mP(\overline{A_j})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D1-%5Clim_%7Bm%5Crightarrow%5Cinfty%7D%5Cprod_%7Bj%3Dn%7D%5Em%5B1-P%28A_j%29%5D" alt="=1-\lim_{m\rightarrow\infty}\prod_{j=n}^m[1-P(A_j)]" eeimg="1">
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=0%5Cleq+x%5Cleq+1" alt="0\leq x\leq 1" eeimg="1">
+                    时，有
+                    <img src="https://www.zhihu.com/equation?tex=1-x%5Cleq+e%5E%7B-x%7D" alt="1-x\leq e^{-x}" eeimg="1">
+                    。通过指数函数将连乘再转化回连加。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29%5Cgeq+1-%5Clim_%7Bm%5Crightarrow%5Cinfty%7D%5Cprod_%7Bj%3Dn%7D%5Eme%5E%7B-P%28A_j%29%7D%3D1-%5Clim_%7Bm%5Crightarrow%5Cinfty%7De%5E%7B-%5Csum_%7Bj%3Dn%7D%5EmP%28A_j%29%7D" alt="P(\bigcup_{j=n}^{\infty}A_j)\geq 1-\lim_{m\rightarrow\infty}\prod_{j=n}^me^{-P(A_j)}=1-\lim_{m\rightarrow\infty}e^{-\sum_{j=n}^mP(A_j)}" eeimg="1">
+                </p>
+                <p>
+                    由
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D1%7D%5E%7B%5Cinfty%7DP%28A_j%29" alt="\sum_{j=1}^{\infty}P(A_j)" eeimg="1">
+                    发散，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bm%5Crightarrow%5Cinfty%7D-%5Csum_%7Bj%3Dn%7D%5EmP%28A_j%29%3D-%5Cinfty" alt="\lim_{m\rightarrow\infty}-\sum_{j=n}^mP(A_j)=-\infty" eeimg="1">
+                </p>
+                <p>
+                    故可以得到
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Cbigcup_%7Bj%3Dn%7D%5E%7B%5Cinfty%7DA_j%29%3D1" alt="P(\bigcup_{j=n}^{\infty}A_j)=1" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_n%5C+i.o.%29%3D1" alt="P(A_n\ i.o.)=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Borel-Cantelli是一个很抽象的定理。在这里，值得一提的是事件列中事件相互独立时，
+                    <img src="https://www.zhihu.com/equation?tex=P%28A_n%5C+i.o.%29" alt="P(A_n\ i.o.)" eeimg="1">
+                    的取值只能为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    或
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    。即对相互独立的事件列，其中有无穷个事件发生的概率要么为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    要么为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    。这个结论被称为
+                    <b>
+                        独立
+                        <img src="https://www.zhihu.com/equation?tex=0-1" alt="0-1" eeimg="1">
+                        律
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们可以先考虑简单一些的情况，对独立重复试验（每次发生的概率为常数
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    ，无限重复做下去），则
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bj%3D1%7D%5E%7B%5Cinfty%7DP%28A_j%29%3C%5Cinfty" alt="\sum_{j=1}^{\infty}P(A_j)&lt;\infty" eeimg="1">
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=p%3D0" alt="p=0" eeimg="1">
+                    。这告诉我们在
+                    <b>
+                        独立重复试验中，当事件每次几乎必然不发生（发生概率为0）时，无穷次地重复下去几乎必然不会有无穷次事件发生。相对地，在独立重复试验中，当事件每次发生的概率不为0（即使再小再趋向于0）时，无穷次地重复下去几乎必然会有无穷次事件发生。
+                    </b>
+                </p>
+                <p>
+                    接下来考虑独立的试验（第
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    次发生的概率为会随
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    变化的
+                    <img src="https://www.zhihu.com/equation?tex=p_n" alt="p_n" eeimg="1">
+                    ，无限次地做下去）。这里不妨假设
+                    <img src="https://www.zhihu.com/equation?tex=p_n%3E0" alt="p_n&gt;0" eeimg="1">
+                    ，则此定理告诉我们
+                    <b>
+                        事件列中是否有无穷多个事件发生，只与
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        充分大时
+                        <img src="https://www.zhihu.com/equation?tex=p_n" alt="p_n" eeimg="1">
+                        的值有关
+                    </b>
+                    。（这点是符合直觉的）然而，如果
+                    <img src="https://www.zhihu.com/equation?tex=p_n%3D%5Cfrac%7B1%7D%7Bn%7D" alt="p_n=\frac{1}{n}" eeimg="1">
+                    ，事件列中会有无穷多个事件发生。而
+                    <img src="https://www.zhihu.com/equation?tex=p_n%3D%5Cfrac%7B1%7D%7Bn%5E2%7D" alt="p_n=\frac{1}{n^2}" eeimg="1">
+                    时，则不会有无穷多个事件发生。（这又是直觉所感受不到的）
+                </p>
+                <p>
+                    Borel-Cantelli引理不仅仅为我们提供了有趣的结论，还是我们后文得到强大数律的理论基础，在理论工作上是很重要的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    第一部分的概率论笔记就到此为止。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

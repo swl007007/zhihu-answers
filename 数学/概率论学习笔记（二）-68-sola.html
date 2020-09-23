@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            概率论学习笔记（二）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-fe8c01e59e56e5eacdb28c223f1e6cd6_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/42950143" target="_blank">
+                        概率论学习笔记（二）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-08-25
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    在笔记（一）中，我们基本上介绍完了概率论中的初等部分的大部分内容。本部分以及之后的主要内容都将围绕分析的部分展开。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们在高中可能接触到过随机变量，那个时候我们没有概率测度的严格定义与概念，我们认为随机变量就是一个可以取到试验中所有可能值的变量。现在有了概率空间的定义，我们也可以将随机变量进行严格的定义。
+                </p>
+                <p>
+                    后文均假设
+                    <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2CF%29" alt="(\Omega,F)" eeimg="1">
+                    为可测空间，
+                    <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2CF%2CP%29" alt="(\Omega,F,P)" eeimg="1">
+                    为概率空间。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        随机变量与分布
+                    </b>
+                </h2>
+                <p>
+                    <b>
+                        一、随机变量，Borel集，随机变量独立性
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        本章中若仅对应用感兴趣只需要了解随机变量独立的定义即可
+                    </b>
+                </p>
+                <p>
+                    在此我们先引入示性函数的定义。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        为样本空间，
+                        <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                        为样本点，
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        为事件，示性函数
+                        <img src="https://www.zhihu.com/equation?tex=I_A" alt="I_A" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        上函数。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=I_A%28%5Comega%29%3D%5Cbegin%7Bcases%7D+0%5C+%5C+%5C+%5Comega+%5Cin+A%5C%5C+1%5C+%5C+%5C+else+%5Cend%7Bcases%7D" alt="I_A(\omega)=\begin{cases} 0\ \ \ \omega \in A\\ 1\ \ \ else \end{cases}" eeimg="1">
+                        ，记为
+                        <img src="https://www.zhihu.com/equation?tex=I_A" alt="I_A" eeimg="1">
+                        或
+                        <img src="https://www.zhihu.com/equation?tex=I%5BA%5D" alt="I[A]" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们发现给定
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+%5Cmathbb%7BR%7D%2C%5Cleft+%5C%7B+I_A%5Cleq+x+%5Cright+%5C%7D" alt="\forall x\in \mathbb{R},\left \{ I_A\leq x \right \}" eeimg="1">
+                    都是事件。
+                </p>
+                <p>
+                    详细地，有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+%5Comega%7CI_A%28%5Comega%29%5Cleq+x+%5Cright+%5C%7D%3D%5Cbegin%7Bcases%7D+%5Cvarnothing%5C+%5C+x%3C0%5C%5C+%5Coverline%7BA%7D%5C+%5C+x%5Cin%5B0%2C1%29%5C%5C+%5COmega%5C+%5C+x%5Cgeq+1+%5Cend%7Bcases%7D" alt="\left \{ \omega|I_A(\omega)\leq x \right \}=\begin{cases} \varnothing\ \ x&lt;0\\ \overline{A}\ \ x\in[0,1)\\ \Omega\ \ x\geq 1 \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    由此，我们引入随机变量的严格定义。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                        上函数满足：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+%5Cmathbb%7BR%7D%2C%5Cleft+%5C%7B+%5Comega%7CX%28%5Comega%29%5Cleq+x+%5Cright+%5C%7D%5Cin+F" alt="\forall x\in \mathbb{R},\left \{ \omega|X(\omega)\leq x \right \}\in F" eeimg="1">
+                        （回忆：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cin+F" alt="\in F" eeimg="1">
+                        就意味着为事件），就称
+                        <img src="https://www.zhihu.com/equation?tex=X%28%5Comega%29" alt="X(\omega)" eeimg="1">
+                        为可测空间
+                        <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2CF%29" alt="(\Omega,F)" eeimg="1">
+                        上的随机变量，通常省略样本点记为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        。（因为对回答随机变量有着如何的概率分布这个问题并没有帮助）
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    容易验证若
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为投掷一次均匀骰子得到的点数
+                    <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    为实数域上连续函数，
+                    <img src="https://www.zhihu.com/equation?tex=X%2CX%5E2%2Cg%28X%29" alt="X,X^2,g(X)" eeimg="1">
+                    均为随机变量。
+                </p>
+                <p>
+                    接下来所要提出的一个自然的问题是：集合
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    要满足什么条件才能使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+x%5Cin+A+%5Cright+%5C%7D%5Cin+F" alt="\left \{ x\in A \right \}\in F" eeimg="1">
+                    。即在实数域上，随机变量的所有可能取值的集合至少所应该满足的条件是什么？这样的集合是没有任何限制的吗？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    首先我们注意到如果
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为随机变量，必有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+a%3CX%5Cleq+b%5Cright+%5C%7D%5Cin+F" alt="\left \{ a&lt;X\leq b\right \}\in F" eeimg="1">
+                    。（随机变量定义验证）
+                </p>
+                <p>
+                    我们从这一点出发，假设
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                        为所有
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                        中左开右闭的集合所组成的集合。假设
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                        中所有元素（即左开右闭区间）经过交集、补集、可列并运算运算及其反复运算所得到的集合所组成的集合。容易验证
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                        满足事件域的定义。称
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                        为Borel域，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BB%7D" alt="\mathbb{B}" eeimg="1">
+                        中元素为Borel集。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们不加证明地给出以下定理
+                </p>
+                <p>
+                    <b>
+                        定理：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        为Borel集，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+x%5Cin+A+%5Cright+%5C%7D%5Cin+F" alt="\left \{ x\in A \right \}\in F" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由此，我们知道了随机变量所有取值的集合最坏也要是一个Borel集。即对Borel集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%5Cin+A%29" alt="P(X\in A)" eeimg="1">
+                    才是可以计算的。
+                </p>
+                <p>
+                    类似地，我们可以把Borel集的概念推广到更高维的空间，此处不过多涉及。
+                </p>
+                <p>
+                    <b>
+                        这里值得注意的是
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathbb%7BB%7D%29" alt="(\mathbb{R},\mathbb{B})" eeimg="1">
+                        也为可测空间。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若函数
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        满足：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%5Cin+%5Cmathbb%7BR%7D%2C%5Cleft+%5C%7B+x%7Cg%28x%29%5Cleq+a+%5Cright+%5C%7D%5Cin+%5Cmathbb%7BB%7D" alt="\forall a\in \mathbb{R},\left \{ x|g(x)\leq a \right \}\in \mathbb{B}" eeimg="1">
+                        ，则称其为Borel可测函数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，我们目前接触到的几乎所有集合都是Borel集，几乎所有函数都是Borel可测函数。
+                </p>
+                <p>
+                    我们很容易得到以下定理（读者自证）：
+                </p>
+                <p>
+                    <b>
+                        定理：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        为Borel可测函数，则
+                        <img src="https://www.zhihu.com/equation?tex=g%28X%29" alt="g(X)" eeimg="1">
+                        为随机变量。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这也正是我们可以利用已有的随机变量造出无穷无尽的随机变量的方法。
+                </p>
+                <p>
+                    以后总是默认所有出现的函数都是Borel可测函数。
+                </p>
+                <p>
+                    事实上
+                    <b>
+                        Borel集可以作为事件与随机变量之间联系的桥梁
+                    </b>
+                    ，所以由事件独立性的定义 ，我们可以类似地定义随机变量的独立性。并可以看到Borel集在维系随机变量独立性中的作用 。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C...%2CX_n" alt="X_1,X_2,...,X_n" eeimg="1">
+                        为随机变量，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+x_1%2Cx_2%2C..%2Cx_n" alt="\forall x_1,x_2,..,x_n" eeimg="1">
+                        <img src="https://www.zhihu.com/equation?tex=P%28X_1%5Cleq+x_1%2CX_2%5Cleq+x_2%2C...%2CX_n%5Cleq+x_n%29%3DP%28X_1%5Cleq+x_1%29P%28X_2%5Cleq+x_2%29...P%28X_n%5Cleq+x_n%29" alt="P(X_1\leq x_1,X_2\leq x_2,...,X_n\leq x_n)=P(X_1\leq x_1)P(X_2\leq x_2)...P(X_n\leq x_n)" eeimg="1">
+                        则称这些随机变量相互独立。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    值得强调的是定义中对
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个实数的选取是任意的！
+                </p>
+                <p>
+                    关于Borel集在维系随机变量独立性中的作用 ，我们有以下定理。
+                </p>
+                <p>
+                    <b>
+                        定理：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2%2C...%2CX_n" alt="X_1,X_2,...,X_n" eeimg="1">
+                        为随机变量，相互独立，则对任何Borel集
+                        <img src="https://www.zhihu.com/equation?tex=A_1%2CA_2%2C...%2CA_n" alt="A_1,A_2,...,A_n" eeimg="1">
+                        ，事件
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+X_1%5Cin+A_1+%5Cright+%5C%7D%5Cleft+%5C%7B+X_2%5Cin+A_2+%5Cright+%5C%7D...%5Cleft+%5C%7B+X_n%5Cin+A_n+%5Cright+%5C%7D" alt="\left \{ X_1\in A_1 \right \}\left \{ X_2\in A_2 \right \}...\left \{ X_n\in A_n \right \}" eeimg="1">
+                        也相互独立。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，若定理中
+                    <img src="https://www.zhihu.com/equation?tex=g_1%2C...%2Cg_n" alt="g_1,...,g_n" eeimg="1">
+                    均为Borel可测函数，则
+                    <img src="https://www.zhihu.com/equation?tex=g_1%28X_1%29%2C...%2Cg_n%28X_n%29" alt="g_1(X_1),...,g_n(X_n)" eeimg="1">
+                    也相互独立。
+                </p>
+                <p>
+                    此处仅仅是简要介绍，读者若有兴趣可以深入了解。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    另外还有一个重要的变换技巧。通过下面的例子说明：
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为随机变量，证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%2C%5Cleft+%5C%7B+X%3Ca+%5Cright+%5C%7D" alt="\forall a,\left \{ X&lt;a \right \}" eeimg="1">
+                    为事件。
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    随机变量定义中仅仅告诉我们
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+X%5Cleq+a+%5Cright+%5C%7D" alt="\left \{ X\leq a \right \}" eeimg="1">
+                    必定为事件，要如何将两者关联起来呢？
+                </p>
+                <p>
+                    这个时候往往要利用到概率的连续性。
+                </p>
+                <p>
+                    我们略施技巧，
+                    <b>
+                        利用
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B+X%3Ca+%5Cright+%5C%7D%3D%5Cbigcup_%7Bn%3D1%7D%5E%7B%5Cinfty%7D%5Cleft+%5C%7B+X%5Cleq+a-%5Cfrac%7B1%7D%7Bn%7D+%5Cright+%5C%7D" alt="\left \{ X&lt;a \right \}=\bigcup_{n=1}^{\infty}\left \{ X\leq a-\frac{1}{n} \right \}" eeimg="1">
+                    </b>
+                    。
+                </p>
+                <p>
+                    则由事件域的可列并封闭性，马上即可得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们在之后处理含小于等于，小于，等于之间的概率的关系时常常仍会用到这个技巧，是需要牢记的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        二、离散型随机变量
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若随机变量
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        只能取到有限个或者可列个不同值，则称
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为离散型随机变量。
+                    </b>
+                </p>
+                <p>
+                    此时用
+                    <b>
+                        概率分布列
+                    </b>
+                    来描述随机变量的概率分布。
+                </p>
+                <p>
+                    形如
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_k%29%3Dp_k" alt="P(X=x_k)=p_k" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由概率的完全性和非负性，容易知道
+                    <img src="https://www.zhihu.com/equation?tex=p_k%3E0%2C%5Csum_k+p_k%3D1" alt="p_k&gt;0,\sum_k p_k=1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    接下来介绍一些常见离散概率分布并且给出他们对应的实际模型。读者可尝试从模型推导出概率分布。（加深记忆）
+                </p>
+                <p>
+                    读者可以自行验证
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_k+p_k%3D1" alt="\sum_k p_k=1" eeimg="1">
+                    的性质对于每个概率分布都成立。（必要的练习）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        1、两点分布
+                        <img src="https://www.zhihu.com/equation?tex=B%281%2Cp%29" alt="B(1,p)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        实际模型：
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的值为一个随机事件中发生的事件数。这个事件发生的概率为
+                        <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                        。则
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        服从参数为
+                        <img src="https://www.zhihu.com/equation?tex=1%2Cp" alt="1,p" eeimg="1">
+                        的两点分布，记作
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%281%2Cp%29" alt="X\sim B(1,p)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        概率分布：
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3D1%29%3Dp%2C%5C+P%28X%3D0%29%3D1-p" alt="P(X=1)=p,\ P(X=0)=1-p" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、二项分布
+                        <img src="https://www.zhihu.com/equation?tex=B%28n%2Cp%29" alt="B(n,p)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        实际模型：
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        次独立重复随机事件中发生的事件数。这个事件每次发生的概率都是
+                        <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                        。则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+B%28n%2Cp%29" alt="X\sim B(n,p)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        概率分布：
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dk%29%3D%5Cbinom%7Bn%7D%7Bk%7Dp%5Ek%281-p%29%5E%7Bn-k%7D%2C%5C+%28k%3D0%2C1%2C...%2Cn%29" alt="P(X=k)=\binom{n}{k}p^k(1-p)^{n-k},\ (k=0,1,...,n)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    概率分布中的组合数意味着从
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个独立重复随机事件中选取
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    个事件发生的方法数，切勿遗漏。并且接下来开始我们要开始注意 随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    所可能取值的范围。（在某些概率分布中容易混淆）
+                </p>
+                <p>
+                    值得一提的是，服从二项分布的随机变量可以看作是
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个服从
+                    <img src="https://www.zhihu.com/equation?tex=B%281%2Cp%29" alt="B(1,p)" eeimg="1">
+                    的独立的随机变量之和。同样地，若
+                    <img src="https://www.zhihu.com/equation?tex=X_1%5Csim+B%28n_1%2Cp%29%2CX_2%5Csim+B%28n_2%2Cp%29" alt="X_1\sim B(n_1,p),X_2\sim B(n_2,p)" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2CX_2" alt="X_1,X_2" eeimg="1">
+                    独立，则有
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2BX_2%5Csim+B%28n_1%2Bn_2%2Cp%29" alt="X_1+X_2\sim B(n_1+n_2,p)" eeimg="1">
+                    。我们以后称这样的性质为
+                    <b>
+                        独立条件下二项分布对于其中的参数
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        具有可加性
+                    </b>
+                    。关于此条性质的证明，我们暂且搁置，直到后文提及求随机变量的和的分布方法时读者可以给出证明。事实上，更巧妙地，在最后我们给出概率母函数的工具时，我们会给出一个更简单且有普遍性的证明方法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、泊松分布
+                        <img src="https://www.zhihu.com/equation?tex=P%28%5Clambda%29" alt="P(\lambda)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        实际模型：
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为某个随机事件发生的次数，假设每次事件发生与否相互独立，且平均事件发生
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                        次，则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+P%28%5Clambda%29" alt="X\sim P(\lambda)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        概率分布：
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dk%29%3D%5Cfrac%7B%5Clambda%5Ek%7D%7Bk%21%7De%5E%7B-%5Clambda%7D%2C%28k%3D0%2C1%2C2%2C...%29" alt="P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda},(k=0,1,2,...)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    这个概率分布较难从实际模型推导得到，我们将在本章的末尾分布之间的关系处给出推导。
+                </p>
+                <p>
+                    另外，此处需要注意的是
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的取值是包括
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    的，且共有可列个可能取值。
+                </p>
+                <p>
+                    与二项分布类似的是，在
+                    <b>
+                        独立条件下泊松分布对于其中的参数
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                        具有可加性
+                    </b>
+                    。即
+                    <img src="https://www.zhihu.com/equation?tex=X_1%5Csim+P%28%5Clambda_1%29%2CX_2%5Csim+P%28%5Clambda_2%29%2C%5C+X_1%2CX_2" alt="X_1\sim P(\lambda_1),X_2\sim P(\lambda_2),\ X_1,X_2" eeimg="1">
+                    独立，则有
+                    <img src="https://www.zhihu.com/equation?tex=X_1%2BX_2%5Csim+P%28%5Clambda_1%2B%5Clambda_2%29" alt="X_1+X_2\sim P(\lambda_1+\lambda_2)" eeimg="1">
+                    。我们同样地将此结论的证明暂且搁置。但是在我们后文阐释了二项分布与泊松分布之间的关联后，读者将能够有更直接的感受。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        4、几何分布
+                        <img src="https://www.zhihu.com/equation?tex=G%28p%29" alt="G(p)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        实际模型：重复进行随机事件，直到事件发生为止才停下。
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为首次发生时共做的事件的次数。每次发生的概率均为
+                        <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+G%28p%29" alt="X\sim G(p)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        概率分布：
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dk%29%3D%281-p%29%5E%7Bk-1%7Dp%2C%5C+%28k%3D1%2C2%2C...%29%2C%5C+0%3Cp%3C1" alt="P(X=k)=(1-p)^{k-1}p,\ (k=1,2,...),\ 0&lt;p&lt;1" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    此处需要注意的是
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的最小取值是
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    而不是
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    。（事实上，我更加推荐大家记住概率分布的实际模型，这样无论是概率分布还是随机变量的取值范围都能够在忘记时自己推导）
+                </p>
+                <p>
+                    关于几何分布，我们后文将证明其重要的性质：
+                    <b>
+                        无记忆性
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        5、帕斯卡分布
+                        <img src="https://www.zhihu.com/equation?tex=Pas%28r%2Cp%29" alt="Pas(r,p)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        实际模型：重复进行随机事件，直到发生
+                        <img src="https://www.zhihu.com/equation?tex=r" alt="r" eeimg="1">
+                        次为止才停止。
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为到停止为止时事件发生与未发生的次数之和。事件每次发生的概率为
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    ，
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+Pas%28r%2Cp%29" alt="X\sim Pas(r,p)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        概率分布：
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dk%29%3D%5Cbinom%7Bk-1%7D%7Br-1%7D%281-p%29%5E%7Bk-r%7Dp%5Er%2C%28k%3Dr%2Cr%2B1%2C...%29" alt="P(X=k)=\binom{k-1}{r-1}(1-p)^{k-r}p^r,(k=r,r+1,...)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    我们容易发现的是当
+                    <img src="https://www.zhihu.com/equation?tex=r%3D1" alt="r=1" eeimg="1">
+                    时，该分布与
+                    <img src="https://www.zhihu.com/equation?tex=G%28p%29" alt="G(p)" eeimg="1">
+                    相同。
+                </p>
+                <p>
+                    事实上，一个服从帕斯卡分布的随机变量为
+                    <img src="https://www.zhihu.com/equation?tex=r" alt="r" eeimg="1">
+                    个相互独立的服从几何分布
+                    <img src="https://www.zhihu.com/equation?tex=G%28p%29" alt="G(p)" eeimg="1">
+                    的随机变量之和。同样地，暂时搁置这个证明。
+                </p>
+                <p>
+                    与二项分布类似地，在
+                    <b>
+                        独立的条件下帕斯卡分布对于参数
+                        <img src="https://www.zhihu.com/equation?tex=r" alt="r" eeimg="1">
+                        具有可加性
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们在此帮助读者验证一下帕斯卡分布满足概率测度所要求的完全性。其余的交给读者自己完成。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    例：证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bk%3Dr%7D%5E%7B%5Cinfty%7D%5Cbinom%7Bk-1%7D%7Br-1%7D%281-p%29%5E%7Bk-r%7Dp%5Er%3D1" alt="\sum_{k=r}^{\infty}\binom{k-1}{r-1}(1-p)^{k-r}p^r=1" eeimg="1">
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    即证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%5Cbinom%7Bk%2Br-1%7D%7Br-1%7D%281-p%29%5E%7Bk%7Dp%5Er%3D1" alt="\sum_{k=0}^{\infty}\binom{k+r-1}{r-1}(1-p)^{k}p^r=1" eeimg="1">
+                </p>
+                <p>
+                    我们有
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%5Cbinom%7Bk%2Br-1%7D%7Br-1%7D%281-p%29%5Ek%3D%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%5Cfrac%7B%28-r%29%28-r-1%29...%28-r-k%2B1%29%7D%7Bk%21%7D%28p-1%29%5Ek" alt="\sum_{k=0}^{\infty}\binom{k+r-1}{r-1}(1-p)^k=\sum_{k=0}^{\infty}\frac{(-r)(-r-1)...(-r-k+1)}{k!}(p-1)^k" eeimg="1">
+                </p>
+                <p>
+                    由Taylor公式，我们有上式
+                    <img src="https://www.zhihu.com/equation?tex=%3Dp%5E%7B-r%7D" alt="=p^{-r}" eeimg="1">
+                </p>
+                <p>
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%5Cbinom%7Bk%2Br-1%7D%7Br-1%7D%281-p%29%5Ekp%5Er%3Dp%5Er%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%5Cbinom%7Bk%2Br-1%7D%7Br-1%7D%281-p%29%5Ek%3D1" alt="\sum_{k=0}^{\infty}\binom{k+r-1}{r-1}(1-p)^kp^r=p^r\sum_{k=0}^{\infty}\binom{k+r-1}{r-1}(1-p)^k=1" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        6、超几何分布
+                        <img src="https://www.zhihu.com/equation?tex=H%28n%2CM%2CN%29" alt="H(n,M,N)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        实际模型：
+                        <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                        个产品，其中
+                        <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                        个次品，从中任取
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        个。
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为这
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        个中的次品数，则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+H%28n%2CM%2CN%29" alt="X\sim H(n,M,N)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        概率分布：
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dk%29%3D%5Cfrac%7B%5Cbinom%7BM%7D%7Bk%7D%5Cbinom%7BN-M%7D%7Bn-k%7D%7D%7B%5Cbinom%7BN%7D%7Bn%7D%7D%2C%5C+%28k%3D0%2C1%2C...%2CM%29" alt="P(X=k)=\frac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}},\ (k=0,1,...,M)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    对超几何分布，我们只需简单地了解即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        三、连续型随机变量
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        与离散型相对地，连续型随机变量指随机变量有不可列个不同取值的随机变量。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        对于连续型随机变量，若
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        非负，满足
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%3Cb%2C%5C+P%28a%3CX%5Cleq+b%29%3D%5Cint_a%5Ebf%28x%29dx" alt="\forall a&lt;b,\ P(a&lt;X\leq b)=\int_a^bf(x)dx" eeimg="1">
+                        ，则称
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的概率密度函数，简称密度。
+                    </b>
+                </p>
+                <p>
+                    显然地，密度要满足如下性质：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Df%28x%29dx%3D1" alt="\int_{-\infty}^{+\infty}f(x)dx=1" eeimg="1">
+                    （利用概率的连续性证明）
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7B%5Cepsilon%5Crightarrow0%7D%5Cint_%7Ba-%5Cepsilon%7D%5E%7Ba%2B%5Cepsilon%7Df%28x%29dx%3D0" alt="\lim_{\epsilon\rightarrow0}\int_{a-\epsilon}^{a+\epsilon}f(x)dx=0" eeimg="1">
+                    （利用定积分第一中值定理）
+                </p>
+                <p>
+                    这告诉我们
+                    <b>
+                        对连续型随机变量，其在任意单点处取值的概率为
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    </b>
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%2CP%28X%3Da%29%3D0" alt="\forall a,P(X=a)=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    故事实上，对连续型随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28a%3CX%5Cleq+b%29%3D%5Cint_a%5Ebf%28x%29dx%3DP%28a%3CX%3Cb%29%3DP%28a%5Cleq+X%5Cleq+b%29%3DP%28a%5Cleq+X%3Cb%29" alt="P(a&lt;X\leq b)=\int_a^bf(x)dx=P(a&lt;X&lt;b)=P(a\leq X\leq b)=P(a\leq X&lt;b)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面介绍几个常见的连续型概率分布。概率分布的完全性的验证交给读者自己完成。对于连续型随机变量，我们较难给出准确的实际模型，在此仅大致提到其应用。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        1、均匀分布
+                        <img src="https://www.zhihu.com/equation?tex=U%28a%2Cb%29" alt="U(a,b)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=a%3Cb" alt="a&lt;b" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        有密度：
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D%5Cbegin%7Bcases%7D+%5Cfrac%7B1%7D%7Bb-a%7D%5C+%5C+x%5Cin%28a%2Cb%29%5C%5C+0%5C+%5C+%5C+%5C+%5C+%5C+else+%5Cend%7Bcases%7D" alt="f(x)=\begin{cases} \frac{1}{b-a}\ \ x\in(a,b)\\ 0\ \ \ \ \ \ else \end{cases}" eeimg="1">
+                        ， 则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+U%28a%2Cb%29" alt="X\sim U(a,b)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    为了简便，以后仅在密度的函数中写出
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%5Cneq+0" alt="f(x)\neq 0" eeimg="1">
+                    的情况，省略为零的情况。（后仍会注明
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的取值范围）
+                </p>
+                <p>
+                    容易理解地，均匀分布的密度在非零处均为常值，并且保证了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    上的积分为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    。
+                </p>
+                <p>
+                    均匀分布常用在计算机中作为产生各种符合其它分布的随机数的基础。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        2、指数分布
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon+%28%5Clambda%29" alt="\varepsilon (\lambda)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda%3E0" alt="\lambda&gt;0" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        有密度：
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D%5Clambda+e%5E%7B-%5Clambda+x%7D%28x%3E0%29" alt="f(x)=\lambda e^{-\lambda x}(x&gt;0)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Clambda%29" alt="X\sim \varepsilon(\lambda)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    注意指数分布的随机变量是非负的。
+                </p>
+                <p>
+                    重要地，指数分布与几何分布类似，具有
+                    <b>
+                        无记忆性
+                    </b>
+                    ，我们将在下章介绍。
+                </p>
+                <p>
+                    而且指数分布还与泊松分布有着难解难分的联系，用来描述相邻两次随机事件发生之间的等待时间的分布。指数分布还常用来描述电子元件的寿命分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        3、伽马分布
+                        <img src="https://www.zhihu.com/equation?tex=%5CGamma%28%5Calpha%2C%5Cbeta%29" alt="\Gamma(\alpha,\beta)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Calpha%2C%5Cbeta%3E0" alt="\alpha,\beta&gt;0" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5CGamma%28%5Calpha%29%3D%5Cint_0%5E%7B%5Cinfty%7Dx%5E%7B%5Calpha-1%7De%5E%7B-x%7Ddx" alt="\Gamma(\alpha)=\int_0^{\infty}x^{\alpha-1}e^{-x}dx" eeimg="1">
+                        为伽马函数
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        有密度：
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D%5Cfrac%7B%5Cbeta%5E%7B%5Calpha%7D%7D%7B%5CGamma%28%5Calpha%29%7Dx%5E%7B%5Calpha-1%7De%5E%7B-%5Cbeta+x%7D%28x%3E0%29" alt="f(x)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}(x&gt;0)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5CGamma%28%5Calpha%2C%5Cbeta%29" alt="X\sim \Gamma(\alpha,\beta)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    容易发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha%3D1" alt="\alpha=1" eeimg="1">
+                    时，密度与指数分布相同。事实上，服从伽马分布的随机变量可以看成
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                    个服从指数分布
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon%28%5Cbeta%29" alt="\varepsilon(\beta)" eeimg="1">
+                    的独立随机变量之和。这告诉我们
+                    <b>
+                        在独立的条件下伽马分布关于参数
+                        <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                        具有可加性，
+                    </b>
+                    暂时搁置此证明。伽马分布常用来描述气象学中一段时间之内的降水量分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        4、正态分布
+                        <img src="https://www.zhihu.com/equation?tex=N%28%5Cmu%2C%5Csigma%5E2%29" alt="N(\mu,\sigma^2)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma%3E0" alt="\sigma&gt;0" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        有密度：
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi+%5Csigma%5E2%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7D%2Cx%5Cin+%5Cmathbb%7BR%7D" alt="f(x)=\frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}},x\in \mathbb{R}" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%28%5Cmu%2C%5Csigma%5E2%29" alt="X\sim N(\mu,\sigma^2)" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        特别地，
+                        <img src="https://www.zhihu.com/equation?tex=N%280%2C1%29" alt="N(0,1)" eeimg="1">
+                        被称为标准正态分布，在之后的学习中是十分常用的。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        其密度，特殊地，记为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28x%29%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7D%2Cx%5Cin+%5Cmathbb%7BR%7D" alt="\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}},x\in \mathbb{R}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    读者可以从正态分布的密度出发证明以下分析上的性质：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    关于
+                    <img src="https://www.zhihu.com/equation?tex=x%3D%5Cmu" alt="x=\mu" eeimg="1">
+                    对称。
+                </p>
+                <p>
+                    2、
+                    <img src="https://www.zhihu.com/equation?tex=f%28%5Cmu%29" alt="f(\mu)" eeimg="1">
+                    为最大值。
+                </p>
+                <p>
+                    3、
+                    <img src="https://www.zhihu.com/equation?tex=x%3D%5Cmu+%5Cpm+%5Csigma" alt="x=\mu \pm \sigma" eeimg="1">
+                    为拐点。（凹凸性变化的点）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由于正态分布太常用以及重要（后文中的中心极限定理会告诉我们这点），我们很多情况下需要经常计算
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%28%5Cmu%2C%5Csigma%5E2%29" alt="X\sim N(\mu,\sigma^2)" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Ca%29" alt="P(X&lt;a)" eeimg="1">
+                    的值。
+                </p>
+                <p>
+                    由密度的定义，不难得到
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Ca%29%3D%5Cint_%7B-%5Cinfty%7D%5Eaf%28x%29dx" alt="P(X&lt;a)=\int_{-\infty}^af(x)dx" eeimg="1">
+                </p>
+                <p>
+                    我们再引入一个与标准正态密度有关的函数来简化这个积分的求解。
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi%28a%29%3D%5Cint_%7B-%5Cinfty%7D%5Ea%5Cvarphi%28x%29dx" alt="\Phi(a)=\int_{-\infty}^a\varphi(x)dx" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    则容易知道由于正态密度的对称性与完全性，有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%2C%5CPhi%28x%29%2B%5CPhi%28-x%29%3D1" alt="\forall x,\Phi(x)+\Phi(-x)=1" eeimg="1">
+                </p>
+                <p>
+                    现在我们再来计算上文提到的积分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7B-%5Cinfty%7D%5Eaf%28x%29dx" alt="\int_{-\infty}^af(x)dx" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Ca%29%3D%5Cint_%7B-%5Cinfty%7D%5Ea%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi+%5Csigma%5E2%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7Ddx%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi+%5Csigma%5E2%7D%7D%5Cint_%7B-%5Cinfty%7D%5Eae%5E%7B-%5Cfrac%7B%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7Ddx" alt="P(X&lt;a)=\int_{-\infty}^a\frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx=\frac{1}{\sqrt{2\pi \sigma^2}}\int_{-\infty}^ae^{-\frac{(x-\mu)^2}{2\sigma^2}}dx" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi+%7D%7D%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cfrac%7Ba-%5Cmu%7D%7B%5Csigma%7D%7De%5E%7B-%5Cfrac%7Bx%5E2%7D%7B2%7D%7Ddx%3D%5CPhi%28%5Cfrac%7Ba-%5Cmu%7D%7B%5Csigma%7D%29" alt="=\frac{1}{\sqrt{2\pi }}\int_{-\infty}^{\frac{a-\mu}{\sigma}}e^{-\frac{x^2}{2}}dx=\Phi(\frac{a-\mu}{\sigma})" eeimg="1">
+                </p>
+                <p>
+                    我们得到了如下定理。
+                </p>
+                <p>
+                    <br>
+                    <b>
+                        定理：
+                        <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%28%5Cmu%2C%5Csigma%5E2%29" alt="X\sim N(\mu,\sigma^2)" eeimg="1">
+                        时，
+                        <img src="https://www.zhihu.com/equation?tex=P%28a%3CX%3Cb%29%3D%5CPhi%28%5Cfrac%7Bb-%5Cmu%7D%7B%5Csigma%7D%29-%5CPhi%28%5Cfrac%7Ba-%5Cmu%7D%7B%5Csigma%7D%29" alt="P(a&lt;X&lt;b)=\Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        结合标准正态分布函数表，即查得这个函数值的数值。
+                    </b>
+                </p>
+                <p>
+                    这样的做法的意义在于将求正态分布概率的过程统一化了。我们现在只需要能求出标准正态分布的概率即可求出所有不同正态分布的概率。我们下面将会着重介绍分布函数。届时读者可以再回来理解此处
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi" alt="\Phi" eeimg="1">
+                    的定义的好处。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        四、分布函数
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定义：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        为随机变量，则函数
+                        <img src="https://www.zhihu.com/equation?tex=F%28x%29%3DP%28X%5Cleq+x%29" alt="F(x)=P(X\leq x)" eeimg="1">
+                        称为
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的概率分布函数，也称为分布函数。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为
+                    <b>
+                        离散型
+                    </b>
+                    随机变量，设概率分布为
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_k%29%3Dp_k" alt="P(X=x_k)=p_k" eeimg="1">
+                    ，则分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29%3D%5Csum_%7Bj%3Ax_j%5Cleq+x%7Dp_j" alt="F(x)=\sum_{j:x_j\leq x}p_j" eeimg="1">
+                    。
+                </p>
+                <p>
+                    容易知道的是，此时分布函数为
+                    <b>
+                        阶梯函数且单调递增
+                    </b>
+                    。且函数值的跳跃发生在所有
+                    <img src="https://www.zhihu.com/equation?tex=x_k" alt="x_k" eeimg="1">
+                    处，跳跃的幅度为
+                    <img src="https://www.zhihu.com/equation?tex=p_k" alt="p_k" eeimg="1">
+                    。
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为连续型随机变量，设密度为
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    ，则分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29%3D%5Cint_%7B-%5Cinfty%7D%5Exf%28t%29dt" alt="F(x)=\int_{-\infty}^xf(t)dt" eeimg="1">
+                    。
+                </p>
+                <p>
+                    此时
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%2B%5CDelta+x%29-F%28x%29%3D%5Cint_x%5E%7Bx%2B%5CDelta+x%7Df%28t%29dt%3DP%28x%3CX%5Cleq+x%2B%5CDelta+x%29" alt="F(x+\Delta x)-F(x)=\int_x^{x+\Delta x}f(t)dt=P(x&lt;X\leq x+\Delta x)" eeimg="1">
+                    。则当
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+x%5Crightarrow+0" alt="\Delta x\rightarrow 0" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%2B%5CDelta+x%29-F%28x%29%5Crightarrow0" alt="F(x+\Delta x)-F(x)\rightarrow0" eeimg="1">
+                    ，故此时分布函数
+                    <b>
+                        连续
+                    </b>
+                    。另外，与离散的情况类似地，分布函数仍旧具有
+                    <b>
+                        单调递增
+                    </b>
+                    的性质。
+                </p>
+                <p>
+                    我们下面进一步给出分布函数的更多性质：（
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    为任一随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的分布函数）
+                </p>
+                <p>
+                    <b>
+                        1、
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=F%28x%29" alt="F(x)" eeimg="1">
+                    </b>
+                    <b>
+                        右连续。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2、
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bx%5Crightarrow+-%5Cinfty%7DF%28x%29%3D0%2C+%5C+%5Clim_%7Bx%5Crightarrow+%2B%5Cinfty+%7DF%28x%29%3D1" alt="\lim_{x\rightarrow -\infty}F(x)=0, \ \lim_{x\rightarrow +\infty }F(x)=1" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        3、若
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=F_X%28x%29" alt="F_X(x)" eeimg="1">
+                    </b>
+                    <b>
+                        处处连续可微，则
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X+" alt="X" eeimg="1">
+                    </b>
+                    <b>
+                        为连续型随机变量，且
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=F_X%5E%7B%27%7D%28x%29" alt="F_X^{&#39;}(x)" eeimg="1">
+                    </b>
+                    <b>
+                        为密度。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    1、
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%2B0%29%3D%5Clim_%7Bn%5Crightarrow+%2B%5Cinfty%7DF%28x%2B%5Cfrac%7B1%7D%7Bn%7D%29%3D%5Clim_%7Bn%5Crightarrow+%2B+%5Cinfty%7DP%28X%5Cleq+x%2B%5Cfrac%7B1%7D%7Bn%7D%29+%3DP%28X%5Cleq+x%29%3DF%28x%29" alt="F(x+0)=\lim_{n\rightarrow +\infty}F(x+\frac{1}{n})=\lim_{n\rightarrow + \infty}P(X\leq x+\frac{1}{n}) =P(X\leq x)=F(x)" eeimg="1">
+                </p>
+                <p>
+                    2、同理地，利用概率的连续性可证明（留给读者）
+                </p>
+                <p>
+                    3、利用密度的定义以及Newton-Lebniz公式，易证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于分布函数的第3个性质，我们不禁要问：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29" alt="F(x)" eeimg="1">
+                    处处连续可微这个条件是否能够被削弱呢？因为大量的分布函数都不具备这么好的性质。我们下面不加证明地给出第三个性质的一个推广形式。
+                </p>
+                <p>
+                    推广：
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为可数集，且其中任意两点之间的距离都大于0。 分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29" alt="F(x)" eeimg="1">
+                    连续，且在除了
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中点外之处连续可微，则
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3D%5Cbegin%7Bcases%7D+F%5E%7B%27%7D%28x%29%5C+%5C+x%5Cnot%5Cin+A%5C%5C+0%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+x%5Cin+A+%5Cend%7Bcases%7D" alt="f(x)=\begin{cases} F^{&#39;}(x)\ \ x\not\in A\\ 0\ \ \ \ \ \ \ \ \ \ x\in A \end{cases}" eeimg="1">
+                    为密度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于分布函数的另外值得提及的一点是：
+                    <b>
+                        概率分布与分布函数一一对应
+                    </b>
+                    。（读者自证）我们知道同一概率分布密度的密度并不唯一。从某种程度上来说，这是分布函数比密度更加重要之处。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    既然分布函数与概率分布一一对应，这便意味着我们可以通过分布函数反过来创造各种各样的随机变量。我们现在了解到离散型随机变量的分布函数是阶梯函数的形式，连续型随机变量的分布函数是连续的。那我们自然地产生了这样一个疑问：是否能创造出一种分布函数，使得其兼具离散型与连续型随机变量的分布函数的特征呢？而这样的分布函数所对应的随机变量又是什么类型的呢？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，通过这样的方法我们得以创造出一种全新的随机变量，它既不是离散型又不是连续型的，我们称其为
+                    <b>
+                        混合型随机变量
+                    </b>
+                    。
+                </p>
+                <p>
+                    例：考虑分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F_X%28x%29%3D%5Cbegin%7Bcases%7D+0++%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+x%3C0%5C%5C+1-e%5E%7B-%5Clambda+x%7D%5C+%5C+0%5Cleq+x%3Ct%5C%5C+1%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+%5C+x%5Cgeq+t+%5Cend%7Bcases%7D" alt="F_X(x)=\begin{cases} 0  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x&lt;0\\ 1-e^{-\lambda x}\ \ 0\leq x&lt;t\\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\geq t \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    我们不难发现这样的分布函数对应的随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    不是连续型的，因为
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    并不连续，密度不存在。但是其也不是离散型的，因为并不仅仅在可列个点处取值。
+                </p>
+                <p>
+                    将
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    拆解，我们会发现，在
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2Ct%29" alt="[0,t)" eeimg="1">
+                    中，其服从参数
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    的指数分布。而其也会在
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    处有着概率非0的离散取值。这样的随机变量便就是混合型随机变量。
+                </p>
+                <p>
+                    我们可以将混合型随机变量
+                    <b>
+                        看作若干个离散型随机变量与若干个连续型随机变量的加权平均数
+                    </b>
+                    ，在之后讲到概率论的应用时，我们也会频繁利用到混合型随机变量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        五、概率分布之间的联系
+                    </b>
+                </p>
+                <p>
+                    本章中我们主要关注各个概率分布之间的关系以及部分概率分布特有的性质。
+                </p>
+                <p>
+                    首先，我们来研究泊松分布。第一次接触到泊松分布概率分布列的读者可能会感到奇怪：为什么概率分布列是这样一个奇怪的表达式？
+                </p>
+                <p>
+                    事实上，泊松分布本质上是
+                    <img src="https://www.zhihu.com/equation?tex=n%5Crightarrow+%5Cinfty" alt="n\rightarrow \infty" eeimg="1">
+                    时的二项分布，我们下面给出证明。
+                </p>
+                <p>
+                    <b>
+                        定理（泊松分布与二项分布）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=0%3Cp_n%3C1%2C%5C+%5Clim_%7Bn%5Crightarrow+%5Cinfty%7Dnp_n%3D%5Clambda%3E0" alt="0&lt;p_n&lt;1,\ \lim_{n\rightarrow \infty}np_n=\lambda&gt;0" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow+%5Cinfty%7D+%5Cbinom%7Bn%7D%7Bk%7Dp_n%5Ek%281-p_n%29%5E%7Bn-k%7D%3D%5Cfrac%7B%5Clambda%5Ek%7D%7Bk%21%7De%5E%7B-%5Clambda%7D" alt="\lim_{n\rightarrow \infty} \binom{n}{k}p_n^k(1-p_n)^{n-k}=\frac{\lambda^k}{k!}e^{-\lambda}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们设法将
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=p_n" alt="p_n" eeimg="1">
+                    拼凑起来。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbinom%7Bn%7D%7Bk%7Dp_n%5Ek%281-p_n%29%5E%7Bn-k%7D%3D%5Cfrac%7B%28np_n%29%5Ekn%28n-1%29...%28n-k%2B1%29%7D%7Bn%5Ek%5C+k%21%7D%281-p_n%29%5E%7Bn-k%7D" alt="\binom{n}{k}p_n^k(1-p_n)^{n-k}=\frac{(np_n)^kn(n-1)...(n-k+1)}{n^k\ k!}(1-p_n)^{n-k}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cfrac%7B%28np_n%29%5Ekn%28n-1%29...%28n-k%2B1%29%7D%7Bn%5Ek%5C+k%21%7D%281-p_n%29%5E%7B%28-%5Cfrac%7B1%7D%7Bp_n%7D%29%28-np_n%29%28%5Cfrac%7Bn-k%7D%7Bn%7D%29%7D" alt="=\frac{(np_n)^kn(n-1)...(n-k+1)}{n^k\ k!}(1-p_n)^{(-\frac{1}{p_n})(-np_n)(\frac{n-k}{n})}" eeimg="1">
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=n%5Crightarrow+%5Cinfty" alt="n\rightarrow \infty" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%28np_n%29%5Ekn%28n-1%29...%28n-k%2B1%29%7D%7Bn%5Ek%5C+k%21%7D%5Crightarrow%5Cfrac%7B%5Clambda%5Ek%7D%7Bk%21%7D" alt="\frac{(np_n)^kn(n-1)...(n-k+1)}{n^k\ k!}\rightarrow\frac{\lambda^k}{k!}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%281-p_n%29%5E%7B%28-%5Cfrac%7B1%7D%7Bp_n%7D%29%28-np_n%29%28%5Cfrac%7Bn-k%7D%7Bn%7D%29%7D%5Crightarrow+e%5E%7B-%5Clambda%7D" alt="(1-p_n)^{(-\frac{1}{p_n})(-np_n)(\frac{n-k}{n})}\rightarrow e^{-\lambda}" eeimg="1">
+                </p>
+                <p>
+                    得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们具象地理解这个定理。当
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    足够大，且此时“平均”发生的事件数趋向于常数
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    时，二项分布
+                    <img src="https://www.zhihu.com/equation?tex=B%28n%2Cp_n%29" alt="B(n,p_n)" eeimg="1">
+                    实质上就是泊松分布
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Clambda%29" alt="P(\lambda)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，二项分布不仅仅与泊松分布有着紧密的联系，还可以由超几何分布进行逼近。
+                </p>
+                <p>
+                    下面我们给出二项分布与超几何分布的联系。
+                </p>
+                <p>
+                    <b>
+                        定理（二项分布与超几何分布）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=M%3DM%28N%29" alt="M=M(N)" eeimg="1">
+                        ，且
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7BN%5Crightarrow+%5Cinfty%7D%5Cfrac%7BM%28N%29%7D%7BN%7D%3Dp%5Cin%280%2C1%29" alt="\lim_{N\rightarrow \infty}\frac{M(N)}{N}=p\in(0,1)" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Clim_%7BN%5Crightarrow+%5Cinfty%7D%5Cfrac%7B%5Cbinom%7BM%7D%7Bm%7D%5Cbinom%7BN-M%7D%7Bn-m%7D%7D%7B%5Cbinom%7BN%7D%7Bn%7D%7D%3D%5Cbinom%7Bn%7D%7Bm%7Dp%5Em%281-p%29%5E%7Bn-m%7D" alt="\lim_{N\rightarrow \infty}\frac{\binom{M}{m}\binom{N-M}{n-m}}{\binom{N}{n}}=\binom{n}{m}p^m(1-p)^{n-m}" eeimg="1">
+                        。
+                    </b>
+                </p>
+                <p>
+                    证明：
+                </p>
+                <p>
+                    我们先将左侧超几何分布的概率分布列中的组合数全都展开，并且尽量凑出
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BM%7D%7BN%7D" alt="\frac{M}{N}" eeimg="1">
+                    的形式。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cbinom%7BM%7D%7Bm%7D%5Cbinom%7BN-M%7D%7Bn-m%7D%7D%7B%5Cbinom%7BN%7D%7Bn%7D%7D%3D%5Cfrac%7B%5Cfrac%7Bn%21%7D%7Bm%21%28n-m%29%21%7D%5Cfrac%7BM%28M-1%29...%28M-m%2B1%29%7D%7BN%5Em%7D%5Cfrac%7B%28N-M%29%28N-M-1%29...%28N-M-n%2Bm%2B1%29%7D%7BN%5E%7Bn-m%7D%7D%7D%7B%5Cfrac%7BN%28N-1%29...%28N-n%2B1%29%7D%7BN%5En%7D%7D" alt="\frac{\binom{M}{m}\binom{N-M}{n-m}}{\binom{N}{n}}=\frac{\frac{n!}{m!(n-m)!}\frac{M(M-1)...(M-m+1)}{N^m}\frac{(N-M)(N-M-1)...(N-M-n+m+1)}{N^{n-m}}}{\frac{N(N-1)...(N-n+1)}{N^n}}" eeimg="1">
+                </p>
+                <p>
+                    易知
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bn%21%7D%7Bm%21%28n-m%29%21%7D%3D%5Cbinom%7Bn%7D%7Bm%7D" alt="\frac{n!}{m!(n-m)!}=\binom{n}{m}" eeimg="1">
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=N%5Crightarrow+%5Cinfty" alt="N\rightarrow \infty" eeimg="1">
+                    时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BM%28M-1%29...%28M-m%2B1%29%7D%7BN%5Em%7D%5Crightarrow+p%5Em" alt="\frac{M(M-1)...(M-m+1)}{N^m}\rightarrow p^m" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%28N-M%29%28N-M-1%29...%28N-M-n%2Bm%2B1%29%7D%7BN%5E%7Bn-m%7D%7D%5Crightarrow+%281-p%29%5E%7Bn-m%7D" alt="\frac{(N-M)(N-M-1)...(N-M-n+m+1)}{N^{n-m}}\rightarrow (1-p)^{n-m}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BN%28N-1%29...%28N-n%2B1%29%7D%7BN%5En%7D%5Crightarrow1" alt="\frac{N(N-1)...(N-n+1)}{N^n}\rightarrow1" eeimg="1">
+                </p>
+                <p>
+                    得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    同样地，具象地理解这个定理，我们可以认为当总量
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    足够大时，如果次品率
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BM%7D%7BN%7D" alt="\frac{M}{N}" eeimg="1">
+                    趋向于一个常数
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    。那么我们无放回地进行抽取（超几何分布）可以近似为有放回地抽取（二项分布
+                    <img src="https://www.zhihu.com/equation?tex=B%28n%2Cp%29" alt="B(n,p)" eeimg="1">
+                    ）。
+                </p>
+                <p>
+                    值得一提的是，当
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    很大时，计算机进行组合数的计算会非常费时，这个时候利用二项分布进行近似能够大幅提高计算速度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，我们要指出指数分布与几何分布所特有的重要性质：
+                    <b>
+                        无记忆性
+                    </b>
+                    。
+                </p>
+                <p>
+                    我们同时给出这两个定理，但仅对指数分布进行证明（思路大体相同）。
+                </p>
+                <p>
+                    <b>
+                        定理（几何分布的无记忆性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        离散型取正整数值的随机变量
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        服从几何分布的充要条件是
+                        <img src="https://www.zhihu.com/equation?tex=P%28X%3Dm%2Bk%7CX%3Em%29%3DP%28X%3Dk%29%5C+%5C+%28%5Cforall+%5C+m%2Ck%3D1%2C2%2C...%29" alt="P(X=m+k|X&gt;m)=P(X=k)\ \ (\forall \ m,k=1,2,...)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        定理（指数分布的无记忆性）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        连续型非负随机变量
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        服从指数分布的充要条件是
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5C+s%2Ct%3E0%2CP%28X%3Es%2Bt%7CX%3Es%29%3DP%28X%3Et%29" alt="\forall \ s,t&gt;0,P(X&gt;s+t|X&gt;s)=P(X&gt;t)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    证明（指数分布）：
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Clambda%29" alt="X\sim \varepsilon(\lambda)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Es%2Bt%7CX%3Es%29%3D%5Cfrac%7BP%28X%3Es%2Bt%29%7D%7BP%28X%3Es%29%7D%3D%5Cfrac%7Be%5E%7B-%5Clambda%28s%2Bt%29%7D%7D%7Be%5E%7B-%5Clambda+s%7D%7D%3De%5E%7B-%5Clambda+t%7D%3DP%28X%3Et%29" alt="P(X&gt;s+t|X&gt;s)=\frac{P(X&gt;s+t)}{P(X&gt;s)}=\frac{e^{-\lambda(s+t)}}{e^{-\lambda s}}=e^{-\lambda t}=P(X&gt;t)" eeimg="1">
+                </p>
+                <p>
+                    反之，若无记忆性成立，假设
+                    <img src="https://www.zhihu.com/equation?tex=g%28t%29%3DP%28X%3Et%29" alt="g(t)=P(X&gt;t)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Es%2Bt%7CX%3Es%29%3D%5Cfrac%7Bg%28s%2Bt%29%7D%7Bg%28s%29%7D%3Dg%28t%29%3DP%28X%3Et%29" alt="P(X&gt;s+t|X&gt;s)=\frac{g(s+t)}{g(s)}=g(t)=P(X&gt;t)" eeimg="1">
+                </p>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+s%2Ct%3E0%2C%5C+g%28s%2Bt%29%3Dg%28s%29g%28t%29" alt="\forall s,t&gt;0,\ g(s+t)=g(s)g(t)" eeimg="1">
+                </p>
+                <p>
+                    由数学分析中的结论，可得到
+                    <img src="https://www.zhihu.com/equation?tex=g%28t%29%3De%5E%7B-%5Clambda+t%7D" alt="g(t)=e^{-\lambda t}" eeimg="1">
+                    。（这一步的具体证明：先证明对所有正整数
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    成立，接着将正整数推广至有理数，再进一步可将有理数推广至实数，即得证）
+                </p>
+                <p>
+                    故可求出分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F%28t%29%3D1-g%28t%29" alt="F(t)=1-g(t)" eeimg="1">
+                    ，又由分布函数与概率分布的一一对应性质，可知
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+%5Cvarepsilon%28%5Clambda%29" alt="X\sim \varepsilon(\lambda)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    无记忆性是一个有趣的特性。常常被用来描述各种元件的寿命。我们拿人类的寿命举例。若人类的寿命服从指数分布，则一个已经100岁了的人能活到120岁的概率等于他在新生儿时能活到20岁的概率（无疑是很高的）。若果真如此，人类的寿命则几乎就是无限的了。（当然与实际相悖233
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    事实上，泊松分布、指数分布、伽马分布之间也有着密不可分的关系（等待模型）。
+                </p>
+                <p>
+                    若后续有空余篇幅，我将为大家介绍随机过程中的泊松过程，到时我们可以对其有一个清晰的认识。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        六、随机变量的函数的分布
+                    </b>
+                </p>
+                <p>
+                    我们现在已经了解了随机变量的常见概率分布。然而常见的概率分布是有限的，但是随机变量却是各不相同的。研究随机变量的函数的分布，事实上是为了以现有的概率分布为基础创造出许多新的概率分布。
+                </p>
+                <p>
+                    由于离散型随机变量与连续型随机变量的函数的分布的求法略有区别，下面分别介绍这两种方法。假定我们已知
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的概率分布，
+                    <img src="https://www.zhihu.com/equation?tex=Y%3Dg%28X%29" alt="Y=g(X)" eeimg="1">
+                    ，现在想求
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的概率分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为
+                    <b>
+                        离散型随机变量
+                    </b>
+                    时，我们直接的想法便就是
+                    <b>
+                        通过概率分布列
+                    </b>
+                    来求其函数的分布。
+                </p>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    有概率分布列
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3Dx_k%29%3Dp_k" alt="P(X=x_k)=p_k" eeimg="1">
+                    ，则我们合并
+                    <img src="https://www.zhihu.com/equation?tex=g%28x_1%29%2Cg%28x_2%29%2C..." alt="g(x_1),g(x_2),..." eeimg="1">
+                    中的相同值作为
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的不同取值
+                    <img src="https://www.zhihu.com/equation?tex=y_1%2Cy_2%2C..." alt="y_1,y_2,..." eeimg="1">
+                </p>
+                <p>
+                    则可得到
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的概率分布列
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3Dy_j%29%3D%5Csum_%7Bi%3Ag%28x_i%29%3Dy_j%7DP%28X%3Dx_i%29" alt="P(Y=y_j)=\sum_{i:g(x_i)=y_j}P(X=x_i)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    例：随机变量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的概率分布列为
+                    <img src="https://www.zhihu.com/equation?tex=P%28X%3D0%29%3D0.2%2CP%28X%3D1%29%3DP%28X%3D-1%29%3D0.4" alt="P(X=0)=0.2,P(X=1)=P(X=-1)=0.4" eeimg="1">
+                    ，求
+                    <img src="https://www.zhihu.com/equation?tex=Y%3DX%5E2" alt="Y=X^2" eeimg="1">
+                    的概率分布。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=Y%3D0" alt="Y=0" eeimg="1">
+                    或
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ，仅有这两个可能取值。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3D0%29%3DP%28X%3D0%29%3D0.2" alt="P(Y=0)=P(X=0)=0.2" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28Y%3D1%29%3DP%28X%3D1%29%2BP%28X%3D-1%29%3D0.8" alt="P(Y=1)=P(X=1)+P(X=-1)=0.8" eeimg="1">
+                </p>
+                <p>
+                    对于离散型随机变量的函数，我们只需要做好相同值的合并，概率分布列是相当容易求的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    而当
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为
+                    <b>
+                        连续型随机变量
+                    </b>
+                    时，我们是否能够效仿离散型时的情况呢？
+                </p>
+                <p>
+                    一种初学者常犯（包括过去的我）的
+                    <b>
+                        错误
+                    </b>
+                    是仍旧模仿离散型的情况，错误地认为
+                    <img src="https://www.zhihu.com/equation?tex=f_X%28x%29%3DP%28Y%3Dk%29" alt="f_X(x)=P(Y=k)" eeimg="1">
+                    。然而，这样做的问题在于连续型随机变量在任意单点处取值的概率均为0。连续型随机变量有对应的密度，而回忆密度的定义，关注的是随机变量在一个区间中取值的概率，而非一点。
+                </p>
+                <p>
+                    <b>
+                        正确的方法是先求出分布函数，再根据分布函数求出密度
+                    </b>
+                    。（分布函数之于连续型随机变量等同于概率分布列之于离散型随机变量）下举一例具体阐释。
+                </p>
+                <p>
+                    例：
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csim+N%280%2C1%29" alt="X\sim N(0,1)" eeimg="1">
+                    ，求
+                    <img src="https://www.zhihu.com/equation?tex=Y%3DX%5E2" alt="Y=X^2" eeimg="1">
+                    的密度。
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F_Y%28y%29" alt="F_Y(y)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=y%3C0%2CF_Y%28y%29%3D0" alt="y&lt;0,F_Y(y)=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=y%3E0" alt="y&gt;0" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=F_Y%28y%29%3DP%28Y%5Cleq+y%29%3DP%28-%5Csqrt%7By%7D%5Cleq+X%5Cleq+%5Csqrt%7By%7D%29%3D%5CPhi%28%5Csqrt%7By%7D%29-%5CPhi%28-%5Csqrt%7By%7D%29" alt="F_Y(y)=P(Y\leq y)=P(-\sqrt{y}\leq X\leq \sqrt{y})=\Phi(\sqrt{y})-\Phi(-\sqrt{y})" eeimg="1">
+                </p>
+                <p>
+                    （这里回忆一下
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi" alt="\Phi" eeimg="1">
+                    是标准正态的分布函数，由于标准正态分布关于0对称，故
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi%28t%29%2B%5CPhi%28-t%29%3D1" alt="\Phi(t)+\Phi(-t)=1" eeimg="1">
+                    ）
+                </p>
+                <p>
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=F_Y%28y%29%3D2%5CPhi%28%5Csqrt%7By%7D%29-1" alt="F_Y(y)=2\Phi(\sqrt{y})-1" eeimg="1">
+                    ，可见
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    连续，除了
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    处均可微。
+                </p>
+                <p>
+                    故密度存在，
+                    <img src="https://www.zhihu.com/equation?tex=f_Y%28y%29%3DF%5E%7B%27%7D_Y%28y%29%3D2%5Cvarphi%28%5Csqrt%7By%7D%29%5Cfrac%7B1%7D%7B2%5Csqrt%7By%7D%7D%3D%5Cfrac%7Be%5E%7B-%5Cfrac%7By%7D%7B2%7D%7D%7D%7B%5Csqrt%7B2%5Cpi+y%7D%7D%5C+%5C++%28y%3E0%29" alt="f_Y(y)=F^{&#39;}_Y(y)=2\varphi(\sqrt{y})\frac{1}{2\sqrt{y}}=\frac{e^{-\frac{y}{2}}}{\sqrt{2\pi y}}\ \  (y&gt;0)" eeimg="1">
+                </p>
+                <p>
+                    （回忆
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    为标准正态密度）
+                </p>
+                <p>
+                    事实上，此处的
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    服从自由度为1的卡方分布。
+                    <img src="https://www.zhihu.com/equation?tex=Y%5Csim+%5Cchi%5E2%281%29" alt="Y\sim \chi^2(1)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    通过上例，我们应该对分布函数法有了一个直观的认识。分布函数法是求随机变量的函数的分布的通法。（事实上，对于随机向量仍然如此）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从最本质上来说，求随机变量的函数的分布相当于进行了一次换元。从变量代换的角度看的话，我们可以得到如下定理（不给出证明）
+                </p>
+                <p>
+                    <b>
+                        定理（随机变量的变量代换）
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        有密度
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                        为一个区间，
+                        <img src="https://www.zhihu.com/equation?tex=Y%3Dg%28X%29%2CP%28Y%5Cin+D%29%3D1" alt="Y=g(X),P(Y\in D)=1" eeimg="1">
+                        ，若满足：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        1、若
+                        <img src="https://www.zhihu.com/equation?tex=y%5Cin+D" alt="y\in D" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft+%5C%7B++Y%3Dy%5Cright+%5C%7D%3D%5Cbigcup+_%7Bi%3D1%7D%5En%5Cleft+%5C%7B+X%3Dh_i%28y%29+%5Cright+%5C%7D" alt="\left \{  Y=y\right \}=\bigcup _{i=1}^n\left \{ X=h_i(y) \right \}" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2、所有
+                        <img src="https://www.zhihu.com/equation?tex=h_i%28y%29" alt="h_i(y)" eeimg="1">
+                        可逆，且有连续的导数。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        3、设
+                        <img src="https://www.zhihu.com/equation?tex=h_i%28y%29" alt="h_i(y)" eeimg="1">
+                        的值域为
+                        <img src="https://www.zhihu.com/equation?tex=D_i" alt="D_i" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=D_1%2CD_2%2C...%2CD_n" alt="D_1,D_2,...,D_n" eeimg="1">
+                        互不相交。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                        有密度
+                        <img src="https://www.zhihu.com/equation?tex=f_Y%28y%29%3D%5Csum_%7Bi%3D1%7D%5Enf%28h_i%28y%29%29%7Ch_i%5E%7B%27%7D%28y%29%7C%5C+%5C+%28y%5Cin+D%29" alt="f_Y(y)=\sum_{i=1}^nf(h_i(y))|h_i^{&#39;}(y)|\ \ (y\in D)" eeimg="1">
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个定理看上去复杂，实际的思想却很简单。其将
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    划分为了若干个区域，使得这些区域上
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的取值得以通过
+                    <img src="https://www.zhihu.com/equation?tex=h_i" alt="h_i" eeimg="1">
+                    一一对应。那么在每个区域上，相当于进行了变量代换，与积分的换元法类似的，乘上这个变换的导数即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我个人并不是经常用这个定理。事实上，所有的随机变量、向量的函数的分布问题都能够用
+                    <b>
+                        分布函数法
+                    </b>
+                    来解决。然而这样的定理为我们提供了一种新的角度看待问题，是具有启发性的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本章的概率论学习笔记到此为止，谢谢大家阅读！（因为开学事多拖了好久233）
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

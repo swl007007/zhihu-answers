@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            测度论整理（五）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-6f2b7b961040f2633be7e279e25b601e_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/119274848" target="_blank">
+                        测度论整理（五）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/zhou-hao-cheng-30">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-53d7fc04a71ec457c22be74dc42c7b09.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    sola
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-03-28
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这次我们整理一下不同的收敛模式以及之间的关联。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回忆上次的内容：我们定义了可测空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%29" alt="(X,\mathscr{F})" eeimg="1">
+                    上的可测函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    。现在，我们要把测度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    再加进来，看看测度与可测函数之间会发生怎样奇妙的反应。事实上，测度的引入大大拓宽了我们对于
+                    <b>
+                        可测函数列收敛性
+                    </b>
+                    的定义。我们从数学分析中的收敛性
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Crightarrow+f" alt="f_n\rightarrow f" eeimg="1">
+                    可以推广衍生出各种
+                    <b>
+                        依赖于测度
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                        的收敛性
+                    </b>
+                    ！下文我们默认
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    为测度空间，
+                    <img src="https://www.zhihu.com/equation?tex=f_n%2Cf" alt="f_n,f" eeimg="1">
+                    均为其上可测函数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我将几种常见的收敛模式归纳如下：
+                </p>
+                <p>
+                    第一种是
+                    <b>
+                        几乎处处收敛
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Ba.e.%7D%5Crightarrow+f" alt="f_n\overset{a.e.}\rightarrow f" eeimg="1">
+                    。从直观上理解，这意味着去除了
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的某个零测集后，
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    逐点收敛到
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    。
+                </p>
+                <p>
+                    用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon-N" alt="\varepsilon-N" eeimg="1">
+                    语言表达：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+A%5Cin%5Cmathscr%7BF%7D%2C%5Cmu%28A%29%3D0" alt="\exists A\in\mathscr{F},\mu(A)=0" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cnot%5Cin+A%2C%5Cvarepsilon+%3E0%2C%5Cexists+N%5Cin%5Cmathbb%7BN%7D" alt="\forall x\not\in A,\varepsilon &gt;0,\exists N\in\mathbb{N}" eeimg="1">
+                    ，当
+                    <img src="https://www.zhihu.com/equation?tex=n%3EN" alt="n&gt;N" eeimg="1">
+                    时，有
+                    <img src="https://www.zhihu.com/equation?tex=%7Cf_n%28x%29-f%28x%29%7C%3C%5Cvarepsilon" alt="|f_n(x)-f(x)|&lt;\varepsilon" eeimg="1">
+                    。
+                </p>
+                <p>
+                    用测度的语言表达：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cmu%28%5Cbigcap_%7BN%3D1%7D%5E%5Cinfty%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\mu(\bigcap_{N=1}^\infty\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    注意到将逐点收敛的含义利用集合语言进行表示后，我们很容易证明上述测度语言的表达与
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Ba.e.%7D%5Crightarrow+f" alt="f_n\overset{a.e.}\rightarrow f" eeimg="1">
+                    是等价的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    第二种是
+                    <b>
+                        几乎一致收敛
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Ba.u.%7D%5Crightarrow+f" alt="f_n\overset{a.u.}\rightarrow f" eeimg="1">
+                    。这意味着去除了
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的某个零测集后，
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    一致收敛到
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    。
+                </p>
+                <p>
+                    用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon-N" alt="\varepsilon-N" eeimg="1">
+                    语言表达：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cdelta%3E0%2C%5Cexists+A%5Cin%5Cmathscr%7BF%7D%2C%5Cmu%28A%29%3C%5Cdelta" alt="\forall \delta&gt;0,\exists A\in\mathscr{F},\mu(A)&lt;\delta" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cexists+N%5Cin%5Cmathbb%7BN%7D" alt="\forall \varepsilon &gt;0,\exists N\in\mathbb{N}" eeimg="1">
+                    ，当
+                    <img src="https://www.zhihu.com/equation?tex=n%3EN" alt="n&gt;N" eeimg="1">
+                    时，对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cnot%5Cin+A" alt="\forall x\not\in A" eeimg="1">
+                    有
+                    <img src="https://www.zhihu.com/equation?tex=%7Cf_n%28x%29-f%28x%29%7C%3C%5Cvarepsilon" alt="|f_n(x)-f(x)|&lt;\varepsilon" eeimg="1">
+                    。（注意这里的
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的测度是充分小的，而并不是说
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    直接就是零测的）
+                </p>
+                <p>
+                    用测度的语言表达：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Clim_%7BN%5Crightarrow%5Cinfty%7D%5Cmu%28%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\lim_{N\rightarrow\infty}\mu(\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在这里，“一致”的含义与数学分析中的一样的。一致收敛要求
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    不依赖于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的选取而改变。在逐点收敛中，我们先取定
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    ，再根据这样的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    来构造
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    。故在收敛较慢的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    处，我们可以将
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    放大，利用更多的逼近项来确保收敛。但是，在一致收敛中，
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    对于所有
+                    <img src="https://www.zhihu.com/equation?tex=A%5Ec" alt="A^c" eeimg="1">
+                    中的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    是一致的，故我们要确保
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    <b>
+                        在所有
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        处的收敛速度不会相差太大
+                    </b>
+                    。
+                </p>
+                <p>
+                    回忆数分中对于函数列一致收敛的等价条件：
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Crightrightarrows+f%28x%5Cin+A%5Ec%29" alt="f_n\rightrightarrows f(x\in A^c)" eeimg="1">
+                    等价于
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow+%5Cinfty%7Dsup_%7Bx%5Cin+A%5Ec%7D%5Cleft+%5C%7B+f_n%28x%29-f%28x%29+%5Cright+%5C%7D%3D0" alt="\lim_{n\rightarrow \infty}sup_{x\in A^c}\left \{ f_n(x)-f(x) \right \}=0" eeimg="1">
+                    。这也是我们经常可以用来简便地判断函数列是否一致收敛的等价条件。
+                </p>
+                <p>
+                    几乎一致收敛的最简单例子可能就是取测度空间为
+                    <img src="https://www.zhihu.com/equation?tex=%28%5B0%2C1%5D%2C%5Cmathscr%7BB%7D_%7B%5B0%2C1%5D%7D%2C%5Cmu%29" alt="([0,1],\mathscr{B}_{[0,1]},\mu)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    为Lebesgue测度。那么
+                    <img src="https://www.zhihu.com/equation?tex=f_n%28x%29%3Dx%5En" alt="f_n(x)=x^n" eeimg="1">
+                    。我们知道
+                    <img src="https://www.zhihu.com/equation?tex=f_n%28x%29" alt="f_n(x)" eeimg="1">
+                    的收敛在
+                    <img src="https://www.zhihu.com/equation?tex=x%3D1" alt="x=1" eeimg="1">
+                    时是不一致的。故我们可以挖去
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    这个点的一个在Lebesgue测度下充分小的邻域，这就保证了
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    的一致收敛性。即
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Ba.u.%7D%5Crightarrow0" alt="f_n\overset{a.u.}\rightarrow0" eeimg="1">
+                    。我们看到由于有测度的帮助，对于收敛性的要求大大放松了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    第三种是
+                    <b>
+                        依测度收敛
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7B%5Cmu%7D%5Crightarrow+f" alt="f_n\overset{\mu}\rightarrow f" eeimg="1">
+                    。
+                </p>
+                <p>
+                    以测度的语言（定义）：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cmu%28+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\lim_{n\rightarrow\infty}\mu( \left \{ |f_n-f|\geq \varepsilon \right \} )=0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    第四种是
+                    <b>
+                        依分布收敛
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Bd%7D%5Crightarrow+f" alt="f_n\overset{d}\rightarrow f" eeimg="1">
+                    。
+                </p>
+                <p>
+                    依分布收敛与前三种不同，是概率空间所特有的收敛模式。考虑
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                    为概率空间。我们可以证明：对于随机变量
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29%3D%5Cmu%28f%5Cleq+x%29" alt="F(x)=\mu(f\leq x)" eeimg="1">
+                    总是一个
+                    <b>
+                        分布函数
+                    </b>
+                    （一个满足负无穷处极限为
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    ,正无穷处极限为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    的准分布函数），且记
+                    <img src="https://www.zhihu.com/equation?tex=f%5Csim+F" alt="f\sim F" eeimg="1">
+                    。
+                </p>
+                <p>
+                    那么假设
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Csim+F_n%2Cf%5Csim+F" alt="f_n\sim F_n,f\sim F" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Bd%7D%5Crightarrow+f" alt="f_n\overset{d}\rightarrow f" eeimg="1">
+                    被
+                    <b>
+                        定义
+                    </b>
+                    为：
+                    <img src="https://www.zhihu.com/equation?tex=F_n%5Coverset%7Bw%7D%5Crightarrow+F" alt="F_n\overset{w}\rightarrow F" eeimg="1">
+                    。
+                    <b>
+                        随机变量依分布收敛当且仅当对应分布弱收敛
+                    </b>
+                    （在
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    的连续点处
+                    <img src="https://www.zhihu.com/equation?tex=F_n" alt="F_n" eeimg="1">
+                    逐点收敛到
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    ）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这几种收敛模式有如下
+                    <b>
+                        关联
+                    </b>
+                    ：（先考虑在
+                    <b>
+                        一般的测度空间
+                    </b>
+                    中的结论）
+                </p>
+                <p>
+                    <b>
+                        几乎一致强于几乎处处，几乎一致强于依测度。
+                    </b>
+                    我们将这三种收敛模式都用测度的语言写出来，由测度的单调性，立马可以得证。关于反向结论不一定成立的
+                    <b>
+                        反例
+                    </b>
+                    ，我们考虑测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%2C%5Cmathscr%7BB%7D_%7B%5Cmathbb%7BR%7D%7D%2C%5Cmu%29" alt="(\mathbb{R},\mathscr{B}_{\mathbb{R}},\mu)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    为Lebesgue测度，
+                    <img src="https://www.zhihu.com/equation?tex=f_n%28x%29%3D%5Cbegin%7Bcases%7D+0%5C+%5C+%7Cx%7C%5Cleq+n%5C%5C+1%5C+%5C+else+%5Cend%7Bcases%7D" alt="f_n(x)=\begin{cases} 0\ \ |x|\leq n\\ 1\ \ else \end{cases}" eeimg="1">
+                    。显然
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Ba.e.%7D%5Crightarrow+0" alt="f_n\overset{a.e.}\rightarrow 0" eeimg="1">
+                    ，但是这样的收敛并不几乎一致（在正负无穷处都有奇性，故并不能在去除零测集的前提下保证收敛一致性）。
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cmu%28+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+1+%5Cright+%5C%7D+%29%3D%5Cinfty" alt="\lim_{n\rightarrow\infty}\mu( \left \{ |f_n-f|\geq 1 \right \} )=\infty" eeimg="1">
+                    ，故也并非依测度收敛的。
+                </p>
+                <p>
+                    很多读者可能会奇怪：几乎处处收敛等价于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cmu%28%5Clim_%7BN%5Crightarrow%5Cinfty%7D%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\mu(\lim_{N\rightarrow\infty}\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )=0" eeimg="1">
+                    ，而几乎一致收敛等价于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Clim_%7BN%5Crightarrow%5Cinfty%7D%5Cmu%28%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\lim_{N\rightarrow\infty}\mu(\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )=0" eeimg="1">
+                    。而
+                    <b>
+                        半环上的测度具有上连续性
+                    </b>
+                    ，为啥这两者不相等？？？注意到这是一个容易被忽视的细节，在上连续性中，我们
+                    <b>
+                        额外要求
+                    </b>
+                    了对于
+                    <img src="https://www.zhihu.com/equation?tex=A_n%5Csearrow+A" alt="A_n\searrow A" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28A_1%29%3C%5Cinfty" alt="\mu(A_1)&lt;\infty" eeimg="1">
+                    。而这里，我们显然并不能保证
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3C%5Cinfty" alt="\mu(\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )&lt;\infty" eeimg="1">
+                    对于某个有限的
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    成立！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        依测度收敛的可测函数列可以通过适当选取子列，使得子列几乎一致收敛！
+                    </b>
+                    这是一个由弱推强的重要结论，但是作为代价，我们要扔掉一些函数列中不够好的项！在这里，我们需要用到一个
+                    <b>
+                        取子列的小技巧
+                    </b>
+                    。对于
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7B%5Cmu%7D%5Crightarrow+f" alt="f_n\overset{\mu}\rightarrow f" eeimg="1">
+                    ，我们有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cmu%28+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\lim_{n\rightarrow\infty}\mu( \left \{ |f_n-f|\geq \varepsilon \right \} )=0" eeimg="1">
+                    。那么如何
+                    <b>
+                        把那些足够好的项给取出来
+                    </b>
+                    呢？我们不妨把
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    关于每个
+                    <img src="https://www.zhihu.com/equation?tex=k%3D1%2C2%2C..." alt="k=1,2,..." eeimg="1">
+                    实现为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%5Ek%7D" alt="\frac{1}{2^k}" eeimg="1">
+                    。那么将
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bn%5Crightarrow%5Cinfty%7D" alt="\lim_{n\rightarrow\infty}" eeimg="1">
+                    写开，我们有对于每个
+                    <img src="https://www.zhihu.com/equation?tex=k%3D1%2C2%2C..." alt="k=1,2,..." eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall%5Cdelta%3E0%2C%5Cexists+N%2Cn%3EN%2C%5Cmu%28+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cfrac%7B1%7D%7B2%5Ek%7D+%5Cright+%5C%7D+%29%3C%5Cdelta" alt="\forall\delta&gt;0,\exists N,n&gt;N,\mu( \left \{ |f_n-f|\geq \frac{1}{2^k} \right \} )&lt;\delta" eeimg="1">
+                    。我们再进一步把
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    关于每个
+                    <img src="https://www.zhihu.com/equation?tex=k%3D1%2C2%2C..." alt="k=1,2,..." eeimg="1">
+                    也实现为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B2%5Ek%7D" alt="\frac{1}{2^k}" eeimg="1">
+                    。得到：
+                    <b>
+                        对于每个
+                        <img src="https://www.zhihu.com/equation?tex=k%3D1%2C2%2C..." alt="k=1,2,..." eeimg="1">
+                        ，总是存在
+                        <img src="https://www.zhihu.com/equation?tex=N_k%5Cin%5Cmathbb%7BN%7D%2Cn%5Cgeq+N_k" alt="N_k\in\mathbb{N},n\geq N_k" eeimg="1">
+                        时，都有
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu%28+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cfrac%7B1%7D%7B2%5Ek%7D+%5Cright+%5C%7D+%29%3C%5Cfrac%7B1%7D%7B2%5Ek%7D" alt="\mu( \left \{ |f_n-f|\geq \frac{1}{2^k} \right \} )&lt;\frac{1}{2^k}" eeimg="1">
+                        成立！这样，
+                        <img src="https://www.zhihu.com/equation?tex=f_%7BN_k%7D" alt="f_{N_k}" eeimg="1">
+                        就是我们所需要的那个足够好的子列！
+                    </b>
+                    因为
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bm%5Crightarrow%5Cinfty%7D%5Cmu%28%5Cbigcup_%7Bk%3Dm%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_%7BN_k%7D-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%5Cleq%5Clim_%7Bm%5Crightarrow%5Cinfty%7D%5Csum_%7Bk%3Dm%7D%5E%5Cinfty%5Cfrac%7B1%7D%7B2%5Ek%7D%3D0" alt="\lim_{m\rightarrow\infty}\mu(\bigcup_{k=m}^\infty \left \{ |f_{N_k}-f|\geq \varepsilon \right \} )\leq\lim_{m\rightarrow\infty}\sum_{k=m}^\infty\frac{1}{2^k}=0" eeimg="1">
+                    ，这通过测度的半可列可加性可以轻松得到！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    类似地，如果定义
+                    <b>
+                        依测度基本列
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f_n" alt="f_n" eeimg="1">
+                    若对于
+                    <img src="https://www.zhihu.com/equation?tex=n%2Cm%5Crightarrow%5Cinfty" alt="n,m\rightarrow\infty" eeimg="1">
+                    ，都有
+                    <img src="https://www.zhihu.com/equation?tex=f_n-f_m%5Coverset%7B%5Cmu%7D%5Crightarrow0" alt="f_n-f_m\overset{\mu}\rightarrow0" eeimg="1">
+                    。（是不是很眼熟很像Cauchy列！）那么我们通过故技重施，就可以证明必定存在其子列
+                    <img src="https://www.zhihu.com/equation?tex=f_%7Bn_k%7D" alt="f_{n_k}" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=k%2Cl%5Crightarrow%5Cinfty" alt="k,l\rightarrow\infty" eeimg="1">
+                    时，都有
+                    <img src="https://www.zhihu.com/equation?tex=f_%7Bn_k%7D-f_%7Bn_l%7D%5Coverset%7Ba.u.%7D%5Crightarrow+0" alt="f_{n_k}-f_{n_l}\overset{a.u.}\rightarrow 0" eeimg="1">
+                    。进一步地，利用级数构造，推导出存在可测的
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7B%5Cmu%7D%5Crightarrow+f" alt="f_n\overset{\mu}\rightarrow f" eeimg="1">
+                    ！这就可以看作是
+                    <b>
+                        Cauchy收敛原理
+                    </b>
+                    在测度论中的一个推广！
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    作为特殊情况，我们再考虑一下这几种收敛模式在
+                    <b>
+                        概率空间
+                    </b>
+                    中的
+                    <b>
+                        关联
+                    </b>
+                    ：
+                </p>
+                <p>
+                    此时，利用概率空间中测度的有限性，我们可以利用测度的上连续性了！几乎处处收敛等价于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Cmu%28%5Clim_%7BN%5Crightarrow%5Cinfty%7D%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\mu(\lim_{N\rightarrow\infty}\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )=0" eeimg="1">
+                    ，而几乎一致收敛等价于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Clim_%7BN%5Crightarrow%5Cinfty%7D%5Cmu%28%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\lim_{N\rightarrow\infty}\mu(\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )=0" eeimg="1">
+                    。此时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28%5Clim_%7BN%5Crightarrow%5Cinfty%7D%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D%5Clim_%7BN%5Crightarrow%5Cinfty%7D%5Cmu%28%5Cbigcup_%7Bn%3DN%7D%5E%5Cinfty+%5Cleft+%5C%7B+%7Cf_n-f%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29" alt="\mu(\lim_{N\rightarrow\infty}\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )=\lim_{N\rightarrow\infty}\mu(\bigcup_{n=N}^\infty \left \{ |f_n-f|\geq \varepsilon \right \} )" eeimg="1">
+                    。也就是说，
+                    <b>
+                        几乎处处收敛与几乎一致收敛在概率空间中等价
+                    </b>
+                    ，我们也称其为
+                    <b>
+                        几乎必然收敛
+                    </b>
+                    ，记
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Ba.s.%7D%5Crightarrow+f" alt="f_n\overset{a.s.}\rightarrow f" eeimg="1">
+                    。
+                </p>
+                <p>
+                    然而在概率空间中，我们仍旧存在着依测度收敛但并非几乎必然收敛的可测函数列。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=%28%5B0%2C1%29%2C%5Cmathscr%7BB%7D_%7B%5B0%2C1%29%7D%2C%5Cmu%29" alt="([0,1),\mathscr{B}_{[0,1)},\mu)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    为Lebesgue测度，及其上可测函数列
+                    <img src="https://www.zhihu.com/equation?tex=f_1%3DI_%7B%5B0%2C1%29%7D%2Cf_2%3DI_%7B%5B0%2C%5Cfrac%7B1%7D%7B2%7D%29%7D%2Cf_3%3DI_%7B%5B%5Cfrac%7B1%7D%7B2%7D%2C1%29%7D%2Cf_4%3DI_%7B%5B0%2C%5Cfrac%7B1%7D%7B3%7D%29%7D%2Cf_5%3DI_%7B%5B%5Cfrac%7B1%7D%7B3%7D%2C%5Cfrac%7B2%7D%7B3%7D%29%7D%2C..." alt="f_1=I_{[0,1)},f_2=I_{[0,\frac{1}{2})},f_3=I_{[\frac{1}{2},1)},f_4=I_{[0,\frac{1}{3})},f_5=I_{[\frac{1}{3},\frac{2}{3})},..." eeimg="1">
+                </p>
+                <p>
+                    则对于每个固定的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=f_n%28x%29" alt="f_n(x)" eeimg="1">
+                    即使在
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    已经充分大时也均会取到
+                    <img src="https://www.zhihu.com/equation?tex=0%2C1" alt="0,1" eeimg="1">
+                    。故并非几乎处处收敛的。
+                </p>
+                <p>
+                    然而，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cvarepsilon+%3E0%2C%5Clim_%7Bn%5Crightarrow%5Cinfty%7D%5Cmu%28+%5Cleft+%5C%7B+%7Cf_n-0%7C%5Cgeq+%5Cvarepsilon+%5Cright+%5C%7D+%29%3D0" alt="\forall \varepsilon &gt;0,\lim_{n\rightarrow\infty}\mu( \left \{ |f_n-0|\geq \varepsilon \right \} )=0" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7B%5Cmu%7D%5Crightarrow+0" alt="f_n\overset{\mu}\rightarrow 0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在概率空间中，
+                    <b>
+                        依测度收敛强于依分布收敛
+                    </b>
+                    。这是初等概率论中就已经证明了的结果。
+                </p>
+                <p>
+                    关于准分布函数
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    ，我们构造其
+                    <b>
+                        左连续逆
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow%28t%29%3Dinf%5Cleft+%5C%7B++x%7CF%28x%29%5Cgeq+t%5Cright+%5C%7D" alt="F^\leftarrow(t)=inf\left \{  x|F(x)\geq t\right \}" eeimg="1">
+                    。这样的构造加之准分布函数本身的非降右连续性，我们可以推出
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow" alt="F^\leftarrow" eeimg="1">
+                    具有
+                    <b>
+                        非降、左连续性，且
+                        <img src="https://www.zhihu.com/equation?tex=F%28x%29%5Cgeq+t" alt="F(x)\geq t" eeimg="1">
+                        等价于
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow%28t%29%5Cleq+x" alt="F^\leftarrow(t)\leq x" eeimg="1">
+                    。（即虽然
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow" alt="F^\leftarrow" eeimg="1">
+                    并非
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    在严格意义上的逆，其已经具有了逆的性质）值得一提的是，左连续逆在弱收敛意义下也是可以保持的，即由
+                    <img src="https://www.zhihu.com/equation?tex=F_n%5Coverset%7Bw%7D%5Crightarrow+F" alt="F_n\overset{w}\rightarrow F" eeimg="1">
+                    可以推出
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow_n%5Coverset%7Bw%7D%5Crightarrow+F%5E%5Cleftarrow" alt="F^\leftarrow_n\overset{w}\rightarrow F^\leftarrow" eeimg="1">
+                    。
+                </p>
+                <p>
+                    这将会便于我们对于服从各种分布的随机变量的构造。（回忆概率论中，我们总是用一
+                    <b>
+                        个分布函数的反函数作用于一个均匀分布的随机变量
+                    </b>
+                    来得到一个服从此分布的随机变量，在这里我们一样地操作）考虑概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%280%2C1%29%2C%5Cmathscr%7BB%7D_%7B%280%2C1%29%7D%2C%5Cmu%29" alt="((0,1),\mathscr{B}_{(0,1)},\mu)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    取Lebesgue测度，则
+                    <img src="https://www.zhihu.com/equation?tex=U%28t%29%3Dt" alt="U(t)=t" eeimg="1">
+                    为一个其上的
+                    <b>
+                        均匀分布
+                    </b>
+                    随机变量。因为对于
+                    <img src="https://www.zhihu.com/equation?tex=%28a%2Cb%29%5Csubset+%280%2C1%29" alt="(a,b)\subset (0,1)" eeimg="1">
+                    ，容易发现
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28U%5Cin%28a%2Cb%29%29%3Db-a" alt="\mu(U\in(a,b))=b-a" eeimg="1">
+                    ，与在概率中关于均匀分布的定义吻合。那么考虑
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow%5Ccirc+U" alt="F^\leftarrow\circ U" eeimg="1">
+                    ，其分布函数恰好为
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    。这告诉我们：
+                    <b>
+                        对于任何分布函数
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        ，总是能构造出一个概率空间及其上随机变量
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        ，使得
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f%5Csim+F" alt="f\sim F" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    最后，
+                    <b>
+                        Skorokhod定理
+                    </b>
+                    告诉我们：
+                    <b>
+                        对于一个概率空间
+                        <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmathscr%7BF%7D%2C%5Cmu%29" alt="(X,\mathscr{F},\mu)" eeimg="1">
+                        中的依分布收敛的随机变量列
+                        <img src="https://www.zhihu.com/equation?tex=f_n%5Coverset%7Bd%7D%5Crightarrow+f" alt="f_n\overset{d}\rightarrow f" eeimg="1">
+                        ，总是存在另一个概率空间
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Ctilde%7BX%7D%2C%5Ctilde%7B%5Cmathscr%7BF%7D%7D%2C%5Ctilde%7B%5Cmu%7D%29" alt="(\tilde{X},\tilde{\mathscr{F}},\tilde{\mu})" eeimg="1">
+                        中的随机变量列
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7Bf_n%7D%5Coverset%7Bd%7D%3Df_n%2C%5Ctilde%7Bf%7D%5Coverset%7Bd%7D%3Df" alt="\tilde{f_n}\overset{d}=f_n,\tilde{f}\overset{d}=f" eeimg="1">
+                        ，使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7Bf_n%7D%5Coverset%7Ba.s.%7D%5Crightarrow%5Ctilde%7Bf%7D" alt="\tilde{f_n}\overset{a.s.}\rightarrow\tilde{f}" eeimg="1">
+                        。
+                    </b>
+                    从依分布收敛变换到几乎必然收敛所要付出的代价更加大，我们需要把整个概率空间都换掉！
+                </p>
+                <p>
+                    这个深刻的定理的证明却异常地简单，利用到了Lebesgue测度以及单调函数间断点的性质进行了巧妙的组合。作为一个对于概率空间的讨论的
+                    <b>
+                        技巧
+                    </b>
+                    ，在对概率空间进行替换时，我们通常都希望将一个我们所不清楚的概率测度替换成我们最熟悉的
+                    <b>
+                        Lebesgue测度
+                    </b>
+                    。由于需要满足
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu%28X%29%3D1" alt="\mu(X)=1" eeimg="1">
+                    ，我们通常选择在
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C1%29" alt="(0,1)" eeimg="1">
+                    上建立概率空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%280%2C1%29%2C%5Cmathscr%7BB%7D_%7B%280%2C1%29%7D%2C%5Cmu%29" alt="((0,1),\mathscr{B}_{(0,1)},\mu)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    取Lebesgue测度。
+                </p>
+                <p>
+                    那么假设
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7BU%7D" alt="\tilde{U}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%28%280%2C1%29%2C%5Cmathscr%7BB%7D_%7B%280%2C1%29%7D%2C%5Cmu%29" alt="((0,1),\mathscr{B}_{(0,1)},\mu)" eeimg="1">
+                    上的均匀分布随机变量，我们立马得到
+                    <img src="https://www.zhihu.com/equation?tex=F_n%5E%5Cleftarrow%5Ccirc%5Ctilde%7BU%7D%5Csim+F_n%2CF%5E%5Cleftarrow%5Ccirc%5Ctilde%7BU%7D%5Csim+F" alt="F_n^\leftarrow\circ\tilde{U}\sim F_n,F^\leftarrow\circ\tilde{U}\sim F" eeimg="1">
+                    。故不妨令
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7Bf_n%7D%3DF_n%5E%5Cleftarrow%5Ccirc%5Ctilde%7BU%7D%EF%BC%8C%5Ctilde%7Bf%7D%3DF%5E%5Cleftarrow%5Ccirc%5Ctilde%7BU%7D" alt="\tilde{f_n}=F_n^\leftarrow\circ\tilde{U}，\tilde{f}=F^\leftarrow\circ\tilde{U}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    由左连续逆在弱收敛意义下得以保持，立马得到：
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow_n%5Coverset%7Bw%7D%5Crightarrow+F%5E%5Cleftarrow" alt="F^\leftarrow_n\overset{w}\rightarrow F^\leftarrow" eeimg="1">
+                    ，即在所有
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow" alt="F^\leftarrow" eeimg="1">
+                    的连续点处逐点收敛。
+                </p>
+                <p>
+                    我们换一个角度思考，这就意味着
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7Bf_n%7D%5Crightarrow%5Ctilde%7Bf%7D" alt="\tilde{f_n}\rightarrow\tilde{f}" eeimg="1">
+                    仅在所有的
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow" alt="F^\leftarrow" eeimg="1">
+                    的不连续点处不成立。
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Cleftarrow" alt="F^\leftarrow" eeimg="1">
+                    非降，故其
+                    <b>
+                        间断点个数至多可数
+                    </b>
+                    。（这是实变中的经典结论，因为对于单调函数而言，其间断点恰好对应了将
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    轴上的一组不交开区间。而数轴上的不交开区间个数至多可数，因为每个开区间包含了一个不同的有理数，故不交开区间个数不可能超过全体有理数的个数）又注意到
+                    <b>
+                        所有可数集的Lebesgue测度为零
+                    </b>
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7Bf_n%7D%5Coverset%7Ba.e.%7D%5Crightarrow%5Ctilde%7Bf%7D" alt="\tilde{f_n}\overset{a.e.}\rightarrow\tilde{f}" eeimg="1">
+                    ，得证！
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
