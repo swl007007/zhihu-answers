@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Kaggle 入门指南
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            .highlight .c{ color: #999999; font-style: italic}.highlight .err{ color: #a61717;}.highlight .esc{ color: #d0d0d0}.highlight .g{ color: #d0d0d0}.highlight .k{ color: #6ab825; font-weight: bold}.highlight .l{ color: #d0d0d0}.highlight .n{ color: #d0d0d0}.highlight .o{ color: #d0d0d0}.highlight .x{ color: #d0d0d0}.highlight .p{ color: #d0d0d0}.highlight .ch{ color: #999999; font-style: italic}.highlight .cm{ color: #999999; font-style: italic}.highlight .cp{ color: #cd2828; font-weight: bold}.highlight .cpf{ color: #999999; font-style: italic}.highlight .c1{ color: #999999; font-style: italic}.highlight .cs{ color: #e50808; font-weight: bold;}.highlight .gd{ color: #d22323}.highlight .ge{ color: #d0d0d0; font-style: italic}.highlight .gr{ color: #d22323}.highlight .gh{ color: #ffffff; font-weight: bold}.highlight .gi{ color: #589819}.highlight .go{ color: #cccccc}.highlight .gp{ color: #aaaaaa}.highlight .gs{ color: #d0d0d0; font-weight: bold}.highlight .gu{ color: #ffffff;}.highlight .gt{ color: #d22323}.highlight .kc{ color: #6ab825; font-weight: bold}.highlight .kd{ color: #6ab825; font-weight: bold}.highlight .kn{ color: #6ab825; font-weight: bold}.highlight .kp{ color: #6ab825}.highlight .kr{ color: #6ab825; font-weight: bold}.highlight .kt{ color: #6ab825; font-weight: bold}.highlight .ld{ color: #d0d0d0}.highlight .m{ color: #3677a9}.highlight .s{ color: #ed9d13}.highlight .na{ color: #bbbbbb}.highlight .nb{ color: #24909d}.highlight .nc{ color: #447fcf;}.highlight .no{ color: #40ffff}.highlight .nd{ color: #ffa500}.highlight .ni{ color: #d0d0d0}.highlight .ne{ color: #bbbbbb}.highlight .nf{ color: #447fcf}.highlight .nl{ color: #d0d0d0}.highlight .nn{ color: #447fcf;}.highlight .nx{ color: #d0d0d0}.highlight .py{ color: #d0d0d0}.highlight .nt{ color: #6ab825; font-weight: bold}.highlight .nv{ color: #40ffff}.highlight .ow{ color: #6ab825; font-weight: bold}.highlight .w{ color: #666666}.highlight .mb{ color: #3677a9}.highlight .mf{ color: #3677a9}.highlight .mh{ color: #3677a9}.highlight .mi{ color: #3677a9}.highlight .mo{ color: #3677a9}.highlight .sa{ color: #ed9d13}.highlight .sb{ color: #ed9d13}.highlight .sc{ color: #ed9d13}.highlight .dl{ color: #ed9d13}.highlight .sd{ color: #ed9d13}.highlight .s2{ color: #ed9d13}.highlight .se{ color: #ed9d13}.highlight .sh{ color: #ed9d13}.highlight .si{ color: #ed9d13}.highlight .sx{ color: #ffa500}.highlight .sr{ color: #ed9d13}.highlight .s1{ color: #ed9d13}.highlight .ss{ color: #ed9d13}.highlight .bp{ color: #24909d}.highlight .fm{ color: #447fcf}.highlight .vc{ color: #40ffff}.highlight .vg{ color: #40ffff}.highlight .vi{ color: #40ffff}.highlight .vm{ color: #40ffff}.highlight .il{ color: #3677a9}.highlight .hll{ background-color: #404040}.highlight{	margin: 40px 0;background: #2f3640;color: #fff;	padding: 20px 20px;	font-size: 16px;	overflow: auto;	border-radius: 8px;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-52af8e306a7881809410785995fa7aa6_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/25742261" target="_blank">
+                        Kaggle 入门指南
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/instante_42">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-f8df7dc974a522b119a385a0fc09311e.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    Instante
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2017-03-13
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    <b>
+                        Disclaimer：这是我 2016 年 4 月参加完第一次 Kaggle 比赛并拿到前 5% 的成绩后写的总结。本文的英文版当时还被 Kaggle 的官方推特转发推荐。一年过去了，Kaggle 的赛制和积分体系等都发生了一些变化，不过本文中描述的依然是行之有效的入门 Kaggle 或者其他任何数据科学项目的方法。
+                    </b>
+                </p>
+                <h2>
+                    I. General Approach
+                </h2>
+                <p>
+                    在这一节中我会讲述一次 Kaggle 比赛的大致流程。
+                </p>
+                <h2>
+                    1. Data Exploration
+                </h2>
+                <p>
+                    在这一步要做的基本就是
+                    <b>
+                        EDA (Exploratory Data Analysis)
+                    </b>
+                    ，也就是对数据进行探索性的分析，从而为之后的处理和建模提供必要的结论。
+                </p>
+                <p>
+                    通常我们会用
+                    <b>
+                        <a href="https://link.zhihu.com/?target=http%3A//pandas.pydata.org/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            pandas
+                        </a>
+                    </b>
+                    来载入数据，并做一些简单的可视化来理解数据。
+                </p>
+                <h2>
+                    1.1 Visualization
+                </h2>
+                <p>
+                    通常来说
+                    <b>
+                        <a href="https://link.zhihu.com/?target=http%3A//matplotlib.org/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            matplotlib
+                        </a>
+                    </b>
+                    和
+                    <b>
+                        <a href="https://link.zhihu.com/?target=https%3A//stanford.edu/~mwaskom/software/seaborn/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            seaborn
+                        </a>
+                    </b>
+                    提供的绘图功能就可以满足需求了。
+                </p>
+                <p>
+                    比较常用的图表有：
+                </p>
+                <ul>
+                    <li>
+                        查看目标变量的分布。当分布
+                        <a href="https://link.zhihu.com/?target=http%3A//ieeexplore.ieee.org/stamp/stamp.jsp%3Farnumber%3D5128907" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            不平衡
+                        </a>
+                        时，根据评分标准和具体模型的使用不同，可能会严重影响性能。
+                    </li>
+                    <li>
+                        对
+                        <b>
+                            Numerical Variable
+                        </b>
+                        ，可以用
+                        <b>
+                            Box Plot
+                        </b>
+                        来直观地查看它的分布。
+                    </li>
+                    <li>
+                        对于坐标类数据，可以用
+                        <b>
+                            Scatter Plot
+                        </b>
+                        来查看它们的分布趋势和是否有离群点的存在。
+                    </li>
+                    <li>
+                        对于分类问题，将数据根据 Label 的不同着不同的颜色绘制出来，这对 Feature 的构造很有帮助。
+                    </li>
+                    <li>
+                        绘制变量之间两两的分布和相关度图表。
+                    </li>
+                </ul>
+                <p>
+                    <b>
+                        <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/benhamner/d/uciml/iris/python-data-visualizations" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            这里
+                        </a>
+                        有一个在著名的 Iris 数据集上做了一系列可视化的例子，非常有启发性。
+                    </b>
+                </p>
+                <h2>
+                    1.2 Statistical Tests
+                </h2>
+                <p>
+                    我们可以对数据进行一些统计上的测试来验证一些假设的显著性。虽然大部分情况下靠可视化就能得到比较明确的结论，但有一些定量结果总是更理想的。不过，在实际数据中经常会遇到非 i.i.d. 的分布。所以要注意测试类型的的选择和对显著性的解释。
+                </p>
+                <p>
+                    在某些比赛中，由于数据分布比较奇葩或是噪声过强，
+                    <b>
+                        Public LB
+                    </b>
+                    的分数可能会跟
+                    <b>
+                        Local CV
+                    </b>
+                    的结果相去甚远。可以根据一些统计测试的结果来粗略地建立一个阈值，用来衡量一次分数的提高究竟是实质的提高还是由于数据的随机性导致的。
+                </p>
+                <h2>
+                    2. Data Preprocessing
+                </h2>
+                <p>
+                    大部分情况下，在构造 Feature 之前，我们需要对比赛提供的数据集进行一些处理。通常的步骤有：
+                </p>
+                <ul>
+                    <li>
+                        有时数据会分散在几个不同的文件中，需要 Join 起来。
+                    </li>
+                    <li>
+                        处理
+                        <b>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Missing_data" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Missing Data
+                            </a>
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        处理
+                        <b>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Outlier" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Outlier
+                            </a>
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        必要时转换某些
+                        <b>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Categorical_variable" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Categorical Variable
+                            </a>
+                        </b>
+                        的表示方式。
+                    </li>
+                    <li>
+                        有些 Float 变量可能是从未知的 Int 变量转换得到的，这个过程中发生精度损失会在数据中产生不必要的
+                        <b>
+                            Noise
+                        </b>
+                        ，即两个数值原本是相同的却在小数点后某一位开始有不同。这对 Model 可能会产生很负面的影响，需要设法去除或者减弱 Noise。
+                    </li>
+                </ul>
+                <p>
+                    这一部分的处理策略多半依赖于在前一步中探索数据集所得到的结论以及创建的可视化图表。在实践中，我建议使用
+                    <b>
+                        <a href="https://link.zhihu.com/?target=http%3A//ipython.org/notebook.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            iPython Notebook
+                        </a>
+                    </b>
+                    进行对数据的操作，并熟练掌握常用的 pandas 函数。这样做的好处是可以随时得到结果的反馈和进行修改，也方便跟其他人进行交流（在 Data Science 中
+                    <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Reproducibility" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Reproducible Results
+                    </a>
+                    是很重要的)。
+                </p>
+                <p>
+                    下面给两个例子。
+                </p>
+                <h2>
+                    2.1 Outlier
+                </h2>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-d3463b75e968264b31df5aa92019a90e_r.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这是经过 Scaling 的坐标数据。可以发现右上角存在一些离群点，去除以后分布比较正常。
+                </p>
+                <h2>
+                    2.2 Dummy Variables
+                </h2>
+                <p>
+                    对于 Categorical Variable，常用的做法就是
+                    <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/One-hot" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        One-hot encoding
+                    </a>
+                    。即对这一变量创建一组新的伪变量，对应其所有可能的取值。这些变量中只有这条数据对应的取值为 1，其他都为 0。
+                </p>
+                <p>
+                    如下，将原本有 7 种可能取值的 Weekdays 变量转换成 7 个 Dummy Variables。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-5bb23e2634ac20b701c55a8d0262737e_r.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    要注意，当变量可能取值的范围很大（比如一共有成百上千类）时，这种简单的方法就不太适用了。这时没有有一个普适的方法，但我会在下一小节描述其中一种。
+                </p>
+                <h2>
+                    3. Feature Engineering
+                </h2>
+                <p>
+                    有人总结 Kaggle 比赛是
+                    <b>
+                        “Feature 为主，调参和 Ensemble 为辅”
+                    </b>
+                    ，我觉得很有道理。Feature Engineering 能做到什么程度，取决于对数据领域的了解程度。比如在数据包含大量文本的比赛中，常用的 NLP 特征就是必须的。怎么构造有用的 Feature，是一个不断学习和提高的过程。
+                </p>
+                <p>
+                    一般来说，
+                    <b>
+                        当一个变量从直觉上来说对所要完成的目标有帮助，就可以将其作为 Feature
+                    </b>
+                    。至于它是否有效，最简单的方式就是通过图表来直观感受。比如：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-718cd134796b36bf65c184d199adf48f_b.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    3.1 Feature Selection
+                </h2>
+                <p>
+                    总的来说，我们应该
+                    <b>
+                        生成尽量多的 Feature，相信 Model 能够挑出最有用的 Feature
+                    </b>
+                    。但有时先做一遍 Feature Selection 也能带来一些好处：
+                </p>
+                <ul>
+                    <li>
+                        Feature 越少，训练越快。
+                    </li>
+                    <li>
+                        有些 Feature 之间可能存在线性关系，影响 Model 的性能。
+                    </li>
+                    <li>
+                        <b>
+                            通过挑选出最重要的 Feature，可以将它们之间进行各种运算和操作的结果作为新的 Feature，可能带来意外的提高。
+                        </b>
+                    </li>
+                </ul>
+                <p>
+                    Feature Selection 最实用的方法也就是看 Random Forest 训练完以后得到的
+                    <b>
+                        Feature Importance
+                    </b>
+                    了。其他有一些更复杂的算法在理论上更加 Robust，但是缺乏实用高效的实现，比如
+                    <a href="https://link.zhihu.com/?target=http%3A//jmlr.org/papers/volume10/tuv09a/tuv09a.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        这个
+                    </a>
+                    。从原理上来讲，增加 Random Forest 中树的数量可以在一定程度上加强其对于 Noisy Data 的 Robustness。
+                </p>
+                <p>
+                    看 Feature Importance 对于某些数据经过
+                    <b>
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Data_anonymization" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            脱敏
+                        </a>
+                    </b>
+                    处理的比赛尤其重要。这可以免得你浪费大把时间在琢磨一个不重要的变量的意义上。
+                </p>
+                <h2>
+                    3.2 Feature Encoding
+                </h2>
+                <p>
+                    这里用一个例子来说明在一些情况下 Raw Feature 可能需要经过一些转换才能起到比较好的效果。
+                </p>
+                <p>
+                    假设有一个 Categorical Variable 一共有几万个取值可能，那么创建 Dummy Variables 的方法就不可行了。这时一个比较好的方法是根据 Feature Importance 或是这些取值本身在数据中的出现频率，为最重要（比如说前 95% 的 Importance）那些取值（有很大可能只有几个或是十几个）创建 Dummy Variables，而所有其他取值都归到一个“其他”类里面。
+                </p>
+                <h2>
+                    4 Model Selection
+                </h2>
+                <p>
+                    准备好 Feature 以后，就可以开始选用一些常见的模型进行训练了。Kaggle 上最常用的模型基本都是基于树的模型：
+                </p>
+                <ul>
+                    <li>
+                        <b>
+                            Gradient Boosting
+                        </b>
+                    </li>
+                    <li>
+                        Random Forest
+                    </li>
+                    <li>
+                        Extra Randomized Trees
+                    </li>
+                </ul>
+                <p>
+                    以下模型往往在性能上稍逊一筹，但是很适合作为 Ensemble 的 Base Model。这一点之后再详细解释。（当然，在跟图像有关的比赛中神经网络的重要性还是不能小觑的。）
+                </p>
+                <ul>
+                    <li>
+                        SVM
+                    </li>
+                    <li>
+                        Linear Regression
+                    </li>
+                    <li>
+                        Logistic Regression
+                    </li>
+                    <li>
+                        Neural Networks
+                    </li>
+                </ul>
+                <p>
+                    以上这些模型基本都可以通过
+                    <b>
+                        <a href="https://link.zhihu.com/?target=http%3A//scikit-learn.org/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            sklearn
+                        </a>
+                    </b>
+                    来使用。
+                </p>
+                <p>
+                    当然，这里不能不提一下
+                    <b>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/dmlc/xgboost" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Xgboost
+                        </a>
+                    </b>
+                    。
+                    <b>
+                        Gradient Boosting
+                    </b>
+                    本身优秀的性能加上
+                    <b>
+                        Xgboost
+                    </b>
+                    高效的实现，使得它在 Kaggle 上广为使用。几乎每场比赛的获奖者都会用
+                    <b>
+                        Xgboost
+                    </b>
+                    作为最终 Model 的重要组成部分。在实战中，我们往往会以 Xgboost 为主来建立我们的模型并且验证 Feature 的有效性。顺带一提，
+                    <b>
+                        在 Windows 上安装
+                    </b>
+                    Xgboost
+                    <b>
+                        很容易遇到问题，目前已知最简单、成功率最高的方案可以参考我在
+                        <a href="https://link.zhihu.com/?target=https%3A//dnc1994.com/2016/03/installing-xgboost-on-windows/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            这篇帖子
+                        </a>
+                        中的描述
+                    </b>
+                    。
+                </p>
+                <h2>
+                    4.1 Model Training
+                </h2>
+                <p>
+                    在训练时，我们主要希望通过调整参数来得到一个性能不错的模型。一个模型往往有很多参数，但其中比较重要的一般不会太多。比如对
+                    <b>
+                        sklearn
+                    </b>
+                    的 RandomForestClassifier 来说，比较重要的就是随机森林中树的数量 n_estimators 以及在训练每棵树时最多选择的特征数量 max_features。所以
+                    <b>
+                        我们需要对自己使用的模型有足够的了解，知道每个参数对性能的影响是怎样的
+                    </b>
+                    。
+                </p>
+                <p>
+                    通常我们会通过一个叫做
+                    <a href="https://link.zhihu.com/?target=http%3A//scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html%29" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Grid Search
+                    </a>
+                    的过程来确定一组最佳的参数。其实这个过程说白了就是根据给定的参数候选对所有的组合进行暴力搜索。
+                </p>
+                <div class="highlight">
+                    <pre><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="n">n_estimators</span><span class="p">:</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> <span class="n">max_features</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">]}</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rfr</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">RMSE</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre>
+                </div>
+                <p>
+                    顺带一提，Random Forest 一般在 max_features 设为 Feature 数量的平方根附近得到最佳结果。
+                </p>
+                <p>
+                    这里要重点讲一下 Xgboost 的调参。通常认为对它性能影响较大的参数有：
+                </p>
+                <ul>
+                    <li>
+                        eta：每次迭代完成后更新权重时的步长。越小训练越慢。
+                    </li>
+                    <li>
+                        num_round：总共迭代的次数。
+                    </li>
+                    <li>
+                        subsample：训练每棵树时用来训练的数据占全部的比例。用于防止 Overfitting。
+                    </li>
+                    <li>
+                        colsample_bytree：训练每棵树时用来训练的特征的比例，类似 RandomForestClassifier 的 max_features。
+                    </li>
+                    <li>
+                        max_depth：每棵树的最大深度限制。与 Random Forest 不同，
+                        <b>
+                            Gradient Boosting 如果不对深度加以限制，最终是会 Overfit 的
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        early_stopping_rounds：用于控制在 Out Of Sample 的验证集上连续多少个迭代的分数都没有提高后就提前终止训练。用于防止 Overfitting。
+                    </li>
+                </ul>
+                <p>
+                    一般的调参步骤是：
+                </p>
+                <ol>
+                    <li>
+                        将训练数据的一部分划出来作为验证集。
+                    </li>
+                    <li>
+                        先将 eta 设得比较高（比如 0.1），num_round 设为 300 ~ 500。
+                    </li>
+                    <li>
+                        用 Grid Search 对其他参数进行搜索
+                    </li>
+                    <li>
+                        逐步将 eta 降低，找到最佳值。
+                    </li>
+                    <li>
+                        以验证集为 watchlist，用找到的最佳参数组合重新在训练集上训练。注意观察算法的输出，看每次迭代后在验证集上分数的变化情况，从而得到最佳的 early_stopping_rounds。
+                    </li>
+                </ol>
+                <div class="highlight">
+                    <pre><span class="n">X_dtrain</span><span class="p">,</span> <span class="n">X_deval</span><span class="p">,</span> <span class="n">y_dtrain</span><span class="p">,</span> <span class="n">y_deval</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1026</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">dtrain</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_dtrain</span><span class="p">,</span> <span class="n">y_dtrain</span><span class="p">)</span>
+<span class="n">deval</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_deval</span><span class="p">,</span> <span class="n">y_deval</span><span class="p">)</span>
+<span class="n">watchlist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">deval</span><span class="p">,</span> <span class="nb">eval</span><span class="p">)]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">booster</span><span class="p">:</span> <span class="n">gbtree</span><span class="p">,</span>
+    <span class="n">objective</span><span class="p">:</span> <span class="n">reg</span><span class="p">:</span><span class="n">linear</span><span class="p">,</span>
+    <span class="n">subsample</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">colsample_bytree</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>
+    <span class="n">eta</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="mi">2016</span><span class="p">,</span>
+    <span class="n">silent</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">eval_metric</span><span class="p">:</span> <span class="n">rmse</span>
+<span class="p">}</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">dtrain</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">watchlist</span><span class="p">,</span> <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">df_test</span><span class="p">))</span>
+</pre>
+                </div>
+                <p>
+                    最后要提一点，所有具有随机性的 Model 一般都会有一个 seed 或是 random_state 参数用于控制随机种子。得到一个好的 Model 后，在记录参数时务必也记录下这个值，从而能够在之后重现 Model。
+                    <br>
+                </p>
+                <h2>
+                    4.2 Cross Validation
+                </h2>
+                <p>
+                    <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Cross-validation_%28statistics%29" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Cross Validation
+                    </a>
+                    是非常重要的一个环节。它让你知道你的 Model 有没有 Overfit，是不是真的能够 Generalize 到测试集上。在很多比赛中
+                    <b>
+                        Public LB
+                    </b>
+                    都会因为这样那样的原因而不可靠。当你改进了 Feature 或是 Model 得到了一个更高的
+                    <b>
+                        CV
+                    </b>
+                    结果，提交之后得到的
+                    <b>
+                        LB
+                    </b>
+                    结果却变差了，
+                    <b>
+                        一般认为这时应该相信 CV 的结果
+                    </b>
+                    。当然，最理想的情况是多种不同的
+                    <b>
+                        CV
+                    </b>
+                    方法得到的结果和
+                    <b>
+                        LB
+                    </b>
+                    同时提高，但这样的比赛并不是太多。
+                </p>
+                <p>
+                    在数据的分布比较随机均衡的情况下，
+                    <b>
+                        5-Fold CV
+                    </b>
+                    一般就足够了。如果不放心，可以提到
+                    <b>
+                        10-Fold
+                    </b>
+                    。
+                    <b>
+                        但是 Fold 越多训练也就会越慢，需要根据实际情况进行取舍。
+                    </b>
+                </p>
+                <p>
+                    很多时候简单的
+                    <b>
+                        CV
+                    </b>
+                    得到的分数会不大靠谱，Kaggle 上也有很多关于如何做
+                    <b>
+                        CV
+                    </b>
+                    的讨论。比如
+                    <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/c/telstra-recruiting-network/forums/t/19277/what-is-your-cross-validation-method" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        这个
+                    </a>
+                    。但总的来说，靠谱的
+                    <b>
+                        CV
+                    </b>
+                    方法是 Case By Case 的，需要在实际比赛中进行尝试和学习，这里就不再（也不能）叙述了。
+                </p>
+                <h2>
+                    5. Ensemble Generation
+                </h2>
+                <p>
+                    <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Ensemble_learning" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Ensemble Learning
+                    </a>
+                    是指将多个不同的 Base Model 组合成一个 Ensemble Model 的方法。它可以
+                    <b>
+                        同时降低最终模型的 Bias 和 Variance
+                    </b>
+                    （证明可以参考
+                    <a href="https://link.zhihu.com/?target=http%3A//link.springer.com/chapter/10.1007%252F3-540-33019-4_19" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        这篇论文
+                    </a>
+                    ，我最近在研究类似的理论，可能之后会写新文章详述)，
+                    <b>
+                        从而在提高分数的同时又降低 Overfitting 的风险
+                    </b>
+                    。在现在的 Kaggle 比赛中要不用 Ensemble 就拿到奖金几乎是不可能的。
+                </p>
+                <p>
+                    常见的 Ensemble 方法有这么几种：
+                </p>
+                <ul>
+                    <li>
+                        Bagging：使用训练数据的不同随机子集来训练每个 Base Model，最后进行每个 Base Model 权重相同的 Vote。也即 Random Forest 的原理。
+                    </li>
+                    <li>
+                        Boosting：迭代地训练 Base Model，每次根据上一个迭代中预测错误的情况修改训练样本的权重。也即 Gradient Boosting 的原理。比 Bagging 效果好，但更容易 Overfit。
+                    </li>
+                    <li>
+                        Blending：用不相交的数据训练不同的 Base Model，将它们的输出取（加权）平均。实现简单，但对训练数据利用少了。
+                    </li>
+                    <li>
+                        Stacking：接下来会详细介绍。
+                    </li>
+                </ul>
+                <p>
+                    从理论上讲，Ensemble 要成功，有两个要素：
+                </p>
+                <ul>
+                    <li>
+                        <b>
+                            Base Model 之间的相关性要尽可能的小。
+                        </b>
+                        这就是为什么非 Tree-based Model 往往表现不是最好但还是要将它们包括在 Ensemble 里面的原因。Ensemble 的 Diversity 越大，最终 Model 的 Bias 就越低。
+                    </li>
+                    <li>
+                        <b>
+                            Base Model 之间的性能表现不能差距太大。
+                        </b>
+                        这其实是一个
+                        <b>
+                            Trade-off
+                        </b>
+                        ，在实际中很有可能表现相近的 Model 只有寥寥几个而且它们之间相关性还不低。但是实践告诉我们即使在这种情况下 Ensemble 还是能大幅提高成绩。
+                    </li>
+                </ul>
+                <h2>
+                    5.1 Stacking
+                </h2>
+                <p>
+                    相比 Blending，Stacking 能更好地利用训练数据。以 5-Fold Stacking 为例，它的基本原理如图所示：
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-84dbc338e11fb89320f2ba310ad69ceb_r.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    整个过程很像 Cross Validation。首先将训练数据分为 5 份，接下来一共 5 个迭代，每次迭代时，将 4 份数据作为 Training Set 对每个 Base Model 进行训练，然后在剩下一份 Hold-out Set 上进行预测。
+                    <b>
+                        同时也要将其在测试数据上的预测保存下来。
+                    </b>
+                    这样，每个 Base Model 在每次迭代时会对训练数据的其中 1 份做出预测，对测试数据的全部做出预测。5 个迭代都完成以后我们就获得了一个 #训练数据行数 x #Base Model 数量 的矩阵，这个矩阵接下来就作为第二层的 Model 的训练数据。当第二层的 Model 训练完以后，将之前保存的 Base Model 对测试数据的预测（
+                    <b>
+                        因为每个 Base Model 被训练了 5 次，对测试数据的全体做了 5 次预测，所以对这 5 次求一个平均值，从而得到一个形状与第二层训练数据相同的矩阵
+                    </b>
+                    ）拿出来让它进行预测，就得到最后的输出。
+                </p>
+                <p>
+                    这里给出我的实现代码：
+                </p>
+                <div class="highlight">
+                    <pre><span class="k">class</span> <span class="nc">Ensemble</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_folds</span><span class="p">,</span> <span class="n">stacker</span><span class="p">,</span> <span class="n">base_models</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_folds</span> <span class="o">=</span> <span class="n">n_folds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stacker</span> <span class="o">=</span> <span class="n">stacker</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_models</span> <span class="o">=</span> <span class="n">base_models</span>
+    <span class="k">def</span> <span class="nf">fit_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">folds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">KFold</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">n_folds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_folds</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2016</span><span class="p">))</span>
+        <span class="n">S_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_models</span><span class="p">)))</span>
+        <span class="n">S_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_models</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_models</span><span class="p">):</span>
+            <span class="n">S_test_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)))</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">folds</span><span class="p">):</span>
+                <span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+                <span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+                <span class="n">X_holdout</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+                <span class="c1"># y_holdout = y[test_idx]</span>
+                <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+                <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_holdout</span><span class="p">)[:]</span>
+                <span class="n">S_train</span><span class="p">[</span><span class="n">test_idx</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+                <span class="n">S_test_i</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">T</span><span class="p">)[:]</span>
+            <span class="n">S_test</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">S_test_i</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stacker</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">S_train</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stacker</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">S_test</span><span class="p">)[:]</span>
+        <span class="k">return</span> <span class="n">y_pred</span>
+</pre>
+                </div>
+                <p>
+                    获奖选手往往会使用比这复杂得多的 Ensemble，会出现三层、四层甚至五层，不同的层数之间有各种交互，还有将经过不同的 Preprocessing 和不同的 Feature Engineering 的数据用 Ensemble 组合起来的做法。但对于新手来说，稳稳当当地实现一个正确的 5-Fold Stacking 已经足够了。
+                    <br>
+                </p>
+                <h2>
+                    6. Pipeline
+                </h2>
+                <p>
+                    可以看出 Kaggle 比赛的 Workflow 还是比较复杂的。尤其是 Model Selection 和 Ensemble。理想情况下，我们需要搭建一个高自动化的 Pipeline，它可以做到：
+                </p>
+                <ul>
+                    <li>
+                        <b>
+                            模块化 Feature Transform
+                        </b>
+                        ，只需写很少的代码就能将新的 Feature 更新到训练集中。
+                    </li>
+                    <li>
+                        <b>
+                            自动化 Grid Search
+                        </b>
+                        ，只要预先设定好使用的 Model 和参数的候选，就能自动搜索并记录最佳的 Model。
+                    </li>
+                    <li>
+                        <b>
+                            自动化 Ensemble Generation
+                        </b>
+                        ，每个一段时间将现有最好的 K 个 Model 拿来做 Ensemble。
+                    </li>
+                </ul>
+                <p>
+                    对新手来说，第一点可能意义还不是太大，因为 Feature 的数量总是人脑管理的过来的；第三点问题也不大，因为往往就是在最后做几次 Ensemble。但是第二点还是很有意义的，手工记录每个 Model 的表现不仅浪费时间而且容易产生混乱。
+                </p>
+                <p>
+                    <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/c/crowdflower-search-relevance" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Crowdflower Search Results Relevance
+                    </a>
+                    的第一名获得者
+                    <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/chenglongchen" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Chenglong Chen
+                    </a>
+                    将他在比赛中使用的 Pipeline
+                    <a href="https://link.zhihu.com/?target=https%3A//github.com/ChenglongChen/Kaggle_CrowdFlower" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        公开了
+                    </a>
+                    ，非常具有参考和借鉴意义。只不过看懂他的代码并将其中的逻辑抽离出来搭建这样一个框架，还是比较困难的一件事。可能在参加过几次比赛以后专门抽时间出来做会比较好。
+                </p>
+                <h2>
+                    II. Home Depot Search Relevance
+                </h2>
+                <p>
+                    在这一节中我会具体分享我在
+                    <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/c/home-depot-product-search-relevance" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Home Depot Search Relevance
+                    </a>
+                    比赛中是怎么做的，以及比赛结束后从排名靠前的队伍那边学到的做法。关于这次比赛的代码我都放在 GitHub 上了，主要的工作都可以在这个 Jupyter Notebook 中找到：
+                    <a href="https://link.zhihu.com/?target=https%3A//github.com/dnc1994/Kaggle-Playground/blob/master/features.ipynb" class="external" target="_blank" rel="nofollow noreferrer">
+                        <span class="invisible">
+                            https://
+                        </span>
+                        <span class="visible">
+                            github.com/dnc1994/Kagg
+                        </span>
+                        <span class="invisible">
+                            le-Playground/blob/master/features.ipynb
+                        </span>
+                        <span class="ellipsis">
+                        </span>
+                    </a>
+                </p>
+                <p>
+                    首先简单介绍这个比赛。Task 是
+                    <b>
+                        判断用户搜索的关键词和网站返回的结果之间的相关度有多高
+                    </b>
+                    。相关度是由 3 个人类打分取平均得到的，每个人可能打 1 ~ 3 分，所以这是一个回归问题。数据中包含用户的搜索词，返回的产品的标题和介绍，以及产品相关的一些属性比如品牌、尺寸、颜色等。使用的评分基准是
+                    <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Root-mean-square_deviation" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        RMSE
+                    </a>
+                    。
+                </p>
+                <p>
+                    这个比赛非常像
+                    <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/c/crowdflower-search-relevance" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Crowdflower Search Results Relevance
+                    </a>
+                    那场比赛。不过那边用的评分基准是
+                    <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Cohen%2527s_kappa%23Weighted_kappa" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Quadratic Weighted Kappa
+                    </a>
+                    ，把 1 误判成 4 的惩罚会比把 1 判成 2 的惩罚大得多，所以在最后 Decode Prediction 的时候会更麻烦一点。除此以外那次比赛没有提供产品的属性。
+                </p>
+                <h2>
+                    1. EDA
+                </h2>
+                <p>
+                    由于加入比赛比较晚，当时已经有相当不错的 EDA 了。尤其是
+                    <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/briantc/home-depot-product-search-relevance/homedepot-first-dataexploreation-k" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        这个
+                    </a>
+                    。从中我得到的启发有：
+                </p>
+                <ul>
+                    <li>
+                        同一个搜索词/产品都出现了多次，
+                        <b>
+                            数据分布显然不 i.i.d.
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        文本之间的相似度很有用。
+                    </li>
+                    <li>
+                        产品中有相当大一部分缺失属性，要考虑这会不会使得从属性中得到的 Feature 反而难以利用。
+                    </li>
+                    <li>
+                        产品的 ID 对预测相关度很有帮助，但是考虑到训练集和测试集之间的重叠度并不太高，利用它会不会导致 Overfitting？
+                    </li>
+                </ul>
+                <h2>
+                    2. Preprocessing
+                </h2>
+                <p>
+                    这次比赛中我的 Preprocessing 和 Feature Engineering 的具体做法都可以在
+                    <a href="https://link.zhihu.com/?target=https%3A//github.com/dnc1994/Kaggle-Playground/blob/master/home-depot/Preprocess.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        这里
+                    </a>
+                    看到。我只简单总结一下和指出重要的点。
+                </p>
+                <ol>
+                    <li>
+                        利用 Forum 上的
+                        <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/steubk/home-depot-product-search-relevance/fixing-typos" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Typo Dictionary
+                        </a>
+                        修正搜索词中的错误。
+                    </li>
+                    <li>
+                        统计属性的出现次数，将其中出现次数多又容易利用的记录下来。
+                    </li>
+                    <li>
+                        将训练集和测试集合并，并与产品描述和属性 Join 起来。这是考虑到后面有一系列操作，如果不合并的话就要重复写两次了。
+                    </li>
+                    <li>
+                        对所有文本能做
+                        <b>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Stemming" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Stemming
+                            </a>
+                        </b>
+                        和
+                        <b>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Text_segmentation%23Word_segmentation" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Tokenizing
+                            </a>
+                        </b>
+                        ，同时手工做了一部分
+                        <b>
+                            格式统一化（比如涉及到数字和单位的）
+                        </b>
+                        和
+                        <b>
+                            同义词替换
+                        </b>
+                        。
+                    </li>
+                </ol>
+                <h2>
+                    3. Feature
+                </h2>
+                <ul>
+                    <li>
+                        *Attribute Features
+                    </li>
+                    <ul>
+                        <li>
+                            是否包含某个特定的属性（品牌、尺寸、颜色、重量、内用/外用、是否有能源之星认证等）
+                        </li>
+                        <li>
+                            这个特定的属性是否匹配
+                        </li>
+                    </ul>
+                </ul>
+                <p>
+                    <br>
+                </p>
+                <ul>
+                    <li>
+                        Meta Features
+                    </li>
+                    <ul>
+                        <li>
+                            各个文本域的长度
+                        </li>
+                        <li>
+                            是否包含属性域
+                        </li>
+                        <li>
+                            品牌（将所有的品牌做数值离散化）
+                        </li>
+                        <li>
+                            产品 ID
+                        </li>
+                    </ul>
+                </ul>
+                <p>
+                    <br>
+                </p>
+                <ul>
+                    <li>
+                        简单匹配
+                    </li>
+                    <ul>
+                        <li>
+                            搜索词是否在产品标题、产品介绍或是产品属性中出现
+                        </li>
+                        <li>
+                            搜索词在产品标题、产品介绍或是产品属性中出现的数量和比例
+                        </li>
+                        <li>
+                            *搜索词中的第 i 个词是否在产品标题、产品介绍或是产品属性中出现
+                        </li>
+                    </ul>
+                </ul>
+                <p>
+                    <br>
+                </p>
+                <ul>
+                    <li>
+                        搜索词和产品标题、产品介绍以及产品属性之间的文本相似度
+                    </li>
+                    <ul>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Bag-of-words_model" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                BOW
+                            </a>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Cosine_similarity" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Cosine Similairty
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Tf%25E2%2580%2593idf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                TF-IDF
+                            </a>
+                            Cosine Similarity
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Jaccard_index" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Jaccard Similarity
+                            </a>
+                        </li>
+                        <li>
+                            *
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Edit_distance" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Edit Distance
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Word2vec" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Word2Vec
+                            </a>
+                            Distance（由于效果不好，最后没有使用，但似乎是因为用的不对）
+                        </li>
+                    </ul>
+                </ul>
+                <p>
+                    <br>
+                </p>
+                <ul>
+                    <li>
+                        <b>
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Latent_semantic_indexing" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Latent Semantic Indexing
+                            </a>
+                            ：通过将 BOW/TF-IDF Vectorization 得到的矩阵进行
+                            <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Singular_value_decomposition" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                SVD 分解
+                            </a>
+                            ，我们可以得到不同搜索词/产品组合的 Latent 标识。这个 Feature 使得 Model 能够在一定程度上对不同的组合做出区别，从而解决某些产品缺失某些 Feature 的问题。
+                        </b>
+                    </li>
+                </ul>
+                <p>
+                    值得一提的是，上面打了 * 的 Feature 都是我在最后一批加上去的。问题是，使用这批 Feature 训练得到的 Model 反而比之前的要差，而且还差不少。我一开始是以为因为 Feature 的数量变多了所以一些参数需要重新调优，但在浪费了很多时间做 Grid Search 以后却发现还是没法超过之前的分数。这可能就是之前提到的 Feature 之间的相互作用导致的问题。当时我设想过一个看到过好几次的解决方案，就是
+                    <b>
+                        将使用不同版本 Feature 的 Model 通过 Ensemble 组合起来
+                    </b>
+                    。但最终因为时间关系没有实现。事实上排名靠前的队伍分享的解法里面基本都提到了将不同的 Preprocessing 和 Feature Engineering 做 Ensemble 是获胜的关键。
+                </p>
+                <h2>
+                    4. Model
+                </h2>
+                <p>
+                    我一开始用的是 RandomForestRegressor，后来在 Windows 上折腾
+                    <b>
+                        Xgboost
+                    </b>
+                    成功了就开始用 XGBRegressor。
+                    <b>
+                        XGB
+                    </b>
+                    的优势非常明显，同样的数据它只需要不到一半的时间就能跑完，节约了很多时间。
+                </p>
+                <p>
+                    比赛中后期我基本上就是一边台式机上跑
+                    <b>
+                        Grid Search
+                    </b>
+                    ，一边在笔记本上继续研究 Feature。
+                </p>
+                <p>
+                    这次比赛数据分布很不独立，所以期间多次遇到改进的 Feature 或是
+                    <b>
+                        Grid Search
+                    </b>
+                    新得到的参数训练出来的模型反而
+                    <b>
+                        LB
+                    </b>
+                    分数下降了。由于被很多前辈教导过要相信自己的
+                    <b>
+                        CV
+                    </b>
+                    ，我的决定是将 5-Fold 提到 10-Fold，然后以
+                    <b>
+                        CV
+                    </b>
+                    为标准继续前进。
+                </p>
+                <h2>
+                    5. Ensemble
+                </h2>
+                <p>
+                    最终我的 Ensemble 的 Base Model 有以下四个：
+                </p>
+                <ul>
+                    <li>
+                        RandomForestRegressor
+                    </li>
+                    <li>
+                        ExtraTreesRegressor
+                    </li>
+                    <li>
+                        GradientBoostingRegressor
+                    </li>
+                    <li>
+                        XGBRegressor
+                    </li>
+                </ul>
+                <p>
+                    第二层的 Model 还是用的
+                    <b>
+                        XGB
+                    </b>
+                    。
+                </p>
+                <p>
+                    因为
+                    <b>
+                        Base Model
+                    </b>
+                    之间的相关都都太高了（最低的一对也有 0.9），我原本还想引入使用 gblinear 的 XGBRegressor 以及 SVR，但前者的 RMSE 比其他几个 Model 高了 0.02（这在
+                    <b>
+                        LB
+                    </b>
+                    上有几百名的差距），而后者的训练实在太慢了。最后还是只用了这四个。
+                </p>
+                <p>
+                    <b>
+                        值得一提的是，在开始做
+                    </b>
+                    Stacking
+                    <b>
+                        以后，我的 CV 和 LB 成绩的提高就是完全同步的了。
+                    </b>
+                </p>
+                <p>
+                    在比赛最后两天，因为身心疲惫加上想不到还能有什么显著的改进，我做了一件事情：用 20 个不同的随机种子来生成 Ensemble，最后取
+                    <b>
+                        Weighted Average
+                    </b>
+                    。这个其实算是一种变相的 Bagging。
+                    <b>
+                        其意义在于按我实现
+                    </b>
+                    Stacking
+                    <b>
+                        的方式，我在训练 Base Model 时只用了 80% 的训练数据，而训练第二层的 Model 时用了 100% 的数据，这在一定程度上增大了 Overfitting 的风险。而每次更改随机种子可以确保每次用的是不同的 80%，这样在多次训练取平均以后就相当于逼近了使用 100% 数据的效果。
+                    </b>
+                    这给我带来了大约 0.0004 的提高，也很难受说是真的有效还是随机性了。
+                </p>
+                <p>
+                    比赛结束后我发现我最好的单个 Model 在
+                    <b>
+                        Private LB
+                    </b>
+                    上的得分是 0.46378，而最终 Stacking 的得分是 0.45849。这是 174 名和 98 名的差距。也就是说，我单靠 Feature 和调参进到了 前 10%，而
+                    <b>
+                        Stacking
+                    </b>
+                    使我进入了前 5%。
+                </p>
+                <h2>
+                    6. Lessons Learned
+                </h2>
+                <p>
+                    比赛结束后一些队伍分享了他们的解法，从中我学到了一些我没有做或是做的不够好的地方：
+                </p>
+                <ul>
+                    <li>
+                        产品标题的组织方式是有 Pattern 的，比如一个产品是否带有某附件一定会用 With/Without XXX 的格式放在标题最后。
+                    </li>
+                    <li>
+                        使用
+                        <b>
+                            外部数据
+                        </b>
+                        ，比如
+                        <a href="https://link.zhihu.com/?target=https%3A//wordnet.princeton.edu/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            WordNet
+                        </a>
+                        ，
+                        <a href="https://link.zhihu.com/?target=https%3A//www.kaggle.com/reddit/reddit-comments-may-2015" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Reddit 评论数据集
+                        </a>
+                        等来训练同义词和上位词（在一定程度上替代 Word2Vec）词典。
+                    </li>
+                    <li>
+                        基于
+                        <b>
+                            字母
+                        </b>
+                        而不是单词的 NLP Feature。这一点我让我十分费解，但请教以后发现非常有道理。举例说，排名第三的队伍在计算匹配度时，将搜索词和内容中相匹配的单词的长度也考虑进去了。这是因为他们发现
+                        <b>
+                            越长的单词约具体，所以越容易被用户认为相关度高
+                        </b>
+                        。此外他们还使用了逐字符的序列比较（difflib.SequenceMatcher），因为
+                        <b>
+                            这个相似度能够衡量视觉上的相似度
+                        </b>
+                        。像这样的 Feature 的确不是每个人都能想到的。
+                    </li>
+                    <li>
+                        标注单词的词性，找出
+                        <b>
+                            中心词
+                        </b>
+                        ，计算基于中心词的各种匹配度和距离。这一点我想到了，但没有时间尝试。
+                    </li>
+                    <li>
+                        将产品标题/介绍中 TF-IDF 最高的一些 Trigram 拿出来，计算搜索词中出现在这些 Trigram 中的比例；反过来以搜索词为基底也做一遍。这相当于是从另一个角度抽取了一些 Latent 标识。
+                    </li>
+                    <li>
+                        一些新颖的距离尺度，比如
+                        <a href="https://link.zhihu.com/?target=http%3A//jmlr.org/proceedings/papers/v37/kusnerb15.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Word Movers Distance
+                        </a>
+                    </li>
+                    <li>
+                        除了 SVD 以外还可以用上
+                        <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Non-negative_matrix_factorization" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            NMF
+                        </a>
+                        。
+                    </li>
+                    <li>
+                        <b>
+                            最重要的 Feature 之间的 Pairwise Polynomial Interaction
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        <b>
+                            针对数据不 i.i.d. 的问题，在 CV 时手动构造测试集与验证集之间产品 ID 不重叠和重叠的两种不同分割，并以与实际训练集/测试集的分割相同的比例来做 CV 以逼近 LB 的得分分布
+                        </b>
+                        。
+                    </li>
+                </ul>
+                <p>
+                    至于 Ensemble 的方法，我暂时还没有办法学到什么，因为自己只有最简单的 Stacking 经验。
+                </p>
+                <h2>
+                    7. Summary
+                </h2>
+                <h2>
+                    7.1 Takeaways
+                </h2>
+                <ol>
+                    <li>
+                        比较早的时候就开始做 Ensemble 是对的，这次比赛到倒数第三天我还在纠结 Feature。
+                    </li>
+                    <li>
+                        很有必要搭建一个 Pipeline，至少要能够自动训练并记录最佳参数。
+                    </li>
+                    <li>
+                        Feature 为王。我花在 Feature 上的时间还是太少。
+                    </li>
+                    <li>
+                        可能的话，多花点时间去手动查看原始数据中的 Pattern。
+                    </li>
+                </ol>
+                <h2>
+                    7.2 Issues Raised
+                </h2>
+                <p>
+                    我认为在这次比赛中遇到的一些问题是很有研究价值的：
+                </p>
+                <ol>
+                    <li>
+                        在数据分布并不 i.i.d. 甚至有 Dependency 时如何做靠谱的
+                        <b>
+                            CV
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        如何量化 Ensemble 中
+                        <b>
+                            Diversity vs. Accuracy
+                        </b>
+                        的 Trade-off。
+                    </li>
+                    <li>
+                        如何处理 Feature 之间互相影响导致性能反而下降。
+                    </li>
+                </ol>
+                <h2>
+                    7.3 Beginner Tips
+                </h2>
+                <p>
+                    给新手的一些建议：
+                </p>
+                <ol>
+                    <li>
+                        选择一个感兴趣的比赛。
+                        <b>
+                            如果你对相关领域原本就有一些洞见那就更理想了。
+                        </b>
+                    </li>
+                    <li>
+                        根据我描述的方法开始探索、理解数据并进行建模。
+                    </li>
+                    <li>
+                        通过 Forum 和 Scripts 学习其他人对数据的理解和构建 Feature 的方式。
+                    </li>
+                    <li>
+                        <b>
+                            如果之前有过类似的比赛，可以去找当时获奖者的 Interview 和 Blog Post 作为参考，往往很有用。
+                        </b>
+                    </li>
+                    <li>
+                        在得到一个比较不错的
+                        <b>
+                            LB
+                        </b>
+                        分数（比如已经接近前 10%）以后可以开始尝试做 Ensemble。
+                    </li>
+                    <li>
+                        如果觉得自己有希望拿到奖金，开始找人组队吧！
+                    </li>
+                    <li>
+                        <b>
+                            到比赛结束为止要绷紧一口气不能断，尽量每天做一些新尝试。
+                        </b>
+                    </li>
+                    <li>
+                        比赛结束后学习排名靠前的队伍的方法，思考自己这次比赛中的不足和发现的问题，
+                        <b>
+                            可能的话再花点时间将学到的新东西用实验进行确认，为下一次比赛做准备
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        好好休息！
+                    </li>
+                </ol>
+                <h2>
+                    III. Reference
+                </h2>
+                <ol>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//www.google.com/url%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D1%26cad%3Drja%26uact%3D8%26ved%3D0ahUKEwiPxZHewLbMAhVKv5QKHb3PCGwQFggcMAA%26url%3Dhttp%253A%252F%252Fwww.ke.tu-darmstadt.de%252Flehre%252Farbeiten%252Fstudien%252F2015%252FDong_Ying.pdf%26usg%3DAFQjCNE9o2BcEkqdnu_-lQ3EFD3eRAFWiw%26sig2%3DoiU8TCEH57EYF9v9l6Scrw%26bvm%3Dbv.121070826%2Cd.dGo" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Beating Kaggle the Easy Way - Dong Ying
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//rstudio-pubs-static.s3.amazonaws.com/158725_5d2f977f4004490e9b095c0ef9357c6b.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Solution for Prudential Life Insurance Assessment - Nutastray
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/ChenglongChen/Kaggle_CrowdFlower/blob/master/BlogPost/BlogPost.md" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Search Results Relevance Winner’s Interview: 1st place, Chenglong Chen
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </body>
+</html>

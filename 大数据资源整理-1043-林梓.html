@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            大数据资源整理
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-49212d605dab6b7596638587f7d08866_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/24231891" target="_blank">
+                        大数据资源整理
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/lin-zi-41-9">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-cadaa2499bfe6ca5de097da396e0f212.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    林梓
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2016-12-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    大数据最近几年很火，如果你去问读研的小伙伴，搞计算机的，我相信不是搞数据处理就是搞机器学习的，这都属于大数据的范畴。虽然大数据很火，但是网上的资源却比较少，主要是很零碎，不成体系。
+                    <br>
+                </p>
+                <p>
+                    当然，想要搞大数据，数学知识诸如：高等数学，线性代数，概率论，统计学……是必不可少的，我这里就不介绍这些相关资源了；当然也不整理算法啦、数据结构啦、具体的语言学习啦这些基础知识；那肯定更不会整理大数据相关的具体业务应用或者处理啦，毕竟这个是需要经验的。
+                </p>
+                <p>
+                    我主要是想整理一些相对而言比较成体系的大数据教程，其次会分享一些相关的网站、文章和资源，希望对想学习大数据的小伙伴有所帮助~
+                </p>
+                <p>
+                    <b>
+                        一、大数据学习路线及脑图：
+                    </b>
+                </p>
+                <p>
+                    我比较认同在开始学习前摸清大概的方向，清楚自己想要往哪个方向发展，知道基本的背景知识以及基础知识，这样学习起来才不会迷茫，才有方向感。
+                </p>
+                <p>
+                    一般比较常见的数据技术岗位有：算法挖掘、数据仓库、架构师、ETL研发和分析技术等相关的岗位，强烈建议想往大数据方向发展的小伙伴多去各大招聘网站看看关于大数据相关岗位的招聘要求，非常有助于了解到底应该学什么。
+                </p>
+                <p>
+                    下面分享的前三张图片是大数据脑图，后面是一些关于大数据学习路线的文章。希望你看完这些后对于方向有个大概的把握，而不只是笼统的想要搞大数据。
+                </p>
+                <p>
+                    <b>
+                        1）大数据脑图：
+                    </b>
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-4d26e6a5e00a96d8ed725d386f70b51f_r.jpg">
+                </figure>
+                <p>
+                    <b>
+                        2）
+                        <a href="https://link.zhihu.com/?target=https%3A//www.shiyanlou.com/paths/bigdata" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            大数据工程师 - 学习路径 - 实验楼
+                        </a>
+                        ：
+                    </b>
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-750a7d5d14230fad299e1c6bf1794e7f_r.jpg">
+                </figure>
+                <br>
+                <b>
+                    3）png-BigData-by-StuQ
+                </b>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-ea61aa333a2de9ac6c75bed6b22f4200_r.jpg">
+                </figure>
+                <p>
+                    上面三张图片应该可以清楚的了解到大数据相关技术包含哪些，就是说想要搞大数据就离不开上面所说的各种技术，你就需要掌握上面的技能，当然具体该掌握哪些技能，就看自己的发展方向了。
+                </p>
+                <p>
+                    下面是一些文章以及问答，也推荐看看：
+                </p>
+                <ul>
+                    <li>
+                        问答网站Quora上精华帖
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    1）
+                    <a href="https://link.zhihu.com/?target=https%3A//www.quora.com/How-can-I-become-a-data-scientist-1%3Fredirected_qid%3D3799382" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        How-can-I-become-a-data-scientist
+                    </a>
+                    <br>
+                </p>
+                <br>
+                <p>
+                    2）
+                    <a href="https://link.zhihu.com/?target=https%3A//www.quora.com/Statistics-academic-discipline/What-are-some-good-resources-for-learning-about-statistical-analysis" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        What-are-some-good-resources-for-learning-about-statistical-analysis
+                    </a>
+                    <br>
+                </p>
+                <p>
+                    3）
+                    <a href="https://link.zhihu.com/?target=https%3A//www.quora.com/What-are-good-ways-to-get-started-with-data-science-for-a-complete-novice%3Fredirected_qid%3D485041" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        What are some good free resources to learn data science?
+                    </a>
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//blog.csdn.net/an342647823/article/details/40185181" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            大数据学习路线
+                        </a>
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://www.zhihu.com/question/24761255" class="internal">
+                            怎样进行大数据的入门级学习？ - 数据分析 - 知乎
+                        </a>
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://www.zhihu.com/topic/19740929" class="internal">
+                            大数据 - 索引 - 知乎
+                        </a>
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://www.zhihu.com/question/20176089" class="internal">
+                            想从事大数据、海量数据处理相关的工作，如何自学打基础？ - 数据分析 - 知乎
+                        </a>
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    <b>
+                        二、学习网站：
+                    </b>
+                </p>
+                <p>
+                    上面是基础知识、背景知识的了解，了解之后就需要学习啦，这里介绍几个可以学习大数据的网站。
+                </p>
+                <ul>
+                    <li>
+                        <b>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.coursera.org/browse/data-science" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Coursera
+                            </a>
+                        </b>
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    coursera 上有个数据科学分类，进入就可以看到数据分析、机器学习，每个小分类里面有多门课程，可以选择自己感兴趣的进行学习，是比较系统的课程。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-7c439b8ae1f44ffd72a95c54ce540b3f_r.jpg">
+                </figure>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//www.shiyanlou.com/paths/bigdata" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            实验楼
+                        </a>
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    实验楼上关于大数据的教程，主要是hadoop、spark、Python的教程比较多，算是比较系统，R语言的教程也有，更有实践项目可以学习，重要的是拥有在线开发环境，这对于大数据的学习非常方便。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-7c50e0bf6afbff8cb8b5387f8b15d73e_r.jpg">
+                </figure>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.imooc.com/course/list%3Fc%3D%25E5%25A4%25A7%25E6%2595%25B0%25E6%258D%25AE" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            慕课网
+                        </a>
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    慕课网上关于大数据的教程呢，比较零碎，但是还是可以找到想了解的技术教程。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-5ecf91b07cc71dca1aae362166871db9_r.jpg">
+                </figure>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//study.163.com/category/big-data" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            网易云课堂
+                        </a>
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    云课堂上的教程质量参差不齐，开课者也是五花八门，上面关于大数据方面的教程呢，想学习是需要好好挑选一番的。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-55cbdaa462d9e37a00ef634c571a449f_r.jpg">
+                </figure>
+                <ul>
+                    <li>
+                        <b>
+                            <a href="https://link.zhihu.com/?target=http%3A//lib.csdn.net/bases/Cloud" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                CSDN-知识库
+                            </a>
+                        </b>
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    CSDN的这个大数据知识库呢，可以找到一些资源，不过也是比较零碎，资源的好坏需要自己筛选一番。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-b2b479c61d2ac0f05220582fca948a00_r.jpg">
+                </figure>
+                <p>
+                    当然书籍也是需要看的，毕竟书籍系统、全面，嗯~我这里就不整理推荐的书籍资源了，该看什么书籍、想看什么书籍，我想每个人的需求都不同。
+                </p>
+                <p>
+                    <b>
+                        三、其他一些网站：
+                    </b>
+                </p>
+                <p>
+                    上面介绍的是学习网站，基本都是中文，下面分享一些其他关于大数据的网站，也能找到相应的资讯和教程。
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.36dsj.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            36大数据
+                        </a>
+                        ：了解大数据相关资讯；
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//www.ibm.com/developerworks/learn/analytics/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            ibm-developerworks
+                        </a>
+                        ：可以学习大数据相关的文章和课程；
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//blog.csdn.net/yinwenjie" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            JAVA入门中
+                        </a>
+                        ： 主要是架构设计方面；
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.aboutyun.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            about云开发
+                        </a>
+                        ：大数据相关论坛；
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <p>
+                    当然，除了上面推荐的网站，在其他一些你比较常逛的网站里，我相信也能找到大数据相关的文章或者资讯，自己有留意就好。
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        四、一些资源集合：
+                    </b>
+                </p>
+                <p>
+                    下面整理一些大数据相关的资源合集，里面都可以找到不错的资源。
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/onurakpolat/awesome-bigdata" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            awesome-bigdata
+                        </a>
+                        （英文）、(
+                        <a href="https://link.zhihu.com/?target=https%3A//yq.aliyun.com/articles/37308" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            中文版
+                        </a>
+                        )
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/youngwookim/awesome-hadoop" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            awesome-hadoop
+                        </a>
+                        （英文）
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/igorbarinov/awesome-data-engineering" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            awesome-data-engineering
+                        </a>
+                        （英文）
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/josephmisiti/awesome-machine-learning" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            机器学习/统计/数据挖掘免费开源书列表
+                        </a>
+                        （英文）
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//www.shiyanlou.com/questions/3067" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            优秀大数据GitHub项目一览
+                        </a>
+                        <br>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.codeceo.com/article/big-data-tools-java-programmer-use.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Java程序员使用的20几个大数据工具
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.36dsj.com/archives/35050" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            60款顶级大数据开源工具
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.36dsj.com/archives/24852" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            一共81个，开源大数据处理工具汇总
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//www.shiyanlou.com/questions/3102" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            什么是Spark，如何使用Spark进行数据分析?
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/jacksu/utils4s" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            scala工具库demo和使用文档
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/wxyyxc1992/datascience-practice-handbook/blob/master/datascience-machinelearning.md" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            机器学习系列文章
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.oschina.net/project/tag/411/big-data" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            大数据开源软件库
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//tryolabs.com/blog/2016/12/06/major-advancements-deep-learning-2016/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            2016年度深度学习的主要进展
+                        </a>
+                        <br>
+                    </li>
+                </ul>
+                <p>
+                    <b>
+                        五、关于大数据应用比较有趣的网站：
+                    </b>
+                </p>
+                <p>
+                    其实关于大数据的应用有很多，其中基于大数据方面的数据可视化比较有趣，因此这里分享几个有趣的大数据应用网站。
+                </p>
+                <p>
+                    <a href="https://link.zhihu.com/?target=https%3A//cybermap.kaspersky.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        kaspersky.com
+                    </a>
+                    <br>
+                </p>
+                <p>
+                    网站由防毒软件提供，卡巴斯基制作的 Cybermap ，这个作品能实时展现现在世界上有多少起服务器攻击事件。点进去之后，可以看到地球上纵横交错地飞舞着蓝色、绿色、红色线条，这些就是表示服务器攻击事件。
+                </p>
+                <p>
+                    <figure>
+                        <img src="https://pic4.zhimg.com/v2-17b7196a29e1819c786ecb1e2144f90f_r.jpg">
+                    </figure>
+                    <a href="https://link.zhihu.com/?target=http%3A//www.everysecond.io/apple" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        apple每秒实时数据
+                    </a>
+                    <br>
+                </p>
+                <p>
+                    可以实时的展示出Apple的相关数据，比如卖了多少产品啊，有多少APP被下载啊……，比较有趣；
+                </p>
+                <p>
+                    <figure>
+                        <img src="https://pic1.zhimg.com/v2-7f58c47e0b1705778d1149645b41bacb_r.jpg">
+                    </figure>
+                    <a href="https://link.zhihu.com/?target=http%3A//internet-map.net/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        internet-map
+                    </a>
+                    <br>
+                </p>
+                <p>
+                    全世界各大网站的可视化，网站都用圆形表示，圆的大小表示网站的访问量。中国是黄色，美国是蓝色，日本是紫色，欧洲是红色。可以搜索相应的国家看到详细的情况，看到那个黄色的最大的圆圈没？那就是中国访问量最高的网站，百度。
+                </p>
+                <p>
+                    <figure>
+                        <img src="https://pic3.zhimg.com/v2-cae194f26ca5c7d395f3301433b4fc10_r.jpg">
+                    </figure>
+                    <a href="https://link.zhihu.com/?target=http%3A//trends.baidu.com/ncee/index%3Ftype%3Duniv" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        百度高考预测
+                    </a>
+                    <br>
+                </p>
+                <p>
+                    百度预测里面的高考预测也是一个蛮有趣的大数据应用，可以看到每个学校的报考难易程度。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-5b59f886cb6cd45f250fb3348a26fd57_r.jpg">
+                </figure>
+                <p>
+                    啊，一下子太多了，整理的头都痛了，先暂时这样，以后慢慢添加进来~
+                </p>
+                <p>
+                    以上就是我整理的关于大数据学习相关的资源，相信对于初学者还是有一定的帮助，如果你有其他的相关资源，欢迎评论给我，我添加进来啊~
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

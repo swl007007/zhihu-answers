@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            该如何学习 R 语言？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/21654166/answer/64127931" target="_blank">
+                        该如何学习 R 语言？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/brightbirdhuang">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/fcd79e92ef2d9dc9db61f542b14a86c3.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    黄耀鹏
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2015-09-17
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                今年年初开始接触R语言，自学兼修课，学了一个学期，暑期在某上市互联网公司找了一份纯粹用R语言工作的的数据分析实习，现在应该可以说熟练掌握R语言了。我的学习路径如下：
+                <br>
+                <ol>
+                    <li>
+                        名师指导——学习coursera公开课；
+                    </li>
+                    <li>
+                        <p>
+                            巨人肩膀——浏览技术博客+几本入门书籍；
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            社区帮助——很多牛人只是比你更善用搜索引擎；
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            三人行——找到一个一起学习的小伙伴；
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            实践实践实践——用R完成Assignments，做助研，找一份数据分析实习。
+                        </p>
+                    </li>
+                </ol>
+                <p>
+                    <b>
+                        一.公开课推荐
+                    </b>
+                    。
+                </p>
+                <p>
+                    公开课首推
+                    <a href="https://link.zhihu.com/?target=http%3A//coursera.Org" class="external" target="_blank" rel="nofollow noreferrer">
+                        <span class="invisible">
+                            http://
+                        </span>
+                        <span class="visible">
+                            coursera.Org
+                        </span>
+                        <span class="invisible">
+                        </span>
+                    </a>
+                    上约翰.霍普金大学的数据科学系列课程。该系列完全使用R作为分析工具，轻松引领你从R的初学者转变为R的开发者。
+                </p>
+                <blockquote>
+                    <p>
+                        该系列课程包含如下几门课。
+                    </p>
+                    <p>
+                        1.《数据科学家的工具箱》
+                    </p>
+                    <p>
+                        该课程主要介绍了数据科学家常用的一些工具。包括R、 RStudio、 Git 、Github ，这里强烈推荐RStudio，作为R的一个集成开发环境（IDE）， 它可以在Latex、 PDF、 markdown、 html 中游刃有余，并且是个强大的Literate Programming 工具。除了以上提及的强大工具之外，还介绍了数据的类型、数据分析的方法过程、以及数据科学的一些知识点。
+                    </p>
+                    <p>
+                        2.《R语言程序开发》
+                    </p>
+                    <p>
+                        主要内容包括：1）R概述，R的数据类型和对象，数据的读写操作；2）R中的控制流，函数式编程，作用域，时间数据类型；3）循环函数，检查代码漏洞的方法；4）数据模拟实现，代码风格规范。
+                    </p>
+                    <p>
+                        3.《获取和整理数据》
+                    </p>
+                    <p>
+                        完成这门课程将获得技能：1）从各种资源获取数据；2）数据清洗的原则；3）数据整理的工具与技巧。
+                    </p>
+                    <p>
+                        4.《探索性数据分析》
+                    </p>
+                    <p>
+                        完成这门课程将收获：1）运用R中的base，lattice，ggplot2等绘图系统进行数据的可视化展示；2）对不用类型的数据运用基本的数据展示原则创造丰富多样的分析图；3）基于特定问题出发，运用探索高维数据的统计技巧，创造多维度数据的可视化方式。
+                    </p>
+                    <p>
+                        5.《可重复性研究》
+                    </p>
+                    <p>
+                        通过这门课程，你将学会：1）使用Rmarkdown撰写文档；2）在分析报告中嵌入R代码；3）用knitr等相关工具编译Rmarkdown文档；4）进行可重复性的数据分析研究。
+                    </p>
+                    <p>
+                        6.《统计推断》
+                    </p>
+                    <p>
+                        这门课主要介绍统计推断的基础。可以收获：1）统计推断的概览；2）进行统计推断的模型假设；3）复杂统计推断的技巧。
+                    </p>
+                    <p>
+                        7.《回归模型》
+                    </p>
+                    <p>
+                        这门课教会学生：1）如何进行拟合线性模型，如何进行残差分析；2）进一步探索如何引入哑变量解决特殊的模型设定问题；3）介绍广义线性模型，特别是Poisson回归和Logistic回归。
+                    </p>
+                    <p>
+                        8.《实用机器学习》
+                    </p>
+                    <p>
+                        完成这门课将收获：1）经典机器学习算法；2）如何应用多种机器学习工具；3）如何对真实数据进行模型评估和预测。
+                    </p>
+                    <p>
+                        9.《数据产品开发》
+                    </p>
+                    <p>
+                        内容涵盖：1）如何创造统计产品以进行交互式探究；2）重点学习如何探究不确定性的统计结果；3）如何创造Shiny应用，以及数据产品相关的R扩展包。
+                    </p>
+                </blockquote>
+                <p>
+                    <b>
+                        二.技术博客和书籍推荐
+                    </b>
+                </p>
+                <ul>
+                    <li>
+                        R-bloggers：
+                        <a href="https://link.zhihu.com/?target=http%3A//www.r-bloggers.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            R-bloggers | R news and tutorials contributed by (573) R bloggers
+                        </a>
+                    </li>
+                    <li>
+                        R and Data Mining:
+                        <a href="https://link.zhihu.com/?target=http%3A//www.rdatamining.com/" class="external" target="_blank" rel="nofollow noreferrer">
+                            <span class="invisible">
+                                http://www.
+                            </span>
+                            <span class="visible">
+                                rdatamining.com/
+                            </span>
+                            <span class="invisible">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.zhihu.com/people/xiao-kai-93" class="internal">
+                            肖凯
+                        </a>
+                        老师的个人博客：
+                        <a href="https://link.zhihu.com/?target=http%3A//xccds1977.blogspot.com/" class="external" target="_blank" rel="nofollow noreferrer">
+                            <span class="invisible">
+                                http://
+                            </span>
+                            <span class="visible">
+                                xccds1977.blogspot.com/
+                            </span>
+                            <span class="invisible">
+                            </span>
+                        </a>
+                        ，肖凯老师推荐了十几本R参考书。
+                        <br>
+                    </li>
+                    <li>
+                        书籍：《R语言实战》，《R语言编程艺术》，《机器学习——实用案例解析》，《ggplot2数据分析与图形艺术》，这些书都有中文版。
+                    </li>
+                </ul>
+                <b>
+                    三.社区帮助
+                </b>
+                <br>
+                <p>
+                    l R自带的帮助文档；
+                </p>
+                <br>
+                <p>
+                    l R Journal:
+                    <a href="https://link.zhihu.com/?target=http%3A//journal.r-project.org/index.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Welcome. The R Journal
+                    </a>
+                    ，对研究某个包非常有帮助；
+                </p>
+                <p>
+                    l 一个神奇的网站：
+                    <a href="https://link.zhihu.com/?target=http%3A//Stackoverflow.com" class="external" target="_blank" rel="nofollow noreferrer">
+                        <span class="invisible">
+                            http://
+                        </span>
+                        <span class="visible">
+                            Stackoverflow.com
+                        </span>
+                        <span class="invisible">
+                        </span>
+                    </a>
+                    ，牛人聚集，99.9%的R问题都可以在上面找到你想要的答案;
+                </p>
+                <p>
+                    l Stat.stackexchange.com;
+                </p>
+                <p>
+                    l R Mailing List:
+                    <a href="https://link.zhihu.com/?target=https%3A//stat.ethz.ch/mailman/listinfo/r-help%3B" class="external" target="_blank" rel="nofollow noreferrer">
+                        <span class="invisible">
+                            https://
+                        </span>
+                        <span class="visible">
+                            stat.ethz.ch/mailman/li
+                        </span>
+                        <span class="invisible">
+                            stinfo/r-help;
+                        </span>
+                        <span class="ellipsis">
+                        </span>
+                    </a>
+                </p>
+                <p>
+                    l Talk Stats:
+                    <a href="https://link.zhihu.com/?target=http%3A//www.talkstats.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Statistics Help @ Talk Stats Forum
+                    </a>
+                    ；
+                </p>
+                <p>
+                    l Google，善用英文搜索;
+                </p>
+                <p>
+                    <b>
+                        四.小伙伴
+                    </b>
+                </p>
+                <p>
+                    找到一个志同道合的同学一块学习，一块在coursera上刷Assignments，互相帮助检查代码，互相督促看书敲实例代码进度，比较容易坚持下去，在此，感谢
+                    <a href="http://www.zhihu.com/people/hetallian" class="internal">
+                        hetal链
+                    </a>
+                    。
+                </p>
+                <p>
+                    <b>
+                        五.实践实践实践
+                    </b>
+                </p>
+                <p>
+                    我在学校选修了两门R数据分析相关的课程，并且给老师做研究助理，用R完成老师布置的编程任务，学以致用，非常高效率。暑期的时候找了一份数据分析实习，实践两个月，对代码的规范化和可重用性的重要性有了更深刻的理解。
+                </p>
+                <br>
+                <p>
+                    ------------------------------------------------------------------------------------------------------------------------
+                </p>
+                <p>
+                    <b>
+                        更新：
+                    </b>
+                </p>
+                <p>
+                    最近才刚开始在知乎答题，没想到会有这么多的人点赞，真的非常感谢大家的认同。评论区有的同学反馈了几个问题，在这里罗列并补充说明一下。
+                </p>
+                <ol>
+                    <li>
+                        公开课很boring，你居然刷完了？
+                    </li>
+                    <li>
+                        没有统计学基础，可以按这个路径学习R吗？
+                    </li>
+                    <li>
+                        刷个课就能找着数据分析实习？
+                    </li>
+                </ol>
+                对于问题1，我非常认同，其实我也没有刷完整个系列。主要是因为进度太慢，内容太少，并且我是统计专业出身，课程的很多内容我已经有了一定的把握。但是，我认真的刷完了第2门和第8门，完成了相应的Assignments。我相信这个系列课程对欠缺一定的统计学基础的同学一定会更有帮助。
+                <p>
+                    对于问题2，我的回答是“definitely yes!”.
+                </p>
+                <p>
+                    对于问题3，我想这位同学应该没有仔细看完整个答案。我虽然是用一个学期从开始接触到掌握，但是花的时间也还挺多的。其中，花时间最多的时候是给老师做助研，研究一些R的新奇功能，以及一些R包源码。另外，我用R完成了四门课的小论文（报告）的编程。
+                </p>
+                <p>
+                    突然想到在Quara上曾浏览到的一个回答：
+                    <a href="https://link.zhihu.com/?target=https%3A//www.quora.com/How-is-Hadley-Wickham-able-to-contribute-so-much-to-R-particularly-in-the-form-of-packages" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        How is Hadley Wickham able to contribute so much to R, particularly in the form of packages?
+                    </a>
+                    有一定基础的同学我觉得是可以借鉴学习的。
+                </p>
+                <p>
+                    Hadley大神是这样回答的（我想谁是Hadely应该不用解释了吧(●&#39;◡&#39;●)）：
+                </p>
+                <blockquote>
+                    <ul>
+                        <li>
+                            <b>
+                                Writing
+                            </b>
+                            . I have worked really hard to build a solid writing habit - I try and write for 60-90 minutes every morning. It&#39;s the first thing I do after I get out of bed. I think writing is really helpful to me for a few reasons. First, I often use my writing as a reference - I don&#39;t program in C++ every day, so I&#39;m constantly referring to @
+                            <a href="https://link.zhihu.com/?target=http%3A//adv-r.had.co.nz/Rcpp.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Rcpp
+                            </a>
+                            every time I do. Writing also makes me aware of gaps in my knowledge and my tools, and filling in those gaps tends to make me more efficient at tackling new problems.
+                        </li>
+                        <li>
+                            <b>
+                                Reading
+                            </b>
+                            . I read a
+                            <i>
+                                lot
+                            </i>
+                            . I follow about 300 blogs, and keep a pretty close eye on the R tags on Twitter and
+                            <b>
+                                Stack Overflow
+                            </b>
+                            . I don&#39;t read most things deeply - the majority of content I only briefly skim. But this wide exposure helps me keep up with changes in technology, interesting new programming languages, and what others are doing with data. It&#39;s also helpful that if when you&#39;re tackling a new problem you can recognise the basic name - then googling for it will suggest possible solutions. If youdon&#39;t know the name of a problem, it&#39;s very hard to research it.
+                        </li>
+                        <li>
+                            <b>
+                                Chunking
+                            </b>
+                            . Context-switching is expensive, so if I worked on many packages at the same time, I&#39;d never get anything done. Instead, at any point in time, most of my packages are lying fallow, steadily accumulating issues and ideas for new feature. Once a critical mass has accumulated, I&#39;ll spend a couple of days on the package.
+                        </li>
+                        <li>
+                            Finally, it&#39;s hard to over-emphasise the impact that working full-time on R makes. Since I&#39;ve left Rice, I now
+                            <b>
+                                spend well over 90% of my work time thinking about and programming in R
+                            </b>
+                            . This has a compounding effect because as I built better tools (cognitive and computational) it becomes even easier to build new tools. I can create a new package in seconds, and I have many techniques on-hand (in-brain) for solving new problems.
+                        </li>
+                    </ul>
+                </blockquote>
+                我觉得R的入门门槛是比较低的，即使你没有编程基础，只要你集中一段时间（几个月？）投入，你应该就能享受到它带给你的便利。但是，要想成为一个R开发者，是需要持续的付出一定的时间和精力的。
+            </div>
+        </div>
+    </body>
+</html>

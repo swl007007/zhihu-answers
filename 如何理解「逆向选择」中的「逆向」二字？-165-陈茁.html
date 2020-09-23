@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            如何理解「逆向选择」中的「逆向」二字？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/29325357/answer/135566696" target="_blank">
+                        如何理解「逆向选择」中的「逆向」二字？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/chen-zhuo-49">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-afcb8fcc1795e2910718032ab3245fe7.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    陈茁
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2016-12-12
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                果然经济学领域换了运营就没人邀请我了啊……
+                <br>
+                <br>
+                看了已有的答案，我窃以为都没有说到点子上，当然这个答案里面的解释只能说是我所能接受的最好的答案，理论家们最初提出这个概念的时候是不是像我这么想的其实我是不知道的……
+                <br>
+                <br>
+                其实要理解什么是“逆向”，首先必须要理解什么是“选择”。
+                <br>
+                <br>
+                通常来说，任何一个动词，我们都应该能找到它的主语和宾语，但是很多语境下我们常常会有意无意的忽略掉这一点，这种忽略是会造成问题的。我最喜欢的例子当然就是“自我欺骗”这个概念了，欺骗作为一个动词，那就必须弄清楚“谁在欺骗”和“欺骗了谁”，但是如果按照字面上理解我们就会得到一个和《武林外传》里面的姬无命相同的困惑：
+                <br>
+                <blockquote>
+                    “我，杀死了，我……”
+                    <br>
+                    “动手吧！”
+                </blockquote>
+                如果把自我欺骗理解为“我”欺骗了“我”，根据中山大学鞠实儿教授1995年的论文，那么自我欺骗意味着“主体A相信一个主体A认为为假的命题为真”，这本身就是一个逻辑矛盾。
+                <br>
+                <br>
+                选择这个词也是这样，按照通常的理解，被选择的应该是市场中拥有对方无法观察到的私人信息的那一方。比如在MWG当中给出的劳动力市场模型当中，由于应聘者的私人信息，也就是他们的能力无法被用人单位（原谅我选择了这么土鳖的叫法）观察到，所以一部分应聘者被挤出了这个市场。那么，在这个语境当中，选择的主体就是用人单位。
+                <br>
+                <br>
+                其实这么一说很多敏感的读者应该已经能够感受到其中的微妙之处了：这里的选择，其实与进化论中的选择是有某种相似之处的。其实这并特别超出我们的理解，1900年的时候旧制度学派的奠基人凡勃仑就写过一篇文章，叫做“经济学怎么就不能是一门进化科学”（这个翻译我觉得比通行的翻译“经济学为什么不是一门进化科学”更贴近原意），而马歇尔的经济学原理里面也写过“经济学的麦加圣地不是物理学而是生物学”。只不过，二战之后，由于学界在政治正确的指引下武断地将一切有关社会科学的进化论理论归为与希特勒一党，所以这个隐喻逐渐消失了。有兴趣的朋友可以去看北大出版社出版的《经济学的演化基础》一书中Hodgson撰写的那一章，非常细致地综述了经济学中生物学隐喻的潮起潮落，对思想史有兴趣的朋友们，五星推荐。
+                <br>
+                <br>
+                这种分析问题的方式其实在经济学中是非常常见的，比如经典的money pump，就经常被用于作为“人的偏好是全序的和可传递的”这一命题的论据（细节参见
+                <a data-hash="6808bf0f275d42432d961d5285dc282f" href="https://www.zhihu.com/people/6808bf0f275d42432d961d5285dc282f" class="member_mention" data-editable="true" data-title="@Richard Xu" data-hovercard="p$b$6808bf0f275d42432d961d5285dc282f">
+                    @Richard Xu
+                </a>
+                的专栏文章
+                <a href="https://zhuanlan.zhihu.com/p/24117120" class="internal">
+                    知乎专栏
+                </a>
+                ）。只不过因为历史的原因，我们不会明说这就是进化论而已。
+                <br>
+                <br>
+                通常来说，市场本身是有淘汰高价格、低质量商品的能力的。比如在完全竞争市场中，我们对“每家企业都面临一条水平的需求曲线”的解读就是企业如果定价高于市场价格，那么没有人会买，于是这家企业就被“淘汰”了。再比如，如果有一组用途相近（替代性强）的商品卖同一种价格，人们会自动选择其中质量较高（成本较低）的一种产品，于是质量差的产品也就被市场“淘汰”了。
+                <br>
+                <br>
+                这就是所谓的“用脚投票”。它与达尔文进化论唯一的区别就是选择的主体不再是“自然”，而是市场中的需求方，在要素市场上就是“用人单位”，在商品市场上就是“二手车的消费者”。这一思路的本质是对人理性的假设：相同质量的产品，消费者不会刻意去选择那个价格更高的，相同价格的产品，消费者不会去刻意选择质量更差的。这种对理性的极低的要求构成了一种筛选出产品和生产产品的企业（生产集）哪个更“适存”的标准，而此时如果市场真的能够把高价格低质量的产品淘汰掉，那么就叫做“正向选择”。
+                <br>
+                <br>
+                从这个角度看，“逆向”就非常好理解了：上述的正向选择得以成立的一个重要前提就是需求方能够真的分清楚哪个产品质量高哪个产品质量低。而如果需求方难以观察到供给方的私人信息，则他（们）至多只能对整个市场的平均质量有一个理性预期，根据这个理性预期能够给出一个“保留价格”，也就是willingness to pay（WTP），这个WTP是一个对所有供给者都一样的价格水平，但能生产高质量产品的供给者因为收益太低而退出市场。这些高质量供给者的退出，使得需求方的理性预期降低，报价降低，次优的供给者退出市场……周而复始，市场崩溃。
+                <br>
+                <br>
+                在这里，可以很容易地看出，相比于正向选择是在同一价格下淘汰掉劣质的供给，因为信息不对称，逆向选择中同一个价格下质量最高的供给被淘汰掉了。
+                <br>
+                <br>
+                正向的反义词是逆向，就酱。
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            使用R语言遇到瓶颈时如何寻求帮助？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-5baba2660497df24aacdf45db776a71e_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/25920040" target="_blank">
+                        使用R语言遇到瓶颈时如何寻求帮助？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/xiao-dou-bao-99-24">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/da8e974dc.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    小豆包
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2017-03-21
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                随着“数据”概念的热度不断上升，在未来的5至10年内，几乎在每个应用软件及程序、互联网设备和智能手机中都可以看到机器学习和智能分析的影子。数据行业的高速发展，离不开这一高级统计平台-R语言。
+                <br>
+                <br>
+                事实上，R语言已经应用在各行各业。京东（JD）已经将R语言应用在在线商品推荐、搜索词优化、邮件营销（EDM）、移动客户端、市场活动及促销推送、开放平台卖家等方面；国家气象局在河流预报中心也使用R语言用来帮助预测洪水；R语言也是Twitter网站大数据工具箱的一部分。数据科学在各行各业的应用，包括天文、地理、医疗、生物、金融、能源、互联网等领域，在高校和业界均形成了深远影响。
+                <br>
+                <br>
+                经过全世界统计学家20多年来的贡献，R语言已经成为了数据编程的完美实现。它具有以下特点：
+                <br>
+                <ul>
+                    <ul>
+                        <li>
+                            免费、开源语言简单易学
+                        </li>
+                        <li>
+                            与各种操作系统兼容性好
+                        </li>
+                        <li>
+                            数据挖掘领域应用最广泛的软件和语言
+                        </li>
+                        <li>
+                            完整且丰富的统计、机器学习、可视化平台
+                        </li>
+                        <li>
+                            便捷的、可扩展的并行方案，方便与同一些特定领域的工具的结合
+                        </li>
+                    </ul>
+                </ul>
+                虽然R语言简单易学，但学习R语言的大部分人并不具有编程背景，加上周围编程的人群不足，遇到问题缺乏讨论对象，也不知道如何为自己的问题寻求答案。
+                <br>
+                <br>
+                自己动手，丰衣足食 - R
+                <br>
+                <h2>
+                    丨学会使用Built-in Help Function（help() 和 ?）
+                </h2>
+                help()函数和“ ？”帮助符号是R语言内置的帮助符号，用于查询函数、数据集(Dataset)及其他对象。比如，想要查询关于线性回归lm()的文档，可以通过使用以下四种指令，具体的帮助文档将在RStudio的Misc板块弹出。
+                <br>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-7a04be8436a6bc423ca6475791e86a06_b.png">
+                </figure>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-17061bc6b870ca9bd81aff59830d1ee9_r.jpg">
+                </figure>
+                <br>
+                <h2>
+                    丨使用RStudio内置Help板块
+                </h2>
+                RStudio由于界面友好、具有更强的操作性，成为了很多R语言初学者的首选。
+                <br>
+                在RStudio右下角的Misc板块，点击“Help”标签，便能得到各种R语言和RStudio的官方资源、问答和使用指南。用户也可以通过使用板块右上角的搜索框，来为自己的问题寻找答案。
+                <br>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-b2c4a761e8899c890c7480165b269ec3_r.jpg">
+                </figure>
+                <br>
+                <h2>
+                    丨查看备忘单（Cheatsheet）
+                </h2>
+                Cheatsheet是在业内被广泛应用的一种工具文件，可译作“备忘单”。其功能不言而喻，就是像“小抄”一样记录重点，在你编程的过程中帮你快速回忆一些细节。学习R语言的人当然应该逐渐积累自己从cheatsheet，但当你遇到问题的时候，不妨通过搜索看看前人在相似话题下的总结和研究。
+                <br>
+                搜索方法则非常简单，关键词加入：想要实现的功能（比如：“可视化”或“visualization”）+“R语言”+“Cheatsheet”。
+                <p>
+                    <figure>
+                        <img src="https://pic1.zhimg.com/v2-3ee8991d693a966cfe73a4231968c1b8_r.jpg">
+                    </figure>
+                    <br>
+                    此外，Cheatsheet也是一种不错的学习方法，这里为大家盘点了不错的Cheatsheet：
+                    <br>
+                </p>
+                <ul>
+                    <li>
+                        按难度分类
+                        <br>
+                    </li>
+                    <ul>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Base R Cheatsheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Advance R Cheatsheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Basic Regular Expression in R
+                            </a>
+                        </li>
+                    </ul>
+                    <li>
+                        按功能分类
+                    </li>
+                    <ul>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-import-cheatsheet.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Data Import Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-transformation-cheatsheet.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Data Transformation Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=http%3A//spark.rstudio.com/images/sparklyr-cheatsheet.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Sparklyr Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                R Markdown Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                RStudio IDE Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2016/01/shiny-cheatsheet.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Shiny Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Data Visualization Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2015/06/devtools-cheatsheet.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                Package Development Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://link.zhihu.com/?target=https%3A//www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                R Markdown Reference Guide
+                            </a>
+                        </li>
+                    </ul>
+                </ul>
+                <br>
+                <h2>
+                    丨查看FAQ
+                </h2>
+                FAQ(Frequently Asked Question)译作“常见问题答疑”，通常是组织机构对用户最常困惑的问题的解答。由于R语言已经经过了20多年的发展，用户社区和解决方案都趋近成熟、内容逐渐趋于完善，所以FAQ板块中覆盖了非常广泛的答疑。以下我盘点了对用户最有帮助的三大FAQ：
+                <ul>
+                    <li>
+                        R FAQ
+                        <br>
+                    </li>
+                </ul>
+                R语言官方FAQ(Frequently Asked Questions on R)，解答涉及了R语言简介、R的基本使用、R的历史、R Package、使用R编程、常见错误、其他各类问答。
+                <p>
+                    <figure>
+                        <img src="https://pic3.zhimg.com/v2-b39446271a344a5d3ae54cab36f0cf69_r.jpg">
+                    </figure>
+                    <br>
+                    英文：（
+                    <a href="https://link.zhihu.com/?target=https%3A//cran.r-project.org/doc/FAQ/R-FAQ.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        Version 2016-06-06
+                    </a>
+                    ）
+                    <br>
+                    中文：（
+                    <a href="https://link.zhihu.com/?target=ftp%3A//cran.r-project.org/pub/R/doc/contrib/Liu-FAQ.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        R 常见问题解答，更新于2013年
+                    </a>
+                    ）
+                    <br>
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//cran.r-project.org/bin/windows/base/rw-FAQ.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            R for Windows FAQ
+                        </a>
+                        <br>
+                    </li>
+                </ul>
+                针对Windows系统的常见问题回答，包括R的安装、语言选择、安装包（Package）、Windows系统下的界面、R console等。
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-4ff3ba79f0be96550072f61575c99de3_r.jpg">
+                </figure>
+                <br>
+                <br>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//cran.r-project.org/bin/macosx/RMacOSX-FAQ.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            R for Mac OS X FAQ
+                        </a>
+                        <br>
+                    </li>
+                </ul>
+                针对Mac系统的常见问题回答，包括R的安装、R资源、各种细节解答。
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-2fb95423ac664f4f847e0e6c505684db_b.png">
+                </figure>
+                <br>
+                <br>
+                <h2>
+                    丨使用搜索引擎
+                </h2>
+                <ul>
+                    <li>
+                        通用搜索引擎（general search engine）
+                        <br>
+                    </li>
+                </ul>
+                使用Google或Baidu等通用搜索引擎，最好加入以下关键字：
+                <br>
+                <ul>
+                    <ul>
+                        <li>
+                            R (Programming)
+                        </li>
+                        <li>
+                            所使用的Package
+                        </li>
+                        <li>
+                            想要实现的效果(比如：visualization)
+                        </li>
+                        <li>
+                            发生的error类型和信息
+                        </li>
+                    </ul>
+                </ul>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-534fd83d07b255865f7fe77f9982b45f_r.jpg">
+                </figure>
+                <br>
+                <ul>
+                    <li>
+                        R搜索引擎（R search engine）
+                        <br>
+                    </li>
+                </ul>
+                R语言搜索引擎包括：
+                <p>
+                    <br>
+                    1.
+                    <a href="https://link.zhihu.com/?target=http%3A//Search.r-project.org" class="external" target="_blank" rel="nofollow noreferrer">
+                        <span class="invisible">
+                            http://
+                        </span>
+                        <span class="visible">
+                            Search.r-project.org
+                        </span>
+                        <span class="invisible">
+                        </span>
+                    </a>
+                    ：包含了各种资源，也具有搜索功能
+                    <br>
+                    <br>
+                </p>
+                <p>
+                    <figure>
+                        <img src="https://pic1.zhimg.com/v2-d9810c63f11f5011a31e2cbb737eb5cd_r.jpg">
+                    </figure>
+                    2.
+                    <a href="https://link.zhihu.com/?target=http%3A//Rseek.org" class="external" target="_blank" rel="nofollow noreferrer">
+                        <span class="invisible">
+                            http://
+                        </span>
+                        <span class="visible">
+                            Rseek.org
+                        </span>
+                        <span class="invisible">
+                        </span>
+                    </a>
+                    ：类似R语言的Google，搜索结果包括文献、书籍、支持、安装包、小白学习板块。
+                    <br>
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-3b5f778f008871e680a1b9c8362e3464_r.jpg">
+                </figure>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            DSGE 模型的思想和方法是什么？该如何应用？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/31412803/answer/55120028" target="_blank">
+                        DSGE 模型的思想和方法是什么？该如何应用？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/ji-xiang-48-24">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/da8e974dc.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    吉祥
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2015-07-14
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                DSGE全称是dynamic stochastic general equilibrium，是目前在宏观经济学研究占重要地位（甚至是主导地位）的模型方法，主要用于讨论经济增长、经济周期以及讨论政策工具效果（财政和货币政策）。
+                <br>
+                <br>
+                传统的宏观预测模型受制于Lucas批判。Lucas认为，利用加总的历史数据来给出政策建议和经济预测，其结论值得怀疑，因为宏观系统本身是有大量具有能动性的微观主体组成，这里的微观主体既可以指居民消费者——他们可以根据物价变化和收入变化等改变自己消费、储蓄行为，也可以指企业——可以根据物价、成本、市场需求变化来调整自己的生产。如果在建立预测模型时，罔顾这些微观主体应对政策和实际市场的反应，而只是机械地进行统计意义上的数量预测，其结果是非常不可靠的。统计方法成立的前提条件是历史再现，也就是过去和现在具有同样的机理才会反应出同样的经济效果，但是无论是企业还是居民甚至在面临类似经济形势下会做出不同的反应，原因当然各异，他们有学习、试错、反馈并修正的作用。所以过去有效的政策今天可能失灵，甚至有反效果。
+                <br>
+                <br>
+                Lucas批判的直接后果就是，宏观经济学的主流后来就完全放弃了传统的那套联立各种变量进入一个巨大的方程组，然后求解参数，得出一个描述关于宏观各变量互相变化的“伪”规律，然后再以此进行预测。
+                <br>
+                <br>
+                事实上，传统宏观预测模型——许多国家的央行在70年代就用来进行政策评估——试图建立价格和数量之间的相互关系，一般都是一个具有上千个变量的巨大方程组，然后交给计算机运行来得出结果。这种所谓“相互关系”，即使正确，也是一种权宜之计，因为你根本无从知道方程两边的自变量和因变量之间到底是什么关系——是不是因果关系，如果是，谁是因，谁是果，如果不是，难道有其他变量在决定两者吗？诸如以上问题，传统方法是无从给出答案。
+                <br>
+                <br>
+                宏观经济学必须寻求微观基础，从需求方和供给方的微观决策入手，刻画其面临各自约束的最优决策，然后再对各个微观主体的决策行为进行加总，得到所谓的总供给和总需求，然后利用市场出清的条件来求出价格、利率等影响双方的关键变量，从而决定入失业、市场工资、居民收入等内生变量。在此基础上建立起来的数量关系，虽然不能说就一定反应了各个变量之间的真实关系，但是至少可以拿来试错。
+                <br>
+                <br>
+                最后一句话该怎么理解？既然搞出来的东西都不知道是不是真实的，那搞个毛啊？
+                <br>
+                <br>
+                事实上，最理想的宏观模型是怎样的？应该是经济学家调查每家每户以及每个企业的各种决策行为，长期跟踪，建立起一家一户和各个企业的决策函数，然后由此进行加总获得总供给和总需求，然后政府以此来改变利率、税率、货币发行量等变量，看看这些微观主体的反应如何，择优而为之。
+                <br>
+                <br>
+                显然，以上策略不具有操作性。
+                <br>
+                <br>
+                更何况，如果你认为利率、税率是真实的概念的话，那么所谓总供给，总消费等这些宏观概念是否在真实世界中有明确对应呢？Who knows!
+                <br>
+                <br>
+                所以经济学家的策略：从一些公认的对于微观主体的假设出发，建立模型并推导出他们的决策并进行加总，然后反过来将实际数据代入其中来“凑”。如果在现有参数下能很好解释一些重要的可观测数量，比如失业率，消费占GDP比重，投资占GDP比重，实际利率等等，那么我们就认为这个模型至少能很好滴刻画了现有的经济。然后这套模型就好比是一个实验室，我们就可以来看看，假设税率提高，或者财政补贴上升，会如何。
+                <br>
+                <br>
+                微观基础是基于对行为主体的偏好设定上的，所以DSGE可以被用来分析政策变化的福利效应。
+                <br>
+                <br>
+                顾名思义，DSGE首先必须是动态的，也就是任何决策都是跨期决策，而不是静态决策。其次，是stochastic，因为在现实中微观主体都是生活在一个充满不确定性的世界里，比如技术进步，价格波动等。最后，这必须是一个general equilibrium model，也就是说，DSGE是继承了数理经济学在战后发展起来的最重要成果——一般均衡理论。
+                <br>
+                <br>
+                DSGE本质上是一种方法，是宏观经济学自战后在方法论上的一次重大创新。DSGE可以被不同思想学派的人用来构建反应本学派思想主张的模型（就是对微观主体的偏好、技术、约束作出你认为正确的假设），然后按照程序进行推演就是了。
+                <br>
+                <br>
+                Lucas所在的理性预期学派提出了著名的RBC模型，也就是real business cycle，中文通常翻译为真实周期理论。当然实际上并没有对应的所谓虚假周期理论。这里的”真实”实际是指这个模型的所有变量都是定义在真实变量而不是名义变量上的，或者更直白一点，这个模型里是木有货币的，所有的物价也好，工资也好，其度量衡就是实打实的，不存在货币可能带来的一切效应。
+                <br>
+                <br>
+                不假设货币的存在当然跟现实相距甚远，但是首先这样做使得模型变得简单，可控可解。其次，货币到底有啥用，本身就是一个在经济学很纠结的问题，各个学派都有自己的想法，根本无法达成统一。但大家都承认的一个事实是：货币如果是必须的，那么整个经济就是肯定不是complete market。这里就不解释什么是complete market了，简单说，就是这个世界一定存在着某些摩擦，必须靠货币的流通来解决之。所以RBC就自动假设我们处于一个complete market里。
+                <br>
+                <br>
+                最重要的是，尽管RBC把货币拿掉了，但是最后的结论还是可以在很大程度上保持与现实数据的吻合。这至少说明拿掉货币，没有导致模型失真。
+                <br>
+                <br>
+                当然，没有货币，你也无从讨论货币政策的作用——当然，反过来说，既然没有货币的模型已经可以解释世界了，那么货币政策或许大概就真没什么用吧！
+                <br>
+                <br>
+                这最后一句话激怒了凯恩斯的徒子徒孙们——凯恩斯主义者。凯主义者学会了DSGE这套方法后，就复兴了凯恩斯大佬的思想，这一派被称为新凯恩斯主义者。他们将一些非竞争性因素和其他摩擦加入模型，比如企业之间的垄断性竞争，工资调整具有刚性。
+            </div>
+        </div>
+    </body>
+</html>

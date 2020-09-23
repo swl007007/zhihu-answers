@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            工具变量回归时怎样理解局部平均(LATE)?
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/32199571/answer/55792738" target="_blank">
+                        工具变量回归时怎样理解局部平均(LATE)?
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/sijichun">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-c729757b369040b965ffb472ff8a5de7.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    慧航
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2015-07-20
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                谢邀。其实我没有很明白题主的意思，我就从工具变量的角度来谈一下如何理解LATE吧。
+                <br>
+                <br>
+                （既然题主的问题比较技术化，在此
+                <b>
+                    我假设这篇答案的读者已经掌握了基本的OLS、2SLS等方法。
+                </b>
+                ）
+                <br>
+                <br>
+                首先我们需要从这个题目的背景谈起。LATE的大背景是什么？
+                <b>
+                    Treatment effects
+                </b>
+                。所以首先我先引入一些notation。
+                <br>
+                <br>
+                假设一个个体参与一个项目（
+                <b>
+                    treatment
+                </b>
+                ），如果参与项目，其outcome为
+                <img src="https://www.zhihu.com/equation?tex=y_1%3Dg_1%28x%29%2Bu_1" alt="y_1=g_1(x)+u_1" eeimg="1">
+                ，如果不参加，其outcome为
+                <img src="https://www.zhihu.com/equation?tex=y_0%3Dg_0%28x%29%2Bu_0" alt="y_0=g_0(x)+u_0" eeimg="1">
+                ，我们关心的是个体参与项目与否其outcome的差别，
+                <img src="https://www.zhihu.com/equation?tex=y_1-y_0" alt="y_1-y_0" eeimg="1">
+                ，或者说，处理效应（
+                <b>
+                    treatment effects
+                </b>
+                ）。当然，由于异质性，每个人的处理效应是不一样的，我们经常关注
+                <b>
+                    平均处理效应
+                </b>
+                （
+                <b>
+                    Average Treatment Effects，ATE
+                </b>
+                ）：
+                <img src="https://www.zhihu.com/equation?tex=E%28y_1-y_0%29" alt="E(y_1-y_0)" eeimg="1">
+                。
+                <br>
+                <br>
+                然而，由于不存在平行世界，我们只能观察到
+                <img src="https://www.zhihu.com/equation?tex=y_0%2Cy_1" alt="y_0,y_1" eeimg="1">
+                其中的一个，而非both。因此我们观察到的实际上是
+                <img src="https://www.zhihu.com/equation?tex=y%3Ddy_1%2B%281-d%29y_0" alt="y=dy_1+(1-d)y_0" eeimg="1">
+                ，其中
+                <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                是一个0-1函数，代表个人是否参加了这个项目。以上的方程可以写为：
+                <br>
+                <img src="https://www.zhihu.com/equation?tex=y%3Dd%5Bg_1%28x%29%2Bu_1%5D%2B%281-d%29%5Bg_0%28x%29%2Bu_0%5D%3Dg_0%28x%29%2Bd%5Bg_1%28x%29-g_0%28x%29%5D%2Bu_0%2Bd%28u_1-u_0%29" alt="y=d[g_1(x)+u_1]+(1-d)[g_0(x)+u_0]=g_0(x)+d[g_1(x)-g_0(x)]+u_0+d(u_1-u_0)" eeimg="1">
+                <br>
+                其中
+                <img src="https://www.zhihu.com/equation?tex=%5Calpha%3Dg_1%28x%29-g_0%28x%29" alt="\alpha=g_1(x)-g_0(x)" eeimg="1">
+                是我们关心的处理效应。我们不妨做一个假设，约束一下函数形式，假设
+                <img src="https://www.zhihu.com/equation?tex=g_0%28x%29%3Dx%27%5Cbeta" alt="g_0(x)=x&#39;\beta" eeimg="1">
+                ，以上式子变成了：
+                <br>
+                <img src="https://www.zhihu.com/equation?tex=y%3Dx%27%5Cbeta%2Bd%5Calpha%2Bu_0%2Bd%28u_1-u_0%29" alt="y=x&#39;\beta+d\alpha+u_0+d(u_1-u_0)" eeimg="1">
+                <br>
+                现在问题来了，如果我们直接ols y on x d是肯定不行的，因为误差项
+                <img src="https://www.zhihu.com/equation?tex=u_0%28x%29%2Bd%28u_1-u_0%29" alt="u_0(x)+d(u_1-u_0)" eeimg="1">
+                是跟d相关的。那么一个很自然的想法就是找一个工具变量z。然而，着并没有什么卵用。为啥呢？因为工具变量要求跟d相关，而跟d相关的变量，都跟误差项相关。。。。
+                <br>
+                <br>
+                所以这里，为了使得以前的工具变量方法可以使用，我们必须做一个更强的假设，把
+                <img src="https://www.zhihu.com/equation?tex=d%28u_1-u_0%29" alt="d(u_1-u_0)" eeimg="1">
+                给去掉，传统的工具变量才能用。如果假设
+                <img src="https://www.zhihu.com/equation?tex=u_1%3Du_0" alt="u_1=u_0" eeimg="1">
+                ，那么问题解决了，我们可以使用之前的工具变量了。
+                <br>
+                <br>
+                不过，这里工具变量该怎么用是个很有意思的事情。最传统的，我们可以使用2SLS的方法，也就是先拿d对x和z做回归，得到
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D_1" alt="\hat{d}_1" eeimg="1">
+                ，然后用
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D_1" alt="\hat{d}_1" eeimg="1">
+                替换d进行第二阶段回归（
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D_1" alt="\hat{d}_1" eeimg="1">
+                的下表1代表第1阶段回归）。
+                <br>
+                <br>
+                不过观察到d是一个0-1变量，更有效的方法是第一阶段不用OLS，而是用诸如probit、logit的方法做，得到一个
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D" alt="\hat{d}" eeimg="1">
+                ，
+                <b>
+                    然后用
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D" alt="\hat{d}" eeimg="1">
+                    作为d的工具变量
+                </b>
+                。注意这里是使用
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D" alt="\hat{d}" eeimg="1">
+                作为工具变量，而并不是使用
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D" alt="\hat{d}" eeimg="1">
+                替代d，这是有关键差别的。有什么差别呢？忽略常数项和
+                <img src="https://www.zhihu.com/equation?tex=x%27%5Cbeta" alt="x&#39;\beta" eeimg="1">
+                ，
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D" alt="\hat{d}" eeimg="1">
+                作为工具变量估计的实际上是：
+                <br>
+                <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BE%5B%5Chat%7Bd%7Dy%5D%7D%7BE%5B%5Chat%7Bd%7Dd%5D%7D%3D%5Cfrac%7BE%5B%5Chat%7Bd%7D%28d%5Calpha%2Bu%29%5D%7D%7BE%5B%5Chat%7Bd%7Dd%5D%7D%3D%5Cfrac%7B%5Calpha+E%5B%5Chat%7Bd%7Dd%5D%2BE%5B%5Chat%7Bd%7Du%5D%7D%7BE%5B%5Chat%7Bd%7Dd%5D%7D%3D%5Calpha" alt="\frac{E[\hat{d}y]}{E[\hat{d}d]}=\frac{E[\hat{d}(d\alpha+u)]}{E[\hat{d}d]}=\frac{\alpha E[\hat{d}d]+E[\hat{d}u]}{E[\hat{d}d]}=\alpha" eeimg="1">
+                <br>
+                而如果直接回归y on d，得到的结果是：
+                <br>
+                <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BE%5B%5Chat%7Bd%7Dy%5D%7D%7BE%5B%5Chat%7Bd%7D%5E2%5D%7D%3D%5Cfrac%7BE%5B%5Chat%7Bd%7D%28d%5Calpha%2Bu%29%5D%7D%7BE%5B%5Chat%7Bd%7D%5E2%5D%7D%3D%5Cfrac%7B%5Calpha+E%5B%5Chat%7Bd%7Dd%5D%2BE%5B%5Chat%7Bd%7Du%5D%7D%7BE%5B%5Chat%7Bd%7D%5E2%5D%7D%3D%5Calpha%5Cfrac%7BE%5B%5Chat%7Bd%7Dd%5D%7D%7BE%5B%5Chat%7Bd%7D%5E2%5D%7D" alt="\frac{E[\hat{d}y]}{E[\hat{d}^2]}=\frac{E[\hat{d}(d\alpha+u)]}{E[\hat{d}^2]}=\frac{\alpha E[\hat{d}d]+E[\hat{d}u]}{E[\hat{d}^2]}=\alpha\frac{E[\hat{d}d]}{E[\hat{d}^2]}" eeimg="1">
+                <br>
+                显然两者是不相等的，后者低估了处理效应的magnitude。
+                <br>
+                <br>
+                此外，这里一个关键点是，任何z的函数都可以作为工具变量，但是做出propensity score
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D" alt="\hat{d}" eeimg="1">
+                ，继而使用
+                <img src="https://www.zhihu.com/equation?tex=%5Chat%7Bd%7D" alt="\hat{d}" eeimg="1">
+                作为工具变量可能又潜在的效率的提升。那么LATE（
+                <b>
+                    local average treatment effects
+                </b>
+                ）呢？
+                <br>
+                <br>
+                在LATE里，我们有一个比较特殊的工具变量，简单叙述起见，z也是一个0-1变量。有了工具变量，我们有两种做法，第一种还是跟上面一样，计算出z=0/1的propensity score
+                <img src="https://www.zhihu.com/equation?tex=E%28d%7Cz%3D1%29" alt="E(d|z=1)" eeimg="1">
+                、
+                <img src="https://www.zhihu.com/equation?tex=E%28d%7Cz%3D0%29" alt="E(d|z=0)" eeimg="1">
+                ，工具可能是：
+                <img src="https://www.zhihu.com/equation?tex=z%5Ccdot+P%28d%7Cz%3D1%29%2B%281-z%29P%28d%7Cz%3D0%29" alt="z\cdot P(d|z=1)+(1-z)P(d|z=0)" eeimg="1">
+                ，这是上面的做法。还有一种做法，是直接使用z作为工具变量，也就是：
+                <br>
+                <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bcov%28z%2Cy%29%7D%7Bcov%28z%2Cd%29%7D" alt="\frac{cov(z,y)}{cov(z,d)}" eeimg="1">
+                <br>
+                我们来看分子，
+                <img src="https://www.zhihu.com/equation?tex=cov%28z%2Cy%29%3DE%28z%5Ccdot+y%29-+E%28z%29%5Ccdot+E%28y%29" alt="cov(z,y)=E(z\cdot y)- E(z)\cdot E(y)" eeimg="1">
+                ，
+                <img src="https://www.zhihu.com/equation?tex=E%28z%5Ccdot++y%29%3DE%28y%7Cz%3D1%29%5Ccdot+P%28z%3D1%29" alt="E(z\cdot  y)=E(y|z=1)\cdot P(z=1)" eeimg="1">
+                ，
+                <img src="https://www.zhihu.com/equation?tex=E%28z%29%5Ccdot+E%28y%29%3DP%28z%3D1%29%5Ccdot+%5BE%28y%7Cz%3D1%29%5Ccdot+P%28z%3D1%29%2BE%28y%7Cz%3D0%29%5Ccdot+P%28z%3D0%29%5D" alt="E(z)\cdot E(y)=P(z=1)\cdot [E(y|z=1)\cdot P(z=1)+E(y|z=0)\cdot P(z=0)]" eeimg="1">
+                <br>
+                最终，
+                <img src="https://www.zhihu.com/equation?tex=cov%28z%2Cy%29%3D%28P-P%5E2%29%5BE%28y%7Cz%3D1%29-E%28y%7Cz%3D0%29%5D" alt="cov(z,y)=(P-P^2)[E(y|z=1)-E(y|z=0)]" eeimg="1">
+                <br>
+                分子同理，最后得到：
+                <br>
+                <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bcov%28z%2Cy%29%7D%7Bcov%28z%2Cd%29%7D%3D%5Cfrac%7BE%28y%7Cz%3D1%29-E%28y%7Cz%3D0%29%7D%7BP%28d%7Cz%3D1%29-P%28d%7Cz%3D0%29%7D" alt="\frac{cov(z,y)}{cov(z,d)}=\frac{E(y|z=1)-E(y|z=0)}{P(d|z=1)-P(d|z=0)}" eeimg="1">
+                <br>
+                也就是LATE的表达式。
+                <br>
+                <br>
+                为什么使用LATE？熟悉LATE的都知道LATE之所以被称之为“local”，是因为LATE有一个非常简单的经济学解释：LATE度量的是，从z=0到z=1，会从d=0变到d=1的那些人的平均的处理效应。
+                <br>
+                <br>
+                有点绕，我们来举个栗子。就像
+                <a data-hash="4ccc0899b952a11e3e46ff5069630ca8" href="https://www.zhihu.com/people/4ccc0899b952a11e3e46ff5069630ca8" class="member_mention" data-tip="p$b$4ccc0899b952a11e3e46ff5069630ca8" data-hovercard="p$b$4ccc0899b952a11e3e46ff5069630ca8">
+                    @闫文收
+                </a>
+                讲的那个经典的例子。用离学校的距离做IV，一共有四类人：无论如何都会去上学的；无论如何都不去上学的；距离近就上学，距离远就不上学的；距离近不上学，距离远上学的。而LATE在这里假设第四类人，也就是家和学校距离越远越愿意上学的，这个非常不符合直觉，假设不存在这类人。那么LATE度量了第三类人，也就是因为家近才去上学的人的平均处理效应。
+                <br>
+                <br>
+                以上，从IV的角度看LATE，写完了。其实LATE一般不是这样讲的，如果感兴趣可以继续看Angrist的书《mostly harmless econometrics》，或者Wooldridge的《cross sectional and panel data》也讲的很不错。
+            </div>
+        </div>
+    </body>
+</html>

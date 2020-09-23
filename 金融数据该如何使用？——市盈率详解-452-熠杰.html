@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            金融数据该如何使用？——市盈率详解
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-824d1a8e77f16ecd72403325234d3462_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/24490049" target="_blank">
+                        金融数据该如何使用？——市盈率详解
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/xiong-yong-jie-39">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-039153cf56fed5023e036defb381a1f5.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    熠杰
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2016-12-21
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-e2aa4f11776f04b383a82d8dd5dc2feb_b.jpg">
+                </figure>
+                <p>
+                    如果你有看经济学家对股市的评论或者是论坛上股民的各种吐槽，你可以经常听到以下言论：“市盈率这么高怎么还能涨？”、“市盈率这么低怎么还能跌？”、“看不懂中国股市”、“按市盈率炒股必亏”。话语中充斥着对市场估值的困惑不解，对指标使用的茫然无助。本文对市盈率进行全面的解读，希望能对各位有所帮助。
+                    <br>
+                    <br>
+                    指标解释（这部分比较枯燥，之后会很有趣~）：
+                </p>
+                <p>
+                    <b>
+                        1.市盈率（Price-to-Earning Ratio简称PE）
+                    </b>
+                    ：市盈率代表企业的盈利水平，即在企业业绩没有变化的情况下需要多少年才可以赚回本金，市盈率是投资回报率的倒数，10倍市盈率即意味着投资10年回本，年化收益率10%。通常来讲，市盈率越低表示企业的估值水平越低，投资风险越小。
+                </p>
+                <p>
+                    PE＝∑(收盘价×发行数量)/∑(每股收益×发行数量)，简化之后，
+                </p>
+                <p>
+                    <b>
+                        PE=收盘价/每股收益，或者总市值/总收益。
+                    </b>
+                    统计时剔除亏损及暂停上市的上市公司，总收益为归属于上市公司的利润。
+                </p>
+                <p>
+                    <b>
+                        当然，这仅仅是假设企业业绩不变化，市场定价绝对理性的理想状态，实际情况远比此复杂，市场周期导致的整体的高估/低估，不同投资者掌握的信息不对称，对概念和事件驱动的过度炒作，投资者群体千奇百怪的偏好等因素都会导致企业的市场价格偏离理性的估值，企业本身的状况更是处于不停的变化中。因而，股价几乎从未达到过理论上的“合理”价格，只会围绕“合理价格”这个中枢位置上下摇摆，甚至在市场疯狂和崩溃的时候远远偏离。个别股票偏离的时间之长，超出大多数按照财务状况估值的价值投资者的想象。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        2.静态市盈率(Last Year Ratio简称 LYR)
+                    </b>
+                    ：我们都知道企业的盈利状况是动态变化的，根据财务报表的规则，每个季度会有更新，但更真实准确的情况是，它们每天都在变化，而反映到市场上的公开信息最小变化时间单位却是一季度。
+                    <b>
+                        静态市盈率忽略了短时间的变化，使用最近一期年度报告财务数据计算，所以该指标严重滞后于企业即时的状况
+                    </b>
+                    。
+                </p>
+                <p>
+                    在上交所和深交所官网中，年报数据更新时点统一为每年5月1日，即在每年5月1日前采用第N-2年年度报告财务数据，5月1日（含）之后一并更新为第N-1年年度报告财务数据。最大时间差可以达到1年零4个月。
+                </p>
+                <p>
+                    比如目前（2016年12月）的静态市盈率中每股收益采用的是2015年报的数据，今年年初（2016年1月）股灾3.0期间的每股收益采用的是2014年年报的数据，如果企业的业绩在持续增长，那么静态市盈率将比真实的市盈率高，让人觉得企业“贵”。但是受限于信息获取的渠道和成本，静态市盈率依然是广大机构研究估值时采用的指标之一。国内通常所说的市盈率指代的就是静态市盈率LYR。
+                </p>
+                <p>
+                    <b>
+                        3.滚动市盈率(Trailing Twelve Months简称TTM)：
+                    </b>
+                    滚动市盈率考虑了企业盈利的动态变化，不涉及对未来的预期，每个季度第一时间更新，是反映企业估值更准确的指标，也是股票交易软件里缺失的重要数据。滚动市盈率中的每股收益采用过去4个季度的财务数据，虽然它的起始点会发生变化，但却始终包括有四个不同的季度(1、2、3、4；2、3、4、1;；3、4、1、2；4、1、2、3)，虽然这四个季度有可能属于两个不同的自然年度，但仍然弥补了上市公司季节性的客观差异所造成的影响，更弥补了静态市盈率采用同比数据的时效性问题。
+                </p>
+                <p>
+                    比如目前（2016年12月）的滚动市盈率采用的是2016年1-3季度加上2015年4季度的数据；今年年中（2016年7月）采用的是2016年1-2季度以及2015年3-4季度的数据。到2017年年初的时候，2016年年报一旦更新，则将采用2016年1-4季度的数据，相当于直接采用2016年年报的数据。
+                </p>
+                <p>
+                    TTM在传统的交易软件中无法找到，上交所和深交所官网中都可以查到.
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-0512a261e5030c2990c3d304e7343441_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-88548c70a3344718982a85652d53a472_r.jpg">
+                </figure>
+                <p>
+                    <b>
+                        4.动态市盈率(Training PE)：
+                    </b>
+                    动态市盈率包含了对未来的预期，是指用现在的股价除以未来一年或几年可能会实现的每股收益，它们有两种计算方式，第一种是国内的交易软件上显示的:
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-4856e263662352dd5790b66d38677ff6_r.jpg">
+                </figure>
+                <p>
+                    <b>
+                        未来一年的收益绝对不能机械地等同于一季度的盈利*4，这种预期非常僵硬，不合情理。而我们的股票软件里恰恰就是这么算的。
+                    </b>
+                    它是用年度内已知的季度数据去推算全年的业绩。具体算法为1季度*4/1；1-2季度*4/2；1-3季度*4/3;1-4季度*4/4=年报的数据。
+                    <b>
+                        由于企业的收益并不是均摊到每个季度的，甚至很多企业前三个季度都是亏损，但是全年是盈利的（收款集中在年末），或者第一个季度有很大的盈利，后三个季度反而一直亏损（收款集中在年初），所以动态市盈率对企业的评估会偏离真实状况很远。
+                    </b>
+                </p>
+                <p>
+                    让我举一个例子来说明这个问题：假设企业A市值为10亿，2016年净利润是1亿，那么它的静态PE是10倍。细分来看：其中1季度亏损1000万、二季度盈利2000万、三季度盈利为0、四季度盈利9000万。
+                </p>
+                <p>
+                    当1季报公布的时候，由于亏损，动态市盈率为负值，在交易软件中会显示为 -。
+                </p>
+                <p>
+                    半年报公布之后，动态PE推算的年度盈利就变成了1-2季度*4/2 = （-1000万+2000万）*4/2=2000万，这个时候，企业的动态PE为10亿/2000万=50倍。
+                </p>
+                <p>
+                    当3季报公布的时候，动态PE推算的年度盈利为1-3季度*4/3= （-1000万+2000万+0）*4/3=1333万，此时的动态PE是10亿/1333万=75倍。
+                </p>
+                <p>
+                    只有在年报公布之后以及新一年的1季报公布之前，动态市盈率才和静态市盈率一致。年报公布的时间是每年1-4月中任意时间点，1季报公布的时间是每年4月，所以满足这个时间限制的条件很苛刻，重合时段非常短暂。
+                </p>
+                <p>
+                    <b>
+                        由于计算方式的严重缺陷，该种计算方式的动态市盈率一般不作为研究估值的指标，但是大多数交易软件上显示的都是这种，这也是为什么很多人经常叫喊着市盈率负数或者1000倍的股票唰唰涨，自己持有的市盈率10-20倍的股票反而在跌，以此推断出市盈率是反向指标，越高越好，或者说市盈率无用，因为你采用的指标本身就是不靠谱的。上述例子中的两只股票的LYR和TTM如下，压根就不是548倍以及负数。
+                    </b>
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-ab9b70fc440e595d17731c33a0cc297c_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-1d030752fc36dd224ffc5b130207e11f_r.jpg">
+                </figure>
+                <p>
+                    虽然上述例子中的股票近期是下跌的，但是在2015年4季度他们的动态市盈率依然如此，一个几百上千倍，另一个是负数，而股价却是唰唰猛涨，其中一个还创出历史新高。
+                </p>
+                <p>
+                    股价的涨跌和基本面数据的关系我会在后面详细阐述，在此只是举一些例子说明动态市盈率计算方式的重大错误。
+                </p>
+                <p>
+                    第二种动态市盈率是金融机构通常采用的，是指还没有真正实现的下一年度的预测利润的市盈率。等于股票现价和未来每股收益的预测值的比值，比如下年的动态市盈率就是股票现价除以下一年度每股收益预测值，后年的动态市盈率就是现价除以后年每股收益预测值。通常来讲公式为：
+                </p>
+                <p>
+                    动态市盈率 =静态市盈率* [1 / (1 + i )^ n ]，以静态市盈率为基数，乘以动态系数， i为企业每股收益的增长率，n为企业的可持续发展的存续期。
+                </p>
+                <p>
+                    <b>
+                        由于这种计算方式涉及到对未来的预期，那就必然带有主观成分，不同的模型或者计算方法给出的估值和增长预期都是不同的，而哪个模型最准确并没有标准答案。对企业信息掌握程度不同的人给出的预期也会不同，而谁掌握的信息更真实、更有价值同样难以说清楚。
+                    </b>
+                    所以动态市盈率只能建立在专业的分析师建立在自身对企业深入了解的基础上，它并不是一个客观存在的指标。
+                </p>
+                <p>
+                    <b>
+                        鉴于上述种种不合理之处，动态市盈率几乎没有任何机构采用，但是却在股票交易软件上误导了无数人。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        5.周期调整后的市盈率 (Cyclical Adjusted PE, 简称CAPE)
+                    </b>
+                    ：它是行为金融学家RobertShiller所创的关于目前所处估值相对于历史水平的一个长期指标，虽然无法预见短期的涨跌，但对估值顶部和底部的确认有参考意义，该指标又称 Shiller-PE，计算公式为：
+                </p>
+                <p>
+                    <b>
+                        CAPE= 通胀调整后的实际股价/ (过去十年通胀调整后的实际盈利的平均值)
+                    </b>
+                </p>
+                <p>
+                    其主要目的是通过通胀调整和平均来抹平经济周期带来的盈利的波动，因此分母是一个随经济持续发展长期缓慢上升的值，波动性较弱，而分子的波动性很强，主要是受市场情绪左右。我们都知道在在经济繁荣的时候，在行业景气的时候，处在该行业内的所有公司都会感觉生意很好做，于是市场热情高涨，股市上鸡犬升天，这就是雷军所谓的“站在风口上，猪都会飞起来”，而经济萧条的时候，即便是最优秀的企业，也需要裁员降薪，缩减业务以便扛过寒冬。企业的盈利状况随着经济周期和行业周期一起波动，有时候幅度相当之大。CAPE把估值周期延长之后，抹平了经济周期的影响，对企业有更稳定更准确的评估。不过在国内由于很少有人知道该项指标，所以基本没有被使用。
+                </p>
+                <p>
+                    在充分地理解了市盈率背后的含义，不同类别的市盈率是如何计算的之后，就可以开始使用了。如何使用这项指标，才是重中之重。
+                </p>
+                <p>
+                    我们先以一个常见的错误为例来说明这一点。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-b67b2ec9e9a6f8b1bec550ee2fd2ee60_r.jpg">
+                </figure>
+                <p>
+                    罗伯特·希勒曾经提前2年预言了2001年互联网泡沫和2007年房地产泡沫，其著作《非理性繁荣》畅销全球，2013年凭借对资产价格预测的巨大贡献获得诺贝尔经济学奖。但是从此之后他就不灵了，在使用CAPE上也是频频出错。
+                </p>
+                <p>
+                    从2013年开始他就警示美股有泡沫，有崩盘的风险，之后每年都坚持该观点，至今快到2017年了，美股年复一年地创着新高，涨势喜人，令这位诺奖得主也无言以对。假设2017年真就崩盘了，时间上的误差达到4年也已经没有任何意义。
+                </p>
+                <p>
+                    虽然过去2次预测距离泡沫破灭早了点，但市场最终验证了希勒的判断。作为一名学者，这些书籍和论文帮助他享誉全球，但如果作为一名投资者，他可能早就血本无归了。
+                </p>
+                <p>
+                    <b>
+                        没有任何一位职业投资者能承担长达2年的方向性错误。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        客户不会听你解释，老板更不会听你解释，你再有道理，事后再正确，他们也只会抛弃掉你。07年做空次贷一战成名的JohnPaulson早了1年半，在泡沫破灭之前，每天依靠中央公园内的晨跑，晚上回家击鼓敲锣来缓解压力，不断跟客户发邮件解释，艰难度日，差一点就心理崩溃了。
+                    </b>
+                </p>
+                <p>
+                    希勒首先发现了10年期CAPE和未来10年持有所带来的资本回报(不计股息)的年化收益率的负相关关系。同时该项研究表明，用周期调整市盈率预测股市未来走势，有较强的参考价值，能解释30%的统计相关性。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-8329465e44b69c5450ed52c899d4c5aa_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-3d5cb58fc119f9c832df9560cd34d1dc_r.jpg">
+                </figure>
+                <p>
+                    通过对上图历史市盈率的解读，希勒得出了如下结论：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-9beab9a7509e6dcc810b31425d8b627e_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-70529160719dccefc4bd25b30ee8ed89_r.jpg">
+                </figure>
+                <p>
+                    从文中我们可以看到希勒的逻辑很清晰：历史数据揭示25倍CAPE是崩盘的前兆，处于历史高位，所以这次大概率会如此，
+                    <b>
+                        这种统计学思维的误用即便是这样顶尖的学者也会犯。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        学过统计学的人应该都明白几点：相关不代表因果；归纳法在理性上永远无法被证明。
+                    </b>
+                    市盈率对市场整体估值水平的确有很好的参考作用。但是它属于基本面数据，只能在事后辅助确认市场的顶部和底部，对股市短期涨跌的预测毫无帮助。即便你熟练掌握了静态市盈率和滚动市盈率的计算，能读懂背后代表的企业现状和前景，也无法通过它来获取交易层面的盈利。
+                    <b>
+                        因为市盈率仅仅是一个判断市场高估/低估的指标，高估/低估的标准随着科技的发展会变，随着市场参与者偏好和结构的改变也会变，随着制度的改变还会变。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        再一个，高估了还可以更高估，低估了还可以更低估，市场的情绪是无法通过基本面数据去解读的；市场的走势更不可能由基本面数据去决定。
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        股价的变化是一个动力学的过程，股市的动力学模式存在历史记忆，历史的走势和当前的价格一定程度上决定了未来，这是反馈系统存在的基础，上个时刻的终值就是这个时刻的初值，在一定的规则下迭代就可以产生动力学过程的模拟。
+                    </b>
+                    由于蝴蝶效应的存在，我们对未来的预测能力相当有限，这个有限性既体现在时间上（比如模拟出未来1-2个月的走势可能还不错，未来3-6个月的走势就开始偏离得有点多了，要预测未来1-2年的走势只能靠蒙）；同时体现在价格的精确程度上（比如判断出2015年股灾的顶部区域5000+就算很准确了，要判断到5100+甚至5178点是几乎不可能的）。股价的波动并不是按照统计学去检验得到的随机行为，更不是正态分布，历史经验的归纳在这个领域非常无力，股市是一个复杂系统，演绎法带来的市场演化分析才是触及本质的方法，才是最正确但同时也是最难的方法。
+                </p>
+                <p>
+                    希勒并没有意识到第三次工业革命之后带来的信息技术和之前传统的农业/工业有着天壤之别，
+                    <b>
+                        科技是加速进步的，科技和劳动生产率又相辅相成，互相促进
+                    </b>
+                    。
+                    <b>
+                        如今的美股指数成分股也以Google、亚马逊、Facbook等互联网企业为主，该类企业的估值方法和传统行业完全不同，财务上的盈利并不是唯一的指标，甚至都不是最重要的指标。
+                    </b>
+                    目前人类正在进入以人工智能、机器人、物联网为核心的智能化时代，这就是大家通常所说的工业4.0，第四次工业革命。未来的所谓“合理”的市盈率区间还会继续上移，过去100年的历史经验并不能指导现在。
+                </p>
+                <p>
+                    阿里巴巴， 2015年净利润427.41亿元人民币，市值2264亿美金，约37.7倍静态市盈率，51.4倍滚动市盈率。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-ce36dd2176a369df670f7a4ec0d6f0ca_r.jpg">
+                </figure>
+                <p>
+                    谷歌， 2015年净利润163亿美金，市值5450亿美金，约31倍静态市盈率，29.1倍滚动市盈率。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-382eab7c8347e1331d06fe47b798a361_r.jpg">
+                </figure>
+                <p>
+                    微软， 2015年净利润168亿美金，市值4900亿美金，约27.7倍静态市盈率，30.4倍滚动市盈率。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-669c374a36508ed6c21662a567419be8_r.jpg">
+                </figure>
+                <p>
+                    亚马逊，2015年净利润为5.96亿美元，市值3600亿美元，约638倍静态市盈率，175倍滚动市盈率。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-dfd425b3d850b62176f7f238de13a170_r.jpg">
+                </figure>
+                <p>
+                    Netflix，2015年净利润1.22亿美元，市值539亿美元，约441倍静态市盈率，338倍滚动市盈率。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-55f5b5cdd30425a94aa7b05aa74020b8_r.jpg">
+                </figure>
+                <p>
+                    京东，2015年净利润-93.8亿人民币，市值348亿美元，静态市盈率 -，滚动市盈率 -。
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-0e8a64802d1435df9eea02858f6a4843_r.jpg">
+                </figure>
+                <p>
+                    上述企业均已经成为了互联网巨头，用市盈率估值尚且“高得吓人”，更不用说广大中小互联网企业了，充满想象的空间。本文并不是讨论互联网企业如何估值的，日活跃用户数、月活跃用户数、流量数据、用户转换率、用户粘性，还有商誉、专利技术等无形资产都是重要参考，这是一件非常专业而复杂的事情，在此不再赘述。传统行业所谓的10-20倍市盈率合理区间在TMT（通信、传媒、科技）等新兴行业面前毫无意义。从单个企业来讲，财务上的盈利和市值甚至没有必然的联系；从行业平均来讲，市盈率也是长期处于25-50倍的区间，只有2000年互联网泡沫最疯狂的时候是纳斯达克指数是100倍市盈率，A股2015年6月创业板4000点时对应的是145倍市盈率。
+                </p>
+                <p>
+                    最艰难的地方在于，即便你的估值很正确，市场在70倍、80倍市盈率的时候也已经有泡沫了，你很坚决地卖出，空仓，甚至是做空，但是市场直到100倍、145倍市盈率的时候，泡沫才破灭。这段时间对你来说简直是一场噩梦，如果你大胆参与做空，甚至会在熬到胜利之前爆仓，血本无归。市场疯狂的时候，上涨的惯性常常超出想象，市场萧条的时候，在地板上卧倒的时间也会让人目瞪口呆。
+                </p>
+                <p>
+                    市盈率只能用来评估传统行业的企业以及市场整体是否高估/低估，只能告诉你在不同时期应该持有多少仓位，安全边际是多少，但也就到此为止了。它并不能告诉你市场什么时候、什么点位开始往你预期的方向走，市场该不该回到所谓的“合理”区间。
+                </p>
+                <p>
+                    <b>
+                        市盈率和股价的变化既不在一个尺度上，也不在一个维度上，用市盈率去判断股价的走势，就好比用最小分度值为分米的尺子去测量人的体重，尺子是用来测量身高（长度）的，身高的最小单位至少应该是厘米。但是身高和体重之间又有一定的联系，从统计平均来讲，通常严格成正比。但是具体到个例上，有的人1米7体重180斤，有的人1米8体重120斤，随着生活质量的提高，肥胖人群的比例起初也越来越高，但人们普遍意识到健康问题后，会通过运动等方式去消耗热量，增加新陈代谢速率，弥补过度饮食，肥胖人群的比例又会降下去。就像这次市盈率145倍泡沫才破灭，下次100倍了可能都不算泡沫，再下次可能80倍就破灭了。历史经验的归纳只能模糊的定量，误差会大到无法以此为依据执行交易。
+                    </b>
+                </p>
+                <p>
+                    至于比较精确地判断股价的变化，这是世界性的难题，岂是通过市盈率这个单一的指标能解决的？股市、债市、期市、汇市都是高维复杂系统，永远不会重复，并且不可逆，看似随机的同时又隐藏着深层次的规律，经济学、金融学、物理学、生物学、心理学、计算机科学、神经科学等结合起来才是打开这座金矿大门的钥匙，而这把钥匙，走在前沿的人，做交叉学科的人正在努力去追寻。
+                </p>
+                <p>
+                    我把A股上证指数以及创业板指数历史重要时点对应的市盈率列了一个表，创业板市盈率图也是自己做的，搜集数据不易，且看且珍惜。
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-baff8e5fb5d37a06ddf1aae6e95e259e_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-339702dfc4bd4847de785d51c6692cbe_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-d5ee80dc0896c518472984ac7a428f45_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-4deae4c5ca3931c5ae3d6e06c8d7e827_r.jpg">
+                </figure>
+                <p>
+                    从上述图表中可以直观的看到几个问题：
+                </p>
+                <p>
+                    1.上证的市盈率是长期往下走的，创业板的市盈率是长期往上走的；
+                </p>
+                <p>
+                    2.上证的市盈率远远低于创业板的市盈率；
+                </p>
+                <p>
+                    3.A股的估值显著高于国外，不管是港股还是美股欧股，都是如此；
+                </p>
+                <p>
+                    为什么  ？
+                </p>
+                <p>
+                    上述三点都可以归结为几个原因：
+                </p>
+                <p>
+                    1.  上市审批制导致了上市企业的稀缺，由于政治因素又经常暂停IPO，导致大量企业排着队挤独木桥，供需关系朝着供不应求的方向偏移，价格自然会上涨；
+                </p>
+                <p>
+                    2.  没有完善的退市制度，结合第1点，导致了再烂的企业也有价值，那就是壳资源，也催生了全球独一无二的“借壳上市”。目前的壳能够值20-25亿，以A股中位数市值84亿来算，壳的价值占了总市值的25%-30%，把“合理”的估值水平直接拉高了33%左右。这个价值的提升对于千亿级别的巨头来说微乎其微，可以忽略不计，但是对于广大中小型企业来说却是影响巨大；
+                </p>
+                <p>
+                    3.  对上市的严格管制和要求远超成熟市场，导致了业绩不符的企业都不能上市，变相提升了上市公司的质量，虽然由于刻板的盈利要求和拖沓的IPO堰塞湖逼得很多知名优秀企业远赴海外（比如BAT、京东、360、优酷土豆全跑出去了），但总体来讲通过监管的筛选让A股的上市公司平均业绩更好了；
+                </p>
+                <p>
+                    4.  上证的股票以传统行业为主；创业板的股票以新兴行业为主，估值方式和发展前景本来就是天壤之别，与此同时，加权平均的统计方式让银行这个估值最低，但是市值又最大的板块大幅拉低了上证的市盈率，让上证最近几年看上去貌似总是处于价值洼地，实际上并不是这样，银行板块2006年之后才大量上市，所以你可以看到曾经上证指数的市盈率长期位于20倍以上，而现在20倍以上都算有泡沫了；
+                </p>
+                <p>
+                    5.  中国虽然目前经济总量世界第二，但是经济水平还是处于发展中国家的位置，由于起点低，所处的阶段偏早期，增长快，在经济增速下滑的情况下，依然拥有6.7%的GDP增长率，而欧美国家有2%、3%都值得普天同庆了。创业板企业的盈利增长更是连续3年超过20%，远超全国企业的平均增速。高速增长可以抹平市盈率的高企，所以这也是和发达国家不同的地方；
+                </p>
+                <p>
+                    最后，不得不提一句，哪怕是业余的散户，做投资也必须靠自己，不管是知名的投资家给出的建议，还是经济学家、股评给出的具体建议，都不要听。
+                </p>
+                <p>
+                    就算他们说对了，你也不知道后续交易如何进行，你更不知道他们将来还能不能准下去。大众之所以爱听分析，更多的是寻求安全感，以及寻求相同的意见来安慰自己。尤其是经济学家，他们的本职工作应该是去证明能够实证研究，能够复现的内容，辅助政府或者企业进行决策，以及设计制度，提高社会的运转效率。在投资这个方面，接受专业训练的经济学家和普通人相比都很难获得优势，更别说国内存在的广大民经了（民间经济学家、民科的一种），说来说去就是薅羊毛、阴谋论、内幕、国际热钱啥的，我都能背下来。
+                </p>
+                <p>
+                    <b>
+                        要想在市场中生存下去，着眼的应该是方法论、技巧、经验交流、理论分析，建立适合自己的模式。希望这篇关于市盈率的文章能解答人们心中的困惑。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    PS：想看最具深度的财经文章，欢迎扫二维码关注熠杰（yijie19881027）。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-62d2997a36565dedd80b2e4bafc5283f_r.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

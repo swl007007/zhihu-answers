@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Barro Regression 是什么样的回归？和一般的 OLS 回归有什么区别？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/23750551/answer/25562024" target="_blank">
+                        Barro Regression 是什么样的回归？和一般的 OLS 回归有什么区别？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/wang-xiang-ji">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-638394d4a1124d8e9e599b717c0660c5.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    王相及
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2014-05-13
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                Barro QJE 1991 年的那篇Economic Growth in a Cross Section of Countries里面这么写的
+                <br>
+                1)
+                <img src="https://www.zhihu.com/equation?tex=%5Clog+y_%7Bi%2Ct%7D-%5Clog+y_%7Bi%2Ct-1%7D%3D%5Cbeta_%7B0%7D%2B%5Cbeta_%7B1%7D%5Clog+y_%7Bi%2Ct-1%7D%2B%5Cbeta_%7B2%7Dedu_%7Bi%2Ct-1%7D%2B%5Cvarepsilon_%7Bi%2Ct%7D" alt="\log y_{i,t}-\log y_{i,t-1}=\beta_{0}+\beta_{1}\log y_{i,t-1}+\beta_{2}edu_{i,t-1}+\varepsilon_{i,t}" eeimg="1">
+                <br>
+                其中，
+                <img src="https://www.zhihu.com/equation?tex=y_%7Bi%2Ct%7D" alt="y_{i,t}" eeimg="1">
+                是i国家在t时刻的人均gdp。加了log之后，
+                <img src="https://www.zhihu.com/equation?tex=%5Clog+y_%7Bi%2Ct%7D-%5Clog+y_%7Bi%2Ct-1%7D" alt="\log y_{i,t}-\log y_{i,t-1}" eeimg="1">
+                就近似是i国家从t-1 到t时刻的人均gdp增长率。edu是一个衡量该国人力资本存量的变量，可用诸如该国有多少比例的人上过中学之类的变量来代替。
+                <br>
+                <br>
+                这就是OLS啊。
+                <br>
+                <br>
+                Barro regression高明的地方在于，在回归式里面首次加入了“教育”这一项，而“教育”这一项起到一个proxy variable的作用：用来代表各个国家的某种“
+                <i>
+                    自身特质
+                </i>
+                ”。
+                <br>
+                <br>
+                如果不加如edu这一项，
+                <img src="https://www.zhihu.com/equation?tex=%5Cbeta_1" alt="\beta_1" eeimg="1">
+                t检验过不了，t检验过不了当然就发不了paper。但是Barro发现加入教育之后，
+                <img src="https://www.zhihu.com/equation?tex=%5Cbeta_1" alt="\beta_1" eeimg="1">
+                居然显著为负了，完全符合solow模型的预测！
+                <br>
+                <br>
+                这里提一下1）是怎么来的。1）不是瞎编的，是从Solow模型在均衡点的扰动推出来的（经过所谓的log-linearization），
+                <img src="https://www.zhihu.com/equation?tex=%5Cbeta_1" alt="\beta_1" eeimg="1">
+                &lt;0 反映的是solow系统的收敛。原始的solow模型，推出来是这样的，
+                <br>
+                2）
+                <img src="https://www.zhihu.com/equation?tex=%5Clog+y_%7Bi%2Ct%7D-%5Clog+y_%7Bi%2Ct-1%7D%3D%5Cbeta_%7B0%7D%2B%5Cbeta_%7B1%7D%5Clog+y_%7Bi%2Ct-1%7D%2Bu_%7Bi%2Ct%7D" alt="\log y_{i,t}-\log y_{i,t-1}=\beta_{0}+\beta_{1}\log y_{i,t-1}+u_{i,t}" eeimg="1">
+                <br>
+                人们OLS一下，发现
+                <img src="https://www.zhihu.com/equation?tex=%5Cbeta_%7B1%7D" alt="\beta_{1}" eeimg="1">
+                基本就是0啊，根本不收敛啊。为什么会这样呢？是因为误差项u 是会和自变量y 相关的。这个相关性正好抵消了回归系数。
+                <br>
+                更本质原因在于，原始solow模型的绝对convergence是不可能存在的，国家的经济发展会收敛到一个由国家
+                <i>
+                    自身特质
+                </i>
+                决定的值上。这个“
+                <i>
+                    自身特质
+                </i>
+                ”是什么？Barro的研究说明教育水平，就是一个衡量这个
+                <i>
+                    “自身特质”
+                </i>
+                的指标。所以当加入这个指标时，奇迹就发生了啊。
+                <br>
+                <br>
+                最后，说点题外话。Barro的这个发现后来明显有被滥用的趋势（部分原因也是这个发现太有名了），不少人直接把回归结果解释成：教育对国家发展有积极促进作用（证据就是
+                <img src="https://www.zhihu.com/equation?tex=%5Cbeta_%7B2%7D%3E0" alt="\beta_{2}&gt;0" eeimg="1">
+                显著)。刚才说了，
+                <u>
+                    教育其实是起到proxy某种国家的
+                    <i>
+                        “自身特质”
+                    </i>
+                    的作用，这个
+                    <i>
+                        “自身特质”
+                    </i>
+                    ，可能是文化、人们对工作积极的态度、政治清明、社会组织效率、上帝的眷顾、等等
+                </u>
+                。这些因素都会正面影响教育，
+                <i>
+                    同时
+                </i>
+                正面影响gdp增长率。所以这个统计模型是无法告诉我们因果关系的。
+                <br>
+                <br>
+                再后来，有两个大神Mark Bils and Peter J. Klenow 开始想这个问题：教育是不是
+                <i>
+                    直接
+                </i>
+                促进了经济发展呢？他们在AER 2000 年写了Does schooling cause growth?有兴趣的可以参考这篇。他们经过大量数据工作，指出了这么一个违反人类直觉的结论：就是教育其实是被经济发展决定的，而不是决定经济发展。
+            </div>
+        </div>
+    </body>
+</html>

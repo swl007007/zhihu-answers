@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            如何系统地自学 Python？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/29138020/answer/81972368" target="_blank">
+                        如何系统地自学 Python？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/li-jin-33-15">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/6927f2d5dc6aecf6a7e53dcf5273bfbd.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    李金ECHO
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2016-01-17
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    基于这个笔记的实体书了解一下？书名叫《自学Python——编程基础科学计算及数据分析》，将笔记的内容进行了系统整理，并补充了一些基础知识，可以对照两边的目录看差异。
+                    <b>
+                        基于2.7
+                    </b>
+                    。京东有自营。
+                </p>
+                <hr>
+                <p>
+                    Python 其实挺简单的，也挺强大的。
+                </p>
+                <p>
+                    我用 Python 做科学计算，自学一年，也记了一年的笔记。
+                </p>
+                <p>
+                    笔记链接（基于Python 2.7）：
+                </p>
+                <ul>
+                    <li>
+                        Github：
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/lijin-THU/notes-python" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            lijin-THU/notes-python
+                        </a>
+                    </li>
+                    <li>
+                        Nbviewer：
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/index.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Jupyter Notebook Viewer
+                        </a>
+                    </li>
+                    <li>
+                        网页：
+                        <a href="https://link.zhihu.com/?target=http%3A//lijin-thu.github.io/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            lijin-thu.github.io
+                        </a>
+                    </li>
+                </ul>
+                <p>
+                    笔记目录：
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/01-python-tools/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            01. Python 工具
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/01-python-tools/01.01-python-overview.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    01.01 Python 简介
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/01-python-tools/01.02-ipython-interpreter.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    01.02 Ipython 解释器
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/01-python-tools/01.03-ipython-notebook.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    01.03 Ipython notebook
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/01-python-tools/01.04-use-anaconda.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    01.04 使用 Anaconda
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/02-python-essentials/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            02. Python 基础
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.01-a-tour-of-python.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.01 Python 入门演示
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.02-python-data-types.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.02 Python 数据类型
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.03-numbers.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.03 数字
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.04-strings.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.04 字符串
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.05-indexing-and-slicing.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.05 索引和分片
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.06-lists.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.06 列表
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.07-mutable-and-immutable-data-types.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.07 可变和不可变类型
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.08-tuples.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.08 元组
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.09-speed-comparison-between-list-%26-tuple.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.09 列表与元组的速度比较
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.10-dictionaries.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.10 字典
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.11-sets.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.11 集合
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.12-frozen-sets.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.12 不可变集合
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.13-how-python-assignment-works.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.13 Python 赋值机制
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.14-if-statement.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.14 判断语句
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.15-loops.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.15 循环
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.16-list-comprehension.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.16 列表推导式
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.17-functions.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.17 函数
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.18-modules-and-packages.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.18 模块和包
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.19-exceptions.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.19 异常
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.20-warnings.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.20 警告
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/02-python-essentials/02.21-file-IO.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    02.21 文件读写
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/03-numpy/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            03. Numpy
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.01-numpy-overview.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.01 Numpy 简介
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.02-matplotlib-basics.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.02 Matplotlib 基础
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.03-numpy-arrays.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.03 Numpy 数组及其索引
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.04-array-types.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.04 数组类型
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.05-array-calculation-method.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.05 数组方法
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.06-sorting-numpy-arrays.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.06 数组排序
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.07-array-shapes.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.07 数组形状
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.08-diagonals.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.08 对角线
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.09-data-to-%26-from-string.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.09 数组与字符串的转换
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.10-array-attribute-%26-method-overview-.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.10 数组属性方法总结
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.11-array-creation-functions.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.11 生成数组的函数
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.12-matrix-object.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.12 矩阵
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.13-general-functions.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.13 一般函数
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.14-vectorizing-functions.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.14 向量化函数
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.15-binary-operators.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.15 二元运算
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.16-universal-functions.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.16 ufunc 对象
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.17-choose.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.17 choose 函数实现条件筛选
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.18-array-broadcasting.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.18 数组广播机制
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.19-reading-and-writing-arrays.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.19 数组读写
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.20-structured-arrays.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.20 结构化数组
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.21-record-arrays.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.21 记录数组
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.22-memory-maps.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.22 内存映射
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/03-numpy/03.23-from-matlab-to-numpy.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    03.23 从 Matlab 到 Numpy
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/04-scipy/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            04. Scipy
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.01-scienticfic-python-overview.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.01 SCIentific PYthon 简介
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.02-interpolation-with-scipy.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.02 插值
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.03-statistics-with-scipy.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.03 概率统计方法
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.04-curve-fitting.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.04 曲线拟合
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.05-minimization-in-python.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.05 最小化函数
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.06-integration-in-python.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.06 积分
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.07-ODEs.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.07 解微分方程
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.08-sparse-matrix.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.08 稀疏矩阵
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.09-linear-algbra.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.09 线性代数
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/04-scipy/04.10-sparse-linear-algebra.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    04.10 稀疏矩阵的线性代数
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/05-advanced-python/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            05. Python 进阶
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.01-overview-of-the-sys-module.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.01 sys 模块简介
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.02-interacting-with-the-OS---os.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.02 与操作系统进行交互：os 模块
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.03-comma-separated-values.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.03 CSV 文件和 csv 模块
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.04-regular-expression.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.04 正则表达式和 re 模块
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.05-datetime.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.05 datetime 模块
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.06-sql-databases.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.06 SQL 数据库
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.07-object-relational-mappers.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.07 对象关系映射
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.08-functions.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.08 函数进阶：参数传递，高阶函数，lambda 匿名函数，global 变量，递归
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.09-iterators.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.09 迭代器
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.10-generators.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.10 生成器
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.11-context-managers-and-the-with-statement.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.11 with 语句和上下文管理器
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.12-decorators.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.12 修饰符
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.13-decorator-usage.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.13 修饰符的使用
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.14-the-operator-functools-itertools-toolz-fn-funcy-module.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.14 operator, functools, itertools, toolz, fn, funcy 模块
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.15-scope.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.15 作用域
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/05-advanced-python/05.16-dynamic-code-execution.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    05.16 动态编译
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            06. Matplotlib
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.01-pyplot-tutorial.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.01 Pyplot 教程
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.02-customizing-plots-with-style-sheets.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.02 使用 style 来配置 pyplot 风格
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.03-working-with-text---basic.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.03 处理文本（基础）
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.04-working-with-text---math-expression.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.04 处理文本（数学表达式）
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.05-image-tutorial.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.05 图像基础
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.06-annotating-axes.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.06 注释
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.07-legend.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.07 标签
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.08-figures%2C-subplots%2C-axes-and-ticks.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.08 figures, subplots, axes 和 ticks 对象
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.09-do-not-trust-the-defaults.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.09 不要迷信默认设置
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/06-matplotlib/06.10-different-plots.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    06.10 各种绘图实例
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/07-interfacing-with-other-languages/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            07. 使用其他语言进行扩展
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/07-interfacing-with-other-languages/07.01-introduction.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    07.01 简介
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/07-interfacing-with-other-languages/07.02-python-extension-modules.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    07.02 Python 扩展模块
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/07-interfacing-with-other-languages/07.03-cython-part-1.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    07.03 Cython：Cython 基础，将源代码转换成扩展模块
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/07-interfacing-with-other-languages/07.04-cython-part-2.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    07.04 Cython：Cython 语法，调用其他C库
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/07-interfacing-with-other-languages/07.05-cython-part-3.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    07.05 Cython：class 和 cdef class，使用 C++
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/07-interfacing-with-other-languages/07.06-cython-part-4.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    07.06 Cython：Typed memoryviews
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/07-interfacing-with-other-languages/07.07-profiling-with-annotations.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    07.07 生成编译注释
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/07-interfacing-with-other-languages/07.08-ctypes.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    07.08 ctypes
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/08-object-oriented-programming/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            08. 面向对象编程
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.01-oop-introduction.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.01 简介
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.02-using-oop-model-a-forest-fire.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.02 使用 OOP 对森林火灾建模
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.03-what-is-a-object.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.03 什么是对象？
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.04-writing-classes.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.04 定义 class
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.05-special-method.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.05 特殊方法
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.06-properties.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.06 属性
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.07-forest-fire-simulation.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.07 森林火灾模拟
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.08-inheritance.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.08 继承
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.09-super.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.09 super() 函数
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.10-refactoring-the-forest-fire-simutation.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.10 重定义森林火灾模拟
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.11-interfaces.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.11 接口
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.12-public-private-special-in-python.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.12 共有，私有和特殊方法和属性
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/08-object-oriented-programming/08.13-multiple-inheritance.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    08.13 多重继承
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/09-theano" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            09. Theano 基础
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.01-introduction-and-installation.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.01 Theano 简介及其安装
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.02-theano-basics.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.02 Theano 基础
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.03-gpu-on-windows.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.03 Theano 在 Windows 上的配置
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.04-graph-structures.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.04 Theano 符号图结构
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.05-configuration-settings-and-compiling-modes.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.05 Theano 配置和编译模式
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.06-conditions-in-theano.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.06 Theano 条件语句
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.07-loop-with-scan.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.07 Theano 循环：scan（详解）
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.08-linear-regression.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.08 Theano 实例：线性回归
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.09-logistic-regression-.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.09 Theano 实例：Logistic 回归
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.10-softmax-on-mnist.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.10 Theano 实例：Softmax 回归
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.11-net-on-mnist.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.11 Theano 实例：人工神经网络
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.12-random-streams.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.12 Theano 随机数流变量
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.13-modern-net-on-mnist.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.13 Theano 实例：更复杂的网络
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.14-convolutional-net-on-mnist.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.14 Theano 实例：卷积神经网络
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.15-tensor-basics.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.15 Theano tensor 模块：基础
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.16-tensor-indexing.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.16 Theano tensor 模块：索引
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.17-tensor-operator-and-elementwise-operations.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.17 Theano tensor 模块：操作符和逐元素操作
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.18-tensor-nnet-.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.18 Theano tensor 模块：nnet 子模块
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/09-theano/09.19-tensor-conv.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    09.19 Theano tensor 模块：conv 子模块
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/10-something-interesting" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            10. 有趣的第三方模块
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/10-something-interesting/10.01-maps-using-basemap.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    10.01 使用 basemap 画地图
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/10-something-interesting/10.02-maps-using-cartopy.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    10.02 使用 cartopy 画地图
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/10-something-interesting/10.03-nba-data.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    10.03 探索 NBA 数据
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/10-something-interesting/10.04-louis-cha%27s-kungfu-world.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    10.04 金庸的武侠世界
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/11-useful-tools/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            11. 有用的工具
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.01-pprint.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.01 pprint 模块：打印 Python 对象
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.02-pickle-and-cPickle.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.02 pickle, cPickle 模块：序列化 Python 对象
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.03-json.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.03 json 模块：处理 JSON 数据
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.04-glob.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.04 glob 模块：文件模式匹配
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.05-shutil.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.05 shutil 模块：高级文件操作
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.06-gzip%2C-zipfile%2C-tarfile.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.06 gzip, zipfile, tarfile 模块：处理压缩文件
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.07-logging.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.07 logging 模块：记录日志
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.08-string.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.08 string 模块：字符串处理
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.09-collections.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.09 collections 模块：更多数据结构
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/11-useful-tools/11.10-requests.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    11.10 requests 模块：HTTP for Human
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/tree/master/12-pandas/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            12. Pandas
+                        </a>
+                    </li>
+                    <ul>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/12-pandas/12.01-ten-minutes-to-pandas.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    12.01 十分钟上手 Pandas
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/12-pandas/12.02-series-in-pandas.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    12.02 一维数据结构：Series
+                                </a>
+                            </u>
+                        </li>
+                        <li>
+                            <u>
+                                <a href="https://link.zhihu.com/?target=http%3A//nbviewer.jupyter.org/github/lijin-THU/notes-python/blob/master/12-pandas/12.03-dataframe-in-pandas.ipynb" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                                    12.03 二维数据结构：DataFrame
+                                </a>
+                            </u>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

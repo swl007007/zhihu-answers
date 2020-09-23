@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            什么是全导数？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/26966355/answer/154857139" target="_blank">
+                        什么是全导数？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/matongxue">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/02d174df52a472119af4f428100899b0.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    马同学
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2017-04-01
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    全导数是多元函数中的一个概念。
+                </p>
+                <p>
+                    我们知道一元函数的情况下，导数就是函数的变化率，从几何意义上看就是：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-58e35e55d617957593611d3714027906_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    但是在多元的情况下比一元的复杂，下面我用二元函数来举例子（三元我也画不出来），比如这样一个曲面上的一点
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-511a04f4778b70bfb6ecd739037403d7_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    在曲面上可以做无数条过
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    点的曲线（图上随便画了三根）：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-013ff9ec19b40f8ffd3c8777d304fbf4_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    每根曲线都可能可以（也有作不出来的情况，你想想一元的时候也有作不出切线的情况）作一根切线，比如（随便挑了一根切线来画，都画出来太乱了）：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-3fce84a9dd040a5ca94bd1bdc8b00377_r.jpg?source=1940ef5c">
+                </figure>
+                <blockquote>
+                    全导数的意义：每一根切线都和一个全导数“相关”，
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    点有无数个全导数。
+                </blockquote>
+                <p>
+                    最精简的回答已经完了，后面我就要讲一些细节了，主要阐述下面两个细节：
+                </p>
+                <ul>
+                    <li>
+                        方向导数、偏导数是特殊的全导数
+                    </li>
+                    <li>
+                        每一根切线都和一个全导数“相关”，这个“相关”是什么意思？难道不就是切线的斜率就是全导数吗？
+                    </li>
+                </ul>
+                <p>
+                    顺便说一下，如果所有这些切线共面的话，那么这个平面就是切平面（全微分），可以参考我之前的回答
+                    <a href="https://www.zhihu.com/question/31464934/answer/152231899" class="internal">
+                        如何直观理解全微分？
+                    </a>
+                    。
+                </p>
+                <p>
+                    <b>
+                        1 参数方程
+                    </b>
+                </p>
+                <p>
+                    为了继续讲下去，我们需要了解下所需要的技术手段：参数方程。
+                </p>
+                <p>
+                    参数方程的用处很多，下面讲解下我们需要了解的部分。
+                </p>
+                <p>
+                    <b>
+                        1.1 通过参数方程来描述所有的曲线
+                    </b>
+                </p>
+                <p>
+                    要描述所有这些曲线，我们就需要一些数学手段，这就是参数方程。
+                </p>
+                <p>
+                    我们来看一下，随便画一条过
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    点的曲线：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-0ab58c69c78c8ad1b894d28bb0dd8d0b_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    这条曲线也是一个关于
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    的函数
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29" alt="f(x,y)" eeimg="1">
+                    ，因此它与
+                    <img src="https://www.zhihu.com/equation?tex=xy" alt="xy" eeimg="1">
+                    平面上的曲线具有一一对应的关系：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-4885a85835291a6b36f73a6b7c849e28_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    因此我们只需要描述
+                    <img src="https://www.zhihu.com/equation?tex=xy" alt="xy" eeimg="1">
+                    上的曲线就可以达到描述曲面的曲线的目的，这时候就很自然的可以使用参数方程了。
+                </p>
+                <p>
+                    举个具体的例子，对于
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3Dx%5E2%2By%5E2" alt="f(x,y)=x^2+y^2" eeimg="1">
+                    这个二元函数，函数图像是这样的：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-a1aaeeaa191da8f1fde9bbdb8bbeaab3_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    注意此时的
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    都可以自由改变：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-6adf7a33458479344a3f26c6565bd6f7_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    但是如果增加参数方程：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7Dz%3Dx%5E2%2By%5E2%5C%5Cx%3Dt%5C%5Cy%3Dt%5Cend%7Bcases%7D" alt="\begin{cases}z=x^2+y^2\\x=t\\y=t\end{cases}" eeimg="1">
+                <p>
+                    这有什么意义？此时的
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    的变化就受到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7Dx%3Dt%5C%5Cy%3Dt%5Cend%7Bcases%7D" alt="\begin{cases}x=t\\y=t\end{cases}" eeimg="1">
+                    的约束：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-e218c7bdeb519a1d465e01bbb1c991fa_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    我们来把这根参数方程决定的直线放到三维空间去：
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-7c4749eaf35740edd348c415d9f29f39_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    根据之前的描述，这根直线可以决定一根曲面上的曲线：
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-4ce40d79e85089f527ccda8702c7261b_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    这根曲面上的曲线就是刚才说过的：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7Dz%3Dx%5E2%2By%5E2%5C%5Cx%3Dt%5C%5Cy%3Dt%5Cend%7Bcases%7D" alt="\begin{cases}z=x^2+y^2\\x=t\\y=t\end{cases}" eeimg="1">
+                <p>
+                    <b>
+                        1.2 参数方程可以拍扁三维图像
+                    </b>
+                </p>
+                <p>
+                    从另外一个角度看，参数方程可以把三维的图像一巴掌拍扁：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-fe2f536891110c5ab627a8a8608ee4e4_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    什么意思，我们来看看，还是
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3Dx%5E2%2By%5E2" alt="f(x,y)=x^2+y^2" eeimg="1">
+                    这个二元函数：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-a1aaeeaa191da8f1fde9bbdb8bbeaab3_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    增加参数方程约束：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7Dz%3Dx%5E2%2By%5E2%5C%5Cx%3Dt%5C%5Cy%3Dt%5Cend%7Bcases%7D" alt="\begin{cases}z=x^2+y^2\\x=t\\y=t\end{cases}" eeimg="1">
+                <p>
+                    把
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy" alt="x,y" eeimg="1">
+                    代入到
+                    <img src="https://www.zhihu.com/equation?tex=z" alt="z" eeimg="1">
+                    里面去，可以得到
+                    <img src="https://www.zhihu.com/equation?tex=z%3D2t%5E2" alt="z=2t^2" eeimg="1">
+                    ：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-223823c81a1fca2894a378844d4478b9_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    这就好比把
+                    <img src="https://www.zhihu.com/equation?tex=xyz" alt="xyz" eeimg="1">
+                    空间的立体图形拍扁到了
+                    <img src="https://www.zhihu.com/equation?tex=zt" alt="zt" eeimg="1">
+                    平面，这个特性在后面会用到，所以在这里先预热下。
+                </p>
+                <p>
+                    <b>
+                        2 偏导数、方向导数、全导数
+                    </b>
+                </p>
+                <p>
+                    讲完“所有曲线”之后，我们要来讲这些曲线的切线了，不同的曲线有不同的切线，也就有不同类型的导数。
+                </p>
+                <p>
+                    <b>
+                        2.1 偏导数
+                    </b>
+                </p>
+                <p>
+                    由
+                    <img src="https://www.zhihu.com/equation?tex=xy" alt="xy" eeimg="1">
+                    平面中平行于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    轴或者
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    轴的直线决定的曲线：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-ee1dc23aca843f1d813b3a3cb9784731_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    这根曲线的方程也可以写成参数方程（以平行于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    轴的曲线为例，
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    为常数）：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7Dz%3Df%28x%2Cy%29%5C%5Cx%3Dt%5C%5Cy%3Da%2B0%5Ctimes+t%5Cend%7Bcases%7D" alt="\begin{cases}z=f(x,y)\\x=t\\y=a+0\times t\end{cases}" eeimg="1">
+                <p>
+                    偏导数就是这根曲线的切线的斜率：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-35f51c728e8ed01cd723f6b66c8c41cc_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    <b>
+                        2.2 方向导数
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=xy" alt="xy" eeimg="1">
+                    平面不光有平行于坐标轴的直线，还有各种射线，由这些射线决定的曲线：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-7377c2e033159ea8dcc99d572296d3a2_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    为什么是射线？我们回想一下一元函数中左可导、右可导的概念：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/50/v2-99ba5c14ba6ec596f347c8d1ef390756_hd.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    射线可以类比左可导、右可导中的“左”和“右”。
+                </p>
+                <p>
+                    方向导数也就是这根曲线的“左导数”、“右导数”：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-bc409190e935d4251895022dbba35d99_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    点的坐标为
+                    <img src="https://www.zhihu.com/equation?tex=%28x_0%2Cy_0%2Cz_0%29" alt="(x_0,y_0,z_0)" eeimg="1">
+                    ，则该曲线方程的参数方程为（具体的意思我这里不解释了，自己参看书中关于“方向导数”的章节）：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7Dz%3Df%28x%2Cy%29%5C%5Cx%3Dx_0%2Btcos%5Calpha%26t%5Cgeq0%5C%5Cy%3Dy_0%2Btcos%5Cbeta%26t%5Cgeq0%5Cend%7Bcases%7D" alt="\begin{cases}z=f(x,y)\\x=x_0+tcos\alpha&amp;t\geq0\\y=y_0+tcos\beta&amp;t\geq0\end{cases}" eeimg="1">
+                <p>
+                    <b>
+                        2.3 全导数
+                    </b>
+                </p>
+                <p>
+                    除了直线射线以外，
+                    <img src="https://www.zhihu.com/equation?tex=xy" alt="xy" eeimg="1">
+                    平面上还有很多不同的曲线，这些曲线总可以写成参数方程的形式：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7Dx%3Dx%28t%29%5C%5Cy%3Dy%28t%29%5Cend%7Bcases%7D" alt="\begin{cases}x=x(t)\\y=y(t)\end{cases}" eeimg="1">
+                <p>
+                    这些曲线也总能决定曲面上的曲线，比如我之前画过的图：
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-4885a85835291a6b36f73a6b7c849e28_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    曲线的参数方程可以写成：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7Dz%3Df%28x%2Cy%29%5C%5Cx%3Dx%28t%29%5C%5Cy%3Dy%28t%29%5Cend%7Bcases%7D" alt="\begin{cases}z=f(x,y)\\x=x(t)\\y=y(t)\end{cases}" eeimg="1">
+                <p>
+                    讲到这让我先总结一下：
+                </p>
+                <ul>
+                    <li>
+                        过点
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        可以做无数条曲线
+                    </li>
+                    <li>
+                        所有这些曲线都可以写成参数方程的形式
+                    </li>
+                    <li>
+                        偏导数、方向导数、全导数由不同的曲线所决定
+                    </li>
+                    <li>
+                        偏导数、方向导数其实是特殊的全导数
+                    </li>
+                </ul>
+                <p>
+                    总结了之后我要继续讲全导数最重要的一个问题，那就是：
+                </p>
+                <p>
+                    一般来说（除了偏导、方向导数，下面说的全导全部指除了偏导和方向导数之外的），全导数
+                    <b>
+                        不是
+                    </b>
+                    这根曲线的切线的斜率。
+                </p>
+                <p>
+                    为什么“偏导数”、“方向导数”都是切线的斜率，而全导数不是呢？
+                </p>
+                <p>
+                    <b>
+                        2.3.1 拍扁并且变形了
+                    </b>
+                </p>
+                <p>
+                    之前说过参数有拍扁的特性。
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=xyz" alt="xyz" eeimg="1">
+                    平面中，偏导数的曲线其实位于平行于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    轴的平面上：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-9c292d26d1284b087d6a2e61a20b81a1_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    拍扁到
+                    <img src="https://www.zhihu.com/equation?tex=zt" alt="zt" eeimg="1">
+                    平面：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-175c30df31d39efd31a678e1a6557d76_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    本身也就是平面，拍扁之后也不会发生变形。
+                </p>
+                <p>
+                    因为偏导是特殊的全导，所以我们可以认为偏导就是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdz%7D%7Bdt%7D" alt="\frac{dz}{dt}" eeimg="1">
+                    ，也就是
+                    <img src="https://www.zhihu.com/equation?tex=zt" alt="zt" eeimg="1">
+                    平面上切线的斜率：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-4355824523a6fd54244e4fe1fc4785a2_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    因为没有拍扁过程中没有发生变形，所以
+                    <img src="https://www.zhihu.com/equation?tex=zt" alt="zt" eeimg="1">
+                    平面上切线也就是
+                    <img src="https://www.zhihu.com/equation?tex=xyz" alt="xyz" eeimg="1">
+                    空间中的切线。
+                </p>
+                <p>
+                    同样的道理，方向导数的曲线也是位于平面之中的，所以拍扁过程也不会变形。
+                </p>
+                <p>
+                    但是，普通的全导（也就是曲线不在平面中的），拍扁的过程中会变形，比如说还是我之前举的决定全导数的曲线：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-2b802166616587ad7bf11b78af69c969_r.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    把它拍扁到
+                    <img src="https://www.zhihu.com/equation?tex=zt" alt="zt" eeimg="1">
+                    平面中去：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/50/v2-db035c13487096061a6004df9eb7f79a_hd.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    不得不说看起来还是有那么一点像，不过已经严重变形了。所以全导
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdz%7D%7Bdt%7D" alt="\frac{dz}{dt}" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=zt" alt="zt" eeimg="1">
+                    平面上还是切线的斜率：
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/50/v2-d230468aadd8fd77d0f2d351ca79789b_hd.jpg?source=1940ef5c">
+                </figure>
+                <p>
+                    但因为变形，已经不是
+                    <img src="https://www.zhihu.com/equation?tex=xyz" alt="xyz" eeimg="1">
+                    空间中的切线（实际上要是还原回去的话是一条曲线）。
+                </p>
+                <p>
+                    至于
+                    <img src="https://www.zhihu.com/equation?tex=xyz" alt="xyz" eeimg="1">
+                    空间中切线的斜率要怎么求，就是切向量的问题了，有机会我们接着说。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

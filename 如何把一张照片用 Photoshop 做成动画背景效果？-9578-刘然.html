@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            如何把一张照片用 Photoshop 做成动画背景效果？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/24541935/answer/28188416" target="_blank">
+                        如何把一张照片用 Photoshop 做成动画背景效果？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/liu-ran-67-90">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-df2e7b670f37b08ba12709e68a792060.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    刘然
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2014-07-20
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                嗯，十分膜拜一楼
+                <a data-hash="e6fa6fae41d56969578ef89e6b8f0f45" href="https://www.zhihu.com/people/e6fa6fae41d56969578ef89e6b8f0f45" class="member_mention" data-editable="true" data-title="@坛子鸦" data-hovercard="p$b$e6fa6fae41d56969578ef89e6b8f0f45">
+                    @坛子鸦
+                </a>
+                的手绘，像我等画画不是很给力的就只能用PS凑合一下了。。。犹豫了很久要不要把这么丑的图放出来，本着造福手残党的思想，我这里就牺牲一下自己了
+                <br>
+                <br>
+                万能的PS又来了，以下教程适合像我一样手残的同学使用，先来一张最终效果吧，做的比较丑，请妥善保护您的双眼：
+                <br>
+                <figure>
+                    <img src="https://picb.zhimg.com/2ff9c47107b47f5b07767dbb3c14f605_r.jpg?source=1940ef5c">
+                </figure>
+                对比一下原图：
+                <br>
+                <figure>
+                    <img src="https://pic4.zhimg.com/bb1f55d2c7f6bf51c4be2f7afe509557_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                ------------
+                <br>
+                <br>
+                <br>
+                <b>
+                    讲一下大概的思路：
+                </b>
+                <br>
+                首先，看起来像漫画这件事的关键在于颜色，颜色对了就成功了一半。这幅图表现的是一个夏天的环境，动漫中表现这种场景常用的配色就是如上图所示，整体略偏青色。
+                <br>
+                其次，漫画中的亮度动态通常比较小，原照片中天空亮度和树的亮度有较大的差异，这一点在转动漫图的时候要注意修正，大家可以比较一下以上两张图，会有个感性的认识。
+                <br>
+                <br>
+                <b>
+                    总的来说，将一幅图做成漫画的效果，有以下两点需要考虑：
+                </b>
+                <br>
+                1. 去除绘画中难以表现的画面细节，如树叶等
+                <br>
+                2. 将颜色向漫画进行调整，压缩画面亮度动态
+                <br>
+                <br>
+                对于这张图，注意到画面中主要有树，天空，路牌三个部分，这三个部分需要保留的细节和要进行的颜色调整是不同的，下面分别处理。
+                <br>
+                <br>
+                <b>
+                    路牌部分：
+                </b>
+                <br>
+                路牌上要保持文字较为清晰，但又要去掉其他的细节，这里首先使用曲线工具增强路牌上明暗的对比，并加强暗调中绿色成分。然后使用绘画涂抹滤镜，效果如下：
+                <br>
+                <figure>
+                    <img src="https://pic3.zhimg.com/5e2613f4c521b1af30f8a86d83bf0191_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                绘画涂抹滤镜可以较好地保证画面中文字的可辨识度。这里有一点做的比较失败，路牌的阴影部分太黑了，不是很和谐，不过懒得改了。。。
+                <br>
+                <br>
+                <b>
+                    天空部分：
+                </b>
+                <br>
+                方法同上，依然是曲线调整亮度和色彩，然后使用绘画涂抹滤镜，效果如下：
+                <br>
+                <figure>
+                    <img src="https://pic2.zhimg.com/40fa0f9facf33d9520b5c5d80bc7287a_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                <br>
+                <b>
+                    树木部分：
+                </b>
+                <br>
+                把树木做成漫画效果相对比较麻烦，这里提供一种相对简单的方法。
+                <br>
+                首先还是使用曲线工具，提亮树叶的细节，并进行调色，在暗调添加一些青色成分。
+                <br>
+                <figure>
+                    <img src="https://pic1.zhimg.com/113a621813f24f232cb7143ac918ea7f_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                接着使用木刻滤镜，调好参数，看起来应该是这样：
+                <br>
+                <figure>
+                    <img src="https://pic1.zhimg.com/563a47c64b58089885a6f3e22383bf6d_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                树叶没有细节怎么办？对同一张图使用水彩滤镜，像这样：
+                <br>
+                <figure>
+                    <img src="https://pic3.zhimg.com/04859fff81486db4738bd10788516a75_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                关键步骤来了，将水彩层置于木刻层之上，并将混合模式设置为柔光，这个效果基本是可以接受的树叶效果了：
+                <br>
+                <figure>
+                    <img src="https://picb.zhimg.com/150b568a67b312f35db976c9a526f378_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                <b>
+                    最后，将三个部分拼合，得到最终图：
+                </b>
+                <br>
+                <figure>
+                    <img src="https://pic3.zhimg.com/7d327e1e5af3074547222f7ec39ae6da_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                人比较懒，拼的十分粗糙，比如下面数叶中应该露出蓝天的地方没有透出来，木有耐心仔细涂了,之后应该再进一步的修理各种细节，不过数位板不在身边，我就不用鼠标尝试了。
+                <br>
+                <br>
+                手比较快的盆友应该用十分钟就能做出来了。
+                <br>
+                <br>
+                <b>
+                    总结：
+                </b>
+                <br>
+                1. 曲线工具请一定要熟练掌握，不管是亮度，对比度还是颜色，这个工具可以一手包办。
+                <br>
+                2. 不要问我具体怎么调色，每张图都是很不一样的。
+                <br>
+                <br>
+                手绘党请轻拍  _(:з」∠)_
+            </div>
+        </div>
+    </body>
+</html>

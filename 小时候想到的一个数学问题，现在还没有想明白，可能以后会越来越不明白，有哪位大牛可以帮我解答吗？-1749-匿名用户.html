@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            小时候想到的一个数学问题，现在还没有想明白，可能以后会越来越不明白，有哪位大牛可以帮我解答吗？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/46805128/answer/121264374" target="_blank">
+                        小时候想到的一个数学问题，现在还没有想明白，可能以后会越来越不明白，有哪位大牛可以帮我解答吗？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/aadd7b895.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    匿名用户
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2016-09-09
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    能自己把信封博弈琢磨出来，只能说题主绝对是天才。这是博弈论里核心概念之一，叫共同知识。上学期做本科博弈论助教时恰好就这个知识点为课程写过补充讲义，就借来答题了。略长，而且大多是口语表述，不严格，证明也基本全部省略。如果有进一步需求可以到脚注和参考文献里找。其中许多材料来自
+                    <a class="member_mention" href="https://www.zhihu.com/people/f937a9ddf4cad768510b9b70ca671d54" data-hash="f937a9ddf4cad768510b9b70ca671d54" data-hovercard="p$b$f937a9ddf4cad768510b9b70ca671d54">
+                        @长泽雅美
+                    </a>
+                    和
+                    <a class="member_mention" href="https://www.zhihu.com/people/7b0b2495c5046ce1f1be03d8e23a99a4" data-hash="7b0b2495c5046ce1f1be03d8e23a99a4" data-hovercard="p$b$7b0b2495c5046ce1f1be03d8e23a99a4">
+                        @阿虎
+                    </a>
+                    ，他们在EGT方面有专业知识，表示感谢！ 似乎CS领域关心这一问题知友很多，特地推荐Halpern和Moses文章
+                    <i>
+                        Knowledge and Common Knowledge in a Distributed Environment
+                    </i>
+                    ，有很不错的介绍。如果是经济学方面知友，推荐Maschler，Solan和Zamir教材
+                    <i>
+                        Game Theory
+                    </i>
+                    第九章，也很不错。进阶和休闲读物请参见正文最后一段。最后，再次表达对题主的崇拜，很厉害！
+                </p>
+                <br>
+                <p>
+                    大家可能记得一道智力题：一座小岛上有很多户人家，每一家养了一条狗，其中有些狗是疯狗。每一家人都能看到别人家狗的状况，但不知道自己家狗的状况，也不会与其它人家交流。假设如果有一户人家知道自己家养的是疯狗，那就要在当天晚上把狗打死。由于每户人家都不了解自己的情形，所以一开始不会有人家打死自己的狗。现在，从外面的世界来了一位旅行者，他/她
+                    <b>
+                        当着全村人民的面
+                    </b>
+                    说：“这个村子里有疯狗。”接下来的情况很有意思，假设村民都相信这句话，都是理性的，每天做一次判断。那么，如果原来村子里有
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    条疯狗，那么这些疯狗会在第
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    天晚上被一起打死。
+                </p>
+                <br>
+                <p>
+                    大致分析如下：如果村里只有一条疯狗，那么，疯狗的主人将马上意识到自己的狗疯了，并且将狗打死。如果村里有两条疯狗，每一疯狗的主人都可以看到岛上还有一条疯狗。所以第一天晚上无事发生。但是，在第二天，疯狗的主人会意识到：另外一条疯狗的主人也知道村里至少有一条疯狗，而他/她没有选择打死自己的狗，这说明村里至少还有一条疯狗。由于村里只有两条疯狗，所以其它的狗都是正常的，所以可以推出最后，两条疯狗将在第2天晚上被一起打死。类似的分析可以容易地推广到更大的
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    。
+                </p>
+                <br>
+                <p>
+                    解这道题关键就在共同知识。以
+                    <img src="https://www.zhihu.com/equation?tex=N%3D2" alt="N=2" eeimg="1">
+                    为例，在旅客到来之前，每个人都知道岛上有疯狗，因为每个人都至少可以看见一条疯狗，但没有人行动，因为每个人都
+                    <b>
+                        不知道其他人是否知道岛上有疯狗
+                    </b>
+                    。旅客到来之后，由于宣告当着所有人的面做出，每个人都看到其他人听到了宣告，这意味着他们知道其他人知道岛上有疯狗，也知道其他人知道自己知道其他人知道岛上有疯狗，依此类推。也即“岛上有疯狗”这一命题已经成为了公共知识。当
+                    <img src="https://www.zhihu.com/equation?tex=N%3D2" alt="N=2" eeimg="1">
+                    时，我们需要用到第2层知识，当我们面对的是一般的
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    时，我们需要用到第
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    层知识。
+                </p>
+                <br>
+                <p>
+                    类似题目非常多，以下再列举两道，其中都渗透了共同知识的思想[1]。一排学生，有的戴白帽子，有的戴红帽子，此时老师来一句，你们中有人戴了白帽子，是否每个学生都能猜出自己所戴帽子的颜色？另一个谜题是：两个儿子预期父亲会把数量为
+                    <img src="https://www.zhihu.com/equation?tex=10%5Ex" alt="10^x" eeimg="1">
+                    的钱装在两个信封里，一人得到一个，
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    取值在1到6之间。现在他们打开信封，一个发现里面有10000元，一个发现里面有100000元，他们彼此不知道金钱数额。现在，父亲分别问他们：你愿意出1块钱来换对方手里的信封吗？毫无疑问，第一轮两个人都愿意换。如果父亲接下来一直问这个问题，大家可以想想，他们会一直愿意换吗？如果不是，哪一轮会开始出现否定答案？
+                </p>
+                <br>
+                <p>
+                    我们接下来再给出一个更令人震惊的例子，即是楼主的问题，来自Rubinstein（1989）。
+                </p>
+                <br>
+                <p>
+                    假设有两个将军，分别是A和B，要向敌方部队发起进攻（也可以想象成是两支基金要对一种主权货币发起进攻，等等），两军分驻两地，面对两支对方部队。对方兵力的分布有两种可能，如果判断错误，攻击会没有效果。同时，由于己方兵力不足，必须要同时发起攻击，否则会损兵折将。A将军知道敌方兵力的分布，而B将军只有一个先验概率。这意味着我们面对一个如下图所示的博弈，其中，第一行代表策略A进攻a，第二行代表A进攻b，第一列代表B进攻a，第二列代表B进攻b。每一格中第一个数字是A将军将获得的效用，第二个数字是B将军将获得的效用。
+                </p>
+                <br>
+                <figure>
+                    <img src="https://pic4.zhimg.com/290ca476c8e36479eada2d08cbb00879_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                <p>
+                    现在，为了取得最好的进攻效果，将军A需要把敌方主力在a这一点告诉将军B，由于那时还没有电话，他只能派出一个通信兵。通信兵在抵达将军B的驻地之后，会将敌方信息告知B。B会向通信兵说明自己已经知道了这个信息，并将这个信息返回给A，依此类推。由于通信兵在中途可能被敌方抓到，所以每次传递的信息都有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon%3E0" alt="\varepsilon&gt;0" eeimg="1">
+                    的可能无法顺利到达对方。为弄明白这意味着什么，我们先回忆一下前面提到的共同知识这个概念。如果将军A、B都知道对方驻地，并且他们都知道对方知道对方驻地，他们都知道对方知道自己知道对方知道对方驻地，依此类推，我们就称地方驻地在a这一点是A和B之间的共同知识。在博弈的一开始，敌方兵力在b这一点只是A的私人知识，B根本就不知道。如果通信兵已经完成了从A到B的旅行，那么这一点就成为A和B的共有知识，A知道，B知道，但A不知道B知道。当通信兵又从B返回A时，此时A确知B已经知道了这一点，但B并不知道A是否知道自己已经知道了。因此，只有让通信兵在两个地方之间跑无限趟，我们才能把这个知识变为共同知识。
+                </p>
+                <br>
+                <p>
+                    如果敌方驻地真是共同知识，那么，两位将军之间可以很容易地达成协调，但现在并非如此。因为通信兵每次旅行都有一个正概率被俘获，所以他/她能够顺利旅行无数次的可能性收敛到0，这意味着“敌方驻地为a”这一点以概率1不是共同知识。Rubinstein证明了下列命题：
+                    <b>
+                        这个博弈唯一的纳什均衡是双方都不进攻，协调失败
+                    </b>
+                    [2]。这实际上说明：任意阶的共有知识都不能完全替代共同知识。共同知识在很多时候是严格紧的要求，不能再放松，否则就有可能出现类似邮件博弈的情形。
+                </p>
+                <br>
+                <p>
+                    为了严格处理共同知识，我们需要先定义知识。为定义知识，我们需要先定义我们的认知世界，这一贡献来自哲学家Hintikka。博弈论的发展和哲学，尤其是分析哲学的发展密不可分，以后我们会越来越多地看到这一点。在Hintikka的模型中，人的认知可以用下面的二元组
+                    <img src="https://www.zhihu.com/equation?tex=%28%5COmega+%2CP%29" alt="(\Omega ,P)" eeimg="1">
+                    [3]
+来描述，其中，
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega+" alt="\Omega" eeimg="1">
+                    是世界所有可能状态的集合，P是认知函数，是从
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega+%5Cin+%5COmega+" alt="\omega \in \Omega" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=2%5E%7B%5COmega+%7D+" alt="2^{\Omega }" eeimg="1">
+                    的映射，它把每一个世界的真实状态映射成世界全体状态的一个子集。我们可以直观方式来理解这个模型。假设现在世界状态集合中有以下元素：A食品是转基因，A食品是非转基因，A食品对身体无害，A食品对身体有害。当状态“A食品是转基因”出现时，一位生物科学家的P会映射出子集｛A食品是转基因，A食品对身体无害｝，而一位反转派的P则会映射出子集｛A食品是转基因，A食品对身体有害｝。有可能还有一类人比较“糊涂”。他们对转基因一无所知，甚至根本没听过，那就谈不上了解了。由于没有任何信息，此时他/她的P会映射出｛A食品是转基因，A食品对身体无害，A食品对身体有害｝，他/她无法排除任何一种可能。
+                </p>
+                <br>
+                <p>
+                    我们不可能对
+                    <img src="https://www.zhihu.com/equation?tex=%28%5COmega+%2CP%29" alt="(\Omega ,P)" eeimg="1">
+                    不做任何限制，这不仅违反直观，也导致我们无法做任何推断。以下三个公理是必须的，部分学者也用这几个公理来定义理性。
+                </p>
+                <br>
+                <figure>
+                    <img src="https://pic1.zhimg.com/50/183a57248b1da62c9f366394747ae783_hd.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                <p>
+                    公理1意味着无论世界真实状态为何，人总是不会愚蠢到将真实状态排除出自己的认知。也可以解释成，人可以被迷惑，但不会荒唐到完全不顾真实。同时，这个公理也意味着对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Comega+%5Cin+%5COmega+%2CP%28%5Comega+%29%5Cne+%5Cemptyset" alt="\forall \omega \in \Omega ,P(\omega )\ne \emptyset" eeimg="1">
+                    。公理2和3稍微有些抽象，我们可以做直观一些的理解。考虑公理2，如果世界的真实状态是
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega+" alt="\omega" eeimg="1">
+                    ，但人无法区分开
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5E%7B%27%7D+" alt="\omega^{&#39;}" eeimg="1">
+                    ，这意味着
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29" alt="P(\omega)" eeimg="1">
+                    必须包含了如果世界状态是
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5E%7B%27%7D+" alt="\omega^{&#39;}" eeimg="1">
+                    时所有可能的认知。如果不是这样，假设
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%5E%7B%27%7D%29" alt="P(\omega^{&#39;})" eeimg="1">
+                    中有一个元素不属于
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29" alt="P(\omega)" eeimg="1">
+                    ，那一旦
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5E%7B%27%7D" alt="\omega^{&#39;}" eeimg="1">
+                    出现，我们应当能够区分
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29" alt="P(\omega)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%5E%7B%27%7D%29" alt="P(\omega^{&#39;})" eeimg="1">
+                    ，因为后者中至少有一个元素在前者中找不到。既然
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29" alt="P(\omega)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%5E%7B%27%7D%29" alt="P(\omega^{&#39;})" eeimg="1">
+                    可以被区分开，自然
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5E%7B%27%7D" alt="\omega^{&#39;}" eeimg="1">
+                    也可以被区分开。运用类似的想法我们可以说明公理3的合理性，而将公理2以及公理3合并，我们可以得到以下结论：如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5E%7B%27%7D%5Cin+P%28%5Comega%29%2CP%28%5Comega%5E%7B%27%7D%29%3DP%28%5Comega%29" alt="\omega^{&#39;}\in P(\omega),P(\omega^{&#39;})=P(\omega)" eeimg="1">
+                    。
+                </p>
+                <br>
+                <p>
+                    Hintikka模型的威力在于我们可以通过划定一组分割来说明人的知识结构，也即下列命题成立：
+                    <img src="https://www.zhihu.com/equation?tex=%28%5COmega+%2CP%29" alt="(\Omega ,P)" eeimg="1">
+                    满足公理1-3当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    被划分成一些彼此不相交的子集，这些子集的并构成
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    ，同时对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Comega+%5Cin+%5COmega" alt="\forall \omega \in \Omega" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29" alt="P(\omega)" eeimg="1">
+                    等于划分中
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    从属的子集。充分性是显然的，为说明必要性，只需要注意到如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%5E%7B%27%7D+%5Cin+P%28%5Comega%29" alt="\omega^{&#39;} \in P(\omega)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%5E%7B%27%7D%29%3DP%28%5Comega%29" alt="P(\omega^{&#39;})=P(\omega)" eeimg="1">
+                    给出了一组等价关系[4]。于是，我们下面用划分来指代个体的认知结构。
+                </p>
+                <br>
+                <p>
+                    我们现在可以定义知识。需要说明的一点是，我们迄今为止仍没有为知识/知道给出一个令大部分人满意的解释，因此，我们使用的模型只是一些可能说明“知识是什么”的模型中的一种，并非最终的答案。亚里士多德提出了知识的JTB准则：知识是被证成的真信念（Justified True Belief，简称JTB。此处的证成可以理解为“有力地辩护”，但具体何为证成仍是甚为复杂的问题，至今仍是分析哲学研究的问题）。以物理学为例，在LIGO探测突破之前，我们相信引力波存在，这是信念。我们有相对论做支持，这是证成。现在，我们又实际探测到了引力波，于是这是真的，引力波在JTB准则下成为了知识。在2000多年的时间里，亚里士多德的理论一直被奉为圭臬。但是，盖梯尔在1963年提出了一个著名的反例，也叫做盖梯尔问题。想象一个人计划烧掉一个谷仓，他/她认为只需要一根火柴就可以做到这一点，于是点燃了火柴。谷仓确实被烧掉了，但仅凭火柴未必是足够的，因为当时谷仓的角落还有几大桶汽油。这个例子满足JTB中的所有要素，但这个人拥有的真是知识吗？还是只是碰对运气的信念？这个问题迄今为止仍未完全解决。类似的情景在生活中经常出现，想象一位欣喜赴约的女孩，到达约定地点时发现男孩早已在哪儿等待，她由此推断出男孩儿非常在乎她。这是个信念，也确实是真的，男孩儿确实在乎她，但男孩早到其实是因为他记错了时间。这时信念也满足JTB，但这真是知识吗？我们并不清楚。我们只能先假设一些比较合理的公理，然后在此基础上发展理论。
+                </p>
+                <br>
+                <p>
+                    前面提到，我们可以证明：理性三公理意味着我们总是可以把包含世界全体状态的集合
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    划分成一些互不相交但合为全集的子集。在此基础上，我们正式阐述何谓知识。假设世界全体状态集合为
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    ，世界中有
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    个个体。我们定义事件为世界全体状态集合
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    的一个子集
+                    <img src="https://www.zhihu.com/equation?tex=X%5Csubseteq+%5COmega" alt="X\subseteq \Omega" eeimg="1">
+                    。我们同时定义个体
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    在状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    下知道事件
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    当且仅当
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29+%5Csubseteq+X" alt="P(\omega) \subseteq X" eeimg="1">
+                    。如果每个人都是理性的，则每人可对应到
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    的一种划分。我们将第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    个个体划分记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D_%7Bi%7D+" alt="\mathcal{F}_{i}" eeimg="1">
+                    [5]，记其中子集为
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bi%7D+%5Csubseteq+%5Cmathcal%7BF%7D_%7Bi%7D" alt="F_{i} \subseteq \mathcal{F}_{i}" eeimg="1">
+                    ，这定义了第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    个个体的认知结构，则以上定义也可重写为
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bi%7D%3A%5Comega+%5Cin+F_%7Bi%7D" alt="F_{i}:\omega \in F_{i}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bi%7D+%5Csubseteq+X" alt="F_{i} \subseteq X" eeimg="1">
+                    。于是我们定义了知道算子
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    ，这是从
+                    <img src="https://www.zhihu.com/equation?tex=2%5E%7B%5COmega%7D" alt="2^{\Omega}" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=2%5E%7B%5COmega%7D" alt="2^{\Omega}" eeimg="1">
+                    的一个映射[6]。利用定义
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bi%7D%3A%5Comega+%5Cin+F_%7Bi%7D" alt="F_{i}:\omega \in F_{i}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bi%7D+%5Csubseteq+X" alt="F_{i} \subseteq X" eeimg="1">
+                    ，我们可定义
+                    <img src="https://www.zhihu.com/equation?tex=K_%7Bi%7D" alt="K_{i}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=K_%7Bi%7DX" alt="K_{i}X" eeimg="1">
+                    意味着
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，这同时意味着
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    的知识。
+                </p>
+                <br>
+                <p>
+                    这个定义相当抽象，让我们再举一个例子来阐明这样建模道理何在。想象一位正在规划未来人生的青年，他所面临的全集包含以下元素｛语文好，数学好，英语好，适合研究文学，适合研究历史，适合研究物理，适合研究经济学｝。现在取
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%3D" alt="\omega=" eeimg="1">
+                    数学好，如果是一个人生规划非常明确的青年，那他的
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29" alt="P(\omega)" eeimg="1">
+                    应该很小，比如说
+                    <img src="https://www.zhihu.com/equation?tex=P%28" alt="P(" eeimg="1">
+                    数学好
+                    <img src="https://www.zhihu.com/equation?tex=%29%3D" alt=")=" eeimg="1">
+                    {适合研究物理}。如果对未来感觉非常迷茫或者不确定，那这个
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29" alt="P(\omega)" eeimg="1">
+                    就会很大，比如说
+                    <img src="https://www.zhihu.com/equation?tex=P%28" alt="P(" eeimg="1">
+                    数学好
+                    <img src="https://www.zhihu.com/equation?tex=%29%3D" alt=")=" eeimg="1">
+                    {适合研究物理，适合研究经济学}。当然，也有可能他/她脑子里只有一团浆糊，对未来完全没有愿景，此时集合根本没有划分，所有的元素都混在一起。给定理性三公理，我们可以定义精细划分和粗糙划分的概念。面对同样的世界状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    ，精细划分中包含
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    的集合
+                    <img src="https://www.zhihu.com/equation?tex=F_i" alt="F_i" eeimg="1">
+                    相对较小，粗糙划分中对应的集合
+                    <img src="https://www.zhihu.com/equation?tex=F_%7Bi%7D%5E%7B%27%7D+" alt="F_{i}^{&#39;}" eeimg="1">
+                    更大，即有
+                    <img src="https://www.zhihu.com/equation?tex=Card%28F_i%29%5Cleq+Card%28F_%7Bi%7D%5E%7B%27%7D%29" alt="Card(F_i)\leq Card(F_{i}^{&#39;})" eeimg="1">
+                    。又由于每一个体都是理性的，所以实际上我们有
+                    <img src="https://www.zhihu.com/equation?tex=F_i+%5Csubseteq+F_%7Bi%7D%5E%7B%27%7D" alt="F_i \subseteq F_{i}^{&#39;}" eeimg="1">
+                    。这意味着虽然每个人的知识水平不同，有的掌握得更清晰，有的掌握得更糊涂，但他们都不会糟糕到弄错世界状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    ，只是在对应的划分精细程度上有区别。同样是蜘蛛，有的人知道这是动物，有的人知道这是节肢动物，有的人能精确到节肢动物门蛛形纲。能够把世界看得更细，意味着知识更深入，也意味着集合划分的精细程度可以刻画知识水平。在更加抽象的意义上，对于任何一个问题，我们都可以划出是和否两种状态。如果一个人知道这一问题，这意味着他/她能够把这两个元素分开，划到不同的子集中；如果他/她不知道，这两个元素就划不开[7]。
+                </p>
+                <br>
+                <p>
+                    假设现在已经有了一个划分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D_i" alt="\mathcal{F}_i" eeimg="1">
+                    ，我们可能会疑惑为何如此定义知识算子
+                    <img src="https://www.zhihu.com/equation?tex=K_i" alt="K_i" eeimg="1">
+                    ，背后的意义是什么？首先我们注意到一点：既然
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D_i" alt="\mathcal{F}_i" eeimg="1">
+                    是一个划分，这意味着其中的每个集合都不交。又因为每一划分都对应于认知函数
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29" alt="P(\omega)" eeimg="1">
+                    ，所以个体可以完美地区分两个
+                    <img src="https://www.zhihu.com/equation?tex=F_i" alt="F_i" eeimg="1">
+                    分。注意到我们定义
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    在状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    下知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=F_i%3A%5Comega+%5Cin+F_i" alt="F_i:\omega \in F_i" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=F_i+%5Csubseteq+X" alt="F_i \subseteq X" eeimg="1">
+                    ，这意味着只要世界状态确实是
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    ，事件
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    必定会实现，必定一词由集合的包含关系保障。举一例子，假如世界状态是
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%3D" alt="\omega=" eeimg="1">
+                    我很快乐，
+                    <img src="https://www.zhihu.com/equation?tex=P%28%5Comega%29%3D" alt="P(\omega)=" eeimg="1">
+                    ｛我很快乐，我很兴奋，我很感动｝，这就意味着我自己区分不出这三种状态。我们再定义两个集合，一个是我心情很好，包含四个元素：我很快乐、我很兴奋、我很虔诚、我很感动。另一个是我情绪很激动，包含我很快乐、我很兴奋、我很激动、我很生气。那么，在状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%3D" alt="\omega=" eeimg="1">
+                    我很快乐的情况下，我是知道自己心情很好的。因为可能和快乐混淆的另外三种情感都包含在心情很好这一事件中；但我不知道我是否情绪激动，因为在状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    下，我也有可能是感动，而这并不包含在情绪激动这个事件中。所谓知识，就是再怎么错，这个事也是这个理儿的意思。我们有时候可能在蜘蛛是不是昆虫上犯迷糊，这是在两个纲之间发生了混淆，但我们肯定知道蜘蛛属于节肢动物门。因此，我们可以说我们
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    “蜘蛛属于节肢动物门”，这是对的，但不能说我们
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    “蜘蛛属于节肢动物门蛛形纲”，因为我们可能会把蜘蛛和昆虫搞混。
+                </p>
+                <br>
+                <p>
+                    注意到算子
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    把
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    的一个子集映成另一个子集，因此我们可以作高阶知识的定义。
+                    <img src="https://www.zhihu.com/equation?tex=K_jK_iX" alt="K_jK_iX" eeimg="1">
+                    就意味着
+                    <img src="https://www.zhihu.com/equation?tex=j" alt="j" eeimg="1">
+                    知道
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，依此类推。这就把我们嘴巴上说的知道用集合论的语言严格地表达了出来。可以证明知识算子具有下面6个性质。这些性质和理性的定义一脉相承。其中第2点对应注8[8]。
+                </p>
+                <br>
+                <figure>
+                    <img src="https://pic3.zhimg.com/d9a6d1594913f2a7be15e6e5ee50d4ca_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                <p>
+                    这些性质的证明都不困难，直接验证即可。需要特别说明的是，把第六点拿掉，前五点本身也可构成知识的定义（第六点本身也只是个推论）。这一贡献来自天才的分析哲学家Kripke，也叫做Kripke S5系统。这个系统和我们前面定义的知识算子等价：我们既可以验证知识算子满足这5个命题；也可以证明这5个命题能够诱导出一个映射，其形式恰好就是我们前面定义的知识算子[9]。从直观上来说，这五个命题分别有各自现实意义。第一点意味着个体知道世界的全体状态是
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    。第二点意味着如果一个人知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    会实现，因为其中包含了世界的真实状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    ，这也可以通俗地理解为“知识是真的”。第三点意味着如果一个人同时知道事件
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    和事件
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    ，那他/她也会知道事件
+                    <img src="https://www.zhihu.com/equation?tex=X%5Ccap+Y" alt="X\cap Y" eeimg="1">
+                    。第四点意味着如果一个人知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，那他/她也知道自己知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    。第五点意味着如果一个人不知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，那么他/她知道自己不知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    。这五个公理共同规范了我们观念中的知识概念，同时诱导出了一个定义在
+                    <img src="https://www.zhihu.com/equation?tex=2%5E%5COmega" alt="2^\Omega" eeimg="1">
+                    上的知识算子。而第六点性质则意味着如果
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    已知，所有为
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    蕴含的事实也是知识。
+                </p>
+                <br>
+                <p>
+                    我们接下来介绍无穷阶次知识这一概念。前述记号保持不变，
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    个个体，事件
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，第个个体记为
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    。我们首先逐个询问
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    个个体：你知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    吗？如果知道，记下
+                    <img src="https://www.zhihu.com/equation?tex=K_iX" alt="K_iX" eeimg="1">
+                    ；如果不知道，记下
+                    <img src="https://www.zhihu.com/equation?tex=%28k_iX%29%5Ec" alt="(k_iX)^c" eeimg="1">
+                    。我们接下来再从第一个个体开始，询问他/她
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    个问题：你知道
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    知道/不知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    吗？如果回答知道，我们记下
+                    <img src="https://www.zhihu.com/equation?tex=K_1K_iX" alt="K_1K_iX" eeimg="1">
+                    ，如果回答不知道，我们记下
+                    <img src="https://www.zhihu.com/equation?tex=%28K_1K_iX%29%5Ec" alt="(K_1K_iX)^c" eeimg="1">
+                    ，依此类推。在第二层询问中，我们可以记下
+                    <img src="https://www.zhihu.com/equation?tex=N%5E2" alt="N^2" eeimg="1">
+                    个答案。同样的询问可以继续进行下去，比如说，我们可以问第2个人：你知道第4个人知道第5个人知道第3个人知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    吗？把这样的答案一层层一层层地垒起来，我们就得到了无穷阶次的知识。从这里可以很自然地得到共同知识比较严格的定义。保持以上记号，则我们称
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是世界状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    下的共同知识，当且仅当对任意有限长序列
+                    <img src="https://www.zhihu.com/equation?tex=i_1i_2i_3...i_l" alt="i_1i_2i_3...i_l" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega+%5Cin+K_%7Bi_1%7DK_%7Bi_2%7DK_%7Bi_3%7D...K_%7Bi_l%7DX" alt="\omega \in K_{i_1}K_{i_2}K_{i_3}...K_{i_l}X" eeimg="1">
+                    。这意味着，
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是共同知识，当且仅当有关
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的问题在无穷阶次知识的每一层都得到肯定的回答。这个定义初看起来和我们平时谈论的形式没有任何区别，但它已经算是严格表述了。Aumann证明了共同知识可以由如下条件得到判定：记
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D" alt="\mathcal{F}" eeimg="1">
+                    是所有参与者中最粗糙划分，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D%3D%5Cmathcal%7BF%7D_1%5Cwedge+%5Cmathcal%7BF%7D_2+%5Cwedge+%5Cmathcal%7BF%7D_3+%5Cwedge...%5Cwedge%5Cmathcal%7BF%7D_N" alt="\mathcal{F}=\mathcal{F}_1\wedge \mathcal{F}_2 \wedge \mathcal{F}_3 \wedge...\wedge\mathcal{F}_N" eeimg="1">
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是世界状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    下的共同知识的充要条件是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D%28%5Comega%29+%5Csubseteq+X" alt="\mathcal{F}(\omega) \subseteq X" eeimg="1">
+                    [10]。
+                </p>
+                <br>
+                <p>
+                    Aumann的定理可以按如下方法直观理解：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D" alt="\mathcal{F}" eeimg="1">
+                    是所有划分中最粗糙的，也就是说在每个世界状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    下，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D" alt="\mathcal{F}" eeimg="1">
+                    都会给出在这个状态下最糊涂的人的判断。如果糊涂到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D" alt="\mathcal{F}" eeimg="1">
+                    这个程度还能知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，这就意味着所有人都应该知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    。又因为所有人都知道
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D" alt="\mathcal{F}" eeimg="1">
+                    是最糊涂的，或者说是最笨的，集中了所有最糊涂的判断，所以他们也应该知道其他人也能够知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，如此推断下去即可以构造符合要求的无穷阶次知识。除了Aumann的方法，我们还可以用Milgrom的方法来定义共同知识。Milgrom的方法和我们前面理解知识的方法是一致的：公理化。记“在状态
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    下
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是共同知识”这一事实为
+                    <img src="https://www.zhihu.com/equation?tex=CK_X" alt="CK_X" eeimg="1">
+                    ，我们有下列四条公理。
+                </p>
+                <br>
+                <figure>
+                    <img src="https://pic1.zhimg.com/9a987c8f639b83aaca92223316e32bd2_r.jpg?source=1940ef5c">
+                </figure>
+                <br>
+                <p>
+                    第一条公理意味着共同知识能够实现，第二条公理意味着如果
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是共同知识，那么所有人都知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是共同知识。反复运用这两条公理可以直接得到共同知识的直观含义。假设
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    实现了，根据公理2，假如
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是个共同知识，那么所有人都应该知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是个共同知识，而这又意味着“所有人都知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是个共同知识”这个事实的实现，运用公理1可知这也应该是个共同知识，于是再次运用公理2可以得到“所有人都知道所有人都知道
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    是个共同知识”这一事实，依次类推即可得到无穷阶次的性质。第三条性质意味着如果
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    是共同知识，那么所有可以从
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    推出来的命题也应该是共同知识。第四条性质则意味着在全体参与者面前发生的事情是公共知识。像我们一开始提到的疯狗谜题，其中旅行者在人们面前喊出的“岛上有疯狗”这个事实满足公理4，所以就是共同知识。这里的“在全体参与者面前发生”也未必要是真正的面对面。一个微信群、一篇文章的评论区或者一个BBS，上面的内容对于全体参与者来说都是共同知识。Milgrom进一步证明了：这四个公理可诱导出唯一的共同知识算子，且这个算子恰好就是Aumann给出的
+                    <img src="https://www.zhihu.com/equation?tex=F%28%5Comega%29+%5Csubseteq+X" alt="F(\omega) \subseteq X" eeimg="1">
+                    [11]。
+                </p>
+                <br>
+                <p>
+                    最后，我们简单叙述在有限参与者的静态博弈中构成纳什均衡的知识条件。所谓知识条件，指的是为了使得纳什均衡实际上被执行，能被玩出来，博弈参与者需要知道些什么。在两人博弈中，如果双方都知道（这里的知道可以形式化成算子）对方的支付函数、对方的策略集以及对方是理性的，并且知道对方对自己行为的猜测，那么他们彼此的猜测构成一个纳什均衡。在三人或更多参与者的博弈中，我们要求参与者都知道彼此的支付函数、策略集以及彼此都是理性的，且每个人对其他人策略的猜测都是共同知识。以上两个条件都是充分但不必要的，不满足这些条件也有可能形成纳什均衡。但它们都是紧的，每一点放松都会造成反例[12]。动态完全信息博弈中的知识条件由Battigalli和Siniscalchi给出，但这已经超出了课程范围[13]。动态博弈中更多相关结果可在Perea的教科书
+                    <i>
+                        Rationality in Extensive Form Games
+                    </i>
+                    中找到。
+                </p>
+                <br>
+                <p>
+                    如果对博弈论的这个分支，博弈论的知识理论（Epistemological Game Theory，EGT）感兴趣，希望挖掘更加深入的知识， Perea的教科书
+                    <i>
+                        Epistemic Game Theory: Reasoning and Choice
+                    </i>
+                    是不错的选择。另一本很困难的读物是Brandenburger的
+                    <i>
+                        The Language of Game Theory: Putting Epistemics into the Mathematics of Games
+                    </i>
+                    ，是领域内经典论文集。此外，共同知识本身也可以用来分析很多生活中的现象，这方面一本非常出色的著作来自Michael Suk-Young Chwe，一位著名的韩裔理论经济学家。他写作的
+                    <i>
+                        Rational Ritual: Culture, Coordination, and Common Knowledge
+                    </i>
+                    旁征博引，用共同知识分析了许多不同领域的问题，比如非洲的聚会民俗、美国南方的舞会、法国大革命中的仪式、超级碗的中场广告，以及休谟的环形监狱，等等。这是直观了解共同知识的很好的途径。
+                </p>
+                <br>
+                <p>
+                    注解：
+                </p>
+                <br>
+                <p>
+                    [1]这两个例子都来自Geanakoplos（1992）。谜题的完整表述以及严格解法均可在原文中找到。如果对讲义中命题或具体阐述有进一步的兴趣，可以在脚注中找到相应信息。
+                </p>
+                <br>
+                <p>
+                    [2]如果对证明有兴趣，请参见Rubinstein（1989）。
+                </p>
+                <br>
+                <p>
+                    [3]我们此处假设
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    是有限集合。当
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    是无限集时，
+                    <img src="https://www.zhihu.com/equation?tex=2%5E%5COmega" alt="2^\Omega" eeimg="1">
+                    的结构可能会非常复杂，需要添加更多限制。
+                </p>
+                <br>
+                <p>
+                    [4]如果对完整证明有兴趣，请参见Rubinstein（1998）书中命题3.1的证明。
+                </p>
+                <br>
+                <p>
+                    [5]这是集合的集合。当后面我们提及精细/粗糙的概念时，我们实际上是在讨论一个域流。当
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    很复杂时，讨论
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal%7BF%7D" alt="\mathcal{F}" eeimg="1">
+                    也是很困难的。
+                </p>
+                <br>
+                <p>
+                    [6]这个知识算子本身的“有效性”和“合理性”等讨论已经属于分析哲学/数理逻辑的范畴。如果有兴趣，可以参见Kripke（1959）。
+                </p>
+                <br>
+                <p>
+                    [7]这种说法是非正式的。如果允许和各种性质相联系的集合，我们就得到了所谓的“万有公理”。如果我们还承认其它一些公理，这将导出悖论。一个非正式的讨论见《陶哲轩实分析》3.2。
+                </p>
+                <br>
+                <p>
+                    [8]关于这一公理长期以来一直存在争议，分析哲学家已经构造出了一些反常的例子。在目前使用的模型中，如果把这一公理拿掉，剩下的4条公理构成S4系统，这构成信念的定义。基于信念我们同样可以构造无穷阶次的共识。假设
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    是可数的完备可分度量空间，且
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+%5COmega" alt="\Delta \Omega" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    上Borel集生成的
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    域中赋有弱收敛拓扑的全体概率测度，我们可以将信念层次写成以下形式：令
+                    <img src="https://www.zhihu.com/equation?tex=X_1%3D%5CDelta+%5COmega" alt="X_1=\Delta \Omega" eeimg="1">
+                    代表博弈参与者对世界状态的信念，则
+                    <img src="https://www.zhihu.com/equation?tex=X_2%3D%5CDelta%28X_1%5Ctimes+%5COmega%29" alt="X_2=\Delta(X_1\times \Omega)" eeimg="1">
+                    代表了对信念的信念，
+                    <img src="https://www.zhihu.com/equation?tex=X_%7Bi%2B1%7D%3D%5CDelta%28X_i%5Ctimes+%5COmega%29" alt="X_{i+1}=\Delta(X_i\times \Omega)" eeimg="1">
+                    代表对上一阶信念的信念，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cprod_%7B%5Ctimes+%7D%5E%7B%5Cinfty%7DX+" alt="\prod_{\times }^{\infty}X" eeimg="1">
+                    就构成了一个无穷阶次的信念空间。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cprod_%7B%5Ctimes+%7D%5E%7B%5Cinfty%7DX+" alt="\prod_{\times }^{\infty}X" eeimg="1">
+                    需要满足一致性，亦即由高阶信念诱导出的分布（边缘分布）与低阶信念一致。Brandenburger和Dekel证明了这样的信念空间是存在的，并且，令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta_i+%5Cin+X_i+" alt="\delta_i \in X_i" eeimg="1">
+                    ，我们总是可以构造出一个向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    作为参与者的type，且全体满足一致性的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">
+                    构成的空间
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+%5COmega+%5Ctimes+T" alt="\Delta \Omega \times T" eeimg="1">
+                    微分同胚。这意味着type完整地反映了全体可能的信念。当
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    是不可数集合时，我们需要一个空状态才能实现这一点，同时全体参与者的划分集合都应该是可测集，此时知道也被定义为“赋予概率1”。Heifetz和Samet证明了这样一个满足一致性的无穷阶次的知识空间是不存在的。
+                </p>
+                <br>
+                <p>
+                    [9]如果对证明有兴趣，可以参考Maschler，Solan和Zamir（2013），这是习题9.2。有兴趣的可以在这本书的末尾得到简单的提示。
+                </p>
+                <br>
+                <p>
+                    [10]如果对证明有兴趣，请参见Aumann（1976）。
+                </p>
+                <br>
+                <p>
+                    [11]如果对证明有兴趣，请参见Milgrom（1981）。
+                </p>
+                <br>
+                <p>
+                    [12]如果对证明和相应的反例有兴趣，请参见Aumann和Brandenburger（1995）。在这篇论文中，他们将混合策略理解为对对手策略集的猜测。此外，得到多人情形中的相关命题需要Harsanyi的共同先验假设（又称一致性假设），对这一假设的严格讨论很复杂，如果有兴趣，请参见Morris（1995）。
+                </p>
+                <br>
+                <p>
+                    [13]如果对结论和证明有兴趣，请参见Battigalli和Siniscalchi（2002）。
+                </p>
+                <br>
+                <p>
+                    参考文献：
+                </p>
+                <p>
+                    Aumann R.
+Agreeing to disagree[J]. The Annals of Statistics, 1976: 1236-1239.
+                </p>
+                <br>
+                <p>
+                    Aumann R.
+Backward induction and common knowledge of rationality[J]. Games and Economic
+Behavior, 1995, 8(1): 6-19.
+                </p>
+                <br>
+                <p>
+                    Aumann R, Brandenburger A.
+                </p>
+                <p>
+                    Epistemic conditions for Nash equilibrium[J]. Econometrica: Journal of the Econometric Society, 1995: 1161-1180.
+                </p>
+                <br>
+                <p>
+                    Battigalli P, Siniscalchi M.
+                </p>
+                <p>
+                    Strong belief and forward induction reasoning[J]. Journal of Economic Theory, 2002, 106(2): 356-391.
+                </p>
+                <br>
+                <p>
+                    Brandenburger A, Dekel E.
+                </p>
+                <p>
+                    Common knowledge with probability 1[J]. Journal of Mathematical Economics, 1987, 16(3): 237-245.
+                </p>
+                <br>
+                <p>
+                    Brandenburger A, Dekel E.
+                </p>
+                <p>
+                    Hierarchies of beliefs and common knowledge[J]. Journal of Economic Theory, 1993, 59(1): 189-198.
+                </p>
+                <br>
+                <p>
+                    Brandenburger A.
+The language of game theory: putting epistemics into the mathematics of games[M]. World Scientific, 2014.
+                </p>
+                <br>
+                <p>
+                    Chwe M S Y.
+Rational ritual: Culture, coordination, and common knowledge[M]. Princeton University Press, 2013.
+                </p>
+                <br>
+                <p>
+                    Geanakoplos J.
+Common knowledge[C]//Proceedings of the 4th conference on Theoretical aspects of reasoning about knowledge. Morgan Kaufmann Publishers Inc., 1992: 254-315.
+                </p>
+                <br>
+                <p>
+                    Gettier E L.
+                </p>
+                <p>
+                    Is justified true belief knowledge?[J]. Analysis, 1963, 23(6): 121-123.
+                </p>
+                <br>
+                <p>
+                    Halpern J Y, Moses Y.
+                </p>
+                <p>
+                    Knowledge and common knowledge in a distributed environment[J]. Journal of the ACM (JACM), 1990, 37(3): 549-587.
+                </p>
+                <br>
+                <p>
+                    Heifetz A, Samet D.
+                </p>
+                <p>
+                    Knowledge spaces with arbitrarily high rank[J]. Games and Economic Behavior, 1998, 22(2): 260-273.
+                </p>
+                <br>
+                <p>
+                    Hintikka J.
+Knowledge and belief[J]. 1962.
+                </p>
+                <br>
+                <p>
+                    Kripke A. 
+Completeness theorem in modal logic[J]. The Journal of Symbolic Logic, 1959, 24(01): 1-14.
+                </p>
+                <br>
+                <p>
+                    Maschler M, Solan E. Zamir S.
+                </p>
+                <p>
+                    Game Theory[J]. 2013.
+                </p>
+                <br>
+                <p>
+                    Milgrom P. 
+An axiomatic characterization of common knowledge[J]. Econometrica: Journal of the Econometric Society, 1981: 219-222.
+                </p>
+                <br>
+                <p>
+                    Morris S. 
+The common prior assumption in economic theory[J]. Economics and Philosophy, 1995, 11(02): 227-253.
+                </p>
+                <br>
+                <p>
+                    Perea A.
+                </p>
+                <p>
+                    Epistemic game theory: reasoning and choice[M]. Cambridge University Press, 2012.
+                </p>
+                <br>
+                <p>
+                    Perea A.
+Rationality in extensive form games[M]. Springer Science &amp; Business Media,
+2013.
+                </p>
+                <br>
+                <p>
+                    Rubinstein A.
+Modeling bounded rationality[M]. MIT press, 1998.
+                </p>
+                <br>
+                <p>
+                    Rubinstein A.
+                </p>
+                <p>
+                    The Electronic Mail Game: Strategic Behavior under &#34;Almost Common
+Knowledge.&#34;[J]. American Economic Review, 1989, 79(3): 385-91.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

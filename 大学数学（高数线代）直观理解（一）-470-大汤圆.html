@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            大学数学（高数线代）直观理解（一）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/24174101" target="_blank">
+                        大学数学（高数线代）直观理解（一）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/yuan-ming-18">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/e8584466a.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    大汤圆
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2016-12-05
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    昨天看到有个初中数学问题推到了我的Timeline上，问：
+                    <a href="https://www.zhihu.com/question/51745820" class="internal">
+                        系数为啥叫系数？
+                    </a>
+                    -
+                    <a href="https://www.zhihu.com/people/9efc32ee8020fed7ff5e77883a1e6763" data-hash="9efc32ee8020fed7ff5e77883a1e6763" class="member_mention" data-hovercard="p$b$9efc32ee8020fed7ff5e77883a1e6763">
+                        @甘庸
+                    </a>
+                </p>
+                <p>
+                    我脑洞炸裂灵感迭起，心情如电火花一般激灵四射，又为见到这么古老的问题痛哭流涕——想我有多久没有问过这种问题了，从小到大，问出来也得不到满意的解答吧。
+                </p>
+                <p>
+                    那么今天我就从回答这个问题开始，谈谈直观理解《高等数学》《微积分》的相关知识。但必须提的是，直观是不严谨的，千万不要看了这篇文章后脑洞大开搞出什么数学民科来，那可就糟了。
+                </p>
+                <br>
+                <p>
+                    系数，你可以认为这里是“万千变化系于一数”的用法。一个函数就是一个变化，这个变化系于此数，简称系数。又可以说，一个函数是一个对应关系，关系数，简称系数。
+                </p>
+                <p>
+                    其实能问出“系数为什么叫系数”的人肯定也能问出“函数为什么叫函数”。后面这个问题其实更了不起，因为可以引出“泛函”的概念来，也许以后我会试着仔细写写这个。
+                </p>
+                <br>
+                <p>
+                    1
+                </p>
+                <p>
+                    y=2x，你告诉我，这个函数的变化快慢是由什么决定的？
+                </p>
+                <p>
+                    没错，2.
+                </p>
+                <p>
+                    那
+                    <img src="https://www.zhihu.com/equation?tex=y%3Dx%5Ctimes+x" alt="y=x\times x" eeimg="1">
+                    呢？这里有两个x，每个x的变化的快慢都是由对方决定的，第一个x的变化快慢是x倍，第二个x的变化快慢是x倍，一共是？
+                </p>
+                <p>
+                    2x倍。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=y%3Dx%5Ctimes+x%5Ctimes+x" alt="y=x\times x\times x" eeimg="1">
+                    呢？这里有三个x，每个x的变化快慢都是
+                    <img src="https://www.zhihu.com/equation?tex=x%5E2" alt="x^2" eeimg="1">
+                    ，所以总变化快慢是？
+                </p>
+                <p>
+                    嗯……
+                    <img src="https://www.zhihu.com/equation?tex=3+x%5E%7B2%7D+" alt="3 x^{2}" eeimg="1">
+                    .
+                </p>
+                <p>
+                    于是我们推出来两个规律：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=%28kx%29%27%3Dk" alt="(kx)&#39;=k" eeimg="1">
+                <br>
+                <img src="https://www.zhihu.com/equation?tex=%28x%5E%7Bn%7D%29%27%3D+nx%5E%7Bn-1%7D+" alt="(x^{n})&#39;= nx^{n-1}" eeimg="1">
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5Ex" alt="e^x" eeimg="1">
+                    的变化率就是它自己，要理解的话得花大篇幅解释e这个东西，在这里就不提了，反正记下来也挺简单的。
+                </p>
+                <p>
+                    至于三角函数的变化率，你画个单位圆看看就能明白为什么sin的变化率就是cos，cos的变化率是-sin。如果不记得单位圆定义的……跳过。
+                </p>
+                <br>
+                2
+                <p>
+                    有的时候我们会需要这样的情况：
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cy%29%3Dx%5E3%2B2x%5E2y" alt="f(x,y)=x^3+2x^2y" eeimg="1">
+                    ，现在我问你，这个函数里，x的变化快慢被什么决定？
+                </p>
+                <p>
+                    你很快可以得到答案，第一项有3个x，每个x的变化都是
+                    <img src="https://www.zhihu.com/equation?tex=x%5E2" alt="x^2" eeimg="1">
+                    ，第二项里有两个x，每个x的变化都是2xy，所以总变化是
+                    <img src="https://www.zhihu.com/equation?tex=3x%5E2%2B2%5Ctimes+2xy%3D3x%5E2%2B4xy" alt="3x^2+2\times 2xy=3x^2+4xy" eeimg="1">
+                    ，同样的，我们其实也可以问，在这个函数里，y的变化快慢被什么决定？显然是
+                    <img src="https://www.zhihu.com/equation?tex=2x%5E2" alt="2x^2" eeimg="1">
+                    。然后函数总的变化快慢是多少呢？
+                    <img src="https://www.zhihu.com/equation?tex=3x%5E2%2B4xy%2B2x%5E2" alt="3x^2+4xy+2x^2" eeimg="1">
+                </p>
+                <p>
+                    写到这里莫名其妙就得出了偏导数和全微分公式。用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x%7D+" alt="\frac{\partial f}{\partial x}" eeimg="1">
+                    表示x的偏导数（变化率），
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+y%7D+" alt="\frac{\partial f}{\partial y}" eeimg="1">
+                    表示y的偏导数（变化率），在
+                    <img src="https://www.zhihu.com/equation?tex=%28x_0%2Cy_0%29" alt="(x_0,y_0)" eeimg="1">
+                    处的全微分公式写做
+                    <img src="https://www.zhihu.com/equation?tex=df%28x_0%2Cy_0%29%3D%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x%7D%28x_0%2Cy_0%29dx%2B+%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+y%7D+%28x_0%2Cy_0%29dy" alt="df(x_0,y_0)=\frac{\partial f}{\partial x}(x_0,y_0)dx+ \frac{\partial f}{\partial y} (x_0,y_0)dy" eeimg="1">
+                    。就是说这个函数的增量等于x的增量加y的增量。好吧，一个知识点就这么完了，是不是有种感觉什么也没说的感觉？没错你相信我，真的就只是造出了几个术语，搞出了几个符号，内容就是我们说的那样，那么的……废话。其实我一直不喜欢这种写法，但我没有发明符号的闲心了，就姑且这么用，反正听他们那些前辈说用多了还觉得挺美。
+                </p>
+                <p>
+                    3
+                </p>
+                <p>
+                    有的时候我们常常做这么一件事。那就是，一个量根据一个法则在变化， 从某处到某处这个量变了多少。
+                </p>
+                <br>
+                <p>
+                    比如f(x)从a到b一直在连续变化，问从a到b一共变化了多少？
+                </p>
+                <br>
+                <p>
+                    你也许会说，这不是废话么，用f(b)-f(a)不就求出来了吗？
+                </p>
+                <p>
+                    那么恭喜你，你以一人之力，发明了牛顿莱布尼兹公式。
+                </p>
+                <p>
+                    牛顿莱布尼兹公式是怎么说的？它说从a到b每一处的变化累积起来，就是f(b)-f(a)。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-145aef632df701a0761dfd3a2c460b09_r.jpg">
+                </figure>
+                那由此还可以想到什么“废话”吗？
+                <p>
+                    当然还可以，这种废话简直无穷无尽，比如。
+                </p>
+                <p>
+                    u的变化使得v变化的量，加上v的变化使得u变化的量，不就是变化的u和v彼此使得对方变化的总量吗？很自然的有
+                    <img src="https://www.zhihu.com/equation?tex=uv%3D%5Cint+u%27vdx%2B%5Cint+uv%27dx" alt="uv=\int u&#39;vdx+\int uv&#39;dx" eeimg="1">
+                </p>
+                <br>
+                <p>
+                    我推出这个公式后的第二天，老师教了我们分部积分法。
+                </p>
+                <br>
+                <p>
+                    我：……
+                </p>
+                <br>
+                <p>
+                    4
+                </p>
+                <p>
+                    至于无穷小量，极限，微元这些，我是不太想在文章里提的。一来我没有能力换一种完全不同的方式等价地表达出来，总觉得有这样那样的问题。二来我如果按书上的在这里写一遍，那我这篇文章还不如不写。那么问题来了，如果不谈极限，我们怎么讨论极限的相关知识？
+                </p>
+                <p>
+                    伯努利说，对对对，你不讲极限，怎么跟别人讲我的法则？
+                </p>
+                <p>
+                    这个法则现在我们叫洛必达法则，充分说明我们如果足够重视每一句废话，在严谨地证明后早早发表，很可能就能冠名一个东西。单单从直觉上来说，洛必达法则是在反着说这么一件事情，两个量从0开始变化的那一瞬间，速度的比例是多大，那么变化的比例就是多大。如果他们变得无穷大，亦同。我们对照着看一下：
+                </p>
+                <p>
+                    如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bx+%5Crightarrow+a%7D%7Bf%28x%29%7D+%3D0%2C%5Clim_%7Bx+%5Crightarrow+a%7D%7Bg%28x%29%7D%3D0+" alt="\lim_{x \rightarrow a}{f(x)} =0,\lim_{x \rightarrow a}{g(x)}=0" eeimg="1">
+                    ，在点a的某去心邻域内两者都可导，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bx+%5Crightarrow+a%7D+%7B%5Cfrac+%7Bf%27%28x%29%7D%7Bg%27%28x%29%7D%7D" alt="\lim_{x \rightarrow a} {\frac {f&#39;(x)}{g&#39;(x)}}" eeimg="1">
+                    存在，那么有
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bx+%5Crightarrow+a%7D+%7B%5Cfrac+%7Bf%28x%29%7D%7Bg%28x%29%7D%7D%3D%5Clim_%7Bx+%5Crightarrow+a%7D+%7B%5Cfrac+%7Bf%27%28x%29%7D%7Bg%27%28x%29%7D%7D" alt="\lim_{x \rightarrow a} {\frac {f(x)}{g(x)}}=\lim_{x \rightarrow a} {\frac {f&#39;(x)}{g&#39;(x)}}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    翻译：如果两个变化在某处都趋向于0了，而这个时候他们是光滑地变化着（不是突兀地变化），那么在最后到0的前一瞬间，它们的比例就是他们速度的比例。
+                </p>
+                <p>
+                    这种描述其实很原始，有点像牛顿时代的描述。从这个例子其实可以看出，极限的提出还是很重要的。
+                </p>
+                <br>
+                <p>
+                    5
+                </p>
+                <p>
+                    说起变化，我不由得就想起了我们小时候经常会思考的一个问题。
+                </p>
+                <p>
+                    如果我们知道某一点的变化率，知道这一点变化率的变化率，又知道这一点变化率的变化率的变化率……那我们是否可以知道这个点经过一段时间后变到了多少？
+                </p>
+                <p>
+                    换个表达，假设我们要知道x时的情况，但我们只知道
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    时候的，然后我们还知道
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    时候的变化，变化的变化……直到任意阶变化我们都知道，那么x的情况我们有理由不知道吗？
+                </p>
+                <br>
+                <p>
+                    试试看好了，首先，已经有了
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    ，这一点的变化率是f&#39;(
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    )，到x一共是变化了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D+f%27%28x%29dx" alt="\int_{x_{0} }^{x} f&#39;(x)dx" eeimg="1">
+                    ，然而，f&#39;(x)并不总是f&#39;(
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    )，它是在变的，在
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    处变化率是f(
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    )&#39;&#39;，这个变化率使得f(
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    )&#39;一共变化了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D+f%27%27%28x%29dx" alt="\int_{x_{0} }^{x} f&#39;&#39;(x)dx" eeimg="1">
+                    ，同样，f(
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    )&#39;&#39;也是变化的，f(
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D+" alt="x_{0}" eeimg="1">
+                    )&#39;&#39;一共变化了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D+f%27%27%27%28x%29dx" alt="\int_{x_{0} }^{x} f&#39;&#39;&#39;(x)dx" eeimg="1">
+                    。总的来说会写出这样的式子：
+                </p>
+                <img src="https://www.zhihu.com/equation?tex=f%28x%29%3Df%28x_%7B0%7D%29%2B+%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7Df%27%28x_%7B0%7D+%29+dx%2B+%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D%28++%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7Df%27%27%28x_%7B0%7D+%29+dx%29dx%2B%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D%28+%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D%28++%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7Df%27%27%27%28x_%7B0%7D+%29+dx%29dx%29dx%2B......" alt="f(x)=f(x_{0})+ \int_{x_{0} }^{x}f&#39;(x_{0} ) dx+ \int_{x_{0} }^{x}(  \int_{x_{0} }^{x}f&#39;&#39;(x_{0} ) dx)dx+\int_{x_{0} }^{x}( \int_{x_{0} }^{x}(  \int_{x_{0} }^{x}f&#39;&#39;&#39;(x_{0} ) dx)dx)dx+......" eeimg="1">
+                <br>
+                <p>
+                    算一下，
+                    <img src="https://www.zhihu.com/equation?tex=+%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7Df%27%28x_%7B0%7D+%29+dx%3Df%27%28x_%7B0%7D+%29%28x-x_%7B0%7D+%29" alt="\int_{x_{0} }^{x}f&#39;(x_{0} ) dx=f&#39;(x_{0} )(x-x_{0} )" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D%28++%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7Df%27%27%28x_%7B0%7D+%29+dx%29dx%3D+%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7Df%27%27%28x_%7B0%7D%29%28x-x_0%29+dx%3D%5Cfrac%7B1%7D%7B2%7Df%27%27%28x_0%29%28x-x_0%29%5E2" alt="\int_{x_{0} }^{x}(  \int_{x_{0} }^{x}f&#39;&#39;(x_{0} ) dx)dx= \int_{x_{0} }^{x}f&#39;&#39;(x_{0})(x-x_0) dx=\frac{1}{2}f&#39;&#39;(x_0)(x-x_0)^2" eeimg="1">
+                    <img src="https://www.zhihu.com/equation?tex=%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D%28+%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D%28++%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7Df%27%27%27%28x_%7B0%7D+%29+dx%29dx%29dx%3D+%5Cint_%7Bx_%7B0%7D+%7D%5E%7Bx%7D%5Cfrac%7B1%7D%7B2%7Df%27%27%27%28x_0%29%28x-x_0%29%5E2+%29+dx%3D%5Cfrac%7B1%7D%7B3%5Ctimes+2%7D+f%27%27%27%28x_0%29%28x-x_0%29%5E3" alt="\int_{x_{0} }^{x}( \int_{x_{0} }^{x}(  \int_{x_{0} }^{x}f&#39;&#39;&#39;(x_{0} ) dx)dx)dx= \int_{x_{0} }^{x}\frac{1}{2}f&#39;&#39;&#39;(x_0)(x-x_0)^2 ) dx=\frac{1}{3\times 2} f&#39;&#39;&#39;(x_0)(x-x_0)^3" eeimg="1">
+                    <br>
+                </p>
+                <p>
+                    ……
+                </p>
+                <p>
+                    我日！这不就是泰勒公式么！
+                </p>
+                <p>
+                    这个东西在写这篇文章的时候写着写着就写出来了，我看了看应该是没错，有错请尽快告知……这种写法你可以理解为泰勒公式的另一种形式。其实自己能推理出来的话，这个形式是很亲切而自然(经过评论区提醒，我记忆中是受了这个答案启发的
+                    <a href="http://www.zhihu.com/question/21149770/answer/80390055" class="internal">
+                        <span class="invisible">
+                            http://www.
+                        </span>
+                        <span class="visible">
+                            zhihu.com/question/2114
+                        </span>
+                        <span class="invisible">
+                            9770/answer/80390055
+                        </span>
+                        <span class="ellipsis">
+                        </span>
+                    </a>
+                    ，看我那时的评论，还是个连阶乘都不知道怎么来的小朋友……谢谢
+                    <a data-hash="3c5cd0d076cd37535ffdbee806034c26" href="https://www.zhihu.com/people/3c5cd0d076cd37535ffdbee806034c26" class="member_mention" data-hovercard="p$b$3c5cd0d076cd37535ffdbee806034c26">
+                        @刘龙
+                    </a>
+                    学长当时的解答)
+                </p>
+                <p>
+                    最后，如果大家觉得对你的学习有所帮助，或者有什么启发，或者单纯觉得这篇文章不错，那就赞赏我一下吧。说实话，我很期待大家的赞赏……（这么赤裸裸的表达是不是太直接了）。所以为了能写出对大家更有帮助的文章，大家可以在评论区多留言给我提出意见和建议。
+                </p>
+                <p>
+                    转载之前麻烦跟我说一声，谢谢。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

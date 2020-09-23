@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            如何能更好地理解（ε-δ）语言极限的定义？
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="title">
+                    <a href="https://www.zhihu.com/question/35804945/answer/129467903" target="_blank">
+                        如何能更好地理解（ε-δ）语言极限的定义？
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/matongxue">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/02d174df52a472119af4f428100899b0.jpg?source=1940ef5c" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    马同学
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2016-11-01
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    关于极限，之前我写过一个回答，
+                    <a href="https://www.zhihu.com/question/20573378/answer/120029023" class="internal">
+                        请问如何理解极限的精确定义？
+                    </a>
+                    ，这篇专门讲讲
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+-%5Cdelta+" alt="\epsilon -\delta" eeimg="1">
+                    语言，也算是对上篇文章未尽之处的补充。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+-%5Cdelta+" alt="\epsilon -\delta" eeimg="1">
+                    语言是描述函数极限的（数列极限用的是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+-N" alt="\epsilon -N" eeimg="1">
+                    语言），这个定义可能是高中跨越到大学的第一记闷棍，偏偏函数极限定义又是所有高等数学的基础中的基础，要是不理解这个真的就输在起跑线上了。
+                </p>
+                <p>
+                    其实对函数极限，
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    越接近
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    点，
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    越接近某个常数 （感谢
+                    <a data-hash="0bad4e4f8152625344f03175e148560e" href="https://www.zhihu.com/people/0bad4e4f8152625344f03175e148560e" class="member_mention" data-hovercard="p$b$0bad4e4f8152625344f03175e148560e">
+                        @好肥
+                    </a>
+                    纠错 ），这个直觉还比较容易建立。只是描述接近的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+-%5Cdelta+" alt="\epsilon -\delta" eeimg="1">
+                    语言应该怎么建立直觉呢？
+                </p>
+                <p>
+                    本文主要给出一个我自己思考得到的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+-%5Cdelta+" alt="\epsilon -\delta" eeimg="1">
+                    的几何模型来帮助建立这种直觉。
+                </p>
+                <p>
+                    这个模型主要强调的不是严格性，而是着重于如何帮助理解。
+                </p>
+                <p>
+                    <strong>
+                        1
+                        <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+-%5Cdelta+" alt="\epsilon -\delta" eeimg="1">
+                        的几何模型
+                    </strong>
+                </p>
+                <p>
+                    <strong>
+                        1.1
+                        <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+-%5Cdelta+" alt="\epsilon -\delta" eeimg="1">
+                        的定义
+                    </strong>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cepsilon+-%5Cdelta+" alt="\epsilon -\delta" eeimg="1">
+                    极限定义的描述方式很多，我这里选一个比较简单易读的（相对而言）:
+                </p>
+                <blockquote>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                        皆为实数，
+                        <img src="https://www.zhihu.com/equation?tex=f%3A" alt="f:" eeimg="1">
+                        可去
+                        <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                        的区间
+                        <img src="https://www.zhihu.com/equation?tex=%5Cto+%7B%5Cmathbb+%7BR%7D%7D" alt="\to {\mathbb {R}}" eeimg="1">
+                        ， 当
+                        <img src="https://www.zhihu.com/equation?tex=x%5Cto+c" alt="x\to c" eeimg="1">
+                        时，
+                        <img src="https://www.zhihu.com/equation?tex=f%28x%29%5Cto+L" alt="f(x)\to L" eeimg="1">
+                        当且仅当︰
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon+%3E0" alt="\forall \epsilon &gt;0" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Cdelta+%3E+0" alt="\exists \delta &gt; 0" eeimg="1">
+                        ，使得若
+                        <img src="https://www.zhihu.com/equation?tex=0+%3C+%5Cleft%7Cx-c%5Cright%7C+%3C+%5Cdelta+" alt="0 &lt; \left|x-c\right| &lt; \delta" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=%5Cleft%7Cf%28x%29-L%5Cright%7C+%3C+%5Cepsilon+" alt="\left|f(x)-L\right| &lt; \epsilon" eeimg="1">
+                        。
+                    </b>
+                    <p>
+                        维基百科
+                    </p>
+                </blockquote>
+                <p>
+                    看着头疼是吧，我们下面来拆解，映射到几何模型上去。
+                </p>
+                <p>
+                    <strong>
+                        1.2 几何建模
+                    </strong>
+                </p>
+                <p>
+                    先把定义划下重点：
+                    <figure>
+                        <img src="https://pic4.zhimg.com/v2-6792155661d53ec136753b6690377aae_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    下面一个个说，
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                    皆为实数，
+                    <img src="https://www.zhihu.com/equation?tex=f%3A" alt="f:" eeimg="1">
+                    可去
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    的区间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cto+%7B%5Cmathbb+%7BR%7D%7D" alt="\to {\mathbb {R}}" eeimg="1">
+                    ：
+                    <figure>
+                        <img src="https://pic3.zhimg.com/v2-926a3154ea0cbffd1f008cfb706825d6_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=0+%3C+%7Cx-c%7C+%3C+%5Cdelta+" alt="0 &lt; |x-c| &lt; \delta" eeimg="1">
+                    是什么：
+                    <figure>
+                        <img src="https://pic2.zhimg.com/v2-ae3b3708b54195c35b9b0a06102962b5_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    之前划的重点是
+                    <img src="https://www.zhihu.com/equation?tex=L-%5Cepsilon+%3C+f%28x%29+%3C+L%2B%5Cepsilon+" alt="L-\epsilon &lt; f(x) &lt; L+\epsilon" eeimg="1">
+                    ，首先什么是
+                    <img src="https://www.zhihu.com/equation?tex=L-%5Cepsilon+" alt="L-\epsilon" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=L%2B%5Cepsilon+" alt="L+\epsilon" eeimg="1">
+                    ：
+                    <figure>
+                        <img src="https://pic2.zhimg.com/v2-466673bbc068b85779bd8bc065af7980_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    是什么？
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    表示去心邻域
+                    <img src="https://www.zhihu.com/equation?tex=%28c-%5Cdelta+%2Cc%29%5Ccup+%28c%2Cc%2B%5Cdelta+%29" alt="(c-\delta ,c)\cup (c,c+\delta )" eeimg="1">
+                    对应的所有函数值，即下面的绿色线段。我觉得你不如手动拖到下
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta+" alt="\delta" eeimg="1">
+                    就知道我在说什么了（
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    点也是可以拖动的，并且拖动条
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta+%3E0" alt="\delta &gt;0" eeimg="1">
+                    的哦）：
+                </p>
+                <blockquote>
+                    <figure>
+                        <img src="https://pic4.zhimg.com/v2-bae2d14b2fea369b975fd5a451309aad_r.jpg?source=1940ef5c">
+                    </figure>
+                    <p>
+                        此处有互动内容，需要流量较大，最好有wifi处打开，土豪请随意。
+                    </p>
+                    <p>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.matongxue.com/madocs/18.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            点击此处前往操作。
+                        </a>
+                    </p>
+                </blockquote>
+                <p>
+                    知道绿色线段是去心的就可以了，之后的图为了简洁，就不再标注绿色线段的蓝色去心点了。
+                </p>
+                <p>
+                    我们引入一个红色线段：
+                    <figure>
+                        <img src="https://pic1.zhimg.com/v2-581321d5fb0ec086cd9788bcf631f0d6_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=L-%5Cepsilon+%3C+f%28x%29+%3C+L%2B%5Cepsilon+" alt="L-\epsilon &lt; f(x) &lt; L+\epsilon" eeimg="1">
+                    表示，红色线段包含绿色线段（本图的
+                    <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                    和上图的
+                    <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                    不是一个值了）：
+                    <figure>
+                        <img src="https://picb.zhimg.com/v2-da517d130c803f3ede6907a299aef6a5_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    然后，什么是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon+%3E+0" alt="\forall \epsilon &gt; 0" eeimg="1">
+                    ：
+                    <figure>
+                        <img src="https://pic4.zhimg.com/v2-632b27cfc56b602f59ff3f5947b78935_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    最后，在几何模型里面，
+                    <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                    是极限值的条件就变成了：
+                </p>
+                <blockquote>
+                    <b>
+                        <b>
+                            所有
+                        </b>
+                        的红色线段，是否能找到一个合适的
+                        <img src="https://www.zhihu.com/equation?tex=%5Cdelta+" alt="\delta" eeimg="1">
+                        ，使得绿色线段
+                        <b>
+                            始终全部
+                        </b>
+                        包含在红色线段内。
+                    </b>
+                </blockquote>
+                <p>
+                    费了这么多口舌终于建立好了模型了，下面就来见证下模型怎么运转的吧。
+                </p>
+                <p>
+                    <strong>
+                        2 验证几何模型
+                    </strong>
+                </p>
+                <p>
+                    <strong>
+                        2.1 普通连续函数
+                    </strong>
+                </p>
+                <p>
+                    根据上面的定义，下面的函数就是存在极限的。
+                </p>
+                <p>
+                    看图说话，这样的红色线段，可以找到合适的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta+" alt="\delta" eeimg="1">
+                    ，使得绿色线段始终包含在红色线段内：
+                    <figure>
+                        <img src="https://pic3.zhimg.com/v2-d0b5330f70cc8db7dd3702c854b3ff95_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    红色线段短点：
+                    <figure>
+                        <img src="https://pic3.zhimg.com/v2-ec40895fd8cdecff8a29ce00f6a57c72_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    红色线段再短点：
+                    <figure>
+                        <img src="https://pic1.zhimg.com/v2-d5027884cf2e033f21f6469664714df6_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    都可以找到绿色线段包含在红色线段之内，所以
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+%5Clim+_%7Bx%5Cto+c%7Df%28x%29%3DL" alt="\displaystyle \lim _{x\to c}f(x)=L" eeimg="1">
+                    。
+                </p>
+                <p>
+                    但是，如果
+                    <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                    移动了，就是
+                    <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                    的值改变了，虽然这样可以找到绿色线段:
+                    <figure>
+                        <img src="https://pic1.zhimg.com/v2-6483029f2c7d93d09975cb83b9adcf94_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    但是这样就不行了：
+                    <figure>
+                        <img src="https://pic4.zhimg.com/v2-4966e6a2f5a57b76f4d1f4192fc1ed42_r.jpg?source=1940ef5c">
+                    </figure>
+                    <br>
+                </p>
+                <p>
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+%5Clim+_%7Bx%5Cto+c%7Df%28x%29%5Cne+L" alt="\displaystyle \lim _{x\to c}f(x)\ne L" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <strong>
+                        2.2 分段函数
+                    </strong>
+                </p>
+                <p>
+                    下面这个
+                    <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                    就不可能是
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    点的函数极限，如图所示红色线段就找不到合适的绿色线段：
+                    <figure>
+                        <img src="https://pic3.zhimg.com/v2-0c247567d712956800ae2c6b000b215a_r.jpg?source=1940ef5c">
+                    </figure>
+                    <br>
+                </p>
+                <p>
+                    如果
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    点正好是分段函数的分段点，很显然也没有极限，因为红色线段只包含了绿色线段的一部分（注意
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta+%3E0" alt="\delta &gt;0" eeimg="1">
+                    ）：
+                    <figure>
+                        <img src="https://picb.zhimg.com/v2-e5f59b14356cb49b214d47d08e519d3c_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    <strong>
+                        2.3 震荡函数
+                    </strong>
+                </p>
+                <p>
+                    用这个模型可以轻易判断
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3Dsin%5Cfrac%7B1%7D%7Bx-2%7D%2B1" alt="f(x)=sin\frac{1}{x-2}+1" eeimg="1">
+                    这样的震荡函数，在
+                    <img src="https://www.zhihu.com/equation?tex=x%3D2" alt="x=2" eeimg="1">
+                    点是没有极限的，可以看到哪怕
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta+" alt="\delta" eeimg="1">
+                    再小，绿色线段的长度始终为1：
+                    <figure>
+                        <img src="https://pic4.zhimg.com/v2-2554feb24c1c693a10283de4ef547868_r.jpg?source=1940ef5c">
+                    </figure>
+                </p>
+                <p>
+                    下面是完整的互动操作，你可以切换函数、可以拖动
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta+%2C%5Cepsilon+%2Cc%2CL" alt="\delta ,\epsilon ,c,L" eeimg="1">
+                    ，并且尝试思考这几个问题：
+                </p>
+                <ul>
+                    <li>
+                        <p>
+                            <img src="https://www.zhihu.com/equation?tex=%5Cdelta+%2C%5Cepsilon+" alt="\delta ,\epsilon" eeimg="1">
+                            都必须大于0吗？
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            感受下
+                            <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cepsilon+" alt="\forall \epsilon" eeimg="1">
+                            和
+                            <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Cdelta+" alt="\exists \delta" eeimg="1">
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <img src="https://www.zhihu.com/equation?tex=L" alt="L" eeimg="1">
+                            可以拖动说明什么？
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            为什么震荡函数在震荡中心没有极限？
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            分段函数的左极限右极限可以表示吗？
+                        </p>
+                    </li>
+                </ul>
+                <blockquote>
+                    <figure>
+                        <img src="https://pic2.zhimg.com/v2-fa7093565eceaa7b05c7c0af8369368b_r.jpg?source=1940ef5c">
+                    </figure>
+                    <p>
+                        此处有互动内容，需要流量较大，最好有wifi处打开，土豪请随意。
+                    </p>
+                    <p>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.matongxue.com/madocs/18.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            点击此处前往操作。
+                        </a>
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+    </body>
+</html>

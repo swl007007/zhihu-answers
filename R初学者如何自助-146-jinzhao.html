@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            R初学者如何自助
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-daca2b6506d8fc3938f36e95671df5fb_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/24766425" target="_blank">
+                        R初学者如何自助
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/jin-zhao-62-23">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-b1aee50013d91705f1f3e66860fc4ad7.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jinzhao
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2017-01-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    初学者在学习R语言过程中都会碰到各种问题，那么，R语言初学者如何自助？在网上有非常多好的资源能够提供帮助。之前我们讲过
+                    <a href="https://zhuanlan.zhihu.com/p/24767107?refer=rstudio" class="internal">
+                        知乎专栏
+                    </a>
+                    ,文中包括了各种资源，提供具体的学习语言、提问、参与社区讨论的方法，本文接下来讨论如何利用这些资源。
+                </p>
+                <h3>
+                    学习R
+                </h3>
+                <p>
+                    如果你是R语言小白，那么以下资源都是非常棒的学习起点t:
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.cyclismo.org/tutorial/R/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            basic R tutorial
+                        </a>
+                        深入浅出教你R函数.
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//cran.r-project.org/doc/manuals/R-intro.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Introduction to R
+                        </a>
+                        提供更加完成详细的R语言概述.
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.johndcook.com/R_language_for_programmers.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            introduction to R for those coming from other languages
+                        </a>
+                        ，与其他语言关系；
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//cran.r-project.org/doc/contrib/Short-refcard.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            The R Reference Card
+                        </a>
+                        针对性非常强的小卡片
+                    </li>
+                    <li>
+                        免费R语言与统计学
+                        <a href="https://link.zhihu.com/?target=http%3A//oli.web.cmu.edu/openlearning/forstudents/freecourses/statistics" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Introduction to Statistics
+                        </a>
+                    </li>
+                </ul>
+                <p>
+                    如果你非常熟悉R语言，你想更加深入的了解其中的某一部分，请参考
+                </p>
+                <ul>
+                    <li>
+                        Stack Overflow 这个大家都必须知道的
+                        <a href="https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/192369/books-for-learning-the-r-language%232270793" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            books for learning the R language
+                        </a>
+                        .
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//cran.r-project.org/other-docs.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Contributed Documentation
+                        </a>
+                        社区论坛提供的教程，非常容易理解，针对性强。.
+                    </li>
+                    <li>
+                        如果你有信心，
+                        <a href="https://link.zhihu.com/?target=http%3A//www.burns-stat.com/pages/Tutor/R_inferno.pdf" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            The R Inferno
+                        </a>
+                        提供深度解析R语言（性能方向）
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//google-styleguide.googlecode.com/svn/trunk/google-r-style.html" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            Google R Style Guide
+                        </a>
+                        扫盲
+                    </li>
+                </ul>
+                <h3>
+                    针对性提问
+                </h3>
+                <p>
+                    有问题说明你有进步了，那么
+                    <a href="https://link.zhihu.com/?target=http%3A//www.rseek.org/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        RSeek meta search engine
+                    </a>
+                    , 其实还是菜鸟，你提过的问题肯定别人也遇到过，并且都已经解决了，所以，学会提问（英语）
+                </p>
+                <p>
+                    如果，以上还没有解决你的问题，那么，来更专业点的
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//stat.ethz.ch/mailman/listinfo/r-help" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            R-help mailing list
+                        </a>
+                        先搜一下问题，看一下
+                        <a href="https://link.zhihu.com/?target=http%3A//www.mail-archive.com/r-help%40stat.math.ethz.ch/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            search the list archives
+                        </a>
+                        是否已经有你问题
+                    </li>
+                    <li>
+                        Stack Overflow 非常重要的，不解释了
+                        <a href="https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/tagged/r" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            answers to questions about R
+                        </a>
+                        .
+                    </li>
+                    <li>
+                        除了R语言，统计学的问题在这里
+                        <a href="https://link.zhihu.com/?target=http%3A//stats.stackexchange.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            CrossValidated Q&amp;A community
+                        </a>
+                        .
+                    </li>
+                </ul>
+                <h3>
+                    根据需求找包
+                </h3>
+                <p>
+                    R语言是解决问题的，所以要针对性的找到包，
+                    <a href="https://link.zhihu.com/?target=http%3A//cran.r-project.org/web/packages/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        available from CRAN
+                    </a>
+                    有太多的包，如何找到需要的包，可以通过一下的方式：
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=https%3A//github.com/rstudio/RStartHere" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            RStartHere
+                        </a>
+                        , 根据数据科学门类进行分类管理.
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//cran.r-project.org/web/views/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            CRAN Task Views
+                        </a>
+                        提供各个包的纲要
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//crantastic.org/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            crantastic
+                        </a>
+                        社区论坛，各种review，可以快速了解行业与相应包，都是心得.
+                    </li>
+                </ul>
+                <h3>
+                    R语言相关新闻
+                </h3>
+                <p>
+                    R语言社区快速增长，也发生了好多有意思的事情，如果可以通过一下的方式来追踪这些动态:
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.r-bloggers.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            R-bloggers
+                        </a>
+                        大牛云集
+                    </li>
+                    <li>
+                        <a href="https://link.zhihu.com/?target=http%3A//www.vcasmo.com/user/drewconway" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                            R Videos channel
+                        </a>
+                        更容易理解
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
