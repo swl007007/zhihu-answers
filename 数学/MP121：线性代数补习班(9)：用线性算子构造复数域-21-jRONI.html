@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP121：线性代数补习班(9)：用线性算子构造复数域
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-02e5d343044397e013bdf844bae55971_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/47322519" target="_blank">
+                        MP121：线性代数补习班(9)：用线性算子构造复数域
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-06-11
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    在实平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E2" alt="\mathbb R^2" eeimg="1">
+                    上具有线性、范数、内积、度量、拓扑、微分等各种丰富的数学结构。本文从
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E2" alt="\mathbb R^2" eeimg="1">
+                    上的线性算子的角度，讨论需要如何附加额外的数学结构构成复数域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在线性空间范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BVct%7D_%5Cmathbb+R" alt="\textbf{Vct}_\mathbb R" eeimg="1">
+                    中，态射
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D%28%5Cmathbb+R%5E2%2C%5Cmathbb+R%5E2%29" alt="\text{Hom}(\mathbb R^2,\mathbb R^2)" eeimg="1">
+                    有自然的
+                    <img src="https://www.zhihu.com/equation?tex=%282+%5Ctimes+2%29" alt="(2 \times 2)" eeimg="1">
+                    -维实方矩阵表示，它本身也构成
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R" alt="\mathbb R" eeimg="1">
+                    -线性空间：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29+%5Csimeq+%5Ctext%7BHom%7D%28%5Cmathbb+R%5E2%2C%5Cmathbb+R%5E2%29+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BVct%7D_%5Cmathbb+R%29+%5Ctag%7B1%7D" alt="\text{Mat}_2(\mathbb R) \simeq \text{Hom}(\mathbb R^2,\mathbb R^2) \in \text{Ob}(\textbf{Vct}_\mathbb R) \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    矩阵的乘法对应态射的复合，单位矩阵对应恒同映射，于是矩阵环
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29%2C%2B%2C%5Ccirc%2C+I_2+%5Cneq+0_2%29" alt="(\text{Mat}_2(\mathbb R),+,\circ, I_2 \neq 0_2)" eeimg="1">
+                    就是线性自同态算子环的矩阵表示，它是非交换环。若这个环中包含域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                    ，它需要满足以下条件：
+                </p>
+                <ol>
+                    <li>
+                        算子环中的幺半群
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29%5Cbackslash%5C%7B0_2%5C%7D%2C%5Ccirc%2CI_2%29" alt="(\text{Mat}_2(\mathbb R)\backslash\{0_2\},\circ,I_2)" eeimg="1">
+                        限制在
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+C%5Cbackslash%5C%7B0_2%5C%7D%2C%5Ccirc%2CI_2%29" alt="(\mathbb C\backslash\{0_2\},\circ,I_2)" eeimg="1">
+                        中构成Abel群，这是环
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C+%5Csubset+%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29" alt="\mathbb C \subset \text{Mat}_2(\mathbb R)" eeimg="1">
+                        构成域的定义所要求的；
+                    </li>
+                    <li>
+                        存在环同构
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%3A%5Cmathbb+R%5E2+%5Cto+%5Cmathbb+C" alt="\rho:\mathbb R^2 \to \mathbb C" eeimg="1">
+                        ，使得线性自同态对向量的作用
+                        <img src="https://www.zhihu.com/equation?tex=A%28x%29" alt="A(x)" eeimg="1">
+                        可以诱导出域中的乘法：
+                        <img src="https://www.zhihu.com/equation?tex=A+%5Ccdot+x+%3D+x+%5Ccdot+A+%3D+%5Crho%28A%29%28x%29" alt="A \cdot x = x \cdot A = \rho(A)(x)" eeimg="1">
+                        ，这样用数
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        去乘
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        相当于数
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        对应的线性自同态
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28A%29" alt="\rho(A)" eeimg="1">
+                        作用于
+                        <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                        ，且这种乘法是交换的；
+                    </li>
+                    <li>
+                        域
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                        来自算子，要求
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C%5Cbackslash%5C%7B0_2%5C%7D" alt="\mathbb C\backslash\{0_2\}" eeimg="1">
+                        它构成一般线性群
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BGL%7D%282%2C%5Cmathbb+R%29" alt="\text{GL}(2,\mathbb R)" eeimg="1">
+                        的Lie子群，这是前面两条条件的自然延续；
+                    </li>
+                    <li>
+                        我们希望域
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                        成为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R" alt="\mathbb R" eeimg="1">
+                        的封闭的域扩张，自然希望域中带有复结构；
+                    </li>
+                </ol>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们从条件(2)开始。条件(2)提示我们，最直接的方式是构造一个可以双实参数化的拓扑流形：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28%5Cmathbb+C%28x%2Cy%29%29+%3D+2+%3D+%5Ctext%7Bdim%7D%28%5Cmathbb+R%5E2%29+%5Ctag%7B2%7D" alt="\text{dim}(\mathbb C(x,y)) = 2 = \text{dim}(\mathbb R^2) \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    条件(3)希望
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C%28x%2Cy%29" alt="\mathbb C(x,y)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E2" alt="\mathbb R^2" eeimg="1">
+                    是
+                    <b>
+                        微分同胚(diffeomorphism)
+                    </b>
+                    ，这样对于构造Lie子群（作为微分流形）十分有利。能和线性空间微分同胚的，最简单的还是线性空间，我们的下手之处是试图把
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29" alt="\text{Mat}_2(\mathbb R)" eeimg="1">
+                    分解为两个实线性子空间的直和：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29+%3D+V_1+%5Coplus+V_2%2C%5Cquad+%5Ctext%7Bdet%7D%28%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29%29+%3D+%5Ctext%7Bdim%7D%28V_1%29+%2B+%5Ctext%7Bdim%7D%28V_2%29+%5Ctag%7B3%7D" alt="\text{Mat}_2(\mathbb R) = V_1 \oplus V_2,\quad \text{det}(\text{Mat}_2(\mathbb R)) = \text{dim}(V_1) + \text{dim}(V_2) \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    然后在这两个实线性子空间中各自找到一个一维子空间，这样两个子空间的实线性组合系数就是微分流形
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C%28x%2Cy%29" alt="\mathbb C(x,y)" eeimg="1">
+                    的实参数，且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C%28x%2Cy%29" alt="\mathbb C(x,y)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E2" alt="\mathbb R^2" eeimg="1">
+                    是微分同胚。根据线性代数理论，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+A+%5Cin+%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29" alt="\forall A \in \text{Mat}_2(\mathbb R)" eeimg="1">
+                    有以下分解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+A+%26%3D+%5Cfrac%7B1%7D%7B2%7D%28A-A%5ET%29+%2B+%5Cfrac%7B1%7D%7B2%7D%28A%2BA%5ET%29+%5C%5C+%5Cbegin%7Bbmatrix%7D+a+%26+b+%5C%5C+c+%26+d+%5Cend%7Bbmatrix%7D+%26%3D+%5Cfrac%7B1%7D%7B2%7D%5Cbegin%7Bbmatrix%7D+0+%26+b-c+%5C%5C+c-b+%26+0+%5Cend%7Bbmatrix%7D+%2B+%5Cfrac%7B1%7D%7B2%7D%5Cbegin%7Bbmatrix%7D+2a+%26+b%2Bc+%5C%5C+c%2Bb+%26+2d+%5Cend%7Bbmatrix%7D+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} A &amp;= \frac{1}{2}(A-A^T) + \frac{1}{2}(A+A^T) \\ \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} &amp;= \frac{1}{2}\begin{bmatrix} 0 &amp; b-c \\ c-b &amp; 0 \end{bmatrix} + \frac{1}{2}\begin{bmatrix} 2a &amp; b+c \\ c+b &amp; 2d \end{bmatrix} \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    实际上任意对称/反对称矩阵都有以下表示：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+a+%26+b+%5C%5C+b+%26+c+%5Cend%7Bbmatrix%7D+%5Cin+%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29%2C%5Cquad+%5Cbegin%7Bbmatrix%7D+0+%26+-b+%5C%5C+b+%26+0+%5Cend%7Bbmatrix%7D+%5Cin+%5Ctext%7BSkew%7D_2%28%5Cmathbb+R%29++%5Ctag%7B4%7D" alt="\begin{bmatrix} a &amp; b \\ b &amp; c \end{bmatrix} \in \text{Sym}_2(\mathbb R),\quad \begin{bmatrix} 0 &amp; -b \\ b &amp; 0 \end{bmatrix} \in \text{Skew}_2(\mathbb R)  \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    即有以下对称-反对直和分解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29+%3D++%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29+%5Coplus++%5Ctext%7BSkew%7D_2%28%5Cmathbb+R%29+%5Ctag%7B5%7D" alt="\text{Mat}_2(\mathbb R) =  \text{Sym}_2(\mathbb R) \oplus  \text{Skew}_2(\mathbb R) \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    注意到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29%29+%3D+3%2C%5Cquad+%5Ctext%7Bdim%7D%28%5Ctext%7BSkew%7D_2%28%5Cmathbb+R%29%29+%3D+1+%5Ctag%7B6%7D" alt="\text{dim}(\text{Sym}_2(\mathbb R)) = 3,\quad \text{dim}(\text{Skew}_2(\mathbb R)) = 1 \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    我们只需要在
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29" alt="\text{Sym}_2(\mathbb R)" eeimg="1">
+                    中找一个一维流形即可。这两个子空间都是矩阵群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29" alt="\text{Mat}_2(\mathbb R)" eeimg="1">
+                    的Abel子群，其中对称矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29" alt="\text{Sym}_2(\mathbb R)" eeimg="1">
+                    在矩阵乘法和单位矩阵下构成交换环，而反对称矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSkew%7D_2%28%5Cmathbb+R%29" alt="\text{Skew}_2(\mathbb R)" eeimg="1">
+                    则不然：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+0+%26+-a+%5C%5C+a+%26+0+%5Cend%7Bbmatrix%7D++%5Ccirc++%5Cbegin%7Bbmatrix%7D+0+%26+-b+%5C%5C+b+%26+0+%5Cend%7Bbmatrix%7D++%3D%5Cbegin%7Bbmatrix%7D+-ab+%26+0+%5C%5C+0+%26+-ab%5Cend%7Bbmatrix%7D+%5Cin+%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29+%5C%5C" alt="\begin{bmatrix} 0 &amp; -a \\ a &amp; 0 \end{bmatrix}  \circ  \begin{bmatrix} 0 &amp; -b \\ b &amp; 0 \end{bmatrix}  =\begin{bmatrix} -ab &amp; 0 \\ 0 &amp; -ab\end{bmatrix} \in \text{Sym}_2(\mathbb R) \\" eeimg="1">
+                </p>
+                <p>
+                    这里蕴含了一个性质，后面我们将看到，存在反对称的复结构，二次复合以后称为对称的反单位矩阵。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然后考虑条件(4)，将
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29" alt="\text{Mat}_2(\mathbb R)" eeimg="1">
+                    中的复结构集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+J" alt="\mathbb J" eeimg="1">
+                    。假设存在复结构
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J+%3D+%5Cbegin%7Bbmatrix%7D+a+%26+b+%5C%5C+c+%26+d+%5Cend%7Bbmatrix%7D+%5Cin+%5Cmathbb+J+%5C%5C" alt="J = \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} \in \mathbb J \\" eeimg="1">
+                </p>
+                <p>
+                    那么
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J%5E2+%3D+%5Cbegin%7Bbmatrix%7D+a+%26+b+%5C%5C+c+%26+d+%5Cend%7Bbmatrix%7D+%5Ccirc+%5Cbegin%7Bbmatrix%7D+a+%26+b+%5C%5C+c+%26+d+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+a%5E2+%2B+bc+%26+b%28a%2Bd%29+%5C%5C+c%28a%2Bd%29+%26+bc%2Bd%5E2+%5Cend%7Bbmatrix%7D+%3D+-I_2+%3D%5Cbegin%7Bbmatrix%7D+-1+%26+0+%5C%5C+0+%26+-1+%5Cend%7Bbmatrix%7D+%5Ctag%7B7%7D" alt="J^2 = \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} \circ \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} =\begin{bmatrix} a^2 + bc &amp; b(a+d) \\ c(a+d) &amp; bc+d^2 \end{bmatrix} = -I_2 =\begin{bmatrix} -1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    以(7)右上角
+                    <img src="https://www.zhihu.com/equation?tex=b%28a%2Bd%29%3D0" alt="b(a+d)=0" eeimg="1">
+                    为例，若
+                    <img src="https://www.zhihu.com/equation?tex=b%3D0" alt="b=0" eeimg="1">
+                    那么对角元变成
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=a%5E2+%2B+bc+%3D+a%5E2+%3D+-1%2C+%5Cquad+bc+%2B+d%5E2+%3D+d%5E2+%3D+-1+%5C%5C" alt="a^2 + bc = a^2 = -1, \quad bc + d^2 = d^2 = -1 \\" eeimg="1">
+                </p>
+                <p>
+                    这对于
+                    <img src="https://www.zhihu.com/equation?tex=a%2Cd+%5Cin+%5Cmathbb+R" alt="a,d \in \mathbb R" eeimg="1">
+                    是矛盾的，故
+                    <img src="https://www.zhihu.com/equation?tex=b+%5Cneq+0" alt="b \neq 0" eeimg="1">
+                    ；类似地推导出
+                    <img src="https://www.zhihu.com/equation?tex=c+%5Cneq+0" alt="c \neq 0" eeimg="1">
+                    。于是
+                    <img src="https://www.zhihu.com/equation?tex=bc+%5Cneq+0" alt="bc \neq 0" eeimg="1">
+                    且
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=a%5E2%2Bbc%3Dbc%2Bd%5E2%3D-1+%5C%5C" alt="a^2+bc=bc+d^2=-1 \\" eeimg="1">
+                </p>
+                <p>
+                    并且(7)中
+                    <img src="https://www.zhihu.com/equation?tex=b%28a%2Bd%29%3D0" alt="b(a+d)=0" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=c%28a%2Bd%29%3D0" alt="c(a+d)=0" eeimg="1">
+                    要求
+                    <img src="https://www.zhihu.com/equation?tex=a%2Bd%3D0" alt="a+d=0" eeimg="1">
+                    。考虑到
+                    <img src="https://www.zhihu.com/equation?tex=bc+%3D+-a%5E2-1" alt="bc = -a^2-1" eeimg="1">
+                    ，复结构可以两参数化为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J+%3D+%5Cbegin%7Bbmatrix%7D+a+%26+-b+%5C%5C+%5Cfrac%7Ba%5E2%2B1%7D%7Bb%7D+%26+-a+%5Cend%7Bbmatrix%7D++%5Ctag%7B8%7D" alt="J = \begin{bmatrix} a &amp; -b \\ \frac{a^2+1}{b} &amp; -a \end{bmatrix}  \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    对它求转置，若
+                    <img src="https://www.zhihu.com/equation?tex=J" alt="J" eeimg="1">
+                    是对称矩阵则有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J%5ET+%3D+%5Cbegin%7Bbmatrix%7D+a+%26+-b+%5C%5C+%5Cfrac%7Ba%5E2%2B1%7D%7Bb%7D+%26+-a+%5Cend%7Bbmatrix%7D+%5ET++%3D+%5Cbegin%7Bbmatrix%7D+a+%26+%5Cfrac%7Ba%5E2%2B1%7D%7Bb%7D+%5C%5C+-b+%26+-a+%5Cend%7Bbmatrix%7D++%5CRightarrow+-b+%3D+%5Cfrac%7Ba%5E2%2B1%7D%7Bb%7D+%5CRightarrow+a%5E2+%2B+b%5E2+%2B+1+%3D+0+%5C%5C" alt="J^T = \begin{bmatrix} a &amp; -b \\ \frac{a^2+1}{b} &amp; -a \end{bmatrix} ^T  = \begin{bmatrix} a &amp; \frac{a^2+1}{b} \\ -b &amp; -a \end{bmatrix}  \Rightarrow -b = \frac{a^2+1}{b} \Rightarrow a^2 + b^2 + 1 = 0 \\" eeimg="1">
+                </p>
+                <p>
+                    这与
+                    <img src="https://www.zhihu.com/equation?tex=a%2Cb%5Cin%5Cmathbb+R%5E2" alt="a,b\in\mathbb R^2" eeimg="1">
+                    是矛盾的，即复结构的集合和对称矩阵没有交集
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+J+%5Ccap+%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29+%3D+%5Cvarnothing+%5C%5C" alt="\mathbb J \cap \text{Sym}_2(\mathbb R) = \varnothing \\" eeimg="1">
+                    这促使我们想到，复结构是否是一种特别属于反对称的性质。我们自然会问，
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSkew%7D_2%28%5Cmathbb+R%29" alt="\text{Skew}_2(\mathbb R)" eeimg="1">
+                    中有没有复结构。综合(4)和(8)可以得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J+%3D+%5Cbegin%7Bbmatrix%7D+0+%26+%5Cmp+1+%5C%5C+%5Cpm+1+%26+0+%5Cend%7Bbmatrix%7D+%5Cin+%5Cmathbb+J+%5Ccup+%5Ctext%7BSkew%7D_2%28%5Cmathbb+R%29+%5Ctag%7B9%7D" alt="J = \begin{bmatrix} 0 &amp; \mp 1 \\ \pm 1 &amp; 0 \end{bmatrix} \in \mathbb J \cup \text{Skew}_2(\mathbb R) \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    是反对称矩阵中的复结构，取一个符号方向记
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+i+%3D+%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D+%5Ctag%7B10%7D" alt="\text i = \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    它成为线性空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSkew%7D_2%28%5Cmathbb+R%29+%3D+%5Ctext%7BSpan%7D%28%5Ctext+i%29" alt="\text{Skew}_2(\mathbb R) = \text{Span}(\text i)" eeimg="1">
+                    的基向量。回到
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    -维的
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29" alt="\text{Sym}_2(\mathbb R)" eeimg="1">
+                    ，注意到单位矩阵
+                    <img src="https://www.zhihu.com/equation?tex=I_2+%5Cin+%5Ctext%7BSym%7D_2%28%5Cmathbb+R%29" alt="I_2 \in \text{Sym}_2(\mathbb R)" eeimg="1">
+                    ，它作为基向量也张成一个一维线性子空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSpan%7D%28I_2%29" alt="\text{Span}(I_2)" eeimg="1">
+                    。这样，我们通过正交基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BI_2%2C%5Ctext+i%5C%7D" alt="\{I_2,\text i\}" eeimg="1">
+                    构造了一个
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -维实线性空间，也就是双实参数的微分流形
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C%28x%2Cy%29+%3D+%5Ctext%7BSpan%7D%28I_2%2C%5Ctext+i%29+%5Csubset+%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29+%5C%5C" alt="\mathbb C(x,y) = \text{Span}(I_2,\text i) \subset \text{Mat}_2(\mathbb R) \\" eeimg="1">
+                </p>
+                <p>
+                    它作为环与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E2" alt="\mathbb R^2" eeimg="1">
+                    同构，作为微分流形与
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E2" alt="\mathbb R^2" eeimg="1">
+                    微分同胚，其中的元
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+z+%5Cin+%5Cmathbb+C" alt="\forall z \in \mathbb C" eeimg="1">
+                    可以唯一分解为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=z+%3D+xI_2+%2By%5Ctext+i++%3D+x%5Cbegin%7Bbmatrix%7D+1+%26+0+%5C%5C+0+%26+1+%5Cend%7Bbmatrix%7D+%2B+y%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D+x+%26+-y+%5C%5C+y+%26+x+%5Cend%7Bbmatrix%7D+%5Ctag%7B11%7D" alt="z = xI_2 +y\text i  = x\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} + y\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} = \begin{bmatrix} x &amp; -y \\ y &amp; x \end{bmatrix} \tag{11}" eeimg="1">
+                </p>
+                <p>
+                    回到条件(1)，不难证明，算子环
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29" alt="\text{Mat}_2(\mathbb R)" eeimg="1">
+                    中的幺半群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29%5Cbackslash%5C%7B0_2%5C%7D%2C%5Ccirc%2CI_2%29" alt="(\text{Mat}_2(\mathbb R)\backslash\{0_2\},\circ,I_2)" eeimg="1">
+                    限制在
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+C%5Cbackslash%5C%7B0_2%5C%7D%2C%5Ccirc%2CI_2%29" alt="(\mathbb C\backslash\{0_2\},\circ,I_2)" eeimg="1">
+                    中构成Abel群，于是环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C+%5Csubset+%5Ctext%7BMat%7D_2%28%5Cmathbb+R%29" alt="\mathbb C \subset \text{Mat}_2(\mathbb R)" eeimg="1">
+                    构成域。这就是复数域，常见的复数表示只是一种等价的线性组合书写方法而已：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=z+%3D+x+%2B+%5Ctext+iy+%5C%5C" alt="z = x + \text iy \\" eeimg="1">
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

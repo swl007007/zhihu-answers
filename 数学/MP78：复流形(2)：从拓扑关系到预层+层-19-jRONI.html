@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP78：复流形(2)：从拓扑关系到预层/层
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-0e0ae9419f2199315755921b2afa4da4_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/51955138" target="_blank">
+                        MP78：复流形(2)：从拓扑关系到预层/层
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-19
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    现代数学中，往往用层的语言描述附加在拓扑空间上的代数信息。历史上，层是从多复变函数的研究中发展出来的，是多复变函数研究的基础工具，所以我们在继续介绍复几何之前，先学习一些基础的层论。Grothendieck把层论发展为代数几何的重要工具。我们在这里先有一定基础，将来在有机会讨论代数几何时不至于太陌生。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        范畴
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    按照经典教科书\cite{Hartshorne1977}的思路，先从熟知的Abel群开始，讨论拓扑空间上的Abel群预层和Abel群层，一旦理解以后可以很容易地推广到其它代数结构上的预层/层。而现代的做法是直接在范畴上讨论，这样更加简洁。一直跟进专栏的读者可以回忆下，在
+                    <a href="https://zhuanlan.zhihu.com/p/44008969" class="internal">
+                        MP6
+                    </a>
+                    中给出了相关概念的定义，并且在拓扑中我们有一个直观理解的例子：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44083782" class="internal">
+                        MP19：拓扑加油站(1)：道路连通、同伦、基本群
+                    </a>
+                </p>
+                <blockquote>
+                    令有
+                    <b>
+                        同伦范畴
+                    </b>
+                    和
+                    <b>
+                        Abel群范畴
+                    </b>
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BToph+%3D+%5C%7B%E6%8B%93%E6%89%91%E7%A9%BA%E9%97%B4%3B%E5%90%8C%E4%BC%A6%5C%7D%7D" alt="\text{Toph = \{拓扑空间;同伦\}}" eeimg="1">
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BAb+%3D+%5C%7BAbel%E7%BE%A4%3B%E5%90%8C%E6%80%81%5C%7D%7D" alt="\text{Ab = \{Abel群;同态\}}" eeimg="1">
+                    <br>
+                    则有函子
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=F%3A%5Ctext%7BToph%7D+%5Cto+%5Ctext%7BAb%7D" alt="F:\text{Toph} \to \text{Ab}" eeimg="1">
+                    <br>
+                    i. 它将
+                    <b>
+                        拓扑空间
+                    </b>
+                    （同伦范畴中的对象）对应到它的
+                    <b>
+                        基本群
+                    </b>
+                    （Abel群范畴中的对象）
+                    <br>
+                    ii. 它将
+                    <b>
+                        同伦
+                    </b>
+                    （同伦范畴中的态射）对应到
+                    <b>
+                        同态
+                    </b>
+                    （Abel群范畴中的态射）
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    粗略地说，以拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Ctau%29" alt="(X,\tau)" eeimg="1">
+                    中的开集为对象，inclusion为态射，可以构成范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+T+%3D+%5Cmathfrak+T%28X%2C%5Ctau%29" alt="\mathfrak T = \mathfrak T(X,\tau)" eeimg="1">
+                    。在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+T" alt="\mathfrak T" eeimg="1">
+                    和描述某种代数结构的集合范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSet%7D" alt="\text{Set}" eeimg="1">
+                    之间建立一个逆变函子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F%3A+%5Cmathfrak+T%5E%5Ctext%7Bop%7D+%5Cto+%5Ctext%7BSet%7D+%5Ctag%7B1%7D" alt="\mathscr F: \mathfrak T^\text{op} \to \text{Set} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    称函子为预层。进一步，如果还可以把覆盖关系对应到集合范畴，称为层。读者读到这里不一定全部理解，我们先按照传统的方式介绍，回头可以再从范畴角度理解。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这里取集合范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSet%7D" alt="\text{Set}" eeimg="1">
+                    是方便讨论。在\cite{Hartshorne1977}的论述中，以Abel群讨论就相当于把集合范畴升级为Abel范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BAb%7D" alt="\text{Ab}" eeimg="1">
+                    ——作为复习，
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BAb%7D+%5Cto+%5Ctext%7BSet%7D" alt="\text{Ab} \to \text{Set}" eeimg="1">
+                    之间有一个自然的遗忘函子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        预层
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    考虑拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Ctau%29" alt="(X,\tau)" eeimg="1">
+                    及其上的Abel群之间的关系。拓扑空间是由开集族构成的，如何把开集之间的包含关系，进一步代数化地延伸呢？下面的讨论中，我们主要考虑开集之间的inclusion(包含于)关系
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Csubseteq+U" alt="V \subseteq U" eeimg="1">
+                    ，包含映射记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28U%2CV%29+%3D+V+%5Chookrightarrow+U" alt="\rho(U,V) = V \hookrightarrow U" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以Abel群为例，我们先给一个通常的/冗长的定义，然后再用范畴学来定义。在拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Ctau%29" alt="(X,\tau)" eeimg="1">
+                    上，如果：
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+U+%5Cin+%5Ctau" alt="\forall U \in \tau" eeimg="1">
+                        都可以对应到Abel群
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F%28U%29" alt="\mathscr F(U)" eeimg="1">
+                        ，对于空集
+                        <img src="https://www.zhihu.com/equation?tex=%5Cvarnothing+%5Cin+%5Ctau" alt="\varnothing \in \tau" eeimg="1">
+                        则对应平凡群
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F%28%5Cvarnothing%29+%3D+0" alt="\mathscr F(\varnothing) = 0" eeimg="1">
+                        ；
+                    </li>
+                    <li>
+                        inclusion关系
+                        <img src="https://www.zhihu.com/equation?tex=V+%5Csubseteq+U" alt="V \subseteq U" eeimg="1">
+                        ，可以对应到Abel群的映射关系
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28U%2CV%29%3A+%5Cmathscr+F%28U%29+%5Cto+%5Cmathscr+F%28V%29" alt="\rho(U,V): \mathscr F(U) \to \mathscr F(V)" eeimg="1">
+                        。对于自inclusion，映射
+                        <img src="https://www.zhihu.com/equation?tex=%5Crho%28U%5Cto+U%29%3A+%5Cmathscr+F%28U%29+%5Cto+%5Cmathscr+F%28U%29" alt="\rho(U\to U): \mathscr F(U) \to \mathscr F(U)" eeimg="1">
+                        为恒同映射；
+                    </li>
+                    <li>
+                        inclusion的复合对应Abel群映射的复合；
+                    </li>
+                </ol>
+                <p>
+                    那么，满足这些条件的对应
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F" alt="\mathscr F" eeimg="1">
+                    称为Abel群
+                    <b>
+                        预层(presheaf)
+                    </b>
+                    。回到(1)，预层的定义用范畴学的方式就很容易理解。Abel群预层是拓扑空间范畴到Abel群范畴的一个逆变函子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F%3A+%5Ctext%7BTop%7D%5E%5Ctext%7Bop%7D+%5Cto+%5Ctext%7BAb%7D" alt="\mathscr F: \text{Top}^\text{op} \to \text{Ab}" eeimg="1">
+                    ，拓扑空间中的inclusion对应到Abel群中的映射。把Abel群范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BAb%7D" alt="\text{Ab}" eeimg="1">
+                    换成其它范畴，也可以构成其它形式的预层。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        层
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于Abel群 预层
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F" alt="\mathscr F" eeimg="1">
+                    ，进一步考虑额外的拓扑性质——开覆盖，若
+                    <img src="https://www.zhihu.com/equation?tex=U+%5Cin+%5Ctau" alt="U \in \tau" eeimg="1">
+                    有开覆盖
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+V+%3D+%5C%7BV_i%5C%7D+%5Csubset+%5Ctau" alt="\mathcal V = \{V_i\} \subset \tau" eeimg="1">
+                    ，我们讨论一下覆盖的拓扑关系如何影响预层上的代数关系。给定开集
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ， 对应Abel群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F%28U%29" alt="\mathscr F(U)" eeimg="1">
+                    ，考虑其中的元素
+                    <img src="https://www.zhihu.com/equation?tex=s+%5Cin+%5Cmathscr+F%28U%29" alt="s \in \mathscr F(U)" eeimg="1">
+                    。将元素
+                    <img src="https://www.zhihu.com/equation?tex=s" alt="s" eeimg="1">
+                    限制在开覆盖的成员
+                    <img src="https://www.zhihu.com/equation?tex=V_i+%5Cin+%5Cmathcal+V" alt="V_i \in \mathcal V" eeimg="1">
+                    上的取值记为
+                    <img src="https://www.zhihu.com/equation?tex=s%7C_%7BV_i%7D+" alt="s|_{V_i}" eeimg="1">
+                    。对于Abel群-预层
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F" alt="\mathscr F" eeimg="1">
+                    ，如果附加以下条件：
+                </p>
+                <ol>
+                    <li>
+                        若
+                        <img src="https://www.zhihu.com/equation?tex=s%7C_%7BV_i%7D+%3D+0%2C+%5C+%5Cforall+V_i+%5Cin+%5Cmathcal+V" alt="s|_{V_i} = 0, \ \forall V_i \in \mathcal V" eeimg="1">
+                        ，则
+                        <img src="https://www.zhihu.com/equation?tex=s%3D0" alt="s=0" eeimg="1">
+                        ；即当
+                        <img src="https://www.zhihu.com/equation?tex=s" alt="s" eeimg="1">
+                        限制在所有开覆盖成员的值退化时，可以推出
+                        <img src="https://www.zhihu.com/equation?tex=s" alt="s" eeimg="1">
+                        在整个开集
+                        <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                        上退化。
+                    </li>
+                    <li>
+                        若有一组
+                        <img src="https://www.zhihu.com/equation?tex=s_i+%5Cin+%5Cmathscr+F%28V_i%29" alt="s_i \in \mathscr F(V_i)" eeimg="1">
+                        ，任意的
+                        <img src="https://www.zhihu.com/equation?tex=s_i" alt="s_i" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=s_j" alt="s_j" eeimg="1">
+                        限制在相互交集
+                        <img src="https://www.zhihu.com/equation?tex=V_i+%5Ccap+V_j" alt="V_i \cap V_j" eeimg="1">
+                        上时保持相等，即
+                        <img src="https://www.zhihu.com/equation?tex=s_i%7C_%7BV_i+%5Ccap+V_j%7D+%3D+s_j%7C_%7BV_i+%5Ccap+V_j%7D" alt="s_i|_{V_i \cap V_j} = s_j|_{V_i \cap V_j}" eeimg="1">
+                        ，则存在(唯一的)
+                        <img src="https://www.zhihu.com/equation?tex=s+%5Cin+%5Cmathscr+F%28U%29" alt="s \in \mathscr F(U)" eeimg="1">
+                        使得限制在任意
+                        <img src="https://www.zhihu.com/equation?tex=V_i" alt="V_i" eeimg="1">
+                        上有
+                        <img src="https://www.zhihu.com/equation?tex=s%7C_%7BV_i%7D%3Ds" alt="s|_{V_i}=s" eeimg="1">
+                        。
+                    </li>
+                </ol>
+                <p>
+                    那么预层
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F" alt="\mathscr F" eeimg="1">
+                    称为
+                    <b>
+                        层(sheaf)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        粘合
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上面对覆盖的讨论，很大程度上是和限制在覆盖成员的交集有关的。回忆一下流形的定义：
+                    <a href="https://zhuanlan.zhihu.com/p/44161489" class="internal">
+                        MP7：微分流形
+                    </a>
+                    ， 无论是拓扑流形，还是在拓扑流形上附加了更多结构的微分流形、复流形，都少不了一个概念——交集上的衔接，用局部拼接整体，从基础上讲是拓扑，从应用上讲甚至可以联系到G-丛
+                    <a href="https://zhuanlan.zhihu.com/p/46502211" class="internal">
+                        MP64：经典规范场(1)：纤维丛
+                    </a>
+                    ：
+                </p>
+                <blockquote>
+                    通过把平凡纤维丛粘合起来，可以构造纤维丛。这种做法，如果不考虑其上的微分结构，本质上就是一种拓扑技术——拓扑上基本的粘合映射/商空间技术。若
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BU_k%5C%7D" alt="\{U_k\}" eeimg="1">
+                    是流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    的开覆盖，有线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    ，现在我们把平凡向量丛
+                    <img src="https://www.zhihu.com/equation?tex=U_k+%5Ctimes+V" alt="U_k \times V" eeimg="1">
+                    粘合起来，得到一个纤维丛。粘合的要点是要考虑到开覆盖
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BU_k%5C%7D" alt="\{U_k\}" eeimg="1">
+                    中邻近(相交)的两个开集之间，即对
+                    <img src="https://www.zhihu.com/equation?tex=U_i+%5Ccap+U_j+%5Cneq+%5Cvarnothing" alt="U_i \cap U_j \neq \varnothing" eeimg="1">
+                    要考虑如何过渡，这里可以回忆一下微分流形定义中坐标卡重叠区域的坐标过渡问题。
+                </blockquote>
+                <p>
+                    所有这些例子的共同点就是如何处理交集，也就是如何
+                    <b>
+                        粘合(glue)
+                    </b>
+                    相交的部分。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    假设拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Ctau%29" alt="(X,\tau)" eeimg="1">
+                    上的开集
+                    <img src="https://www.zhihu.com/equation?tex=U%2CV+%5Cin+%5Ctau" alt="U,V \in \tau" eeimg="1">
+                    是相交的，即
+                    <img src="https://www.zhihu.com/equation?tex=U+%5Ccap+V+%5Cneq+%5Cvarnothing" alt="U \cap V \neq \varnothing" eeimg="1">
+                    。以连续函数层为例:
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathscr+F%3A+%5Cmathfrak+T+%26%5Cto+C%28%5Cmathbb+R%29+%5C%5C+U+%5Ccup+V+%26%5Cmapsto+%5Cmathscr+F%28U+%5Ccup+V%29+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} \mathscr F: \mathfrak T &amp;\to C(\mathbb R) \\ U \cup V &amp;\mapsto \mathscr F(U \cup V) \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+f+%5Cin+%5Cmathscr+F%28U+%5Ccup+V%29" alt="\forall f \in \mathscr F(U \cup V)" eeimg="1">
+                    ，我们关心的是交集部分，把
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    限制在
+                    <img src="https://www.zhihu.com/equation?tex=U+%5Ccap+V" alt="U \cap V" eeimg="1">
+                    上的函数记为
+                    <img src="https://www.zhihu.com/equation?tex=f%7C_%7BU+%5Ccap+V%7D+%5Cin+%5Cmathscr+F%28U+%5Ccap+V%29" alt="f|_{U \cap V} \in \mathscr F(U \cap V)" eeimg="1">
+                    。那么，如果有两个连续函数
+                    <img src="https://www.zhihu.com/equation?tex=f_1+%5Cin+%5Cmathscr+F%28U%29" alt="f_1 \in \mathscr F(U)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=f_2+%5Cin+%5Cmathscr+F%28V%29" alt="f_2 \in \mathscr F(V)" eeimg="1">
+                    ，它们限制在交集上是相等的，即
+                    <img src="https://www.zhihu.com/equation?tex=f_1%7C_%7BU+%5Ccap+V%7D+%3D+f_2%7C_%7BU+%5Ccap+V%7D" alt="f_1|_{U \cap V} = f_2|_{U \cap V}" eeimg="1">
+                    ，那么我们可以把两者粘合起来——在引入余切空间时，借助过函数芽的概念，就是采用了这种借助交集上的相等来构造等价关系的思想，
+                    <a href="https://zhuanlan.zhihu.com/p/44190499" class="internal">
+                        MP11：余切空间
+                    </a>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    两个在交集上相等的连续函数
+                    <img src="https://www.zhihu.com/equation?tex=f_1+%5Cin+%5Cmathscr+F%28U%29" alt="f_1 \in \mathscr F(U)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=f_2+%5Cin+%5Cmathscr+F%28V%29" alt="f_2 \in \mathscr F(V)" eeimg="1">
+                    ，决定了
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+%5Cmathscr+F%28U+%5Ccup+V%29" alt="f \in \mathscr F(U \cup V)" eeimg="1">
+                    ，使得
+                    <img src="https://www.zhihu.com/equation?tex=f_1+%3D+f%7C_U" alt="f_1 = f|_U" eeimg="1">
+                    及
+                    <img src="https://www.zhihu.com/equation?tex=f_2+%3D+f%7C_V" alt="f_2 = f|_V" eeimg="1">
+                    ，这种决定是双向的，表达为以下映射关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathscr+F%28U+%5Ccup+V%29+%5Cto+%5Cmathscr+F%28U%29+%5Ctimes+%5Cmathscr+F%28V%29+%26%5Crightrightarrows+%5Cmathscr+F%28U+%5Ccap+V%29+%5C%5C+%5C%5C+f+%5Cmapsto+%28f_1%2Cf_2%29+%26%5Cbegin%7Bmatrix%7D+%5Cmapsto+f_1%7C_%7BU+%5Ccap+V%7D+%5C%5C+%5Cmapsto+f_2%7C_%7BU+%5Ccap+V%7D+%5Cend%7Bmatrix%7D+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} \mathscr F(U \cup V) \to \mathscr F(U) \times \mathscr F(V) &amp;\rightrightarrows \mathscr F(U \cap V) \\ \\ f \mapsto (f_1,f_2) &amp;\begin{matrix} \mapsto f_1|_{U \cap V} \\ \mapsto f_2|_{U \cap V} \end{matrix} \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    将单射
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3AA%5Cto+B" alt="\varphi:A\to B" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_1%2C%5Cpsi_2%3AB%5Cto+C" alt="\psi_1,\psi_2:B\to C" eeimg="1">
+                    构造为映射序列
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cstackrel%7B%5Cvarphi%7D%7B%5Clongrightarrow%7D+B+%5Crightrightarrows+C++" alt="A \stackrel{\varphi}{\longrightarrow} B \rightrightarrows C" eeimg="1">
+                    ，若满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28A%29+%3D+%5C%7B+b+%5Cin+B%3A+%5C+%5Cpsi_1%28b%29+%3D+%5Cpsi_2%28b%29+%5C%7D+%5Ctag%7B4%7D" alt="\varphi(A) = \{ b \in B: \ \psi_1(b) = \psi_2(b) \} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    则映射序列称为
+                    <b>
+                        正合的(exact)
+                    </b>
+                    。读者可以类比在同调群中引入的正合序列，思考一下两种定义的共性。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

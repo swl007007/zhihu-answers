@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP66：Einstein场方程
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-385d6f74ef9e0a7b1dba1d0f5318f9e1_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/47092897" target="_blank">
+                        MP66：Einstein场方程
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-01
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这次讲到的Einstein场方程是这一系列的汇总部分。前面几篇的工作相当凌乱，都是为了本讲的内容所作的准备，略解释一下：
+                </p>
+                <p>
+                    <br>
+                </p>
+                <blockquote>
+                    因为质量（引力、动量等）弯曲的时空流形被赋予度量/度规，有了度规就可以确定长度。我们将特别关注切丛、联络——在弯曲时空流形上的平行移动。在切丛上有一种叫做Levi-Civita的联络，可以保持度规且是无挠的。它成为Riemann流形的切丛上最合适的联络，而这个联络的曲率就是Riemann曲率张量。
+                    <br>
+                    对Riemann曲率张量进行处理后，可以得到Ricci张量、广义相对论的Lagrange量，以及最终的Einstein张量，这是Einstein广义相对论方程的一半。Einstein方程描述的是时空受到物质（或者任何有能量或动量的事物）而弯曲的程度。类似于过去我们用外微分描述Maxwell方程的方式，我们要用Bianchi恒等式和能动张量(stress-energy tensor)来构造Einstein的广义相对论方程，这个方程最基本的解就是球对称静态真空的Schwarzschild解。
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47026560" class="internal">
+                        MP59：几何与物理III：Riemann几何与广义相对论
+                    </a>
+                </p>
+                <p>
+                    介绍Riemann度量，或者叫做度量张量/度规张量。这是最基础的，在度量的基础上才能讨论长度、并且给联络提出保持度规的要求。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46700218" class="internal">
+                        MP60：平行移动与Levi-Civita联络
+                    </a>
+                </p>
+                <p>
+                    讨论平行移动的问题，能够支持张量在两点之间的路径上平行移动的结构叫做联络。通过Riemann度量可以诱导出唯一一个保持度量且无挠的联络，即Levi-Civita联络，从而确定平行移动的法则。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46720067" class="internal">
+                        MP61：Riemann流形上的向量场
+                    </a>
+                </p>
+                <p>
+                    讨论了Riemann流形的向量场上的对易问题，Levi-Civita联络的无挠就是Lie括号所决定的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47313691" class="internal">
+                        MP62：Riemann曲率张量
+                    </a>
+                </p>
+                <p>
+                    前面几讲强调了Levi-Civita联络的重要性。Levi-Civita联络上的曲率张量称为Riemann曲率张量。这里继续讨论了Lie括号/对易子的直观理解，介绍了和乐群。我们发现，所谓联络的曲率，实际上给出了协变导数不对易的程度。Riemann曲率张量是一个
+                    <img src="https://www.zhihu.com/equation?tex=%281%2C3%29" alt="(1,3)" eeimg="1">
+                    型张量，它缩并为
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C2%29" alt="(0,2)" eeimg="1">
+                    型张量称为Ricci张量，进一步得到Ricci标量或者标量曲率，从而可以构建Einstein张量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47291940" class="internal">
+                        MP63：相对论分析力学
+                    </a>
+                </p>
+                <p>
+                    介绍了四维时空中的分析力学方法，这些方法不仅用于经典场论，也是量子场论的常用工具。在\cite{Landau1971}中，正是通过这种方式得到能动张量的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46502211" class="internal">
+                        MP64：经典规范场(1)：纤维丛
+                    </a>
+                </p>
+                <p>
+                    回顾了纤维丛的定义，给出了G-丛的粘合技术，介绍了G-丛和Yang-Mills方程的关系。虽然这里不直接涉及到引力，但这些物理都是建立在纤维丛和联络上，对我们理解Riemann几何大有帮助。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/50213234" class="internal">
+                        MP65：经典规范场(2)：电动力学
+                    </a>
+                </p>
+                <p>
+                    介绍了自同态丛和其上的联络，这种联络给出了Bianchi恒等式的一种表现形式，它十分类似于用
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -微分形式表达的Maxwell方程。实际上它就是Yang-Mills方程。这里的直观理解，有助于在Einstein场方程中进一步地应用Bianchi恒等式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面回到广义相对论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        等效原理
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    弱
+                    <b>
+                        等效原理(equivalence principle)
+                    </b>
+                    指观察者无法区分加速度产生的惯性力和质量产生的引力。根据Newton运动定律，外力
+                    <img src="https://www.zhihu.com/equation?tex=F_i%3Dm_ia+%5Ctag%7B1%7D" alt="F_i=m_ia \tag{1}" eeimg="1">
+                    和万有引力定理
+                    <img src="https://www.zhihu.com/equation?tex=F_g%3DG%5Cfrac%7BMm_g%7D%7Br%5E2%7D+%5Ctag%7B2%7D" alt="F_g=G\frac{Mm_g}{r^2} \tag{2}" eeimg="1">
+                    这里出现的惯性质量
+                    <img src="https://www.zhihu.com/equation?tex=m_i" alt="m_i" eeimg="1">
+                    和引力质量
+                    <img src="https://www.zhihu.com/equation?tex=m_g" alt="m_g" eeimg="1">
+                    是两个在逻辑上没有关联的物理量。然而实验上两者没有体现出区别。Einstein认为质量具有等效原理——凡是不能区分的就是一回事（等能区分了你再区分，不在区分不了的东西上浪费精力，在狭义相对论上就是这么干的），即惯性质量和引力质量(在逻辑上)相等
+                    <img src="https://www.zhihu.com/equation?tex=m_i+%3D+m_g+%5Ctag%7B3%7D" alt="m_i = m_g \tag{3}" eeimg="1">
+                    加之(1)(2)的两种受力可以约去，这样可以得到加速度和引力场的关系
+                    <img src="https://www.zhihu.com/equation?tex=+MG%3Dar%5E2" alt="MG=ar^2" eeimg="1">
+                    ，它联系了惯性加速度和有心引力场，显然这种关系可以推广到任何引力场。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    加速度关乎参考系，引力场关乎引力。不仅是惯性质量和引力质量无法区分，进一步说惯性和引力也不能区分。惯性(力)来自加速的坐标运动，也就是时空弯曲；引力来自物质的分布，确切地讲在相对论意义下是能量和动量的分布。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        能动张量
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以前面所积累的知识为基础，再理解Einstein场方程就不难了。将一般的引力场推广到能量-动量的分布，需要用到狭义相对论。根据
+                    <img src="https://www.zhihu.com/equation?tex=E%3Dmc%5E2" alt="E=mc^2" eeimg="1">
+                    ，能量和质量是可以相互转换的。Newton力学中的静质量上面还需要考虑狭义相对论效应的能量所等效的质量。
+                </p>
+                <p>
+                    <br>
+                    在强等效原理中，观察者处于引力场中，可以等效地有一个局部的加速参考系，使得参考系带来的惯性力相当于引力。之所以是局部的加速参考系，这是因为引力场的不均匀，只能局部地线性化——也就是用到前面在Riemann几何中用到的各种局部技术。通过这样的等效，在加速参考系中能动张量退化，这也相当于携带能量/质量的物质被加速参考系抵消，从而可以忽略场中物质分布的影响——观察者只需要关注自身。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在Newton力学中，质量是引力场的源。在广义相对论中，引力场的源来自通过时空某一点的能量和动量描述，称为
+                    <b>
+                        能动张量(energy-momentum tensor)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=T_%7Bij%7D" alt="T_{ij}" eeimg="1">
+                    。在相对论力学中，动量和能量成为同一个四维向量中的组成部分而不能分开，这就是能动张量这个词的由来。
+                    <a href="https://zhuanlan.zhihu.com/p/47291940" class="internal">
+                        MP63：相对论分析力学
+                    </a>
+                    给出了基本的步骤，到能动张量的推导请参考 \cite{Landau1971}。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Einstein场方程
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Einstein用Riemann几何和张量的语言来讲清楚等效原理。引力的效果（与物质——能量或动量的载体相关）构成能动张量，而时空的弯曲（与参考系相关）构成爱因斯坦张量（来自弯曲时空的Levi-Civita联络上的Riemann曲率张量），场方程就是用张量描述的等效原理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47313691" class="internal">
+                        MP62：Riemann曲率张量
+                    </a>
+                    给出了Riemann曲率张量、Ricci张量和Einstein张量。Riemann曲率张量是一个
+                    <img src="https://www.zhihu.com/equation?tex=%281%2C3%29" alt="(1,3)" eeimg="1">
+                    型张量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=R_%7Bijk%7D%5El+%3D+%5Cpartial_i%5CGamma_%7Bjk%7D%5El+-+%5Cpartial_j%5CGamma_%7Bik%7D%5El+%2B+%5CGamma_%7Bjk%7D%5Em%5CGamma_%7Bim%7D%5El+-+%5CGamma_%7Bik%7D%5Em%5CGamma_%7Bjm%7D%5El+%5Ctag%7B4%7D" alt="R_{ijk}^l = \partial_i\Gamma_{jk}^l - \partial_j\Gamma_{ik}^l + \Gamma_{jk}^m\Gamma_{im}^l - \Gamma_{ik}^m\Gamma_{jm}^l \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    它缩并为
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C2%29" alt="(0,2)" eeimg="1">
+                    型Ricci张量：
+                    <img src="https://www.zhihu.com/equation?tex=R_%7Bij%7D+%3D+R_%7Bikj%7D%5Ek%5Ctag%7B5%7D" alt="R_{ij} = R_{ikj}^k\tag{5}" eeimg="1">
+                    进一步有Ricci标量或者标量曲率：
+                    <img src="https://www.zhihu.com/equation?tex=R+%3D+R_i%5Ei%5Ctag%7B6%7D" alt="R = R_i^i\tag{6}" eeimg="1">
+                    <a href="https://zhuanlan.zhihu.com/p/50213234" class="internal">
+                        MP65：经典规范场(2)：电动力学
+                    </a>
+                    中提到过微分流形向量场上的Bianchi恒等式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5BD_u%2C%5BD_v%2CD_w%5D%5D%2B%5BD_v%2C%5BD_w%2CD_u%5D%5D%2B%5BD_w%2C%5BD_u%2CD_v%5D%5D%3D0+%5Ctag%7B7%7D" alt="[D_u,[D_v,D_w]]+[D_v,[D_w,D_u]]+[D_w,[D_u,D_v]]=0 \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    在Levi-Civita联络
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla" alt="\nabla" eeimg="1">
+                    下，Bianchi恒等式可以写成外协变导数的形式：
+                    <img src="https://www.zhihu.com/equation?tex=d_%5Cnabla+%5Cmathcal+R%3D0+%5Ctag%7B8%7D" alt="d_\nabla \mathcal R=0 \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+R" alt="\mathcal R" eeimg="1">
+                    是切丛
+                    <img src="https://www.zhihu.com/equation?tex=TM" alt="TM" eeimg="1">
+                    的自同态
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -形式，这样得到Einstein张量(篇幅颇长，细节不表)：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=G_%7Bij%7D+%3D+R_%7Bij%7D+-+%5Cfrac%7B1%7D%7B2%7DRg_i%5Ej+%5Ctag%7B9%7D" alt="G_{ij} = R_{ij} - \frac{1}{2}Rg_i^j \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    它描述了空间弯曲的情况。Einstein场方程联系了描述空间弯曲的Einstein张量
+                    <img src="https://www.zhihu.com/equation?tex=G_%7Bij%7D" alt="G_{ij}" eeimg="1">
+                    和描述物质能量分布的能动张量
+                    <img src="https://www.zhihu.com/equation?tex=T_%7Bij%7D" alt="T_{ij}" eeimg="1">
+                    ，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=G_%7Bij%7D+%3D+8%5Cpi%5Ckappa+T_%7Bij%7D+%5Ctag%7B10%7D" alt="G_{ij} = 8\pi\kappa T_{ij} \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Ckappa" alt="\kappa" eeimg="1">
+                    是个常数。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

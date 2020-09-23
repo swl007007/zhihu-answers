@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP83：复流形(7)：复微分形式的相关代数：分次代数、对称代数、外代数
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-0e0ae9419f2199315755921b2afa4da4_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/53238199" target="_blank">
+                        MP83：复流形(7)：复微分形式的相关代数：分次代数、对称代数、外代数
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-26
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <h2>
+                    <b>
+                        分次代数
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从群的角度看
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E%7B2n%7D+%5Csimeq+%5Cmathbb+C%5En" alt="\mathbb R^{2n} \simeq \mathbb C^n" eeimg="1">
+                    是同构的，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C%5En" alt="\mathbb C^n" eeimg="1">
+                    因为定义了复数乘法可以构成环和代数，而实空间不行。有人提出反例，通过叉乘可以构造
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E3+%5Ctimes+%5Cmathbb+R%5E3+%5Cto+%5Cmathbb+R%5E3" alt="\mathbb R^3 \times \mathbb R^3 \to \mathbb R^3" eeimg="1">
+                    的运算。然而我们过去了解到，这种运算本质上是张量运算，且运算的结果并非是到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E3" alt="\mathbb R^3" eeimg="1">
+                    而是更加复杂的结构。一般而言，域
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    上的线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上有加法，却不能构成环。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    定义环的乘法，且保持线性关系，最一般的是构造张量
+                    <img src="https://www.zhihu.com/equation?tex=%5Cotimes" alt="\otimes" eeimg="1">
+                    。注意到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cotimes%3A+V+%5Ctimes+V+%26%5Cto+V+%5Cotimes+V+%5Cneq+V+%5C%5C+%28u%2Cv%29+%26%5Cmapsto+u+%5Cotimes+v+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} \otimes: V \times V &amp;\to V \otimes V \neq V \\ (u,v) &amp;\mapsto u \otimes v \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    这样失去了运算的封闭性，是无法构成环的。张量积
+                    <img src="https://www.zhihu.com/equation?tex=%5Cotimes" alt="\otimes" eeimg="1">
+                    、叉乘
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctimes" alt="\times" eeimg="1">
+                    、外积/楔积
+                    <img src="https://www.zhihu.com/equation?tex=%5Cwedge" alt="\wedge" eeimg="1">
+                    是常用的二元线性运算，他们都不能保证运算的封闭性，然而却具有提升次数的作用，相应的可以通过分次代数来处理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以张量代数为例，记
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -阶张量为
+                    <img src="https://www.zhihu.com/equation?tex=T%5Ek%28V%29+%3D+V+%5Cotimes+V+%5Cotimes+%5Cdots+%5Cotimes+V" alt="T^k(V) = V \otimes V \otimes \dots \otimes V" eeimg="1">
+                    ，在所有
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -阶张量的集合
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=TV+%3D+%5Cbigotimes+_%7Bk%3D0%7D%5E%5Cinfty+T%5Ek%28V%29+%5Ctag%7B2%7D" alt="TV = \bigotimes _{k=0}^\infty T^k(V) \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    上考虑张量积，此刻张量积运算
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cotimes%3A+TV+%5Ctimes+TV+%26%5Cto+TV+%5C%5C+%5Cotimes%3A+T%5Ei%28V%29+%5Ctimes+T%5Ej%28V%29+%26%5Cto+T%5E%7Bi+%2B+j%7D%28V%29+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} \otimes: TV \times TV &amp;\to TV \\ \otimes: T^i(V) \times T^j(V) &amp;\to T^{i + j}(V) \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    是封闭的，于是
+                    <img src="https://www.zhihu.com/equation?tex=%28TV%2C%5Cotimes%29" alt="(TV,\otimes)" eeimg="1">
+                    构成环，也构成一个
+                    <b>
+                        分次代数(graded algebra)
+                    </b>
+                    ，称为
+                    <b>
+                        张量代数(tensor algebra)
+                    </b>
+                    ，每个
+                    <img src="https://www.zhihu.com/equation?tex=T%5Ek%28V%29" alt="T^k(V)" eeimg="1">
+                    都是一个分次的
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    -子空间，
+                    <img src="https://www.zhihu.com/equation?tex=TV" alt="TV" eeimg="1">
+                    也是
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    -线性空间，并有
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    -线性inclusion：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%3A+V+%3D+T%5E1%28V%29+%5Chookrightarrow+TV+%5Ctag%7B4%7D" alt="\omega: V = T^1(V) \hookrightarrow TV \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        对称代数
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    环对其理想可以构造商环
+                    <img src="https://www.zhihu.com/equation?tex=R%2FI" alt="R/I" eeimg="1">
+                    ，其中的加法为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+R%2FI+%5Ctimes+R%2FI+%26%5Cto+R%2FI%5C%5C+%28a%2BI%2Cb%2BI%29+%26%5Cmapsto+%28a%2BI%29%2B%28b%2BI%29+%3D+a%2Bb%2BI+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} R/I \times R/I &amp;\to R/I\\ (a+I,b+I) &amp;\mapsto (a+I)+(b+I) = a+b+I \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    乘法为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+R%2FI+%5Ctimes+R%2FI+%26%5Cto+R%2FI%5C%5C+%28a%2BI%2Cb%2BI%29+%26%5Cmapsto+%28a%2BI%29+%5Ccdot+%28b%2BI%29+%3D+a+%5Ccdot+b%2BI+%5Cend%7Balign%7D+%5Ctag%7B6%7D" alt="\begin{align} R/I \times R/I &amp;\to R/I\\ (a+I,b+I) &amp;\mapsto (a+I) \cdot (b+I) = a \cdot b+I \end{align} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在张量代数
+                    <img src="https://www.zhihu.com/equation?tex=TV" alt="TV" eeimg="1">
+                    中构造以下映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+V+%5Ctimes+V+%26%5Cto+TV+%5C%5C+%28u%2Cv%29+%26%5Cmapsto+%5Comega%28u%29%5Comega%28v%29+-+%5Comega%28v%29%5Comega%28u%29+%5Cend%7Balign%7D+%5Ctag%7B7%7D" alt="\begin{align} V \times V &amp;\to TV \\ (u,v) &amp;\mapsto \omega(u)\omega(v) - \omega(v)\omega(u) \end{align} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    这样生成的集合构成一个双边理想
+                    <img src="https://www.zhihu.com/equation?tex=I" alt="I" eeimg="1">
+                    ，它描述了张量代数中的不对易性。有自然映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Cpsi+%3A+V+%26%5Cstackrel%7B%5Comega%7D%7B%5Clongrightarrow%7D+TV+%5Cstackrel%7B%5Cpi%7D%7B%5Clongrightarrow%7D+%5CLambda%28V%29+%3D+TV%2FI++%5Cend%7Balign%7D+%5Ctag%7B8%7D" alt="\begin{align}  \psi : V &amp;\stackrel{\omega}{\longrightarrow} TV \stackrel{\pi}{\longrightarrow} \Lambda(V) = TV/I  \end{align} \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+u%2C+v+%5Cin+V" alt="\forall u, v \in V" eeimg="1">
+                    有
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28u%29%5Cpsi%28v%29+%3D+%5Cpsi%28v%29%5Cpsi%28u%29" alt="\psi(u)\psi(v) = \psi(v)\psi(u)" eeimg="1">
+                    ，于是商代数
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda%28V%29%3DTV%2FI" alt="\Lambda(V)=TV/I" eeimg="1">
+                    构成对称代数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        外代数
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+v+%5Cin+V" alt="\forall v \in V" eeimg="1">
+                    可以构造张量积
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Cotimes+v+%5Cin+T%5E2%28V%29" alt="v \otimes v \in T^2(V)" eeimg="1">
+                    ，其中的每个齐次项都具有
+                    <img src="https://www.zhihu.com/equation?tex=v_iv_j" alt="v_iv_j" eeimg="1">
+                    的形式，用矩阵表示为
+                    <img src="https://www.zhihu.com/equation?tex=%5Bv_iv_j%5D+%5Cin+K%5E%7Bn+%5Ctimes+n%7D%2C+%5C+%5C+n+%3D+%5Ctext%7Bdim%7D%28V%29" alt="[v_iv_j] \in K^{n \times n}, \ \ n = \text{dim}(V)" eeimg="1">
+                    。令这类张量积的集合为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=I+%3D+%5C%7B+v+%5Cotimes+v+%5C%7D%2C+%5C+%5C+v+%5Cin+V+%5Ctag%7B9%7D" alt="I = \{ v \otimes v \}, \ \ v \in V \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    可以证明
+                    <img src="https://www.zhihu.com/equation?tex=I" alt="I" eeimg="1">
+                    是张量代数
+                    <img src="https://www.zhihu.com/equation?tex=T%28V%29" alt="T(V)" eeimg="1">
+                    的双边理想。定义商代数
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda%28V%29+%3D+T%28V%29%2FI+%5Ctag%7B10%7D" alt="\Lambda(V) = T(V)/I \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    为
+                    <b>
+                        外代数(exterior algebra)
+                    </b>
+                    。自然映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi" alt="\pi" eeimg="1">
+                    把张量代数的代数运算
+                    <img src="https://www.zhihu.com/equation?tex=%5Cotimes" alt="\otimes" eeimg="1">
+                    诱导为商代数中的
+                    <b>
+                        楔积(wedge product)
+                    </b>
+                    运算
+                    <img src="https://www.zhihu.com/equation?tex=%5Cwedge" alt="\wedge" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cpi%3A+T%28V%29+%26%5Cto+%5CLambda%28V%29+%3D+T%28V%29%2FI+%5C%5C+%5Calpha+%26%5Cmapsto+a%3D%5Cpi%28%5Calpha%29+%5C%5C+%5Cbeta+%26%5Cmapsto+b%3D%5Cpi%28%5Cbeta%29+%5C%5C+%5Calpha%5Cotimes%5Cbeta+%26%5Cmapsto+%5Cpi%28%5Calpha+%5Cotimes+%5Cbeta%29+%3D++a+%5Cwedge+b+%3D+%5Cpi%28%5Calpha%29%5Cwedge%5Cpi%28%5Cbeta%29++%5Cend%7Balign%7D+%5Ctag%7B11%7D" alt="\begin{align} \pi: T(V) &amp;\to \Lambda(V) = T(V)/I \\ \alpha &amp;\mapsto a=\pi(\alpha) \\ \beta &amp;\mapsto b=\pi(\beta) \\ \alpha\otimes\beta &amp;\mapsto \pi(\alpha \otimes \beta) =  a \wedge b = \pi(\alpha)\wedge\pi(\beta)  \end{align} \tag{11}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+++TV+%5Ctimes+TV+%40%3E+%5Cotimes+%3E%3E+TV+%5C%5C+++%40VV+%5Cpi+V+%40V+%5Cpi+VV+%5C%5C+++%5CLambda+V+%5Ctimes+%5CLambda+V+%40%3E+%5Cwedge+%3E%3E+%5CLambda+V++%5Cend%7BCD%7D+%5Ctag%7B12%7D" alt="\begin{CD}   TV \times TV @&gt; \otimes &gt;&gt; TV \\   @VV \pi V @V \pi VV \\   \Lambda V \times \Lambda V @&gt; \wedge &gt;&gt; \Lambda V  \end{CD} \tag{12}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+++%28%5Calpha%2C%5Cbeta%29+%40%3E+%5Cotimes+%3E%3E+%5Calpha%5Cotimes%5Cbeta+%5C%5C+++%40VV+%5Cpi+V+%40V+%5Cpi+VV+%5C%5C+++%28%5Cpi%28%5Calpha%29%2C%5Cpi%28%5Cbeta%29%29+%40%3E+%5Cwedge+%3E%3E+%5Cpi%28%5Calpha%29%5Cwedge%5Cpi%28%5Cbeta%29++%5Cend%7BCD%7D+%5Ctag%7B12%7D" alt="\begin{CD}   (\alpha,\beta) @&gt; \otimes &gt;&gt; \alpha\otimes\beta \\   @VV \pi V @V \pi VV \\   (\pi(\alpha),\pi(\beta)) @&gt; \wedge &gt;&gt; \pi(\alpha)\wedge\pi(\beta)  \end{CD} \tag{12}" eeimg="1">
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

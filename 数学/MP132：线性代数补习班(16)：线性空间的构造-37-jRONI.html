@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP132：线性代数补习班(16)：线性空间的构造
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-f9e6b1e23d0694a0af5f00a5c959ba27_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/54737673" target="_blank">
+                        MP132：线性代数补习班(16)：线性空间的构造
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-12-05
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    我们将介绍一些基本的代数结构，包括群、环、模、域、线性空间、代数。在这一循序渐进、从简单到复杂的过程中，我们将顺带引入相关代数结构所对应的范畴，让读者熟悉使用范畴的语言表述问题。读者最终将能够理解到，线性空间就是域上的模，以上庞杂的公理化定义，实际上反映了代数结构从群到环、模、线性空间的逐步精细化的过程。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-5f11c916cdce6c8b4fdf9afaefb8661a_r.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    范畴
+                </h2>
+                <p>
+                    相同类型的代数结构之间，满足特定条件，能够保持代数结构的映射被称为同态。范畴则是在不同类型的代数结构中，将不同的同态抽象出来的宏观概念。范畴论讨论的是类似以下由
+                    <b>
+                        对象(objects)
+                    </b>
+                    和
+                    <b>
+                        态射(morphisms)
+                    </b>
+                    组成的
+                    <b>
+                        范畴(category)
+                    </b>
+                    。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-53118b569b90eaddc230a2afe2c0e3f6_r.jpg">
+                </figure>
+                <h2>
+                    复合态射：半群
+                </h2>
+                <p>
+                    以集合为对象，以集合之间的映射为态射，构成的范畴称为
+                    <b>
+                        集合范畴(category of sets)
+                    </b>
+                    ，记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D" alt="\textbf{Set}" eeimg="1">
+                    ​。集合的映射可以复合，复合映射满足结合律。下图给出了集合范畴中的一些对象之间的态射。将
+                    <b>
+                        复合映射(composite map)
+                    </b>
+                    记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ccirc" alt="\circ" eeimg="1">
+                    ​，（在不混淆的情况下也可以忽略这个记号）：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-67e5de2d3c71ab4ce62b5017fbc9639d_b.jpg">
+                </figure>
+                <p>
+                    注意到无论怎样复合，上图都是
+                    <b>
+                        可交换的(commutative)
+                    </b>
+                    ，上图称为
+                    <b>
+                        交换图(commutative diagram)
+                    </b>
+                    ，表示复合映射的结果只取决于起止端点，和映射的路径无关。集合的复合映射符合以上交换图，其本质上体现了映射的
+                    <b>
+                        结合律(associativity)
+                    </b>
+                    ，即在上图中
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Ccirc+g+%5Ccirc+h+%3D+%28f+%5Ccirc+g%29+%5Ccirc+h+%3D+f+%5Ccirc+%28g+%5Ccirc+h%29+%5C%5C" alt="f \circ g \circ h = (f \circ g) \circ h = f \circ (g \circ h) \\" eeimg="1">
+                </p>
+                <p>
+                    复合映射满足结合律，推广到范畴中，则是范畴的态射满足结合律。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-81726c5e79dcee43922f8be2614d5445_r.jpg">
+                </figure>
+                <p>
+                    半群范畴广泛地刻画了具有结合律的数学结构。然而，上面的例子中，​都属于不同集合对之间的映射，从范畴上看，是不同对象之间的态射。这样的复合映射，其封闭性是不够的，这促使我们进一步过渡到幺半群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    自态射：幺半群
+                </h2>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-daf25408844535881d937ebe2c0a0d8e_r.jpg">
+                </figure>
+                <p>
+                    类似前面的讨论，有下图
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-8b91e203f39f72bef0dfdcc1f78ce28e_b.jpg">
+                </figure>
+                <p>
+                    它给出了态射的复合关系，由于是自态射，上图也可以简化为
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-b53f017a20c7d3d8cd6a024f040c50e6_b.jpg">
+                </figure>
+                <p>
+                    这样容易理解在自态射的情形，复合映射具有封闭性。显然，任意范畴中任意对象的自态射集在复合态射的运算下构成一个半群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctext%7BEnd%7D%28X%29%2C%5Ccirc%29" alt="(\text{End}(X),\circ)" eeimg="1">
+                    ，而且恒等映射
+                    <img src="https://www.zhihu.com/equation?tex=1_X+%5Cin+%5Ctext%7BEnd%7D%28X%29" alt="1_X \in \text{End}(X)" eeimg="1">
+                    ​。在考虑集合
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cto+X" alt="X \to X" eeimg="1">
+                    到自身的映射​时，一定存在唯一的恒等映射
+                    <img src="https://www.zhihu.com/equation?tex=1_X+%5Cin+%5Ctext%7BEnd%7D%28X%29" alt="1_X \in \text{End}(X)" eeimg="1">
+                    ​使得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+1_X%3A+X+%26%5Cto+X+%5Cnonumber+%5C%5C+x+%26%5Cmapsto+1_X%28x%29+%3D+x+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} 1_X: X &amp;\to X \nonumber \\ x &amp;\mapsto 1_X(x) = x \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    下面给出幺半群的定义：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-9477736a0c16fb4e5046bc9676e41337_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-585c675c75f658b2dda5d98df83d15bb_r.jpg">
+                </figure>
+                <p>
+                    我们比较关注的是幺半群范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMon%7D" alt="\textbf{Mon}" eeimg="1">
+                    ​。任意给定范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    ​，固定其上的对象​
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cin+%5Cmathcal+C" alt="X \in \mathcal C" eeimg="1">
+                    ，可以考虑仅由这个对象构成的子范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMon%7D%28X%29" alt="\textbf{Mon}(X)" eeimg="1">
+                    ​，其对象集合为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BOb%7D%28%5Ctextbf%7BMon%7D%28X%29%29%3D%5C%7BX%5C%7D" alt="\text{Ob}(\textbf{Mon}(X))=\{X\}" eeimg="1">
+                    ​，其态射集为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BMor%7D%28%5Ctextbf%7BMon%7D%28X%29%29+%3D+%5Ctext%7BEnd%7D%28X%29+%3D+%5Ctext%7BHom%7D%28X%2CX%29+" alt="\text{Mor}(\textbf{Mon}(X)) = \text{End}(X) = \text{Hom}(X,X)" eeimg="1">
+                    ​。这个子范畴称为
+                    <b>
+                        幺半群范畴(category of monoids)
+                    </b>
+                    ，以态射的复合为二元运算，以恒同映射为幺元，我们注意到这个范畴构成了幺半群，因而得名。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    自同构：群
+                </h2>
+                <p>
+                    幺半群可以描述对象的自态射。在许多情况下，我们希望这种映射是可逆的，这就需要把幺半群中的可逆元找出来单独讨论，这样就有了群的概念。
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-1cf3b213003e2a072b6372ce194fd9b7_r.jpg">
+                </figure>
+                <p>
+                    在集合的自映射幺半群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctext%7BEnd%7D%28X%29%2C%5Ccirc%2C1_X%29" alt="(\text{End}(X),\circ,1_X)" eeimg="1">
+                    中并非所有映射都是可逆的，其所有可逆自映射构成一个集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BAut%7D%28X%29+%5Csubseteq+%5Ctext%7BEnd%7D%28X%29" alt="\text{Aut}(X) \subseteq \text{End}(X)" eeimg="1">
+                    ​，显然
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctext%7BAut%7D%28X%29%2C%5Ccirc%2C1_X%29" alt="(\text{Aut}(X),\circ,1_X)" eeimg="1">
+                    构成一个群。
+                </p>
+                <p>
+                    群同态相当于幺半群同态。以群为对象，以群同态为态射，构成了群范畴，记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BGrp%7D" alt="\textbf{Grp}" eeimg="1">
+                    ​。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-3422776a94ab931cf54dea86b303fa00_r.jpg">
+                </figure>
+                <p>
+                    以Abel群为对象，以Abel群同态为态射构成的范畴称为
+                    <b>
+                        Abel群范畴(category of abelian groups)
+                    </b>
+                    ，记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BAb%7D" alt="\textbf{Ab}" eeimg="1">
+                    ​。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    Abel群的自态射：环
+                </h2>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-42aaa5d711895bc028b8d09a837c730a_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-934261ab03d3c9da2a33e3a4dc6f0f6c_r.jpg">
+                </figure>
+                <p>
+                    于是，我们证明了Abel群的自态射集也是Abel群：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D%28X%2CY%29+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BAb%7D%29+%5C%5C" alt="\text{Hom}(X,Y) \in \text{Ob}(\textbf{Ab}) \\" eeimg="1">
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-70ba531457e71cea7421e564a8435782_r.jpg">
+                </figure>
+                <p>
+                    下面给出环的定义：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-06fbe111b90b2aa3beaeef55ba7f77b4_r.jpg">
+                </figure>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-2bb946ed5b952aba22304a37821feda9_r.jpg">
+                </figure>
+                <p>
+                    显然，以上
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctext%7BEnd%7D%28X%29%2C%2B%2C%5Ccirc%2C0_X%2C1_X%29" alt="(\text{End}(X),+,\circ,0_X,1_X)" eeimg="1">
+                    构成一个环，称为Abel群
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%2B%2C0%29" alt="(X,+,0)" eeimg="1">
+                    的
+                    <b>
+                        自同态环(homomorphism ring)
+                    </b>
+                    。下图展示了自同态环是如何刻画Abel群自同态之间的求和和复合关系的：
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-a718e2097f376e4fd2fef8face742722_b.jpg">
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    环同态：模
+                </h2>
+                <p>
+                    在任意Abel群
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cin+%5Ctextbf%7BAb%7D" alt="X \in \textbf{Ab}" eeimg="1">
+                    上构造环
+                    <img src="https://www.zhihu.com/equation?tex=X%5Cin%5Ctextbf%7BRng%7D" alt="X\in\textbf{Rng}" eeimg="1">
+                    ，都可以在环范畴中嵌入到自同态环
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28X%29" alt="\text{End}(X)" eeimg="1">
+                    如下：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-d86611afa10a839ac851ab849666e81f_r.jpg">
+                </figure>
+                <p>
+                    如果把Abel群的自同态环
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28X%29" alt="\text{End}(X)" eeimg="1">
+                    看作是一种表示，在环范畴中不限于
+                    <img src="https://www.zhihu.com/equation?tex=X%5Cin%5Ctextbf%7BRng%7D" alt="X\in\textbf{Rng}" eeimg="1">
+                    ，而是任意环
+                    <img src="https://www.zhihu.com/equation?tex=R%5Cin%5Ctextbf%7BRng%7D" alt="R\in\textbf{Rng}" eeimg="1">
+                    ，则下图给出了环范畴中的相关概念：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-6eda9b49169f22a6d775067a9d14d54e_r.jpg">
+                </figure>
+                <p>
+                    其中环的表示
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%5Cin%5Ctext%7BHom%7D%28R%2C+%5Ctext%7BEnd%7D%28X%29%29+" alt="\psi\in\text{Hom}(R, \text{End}(X))" eeimg="1">
+                    引入了模的概念：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-e712d7fa19614220650ff31a53c3f2fa_r.jpg">
+                </figure>
+                <p>
+                    也就是说，环以线性的方式作用于Abel群，构成Abel群的线性自同态，那么Abel群就称为模。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    域上的模：线性空间
+                </h2>
+                <p>
+                    环上定义了交换的加法，也就有了相应的减法，以及定义了乘法。进一步加强环的条件可以得到四则运算：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-c3d118980b373fea19f9043fc29fb000_r.jpg">
+                </figure>
+                <p>
+                    域
+                    <img src="https://www.zhihu.com/equation?tex=%28K%2C%2B%2C%5Ccdot%2C0+%5Cneq+1%29" alt="(K,+,\cdot,0 \neq 1)" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    ​-模称为
+                    <b>
+                        线性空间(linear space)
+                    </b>
+                    。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP16：Hamilton力学
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-b3e324221b07613dbfc675e4f3abb48c_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/42702657" target="_blank">
+                        MP16：Hamilton力学
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-14
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    本讲简要介绍在经典力学和量子力学中都非常重要的Hamilton力学。实际上，Hamilton力学正是从经典力学过渡到量子力学的基本形式。
+                </p>
+                <p>
+                    我们把Lagrange力学系统中的Lagrange量对广义速度求导数，得到了共轭的动量。借助上讲所研究的Legendre变换，我们把Lagrange力学过渡到以广义动量表述的Hamilton力学上。
+                </p>
+                <p>
+                    相应地，Lagrange力学中的Lagrange量也过渡到了Hamilton力学中的Hamilton量，Euler-Lagrange方程也过渡到了Hamilton方程。
+                </p>
+                <p>
+                    我们还介绍了Poisson括号，通过把时间的复合导数展开，并且代入Hamilton方程，我们得到了Poisson括号的定义。
+                </p>
+                <p>
+                    借助Poisson括号，我们证明了保守系统的Hamilton量是守恒量，它实际上就是机械能。
+                </p>
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <hr>
+                <p>
+                    量子力学最基础的
+                    <b>
+                        Schrödinger方程
+                    </b>
+                    大体上讲的是
+                </p>
+                <blockquote>
+                    粒子在
+                    <b>
+                        势场
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=V%28r%29" alt="V(r)" eeimg="1">
+                    中运动，令
+                    <b>
+                        Hamilton算符
+                    </b>
+                    为：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=H%3D-%5Cfrac%7B%5Chbar%5E2%7D%7B2m%7D+%5Cnabla%5E2+%2B+V%28r%29" alt="H=-\frac{\hbar^2}{2m} \nabla^2 + V(r)" eeimg="1">
+                    <br>
+                    则Schrödinger方程写为：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=i%5Chbar%5Cfrac%7B%5Cpartial+%5Cpsi%7D%7B%5Cpartial+t%7D+%3D+H%5Cpsi" alt="i\hbar\frac{\partial \psi}{\partial t} = H\psi" eeimg="1">
+                </blockquote>
+                <p>
+                    我们在今后会在量子力学中详细讲这个Schrödinger方程的来龙去脉。现在我们以微分几何和分析力学为主。我们注意到Schrödinger方程中出现了势场和Hamilton算符。实际上可以说，Schrödinger方程就是Hamilton力学方程在波函数世界的类比。学好Hamilton力学，将来再学习量子力学就有了充分的知识储备。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Hamilton量
+                    </b>
+                </h2>
+                <p>
+                    Hamilton力学可以从前面的Lagrange力学，通过Legendre变换推出，具体请参考：
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/44078754" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：MP14：Lagrange力学
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/43612205" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：MP15：Legendre变换
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在自然坐标系中，动能
+                    <img src="https://www.zhihu.com/equation?tex=T%28%5Cdot%7Bq%7D%29" alt="T(\dot{q})" eeimg="1">
+                    是速度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot%7Bq%7D" alt="\dot{q}" eeimg="1">
+                    的单变量函数，保守势能
+                    <img src="https://www.zhihu.com/equation?tex=V%28q%29" alt="V(q)" eeimg="1">
+                    是坐标
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    的单变量函数。Lagrange量是位置和速度的函数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=L%28q%2C+%5Cdot+q%29" alt="L(q, \dot q)" eeimg="1">
+                </p>
+                <p>
+                    其对时间的导数为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BdL%7D%7Bdt%7D+%3D+%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+q_i%7D%5Cdot+q%5Ei+%2B+%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+%5Cdot+q_i%7D%5Cddot+q%5Ei" alt="\frac{dL}{dt} = \frac{\partial L}{\partial q_i}\dot q^i + \frac{\partial L}{\partial \dot q_i}\ddot q^i" eeimg="1">
+                </p>
+                <p>
+                    由于根据E-L方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+q_i%7D%3D%5Cfrac%7Bd%7D%7Bdt%7D%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+%5Cdot%7Bq%7D_i%7D" alt="\frac{\partial L}{\partial q_i}=\frac{d}{dt}\frac{\partial L}{\partial \dot{q}_i}" eeimg="1">
+                </p>
+                <p>
+                    得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BdL%7D%7Bdt%7D+%3D+%5CBig%28+%5Cfrac%7Bd%7D%7Bdt%7D%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+%5Cdot+q_i%7D+%5CBig%29+%5Cdot+q%5Ei+%2B+%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+%5Cdot+q_i%7D%5Cddot+q%5Ei+%3D+%5Cfrac%7Bd%7D%7Bdt%7D+%5CBig%28+%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+%5Cdot+q_i%7D+%5Cdot+q%5Ei+%5CBig%29" alt="\frac{dL}{dt} = \Big( \frac{d}{dt}\frac{\partial L}{\partial \dot q_i} \Big) \dot q^i + \frac{\partial L}{\partial \dot q_i}\ddot q^i = \frac{d}{dt} \Big( \frac{\partial L}{\partial \dot q_i} \dot q^i \Big)" eeimg="1">
+                </p>
+                <p>
+                    这里出现的表达式定义为
+                    <b>
+                        共轭动量(conjugate momentum)
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p%5Ei+%3D+%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+%5Cdot%7Bq%7D_i%7D" alt="p^i = \frac{\partial L}{\partial \dot{q}_i}" eeimg="1">
+                </p>
+                <p>
+                    经过Legendre变换得到以下函数场
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T%5E%2AM+%5Cto+%5Cmathbb%7BR%7D" alt="T^*M \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28q%2Cp%29+%5Cmapsto+H%28q%2Cp%29+%3D+T%28p%29+%2B+V%28q%29" alt="(q,p) \mapsto H(q,p) = T(p) + V(q)" eeimg="1">
+                </p>
+                <p>
+                    称为Hamilton量。这里的余切丛
+                    <img src="https://www.zhihu.com/equation?tex=T%5E%2AM" alt="T^*M" eeimg="1">
+                    称为
+                    <b>
+                        相空间(phase space)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    解读。在Lagrange力学中，动能函数表达为速度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot%7Bq%7D" alt="\dot{q}" eeimg="1">
+                    的函数，而经过Legendre变换，动能函数成为动量
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    的函数。在自然坐标系中就很好理解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T%28%5Cdot%7Bq%7D%29+%3D+%5Cfrac%7Bm%5Cdot%7Bq%7D%5E2%7D%7B2%7D+%3D+%5Cfrac%7Bp%5E2%7D%7B2m%7D+%3D+T%28p%29" alt="T(\dot{q}) = \frac{m\dot{q}^2}{2} = \frac{p^2}{2m} = T(p)" eeimg="1">
+                </p>
+                <p>
+                    Hamilton量写为动能和势能之和的形式，表示Hamilton量就是保守力学系统的总机械能。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Hamilton方程
+                    </b>
+                </h2>
+                <p>
+                    E-L方程在相空间的表现形式是对等的Hamilton方程
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p%5Ek%7D+%3D+%5Cdot%7Bq%7D_k+%5C%5C+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q_k%7D+%3D-+%5Cdot%7Bp%7D%5Ek+%5Cend%7Bcases%7D" alt="\begin{cases} \frac{\partial H}{\partial p^k} = \dot{q}_k \\ \frac{\partial H}{\partial q_k} =- \dot{p}^k \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    详细的推导是利用变分关系对Lagrange量求导数得到的，请参考相关文献。接下来我们用Poisson括号从能量上阐明Hamilton方程的意义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Poisson括号
+                    </b>
+                </h2>
+                <p>
+                    考虑相空间
+                    <img src="https://www.zhihu.com/equation?tex=%28q%2Cp%29" alt="(q,p)" eeimg="1">
+                    上对时间
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    的微分算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+t%7D+%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cdot%7Bq%7D%5Ek+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%5Ek%7D+%2B+%5Cdot%7Bp%7D%5Ek+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+p%5Ek%7D+%5CBig%29" alt="\frac{\partial}{\partial t} = \sum_{k=1}^{n} \Big( \dot{q}^k \frac{\partial}{\partial q^k} + \dot{p}^k \frac{\partial}{\partial p^k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    若有Hamilton量
+                    <img src="https://www.zhihu.com/equation?tex=H" alt="H" eeimg="1">
+                    ，则可以代入Hamilton方程得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+t%7D+%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p_k%7D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%5Ek%7D+-+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q_k%7D+%5Cfrac%7B%5Cpartial+%7D%7B%5Cpartial+p%5Ek%7D+%5CBig%29" alt="\frac{\partial}{\partial t} = \sum_{k=1}^{n} \Big( \frac{\partial H}{\partial p_k} \frac{\partial}{\partial q^k} - \frac{\partial H}{\partial q_k} \frac{\partial }{\partial p^k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    于是，给定场函数
+                    <img src="https://www.zhihu.com/equation?tex=A%28q%2Cp%29%3AT%5E%2AM+%5Csim+%5Cmathbb%7BR%7D%5E%7B2n%7D+%5Cto+%5Cmathbb%7BR%7D" alt="A(q,p):T^*M \sim \mathbb{R}^{2n} \to \mathbb{R}" eeimg="1">
+                    有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+A%7D%7B%5Cpartial+t%7D+%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p_k%7D+%5Cfrac%7B%5Cpartial+A%7D%7B%5Cpartial+q%5Ek%7D+-+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q_k%7D+%5Cfrac%7B%5Cpartial+A%7D%7B%5Cpartial+p%5Ek%7D+%5CBig%29" alt="\frac{\partial A}{\partial t} = \sum_{k=1}^{n} \Big( \frac{\partial H}{\partial p_k} \frac{\partial A}{\partial q^k} - \frac{\partial H}{\partial q_k} \frac{\partial A}{\partial p^k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    这个导数仍然是场函数。令余切丛
+                    <img src="https://www.zhihu.com/equation?tex=T%5E%2AM" alt="T^*M" eeimg="1">
+                    上的光滑函数集合为
+                    <img src="https://www.zhihu.com/equation?tex=C%5E%5Cinfty%28T%5E%2AM%29" alt="C^\infty(T^*M)" eeimg="1">
+                    ，则可以构造二元运算如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=C%5E%5Cinfty%28T%5E%2AM%29++%5Ctimes+C%5E%5Cinfty%28T%5E%2AM%29++%5Cto+C%5E%5Cinfty%28T%5E%2AM%29" alt="C^\infty(T^*M)  \times C^\infty(T^*M)  \to C^\infty(T^*M)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B+F%2CG%5C%7D%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cfrac%7B%5Cpartial+F%7D%7B%5Cpartial+q%5Ek%7D%5Cfrac%7B%5Cpartial+G%7D%7B%5Cpartial+p_k%7D+-+%5Cfrac%7B%5Cpartial+F%7D%7B%5Cpartial+p%5Ek%7D+%5Cfrac%7B%5Cpartial+G%7D%7B%5Cpartial+q_k%7D+%5CBig%29" alt="\{ F,G\}= \sum_{k=1}^{n} \Big( \frac{\partial F}{\partial q^k}\frac{\partial G}{\partial p_k} - \frac{\partial F}{\partial p^k} \frac{\partial G}{\partial q_k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    这就是Poisson括号。Poisson括号给出了相空间的标量场之间的封闭的二元运算。在量子力学中，这种运算相当于对易子，它和著名的Heisenberg测不准原理有重要关系。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        能量守恒
+                    </b>
+                </h2>
+                <p>
+                    我们用Poisson括号来探讨一下能量守恒问题。前面看到，Hamilton量写为保守力学系统的总机械能形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H%28q%2Cp%29+%3D+T%28p%29+%2B+V%28q%29" alt="H(q,p) = T(p) + V(q)" eeimg="1">
+                </p>
+                <p>
+                    机械能守恒可以表达为机械能不随时间变化：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+t%7D+%3D+0" alt="\frac{\partial H}{\partial t} = 0" eeimg="1">
+                </p>
+                <p>
+                    借助前面在定义Poisson括号时引入的复合导数公式，相空间
+                    <img src="https://www.zhihu.com/equation?tex=%28q%2Cp%29" alt="(q,p)" eeimg="1">
+                    上的函数对时间的复合导数算子可以写为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+t%7D+%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cdot%7Bq%7D%5Ek+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%5Ek%7D+%2B+%5Cdot%7Bp%7D%5Ek+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+p%5Ek%7D+%5CBig%29" alt="\frac{\partial}{\partial t} = \sum_{k=1}^{n} \Big( \dot{q}^k \frac{\partial}{\partial q^k} + \dot{p}^k \frac{\partial}{\partial p^k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    那么
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+t%7D+%3D+0+%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cdot%7Bq%7D%5Ek+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q%5Ek%7D+%2B+%5Cdot%7Bp%7D%5Ek+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p%5Ek%7D+%5CBig%29" alt="\frac{\partial H}{\partial t} = 0 = \sum_{k=1}^{n} \Big( \dot{q}^k \frac{\partial H}{\partial q^k} + \dot{p}^k \frac{\partial H}{\partial p^k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    注意到上式若需要成立，则对任意一组指标
+                    <img src="https://www.zhihu.com/equation?tex=%28q_i%2Cp%5Ei%29" alt="(q_i,p^i)" eeimg="1">
+                    都需要满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot%7Bq%7D%5Ek+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q%5Ek%7D+%2B+%5Cdot%7Bp%7D%5Ek+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p%5Ek%7D++%3D+0" alt="\dot{q}^k \frac{\partial H}{\partial q^k} + \dot{p}^k \frac{\partial H}{\partial p^k}  = 0" eeimg="1">
+                </p>
+                <p>
+                    代入Hamilton方程
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p%5Ek%7D+%3D+%5Cdot%7Bq%7D_k" alt="\frac{\partial H}{\partial p^k} = \dot{q}_k" eeimg="1">
+                </p>
+                <p>
+                    可见这一条件得到满足，于是可以验证Hamilton量即能量的守恒。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Hamilton方程的复形式
+                    </b>
+                </h2>
+                <p>
+                    在前面高等线性代数的系列中，我们讨论了与复数相关的线性结构，涉及到symplectic内积和Hermit内积，它们反映了一种对偶的结构
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/43612010" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：MP5：内积、外积、面积、Hermit内积、辛内积
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    为了更好理解Hamilton方程所反映的对偶性质，现在我们给出它的复形式。考虑相空间
+                    <img src="https://www.zhihu.com/equation?tex=%28q%2Cp%29" alt="(q,p)" eeimg="1">
+                    上的Hamilton方程
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot%7Bq%7D%3D%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p%7D%2C+%5Cdot%7Bp%7D%3D-%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q%7D" alt="\dot{q}=\frac{\partial H}{\partial p}, \dot{p}=-\frac{\partial H}{\partial q}" eeimg="1">
+                </p>
+                <p>
+                    用同构的复空间表达，令
+                    <img src="https://www.zhihu.com/equation?tex=z%3Dq%2Bip" alt="z=q+ip" eeimg="1">
+                    ，于是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbar%7Bz%7D%3Dq-ip" alt="\bar{z}=q-ip" eeimg="1">
+                    ，注意
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=z%2B%5Cbar%7Bz%7D%3D2q%2C+z-%5Cbar%7Bz%7D%3Di2p" alt="z+\bar{z}=2q, z-\bar{z}=i2p" eeimg="1">
+                </p>
+                <p>
+                    有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+q%7D%7B%5Cpartial+z%7D+%3D+%5Cfrac%7B1%7D%7B2%7D%2C%5Cfrac%7B%5Cpartial+q%7D%7B%5Cpartial+%5Cbar%7Bz%7D%7D+%3D+%5Cfrac%7B1%7D%7B2%7D" alt="\frac{\partial q}{\partial z} = \frac{1}{2},\frac{\partial q}{\partial \bar{z}} = \frac{1}{2}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+z%7D+%3D+-%5Cfrac%7Bi%7D%7B2%7D%2C%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+%5Cbar%7Bz%7D%7D+%3D+%5Cfrac%7Bi%7D%7B2%7D" alt="\frac{\partial p}{\partial z} = -\frac{i}{2},\frac{\partial p}{\partial \bar{z}} = \frac{i}{2}" eeimg="1">
+                </p>
+                <p>
+                    于是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+z%7D+%3D+%5Cfrac%7B%5Cpartial+q%7D%7B%5Cpartial+z%7D%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%7D+%2B+%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+z%7D%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+p%7D+%3D+%5Cfrac%7B1%7D%7B2%7D+%5Cbig+%28+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%7D+-+i%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+p%7D+%5Cbig+%29" alt="\frac{\partial}{\partial z} = \frac{\partial q}{\partial z}\frac{\partial}{\partial q} + \frac{\partial p}{\partial z}\frac{\partial}{\partial p} = \frac{1}{2} \big ( \frac{\partial}{\partial q} - i\frac{\partial}{\partial p} \big )" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+%5Cbar%7Bz%7D%7D+%3D+%5Cfrac%7B%5Cpartial+q%7D%7B%5Cpartial+%5Cbar%7Bz%7D%7D%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%7D+%2B+%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+%5Cbar%7Bz%7D%7D%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+p%7D+%3D+%5Cfrac%7B1%7D%7B2%7D+%5Cbig+%28+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%7D+%2B+i%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+p%7D+%5Cbig+%29" alt="\frac{\partial}{\partial \bar{z}} = \frac{\partial q}{\partial \bar{z}}\frac{\partial}{\partial q} + \frac{\partial p}{\partial \bar{z}}\frac{\partial}{\partial p} = \frac{1}{2} \big ( \frac{\partial}{\partial q} + i\frac{\partial}{\partial p} \big )" eeimg="1">
+                </p>
+                <p>
+                    将相空间转为复空间，代入Hamilton方程
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot%7Bz%7D%3D%5Cdot%7Bq%7D%2Bi%5Cdot%7Bp%7D%3D%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p%7D-i%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q%7D+%3D%5CBig%28+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+p%7D-i%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%7D+%5CBig%29H" alt="\dot{z}=\dot{q}+i\dot{p}=\frac{\partial H}{\partial p}-i\frac{\partial H}{\partial q} =\Big( \frac{\partial}{\partial p}-i\frac{\partial}{\partial q} \Big)H" eeimg="1">
+                </p>
+                <p>
+                    于是Hamilton方程有以下的复形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot%7Bz%7D+%3D+-2i+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+%5Cbar%7Bz%7D%7D" alt="\dot{z} = -2i \frac{\partial H}{\partial \bar{z}}" eeimg="1">
+                </p>
+                <p>
+                    粒子在复相空间上对时间求导，相当于相曲线上的切速度向量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回顾复相空间的引入。我们要注意这里非常深层的考虑。线性空间及其对偶空间是成对出现的，而
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E%7B2n%7D+%5Csim+%5Cmathbb%7BC%7D" alt="\mathbb{R}^{2n} \sim \mathbb{C}" eeimg="1">
+                    ，这启示我们凡是具有对偶的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维实问题都可以考虑放在
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维复空间中研究。复形式的Hamilton方程只是一个发端的例子。分析力学的后继概念大体上都和这个对偶结构有关，也就是有名的Hamilton系统的辛结构问题。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

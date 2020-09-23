@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP30：仿射空间、变换群、Lie群
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-bf85c866114953e595bf5b6520bb932c_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46346265" target="_blank">
+                        MP30：仿射空间、变换群、Lie群
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-10
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    前面我们完成了Stokes定理的介绍，加上我们持续介绍的外微分和拓扑知识，经典电动力学的基础工具就基本完成了（这里指的是从理解上，解微分方程方面会在后面的数学物理方法中再谈）。我们在
+                    <a href="https://zhuanlan.zhihu.com/p/46151627" class="internal">
+                        MP26：力学与电磁学中的外微分：Maxwell方程组、电场与磁场、Hodge星算子
+                    </a>
+                    中谈到了简化Maxwell方程的问题。到这一步，我们已经无法回避相对论了。相对论建立在坐标变换的基础上。本文先做一些技术准备，让大家熟练理解变换群的概念。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        仿射空间及其平移变换群
+                    </b>
+                </h2>
+                <p>
+                    在数学物理的平移变换中，我们往往关心的是
+                    <b>
+                        位移(displacement)
+                    </b>
+                    而非
+                    <b>
+                        位置(position)
+                    </b>
+                    。位移的信息并不要求位置所在的空间有一个
+                    <b>
+                        原点(origin)
+                    </b>
+                    ，原点暗示群的结构，这种结构往往过于丰富了——
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    有原点而标量势没有自然的原点，我们往往讨论电势差、势能差而不会关心它们绝对值。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    此外，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    有群的加法，可是如果问
+                </p>
+                <blockquote>
+                    <b>
+                        20°C + 30°C的物理意义是什么？
+                    </b>
+                    <br>
+                    <b>
+                        既然30°C = 303.15K，那么20°C + 30°C和20°C + 303.15K是一回事么？
+                    </b>
+                </blockquote>
+                <p>
+                    我们很少这样去思考，倘若一定要解答的话，我们只能说加上去的温度是
+                    <b>
+                        温差
+                    </b>
+                    而不是
+                    <b>
+                        温度
+                    </b>
+                    ，所以不能认为温差的30°C = 303.15K。温差和温度是两个物理量，进一步说，
+                    <b>
+                        绝对（absolute）
+                    </b>
+                    物理量
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    和它的
+                    <b>
+                        相对(relative)
+                    </b>
+                    求差
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+x" alt="\Delta x" eeimg="1">
+                    是两个物理量。实际上
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+x%2C+dx" alt="\Delta x, dx" eeimg="1">
+                    都是相对而非绝对量。绝对和相对的矛盾在于，相对往往具有更丰富的（群）结构。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    通常理解的加法，严格从代数上讲，在绝对物理量上是失效的。我们需要关注这些细节，这种比Euclide空间（作为线性空间）
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    更弱的空间称为
+                    <b>
+                        仿射空间(affine space)
+                    </b>
+                    。这里略微描述一下仿射空间，并非严格定义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    若点集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    关联了一个线性空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverrightarrow%7BA%7D" alt="\overrightarrow{A}" eeimg="1">
+                    ，它们之间定义二元运算加法
+                    <img src="https://www.zhihu.com/equation?tex=%2B" alt="+" eeimg="1">
+                    如下
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Ctimes+%5Coverrightarrow%7BA%7D+%5Cto+A" alt="A \times \overrightarrow{A} \to A" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28p%2Cv%29+%5Cmapsto+p%2Bv" alt="(p,v) \mapsto p+v" eeimg="1">
+                </p>
+                <p>
+                    即线性空间中的元
+                    <img src="https://www.zhihu.com/equation?tex=T+%5Cin+%5Coverrightarrow%7BA%7D" alt="T \in \overrightarrow{A}" eeimg="1">
+                    构成对点
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+A" alt="p \in A" eeimg="1">
+                    的变换，变换到
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    中的另外一点
+                    <img src="https://www.zhihu.com/equation?tex=p%2Bv" alt="p+v" eeimg="1">
+                    。如果这里的加法
+                    <img src="https://www.zhihu.com/equation?tex=%2B" alt="+" eeimg="1">
+                    对应着加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverrightarrow%7BA%7D%280%2C+%2B%29" alt="\overrightarrow{A}(0, +)" eeimg="1">
+                    使得加群的各种性质在以上变换中也能保持，即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+v_1%2C+v_2+%5Cin+%5Coverrightarrow%7BA%7D" alt="\forall v_1, v_2 \in \overrightarrow{A}" eeimg="1">
+                    以及取加群的单位元
+                    <img src="https://www.zhihu.com/equation?tex=0+%5Cin+%5Coverrightarrow%7BA%7D%280%2C+%2B%29" alt="0 \in \overrightarrow{A}(0, +)" eeimg="1">
+                    有：
+                </p>
+                <ul>
+                    <li>
+                        单位元：
+                        <img src="https://www.zhihu.com/equation?tex=p%2B0+%3D+p" alt="p+0 = p" eeimg="1">
+                    </li>
+                    <li>
+                        结合律：
+                        <img src="https://www.zhihu.com/equation?tex=%28p%2Bv_1%29%2Bv_2%3Dp%2B%28v_1%2Bv_2%29" alt="(p+v_1)+v_2=p+(v_1+v_2)" eeimg="1">
+                    </li>
+                    <li>
+                        交换律：
+                        <img src="https://www.zhihu.com/equation?tex=%28p%2Bv_1%29%2Bv_2%3D%28p%2Bv_2%29%2Bv_1" alt="(p+v_1)+v_2=(p+v_2)+v_1" eeimg="1">
+                    </li>
+                    <li>
+                        单满：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+p+%5Cin+A" alt="\forall p \in A" eeimg="1">
+                        则
+                        <img src="https://www.zhihu.com/equation?tex=v+%5Cmapsto+p%2Bv" alt="v \mapsto p+v" eeimg="1">
+                        是
+                        <img src="https://www.zhihu.com/equation?tex=%5Coverrightarrow%7BA%7D+%5Cto+A" alt="\overrightarrow{A} \to A" eeimg="1">
+                        的单满映射
+                    </li>
+                </ul>
+                <p>
+                    这样的点集
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    称为
+                    <b>
+                        仿射空间(affine space)
+                    </b>
+                    ，而线性空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverrightarrow%7BA%7D" alt="\overrightarrow{A}" eeimg="1">
+                    在以上变换上构成仿射空间的
+                    <b>
+                        平移(translation)
+                    </b>
+                    变换群，群运算即
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverrightarrow%7BA%7D" alt="\overrightarrow{A}" eeimg="1">
+                    中的加法。
+                </p>
+                <p>
+                    <br>
+                    仿射空间及其平移变换群的关系，在物理上是广泛存在的。由于过于广泛，我们常常在概念上忽略了它们的细微差异。中学生，如果不能掌握明确的代数概念，不能区分仿射空间及其变换群，就需要背记许多相关却有微妙差别的概念：
+                </p>
+                <p>
+                    位置（仿射空间）vs.位移（平移）
+                </p>
+                <p>
+                    温度（仿射空间）vs.温差（平移）
+                </p>
+                <p>
+                    电压（仿射空间）vs.电势差（平移）
+                </p>
+                <p>
+                    ...
+                </p>
+                <p>
+                    进一步，为何中学物理中可以任意建立势能函数，而不用关系其间相差一个常量？为何不定积分后面总是要加上一个任意常数的符号
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    ？这一类的求差问题，都和仿射空间及其变换群有关。
+                </p>
+                <h2>
+                    <br>
+                    <br>
+                    <b>
+                        Galileo变换
+                    </b>
+                </h2>
+                <p>
+                    仿射空间往往与其变换群关联。我们最常见的是平移变换群，而在物理上常用的平移变换群是Galileo变换群。
+                    <img src="https://www.zhihu.com/equation?tex=4" alt="4" eeimg="1">
+                    -维仿射空间
+                    <img src="https://www.zhihu.com/equation?tex=A%5E4" alt="A^4" eeimg="1">
+                    中的点称为
+                    <b>
+                        世界点(world point)
+                    </b>
+                    或
+                    <b>
+                        事件(event)
+                    </b>
+                    ，直白讲就是把事件发生的时间地点写在一个坐标中。这个仿射空间的平移变换群就是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E4" alt="\mathbb{R}^4" eeimg="1">
+                    。两个参考系可以视为两个
+                    <img src="https://www.zhihu.com/equation?tex=4" alt="4" eeimg="1">
+                    -仿射空间，当它们以匀速
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    相对运动时，我们可以在速度方向上建立空间坐标，使得参考系的相互关系成为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D++x%5E%5Cprime+%3D+x+-+vt+%5C%5C+y%5E%5Cprime+%3D+y+%5C%5C+z%5E%5Cprime+%3D+z+%5C%5C+t%5E%5Cprime+%3D+t+%5Cend%7Bcases%7D" alt="\begin{cases}  x^\prime = x - vt \\ y^\prime = y \\ z^\prime = z \\ t^\prime = t \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    称为
+                    <b>
+                        Galileo变换
+                    </b>
+                    。Galileo变换的集合具有群的结构，这是易于理解和验证的。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        Lie群
+                    </b>
+                </h2>
+                <p>
+                    我们的MP系列很早就开始研究平面旋转群：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/43974422" class="internal">
+                        MP2：平面旋转群SO(2)
+                    </a>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Ctheta+%5Cin+%5Cmathbb%7BR%7D" alt="\forall \theta \in \mathbb{R}" eeimg="1">
+                    ，可以按如下形式构成平面旋转变换矩阵：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    这类矩阵的全体集合记为
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    。我们将看到，
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    上附加运算、单位元、逆元的结构，也可以构成一个加群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    表示维度，SO指的是
+                    <b>
+                        特殊正交(special orthogonal)
+                    </b>
+                    群，是归一化的。于是我们可以放宽条件到由正交变换矩阵构成的
+                    <b>
+                        正交(orthogonal)
+                    </b>
+                    群
+                    <img src="https://www.zhihu.com/equation?tex=O%28n%29" alt="O(n)" eeimg="1">
+                    ，继续放宽条件到（行列式不为零，于是有逆）
+                    <b>
+                        一般线性(general linear)
+                    </b>
+                    群
+                    <img src="https://www.zhihu.com/equation?tex=GL%28n%29" alt="GL(n)" eeimg="1">
+                    ，以及在复域上的
+                    <b>
+                        特殊酉(special unitary)
+                    </b>
+                    群
+                    <img src="https://www.zhihu.com/equation?tex=SU%28n%29" alt="SU(n)" eeimg="1">
+                    和
+                    <b>
+                        酉(unitary)
+                    </b>
+                    群
+                    <img src="https://www.zhihu.com/equation?tex=SU%28n%29" alt="SU(n)" eeimg="1">
+                    等。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这些群都是以单位矩阵为单位元，以矩阵乘法为群运算，以矩阵的逆为逆元的群结构。注意到矩阵的元若取值于连续的实域/复域，那么矩阵本身具有连续的结构。这种连续结构在几何上是有拓扑意义的，而且不止连续还是光滑的，几何上对应着光滑流形。现在我们需要将这些矩阵群视为光滑流形。通过Lie群，我们将矩阵的群结构和微分几何联系起来，统一看待许多既具有代数结构又具有几何意义的变换问题。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <blockquote>
+                    <b>
+                        Lie群就是具有群结构的光滑流形。
+                    </b>
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    为例，按矩阵表示
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D++%5Cin+%5Cmathbb%7BR%7D%5E%7B2+%5Ctimes+2%7D+" alt="\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}  \in \mathbb{R}^{2 \times 2}" eeimg="1">
+                </p>
+                <p>
+                    可以视为向量
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%26+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D%5ET++%5Cin+%5Cmathbb%7BR%7D%5E4+" alt="\begin{bmatrix} \cos \theta &amp; -\sin \theta &amp; \sin \theta &amp; \cos \theta \end{bmatrix}^T  \in \mathbb{R}^4" eeimg="1">
+                </p>
+                <p>
+                    显然这是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E4+" alt="\mathbb{R}^4" eeimg="1">
+                    种嵌入的一个
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -维光滑流形，或者说参数曲线。可以验证
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    是Lie群。前面提到的其它矩阵群用类似的方式也可以证明它们内蕴的拓扑和微分结构，所以也是Lie群，它们一般叫做
+                    <b>
+                        典型群(classical group)
+                    </b>
+                    ，将来会有大量的应用。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP55：线性算子(8)：量子力学中的无界算子
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-7727d366a47c45a6d7f893f08a2d3ccc_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/45329426" target="_blank">
+                        MP55：线性算子(8)：量子力学中的无界算子
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-11-05
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    本讲给出了与无界算子研究相关的一些基本概念，特别关注的是和量子力学相关的、与过去熟悉的自伴算子有密切联系的概念，包括稠定子空间、对称算子、乘法算子、算子的图、闭算子、扩张、闭包、稠定算子、本质自伴等。
+                </p>
+                <p>
+                    前面我们了解到有界自伴算子具有良好的特性，可以对角化为实值的特征值，这样在量子力学中就很容易地得到相应的本征态及概率分布。
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47247498" class="internal">
+                        MP40：从经典力学到量子力学(1)：Hamilton力学、可观测量、本征态
+                    </a>
+                </p>
+                <p>
+                    如果我们遇到的都是有界自伴算子，那么量子力学的学习几乎可以结束了。不幸的是，在量子力学乃至数学物理方法中所遇到的大部分算子都是无界算子，包括我们最常见的位置算子、动量算子、Schrödinger算子都是无界算子。
+                </p>
+                <p>
+                    从本讲开始，我们学习一些技术，使得我们能够在无界算子上近似得到有界自伴算子的某些性质，从而帮助我们处理量子力学中的各种问题。我们先从量子力学最基本的位置算子和动量算子开始，这两个算子都是无界对称算子。它们经过一定的处理都相当于乘法算子。
+                </p>
+                <p>
+                    然后，我们回到算子理论，给出了算子的图、闭算子、扩张、闭包等概念。进一步我们讨论Hilbert空间上的自映射算子，主要了解了对称算子和自伴算子的联系，给出了本质自伴算子的概念。
+                </p>
+                <hr>
+                <h2>
+                    <b>
+                        无界算子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在我们回到量子力学。虽然前面学了不少关于算子的理论，然而令人沮丧的是，在量子力学中最常见的物理量，包括位置算符、动量算符、能量算符，都不是有界算子，对应的，在经典力学的相空间中，这些对应的物理量也是无界的函数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <blockquote>
+                    Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+C+%3E0" alt="\exists C &gt;0" eeimg="1">
+                    s.t.
+                    <img src="https://www.zhihu.com/equation?tex=%7C%7CA%5Cpsi%7C%7C+%3C+C%5C%7C%5Cpsi%5C%7C%2C+%5C+%5Cforall+%5Cpsi+%5Cin+%5Cmathscr+H" alt="||A\psi|| &lt; C\|\psi\|, \ \forall \psi \in \mathscr H" eeimg="1">
+                    ，则称为有界的。若有唯一的算子
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A" alt="A^*" eeimg="1">
+                    使得：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cphi%2C+A%5Cpsi+%5Crangle+%3D+%5Clangle+A%5E%2A%5Cphi%2C+%5Cpsi+%5Crangle%2C+%5C+%5C+%5Cforall+%5Cphi%2C%5Cpsi+%5Cin+%5Cmathscr+H" alt="\langle \phi, A\psi \rangle = \langle A^*\phi, \psi \rangle, \ \ \forall \phi,\psi \in \mathscr H" eeimg="1">
+                    <br>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A" alt="A^*" eeimg="1">
+                    称为
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的伴随算子。以上的内积形式实际上是Riesz引理所对应的对偶空间，即：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=A+%3A+%5Cmathscr+H+%5Cto+%5Cmathscr+H" alt="A : \mathscr H \to \mathscr H" eeimg="1">
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A%3A+%5Cmathscr+H%5E%2A+%5Cleftarrow+%5Cmathscr+H%5E%2A" alt="A^*: \mathscr H^* \leftarrow \mathscr H^*" eeimg="1">
+                    <br>
+                    若是
+                    <img src="https://www.zhihu.com/equation?tex=A%3DA%5E%2A" alt="A=A^*" eeimg="1">
+                    则是自伴算子。
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    所谓无界(unbounded)算子，指的是并非都有界(not necessarily bounded)，我们可以定义一个稠子空间(dense subspace)
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28A%29+%5Csubset+%5Cmathscr+H" alt="\text{Dom}(A) \subset \mathscr H" eeimg="1">
+                    ，使得将算子限制在这个子空间上
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3A+%5Ctext%7BDom%7D%28A%29+%5Cto+%5Cmathscr+H" alt="A: \text{Dom}(A) \to \mathscr H" eeimg="1">
+                </p>
+                <p>
+                    具有某些特性。我们结合量子力学中的位置算符和动量算符回顾一下。量子态的空间是平方可积Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%3D+L%5E2" alt="\mathscr H = L^2" eeimg="1">
+                    ：
+                </p>
+                <ul>
+                    <li>
+                        位置算符
+                        <img src="https://www.zhihu.com/equation?tex=X%5Cpsi+%3D+x%5Cpsi" alt="X\psi = x\psi" eeimg="1">
+                        不能保证映射的结果平方可积，故
+                        <img src="https://www.zhihu.com/equation?tex=X+%5Cnotin+%5Cmathscr+H" alt="X \notin \mathscr H" eeimg="1">
+                        ；
+                    </li>
+                    <li>
+                        动量算符
+                        <img src="https://www.zhihu.com/equation?tex=P%5Cpsi+%3D+-i%5Chbar%5Cfrac%7Bd%5Cpsi%7D%7Bdt%7D" alt="P\psi = -i\hbar\frac{d\psi}{dt}" eeimg="1">
+                        不能保证可微，也不能保证导数平方可积，故
+                        <img src="https://www.zhihu.com/equation?tex=P+%5Cnotin+%5Cmathscr+H" alt="P \notin \mathscr H" eeimg="1">
+                        。
+                    </li>
+                </ul>
+                <p>
+                    实际上，位置算符和动量算符都是无界算子。仅仅当它们定义在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%3D+L%5E2" alt="\mathscr H = L^2" eeimg="1">
+                    的某个适当的稠子空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28X%29" alt="\text{Dom}(X)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28P%29" alt="\text{Dom}(P)" eeimg="1">
+                    上时，才可以按照有界算子来讨论。若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%2C%5Cpsi+%5Cin+%5Cmathscr+H+%3D+L%5E2" alt="\varphi,\psi \in \mathscr H = L^2" eeimg="1">
+                    满足适当的条件，可以使得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cvarphi%2C+X%5Cpsi+%5Crangle+%3D+%5Clangle+X%5Cvarphi%2C+%5Cpsi+%5Crangle" alt="\langle \varphi, X\psi \rangle = \langle X\varphi, \psi \rangle" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cvarphi%2C+P%5Cpsi+%5Crangle+%3D+%5Clangle+P%5Cvarphi%2C+%5Cpsi+%5Crangle" alt="\langle \varphi, P\psi \rangle = \langle P\varphi, \psi \rangle" eeimg="1">
+                </p>
+                <p>
+                    这种情况被称为对称算子。即，无界算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    将空间上的一个定义域映射到了空间本身：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3A+%5Ctext%7BDom%7D%28A%29+%5Csubset+%5Cmathscr+H+%5Cto+%5Cmathscr+H" alt="A: \text{Dom}(A) \subset \mathscr H \to \mathscr H" eeimg="1">
+                </p>
+                <p>
+                    一般假设这个区域为稠密子空间。如果
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+Ax%2Cy+%5Crangle+%3D+%5Clangle+x%2C+Ay+%5Crangle%2C+%5C+%5Cforall+x%2Cy+%5Cin+%5Ctext%7BDom%7D%28A%29" alt="\langle Ax,y \rangle = \langle x, Ay \rangle, \ \forall x,y \in \text{Dom}(A)" eeimg="1">
+                </p>
+                <p>
+                    即在这个定义域中算子的性质有如自伴算子，那么称算子为
+                    <b>
+                        对称(symmetric)
+                    </b>
+                    算子。如果对称算子的定义域可以是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    本身，则称其为necessarily bounded。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        乘法算子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    位置算子对态的作用为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28X%5Cpsi%29%28x%29+%3D+x%5Cpsi%28x%29" alt="(X\psi)(x) = x\psi(x)" eeimg="1">
+                </p>
+                <p>
+                    这相当于用函数
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    乘到态
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29" alt="\psi(x)" eeimg="1">
+                    上，这种作用方式对于谱分析特别简单，具有这种乘法效应的算子称为
+                    <b>
+                        乘法算子(multiplication operator)
+                    </b>
+                    。在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%3D+L%5E2%28X%2C+%5Cmu%29" alt="\mathscr H = L^2(X, \mu)" eeimg="1">
+                    中，若有
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的可测实值函数
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    ，则可以定义出乘法算子
+                    <img src="https://www.zhihu.com/equation?tex=M_h" alt="M_h" eeimg="1">
+                    使得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=M_h%5Cpsi+%3D+h%5Cpsi" alt="M_h\psi = h\psi" eeimg="1">
+                </p>
+                <p>
+                    前面我们讨论过谱定理 [
+                    <a href="https://zhuanlan.zhihu.com/p/47397791" class="internal">
+                        MP52
+                    </a>
+                    ]，实际上，谱定理还有一种等价的陈述，即：可分Hilbert空间上的自伴算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    <b>
+                        酉等价(unitarily equivalent)
+                    </b>
+                    于一个乘法算子。也就是说，存在
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma" alt="\sigma" eeimg="1">
+                    -有限的测度空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Cmu%29" alt="(X,\mu)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上的可测函数
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    使得自伴算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的作用酉等价于函数
+                    <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                    的乘法作用。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    不仅如此，动量算子也可以视作乘法算子。对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cpsi+%5Cin+%5Cmathscr+H+%3D+L%5E2%28%5Cmathbb+R%29" alt="\forall \psi \in \mathscr H = L^2(\mathbb R)" eeimg="1">
+                    ，根据 [
+                    <a href="https://zhuanlan.zhihu.com/p/47010723" class="internal">
+                        MP41
+                    </a>
+                    ] 进行Fourier变换：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat%7B%5Cpsi%7D%28p%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%5Chbar%7D%7D+%5Cint_%7B%5Cmathbb%7BR%7D%7D+e%5E%7B-ixp%2F%5Chbar%7D+%5Cpsi%28x%29+dx" alt="\hat{\psi}(p) = \frac{1}{\sqrt{2\pi\hbar}} \int_{\mathbb{R}} e^{-ixp/\hbar} \psi(x) dx" eeimg="1">
+                </p>
+                <p>
+                    这种以
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    为变量的函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat+%5Cpsi%28p%29" alt="\hat \psi(p)" eeimg="1">
+                    成为对应于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29" alt="\psi(x)" eeimg="1">
+                    的
+                    <b>
+                        动量波函数(momentum wave function)
+                    </b>
+                    ，这样便让我们从位置表现切换到了动量表象，而在动量表象下，动量算子就是一个乘法算子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        闭算子、扩张、稠定
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Banach空间上的有界线性算子具有算子范数，使得对算子的研究较为便利。而无界算子是没有算子范数的，因此，我们必须借助其它手段来研究。先熟悉一下两个空间之间的算子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        图、闭算子
+                    </b>
+                    。两个Banach空间
+                    <img src="https://www.zhihu.com/equation?tex=X%5C%7C%5Ccdot%5C%7C_X%2CY%5C%7C%5Ccdot%5C%7C_Y" alt="X\|\cdot\|_X,Y\|\cdot\|_Y" eeimg="1">
+                    的乘积
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Ctimes+Y" alt="X \times Y" eeimg="1">
+                    也是Banach空间，它的范数是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7C%28x%2Cy%29%5C%7C+%3D+%5C%7Cx%5C%7C_X+%2B+%5C%7Cy%5C%7C_Y" alt="\|(x,y)\| = \|x\|_X + \|y\|_Y" eeimg="1">
+                </p>
+                <p>
+                    若有线性算子
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3A+X+%5Cto+Y" alt="A: X \to Y" eeimg="1">
+                </p>
+                <p>
+                    其定义域是线性子空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28A%29+%5Csubset+X" alt="\text{Dom}(A) \subset X" eeimg="1">
+                    ，其值域是
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BRan%7D%28A%29+%5Csubset+Y" alt="\text{Ran}(A) \subset Y" eeimg="1">
+                    ，乘积空间
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Ctimes+Y" alt="X \times Y" eeimg="1">
+                    的线性子空间
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma%28A%29+%3D+%5C%7B%28x%2CAx%29+%7C+x+%5Cin+%5Ctext%7BDom%7D%28A%29%5C%7D" alt="\Gamma(A) = \{(x,Ax) | x \in \text{Dom}(A)\}" eeimg="1">
+                    称为算子的
+                    <b>
+                        图(graph)
+                    </b>
+                    。如果图
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma%28A%29" alt="\Gamma(A)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Ctimes+Y" alt="X \times Y" eeimg="1">
+                    中是闭的，则称算子是
+                    <b>
+                        闭算子(closed operator)
+                    </b>
+                    。
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        扩张、闭包
+                    </b>
+                    。两个线性算子
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB%3A+X+%5Cto+Y" alt="A,B: X \to Y" eeimg="1">
+                </p>
+                <p>
+                    若满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma%28A%29+%5Csubset+%5CGamma%28B%29" alt="\Gamma(A) \subset \Gamma(B)" eeimg="1">
+                </p>
+                <p>
+                    则称
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的
+                    <b>
+                        扩张(extension)
+                    </b>
+                    ，记为
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Csubset+B" alt="A \subset B" eeimg="1">
+                    。若线性算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    存在一个扩张
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    使得算子图的闭包(上划线)就是扩张算子的图
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5CGamma%28A%29%7D+%3D+%5CGamma%28B%29" alt="\overline{\Gamma(A)} = \Gamma(B)" eeimg="1">
+                </p>
+                <p>
+                    那么称
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是
+                    <b>
+                        可闭(closable)
+                    </b>
+                    的，其扩张
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    称为它的
+                    <b>
+                        闭包(closure)
+                    </b>
+                    ，记为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BA%7D+%3D+B" alt="\overline{A} = B" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                    <b>
+                        稠定算子
+                    </b>
+                    。线性算子
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3A+X+%5Cto+Y" alt="A: X \to Y" eeimg="1">
+                </p>
+                <p>
+                    其定义域是线性子空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28A%29+%5Csubset+X" alt="\text{Dom}(A) \subset X" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28A%29" alt="\text{Dom}(A)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中稠密，即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Ctext%7BDom%7D%28A%29%7D+%3D+X" alt="\overline{\text{Dom}(A)} = X" eeimg="1">
+                </p>
+                <p>
+                    则称算子是稠定算子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        自映射算子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上面定义了两个空间之间的图、闭算子、扩张、闭包、稠定算子等。现在我们专注在量子力学中常用的Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的自映射算子
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3A+%5Cmathscr+H+%5Cto+%5Cmathscr+H" alt="A: \mathscr H \to \mathscr H" eeimg="1">
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是有界算子，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cphi+%5Cin+%5Cmathscr+H%5E%2A" alt="\forall \phi \in \mathscr H^*" eeimg="1">
+                    有对偶内积形式的线性泛函
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cphi%2C+A+%5Ccdot+%5Crangle%3A+%5Cmathscr+H+%5Cto+%5Cmathbb+C" alt="\langle \phi, A \cdot \rangle: \mathscr H \to \mathbb C" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi+%5Cmapsto+%5Clangle+%5Cphi%2C+A+%5Ccdot+%5Crangle%28%5Cpsi%29+%3D+%5Clangle+%5Cphi%2C+A%5Cpsi+%5Crangle" alt="\psi \mapsto \langle \phi, A \cdot \rangle(\psi) = \langle \phi, A\psi \rangle" eeimg="1">
+                </p>
+                <p>
+                    也是有界的，根据Riesz引理 [
+                    <a href="https://zhuanlan.zhihu.com/p/46403590" class="internal">
+                        MP38
+                    </a>
+                    ]，存在唯一的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cchi" alt="\chi" eeimg="1">
+                    使得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cchi%2C+%5Ccdot+%5Crangle+%3D+%5Clangle+%5Cphi%2C+A+%5Ccdot+%5Crangle%3A+%5Cmathscr+H+%5Cto+%5Cmathbb+C" alt="\langle \chi, \cdot \rangle = \langle \phi, A \cdot \rangle: \mathscr H \to \mathbb C" eeimg="1">
+                </p>
+                <p>
+                    那么满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+A%5E%2A%5Cphi%2C+%5Ccdot+%5Crangle+%3D+%5Clangle+%5Cchi%2C+%5Ccdot+%5Crangle+%3D+%5Clangle+%5Cphi%2C+A+%5Ccdot+%5Crangle%3A+%5Cmathscr+H+%5Cto+%5Cmathbb+C" alt="\langle A^*\phi, \cdot \rangle = \langle \chi, \cdot \rangle = \langle \phi, A \cdot \rangle: \mathscr H \to \mathbb C" eeimg="1">
+                </p>
+                <p>
+                    的算子
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A" alt="A^*" eeimg="1">
+                    就是自伴算子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从(Hilbert空间的内积结构引入的)几何上看，有趣的是如下定理：对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的无界算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BRan%7D%28A%29%5E%5Cbot+%3D+%5Ctext%7BKer%7D%28A%5E%2A%29" alt="\text{Ran}(A)^\bot = \text{Ker}(A^*)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面讨论过无界对称算子，根据这里的符号，如果无界算子满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+A%5Cphi%2C+%5Cpsi+%5Crangle++%3D+%5Clangle+%5Cphi%2C+A+%5Cpsi+%5Crangle" alt="\langle A\phi, \psi \rangle  = \langle \phi, A \psi \rangle" eeimg="1">
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cphi%2C%5Cpsi+%5Cin+%5Ctext%7BDom%7D%28A%29" alt="\phi,\psi \in \text{Dom}(A)" eeimg="1">
+                    中都成立，那么
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    称为
+                    <b>
+                        对称算子(symmetric operator)
+                    </b>
+                    。对称算子的意义在于它和自伴算子的密切关系。如果无界对称算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是对称算子，那么它可以扩张为它的自伴算子
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A" alt="A^*" eeimg="1">
+                    ，反过来，可以扩张为自伴算子的无界算子也是对称算子。实际上，如果无界算子满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28A%5E%2A%29+%3D+%5Ctext%7BDom%7D%28A%29" alt="\text{Dom}(A^*) = \text{Dom}(A)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A%5Cphi+%3D+A%5Cphi" alt="A^*\phi = A\phi" eeimg="1">
+                </p>
+                <p>
+                    那么它就是自伴算子。无界对称算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    如果是可闭的，而且其闭包是自伴算子，那么就称
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为
+                    <b>
+                        本质自伴(essentially self-adjoint)
+                    </b>
+                    算子。对于本质自伴算子，这个自伴的闭包是它唯一的自伴扩张。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于对称算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的有界性，若
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28A%29+%3D+%5Cmathscr+H" alt="\text{Dom}(A) = \mathscr H" eeimg="1">
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是有界算子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以上这几条定理在大部分泛函分析教科书中都有证明。证明过程也比较简单。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        例子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    令实区间上平方可积的复值函数空间为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%3D+L%5E2%5B0%2C1%5D" alt="\mathscr H = L^2[0,1]" eeimg="1">
+                    ，以及紧区间上的复光滑函数集为
+                    <img src="https://www.zhihu.com/equation?tex=C%5E%5Cinfty%5B0%2C1%5D" alt="C^\infty[0,1]" eeimg="1">
+                    ，注意到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=C%5E%5Cinfty%5B0%2C1%5D+%5Csubset+%5Cmathscr+H+%3D+L%5E2%5B0%2C1%5D" alt="C^\infty[0,1] \subset \mathscr H = L^2[0,1]" eeimg="1">
+                </p>
+                <p>
+                    而且
+                    <img src="https://www.zhihu.com/equation?tex=C%5E%5Cinfty%5B0%2C1%5D" alt="C^\infty[0,1]" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%3D+L%5E2%5B0%2C1%5D" alt="\mathscr H = L^2[0,1]" eeimg="1">
+                    中稠密，即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7BC%5E%5Cinfty%5B0%2C1%5D%7D+%3D+L%5E2%5B0%2C1%5D" alt="\overline{C^\infty[0,1]} = L^2[0,1]" eeimg="1">
+                </p>
+                <p>
+                    考察一个常微分算子
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+-+%5Cfrac%7Bd%5E2%7D%7Bdt%5E2%7D%3A+%5Cmathscr+H+%5Cto+%5Cmathscr+H" alt="A = - \frac{d^2}{dt^2}: \mathscr H \to \mathscr H" eeimg="1">
+                </p>
+                <p>
+                    这是一个线性算子。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cphi%2C%5Cpsi+%5Cin+%5Cmathscr+H" alt="\forall \phi,\psi \in \mathscr H" eeimg="1">
+                    ，根据通常定义的内积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cphi%2CA%5Cpsi+%5Crangle+%3D+%5Cint_0%5E1+%5Coverline%5Cphi+A%5Cpsi+dt+%3D+-%5Cint_0%5E1+%5Coverline%5Cphi+%5Cfrac%7Bd%5E2%5Cpsi%7D%7Bdt%5E2%7D+dt" alt="\langle \phi,A\psi \rangle = \int_0^1 \overline\phi A\psi dt = -\int_0^1 \overline\phi \frac{d^2\psi}{dt^2} dt" eeimg="1">
+                </p>
+                <p>
+                    通过分部积分可以证得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cphi%2CA%5Cpsi+%5Crangle+%3D+%5Clangle+A%5Cphi%2C%5Cpsi+%5Crangle" alt="\langle \phi,A\psi \rangle = \langle A\phi,\psi \rangle" eeimg="1">
+                </p>
+                <p>
+                    于是
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是一个稠定对称算子。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

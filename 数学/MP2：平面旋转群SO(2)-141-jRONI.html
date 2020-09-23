@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP2：平面旋转群SO(2)
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-b537ce8fb58691c453ebaf24b55c2e39_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/43974422" target="_blank">
+                        MP2：平面旋转群SO(2)
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    平面旋转群SO(2)是我们站在初等数学的角度就可以形成直观理解的，不平凡的例子。它易于理解、易于计算、理论完备。本文作为MP系列最初的讲座之一，力求让大家熟悉这个例子，并且于简单中挖掘其中丰富的代数结构，也就是本文所讨论的Abel群，与复数表示的群同构关系，映射的合成等等。
+                </p>
+                <p>
+                    SO(2)的应用远不止如此。后面的系列中将反复地借助SO(2)产生丰富的数学结果，包括算子的谱分析（泛函分析）、复结构（复分析、复几何）、协变逆变（线性代数、微分几何）、微分流形（微分几何）、Lie群（微分几何、表示论）、张量。。。。等许多不同的数学物理领域。
+                </p>
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <hr>
+                <p>
+                    从我们熟知真实世界的感性认识，过渡到抽象的数学理解，
+                    <b>
+                        平面旋转群
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    是一个非常好的例子。上一讲，我们在回顾复平面上的一些基础问题时，探讨了平面旋转的性质。平面旋转是与复数乘法、虚数单位
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    的合成操作
+                    <img src="https://www.zhihu.com/equation?tex=i%5E2%3D-1" alt="i^2=-1" eeimg="1">
+                    ，以及Euler公式
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7Bi%5Calpha%7D%3D%5Ccos%5Calpha+%2B+i%5Csin%5Calpha" alt="e^{i\alpha}=\cos\alpha + i\sin\alpha" eeimg="1">
+                    这三个方面息息相关的。平面旋转作为对向量的变换，和被旋转的向量本身无关，我们只需要关注角度
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="\theta" eeimg="1">
+                    的旋转矩阵：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    这类矩阵构成了平面旋转群
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    。研究这个群的结构不仅帮助我们在上一讲中解决了复数中一些基础的问题，还将帮助我们更好地理解群论、线性代数的张量、泛函分析的算子群等更有趣的知识。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        作为Abel群（交换群）的平面旋转群
+                    </b>
+                </h2>
+                <p>
+                    任何一本抽象代数书一开始都给出了
+                    <b>
+                        群
+                    </b>
+                    和
+                    <b>
+                        Abel群
+                    </b>
+                    （
+                    <b>
+                        交换群
+                    </b>
+                    ）的定义。实数上的加法构成一个Abel群，称为加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%28%2B%2C0%29" alt="\mathbb{R}(+,0)" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Ctheta+%5Cin+%5Cmathbb%7BR%7D" alt="\forall \theta \in \mathbb{R}" eeimg="1">
+                    ，可以按如下形式构成平面旋转变换矩阵：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    这类矩阵的全体集合记为
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    。我们将看到，
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    上附加运算、单位元、逆元的结构，也可以构成一个加群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Calpha%2C%5Cbeta+%5Cin+%5Cmathbb%7BR%7D" alt="\forall \alpha,\beta \in \mathbb{R}" eeimg="1">
+                    ，两个旋转的合成等同于分别旋转，且可以交换旋转顺序：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%28%5Calpha%2B%5Cbeta%29+%26+-%5Csin+%28%5Calpha%2B%5Cbeta%29+%5C%5C+%5Csin+%28%5Calpha%2B%5Cbeta%29+%26+%5Ccos+%28%5Calpha%2B%5Cbeta%29+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Calpha+%26+-%5Csin+%5Calpha+%5C%5C+%5Csin+%5Calpha+%26+%5Ccos+%5Calpha+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Cbeta+%26+-%5Csin+%5Cbeta+%5C%5C+%5Csin+%5Cbeta+%26+%5Ccos+%5Cbeta+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} \cos (\alpha+\beta) &amp; -\sin (\alpha+\beta) \\ \sin (\alpha+\beta) &amp; \cos (\alpha+\beta) \end{bmatrix} =\begin{bmatrix} \cos \alpha &amp; -\sin \alpha \\ \sin \alpha &amp; \cos \alpha \end{bmatrix} \begin{bmatrix} \cos \beta &amp; -\sin \beta \\ \sin \beta &amp; \cos \beta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Cbeta+%26+-%5Csin+%5Cbeta+%5C%5C+%5Csin+%5Cbeta+%26+%5Ccos+%5Cbeta+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Calpha+%26+-%5Csin+%5Calpha+%5C%5C+%5Csin+%5Calpha+%26+%5Ccos+%5Calpha+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%28%5Cbeta%2B%5Calpha%29+%26+-%5Csin+%28%5Cbeta%2B%5Calpha%29+%5C%5C+%5Csin+%28%5Cbeta%2B%5Calpha%29+%26+%5Ccos+%28%5Cbeta%2B%5Calpha%29+%5Cend%7Bbmatrix%7D+" alt="=\begin{bmatrix} \cos \beta &amp; -\sin \beta \\ \sin \beta &amp; \cos \beta \end{bmatrix} \begin{bmatrix} \cos \alpha &amp; -\sin \alpha \\ \sin \alpha &amp; \cos \alpha \end{bmatrix} =\begin{bmatrix} \cos (\beta+\alpha) &amp; -\sin (\beta+\alpha) \\ \sin (\beta+\alpha) &amp; \cos (\beta+\alpha) \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    我们看到，加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%28%2B%2C0%29" alt="\mathbb{R}(+,0)" eeimg="1">
+                    所具有的交换性，在
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    中也得到保持。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta%3D0" alt="\theta=0" eeimg="1">
+                    时，记：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+1+%26+0+%5C%5C+0+%26+1+%5Cend%7Bbmatrix%7D+%3D+I" alt="\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} =\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} =\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} = I" eeimg="1">
+                </p>
+                <p>
+                    这是平面单位矩阵，作用于向量时是恒同的，换句话说，对向量进行了角度为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta%3D0" alt="\theta=0" eeimg="1">
+                    的平面旋转。这里对应了加群的单位元
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    再考虑反向旋转，即当角度为
+                    <img src="https://www.zhihu.com/equation?tex=-%5Ctheta" alt="-\theta" eeimg="1">
+                    时：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%28-%5Ctheta%29+%26+-%5Csin+%28-%5Ctheta%29+%5C%5C+%5Csin+%28-%5Ctheta%29+%26+%5Ccos+%28-%5Ctheta%29+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+%5Csin+%5Ctheta+%5C%5C+-%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5E%7B-1%7D" alt="\begin{bmatrix} \cos (-\theta) &amp; -\sin (-\theta) \\ \sin (-\theta) &amp; \cos (-\theta) \end{bmatrix} =\begin{bmatrix} \cos \theta &amp; \sin \theta \\ -\sin \theta &amp; \cos \theta \end{bmatrix} =\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} ^{-1}" eeimg="1">
+                </p>
+                <p>
+                    这里对应了加群的逆元。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    至此我们证明了
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29%28%5Ccdot%2CI%29" alt="SO(2)(\cdot,I)" eeimg="1">
+                    是一个Abel群，其中的乘法为矩阵乘法。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        平面旋转群与其它群的同构关系
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    群
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29%28%5Ccdot%2CI%29" alt="SO(2)(\cdot,I)" eeimg="1">
+                    与实数加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%28%2B%2C0%29" alt="\mathbb{R}(+,0)" eeimg="1">
+                    <b>
+                        同构
+                    </b>
+                    。根据同构的定义，这两个群之间存在可以保持群结构的
+                    <b>
+                        同态
+                    </b>
+                    映射。一般而言，同构就是
+                    <b>
+                        单满
+                    </b>
+                    映射的同态。具体讲，根据前面的计算，可以证明存在一个映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%3A%5Cmathbb%7BR%7D+%5Cto+SO%282%29" alt="\rho:\mathbb{R} \to SO(2)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta+%5Cmapsto+%5Crho%28%5Ctheta%29+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="\theta \mapsto \rho(\theta) = \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    这个映射将单位元映射到单位元：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=0+%5Cmapsto+%5Crho%280%29+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+0+%26+-%5Csin+0+%5C%5C+%5Csin+0+%26+%5Ccos+0+%5Cend%7Bbmatrix%7D+%3DI" alt="0 \mapsto \rho(0) = \begin{bmatrix} \cos 0 &amp; -\sin 0 \\ \sin 0 &amp; \cos 0 \end{bmatrix} =I" eeimg="1">
+                </p>
+                <p>
+                    将逆元映射到逆元：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=-%5Ctheta+%5Cmapsto+%5Crho%28-%5Ctheta%29+%3D+-%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D" alt="-\theta \mapsto \rho(-\theta) = -\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    保持可交换的二元运算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Calpha%2B%5Cbeta%29+%5Cmapsto+%5Crho%28%5Calpha%2B%5Cbeta%29+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Calpha+%26+-%5Csin+%5Calpha+%5C%5C+%5Csin+%5Calpha+%26+%5Ccos+%5Calpha+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Cbeta+%26+-%5Csin+%5Cbeta+%5C%5C+%5Csin+%5Cbeta+%26+%5Ccos+%5Cbeta+%5Cend%7Bbmatrix%7D+" alt="(\alpha+\beta) \mapsto \rho(\alpha+\beta) = \begin{bmatrix} \cos \alpha &amp; -\sin \alpha \\ \sin \alpha &amp; \cos \alpha \end{bmatrix} \begin{bmatrix} \cos \beta &amp; -\sin \beta \\ \sin \beta &amp; \cos \beta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    更严格地讲，以上写为三角函数矩阵形式的矩阵集合，是平面旋转群的一个
+                    <b>
+                        自然表示
+                    </b>
+                    。回顾上一讲的内容，它们和以下群也是同构的
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be%5E%7Bi%5Ctheta%7D+%5Cvert+%5Ctheta%5Cin%5Cmathbb%7BR%7D%5C%7D%28%5Ccdot%2C1%29" alt="\{e^{i\theta} \vert \theta\in\mathbb{R}\}(\cdot,1)" eeimg="1">
+                </p>
+                <p>
+                    其中的乘法为复数乘法。类似可以证明存在一个映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%3A%5Cmathbb%7BR%7D+%5Cto+%5C%7Be%5E%7Bi%5Ctheta%7D+%5Cvert+%5Ctheta%5Cin%5Cmathbb%7BR%7D%5C%7D" alt="\tau:\mathbb{R} \to \{e^{i\theta} \vert \theta\in\mathbb{R}\}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta+%5Cmapsto+%5Ctau%28%5Ctheta%29+%3D+e%5E%7Bi%5Ctheta%7D" alt="\theta \mapsto \tau(\theta) = e^{i\theta}" eeimg="1">
+                </p>
+                <p>
+                    这个映射将单位元映射到单位元：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=0+%5Cmapsto+%5Ctau%280%29+%3D+e%5E%7Bi%5Ccdot+0%7D+%3D1" alt="0 \mapsto \tau(0) = e^{i\cdot 0} =1" eeimg="1">
+                </p>
+                <p>
+                    将逆元映射到逆元：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=-%5Ctheta+%5Cmapsto+%5Ctau%28-%5Ctheta%29+%3D+e%5E%7B-i%5Ctheta%7D" alt="-\theta \mapsto \tau(-\theta) = e^{-i\theta}" eeimg="1">
+                </p>
+                <p>
+                    保持可交换的二元运算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Calpha%2B%5Cbeta%29+%5Cmapsto+%5Ctau%28%5Calpha%2B%5Cbeta%29+%3D+e%5E%7Bi%28%5Calpha%2B%5Cbeta%29%7D+%3D+e%5E%7Bi%5Calpha%7D+%5Ccdot+e%5E%7Bi%5Cbeta%7D" alt="(\alpha+\beta) \mapsto \tau(\alpha+\beta) = e^{i(\alpha+\beta)} = e^{i\alpha} \cdot e^{i\beta}" eeimg="1">
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        映射的合成与整数次幂函数
+                    </b>
+                </h2>
+                <p>
+                    根据定义，任意群
+                    <img src="https://www.zhihu.com/equation?tex=G%28%5Ccdot%2C0%29" alt="G(\cdot,0)" eeimg="1">
+                    的二元群运算
+                    <img src="https://www.zhihu.com/equation?tex=%5Ccdot" alt="\cdot" eeimg="1">
+                    都是封闭结合的。
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+g+%5Cin+G%2Cn+%5Cin+%5Cmathbb%7BN%7D" alt="\forall g \in G,n \in \mathbb{N}" eeimg="1">
+                    可定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g%5En+%3D+g+%5Ccdot+g+%5Ccdot+...+%5Ccdot+g+%3D+%5Cprod_%7Bi%3D1%7D%5E%7Bn%7Dg" alt="g^n = g \cdot g \cdot ... \cdot g = \prod_{i=1}^{n}g" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%28%2B%2C0%29" alt="\mathbb{R}(+,0)" eeimg="1">
+                    上体现为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta+%5Cmapsto+n%5Ctheta" alt="\theta \mapsto n\theta" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29%28%5Ccdot%2CI%29" alt="SO(2)(\cdot,I)" eeimg="1">
+                    上体现为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cmapsto+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5En+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+n%5Ctheta+%26+-%5Csin+n%5Ctheta+%5C%5C+%5Csin+n%5Ctheta+%26+%5Ccos+n%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} \mapsto \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} ^n =\begin{bmatrix} \cos n\theta &amp; -\sin n\theta \\ \sin n\theta &amp; \cos n\theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be%5E%7Bi%5Ctheta%7D+%5Cvert+%5Ctheta%5Cin%5Cmathbb%7BR%7D%5C%7D%28%5Ccdot%2C1%29" alt="\{e^{i\theta} \vert \theta\in\mathbb{R}\}(\cdot,1)" eeimg="1">
+                    上体现为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta+%5Cmapsto+%3D%5Cprod_%7Bi%3D1%7D%5E%7Bn%7De%5E%7Bi%5Ctheta%7D%3D+e%5E%7Bin%5Ctheta%7D" alt="\theta \mapsto =\prod_{i=1}^{n}e^{i\theta}= e^{in\theta}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        任意群上的指数函数
+                    </b>
+                </h2>
+                <p>
+                    前面讨论的整数次幂函数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta+%5Csim+%5Cbegin%7Bbmatrix%7D+%5Ccos+n%5Ctheta+%26+-%5Csin+n%5Ctheta+%5C%5C+%5Csin+n%5Ctheta+%26+%5Ccos+n%5Ctheta+%5Cend%7Bbmatrix%7D+%5Csim+e%5E%7Bin%5Ctheta%7D" alt="\theta \sim \begin{bmatrix} \cos n\theta &amp; -\sin n\theta \\ \sin n\theta &amp; \cos n\theta \end{bmatrix} \sim e^{in\theta}" eeimg="1">
+                </p>
+                <p>
+                    可以视为某种特殊的矩阵结构和指数函数结构的对应，而指数函数有着特别简便的处理方式。我们希望对任意群
+                    <img src="https://www.zhihu.com/equation?tex=G%28%2A%2C0%29" alt="G(*,0)" eeimg="1">
+                    实现类似的指数化操作：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%3A+G+%5Cmapsto+G" alt="e: G \mapsto G" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cmapsto+e%5EX" alt="X \mapsto e^X" eeimg="1">
+                </p>
+                <p>
+                    为了构造这种映射，我们注意到整数次幂可以实现群中的自映射，而指数函数又具有整数次幂级数求和的形式，于是启发我们按照级数和定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5EX%3D%5Csum_%7Bk%3D0%7D%5E%5Cinfty+%7B+%5Cfrac%7BX%5Ek%7D%7Bk%21%7D+%7D" alt="e^X=\sum_{k=0}^\infty { \frac{X^k}{k!} }" eeimg="1">
+                </p>
+                <p>
+                    显然，过去定义在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BC%7D" alt="\mathbb{C}" eeimg="1">
+                    上的指数函数，延拓到了更一般的空间，且保持了相当多的优秀的属性。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在泛函分析算子半群中，我们将来将较多使用
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维复矩阵上的指数函数。泛函分析在研究算子半群中有重要的Stone定理，它和量子力学基本的Schrödinger方程有密切的关系。根据Stone定理，可以把unitary算子群表示为
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7BitA%7D" alt="e^{itA}" eeimg="1">
+                    的形式，其中
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是自伴算子，到时候就需要用到我们在这里得到的矩阵上的指数函数。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

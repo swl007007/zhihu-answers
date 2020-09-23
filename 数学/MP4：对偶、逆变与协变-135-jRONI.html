@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP4：对偶、逆变与协变
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-fdf3c23ea929a1b0120b805bae5c7f75_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/43749205" target="_blank">
+                        MP4：对偶、逆变与协变
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    目前教育界在线性代数的教学上缺少一些重要的概念——对偶空间。对偶是现代数学最核心的数学思想之一。最简单的对偶是体现在线性代数中线性向量和线性函数之间的相互对偶关系之中的。
+                </p>
+                <p>
+                    本文是在一般线性代数的基础上，介绍高级一些的线性代数知识，以便将来在学习微分几何和泛函分析时，对对偶、逆变、协变这些概念有基本的理解。内容概要：
+                </p>
+                <p>
+                    介绍线性空间的线性映射、对偶空间，行向量和列向量的对偶表示，双线性映射，Einstein求和约定。
+                </p>
+                <p>
+                    接着介绍基的变换，以及在这种变换下，对偶空间上的向量和对偶向量的变换规则，即逆变和协变规则。
+                </p>
+                <p>
+                    继续以平面旋转群SO(2)为例子，研究在基进行平面旋转的情况下，向量的变换规律。
+                </p>
+                <p>
+                    介绍对偶基的概念。一对对偶的向量是通过内积的结构成为双线性映射的。略微介绍Riesz引理，了解到对偶的向量之间如何一一对应，从而让内积可以直接在逆变向量之间实现。
+                </p>
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <hr>
+                <p>
+                    前面几讲中用了许多
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    中的技术来讨论复平面的问题，体现出线性代数基础的重要性。这一讲要谈线性代数最核心的对偶性问题，在对偶性上展开讨论一些重要的基础概念。我们在线性代数上有了这些基础之后，反过来又可以了解复结构是如何应用于对偶性空间的。
+                </p>
+                <p>
+                    线性代数学习中，我们的讨论多专注在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上。若能理解概念，在一般的线性空间（有限/无限维）上扩展概念并非难事，参考一般的线性代数/泛函分析教材即可。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在另一讲中用到一个非常好的例子阐述对偶的基本原理，请务必参考：
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/43792297" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：Gap4：线性代数基本慨念
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <h2>
+                    <br>
+                    <b>
+                        对偶空间
+                    </b>
+                </h2>
+                <p>
+                    线性空间到域
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Cto+%5Cmathbb%7BF%7D" alt="V \to \mathbb{F}" eeimg="1">
+                    的函数的集合
+                    <img src="https://www.zhihu.com/equation?tex=V%5E%2A" alt="V^*" eeimg="1">
+                    ，若满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cphi%2C%5Cpsi+%5Cin+V%5E%2A%3A+%28%5Cphi+%2B+%5Cpsi%29%28x%29+%3D+%5Cphi%28x%29+%2B+%5Cpsi%28x%29" alt="\forall \phi,\psi \in V^*: (\phi + \psi)(x) = \phi(x) + \psi(x)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cphi+%5Cin+V%5E%2A%2C+%5Cforall+%5Calpha+%5Cin+%5Cmathbb%7BF%7D%3A+%28%5Calpha%5Cphi%29%28x%29+%3D+%5Calpha+%5Cphi%28x%29" alt="\forall \phi \in V^*, \forall \alpha \in \mathbb{F}: (\alpha\phi)(x) = \alpha \phi(x)" eeimg="1">
+                </p>
+                <p>
+                    构成一个线性空间，称为
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    的
+                    <b>
+                        对偶空间
+                    </b>
+                    。对偶空间中的元素是
+                    <b>
+                        线性函数
+                    </b>
+                    。
+                </p>
+                <blockquote>
+                    有限维的情况下，线性空间及其对偶空间维度相等
+                </blockquote>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    可以视作
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维
+                    <b>
+                        列向量
+                    </b>
+                    表示的实数数组的集合，于是可以用相同维的
+                    <b>
+                        行向量
+                    </b>
+                    表示对偶空间中的
+                    <b>
+                        线性函数
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    看一个简单的例子，在域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BF%7D" alt="\mathbb{F}" eeimg="1">
+                    上，一对2维对偶向量
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+V%2Cf%5Cin+V%5E%2A" alt="x\in V,f\in V^*" eeimg="1">
+                    的共同作用为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+f%2Cx+%5Cgg+%3D+f%28x%29+%3D+fx%3D%5Cbegin%7Bbmatrix%7D+f_1+%26+f_2+%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D+x_1+%5C%5C+x_2+%5Cend%7Bbmatrix%7D+%3D%5Csum_%7Bi%3D1%7D%5E%7B2%7D+f%5Eix_i+%3D+f%5Eix_i" alt="\ll f,x \gg = f(x) = fx=\begin{bmatrix} f_1 &amp; f_2 \end{bmatrix}\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} =\sum_{i=1}^{2} f^ix_i = f^ix_i" eeimg="1">
+                </p>
+                <p>
+                    二元映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+%2C+%5Cgg" alt="\ll , \gg" eeimg="1">
+                    是
+                    <b>
+                        双线性映射
+                    </b>
+                    （也就是对两个变元都是线性的，易于验证）：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V%5E%2A+%5Ctimes+V+%5Cto+%5Cmathbb%7BF%7D" alt="V^* \times V \to \mathbb{F}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+V%5E%2A" alt="f \in V^*" eeimg="1">
+                    作为对偶向量，通过函数的方式作用于
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cin+V" alt="x \in V" eeimg="1">
+                    。由于是线性函数，总可以写为矩阵乘法的形式。连等式的最后一个表达式去掉了求和符号，这是默认采用了
+                    <b>
+                        Einstein求和规则
+                    </b>
+                    ，即对上下同时出现的指标项目求和。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注意到，矩阵乘法的形式提示我们，对偶关系是相对的，即
+                    <img src="https://www.zhihu.com/equation?tex=V%5E%2A" alt="V^*" eeimg="1">
+                    也是
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    的对偶空间，实际上
+                    <img src="https://www.zhihu.com/equation?tex=%28V%5E%2A%29%5E%2A+%5Csim+V" alt="(V^*)^* \sim V" eeimg="1">
+                    ，证明略。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        坐标随基的变换
+                    </b>
+                </h2>
+                <p>
+                    我们有了对偶空间和对偶向量的概念后，形象上容易通过列向量和行向量来区分一对对偶向量。而区分它们更重要的因素是向量的坐标如何随着基的变化而变化，也就是
+                    <b>
+                        逆变性
+                    </b>
+                    和
+                    <b>
+                        协变性
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    简单起见先来点小学数学。将位移的
+                    <b>
+                        量纲
+                    </b>
+                    记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cleft%5B+L+%5Cright%5D" alt="\left[ L \right]" eeimg="1">
+                    。通常我们可以用一个符号
+                    <img src="https://www.zhihu.com/equation?tex=l" alt="l" eeimg="1">
+                    指代某个位移，这个位移具有明确的值，它与测量的
+                    <b>
+                        单位
+                    </b>
+                    无关，例如：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=l+%3D+%5Cleft%5C%7B+10+%5Cright%5C%7D_%7Bm%7D+%3D+%5Cleft%5C%7B+1000+%5Cright%5C%7D_%7Bcm%7D" alt="l = \left\{ 10 \right\}_{m} = \left\{ 1000 \right\}_{cm}" eeimg="1">
+                </p>
+                <p>
+                    基于显然的单位换算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=1+%5Ctext%7Bm%7D+%3D+100+%5Ctext%7Bcm%7D" alt="1 \text{m} = 100 \text{cm}" eeimg="1">
+                </p>
+                <p>
+                    位移的取值与测量单位具有以下的关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=l+%3D+%5Cleft%5C%7B+10+%5Cright%5C%7D_%7B100cm%7D+%3D+%5Cleft%5C%7B+1000+%5Cright%5C%7D_%7B1cm%7D" alt="l = \left\{ 10 \right\}_{100cm} = \left\{ 1000 \right\}_{1cm}" eeimg="1">
+                </p>
+                <p>
+                    稍微啰嗦地展开为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=l+%3D+%5Cleft%5C%7B+10+%5Cright%5C%7D_%7B100cm%7D+%3D+10+%5Ccdot+100cm" alt="l = \left\{ 10 \right\}_{100cm} = 10 \cdot 100cm" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=l+%3D+%5Cleft%5C%7B+1000+%5Cright%5C%7D_%7B1cm%7D+%3D+1000+%5Ccdot+1cm" alt="l = \left\{ 1000 \right\}_{1cm} = 1000 \cdot 1cm" eeimg="1">
+                </p>
+                <p>
+                    学过线性代数，我们可以更加名词党地理解为
+                    <img src="https://www.zhihu.com/equation?tex=1%5Ctext%7Bm%7D" alt="1\text{m}" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=1%5Ctext%7Bcm%7D" alt="1\text{cm}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    维位移
+                    <b>
+                        线性空间
+                    </b>
+                    的两个不同的
+                    <b>
+                        基
+                    </b>
+                    ，而括号里作为测量读数的
+                    <b>
+                        坐标
+                    </b>
+                    是
+                    <b>
+                        逆变
+                    </b>
+                    的。逆变的概念推广到2维：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Cleft%5C%7B+20+%5Cright%5C%7D_%7B100cm%7D+%5C%5C+%5Cleft%5C%7B+3000+%5Cright%5C%7D_%7B1cm%7D%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+%5Cleft%5C%7B+1000+%5Cright%5C%7D_%7B2cm%7D+%5C%5C+%5Cleft%5C%7B+6+%5Cright%5C%7D_%7B500cm%7D%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} \left\{ 20 \right\}_{100cm} \\ \left\{ 3000 \right\}_{1cm}\end{bmatrix} =\begin{bmatrix} \left\{ 1000 \right\}_{2cm} \\ \left\{ 6 \right\}_{500cm}\end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    这里提示有两组基，类似前面的也展开：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Cleft%5C%7B+20+%5Cright%5C%7D_%7B100cm%7D+%5C%5C+%5Cleft%5C%7B+3000+%5Cright%5C%7D_%7B1cm%7D%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+20+%5Ccdot+100cm+%5C%5C+3000+%5Ccdot+1cm+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+100cm+%26+0+%5C%5C+0+%26+1cm+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+20+%5C%5C+3000+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} \left\{ 20 \right\}_{100cm} \\ \left\{ 3000 \right\}_{1cm}\end{bmatrix} =\begin{bmatrix} 20 \cdot 100cm \\ 3000 \cdot 1cm \end{bmatrix} =\begin{bmatrix} 100cm &amp; 0 \\ 0 &amp; 1cm \end{bmatrix} \begin{bmatrix} 20 \\ 3000 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Cleft%5C%7B+1000+%5Cright%5C%7D_%7B2cm%7D+%5C%5C+%5Cleft%5C%7B+6+%5Cright%5C%7D_%7B500cm%7D%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+1000+%5Ccdot+2cm+%5C%5C+6+%5Ccdot+500cm+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+2cm+%26+0+%5C%5C+0+%26+500cm+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+1000+%5C%5C+6+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} \left\{ 1000 \right\}_{2cm} \\ \left\{ 6 \right\}_{500cm}\end{bmatrix} =\begin{bmatrix} 1000 \cdot 2cm \\ 6 \cdot 500cm \end{bmatrix} =\begin{bmatrix} 2cm &amp; 0 \\ 0 &amp; 500cm \end{bmatrix} \begin{bmatrix} 1000 \\ 6 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    类似于前面，当基矩阵变换后，坐标随之变换，变换的方向是相反的。进一步，在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中，有基矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cto+B" alt="A \to B" eeimg="1">
+                    的变换，满足变换规律：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=B%3DAT" alt="B=AT" eeimg="1">
+                </p>
+                <p>
+                    那么，坐标向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha+%5Cto+%5Cbeta" alt="\alpha \to \beta" eeimg="1">
+                    的变换则满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%5Calpha+%3D+B%5Cbeta+%3D+AT+%5Cbeta" alt="A\alpha = B\beta = AT \beta" eeimg="1">
+                </p>
+                <p>
+                    于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha+%3D+T+%5Cbeta" alt="\alpha = T \beta" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta+%3D+T%5E%7B-1%7D%5Calpha" alt="\beta = T^{-1}\alpha" eeimg="1">
+                </p>
+                <p>
+                    这里出现的逆矩阵，就是逆变的含义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        SO(2)群的基变换
+                    </b>
+                </h2>
+                <p>
+                    我们又以熟悉的平面旋转为例子。实平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    上给定一组基：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+e_%7B11%7D+%5C%5C+e_%7B21%7D+%5Cend%7Bbmatrix%7D%2C+%5Cbegin%7Bbmatrix%7D+e_%7B12%7D+%5C%5C+e_%7B22%7D+%5Cend%7Bbmatrix%7D" alt="\begin{bmatrix} e_{11} \\ e_{21} \end{bmatrix}, \begin{bmatrix} e_{12} \\ e_{22} \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    合写为向量组：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%3D%5Cbegin%7Bbmatrix%7D+e_%7B11%7D+%26+e_%7B12%7D+%5C%5C+e_%7B21%7D+%26+e_%7B22%7D+%5Cend%7Bbmatrix%7D" alt="E=\begin{bmatrix} e_{11} &amp; e_{12} \\ e_{21} &amp; e_{22} \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    下，向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    的坐标表示为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v%3DEx+%3D%5Cbegin%7Bbmatrix%7D+e_%7B11%7D+%26+e_%7B12%7D+%5C%5C+e_%7B21%7D+%26+e_%7B22%7D+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+x_1+%5C%5C+x_2+%5Cend%7Bbmatrix%7D" alt="v=Ex =\begin{bmatrix} e_{11} &amp; e_{12} \\ e_{21} &amp; e_{22} \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    取
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28%5Ctheta%29%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cin+SO%282%29" alt="\rho(\theta)=\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} \in SO(2)" eeimg="1">
+                </p>
+                <p>
+                    作用于基向量组，得到一组新的基：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E+%5Ccdot+%5Crho%28%5Ctheta%29+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+e_%7B11%7D+%26+e_%7B12%7D+%5C%5C+e_%7B21%7D+%26+e_%7B22%7D+%5Cend%7Bbmatrix%7D" alt="E \cdot \rho(\theta) =\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} \begin{bmatrix} e_{11} &amp; e_{12} \\ e_{21} &amp; e_{22} \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    则向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    的坐标表示为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v%3DE+%5Ccdot+%5Crho%28%5Ctheta%29+%5Ccdot+x%5E%5Cprime+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+e_%7B11%7D+%26+e_%7B12%7D+%5C%5C+e_%7B21%7D+%26+e_%7B22%7D+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+x_1%5E%5Cprime+%5C%5C+x_2%5E%5Cprime+%5Cend%7Bbmatrix%7D" alt="v=E \cdot \rho(\theta) \cdot x^\prime =\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} \begin{bmatrix} e_{11} &amp; e_{12} \\ e_{21} &amp; e_{22} \end{bmatrix} \begin{bmatrix} x_1^\prime \\ x_2^\prime \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    基变换前后，向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    在自然基下的表达不变：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Ex+%3D+E+%5Ccdot+%5Crho%28%5Ctheta%29+%5Ccdot+x%5E%5Cprime+" alt="Ex = E \cdot \rho(\theta) \cdot x^\prime" eeimg="1">
+                </p>
+                <p>
+                    于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5E%5Cprime+%3D+%5Crho%28%5Ctheta%29%5E%7B-1%7D+%5Ccdot+x" alt="x^\prime = \rho(\theta)^{-1} \cdot x" eeimg="1">
+                </p>
+                <p>
+                    符合逆变的要求。即当基在
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28%5Ctheta%29+%5Cin+SO%282%29" alt="\rho(\theta) \in SO(2)" eeimg="1">
+                    作用下旋转角度
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta" alt="\theta" eeimg="1">
+                    时，坐标相应反向旋转，符合直观的认知。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        对偶基和协变
+                    </b>
+                </h2>
+                <p>
+                    回到对偶空间中，一对2维对偶向量
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+V%2Cf%5Cin+V%5E%2A" alt="x\in V,f\in V^*" eeimg="1">
+                    通过双线性映射共同作用：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+f%2Cx+%5Cgg+%3D+f%5Eix_i" alt="\ll f,x \gg = f^ix_i" eeimg="1">
+                </p>
+                <p>
+                    给定
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    的一组基
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+%5C%7Be_i%5C%7D" alt="E = \{e_i\}" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    中任意向量可以表为
+                    <img src="https://www.zhihu.com/equation?tex=v%3DEx" alt="v=Ex" eeimg="1">
+                    。这组基
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    可以通过
+                    <b>
+                        Kronecker记号
+                    </b>
+                    唯一地决定对偶空间
+                    <img src="https://www.zhihu.com/equation?tex=V%5E%2A" alt="V^*" eeimg="1">
+                    中的一组基
+                    <img src="https://www.zhihu.com/equation?tex=E%5E%2A%3D%5C%7Be%5Ej%5C%7D" alt="E^*=\{e^j\}" eeimg="1">
+                    ，满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5Ej%28e_i%29%3D%5Cdelta_%7Bij%7D" alt="e^j(e_i)=\delta_{ij}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=i%3Dj+%5CRightarrow+%5Cdelta_%7Bij%7D%3D1" alt="i=j \Rightarrow \delta_{ij}=1" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=i+%5Cne+j+%5CRightarrow+%5Cdelta_%7Bij%7D%3D0" alt="i \ne j \Rightarrow \delta_{ij}=0" eeimg="1">
+                </p>
+                <p>
+                    这样得到的对偶空间中的基称为
+                    <b>
+                        对偶基
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们不难验证，由于Kronecker记号的约束，当基以
+                    <img src="https://www.zhihu.com/equation?tex=T%3AE+%5Cto+E%5E%5Cprime" alt="T:E \to E^\prime" eeimg="1">
+                    变化时，对偶基相对于基的变化规律是逆变的。对偶向量在对偶空间的自然基（自然基的对偶基）中的表示是不变的，类似于前面讨论的，对偶向量的坐标相对于对偶基也是逆变的。这样，两次逆变的合成，使得对偶向量的坐标相对于
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    的变化是
+                    <b>
+                        协变
+                    </b>
+                    的，称为
+                    <b>
+                        协变向量
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        内积
+                    </b>
+                </h2>
+                <p>
+                    对偶空间中，一对对偶向量
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+V%2Cf%5Cin+V%5E%2A" alt="x\in V,f\in V^*" eeimg="1">
+                    通过双线性映射共同作用：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+f%2Cx+%5Cgg" alt="\ll f,x \gg" eeimg="1">
+                </p>
+                <p>
+                    它对两个变元都是线性的。对偶空间可以是
+                    <b>
+                        自对偶
+                    </b>
+                    的，泛函分析的
+                    <b>
+                        Riesz引理
+                    </b>
+                    给出了构建自对偶空间的方法。自对偶空间的双线性映射是
+                    <b>
+                        正定
+                    </b>
+                    且
+                    <b>
+                        共轭对称
+                    </b>
+                    的，则称为
+                    <b>
+                        内积
+                    </b>
+                    。完备的内积空间称为
+                    <b>
+                        Hilbert空间
+                    </b>
+                    。在实分析和泛函分析中常见的一个例子是
+                    <img src="https://www.zhihu.com/equation?tex=L%5Ep" alt="L^p" eeimg="1">
+                    空间，即：
+                </p>
+                <p>
+                    设
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    上的测度，
+                    <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2C%5Cmathscr%7BB%7D%2C%5Cmu%29" alt="(\Omega,\mathscr{B},\mu)" eeimg="1">
+                    是测度空间，函数
+                    <img src="https://www.zhihu.com/equation?tex=u%28x%29" alt="u(x)" eeimg="1">
+                    满足在
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    上
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvert+u%28x%29+%5Cvert%5Ep" alt="\vert u(x) \vert^p" eeimg="1">
+                    可积
+                    <img src="https://www.zhihu.com/equation?tex=%281%5Cleq+p%5Cleq+%2B%5Cinfty%29" alt="(1\leq p\leq +\infty)" eeimg="1">
+                    ，则这类函数的全体称为
+                    <img src="https://www.zhihu.com/equation?tex=%28%5COmega%2C%5Cmathscr%7BB%7D%2C%5Cmu%29" alt="(\Omega,\mathscr{B},\mu)" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    次可积函数空间，记作
+                    <img src="https://www.zhihu.com/equation?tex=L%5Ep%28%5COmega%2C%5Cmu%29" alt="L^p(\Omega,\mu)" eeimg="1">
+                    。定义内积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+u%2Cv+%5Crangle+%3D+%5Cint_%5COmega+u%28x%29+%5Coverline%7Bv%28x%29%7D+dx" alt="\langle u,v \rangle = \int_\Omega u(x) \overline{v(x)} dx" eeimg="1">
+                </p>
+                <p>
+                    量子力学中常用的为平方可积的
+                    <img src="https://www.zhihu.com/equation?tex=L%5E2" alt="L^2" eeimg="1">
+                    空间。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP22：同调群
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-8966b3b5f78a7dde85779d44aa036da2_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44776557" target="_blank">
+                        MP22：同调群
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-26
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    为了学习同调群，我们用了整整三讲打基础：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44083782" class="internal">
+                        MP19：拓扑加油站(1)：道路连通、同伦、基本群
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44758074" class="internal">
+                        MP20：单形、复形、链群和边界算子
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44758141" class="internal">
+                        MP21：代数加油站(1)：同态的像与核、闭与恰当
+                    </a>
+                </p>
+                <p>
+                    现在我们对代数拓扑所必须的拓扑、代数都有了一定的底子，再讲同调群就比较容易理解了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        几何直观
+                    </b>
+                </h2>
+                <p>
+                    <b>
+                        同调群(homological group)
+                    </b>
+                    泛泛而言，是用一些Abel群来研究拓扑空间，特别是拓扑空间中的洞。我们在
+                    <a href="https://zhuanlan.zhihu.com/p/44758074" class="internal">
+                        MP20：单形、复形、链群和边界算子
+                    </a>
+                    讲过的单形都是没有洞的，平凡的(trivial）。在数学界，说人家的工作trivial相当于骂人，言下之意，你这么trivial的东西，不值得去费力研究。那么在同调群的语境下，没有洞的东西还有什么好研究的，要研究就研究有洞的，洞代表着不一样的拓扑性质。
+                </p>
+                <p>
+                    在人类可以理解的低维空间，洞还有几何直观，但高维的洞就需要形式化的描述了。过去我们在
+                    <a href="https://zhuanlan.zhihu.com/p/44083782" class="internal">
+                        MP19：拓扑加油站(1)：道路连通、同伦、基本群
+                    </a>
+                    中谈到，同伦反应出拓扑空间中的洞的信息。同伦是用圆周（一维球面
+                    <img src="https://www.zhihu.com/equation?tex=S%5E1" alt="S^1" eeimg="1">
+                    ）在绕着洞，这是一维同伦情形。高维同伦则是用高维的球面绕着高维的洞。同调群也是研究洞，不过同调群的研究方式不是用球面去绕洞，而是研究构成洞的边界。我们曾经提到过：
+                </p>
+                <blockquote>
+                    <b>
+                        边界没有边界
+                    </b>
+                </blockquote>
+                <p>
+                    同调群就是抓住了边界的这一性质去描述洞的，同调群认为边界是trivial的，那么什么不trivial呢？注意：虽然边界没有边界，但没有边界的东西并不一定都是边界哦，所以我们特别关注：
+                </p>
+                <blockquote>
+                    <b>
+                        自己没有边界，自己也不是人家的边界
+                    </b>
+                </blockquote>
+                <p>
+                    这就是同调群要研究的对象。这句话的两个部分，涉及到边界映射的核与像问题，也涉及到映射的闭和恰当问题，这就是为什么我们在上一讲
+                    <a href="https://zhuanlan.zhihu.com/p/44758141" class="internal">
+                        MP21：代数加油站(1)：同态的像与核、闭与恰当
+                    </a>
+                    要补习代数的原因。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这一讲中，我们要在
+                    <a href="https://zhuanlan.zhihu.com/p/44758074" class="internal">
+                        MP20：单形、复形、链群和边界算子
+                    </a>
+                    所建立的链群上，运用代数方法建立同调群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        链群及其边界
+                    </b>
+                </h2>
+                <p>
+                    过去讲到，将复形
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    上所有
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维（定向）单形的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=T_q%28K%29" alt="T_q(K)" eeimg="1">
+                    ，用整数加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D%28%2B%2C0%29" alt="\mathbb{Z}(+,0)" eeimg="1">
+                    来构造整系数的形式和
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma+%3D+%5Csum_k+z_k%5Csigma_k+%3D+z_1%5Csigma_1+%2B+z_2%5Csigma_2+%2B+%5Cdots+%2B+z_k%5Csigma_k" alt="\sigma = \sum_k z_k\sigma_k = z_1\sigma_1 + z_2\sigma_2 + \dots + z_k\sigma_k" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bz_k%5C%7D" alt="\{z_k\}" eeimg="1">
+                    是整系数，
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B+%5Csigma_i+%5C%7D" alt="\{ \sigma_i \}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=T_q%28K%29" alt="T_q(K)" eeimg="1">
+                    中的单形。两个这样的形式和之间可以定义加法：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_k+x_k%5Csigma_k+%2B+%5Csum_k+y_k%5Csigma_k+%3D+%5Csum_k+%28x_k+%2B+y_k%29%5Csigma_k" alt="\sum_k x_k\sigma_k + \sum_k y_k\sigma_k = \sum_k (x_k + y_k)\sigma_k" eeimg="1">
+                </p>
+                <p>
+                    显然有从加群得到的单位元和逆元，于是这样的形式和构成一个Abel群，称为
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    <b>
+                        链群
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    边界算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial" alt="\partial" eeimg="1">
+                    总是把
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维单形映射到
+                    <img src="https://www.zhihu.com/equation?tex=%28q-1%29" alt="(q-1)" eeimg="1">
+                    维单形。由于链群是同维的单形自由生成的，于是边界算子也把
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维链群映射到
+                    <img src="https://www.zhihu.com/equation?tex=%28q-1%29" alt="(q-1)" eeimg="1">
+                    维链群：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_k%3A+C_k%28K%29+%5Cto+C_%7Bk-1%7D%28K%29" alt="\partial_k: C_k(K) \to C_{k-1}(K)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    链群的定义初看上去并不自然，单形
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma_i" alt="\sigma_i" eeimg="1">
+                    的整数运算
+                    <img src="https://www.zhihu.com/equation?tex=z_i%5Csigma_i" alt="z_i\sigma_i" eeimg="1">
+                    是什么？整系数的形式和又是什么？
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    个葡萄减去
+                    <img src="https://www.zhihu.com/equation?tex=4" alt="4" eeimg="1">
+                    个枣是什么鬼？我们当时的理解为：
+                </p>
+                <blockquote>
+                    同样维数的
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    单形可以通过整系数构造一个类似
+                    <b>
+                        线性
+                    </b>
+                    的形式和，即
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    链群。链群的边界算子，可以保持这个线性的特性（作为群同态），将
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维链群映射到
+                    <img src="https://www.zhihu.com/equation?tex=%28q-1%29" alt="(q-1)" eeimg="1">
+                    维链群，构成同态序列，以方便进行代数处理（同调代数）。
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        同调群：代数化理解
+                    </b>
+                </h2>
+                <p>
+                    对于一串链复形的同态
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=+%5Ccdots+%5Clongrightarrow++C_%7Bk%2B1%7D+%5Cstackrel%7B%5Cpartial_%7Bk%2B1%7D%7D%7B%5Clongrightarrow%7D+C_k+%5Cstackrel%7B%5Cpartial_k%7D%7B%5Clongrightarrow%7D+C_%7Bk-1%7D+%5Cstackrel%7B%5Cpartial_%7Bk-1%7D%7D%7B%5Clongrightarrow%7D+%5Ccdots" alt="\cdots \longrightarrow  C_{k+1} \stackrel{\partial_{k+1}}{\longrightarrow} C_k \stackrel{\partial_k}{\longrightarrow} C_{k-1} \stackrel{\partial_{k-1}}{\longrightarrow} \cdots" eeimg="1">
+                </p>
+                <p>
+                    还满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_k+%5Ccirc+%5Cpartial_%7Bk%2B1%7D%3D0" alt="\partial_k \circ \partial_{k+1}=0" eeimg="1">
+                </p>
+                <p>
+                    则称：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=C_k" alt="C_k" eeimg="1">
+                    为
+                    <b>
+                        链群(chain group)
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Z_k+%3D+%5Ctext%7BKer%7D%28%5Cpartial_k%29" alt="Z_k = \text{Ker}(\partial_k)" eeimg="1">
+                    为
+                    <b>
+                        闭链群(cycle group)
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=B_k+%3D+%5Ctext%7BIm%7D%28%5Cpartial_%7Bk%2B1%7D%29" alt="B_k = \text{Im}(\partial_{k+1})" eeimg="1">
+                    为
+                    <b>
+                        边缘链群(boundary group)
+                    </b>
+                </p>
+                <p>
+                    由于二次边界算子为零：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=+B_k+%5Csubseteq+Z_k+%5Csubseteq+C_k" alt="B_k \subseteq Z_k \subseteq C_k" eeimg="1">
+                </p>
+                <p>
+                    回顾我们在
+                    <a href="https://zhuanlan.zhihu.com/p/44758141" class="internal">
+                        MP21：代数加油站(1)：同态的像与核、闭与恰当
+                    </a>
+                    中所理解的抽象的概念，根据第一群同态定理：
+                </p>
+                <blockquote>
+                    Abel群同态
+                    <img src="https://www.zhihu.com/equation?tex=f%3AG+%5Cto+G%5E%5Cprime" alt="f:G \to G^\prime" eeimg="1">
+                    满足：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=G%2F%5Ctext%7BKer%7D%28f%29+%5Csimeq+%5Ctext%7BIm%7D%28f%29" alt="G/\text{Ker}(f) \simeq \text{Im}(f)" eeimg="1">
+                </blockquote>
+                <p>
+                    那么就链群的同态序列而言，
+                    <img src="https://www.zhihu.com/equation?tex=%28k%2B1%29" alt="(k+1)" eeimg="1">
+                    -边缘链群
+                    <img src="https://www.zhihu.com/equation?tex=B_k+%3D+%5Ctext%7BIm%7D%28%5Cpartial_%7Bk%2B1%7D%29" alt="B_k = \text{Im}(\partial_{k+1})" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -闭链群
+                    <img src="https://www.zhihu.com/equation?tex=Z_k+%3D+%5Ctext%7BKer%7D%28%5Cpartial_k%29" alt="Z_k = \text{Ker}(\partial_k)" eeimg="1">
+                    的子群，作为Abel群的子群一定是正规子群，可以直接运用第一群同态定理：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Z_k%2FB_k+%3D+%5Ctext%7BKer%7D%28%5Cpartial_k%29%2F+%5Ctext%7BIm%7D%28%5Cpartial_%7Bk%2B1%7D%29+%5Csimeq+%5Ctext%7BIm%7D%28%5Cpartial_k%29" alt="Z_k/B_k = \text{Ker}(\partial_k)/ \text{Im}(\partial_{k+1}) \simeq \text{Im}(\partial_k)" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        同调群(homological group)
+                    </b>
+                    就是上式左边出现的同调类构成的商群
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=+H_k%28C%29+%3D+Z_k%2FB_k+%3D+%5Ctext%7BKer%7D%28%5Cpartial_k%29%2F+%5Ctext%7BIm%7D%28%5Cpartial_%7Bk%2B1%7D%29" alt="H_k(C) = Z_k/B_k = \text{Ker}(\partial_k)/ \text{Im}(\partial_{k+1})" eeimg="1">
+                </p>
+                <p>
+                    同调群作为
+                    <b>
+                        商群
+                    </b>
+                    ，
+                    <b>
+                        消去了
+                    </b>
+                    我们没有兴趣的
+                    <b>
+                        边界因素
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=B_k+%3D+%5Ctext%7BIm%7D%28%5Cpartial_%7Bk%2B1%7D%29" alt="B_k = \text{Im}(\partial_{k+1})" eeimg="1">
+                    ，留下的是non-trivial的、有价值的拓扑信息。
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        同调群的实例：回到几何直观
+                    </b>
+                </h2>
+                <p>
+                    我们先理解
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维同调群表示空间中
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维洞的数目，看几个具体的例子。例子中
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B0%5C%7D" alt="\{0\}" eeimg="1">
+                    表示只有一个单位元的平凡群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-c8ff2c80bc9631377817bc48796688e4_r.jpg">
+                    <figcaption>
+                        一维球面
+                    </figcaption>
+                </figure>
+                <p>
+                    <b>
+                        一维球面
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=S%5E1" alt="S^1" eeimg="1">
+                    就是圆周，其同调群为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H_k%28S%5E1%29%3D%7B%5Cbegin%7Bcases%7D%5Cmathbb%7BZ%7D+%26+k%3D0%2C1%5C%5C+%5C%7B0%5C%7D+%26%7B%5Ctext%7Botherwise%7D%7D%5Cend%7Bcases%7D%7D" alt="H_k(S^1)={\begin{cases}\mathbb{Z} &amp; k=0,1\\ \{0\} &amp;{\text{otherwise}}\end{cases}}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    连通、
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    个
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    维洞、没有更高维洞。
+                    <img src="https://www.zhihu.com/equation?tex=H_1%28S%5E1%29+%3D+%5Cmathbb%7BZ%7D" alt="H_1(S^1) = \mathbb{Z}" eeimg="1">
+                    的意义在于，
+                    <img src="https://www.zhihu.com/equation?tex=k%3D1" alt="k=1" eeimg="1">
+                    时圆周包围了一个
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    维洞，它是Abel群的生成元，其作用相当于用一个整数在群作用下可以生成整个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D" alt="\mathbb{Z}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-7a40118de2d4f0e71d972b27a556dafb_r.jpg">
+                    <figcaption>
+                        二维球面
+                    </figcaption>
+                </figure>
+                <p>
+                    <b>
+                        二维球面
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=S%5E2" alt="S^2" eeimg="1">
+                    的同调群为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H_k%28S%5E2%29%3D%7B%5Cbegin%7Bcases%7D%5Cmathbb%7BZ%7D+%26+k%3D0%2C2%5C%5C+%5C%7B0%5C%7D+%26%7B%5Ctext%7Botherwise%7D%7D%5Cend%7Bcases%7D%7D" alt="H_k(S^2)={\begin{cases}\mathbb{Z} &amp; k=0,2\\ \{0\} &amp;{\text{otherwise}}\end{cases}}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    连通、
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    个
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    维洞、
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    个
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    维洞、没有更高维洞。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        维球体
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=B%5En" alt="B^n" eeimg="1">
+                    的同调群为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H_k%28B%5En%29%3D%7B%5Cbegin%7Bcases%7D%5Cmathbb%7BZ%7D+%26+k%3D0%5C%5C+%5C%7B0%5C%7D+%26%7B%5Ctext%7Botherwise%7D%7D%5Cend%7Bcases%7D%7D" alt="H_k(B^n)={\begin{cases}\mathbb{Z} &amp; k=0\\ \{0\} &amp;{\text{otherwise}}\end{cases}}" eeimg="1">
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-0c3f90334189baff6614f980064ee097_r.jpg">
+                    <figcaption>
+                        二维球体
+                    </figcaption>
+                </figure>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维球体
+                    <img src="https://www.zhihu.com/equation?tex=B%5En" alt="B^n" eeimg="1">
+                    是实心的，单连通，没有任何维度的洞。它唯一不平凡的地方是
+                    <img src="https://www.zhihu.com/equation?tex=H_0%28B%5En%29+%3D+%5Cmathbb%7BZ%7D" alt="H_0(B^n) = \mathbb{Z}" eeimg="1">
+                    ，我们可以回忆以下同伦中相应的基本群来联想一下。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-d53204216542dd0158cc3fe60e30ae6d_r.jpg">
+                    <figcaption>
+                        二维环面
+                    </figcaption>
+                </figure>
+                <p>
+                    <b>
+                        二维环面
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=T%3DS%5E1+%5Ctimes+S%5E1" alt="T=S^1 \times S^1" eeimg="1">
+                    的同调群为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H_%7Bk%7D%28T%29%3D%7B%5Cbegin%7Bcases%7D%5Cmathbb+%7BZ%7D+%26k%3D0%2C2%5C%5C%5Cmathbb+%7BZ%7D+%5Ctimes+%5Cmathbb+%7BZ%7D+%26k%3D1%5C%5C%5C%7B0%5C%7D%26%7B%5Ctext%7Botherwise%7D%7D%5Cend%7Bcases%7D%7D" alt="H_{k}(T)={\begin{cases}\mathbb {Z} &amp;k=0,2\\\mathbb {Z} \times \mathbb {Z} &amp;k=1\\\{0\}&amp;{\text{otherwise}}\end{cases}}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    连通、
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    个独立的
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    维洞、
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    个
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    维洞、没有更高维洞。我们特别注意到：
+                    <img src="https://www.zhihu.com/equation?tex=H_1%28T%29+%5Csimeq+%5Cmathbb%7BZ%7D+%5Coplus+%5Cmathbb%7BZ%7D" alt="H_1(T) \simeq \mathbb{Z} \oplus \mathbb{Z}" eeimg="1">
+                    表示
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    个独立的
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    维洞，图中有红蓝两个圆圈，表示由它们生成环面，这种生成方式是相互独立的，所以用了直和和直积符号。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    目前我们的学习主线是微分几何和电动力学，限于篇幅，这里我们不谈同调群的计算，有兴趣请参考北大尤承业
+                    <a href="https://link.zhihu.com/?target=https%3A//book.douban.com/subject/1230382/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        基础拓扑学讲义
+                    </a>
+                    中同调群计算的例子。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

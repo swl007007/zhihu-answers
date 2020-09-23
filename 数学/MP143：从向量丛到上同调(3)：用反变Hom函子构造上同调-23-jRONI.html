@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP143：从向量丛到上同调(3)：用反变Hom函子构造上同调
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-a060ef20f6add095f6e6166d62e63d66_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46850778" target="_blank">
+                        MP143：从向量丛到上同调(3)：用反变Hom函子构造上同调
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-07-08
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46530485" class="internal">
+                        MP142：从向量丛到上同调(2)：开覆盖的脉络
+                    </a>
+                    <br>
+                </p>
+                <h2>
+                    奇偶定向
+                </h2>
+                <p>
+                    同调/上同调理论中，链/上链是一个重要的构造。在单纯同调理论中，仿射空间中
+                    <img src="https://www.zhihu.com/equation?tex=p%2B1" alt="p+1" eeimg="1">
+                    个有序点围成的凸集来确定
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    -维
+                    <b>
+                        标准单形(standard simplex)
+                    </b>
+                    ，并以点列的奇偶排列来确定定向。
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    -单形去掉一点
+                    <img src="https://www.zhihu.com/equation?tex=v_i" alt="v_i" eeimg="1">
+                    得到一个
+                    <img src="https://www.zhihu.com/equation?tex=%28p-1%29" alt="(p-1)" eeimg="1">
+                    维单形（类似于对去掉的这个点做了偏导数，所以借用偏导数记号）：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma+%5Cmapsto+%5Cpartial_p+%5Csigma+%3D+%5Csum_i+%28-1%29%5Ei+v_0+%5Cdots+%5Coverline%7Bv_i%7D+%5Cdots+v_p++%5Ctag%7B1%7D" alt="\sigma \mapsto \partial_p \sigma = \sum_i (-1)^i v_0 \dots \overline{v_i} \dots v_p  \tag{1}" eeimg="1">
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7Bv_i%7D" alt="\overline{v_i}" eeimg="1">
+                    表示去掉
+                    <img src="https://www.zhihu.com/equation?tex=v_i" alt="v_i" eeimg="1">
+                    这一点，交错的
+                    <img src="https://www.zhihu.com/equation?tex=%28-1%29%5Ei" alt="(-1)^i" eeimg="1">
+                    决定了奇偶性也就是定向。单形的边界运算：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-14b837bbd3a8b9c9d8fd8c9262254f47_r.jpg">
+                </figure>
+                <p>
+                    上图上部的三角形为
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -复形，按照设定的定向求边界为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cpartial_2%5Bv_0%2Cv_1%2Cv_2%5D+%26%3D+%5B%5Coverline%7Bv_0%7D%2Cv_1%2Cv_2%5D+-+%5Bv_0%2C%5Coverline+%7Bv_1%7D%2Cv_2%5D+%2B+%5Bv_0%2Cv_1%2C%5Coverline+%7Bv_2%7D%5D+%5Cnonumber+%5C%5C+%26%3D+%5Bv_1%2Cv_2%5D+-+%5Bv_0%2Cv_2%5D+%2B+%5Bv_0%2Cv_1%5D+%5Cnonumber+%5C%5C+%26%3D+%5Bv_1%2Cv_2%5D+%2B+%5Bv_2%2Cv_0%5D+%2B+%5Bv_0%2Cv_1%5D+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \partial_2[v_0,v_1,v_2] &amp;= [\overline{v_0},v_1,v_2] - [v_0,\overline {v_1},v_2] + [v_0,v_1,\overline {v_2}] \nonumber \\ &amp;= [v_1,v_2] - [v_0,v_2] + [v_0,v_1] \nonumber \\ &amp;= [v_1,v_2] + [v_2,v_0] + [v_0,v_1] \nonumber \\ \end{align} \\" eeimg="1">
+                    两次求边界为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cpartial_1%5Cpartial_2%5Bv_0%2Cv_1%2Cv_2%5D+%26%3D+%5Cpartial_1%5Bv_1%2Cv_2%5D+%2B+%5Cpartial_1%5Bv_2%2Cv_0%5D+%2B+%5Cpartial_1%5Bv_0%2Cv_1%5D+%5Cnonumber+%5C%5C+%26%3D+%5B%5Coverline%7Bv_1%7D%2Cv_2%5D+-+%5Bv_1%2C%5Coverline%7Bv_2%7D%5D+%2B+%5B%5Coverline%7Bv_2%7D%2Cv_0%5D+-+%5Bv_2%2C%5Coverline%7Bv_0%7D%5D+%2B+%5B%5Coverline%7Bv_0%7D%2Cv_1%5D+-+%5Bv_0%2C%5Coverline%7Bv_1%7D%5D+%5Cnonumber+%5C%5C+%26%3D+v_2+-+v_1+%2B+v_0+-+v_2+%2B+v_1+-+v_0+%5Cnonumber+%5C%5C+%26%3D+0+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \partial_1\partial_2[v_0,v_1,v_2] &amp;= \partial_1[v_1,v_2] + \partial_1[v_2,v_0] + \partial_1[v_0,v_1] \nonumber \\ &amp;= [\overline{v_1},v_2] - [v_1,\overline{v_2}] + [\overline{v_2},v_0] - [v_2,\overline{v_0}] + [\overline{v_0},v_1] - [v_0,\overline{v_1}] \nonumber \\ &amp;= v_2 - v_1 + v_0 - v_2 + v_1 - v_0 \nonumber \\ &amp;= 0 \nonumber \\ \end{align} \\" eeimg="1">
+                    这里体现了拓扑学的直观——边界没有边界。两次边界的复合退化，是通过点列指标的奇偶排列，得到了相反的定向，相互消去得到的。这就体现了(1)中的正负交错的意义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    Čech同调
+                </h2>
+                <p>
+                    拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cin+%5Ctextbf%7BTop%7D" alt="X \in \textbf{Top}" eeimg="1">
+                    的开覆盖
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+U+%3D+%5C%7BU_%5Calpha+%5C+%7C+%5C+%5Calpha+%5Cin+I%5C%7D" alt="\mathcal U = \{U_\alpha \ | \ \alpha \in I\}" eeimg="1">
+                    ，作为集族，其非空有限交集构成了脉络
+                    <img src="https://www.zhihu.com/equation?tex=N%28%5Cmathcal+U%29" alt="N(\mathcal U)" eeimg="1">
+                    ，成为一种抽象单纯复合形，其开集的非空
+                    <img src="https://www.zhihu.com/equation?tex=q%2B1" alt="q+1" eeimg="1">
+                    维交集：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Bi_0%5Ccdots+i_p%7D+%3D+U_%7Bi_0%7D+%5Ccap+%5Ccdots+%5Ccap+U_%7Bi_p%7D+%5Cneq+%5Cvarnothing+%5Ctag%7B2%7D" alt="U_{i_0\cdots i_p} = U_{i_0} \cap \cdots \cap U_{i_p} \neq \varnothing \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    对应了
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    -单形。去掉开集
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Bi_k%7D" alt="U_{i_k}" eeimg="1">
+                    后交集记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7B%28%5Cpartial_p%29%7D_k+U_%7Bi_0%5Ccdots+i_p%7D+%3D+U_%7Bi_0+%5Ccdots+%5Cbar%7Bi_k%7D%5Ccdots+p%7D+%3D+U_%7Bi_0%7D+%5Ccap+%5Ccdots+U_%7Bi_%7Bk-1%7D%7D+%5Ccap+U_%7Bi_%7Bk%2B1%7D%7D+%5Ccap+%5Ccdots+%5Ccap+U_%7Bi_p%7D+%5Ctag%7B3%7D" alt="{(\partial_p)}_k U_{i_0\cdots i_p} = U_{i_0 \cdots \bar{i_k}\cdots p} = U_{i_0} \cap \cdots U_{i_{k-1}} \cap U_{i_{k+1}} \cap \cdots \cap U_{i_p} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    可以理解为对一个指标
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    的偏边界算子。下式显然是嵌入：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=U_%7Bi_0%5Ccdots+i_p%7D+%5Chookrightarrow+%7B%28%5Cpartial_p%29%7D_kU_%7Bi_0%5Ccdots+i_p%7D+%3D+U_%7Bi_0+%5Ccdots+%5Cbar%7Bi_k%7D%5Ccdots+i_p%7D+%5Ctag%7B4%7D" alt="U_{i_0\cdots i_p} \hookrightarrow {(\partial_p)}_kU_{i_0\cdots i_p} = U_{i_0 \cdots \bar{i_k}\cdots i_p} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    将
+                    <img src="https://www.zhihu.com/equation?tex=%7B%28%5Cpartial_p%29%7D_k" alt="{(\partial_p)}_k" eeimg="1">
+                    理解为对
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    -单形求第
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    个边界，同样考虑到奇偶排列所确定的定向，类似(1)将偏边界算子组合为边界算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_p+%3D+%5Csum_k+%28-1%29%5Ek%7B%28%5Cpartial_p%29%7D_k+%5Ctag%7B5%7D" alt="\partial_p = \sum_k (-1)^k{(\partial_p)}_k \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    不难验证：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_p%5Cpartial_%7Bp-1%7D+%5Ctag%7B6%7D" alt="\partial_p\partial_{p-1} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    这样就发展出了Čech同调群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    作为对偶理论的上同调
+                </h2>
+                <p>
+                    奇异同调群理论的主要步骤为：
+                </p>
+                <ol>
+                    <li>
+                        拓扑空间的单纯剖分，建立标准单形与奇异单形的映射
+                    </li>
+                    <li>
+                        选择一个交换环
+                        <img src="https://www.zhihu.com/equation?tex=R+%5Cin+%5Ctextbf%7BCRng%7D" alt="R \in \textbf{CRng}" eeimg="1">
+                        作为形式和的系数，通常用一种PID，如
+                        <img src="https://www.zhihu.com/equation?tex=R+%3D+%5Cmathbb+Z" alt="R = \mathbb Z" eeimg="1">
+                    </li>
+                    <li>
+                        将各个维度的单形
+                        <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Csigma_p%5C%7D" alt="\{\sigma_p\}" eeimg="1">
+                        作为生成集，通过自由函子构造链群
+                        <img src="https://www.zhihu.com/equation?tex=C_p%28X%2CR%29+%5Cin+%5Ctextbf%7BMod%7D_R+%5Csubset+%5Ctextbf%7BAb%7D" alt="C_p(X,R) \in \textbf{Mod}_R \subset \textbf{Ab}" eeimg="1">
+                    </li>
+                    <li>
+                        定义降维的边界同态
+                        <img src="https://www.zhihu.com/equation?tex=%5Cpartial_p" alt="\partial_p" eeimg="1">
+                        ，使得各维度的链群构成态射序列
+                    </li>
+                    <li>
+                        前个边界态射的像为边界链群
+                        <img src="https://www.zhihu.com/equation?tex=B_p+%3D+%5Ctext%7BIm%7D%28%5Cpartial_%7Bp%2B1%7D%29" alt="B_p = \text{Im}(\partial_{p+1})" eeimg="1">
+                        ，后个边界态射的核为闭链群
+                        <img src="https://www.zhihu.com/equation?tex=Z_p+%3D+%5Ctext%7BKer%7D%28%5Cpartial_p%29" alt="Z_p = \text{Ker}(\partial_p)" eeimg="1">
+                        ，二者的商群即为同调群
+                        <img src="https://www.zhihu.com/equation?tex=H_p%28C_%5Cbullet%2CR%29+%3D+Z_p%2FB_p+%3D+%5Ctext%7BKer%7D%28%5Cpartial_p%29%2F+%5Ctext%7BIm%7D%28%5Cpartial_%7Bp%2B1%7D%29" alt="H_p(C_\bullet,R) = Z_p/B_p = \text{Ker}(\partial_p)/ \text{Im}(\partial_{p+1})" eeimg="1">
+                    </li>
+                </ol>
+                <p>
+                    前面选择了系数环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    ，则可以在范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMod%7D_R" alt="\textbf{Mod}_R" eeimg="1">
+                    中考虑链群
+                    <img src="https://www.zhihu.com/equation?tex=C_p%28X%2CR%29" alt="C_p(X,R)" eeimg="1">
+                    的对偶模，即
+                    <img src="https://www.zhihu.com/equation?tex=C_p%28X%2CR%29" alt="C_p(X,R)" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -值函数集，构造上同调理论中的上链群：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h_R%3A+%5Ctextbf%7BMod%7D_R+%26%5Cto+%5Ctextbf%7BMod%7D_R+%5Cnonumber+%5C%5C+C_p+%26%5Cmapsto+h_RC_p+%3D+%5Ctext%7BHom%7D%28C_p%2CR%29+%5Cnonumber+%5C%5C+C_%7Bp-1%7D+%26%5Cmapsto+h_RC_%7Bp-1%7D+%3D+%5Ctext%7BHom%7D%28C_%7Bp-1%7D%2CR%29+%5Cnonumber+%5C%5C+%5Ctext%7BHom%7D%28C_p%2CC_%7Bp-1%7D%29+%26%5Cto+%5Ctext%7BHom%7D%28h_RC_%7Bp-1%7D%2Ch_RC_p%29+%5Cnonumber+%5C%5C+%5Cpartial_p+%26%5Cmapsto+h_R%5Cpartial_p+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B7%7D" alt="\begin{align} h_R: \textbf{Mod}_R &amp;\to \textbf{Mod}_R \nonumber \\ C_p &amp;\mapsto h_RC_p = \text{Hom}(C_p,R) \nonumber \\ C_{p-1} &amp;\mapsto h_RC_{p-1} = \text{Hom}(C_{p-1},R) \nonumber \\ \text{Hom}(C_p,C_{p-1}) &amp;\to \text{Hom}(h_RC_{p-1},h_RC_p) \nonumber \\ \partial_p &amp;\mapsto h_R\partial_p \nonumber \\ \end{align} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    简单地替换一下记号，反变Hom函子把边界算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_p" alt="\partial_p" eeimg="1">
+                    反变为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=h_R%5Cpartial_p%3A+h_RC_%7Bp-1%7D+%5Cto+h_RC_p+%5C%5C" alt="h_R\partial_p: h_RC_{p-1} \to h_RC_p \\" eeimg="1">
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=C%5Ep%28X%2CR%29%3Dh_RC_p%28X%2CR%29" alt="C^p(X,R)=h_RC_p(X,R)" eeimg="1">
+                    及
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+d%5Ep+%3D+h_R%5Cpartial_p" alt="\text d^p = h_R\partial_p" eeimg="1">
+                    ，上式就构成了上同调理论熟知的形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+d%5Ep%3A+C%5E%7Bp-1%7D%28X%2CR%29+%5Cto+C%5Ep%28X%2CR%29+%5C%5C" alt="\text d^p: C^{p-1}(X,R) \to C^p(X,R) \\" eeimg="1">
+                    并对应了上链复形、上边界态射的概念。这种在奇异同调群上通过对偶方式构造的上同调就是
+                    <b>
+                        奇异上同调(singular cohomology)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    de Rham上同调
+                </h2>
+                <p>
+                    光滑流形上各阶外微分形式，通过升维的外微分算子构成Abel群范畴的态射序列
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+d%5Ep%3A+%5COmega%5E%7Bp-1%7D+%5Cto+%5COmega%5Ep+%5C%5C" alt="\text d^p: \Omega^{p-1} \to \Omega^p \\" eeimg="1">
+                    外微分算子的二次复合退化，使得以上构成了上链复形，于是可以发展出de Rham上同调理论。
+                </p>
+                <p>
+                    考虑系数环
+                    <img src="https://www.zhihu.com/equation?tex=R+%3D+%5Cmathbb+R" alt="R = \mathbb R" eeimg="1">
+                    ，则可以得到Abel群层范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSh%7D%28X%29" alt="\text{Sh}(X)" eeimg="1">
+                    中的
+                    <b>
+                        常值层(constant sheaf)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+R+%5Cin+%5Ctext%7BSh%7D%28X%29" alt="\mathcal R \in \text{Sh}(X)" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathcal+R%EF%BC%9A+%5Ctextbf%7BTop%7D%28X%29%5E%5Ctext%7Bop%7D+%26%5Cto+%5Ctextbf%7BAb%7D+%5Cnonumber+%5C%5C+U+%26%5Cmapsto+%5Cmathcal+RU+%3D+%5Cmathbb+R+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \mathcal R： \textbf{Top}(X)^\text{op} &amp;\to \textbf{Ab} \nonumber \\ U &amp;\mapsto \mathcal RU = \mathbb R \nonumber \\ \end{align} \\" eeimg="1">
+                    它将流形上的任意开集映射为作为Abel群的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R+%5Cin+%5Ctextbf%7BAb%7D" alt="\mathbb R \in \textbf{Ab}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    对于满足特定条件的光滑流形
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，如果令系数环
+                    <img src="https://www.zhihu.com/equation?tex=R+%3D+%5Cmathbb+R" alt="R = \mathbb R" eeimg="1">
+                    ，那么de Rham上同调群
+                    <img src="https://www.zhihu.com/equation?tex=H_%5Ctext%7BdR%7D%5Ep%28X%29" alt="H_\text{dR}^p(X)" eeimg="1">
+                    ，奇异上同调群
+                    <img src="https://www.zhihu.com/equation?tex=H%5Ep%28X%2C%5Cmathbb+R%29" alt="H^p(X,\mathbb R)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+R" alt="\mathcal R" eeimg="1">
+                    -系数的Čech上同调群
+                    <img src="https://www.zhihu.com/equation?tex=H%5Ep%28X%2C%5Cmathcal+R%29+" alt="H^p(X,\mathcal R)" eeimg="1">
+                    具有同构关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H_%5Ctext%7BdR%7D%5Ep%28X%29+%5Csimeq+H%5Ep%28X%2C%5Cmathbb+R%29+%5Csimeq+%5Ccheck+H%5Ep%28X%2C%5Cmathcal+R%29+++%5C%5C" alt="H_\text{dR}^p(X) \simeq H^p(X,\mathbb R) \simeq \check H^p(X,\mathcal R)   \\" eeimg="1">
+                </p>
+                <p>
+                    于是我们将要讨论以层而不是环为系数的上同调理论。
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

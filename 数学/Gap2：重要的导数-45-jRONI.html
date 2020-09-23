@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Gap2：重要的导数
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-451829c6d1fbc3657cf0d95685286874_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/43790843" target="_blank">
+                        Gap2：重要的导数
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-08
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上一讲泛泛谈了导数的概念。这一讲要具体讲一些重要导数。一方面可以加强理解，另一方面，在后面的学习中，这些重要的导数是非常常见，必须熟练掌握的。
+                </p>
+                <h2>
+                    <b>
+                        整数幂函数的“导数”
+                    </b>
+                </h2>
+                <p>
+                    考虑定义在整数上的函数
+                    <img src="https://www.zhihu.com/equation?tex=x%5E2" alt="x^2" eeimg="1">
+                </p>
+                <p>
+                    一个5x5的正方网格，当它变成6x6时，网格的增量为
+                </p>
+                <p>
+                    6x6 - 5x5 = 5 x 2 + 1
+                </p>
+                <p>
+                    其中的5x2理解为
+                    <img src="https://www.zhihu.com/equation?tex=2x" alt="2x" eeimg="1">
+                    ，而1为求导时可以忽略的高阶小量。
+                </p>
+                <p>
+                    如果在其他
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维度上考虑
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维超立方体的单位增量，忽略高阶小量后可以表达为
+                    <img src="https://www.zhihu.com/equation?tex=nx%5E%7Bn-1%7D" alt="nx^{n-1}" eeimg="1">
+                </p>
+                <p>
+                    直观理解的话，当
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维超立方体的尺度
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    以单位增量增长时，它的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个维度方向上都有一个（超）面积为
+                    <img src="https://www.zhihu.com/equation?tex=n-1" alt="n-1" eeimg="1">
+                    维的边界在增长，于是整体增长速度为
+                    <img src="https://www.zhihu.com/equation?tex=nx%5E%7Bn-1%7D" alt="nx^{n-1}" eeimg="1">
+                </p>
+                <p>
+                    于是，我们直接定义整数上幂函数的“导数“（其实不满足导数用极限方式的定义，准确说是变化率）为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=nx%5E%7Bn-1%7D" alt="nx^{n-1}" eeimg="1">
+                </p>
+                <p>
+                    这里是略过极限的直接计算，和高等数学的方法有所不同。要知道，整数不是一个域，它对商运算是不封闭的，用通常的比值是无法求导的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        实数集上幂函数的导数
+                    </b>
+                </h2>
+                <p>
+                    实数上幂函数依旧具有相同的导数形式。按定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdx%5En%7D%7Bdx%7D+%3D+%5Clim_%7B%5CDelta+x+%5Crightarrow+0%7D%7B%5Cfrac%7B%28x%2B%5CDelta+x%29%5En-x%5En%7D%7B%5CDelta+x%7D%7D" alt="\frac{dx^n}{dx} = \lim_{\Delta x \rightarrow 0}{\frac{(x+\Delta x)^n-x^n}{\Delta x}}" eeimg="1">
+                </p>
+                <p>
+                    其中按照二项式定理分解开后，
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    次项被消去，剩余最高项为
+                    <img src="https://www.zhihu.com/equation?tex=%28n-1%29" alt="(n-1)" eeimg="1">
+                    次项，其它项成为无穷小量，于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdx%5En%7D%7Bdx%7D+%3D+%5Clim_%7B%5CDelta+x+%5Crightarrow+0%7D%7B%5Cfrac%7B%28x%2B%5CDelta+x%29%5En-x%5En%7D%7B%5CDelta+x%7D%7D+%3D+%5Clim_%7B%5CDelta+x+%5Crightarrow+0%7D%7B%5Cfrac%7Bn%5CDelta+x+%5Ccdot+x%5E%7Bn-1%7D+%2B+...%7D%7B%5CDelta+x%7D%7D+%3D+nx%5E%7Bn-1%7D" alt="\frac{dx^n}{dx} = \lim_{\Delta x \rightarrow 0}{\frac{(x+\Delta x)^n-x^n}{\Delta x}} = \lim_{\Delta x \rightarrow 0}{\frac{n\Delta x \cdot x^{n-1} + ...}{\Delta x}} = nx^{n-1}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        多项式函数：求导作为线性算子
+                    </b>
+                </h2>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P%28x%29" alt="P(x)" eeimg="1">
+                    为以
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    为变元的多项式的集合。借助刚才的幂函数导数，我们直接得到多项式
+                    <img src="https://www.zhihu.com/equation?tex=p%28x%29+%5Cin+P%28x%29" alt="p(x) \in P(x)" eeimg="1">
+                    的导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdp%28x%29%7D%7Bdx%7D+%3D+%5Cfrac%7Bd%7D%7Bdx%7D%5Csum_%7Bi%3D0%7D%5E%7Bn%7Da_ix%5Ei+%3D+%5Csum_%7Bi%3D0%7D%5E%7Bn%7D+%5Cfrac%7Bda_ix%5Ei%7D%7Bdx%7D+%3D+%5Csum_%7Bi%3D0%7D%5E%7Bn%7D+ia_i+x%5E%7Bi-1%7D" alt="\frac{dp(x)}{dx} = \frac{d}{dx}\sum_{i=0}^{n}a_ix^i = \sum_{i=0}^{n} \frac{da_ix^i}{dx} = \sum_{i=0}^{n} ia_i x^{i-1}" eeimg="1">
+                </p>
+                <p>
+                    导数所谓的
+                    <b>
+                        线性
+                    </b>
+                    性，体现为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+p_1%28x%29%2Cp_2%28x%29%5Cin+P%28x%29%2C+%5Cforall+a%2C+b+%5Cin+%5Cmathbb%7BR%7D" alt="\forall p_1(x),p_2(x)\in P(x), \forall a, b \in \mathbb{R}" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd+%5Bap_1%28x%29%2Bbp_2%28x%29%5D%7D%7Bdx%7D+%3D+%5Cfrac%7Bd%7D%7Bdx%7D+%5CBig%28+a%5Csum_%7Bi%3D0%7D%5E%7Bm%7D+a_ix%5Ei+%2B+b%5Csum_%7Bi%3D0%7D%5E%7Bn%7D+b_ix%5Ei+%5CBig%29+%3D+a%5Csum_%7Bi%3D0%7D%5E%7Bm%7D+ia_i+x%5E%7Bi-1%7D+%2B+b%5Csum_%7Bi%3D0%7D%5E%7Bn%7D+ib_i+x%5E%7Bi-1%7D+%3Da%5Cfrac%7Bdp_1%28x%29%7D%7Bdx%7D+%2B+b%5Cfrac%7Bdp_2%28x%29%7D%7Bdx%7D" alt="\frac{d [ap_1(x)+bp_2(x)]}{dx} = \frac{d}{dx} \Big( a\sum_{i=0}^{m} a_ix^i + b\sum_{i=0}^{n} b_ix^i \Big) = a\sum_{i=0}^{m} ia_i x^{i-1} + b\sum_{i=0}^{n} ib_i x^{i-1} =a\frac{dp_1(x)}{dx} + b\frac{dp_2(x)}{dx}" eeimg="1">
+                </p>
+                <p>
+                    以下概念，先略作提示，深入理解需要等到学习了线性代数之后：
+                </p>
+                <blockquote>
+                    多项式是一类可以无限次求导（光滑）的函数。函数和函数之间可以相加和数乘，构成
+                    <b>
+                        函数空间
+                    </b>
+                    （集合一般是松散的，而所谓空间，一般是指具有结构的集合）。上面我们看到，对多项式的线性组合求导，等于其各自的导数以相同的系数进行线性组合。求导运算，作为一个函数空间的
+                    <b>
+                        算子
+                    </b>
+                    ，保持了线性组合的结构，因此称其为
+                    <b>
+                        线性算子
+                    </b>
+                    。
+                </blockquote>
+                <h2>
+                    <b>
+                        指数函数
+                    </b>
+                </h2>
+                <p>
+                    在所有的光滑函数中，我们希望有一种特殊的函数可以满足：
+                    <b>
+                        一个函数的导数等于它自身
+                    </b>
+                    ，而指数函数就满足这个条件。通过级数展开：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5Ex%3D%5Csum_%7Bn%3D0%7D%5E%5Cinfty%5Cfrac%7B%28ix%29%5En%7D%7Bn%21%7D" alt="e^x=\sum_{n=0}^\infty\frac{(ix)^n}{n!}" eeimg="1">
+                </p>
+                <p>
+                    对
+                    <img src="https://www.zhihu.com/equation?tex=e%5Ex" alt="e^x" eeimg="1">
+                    求导，相当于对级数的每一项求导，其结果任然等于它本身：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bde%5Ex%7D%7Bdx%7D%3D%5Cfrac%7Bd%7D%7Bdx%7D%5Csum_%7Bn%3D0%7D%5E%5Cinfty%5Cfrac%7Bx%5En%7D%7Bn%21%7D+%3D%5Csum_%7Bn%3D0%7D%5E%5Cinfty+%5Cfrac%7Bd%7D%7Bdx%7D%5Cfrac%7Bx%5En%7D%7Bn%21%7D+%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%5Cfrac%7Bx%5E%7B%28n-1%29%7D%7D%7B%28n-1%29%21%7D+%3D%5Csum_%7Bn%3D0%7D%5E%5Cinfty%5Cfrac%7Bx%5En%7D%7Bn%21%7D%3De%5Ex" alt="\frac{de^x}{dx}=\frac{d}{dx}\sum_{n=0}^\infty\frac{x^n}{n!} =\sum_{n=0}^\infty \frac{d}{dx}\frac{x^n}{n!} =\sum_{n=1}^\infty \frac{x^{(n-1)}}{(n-1)!} =\sum_{n=0}^\infty\frac{x^n}{n!}=e^x" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        三角函数：谐振
+                    </b>
+                </h2>
+                <p>
+                    这里不详谈如何求得三角函数的导数，任何高等数学或数学分析的参考书都有详细过程。需要我们理解的主要是这两个公式，它们在后面的学习中是基础性的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csin%5E%5Cprime+x+%3D+%5Ccos%5E%5Cprime+x%2C+%5Ccos%5E%5Cprime+x+%3D+-%5Csin%5E%5Cprime+x" alt="\sin^\prime x = \cos^\prime x, \cos^\prime x = -\sin^\prime x" eeimg="1">
+                </p>
+                <p>
+                    这两个公式要放在一起理解。完全的理解，需要等到大体上熟悉了复数中的Euler公式、了解了线性微分方程，甚至对调和分析有一定了解了以后才谈得上。这里只能站在中学生的角度谈一下直观。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csin+x%2C%5Ccos+x" alt="\sin x,\cos x" eeimg="1">
+                    反映了单位圆上的一点，投影到两个坐标轴的分量。角度
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    是按照逆时针旋转的。用解析几何的坐标表示，这一点是
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ccos+x%2C%5Csin+x%29" alt="(\cos x,\sin x)" eeimg="1">
+                    。求导数得到了另一个坐标
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ccos%5E%5Cprime+x%2C%5Csin%5E%5Cprime+x%29" alt="(\cos^\prime x,\sin^\prime x)" eeimg="1">
+                    。它反映出了点
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ccos+x%2C%5Csin+x%29" alt="(\cos x,\sin x)" eeimg="1">
+                    相对于角度
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    运动的速度。这个速度的方向矢量是和点的坐标矢量垂直的，所以才有公式中的交错配对形式。
+                </p>
+                <p>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

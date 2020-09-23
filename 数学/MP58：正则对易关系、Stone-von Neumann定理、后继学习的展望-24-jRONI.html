@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP58：正则对易关系、Stone-von Neumann定理、后继学习的展望
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-7b510f27aa7472b3d93d4d34292d262f_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/48514842" target="_blank">
+                        MP58：正则对易关系、Stone-von Neumann定理、后继学习的展望
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-11-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    最早我们谈到正则对易关系是在：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47299385" class="internal">
+                        MP43：从经典力学到量子力学(4)：正则对易关系、Poisson括号、对易子
+                    </a>
+                </p>
+                <p>
+                    到现在我们经过许多算子理论的历练，又来看正则对易关系，是为了从正则对易关系引入测不准原理，以及更重要的Stone-von Neumann定理和算子半群：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47392957" class="internal">
+                        MP57：从Schrödinger图景看量子力学中的酉(unitary/幺正)变换
+                    </a>
+                </p>
+                <p>
+                    Stone-von Neumann定理意义在于，它将任意的满足正则对易关系的算子纳入到了酉变换的框架下，使得系统具有一般的演化图景。
+                </p>
+                <p>
+                    最后，我们回顾了本系列的知识和对后面学习的建议。
+                </p>
+                <hr>
+                <h2>
+                    <b>
+                        正则对易关系
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    所谓对易，数学上叫做交换。通过以下表达式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=xy-yx" alt="xy-yx" eeimg="1">
+                </p>
+                <p>
+                    来度量偏离零的程度的方法，往往用来评估
+                    <b>
+                        不对易
+                    </b>
+                    的程度。所谓的
+                    <b>
+                        对易子(commutator)
+                    </b>
+                    ，可以理解为
+                    <b>
+                        不对易子
+                    </b>
+                    。位置算符
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    和动量算符
+                    <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                    复合作用于量子态
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29+%5Cin+%5Cmathscr+H" alt="\psi(x) \in \mathscr H" eeimg="1">
+                    的结果是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=PX%5Cpsi+%3D+-i%5Chbar+%5Cfrac%7Bd%7D%7Bdx%7D%28x%5Cpsi%29+%3D+%28-i%5Chbar+-i%5Chbar+x%5Cfrac%7Bd%7D%7Bdx%7D%29%5Cpsi" alt="PX\psi = -i\hbar \frac{d}{dx}(x\psi) = (-i\hbar -i\hbar x\frac{d}{dx})\psi" eeimg="1">
+                </p>
+                <p>
+                    解算子方程得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=XP+-+PX+%3D+i%5Chbar" alt="XP - PX = i\hbar" eeimg="1">
+                </p>
+                <p>
+                    这个式子就是
+                    <b>
+                        正则对易关系(canonical commutation relation)
+                    </b>
+                    。这个关系可以应用于任意算子的二元运算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5BA%2CB%5D+%3D+AB+-+BA" alt="[A,B] = AB - BA" eeimg="1">
+                </p>
+                <p>
+                    称为
+                    <b>
+                        对易子(commutator)
+                    </b>
+                    。位置算符
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    和动量算符
+                    <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                    具有正则对易关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5BX%2CP%5D+%3D+XP+-+PX+%3D+i%5Chbar" alt="[X,P] = XP - PX = i\hbar" eeimg="1">
+                </p>
+                <p>
+                    当它们复合作用于一个波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    时，复合的顺序会影响映射的结果：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5BX%2CP%5D%5Cpsi+%3D+i%5Chbar%5Cpsi" alt="[X,P]\psi = i\hbar\psi" eeimg="1">
+                </p>
+                <blockquote>
+                    我们注意到算子
+                    <img src="https://www.zhihu.com/equation?tex=%5BX%2CP%5D" alt="[X,P]" eeimg="1">
+                    的特征值就是
+                    <img src="https://www.zhihu.com/equation?tex=i%5Chbar" alt="i\hbar" eeimg="1">
+                    ，而通过适当的单位可以约去Plank常数
+                    <img src="https://www.zhihu.com/equation?tex=%5Chbar" alt="\hbar" eeimg="1">
+                    ，这样特征值变成
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    ，也就是说，作为算子的对易子
+                    <img src="https://www.zhihu.com/equation?tex=%5BX%2CP%5D" alt="[X,P]" eeimg="1">
+                    对波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    的映射，相当于让波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29" alt="\psi(x)" eeimg="1">
+                    整体上在每个位置
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    上都进行了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi%2F2" alt="\pi/2" eeimg="1">
+                    的旋转。
+                </blockquote>
+                <p>
+                    从正则对易关系上可以延展两个问题：
+                </p>
+                <ul>
+                    <li>
+                        测不准原理：位置和动量的不确定性之积是有下限的；
+                    </li>
+                    <li>
+                        Stone-von Neumann定理：任何满足正则对易关系的一对自伴算子都可以转换为位置和动量算符的关系
+                    </li>
+                </ul>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    测不准原理(uncertainty principle)的数学表述为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+X+%5CDelta+P+%5Cgeq+%5Cfrac%7B%5Chbar%7D%7B2%7D" alt="\Delta X \Delta P \geq \frac{\hbar}{2}" eeimg="1">
+                </p>
+                <p>
+                    这是我们在最初学习量子物理时就熟知的。而正则对易关系更有趣的地方在于以下的Stone-von Neumann定理：
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Stone-von Neumann定理
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BA_i%5C%7D%2C+%5C%7BB_i%5C%7D" alt="\{A_i\}, \{B_i\}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的自伴算子，满足如下的指数对易关系，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7BisA_j%7De%5E%7BitA_k%7D+%3D+e%5E%7BitA_k%7De%5E%7BisA_j%7D" alt="e^{isA_j}e^{itA_k} = e^{itA_k}e^{isA_j}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7BisB_j%7De%5E%7BitB_k%7D+%3D+e%5E%7BitB_k%7De%5E%7BisB_j%7D" alt="e^{isB_j}e^{itB_k} = e^{itB_k}e^{isB_j}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7BisA_j%7De%5E%7BitB_k%7D+%3D+e%5E%7B-ist%5Chbar+%5Cdelta_j%5Ek%7De%5E%7BitB_k%7De%5E%7BisA_j%7D" alt="e^{isA_j}e^{itB_k} = e^{-ist\hbar \delta_j^k}e^{itB_k}e^{isA_j}" eeimg="1">
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    可以分解为正交闭子空间
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BV_k%5C%7D" alt="\{V_k\}" eeimg="1">
+                    的直和。并且，这些子空间在
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7BitA_k%7D%2Ce%5E%7BitB_k%7D" alt="e^{itA_k},e^{itB_k}" eeimg="1">
+                    的作用下是不变子空间。进一步，存在酉算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=U_k%3A+V_k+%5Cto+L%5E2%28%5COmega%29" alt="U_k: V_k \to L^2(\Omega)" eeimg="1">
+                </p>
+                <p>
+                    使得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=U_k+e%5E%7BitA_k%7D+U_k%5E%7B-1%7D+%3D+e%5E%7BitX_k%7D" alt="U_k e^{itA_k} U_k^{-1} = e^{itX_k}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=U_k+e%5E%7BitB_k%7D+U_k%5E%7B-1%7D+%3D+e%5E%7BitP_k%7D" alt="U_k e^{itB_k} U_k^{-1} = e^{itP_k}" eeimg="1">
+                </p>
+                <p>
+                    这里我们看到了酉变换的作用，可以回顾：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47392957" class="internal">
+                        MP57：从Schrödinger图景看量子力学中的酉(unitary/幺正)变换
+                    </a>
+                </p>
+                <p>
+                    Stone-von Neumann定理意义在于，它将任意的满足正则对易关系的算子纳入到了酉变换的框架下，使得系统具有一般的演化图景。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        泛函分析和量子力学：我们学到了什么？
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    原本计划在介绍完Stone-von Neumann定理后继续讲几个主题：
+                </p>
+                <ul>
+                    <li>
+                        算子半群
+                    </li>
+                    <li>
+                        角动量
+                    </li>
+                    <li>
+                        密度矩阵
+                    </li>
+                    <li>
+                        二次量子化
+                    </li>
+                    <li>
+                        路径积分
+                    </li>
+                </ul>
+                <p>
+                    但是还有几个子系列在等着，实在没有办法照顾到了。我们打算在后面的经典场论、分析力学、量子场论中讨论这些主题，或者用更现代的数学工具来处理这些问题。比如，算子半群属于泛函分析的高级主题，在发展方程中可能会继续讨论；角动量源于经典分析力学的主题，未来可以用更近代的几何思想（Lie群、辛几何）讨论；路径积分可以在经典场论中讨论，也可以在量子场论讨论，其数学的严密性需要算子半群、Trotter乘积等方面的概念。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们差不多用了二十讲介绍泛函分析与量子力学。对读者的知识要求，从物理上可以说只需要中学所具备的原子物理的一点现象描述的定性知识，以及数学上最基本的线性代数。我们究竟学到了什么呢？现在，请回头再看：
+                </p>
+                <ul>
+                    <li>
+                        Sakurai: Modern Quantum Mechanics
+                    </li>
+                    <li>
+                        Landau: 非相对论量子力学
+                    </li>
+                    <li>
+                        顾樵: 量子力学（推荐）
+                    </li>
+                    <li>
+                        以及曾谨言的量子力学（不推荐，看目录就可以了）
+                    </li>
+                </ul>
+                <p>
+                    将会发现，标准的讲法和我们的系列差别实在是太大了。我们压根就没有打算按照传统的方法讲，如果是那样就没有动力写这个专栏了。然而，如果读者已经浏览过本系列中的大部分内容，再去看这些标准的量子力学，会感觉非常的轻松——更多的物理现象、更多的计算，有了基础以后一切不至于不知所云。
+                </p>
+                <p>
+                    实际上我们在MP40~44中完成了量子力学建模的问题，在MP45~47中解了最简单的Schrödinger方程，对于量子力学是什么，差不多有了个印象。我们用长达9讲来讨论线性算子，这自然是比物理系的培养方案要强的内功了，毕竟我们的系列还挂着泛函分析的名头。按照国内比较好的教材：
+                </p>
+                <ul>
+                    <li>
+                        张恭庆: 泛函分析（上下册）
+                    </li>
+                </ul>
+                <p>
+                    上册的泛函分析是给数学系本科生的主课教材，下册是给数学系研究生的通科教材。我们的线性算子主题大部分的内容是比较靠后的内容。所以，没有接触过泛函分析的读者如果回头再去看泛函分析，会惊奇地发现我们竟然跳过了泛函分析最重要的一些定理，如开映像定理、闭图像定理、共鸣定理、Hahn-Banach定理，而且我们几乎没有怎么讲完备性和Bananch空间，就直接上手玩Hilbert空间上的线性算子了。反过来说，我们学到的一些东西，不仅物理系的同学闻所未闻，可能数学系的本科生也是一头雾水。这样真的好么？没关系的，从物理上说，毕竟许多人都认为量子力学的难是在于线性代数的基础理解不到位，而不是缺乏泛函分析的知识，而从我们的角度看，介绍更多的高级/近代数学思想，是用来降维打击的。从数学上手，大量上手使用线性算子理论，同时了解一些算子代数和算子半群的思想，可以反复地加强数学的理解，再回头去补基础也是事半功倍的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从研究的角度，完成了现在的泛函分析与量子力学，我们足以往后继续推进后面的系列了。真正的研究都是缺什么补什么，带着问题学知识。我们系列的目的是尽快看到问题（我们的责任），再往回补（读者自己的事，不归我们管）。回补的参考书，除了上面几本（再次排除曾谨言的量子力学），还有：
+                </p>
+                <ul>
+                    <li>
+                        Reed &amp; Simon. Methods of Modern Mathematical Physics I: Functional Analysis; // 主要是第一册的算子和谱分析部分，后面的三本也可以用来作为深入学习。
+                    </li>
+                    <li>
+                        Lax. Functional Analysis; // 这本书是一章理论一章实例的节奏，适合希望系统学习泛函分析的读者
+                    </li>
+                    <li>
+                        Yosida. Functional Analysis; // 起点很高，一气呵成，适合泛函分析的职业玩家
+                    </li>
+                    <li>
+                        Halmos. Measure Theory; // 希望补测度和实分析方面的基础，可以参考这本
+                    </li>
+                    <li>
+                        Hall. Quantum Theory for Mathematicians; // 希望同时在数学和物理上都照顾到的，建议把这本书系统地读下来，并且，它是GTM 267，读者有了本系列的基础，会发现去读一本GTM是如此畅快的事
+                    </li>
+                </ul>
+                <p>
+                    剩下没有完成的内容，后面的系列再见。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        附录：系列回顾
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    <a href="https://zhuanlan.zhihu.com/p/46403590" class="internal">
+                        MP38：泛函分析与量子力学
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44825641" class="internal">
+                        MP39：量子力学中的内积结构
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47247498" class="internal">
+                        MP40：从经典力学到量子力学(1)：Hamilton力学、可观测量、本征态
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47010723" class="internal">
+                        MP41：从经典力学到量子力学(2)：经典驻波的量子化、动量算子、Fourier分析
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47255640" class="internal">
+                        MP42：从经典力学到量子力学(3)：位置算子、Pontryagin对偶、位置/动量算子的性质
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47299385" class="internal">
+                        MP43：从经典力学到量子力学(4)：正则对易关系、Poisson括号、对易子
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47015428" class="internal">
+                        MP44：量子力学公理：从线性代数到泛函分析
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47534431" class="internal">
+                        MP45：Schrödinger方程(1)：分离变量法与解的结构
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47778385" class="internal">
+                        MP46：Schrödinger方程(2)：谐振子、算子的共轭分解、下降/提升算子、基态
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47778440" class="internal">
+                        MP47：Schrödinger方程(3)：基态与激发态、Hermite多项式、数学物理方法
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46986534" class="internal">
+                        MP48：线性算子(1)：有界算子、算子的谱、自伴算子的谱定理
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47396214" class="internal">
+                        MP49：线性算子(2)：依算子谱的正交分解、正交投影算子、投影算子值测度(p.v.m.)
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47395408" class="internal">
+                        MP50：线性算子(3)：反双线性型、极化恒等式、复Hilbert空间的有界二次型
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47892270" class="internal">
+                        MP51：线性算子(4)：R-M-K表示定理、泛函演算、算子值积分(o.v.i.)
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47397791" class="internal">
+                        MP52：线性算子(5)：谱定理和量子力学的概率测度
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47291823" class="internal">
+                        MP53：线性算子(6)：Banach代数、Gelfand表示、算子代数的谱
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/45061490/edit" class="internal">
+                        MP54：线性算子(7)：C*代数、Arens引理
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/45329426/edit" class="internal">
+                        MP55：线性算子(8)：量子力学中的无界算子
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44948413/edit" class="internal">
+                        MP56：线性算子(9)：Cayley变换
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47392957" class="internal">
+                        MP57：从Schrödinger图景看量子力学中的酉(unitary/幺正)变换
+                    </a>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

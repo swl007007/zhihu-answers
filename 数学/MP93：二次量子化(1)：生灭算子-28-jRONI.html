@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP93：二次量子化(1)：生灭算子
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-61fdec534e7e38481c75953048d668a2_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/54732380" target="_blank">
+                        MP93：二次量子化(1)：生灭算子
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-01-13
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    Schrödinger方程描述了(非相对论的)粒子的波动特性。而我们常常听到的光子(photon)是什么呢？我们对光/电磁波的认识是波，它如何成为粒子呢？本讲从过去对谐振量子化得到的下降/提升算子出发，开始二次量子化的讨论，特别是波动如何成为/视为粒子，如何调整我们对粒子的固有认识——它将显著不同于经典力学中的质点。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        谐振的量子化
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47778385" class="internal">
+                        MP46
+                    </a>
+                    <a href="https://zhuanlan.zhihu.com/p/47778440" class="internal">
+                        MP47
+                    </a>
+                    给出过一个逻辑，把经典弹性谐振
+                    <img src="https://www.zhihu.com/equation?tex=F+%3D+-+kx+%3D+m%5Cpartial_t%5E2x" alt="F = - kx = m\partial_t^2x" eeimg="1">
+                    的Hamilton量
+                    <img src="https://www.zhihu.com/equation?tex=H+%3D+%5Cfrac%7Bp%5E2%7D%7B2m%7D+%2B+%5Cfrac%7Bm%7D%7B2%7D%5Comega%5E2x%5E2" alt="H = \frac{p^2}{2m} + \frac{m}{2}\omega^2x^2" eeimg="1">
+                    通过一次量子化得到
+                    <img src="https://www.zhihu.com/equation?tex=H+%3D+%5Cfrac%7B1%7D%7B2m%7D%28P%5E2+%2B+m%5E2%5Comega%5E2X%5E2%29" alt="H = \frac{1}{2m}(P^2 + m^2\omega^2X^2)" eeimg="1">
+                    ，通过一对共轭的下降(lowering)/提升(raising)算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B%5Csqrt%7B2m%5Chbar%5Comega%7D%7D%28m%5Comega+X+%5Cpm+iP%29" alt="\frac{1}{\sqrt{2m\hbar\omega}}(m\omega X \pm iP)" eeimg="1">
+                    ，得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H+%3D+%5Chbar%5Comega+%5CBig%28+A%5E%5Cdagger+A+%2B+%5Cfrac%7B1%7D%7B2%7DI+%5CBig%29+%5Ctag%7B1%7D" alt="H = \hbar\omega \Big( A^\dagger A + \frac{1}{2}I \Big) \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    其中还涉及一些归一化的处理，具体参考过去的详细推理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下降/提升算子，也就是上式的
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%5Cdagger" alt="A^\dagger" eeimg="1">
+                    可以构成阶梯算符——阶梯化地、量子地、能量一份一份地，在能量的阶梯上（数学上的有序集），在固定的阶梯上移动，并且和外界交换能量。对应于能量阶梯的是特征值。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        生灭算子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下降/提升算子改变的是能级，亦可视为在系统中增加或减少了能量。从我们对基本实验结果的认知而言，能量的变化(与外界的交换)往往表现为粒子性——如著名的光电效应，因为能级的提高而产生了光子。如果我们不是特别介意一定要立即完全说清楚能量生灭和粒子生灭的区别，那么现在我们可以统一看待两者，这样下降/提升算符有了新的内涵——
+                    <b>
+                        创生(creation)算子/湮灭(annihilation)算子
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    先统一一下记号，若我们对算子习以为常则无需大写来强调，将(1)写为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H+%3D+%5Chbar%5Comega+%5CBig%28+a%5E%5Cdagger+a+%2B+%5Cfrac%7B1%7D%7B2%7D+%5CBig%29+%5Ctag%7B2%7D" alt="H = \hbar\omega \Big( a^\dagger a + \frac{1}{2} \Big) \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    解Schrödinger方程有复杂的流程，其中涉及到Hermite多项式和级数解，这些在量子力学/数学物理方法里面有长篇的步骤。这里我们只注意到一件事，就是
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -能级的波函数一般记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_n" alt="\psi_n" eeimg="1">
+                    ，在(最简单的、具有代数解的)谐振子中它具有如下的解的结构：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_n%28%5Cxi%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5En+n%21%7D%7D+%5CBig%28+%5Cfrac%7Bm%5Comega%7D%7B%5Cpi%5Chbar%7D+%5CBig%29%5E%7B1%2F4%7D+H_n%28%5Cxi%29+e%5E%7B-%5Cxi%5E2%2F2%7D+%5C%5C" alt="\psi_n(\xi) = \frac{1}{\sqrt{2^n n!}} \Big( \frac{m\omega}{\pi\hbar} \Big)^{1/4} H_n(\xi) e^{-\xi^2/2} \\" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=H_n" alt="H_n" eeimg="1">
+                    为Hermite多项式，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi+%3D+%5Csqrt%7Bm%5Comega%2F%5Chbar%7Dx" alt="\xi = \sqrt{m\omega/\hbar}x" eeimg="1">
+                    。现在我们关注的是粒子，不应该被复杂的波函数的表示所困扰，用Dirac记号
+                    <img src="https://www.zhihu.com/equation?tex=%7Cn%5Crangle" alt="|n\rangle" eeimg="1">
+                    表示波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_n" alt="\psi_n" eeimg="1">
+                    也就是这个态。态
+                    <img src="https://www.zhihu.com/equation?tex=%7Cn%5Crangle" alt="|n\rangle" eeimg="1">
+                    对应了
+                    <img src="https://www.zhihu.com/equation?tex=a%5E%5Cdagger+a" alt="a^\dagger a" eeimg="1">
+                    的特征值
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    ，也对应了
+                    <img src="https://www.zhihu.com/equation?tex=H" alt="H" eeimg="1">
+                    的特征值
+                    <img src="https://www.zhihu.com/equation?tex=%5Chbar%5Comega%5Cbig%28n%2B%5Cfrac%7B1%7D%7B2%7D%5Cbig%29" alt="\hbar\omega\big(n+\frac{1}{2}\big)" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+a%5E%5Cdagger+a+%7Cn%5Crangle+%26%3D+n%7Cn%5Crangle+%5C%5C+H+%7Cn%5Crangle+%26%3D+%5Chbar%5Comega%5Cbig%28n%2B%5Cfrac%7B1%7D%7B2%7D%5Cbig%29+%7Cn%5Crangle+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} a^\dagger a |n\rangle &amp;= n|n\rangle \\ H |n\rangle &amp;= \hbar\omega\big(n+\frac{1}{2}\big) |n\rangle \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    在基态
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H%7C0%5Crangle%3D+%5Chbar%5Comega%5Cbig%28n%2B%5Cfrac%7B1%7D%7B2%7D%5Cbig%29+%7C0%5Crangle+%3D+%5Cfrac%7B1%7D%7B2%7D%5Chbar%5Comega%7C0%5Crangle+%5Ctag%7B4%7D" alt="H|0\rangle= \hbar\omega\big(n+\frac{1}{2}\big) |0\rangle = \frac{1}{2}\hbar\omega|0\rangle \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    此时的零点能即为
+                    <img src="https://www.zhihu.com/equation?tex=+%5Cfrac%7B1%7D%7B2%7D%5Chbar%5Comega" alt="\frac{1}{2}\hbar\omega" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        无耦合的多体问题
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    考虑
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    个无耦合的谐振子构成的系统，按照前面的逻辑容易得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+H+%26%3D+%5Csum_%7Bk%3D1%7D%5EN+H_k+%5C%5C+%26+%3D++%5Csum_%7Bk%3D1%7D%5EN++%5Cfrac%7B1%7D%7B2m_k%7D%28P_k%5E2+%2B+m_k%5E2%5Comega_k%5E2X_k%5E2%29+%5C%5C+%26+%3D+%5Csum_%7Bk%3D1%7D%5EN+%5Chbar%5Comega_k%5Cbig%28+a_k%5E%5Cdagger+a_k+%2B+%5Cfrac%7B1%7D%7B2%7D+%5Cbig%29+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} H &amp;= \sum_{k=1}^N H_k \\ &amp; =  \sum_{k=1}^N  \frac{1}{2m_k}(P_k^2 + m_k^2\omega_k^2X_k^2) \\ &amp; = \sum_{k=1}^N \hbar\omega_k\big( a_k^\dagger a_k + \frac{1}{2} \big) \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    前面的基态
+                    <img src="https://www.zhihu.com/equation?tex=%7C0%5Crangle" alt="|0\rangle" eeimg="1">
+                    相应地记为多个基态的并置
+                    <img src="https://www.zhihu.com/equation?tex=%7C0%5Crangle+%3D+%7C0%2C0%2C%5Cdots%2C0%5Crangle" alt="|0\rangle = |0,0,\dots,0\rangle" eeimg="1">
+                    ，这样对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+k" alt="\forall k" eeimg="1">
+                    有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=a_k%7C0%5Crangle+%3D+0+%5Ctag%7B6%7D" alt="a_k|0\rangle = 0 \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    将多个生灭算子确定的整数化的量子态放在一个Dirac记号中
+                    <img src="https://www.zhihu.com/equation?tex=%7Cn_1%2Cn_2%2C%5Cdots%2Cn_N%5Crangle" alt="|n_1,n_2,\dots,n_N\rangle" eeimg="1">
+                    是很自然的。后面还会讨论它更方便的表示形式——
+                    <b>
+                        占据数(occupation number representation)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

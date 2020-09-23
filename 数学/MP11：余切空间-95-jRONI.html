@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP11：余切空间
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-d55eb7d7a262dcc7313fd6ceaada5a45_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44190499" target="_blank">
+                        MP11：余切空间
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-12
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    本讲介绍微分流形一点上的余切空间。我们借助的是前面提到的微分流形上的函数和参数曲线来得到余切空间的构造。先用函数芽进行局部化，将点附近相等的函数视作等价。然后借助上一讲构造的类似于方向导数的复合映射，得到一个方向导数为零的线性子空间，最后代数化地将余切空间定义为它诱导的商空间。
+                </p>
+                <p>
+                    于是我们的注意力只在函数在无限接近一点时的性质，是一种局部化的处理。在谈论一点附近的函数性质时，我们用函数芽代替函数。函数芽的集合上可以定义加法和数乘运算，构造线性空间的结构。这里的加法和数乘相当于函数上相同运算后的等价化（局部化）。
+                </p>
+                <p>
+                    进一步考察方向导数构造的某种映射的核，可以验证它构成一个线性子空间，从而可以构造商空间。以上的构造方式推广到微分流形商的函数和参数曲线的复合映射，得到余切空间。
+                </p>
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <hr>
+                <p>
+                    按照一般微分几何的教学顺序，在介绍了微分流形概念后，紧接着就应该引入切空间-余切空间。然而，我们在前几讲中介绍了大量场论方面的内容，为的是为切空间-余切空间的学习积累更多的工具和直观理解。
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/44227806" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：MP8：局部线性化：从Taylor展开到微分形式
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/44115400" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：MP9：重新认识向量场：方向导数、偏导数、梯度
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/44203444" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：MP10：微分流形上的函数和参数曲线
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    经过前面几讲的努力，现在我们终于开始正式研究切空间-余切空间了。我们仍然沿用[Chern 1999]的逻辑。先用函数芽进行局部化，将点
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+M" alt="p \in M" eeimg="1">
+                    附近相等的函数视作等价。然后借助上一讲构造的类似于方向导数的映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+%5Cgamma%2C%5Bf%5D+%5Cgg" alt="\ll \gamma,[f] \gg" eeimg="1">
+                    ，得到一个方向导数为零的线性子空间，最后代数化地将余切空间定义为它诱导的商空间。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们在这一讲的逻辑相当程度借鉴了作者的导读文章，并根据本系列的前后逻辑进行了重新梳理：
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/43755432" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：[Chern1999]陈省身微分几何讲义(1)：余切空间
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        函数芽：局部化等价
+                    </b>
+                </h2>
+                <p>
+                    先看最简单的，定义在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的光滑函数集合。固定点
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cin%5Cmathbb%7BR%7D" alt="p\in\mathbb{R}" eeimg="1">
+                    ，其邻域上的
+                    <b>
+                        光滑函数类
+                    </b>
+                    记为
+                    <img src="https://www.zhihu.com/equation?tex=C_p%5E%5Cinfty" alt="C_p^\infty" eeimg="1">
+                    。我们只关心点
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    局部的性质。若有两函数
+                    <img src="https://www.zhihu.com/equation?tex=f%2Cg%5Cin+C_p%5E%5Cinfty" alt="f,g\in C_p^\infty" eeimg="1">
+                    ，它们不必处处相等，但若存在
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    的开邻域
+                    <img src="https://www.zhihu.com/equation?tex=H" alt="H" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=f%5Cvert_H%3Dg%5Cvert_H" alt="f\vert_H=g\vert_H" eeimg="1">
+                    ，或可动态理解为，当无限接近
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    时，会进入开邻域
+                    <img src="https://www.zhihu.com/equation?tex=H" alt="H" eeimg="1">
+                    ，使得两函数在其中处处相等，则两函数等价。（这里有一些拓扑的思想，回顾一下前面的课
+                    <a href="https://zhuanlan.zhihu.com/p/44008969" class="internal">
+                        MP6：SO(2)的自由度、拓扑、连续、同胚、范畴
+                    </a>
+                    ）
+                </p>
+                <p>
+                    这样得到的等价类称为
+                    <b>
+                        函数芽
+                    </b>
+                    ，记为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%3D%5Bg%5D%5Cin%5Cmathscr%7BF%7D_p" alt="[f]=[g]\in\mathscr{F}_p" eeimg="1">
+                </p>
+                <p>
+                    于是我们的注意力只在函数在无限接近
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    时的性质，是一种
+                    <b>
+                        局部化
+                    </b>
+                    的处理。在谈论一点附近的函数性质时，我们用函数芽
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D" alt="[f]" eeimg="1">
+                    代替函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    。函数芽的集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_p" alt="\mathscr{F}_p" eeimg="1">
+                    上可以定义加法和数乘运算，构造
+                    <b>
+                        线性空间
+                    </b>
+                    的结构。这里的加法和数乘相当于
+                    <img src="https://www.zhihu.com/equation?tex=C_p%5E%5Cinfty" alt="C_p^\infty" eeimg="1">
+                    上相同运算后的等价化（局部化）。（具体参考[Chern 1999]）
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        对函数芽求方向导数：余切空间
+                    </b>
+                </h2>
+                <p>
+                    定义在
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    的邻域上的光滑函数
+                    <img src="https://www.zhihu.com/equation?tex=f%3DC_p%5E%5Cinfty" alt="f=C_p^\infty" eeimg="1">
+                    可微，限制在局部的函数芽
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%5Cin%5Cmathscr%7BF%7D_p" alt="[f]\in\mathscr{F}_p" eeimg="1">
+                    同样可以求
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    处的方向导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_v%5Bf%5D%3D+D_vf+%3Dv+%5Ccdot+%5Cnabla+f" alt="D_v[f]= D_vf =v \cdot \nabla f" eeimg="1">
+                </p>
+                <p>
+                    结合前面
+                    <a href="https://zhuanlan.zhihu.com/p/44115400" class="internal">
+                        MP9：重新认识向量场：方向导数、偏导数、梯度
+                    </a>
+                    的结论：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Ccdot+df+%3D+D_vf++%3Dv+%5Ccdot+%5Cnabla+f" alt="v \cdot df = D_vf  =v \cdot \nabla f" eeimg="1">
+                </p>
+                <p>
+                    于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_v%5Bf%5D%3D+v+%5Ccdot+df" alt="D_v[f]= v \cdot df" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        1-形式
+                    </b>
+                    的几何意义是具有梯度的超面元，
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    代表了
+                    <b>
+                        一组
+                    </b>
+                    相差为常数的，体现为平行超平面的线性函数，这一组线性函数求微分后得到了相同的
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面我们用方向导数诱导一个等价关系。两个函数芽
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%2C%5Bg%5D%5Cin%5Cmathscr%7BF%7D_p" alt="[f],[g]\in\mathscr{F}_p" eeimg="1">
+                    若对任何方向矢量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    都具有相同的方向导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_v%5Bf%5D+%3D+D_v%5Bg%5D" alt="D_v[f] = D_v[g]" eeimg="1">
+                </p>
+                <p>
+                    我们将其视为具有等价关系
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%5Csim%5Bg%5D" alt="[f]\sim[g]" eeimg="1">
+                    。进一步，考虑一下代数结构，注意：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_v%5Bf-g%5D+%3D+D_v%5Bf%5D+-+D_v%5Bg%5D+%3D+0" alt="D_v[f-g] = D_v[f] - D_v[g] = 0" eeimg="1">
+                </p>
+                <p>
+                    即：任何方向上方向导数相同的两个函数芽相差一个常数。特别考察集合：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D_p+%3D+%5C%7B+%5Bh%5D%5Cin%5Cmathscr%7BF%7D_p+%5C+%5Cvert+%5C+D_v%5Bh%5D+%3D+0+%5C%7D" alt="\mathscr{H}_p = \{ [h]\in\mathscr{F}_p \ \vert \ D_v[h] = 0 \}" eeimg="1">
+                </p>
+                <p>
+                    它实际上是方向导数构造的某种映射的
+                    <b>
+                        核(kernel)
+                    </b>
+                    ，可以验证
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D_p+" alt="\mathscr{H}_p" eeimg="1">
+                    构成一个线性子空间，从而可以构造
+                    <b>
+                        商空间
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_p%2F%5Cmathscr%7BH%7D_p" alt="\mathscr{F}_p/\mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们可以把等价关系
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%5Csim%5Bg%5D" alt="[f]\sim[g]" eeimg="1">
+                    写为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D-%5Bg%5D+%5Cin+%5Cmathscr%7BH%7D_p+" alt="[f]-[g] \in \mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    于是根据代数学知识，等价类：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Bf%5D%7D%3D%5Ctilde%7B%5Bg%5D%7D+%5Cin+%5Cmathscr%7BF%7D_p%2F%5Cmathscr%7BH%7D_p" alt="\tilde{[f]}=\tilde{[g]} \in \mathscr{F}_p/\mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    理解为：函数芽
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D" alt="[f]" eeimg="1">
+                    对映射核
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D_p" alt="\mathscr{H}_p" eeimg="1">
+                    商出来的是等价类
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Bf%5D%7D" alt="\tilde{[f]}" eeimg="1">
+                    ，它代表了一组互相平行、相差为常数的局部线性的函数芽。这个几何直观和
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    完全一致。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在我们理解了为什么在[Chern 1999]中直接给出：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%5Ctilde%7B%5Bf%5D%7D" alt="df=\tilde{[f]}" eeimg="1">
+                </p>
+                <p>
+                    为了理解这一点，我们前面用了整整三讲来做准备。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    进一步，我们称：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_p%5E%2A%5Cmathbb%7BR%7D%5En+%3D+%5Cmathscr%7BF%7D_p%2F%5Cmathscr%7BH%7D_p" alt="T_p^*\mathbb{R}^n = \mathscr{F}_p/\mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    为（线性）流形
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的点
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+%5Cmathbb%7BR%7D%5En" alt="p \in \mathbb{R}^n" eeimg="1">
+                    上的
+                    <b>
+                        余切空间(cotangent space)
+                    </b>
+                    。函数芽的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D_p" alt="\mathscr{H}_p" eeimg="1">
+                    -等价类
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Bf%5D%7D++%5Cin+%5Cmathscr%7BF%7D_p%2F%5Cmathscr%7BH%7D_p" alt="\tilde{[f]}  \in \mathscr{F}_p/\mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    或者更为常见的
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df+%5Cin+T_p%5E%2A%5Cmathbb%7BR%7D%5En+" alt="df \in T_p^*\mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    称为
+                    <b>
+                        余切向量(cotangent vector)
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    是余切空间的自然基。
+                </p>
+                <h2>
+                    <b>
+                        利用参数曲线构造复合映射
+                    </b>
+                </h2>
+                <p>
+                    现在我们把以上
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的结果推广到微分流形。有
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    维光滑流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    ，固定点
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cin+M" alt="p\in M" eeimg="1">
+                    ，其邻域上的
+                    <b>
+                        光滑函数类
+                    </b>
+                    记为
+                    <img src="https://www.zhihu.com/equation?tex=C_p%5E%5Cinfty" alt="C_p^\infty" eeimg="1">
+                    。 类似前面的方法可以构造流形一点上的函数芽，类似记号：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D+%5Cin%5Cmathscr%7BF%7D_p" alt="[f] \in\mathscr{F}_p" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    流形是多维的，要研究点
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    附近的性质，需要从所有可能的方向去穿过这一点。嵌入在流形上且穿过这一点的曲线，是方便的研究工具。在曲线上的运动也是在流形上的运动，穿过点的不同速度（对参数的导数），也体现了切向量的各种可能性。于是，引入
+                    <b>
+                        参数曲线
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cgamma%3A%28-%5Cdelta%2C%5Cdelta%29+%5Cto+M" alt="\gamma:(-\delta,\delta) \to M" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cmapsto+%5Cgamma%28t%29" alt="t \mapsto \gamma(t)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cgamma%280%29%3Dp" alt="\gamma(0)=p" eeimg="1">
+                </p>
+                <p>
+                    这一光滑映射是从实数的子集映射到流形的子集，这类映射的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma_p" alt="\Gamma_p" eeimg="1">
+                    。注意前面一直在讨论流形上的函数和函数芽。而函数本身又是流形到实数的映射，于是考虑
+                    <b>
+                        复合映射
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Ccirc+%5Cgamma%3A%28-%5Cdelta%2C%5Cdelta%29+%5Cto+M+%5Cto+%5Cmathbb%7BR%7D" alt="f \circ \gamma:(-\delta,\delta) \to M \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cmapsto+%5Cgamma%28t%29+%5Cmapsto+f%28%5Cgamma%28t%29%29" alt="t \mapsto \gamma(t) \mapsto f(\gamma(t))" eeimg="1">
+                </p>
+                <p>
+                    参数曲线的参数空间
+                    <img src="https://www.zhihu.com/equation?tex=%28-%5Cdelta%2C%5Cdelta%29+%5Cin+%5Cmathbb%7BR%7D" alt="(-\delta,\delta) \in \mathbb{R}" eeimg="1">
+                    光滑地映射到了实数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    我们只关心点
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    的局部，因此可以限制在函数芽上讨论，复合映射成为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D+%5Ccirc+%5Cgamma%3A%28-%5Cdelta%2C%5Cdelta%29+%5Cto+M+%5Cto+%5Cmathbb%7BR%7D" alt="[f] \circ \gamma:(-\delta,\delta) \to M \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cmapsto+%5Cgamma%28t%29+%5Cmapsto+%5Bf%5D%28%5Cgamma%28t%29%29" alt="t \mapsto \gamma(t) \mapsto [f](\gamma(t))" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以上几步操作，通过一个复合映射使得流形上的函数芽
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%28p%29" alt="[f](p)" eeimg="1">
+                    间接成为参数
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    的函数。这样做的意义在于，流形上并没有内禀的坐标系，流形上的点需要通过参数曲线
+                    <b>
+                        参数化
+                    </b>
+                    。所谓参数化就是坐标化。有了坐标以后，才能在参数曲线（作为一自由度的流形）上对函数（芽）进行数学分析的研究。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        对参数求复合导数：类似方向导数的运算
+                    </b>
+                </h2>
+                <p>
+                    现在可以开始求
+                    <b>
+                        复合导数
+                    </b>
+                    。既然函数芽限制于
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    的局部，我们只考虑这一点上情况，结果是由参数曲线
+                    <img src="https://www.zhihu.com/equation?tex=%5Cgamma%5Cin%5CGamma_p" alt="\gamma\in\Gamma_p" eeimg="1">
+                    和函数芽
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%5Cin+C_p%5E%5Cinfty" alt="[f]\in C_p^\infty" eeimg="1">
+                    决定的，记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+%5Cgamma%2C%5Bf%5D+%5Cgg+%3D%5Cfrac%7Bd%7D%7Bdt%7D+%28%5Bf%5D%5Ccirc%5Cgamma%29+%5CBig%5Cvert_%7Bt%3D0%7D+%3D%5Cfrac%7Bd%7D%7Bdt%7D+%28f%5Ccirc%5Cgamma%29+%5CBig%5Cvert_%7Bt%3D0%7D" alt="\ll \gamma,[f] \gg =\frac{d}{dt} ([f]\circ\gamma) \Big\vert_{t=0} =\frac{d}{dt} (f\circ\gamma) \Big\vert_{t=0}" eeimg="1">
+                </p>
+                <p>
+                    这是一个二元映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+%2C+%5Cgg%EF%BC%9A%5CGamma_p+%5Ctimes+C_p%5E%5Cinfty+%5Cto+%5Cmathbb%7BR%7D" alt="\ll , \gg：\Gamma_p \times C_p^\infty \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    类似前面的讨论，两个函数芽
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%2C%5Bg%5D%5Cin%5Cmathscr%7BF%7D_p" alt="[f],[g]\in\mathscr{F}_p" eeimg="1">
+                    若对任何方向矢量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    都具有相同的复合导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+%5Cgamma%2C%5Bf%5D+%5Cgg%3D%5Cll+%5Cgamma%2C%5Bg%5D+%5Cgg" alt="\ll \gamma,[f] \gg=\ll \gamma,[g] \gg" eeimg="1">
+                </p>
+                <p>
+                    我们将其视为具有等价关系
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%5Csim%5Bg%5D" alt="[f]\sim[g]" eeimg="1">
+                    。进一步：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cll+%5Cgamma%2C%5Bf-g%5D+%5Cgg%3D%5Cll+%5Cgamma%2C%5Bf%5D+%5Cgg+-+%5Cll+%5Cgamma%2C%5Bg%5D+%5Cgg+%3D+0" alt="\ll \gamma,[f-g] \gg=\ll \gamma,[f] \gg - \ll \gamma,[g] \gg = 0" eeimg="1">
+                </p>
+                <p>
+                    即：任何方向上方向复合导数相同的两个函数芽相差一个常数。特别考察集合：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D_p+%3D+%5C%7B+%5Bh%5D%5Cin%5Cmathscr%7BF%7D_p+%5C+%5Cvert+%5Cll+%5Cgamma%2C%5Bh%5D+%5Cgg+%3D+0+%5C%7D" alt="\mathscr{H}_p = \{ [h]\in\mathscr{F}_p \ \vert \ll \gamma,[h] \gg = 0 \}" eeimg="1">
+                </p>
+                <p>
+                    它实际上也是复合导数构造的某种映射的
+                    <b>
+                        核(kernel)
+                    </b>
+                    ，可以验证
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D_p+" alt="\mathscr{H}_p" eeimg="1">
+                    构成一个线性子空间，从而可以构造
+                    <b>
+                        商空间
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BF%7D_p%2F%5Cmathscr%7BH%7D_p" alt="\mathscr{F}_p/\mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                    于是，前面在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的讨论结果原封不动地成立：
+                </p>
+                <p>
+                    <br>
+                    把等价关系
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D%5Csim%5Bg%5D" alt="[f]\sim[g]" eeimg="1">
+                    写为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D-%5Bg%5D+%5Cin+%5Cmathscr%7BH%7D_p+" alt="[f]-[g] \in \mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    等价类：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Bf%5D%7D%3D%5Ctilde%7B%5Bg%5D%7D+%5Cin+%5Cmathscr%7BF%7D_p%2F%5Cmathscr%7BH%7D_p" alt="\tilde{[f]}=\tilde{[g]} \in \mathscr{F}_p/\mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    理解为：函数芽
+                    <img src="https://www.zhihu.com/equation?tex=%5Bf%5D" alt="[f]" eeimg="1">
+                    对映射核
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D_p" alt="\mathscr{H}_p" eeimg="1">
+                    商出来的是等价类
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Bf%5D%7D" alt="\tilde{[f]}" eeimg="1">
+                    ，它代表了一组互相平行、相差为常数的局部线性的函数芽。这个几何直观和
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    完全一致：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%5Ctilde%7B%5Bf%5D%7D" alt="df=\tilde{[f]}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                    称：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_p%5E%2AM+%3D+%5Cmathscr%7BF%7D_p%2F%5Cmathscr%7BH%7D_p" alt="T_p^*M = \mathscr{F}_p/\mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    为流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    的点
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+M" alt="p \in M" eeimg="1">
+                    上的
+                    <b>
+                        余切空间(cotangent space)
+                    </b>
+                    。函数芽的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BH%7D_p" alt="\mathscr{H}_p" eeimg="1">
+                    -等价类
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Bf%5D%7D++%5Cin+%5Cmathscr%7BF%7D_p%2F%5Cmathscr%7BH%7D_p" alt="\tilde{[f]}  \in \mathscr{F}_p/\mathscr{H}_p" eeimg="1">
+                </p>
+                <p>
+                    或者更为常见的
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df+%5Cin+T_p%5E%2AM" alt="df \in T_p^*M" eeimg="1">
+                </p>
+                <p>
+                    称为
+                    <b>
+                        余切向量(cotangent vector)
+                    </b>
+                    。如果给定坐标卡，其中有自然坐标
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_i%5C%7D" alt="\{x_i\}" eeimg="1">
+                    ，则
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    是余切空间的自然基。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP109：Lorentz群表示论(6)：Lie群的中心扩张
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-a705143f2a1f94b171dcbbdb509b0325_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/57871599" target="_blank">
+                        MP109：Lorentz群表示论(6)：Lie群的中心扩张
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-03-24
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <h2>
+                    <b>
+                        短正合序列
+                    </b>
+                </h2>
+                <p>
+                    [
+                    <a href="https://zhuanlan.zhihu.com/p/44776557" class="internal">
+                        MP22：同调群
+                    </a>
+                    ] 中讨论过闭链群、边缘链群、同调群这三类可以构成同态序列的代数对象。在同调代数中，对于同态序列（我们这里只讨论Abel群同态）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdots+%5Cto+G_%7Bk%7D+%5Cstackrel%7B%5Crho_k%7D%7B%5Clongrightarrow%7D+G_%7Bk%2B1%7D+%5Cstackrel%7B%5Crho_%7Bk%2B1%7D%7D%7B%5Clongrightarrow%7D+G_%7Bk%2B2%7D+%5Cstackrel%7B%5Crho_%7Bk%2B2%7D%7D%7B%5Clongrightarrow%7D+%5Cdots+%5C%5C" alt="\dots \to G_{k} \stackrel{\rho_k}{\longrightarrow} G_{k+1} \stackrel{\rho_{k+1}}{\longrightarrow} G_{k+2} \stackrel{\rho_{k+2}}{\longrightarrow} \dots \\" eeimg="1">
+                </p>
+                <p>
+                    如果前一个映射的像就是后一个映射的核
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28%5Crho_k%29+%3D+%5Ctext%7BKer%7D%28%5Crho_%7Bk%2B1%7D%29" alt="\text{Im}(\rho_k) = \text{Ker}(\rho_{k+1})" eeimg="1">
+                    ，则称为
+                    <b>
+                        正合序列(exact sequence)
+                    </b>
+                    。从这一角度理解，正合序列是平凡的，研究同调群就是为了通过研究不正合的映射，发现代数拓扑的信息。
+                </p>
+                <p>
+                    <br>
+                    同调代数中十分重要的
+                    <b>
+                        短正合序列(short exact sequence)
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+0+%5Cstackrel%7Be%7D%7B%5Clongrightarrow%7D+A+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+B+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+C+%5Cstackrel%7Bh%7D%7B%5Clongrightarrow%7D+%5Ctextbf+0+%5Ctag%7B1%7D" alt="\textbf 0 \stackrel{e}{\longrightarrow} A \stackrel{f}{\longrightarrow} B \stackrel{g}{\longrightarrow} C \stackrel{h}{\longrightarrow} \textbf 0 \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    头尾都出现了平凡群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+0+%3D+%28%5C%7B0%5C%7D%2C+%2B%2C+0%29" alt="\textbf 0 = (\{0\}, +, 0)" eeimg="1">
+                    ，它是Abel群。
+                </p>
+                <ol>
+                    <li>
+                        先看
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+0+%5Cstackrel%7Be%7D%7B%5Clongrightarrow%7D+A+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+B" alt="\textbf 0 \stackrel{e}{\longrightarrow} A \stackrel{f}{\longrightarrow} B" eeimg="1">
+                        ，由于
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28e%29+%3D+0+%3D+%5Ctext%7BKer%7D%28f%29" alt="\text{Im}(e) = 0 = \text{Ker}(f)" eeimg="1">
+                        ，同态
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        的核为零，称
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        为
+                        <b>
+                            单同态(monomorphism)/单射(injective, one-to-one)
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        再看
+                        <img src="https://www.zhihu.com/equation?tex=B+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+C+%5Cstackrel%7Bh%7D%7B%5Clongrightarrow%7D+%5Ctextbf+0+" alt="B \stackrel{g}{\longrightarrow} C \stackrel{h}{\longrightarrow} \textbf 0" eeimg="1">
+                        ，显然
+                        <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                        是满射，
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28g%29%3D%5Ctext%7BKer%7D%28h%29+%3D+C" alt="\text{Im}(g)=\text{Ker}(h) = C" eeimg="1">
+                        ，故
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        是满射，称
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        为
+                        <b>
+                            满同态(epimorphism)/满射(surjective, onto)
+                        </b>
+                        。
+                    </li>
+                    <li>
+                        最后
+                        <img src="https://www.zhihu.com/equation?tex=A+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+B+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+C" alt="A \stackrel{f}{\longrightarrow} B \stackrel{g}{\longrightarrow} C" eeimg="1">
+                        ，考虑第一群同构定理
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28g%29+%5Csimeq+B%2F%5Ctext%7BKer%7D%28g%29" alt="\text{Im}(g) \simeq B/\text{Ker}(g)" eeimg="1">
+                        ，由于
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        是满同态使得
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28g%29+%3D+C" alt="\text{Im}(g) = C" eeimg="1">
+                        ，于是
+                        <img src="https://www.zhihu.com/equation?tex=C+%5Csimeq+B%2F%5Ctext%7BKer%7D%28g%29" alt="C \simeq B/\text{Ker}(g)" eeimg="1">
+                        。又根据正合的性质
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28f%29+%3D+%5Ctext%7BKer%7D%28g%29" alt="\text{Im}(f) = \text{Ker}(g)" eeimg="1">
+                        ，于是
+                        <img src="https://www.zhihu.com/equation?tex=C+%5Csimeq+B%2F%5Ctext%7BIm%7D%28f%29" alt="C \simeq B/\text{Im}(f)" eeimg="1">
+                        。
+                    </li>
+                    <li>
+                        由于
+                        <img src="https://www.zhihu.com/equation?tex=f%3A+A%5Cto+B" alt="f: A\to B" eeimg="1">
+                        是单同态，有
+                        <img src="https://www.zhihu.com/equation?tex=A+%5Csimeq+%5Ctext%7BIm%7D%28f%29+%5Clhd+B" alt="A \simeq \text{Im}(f) \lhd B" eeimg="1">
+                        ，于是
+                        <img src="https://www.zhihu.com/equation?tex=C+%5Csimeq+B%2FA" alt="C \simeq B/A" eeimg="1">
+                    </li>
+                </ol>
+                <p>
+                    举例：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+0+%5Cstackrel%7Be%7D%7B%5Clongrightarrow%7D+%5Cmathbb+Z+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+%5Cmathbb+R+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+%5Cmathbb+R%2F%5Cmathbb+Z+%5Cstackrel%7Bh%7D%7B%5Clongrightarrow%7D+%5Ctextbf+0+%5C%5C" alt="\textbf 0 \stackrel{e}{\longrightarrow} \mathbb Z \stackrel{f}{\longrightarrow} \mathbb R \stackrel{g}{\longrightarrow} \mathbb R/\mathbb Z \stackrel{h}{\longrightarrow} \textbf 0 \\" eeimg="1">
+                </p>
+                <p>
+                    短正合序列给出了一种研究代数结构（本文主要是指群，而同调代数主要指模）的思路。即给定群
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    ，通过它的正规子群
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    和商群
+                    <img src="https://www.zhihu.com/equation?tex=C+%5Csimeq+B%2FA" alt="C \simeq B/A" eeimg="1">
+                    ，构造短正合序列。这种技术一般叫做
+                    <b>
+                        群扩张(group extension)
+                    </b>
+                    。
+                </p>
+                <h2>
+                    <b>
+                        中心扩张
+                    </b>
+                </h2>
+                <p>
+                    对于群
+                    <img src="https://www.zhihu.com/equation?tex=Q" alt="Q" eeimg="1">
+                    和群
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    ，若有如下短正合序列：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+1+%5Cto+N+%5Cto+G+%5Cto+Q+%5Cto+%5Ctext+1+%5Ctag%7B2%7D" alt="\text 1 \to N \to G \to Q \to \text 1 \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    （这里把平凡群记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+1+%3D+%28%5C%7B1%5C%7D%2C+%5Ccdot%2C+1%29" alt="\textbf 1 = (\{1\}, \cdot, 1)" eeimg="1">
+                    ，而(1)中的表示法暗示是Abel群。）那么称
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=Q" alt="Q" eeimg="1">
+                    按照
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    的
+                    <b>
+                        扩张(extension)
+                    </b>
+                    。在这种情况下，类似于前面的讨论，
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    是群，
+                    <img src="https://www.zhihu.com/equation?tex=N+%5Clhd+G" alt="N \lhd G" eeimg="1">
+                    是正规子群，而
+                    <img src="https://www.zhihu.com/equation?tex=G%2FN+%5Csimeq+Q" alt="G/N \simeq Q" eeimg="1">
+                    同构。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    群中具有交换性的部分，由群中心的概念来刻画。群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    中与所有群元都交换的元素的集合称为群
+                    <b>
+                        中心(center)
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Z%28G%29+%3D+%5C%7B+z+%5Cin+G+%5C+%7C+%5C+%5Cforall+g+%5Cin+G%3A%5C+zg%3Dgz+%5C%7D+%5C%5C" alt="Z(G) = \{ z \in G \ | \ \forall g \in G:\ zg=gz \} \\" eeimg="1">
+                </p>
+                <p>
+                    这里字母
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    来自德文Zentrum(center)。群中心
+                    <img src="https://www.zhihu.com/equation?tex=Z%28G%29" alt="Z(G)" eeimg="1">
+                    是一个正规子群，且商群
+                    <img src="https://www.zhihu.com/equation?tex=G%2FZ%28G%29" alt="G/Z(G)" eeimg="1">
+                    与
+                    <b>
+                        内自同构(inner automorphism)
+                    </b>
+                    群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BInn%7D%28G%29" alt="\text{Inn}(G)" eeimg="1">
+                    同构。群中心是群中具有交换性质元素的集合，
+                    <img src="https://www.zhihu.com/equation?tex=Z%28G%29%3DG" alt="Z(G)=G" eeimg="1">
+                    的条件等价于
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    是Abel群。另一方面若退化为平凡群
+                    <img src="https://www.zhihu.com/equation?tex=Z%28G%29+%3D+%5C%7B0%5C%7D" alt="Z(G) = \{0\}" eeimg="1">
+                    则称群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    为
+                    <b>
+                        无心的(centerless)
+                    </b>
+                    。在(2)的扩张中，如果
+                    <img src="https://www.zhihu.com/equation?tex=N+%5Csubset+Z%28G%29" alt="N \subset Z(G)" eeimg="1">
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    是具有交换性的中心元素构成的正规子群，这样的扩张称为
+                    <b>
+                        中心扩张(central extension)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Lie群的中心扩张
+                    </b>
+                </h2>
+                <p>
+                    Lie群的中心扩张与拓扑有密切的联系，大体而言，按照离散群对Lie群进行中心扩张相当于覆盖群 [
+                    <a href="https://zhuanlan.zhihu.com/p/51388747" class="internal">
+                        MP68
+                    </a>
+                    ]。连通Lie群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的中心扩张是一个
+                    <b>
+                        连通覆盖空间(connected covering space)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=G%5E%2A" alt="G^*" eeimg="1">
+                    ，使得
+                    <b>
+                        投影(projection)
+                    </b>
+                    同态
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi%3A+G%5E%2A+%5Cto+G+%5C%5C" alt="\pi: G^* \to G \\" eeimg="1">
+                    是满射。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=G%5E%2A" alt="G^*" eeimg="1">
+                    的结构取决于
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28%5Cpi%29" alt="\text{Ker}(\pi)" eeimg="1">
+                    。若
+                    <img src="https://www.zhihu.com/equation?tex=G%5E%2A" alt="G^*" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的
+                    <b>
+                        通用覆盖(universal cover)
+                    </b>
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28%5Cpi%29" alt="\text{Ker}(\pi)" eeimg="1">
+                    就是
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的基本群。如果给定一个离散中心子群
+                    <img src="https://www.zhihu.com/equation?tex=Z+%5Clhd+G" alt="Z \lhd G" eeimg="1">
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=G%2FZ" alt="G/Z" eeimg="1">
+                    则是一个Lie群而
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    成为它的覆盖空间。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    延伸阅读
+                </p>
+                <blockquote>
+                    与Lie群扩张相似，一个Lie代数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+g" alt="\mathfrak g" eeimg="1">
+                    可以按照另一个Lie代数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+h" alt="\mathfrak h" eeimg="1">
+                    来扩张到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+e" alt="\mathfrak e" eeimg="1">
+                    ，称为
+                    <b>
+                        Lie代数扩张(Lie algebra extension)
+                    </b>
+                    。扩张的方式可以是直和（平凡扩张）、
+                    <b>
+                        分割扩张(split extension)
+                    </b>
+                    和
+                    <b>
+                        中心扩张(central extension)
+                    </b>
+                    。按照Lie代数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+h" alt="\mathfrak h" eeimg="1">
+                    扩张，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+h" alt="\mathfrak h" eeimg="1">
+                    的生成元称为
+                    <b>
+                        中心荷(central charges)
+                    </b>
+                    ，它们处于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+e" alt="\mathfrak e" eeimg="1">
+                    的中心
+                    <img src="https://www.zhihu.com/equation?tex=Z%28%5Cmathfrak+e%29" alt="Z(\mathfrak e)" eeimg="1">
+                    中。根据Noether定理，对称群的生成元对应了守恒量，这就是称为
+                    <b>
+                        荷(charges)
+                    </b>
+                    的意义。
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

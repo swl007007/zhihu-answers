@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP116：线性代数补习班(4)：矩阵的张量积
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-15719fb8faa9cfdeba2325db0a2e3ef7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/51325488" target="_blank">
+                        MP116：线性代数补习班(4)：矩阵的张量积
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-05-03
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    下面我们探讨矩阵张量积所蕴含的意义。将域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=n+%5Ctimes+n" alt="n \times n" eeimg="1">
+                    维
+                    <b>
+                        方矩阵(phalanx)
+                    </b>
+                    的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D" alt="\mathfrak n = \mathbb K^{n \times n}" eeimg="1">
+                    ，矩阵张量积的计算如下：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-802d61e6d8f38053a182252df39acca0_r.jpg">
+                    <figcaption>
+                        [余扬政1998] 物理学中的几何方法
+                    </figcaption>
+                </figure>
+                <p>
+                    后面将看到，矩阵的张量积可以不限于方矩阵。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    Hermite内积的张量表示
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回顾一个过去多次讨论的例子，详细的推导见：
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://zhuanlan.zhihu.com/p/46687123" class="internal">
+                            MP32：张量专题(1)：SO(2)和平面向量的张量
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://zhuanlan.zhihu.com/p/53815689" class="internal">
+                            MP86：辛(symplectic)的起源(1)：三角函数的线性性与Hermite内积
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://zhuanlan.zhihu.com/p/53829014" class="internal">
+                            MP87：辛(symplectic)的起源(2)：张量与Hermite内积的旋转不变量
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://zhuanlan.zhihu.com/p/53832002" class="internal">
+                            MP88：辛(symplectic)的起源(3)：辛矩阵
+                        </a>
+                    </li>
+                </ul>
+                <p>
+                    过去 [
+                    <a href="https://zhuanlan.zhihu.com/p/46687123" class="internal">
+                        MP32
+                    </a>
+                    ] 我们已经详细讨论了
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29" alt="\text{SO}(2)" eeimg="1">
+                    对正交归一基的作用，从而构造逆变张量。现在我们直接用
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29" alt="\text{SO}(2)" eeimg="1">
+                    作用于复数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    复数的Hermite内积
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Ccdot%2C%5Ccdot+%5Crangle" alt="\langle \cdot,\cdot \rangle" eeimg="1">
+                    蕴含着与张量相关的性质：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathbb%7BC%7D+%5Ctimes+%5Cmathbb%7BC%7D+%26+%5Cto+%5Cmathbb%7BC%7D+%5C%5C++%28a%2Cb%29+%26%5Cmapsto%5Clangle+a%2Cb+%5Crangle+%3D+a+%5Ccdot+%5Coverline%7Bb%7D+%3D+%7Ca%7C%7Cb%7C+%5Ctext+e%5E%7B%5Ctext+i%28%5Calpha-%5Cbeta%29%7D+%5C%5C+%26%3D%7Ca%7C%7Cb%7C%28%5Ccos%5Calpha%2B%5Ctext+i%5Csin%5Calpha%29+%5Ccdot+%28%5Ccos%5Cbeta-%5Ctext+i%5Csin%5Cbeta%29+%5C%5C+++%26%3D%7Ca%7C%7Cb%7C%28%5Ccos%5Calpha%5Ccos%5Cbeta+%2B+%5Csin%5Calpha%5Csin%5Cbeta%29+%5C%5C+%26%2B+%5Ctext+i+%7Ca%7C%7Cb%7C%28-%5Ccos%5Calpha%5Csin%5Cbeta%2B%5Csin%5Calpha%5Ccos%5Cbeta%29+%5C%5C+++%26%3D+%28a+%5Ccdot+b%29+%2B+%5Ctext+i%28a+%5Ctimes+b%29+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} \mathbb{C} \times \mathbb{C} &amp; \to \mathbb{C} \\  (a,b) &amp;\mapsto\langle a,b \rangle = a \cdot \overline{b} = |a||b| \text e^{\text i(\alpha-\beta)} \\ &amp;=|a||b|(\cos\alpha+\text i\sin\alpha) \cdot (\cos\beta-\text i\sin\beta) \\   &amp;=|a||b|(\cos\alpha\cos\beta + \sin\alpha\sin\beta) \\ &amp;+ \text i |a||b|(-\cos\alpha\sin\beta+\sin\alpha\cos\beta) \\   &amp;= (a \cdot b) + \text i(a \times b) \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    其关键之处在于对第二个变元是
+                    <b>
+                        共轭(conjugate)
+                    </b>
+                    的，从而在复数乘法中得到了复向量的夹角。在(1)中，Hermite内积的实部为向量内积、虚部为向量外积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Cbegin%7Bbmatrix%7D+%5Ctext%7BRe%7D%5Clangle+a%2Cb+%5Crangle+%5C%5C+%5Ctext%7BIm%7D%5Clangle+a%2Cb+%5Crangle+%5Cend%7Bbmatrix%7D+++%3D+%5Cbegin%7Bbmatrix%7D+%7Ca%7C%7Cb%7C%5Ccos%28%5Calpha-%5Cbeta%29+%5C%5C+%7Ca%7C%7Cb%7C%5Csin%28%5Calpha-%5Cbeta%29%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D+a_1b_1+%2B+a_2b_2+%5C%5C+-a_1b_2+%2B+a_2b_1+%5Cend%7Bbmatrix%7D++%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align}  \begin{bmatrix} \text{Re}\langle a,b \rangle \\ \text{Im}\langle a,b \rangle \end{bmatrix}   = \begin{bmatrix} |a||b|\cos(\alpha-\beta) \\ |a||b|\sin(\alpha-\beta)\end{bmatrix} = \begin{bmatrix} a_1b_1 + a_2b_2 \\ -a_1b_2 + a_2b_1 \end{bmatrix}  \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    内积和外积在Hermite内积中的统一(2)，让我们注意到它们都有统一的组成成分——由
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    个向量的分量交替相乘产生的
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -次齐次项
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Ba_ib_j%5C%7D" alt="\{a_ib_j\}" eeimg="1">
+                    。运用上面的矩阵张量积规则，可以将所有
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -齐次项用一个列向量/张量表示：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+a+%5Cotimes+b+%26%3D+%5Cbegin%7Bbmatrix%7D+a_1+b+%5C%5C+a_2+b+%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D+a_1b_1+%5C%5C+a_1b_2+%5C%5C+a_2b_1+%5C%5C+a_2b_2+%5Cend%7Bbmatrix%7D++%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} a \otimes b &amp;= \begin{bmatrix} a_1 b \\ a_2 b \end{bmatrix} = \begin{bmatrix} a_1b_1 \\ a_1b_2 \\ a_2b_1 \\ a_2b_2 \end{bmatrix}  \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    把(2)写成对张量的线性映射，以便用线性映射的手法同时分析内积和外积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ctext%7BRe%7D%28a+%5Ccdot+%5Coverline%7Bb%7D%29+%5C%5C+%5Ctext%7BIm%7D%28a+%5Ccdot+%5Coverline%7Bb%7D%29+%5Cend%7Bbmatrix%7D++%3D+H%28a+%5Cotimes+b%29+%3D+%5Cbegin%7Bbmatrix%7D+1+%26+0+%26+0+%26+1+%5C%5C+0+%26+-1+%26+1+%26+0+%5Cend%7Bbmatrix%7D+%28a+%5Cotimes+b%29+%5C%5C+%5Ctag%7B4%7D" alt="\begin{bmatrix} \text{Re}(a \cdot \overline{b}) \\ \text{Im}(a \cdot \overline{b}) \end{bmatrix}  = H(a \otimes b) = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; -1 &amp; 1 &amp; 0 \end{bmatrix} (a \otimes b) \\ \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    张量积的实质是把双线性映射转化为一个单线性映射。上式已经体现出了这种转换的结构，即通过一个矩阵
+                    <img src="https://www.zhihu.com/equation?tex=H" alt="H" eeimg="1">
+                    将两个向量整体映射到Hermite内积。下面我们通过特殊正交群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29" alt="\text{SO}(2)" eeimg="1">
+                    对内积和外积——乃至Hermite内积的保持来阐述这一点。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29" alt="\text{SO}(2)" eeimg="1">
+                    的张量
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    考虑特殊正交群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29" alt="\text{SO}(2)" eeimg="1">
+                    作为平面旋转群
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T_%5Ctheta+%3D++%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cin+%5Ctext%7BSO%7D%282%29+%5C%5C" alt="T_\theta =  \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} \in \text{SO}(2) \\" eeimg="1">
+                </p>
+                <p>
+                    对平面向量的作用：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde+a+%3D+T_%5Ctheta+a%2C+%5Cquad+%5Ctilde+b+%3D+T_%5Ctheta+b+%5Ctag%7B5%7D" alt="\tilde a = T_\theta a, \quad \tilde b = T_\theta b \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    从而导致(3)的变化，直接展开计算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctilde+a+%5Cotimes+%5Ctilde+b+%26%3D+%28T_%5Ctheta+a%29+%5Cotimes+%28T_%5Ctheta+b%29+%5C%5C+%26%3D%5Cbegin%7Bbmatrix%7D+%5Ctilde+a_1%5Ctilde+b_1+%26+%5Ctilde+a_1%5Ctilde+b_2+%26+%5Ctilde+a_2%5Ctilde+b_1+%26+%5Ctilde+a_2%5Ctilde+b_2+%5Cend%7Bbmatrix%7D%5ET+%5C%5C+%26%3D+%5Cleft%28%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+a_1+%5C%5C+a_2+%5Cend%7Bbmatrix%7D%5Cright%29+%5Cotimes+%5Cleft%28%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+b_1+%5C%5C+b_2+%5Cend%7Bbmatrix%7D%5Cright%29+%5C%5C+%26%3D+%5Cbegin%7Bbmatrix%7D++%5Ccos+%5Ctheta%5Ccos+%5Ctheta%26+-%5Ccos+%5Ctheta%5Csin+%5Ctheta+%26+-%5Csin+%5Ctheta%5Ccos+%5Ctheta+%26+%5Csin+%5Ctheta+%5Csin+%5Ctheta+%5C%5C++%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%5C%5C++%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%5C%5C+%5Cend%7Bbmatrix%7D++%5Cbegin%7Bbmatrix%7D+a_1b_1+%5C%5C+a_1b_2+%5C%5C+a_2b_1+%5C%5C+a_2b_2+%5Cend%7Bbmatrix%7D+%5C%5C+%26%3D+%28T_%5Ctheta+%5Cotimes+T_%5Ctheta%29%28a+%5Cotimes+b%29+%5Cend%7Balign%7D+%5Ctag%7B6%7D+" alt="\begin{align} \tilde a \otimes \tilde b &amp;= (T_\theta a) \otimes (T_\theta b) \\ &amp;=\begin{bmatrix} \tilde a_1\tilde b_1 &amp; \tilde a_1\tilde b_2 &amp; \tilde a_2\tilde b_1 &amp; \tilde a_2\tilde b_2 \end{bmatrix}^T \\ &amp;= \left(\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} \begin{bmatrix} a_1 \\ a_2 \end{bmatrix}\right) \otimes \left(\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} \begin{bmatrix} b_1 \\ b_2 \end{bmatrix}\right) \\ &amp;= \begin{bmatrix}  \cos \theta\cos \theta&amp; -\cos \theta\sin \theta &amp; -\sin \theta\cos \theta &amp; \sin \theta \sin \theta \\  \cos \theta \sin \theta &amp; \cos \theta \cos \theta &amp; -\sin \theta \sin \theta &amp; -\sin \theta \cos \theta \\  \sin \theta \cos \theta &amp; -\sin \theta \sin \theta &amp; \cos \theta \cos \theta &amp; -\cos \theta \sin \theta \\ \sin \theta \sin \theta &amp; \sin \theta \cos \theta &amp; \cos \theta \sin \theta &amp; \cos \theta \cos \theta \\ \end{bmatrix}  \begin{bmatrix} a_1b_1 \\ a_1b_2 \\ a_2b_1 \\ a_2b_2 \end{bmatrix} \\ &amp;= (T_\theta \otimes T_\theta)(a \otimes b) \end{align} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    现在我们得到了基的变换下，合成向量的变换关系。(5)中
+                    <img src="https://www.zhihu.com/equation?tex=T_%5Ctheta" alt="T_\theta" eeimg="1">
+                    对两个向量分别进行的线性映射，在(6)中构成双线性映射。张量
+                    <img src="https://www.zhihu.com/equation?tex=T_%5Ctheta+%5Cotimes+T_%5Ctheta" alt="T_\theta \otimes T_\theta" eeimg="1">
+                    则直接作用于
+                    <img src="https://www.zhihu.com/equation?tex=a+%5Cotimes+b" alt="a \otimes b" eeimg="1">
+                    构成对应于双线性映射的单线性映射，即结合(5)(6)的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bvmatrix%7D+%5Ctilde+a+%3D+T_%5Ctheta+a+%5C%5C+%5Ctilde+b+%3D+T_%5Ctheta+b+%5Cend%7Bvmatrix%7D+%5CRightarrow++%5Ctilde+a+%5Cotimes+%5Ctilde+b+%3D+%28T_%5Ctheta+a%29+%5Cotimes+%28T_%5Ctheta+b%29+%3D+%28T_%5Ctheta+%5Cotimes+T_%5Ctheta%29%28a+%5Cotimes+b%29+%5Ctag%7B7%7D" alt="\begin{vmatrix} \tilde a = T_\theta a \\ \tilde b = T_\theta b \end{vmatrix} \Rightarrow  \tilde a \otimes \tilde b = (T_\theta a) \otimes (T_\theta b) = (T_\theta \otimes T_\theta)(a \otimes b) \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    Hermite内积的
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29" alt="\text{SO}(2)" eeimg="1">
+                    不变性
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回到(4)中Hermite内积的张量表示，在(7)中
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29" alt="\text{SO}(2)" eeimg="1">
+                    的作用下，有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ctext%7BRe%7D%5Clangle+%5Ctilde+a%2C%5Ctilde+b+%5Crangle+%5C%5C+%5Ctext%7BIm%7D%5Clangle+%5Ctilde+a%2C%5Ctilde+b+%5Crangle+%5Cend%7Bbmatrix%7D+%3D+H%28%5Ctilde+a+%5Cotimes+%5Ctilde+b%29+%3D+H++%28T_%5Ctheta+%5Cotimes+T_%5Ctheta%29%28a+%5Cotimes+b%29+%5Ctag%7B8%7D" alt="\begin{bmatrix} \text{Re}\langle \tilde a,\tilde b \rangle \\ \text{Im}\langle \tilde a,\tilde b \rangle \end{bmatrix} = H(\tilde a \otimes \tilde b) = H  (T_\theta \otimes T_\theta)(a \otimes b) \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    这里涉及到(4)和(6)中两个大的矩阵的乘法：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%26+H++%28T_%5Ctheta+%5Cotimes+T_%5Ctheta%29+%5C%5C+%26%3D%5Cbegin%7Bbmatrix%7D+1+%26+0+%26+0+%26+1+%5C%5C+0+%26+-1+%26+1+%26+0+%5Cend%7Bbmatrix%7D+++%5Cbegin%7Bbmatrix%7D++%5Ccos+%5Ctheta%5Ccos+%5Ctheta%26+-%5Ccos+%5Ctheta%5Csin+%5Ctheta+%26+-%5Csin+%5Ctheta%5Ccos+%5Ctheta+%26+%5Csin+%5Ctheta+%5Csin+%5Ctheta+%5C%5C++%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%5C%5C++%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%5C%5C+%5Cend%7Bbmatrix%7D+%5C%5C+%26%3D%5Cbegin%7Bbmatrix%7D++%5Ccos%5E2%5Ctheta+%2B+%5Csin%5E2%5Ctheta++%26+0+%26+0+%26+%5Csin%5E2%5Ctheta+%2B+%5Ccos%5E2%5Ctheta+%5C%5C++0+%26+-%5Ccos%5E2%5Ctheta+-+%5Csin%5E2%5Ctheta+%26+%5Csin%5E2%5Ctheta+%2B+%5Ccos%5E2%5Ctheta+%26+0+%5Cend%7Bbmatrix%7D+%5C%5C+%26%3D%5Cbegin%7Bbmatrix%7D+1+%26+0+%26+0+%26+1+%5C%5C+0+%26+-1+%26+1+%26+0+%5Cend%7Bbmatrix%7D++%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} &amp; H  (T_\theta \otimes T_\theta) \\ &amp;=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; -1 &amp; 1 &amp; 0 \end{bmatrix}   \begin{bmatrix}  \cos \theta\cos \theta&amp; -\cos \theta\sin \theta &amp; -\sin \theta\cos \theta &amp; \sin \theta \sin \theta \\  \cos \theta \sin \theta &amp; \cos \theta \cos \theta &amp; -\sin \theta \sin \theta &amp; -\sin \theta \cos \theta \\  \sin \theta \cos \theta &amp; -\sin \theta \sin \theta &amp; \cos \theta \cos \theta &amp; -\cos \theta \sin \theta \\ \sin \theta \sin \theta &amp; \sin \theta \cos \theta &amp; \cos \theta \sin \theta &amp; \cos \theta \cos \theta \\ \end{bmatrix} \\ &amp;=\begin{bmatrix}  \cos^2\theta + \sin^2\theta  &amp; 0 &amp; 0 &amp; \sin^2\theta + \cos^2\theta \\  0 &amp; -\cos^2\theta - \sin^2\theta &amp; \sin^2\theta + \cos^2\theta &amp; 0 \end{bmatrix} \\ &amp;=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; -1 &amp; 1 &amp; 0 \end{bmatrix}  \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    带入(8)证得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+%5Ctext%7BRe%7D%5Clangle+%5Ctilde+a%2C%5Ctilde+b+%5Crangle+%5C%5C+%5Ctext%7BIm%7D%5Clangle+%5Ctilde+a%2C%5Ctilde+b+%5Crangle+%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D+%5Ctext%7BRe%7D%5Clangle+a%2Cb+%5Crangle+%5C%5C+%5Ctext%7BIm%7D%5Clangle+a%2Cb+%5Crangle+%5Cend%7Bbmatrix%7D+%5C%5C" alt="\begin{bmatrix} \text{Re}\langle \tilde a,\tilde b \rangle \\ \text{Im}\langle \tilde a,\tilde b \rangle \end{bmatrix} = \begin{bmatrix} \text{Re}\langle a,b \rangle \\ \text{Im}\langle a,b \rangle \end{bmatrix} \\" eeimg="1">
+                </p>
+                <p>
+                    即二维Hermite内积在
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29" alt="\text{SO}(2)" eeimg="1">
+                    作用下不变。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    典型群的张量
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面的讨论让我们熟悉如何利用张量的手法来处理不变性问题，这样既有详尽的计算，又有直观的理解。现在我们站在一般的典型群，主要是可以矩阵表示的
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BGL%7D%28n%2C%5Cmathbb+K%29" alt="\text{GL}(n,\mathbb K)" eeimg="1">
+                    的Lie子群上考虑问题，这类Lie群可以视为线性空间上的算子群，在物理上有极为广泛的应用——如规范场。经过上面的讨论，我们可以对类似问题有一个一般的处理思路：将(5)拓展开，给定作用于两个线性空间的两个Lie群
+                    <img src="https://www.zhihu.com/equation?tex=+G+%5Cin+%5Ctext%7BEnd%7D%28V%29" alt="G \in \text{End}(V)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=+H+%5Cin+%5Ctext%7BEnd%7D%28W%29" alt="H \in \text{End}(W)" eeimg="1">
+                    ，群元
+                    <img src="https://www.zhihu.com/equation?tex=g+%5Cin+G%3A+V+%5Cto+V" alt="g \in G: V \to V" eeimg="1">
+                    作用于
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Cin+V" alt="v \in V" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=h+%5Cin+H%3A+W+%5Cto+W" alt="h \in H: W \to W" eeimg="1">
+                    作用于
+                    <img src="https://www.zhihu.com/equation?tex=w+%5Cin+W" alt="w \in W" eeimg="1">
+                    都是线性的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde+v+%3D+g+v%2C+%5Cquad+%5Ctilde+w+%3D+h+w+%5Ctag%7B9%7D" alt="\tilde v = g v, \quad \tilde w = h w \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    前面例子中原始的Hermite内积(2)体现了如下结构的双线性映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+f%3A+V+%5Ctimes+W+%26%5Cto+U+%5C%5C+%28v%2Cw%29+%26%5Cmapsto+f%28v%2Cw%29+%5Cend%7Balign%7D+%5Ctag%7B10%7D" alt="\begin{align} f: V \times W &amp;\to U \\ (v,w) &amp;\mapsto f(v,w) \end{align} \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    而(4)则体现了将双线性映射转化为对张量积的单线性映射，线性空间中可以用矩阵
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    表示（无穷维线性空间则是算子）：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+f%5E%5Cprime%3A+V+%5Cotimes+W+%26%5Cto+U+%5C%5C+%28v%5Cotimes+w%29+%26%5Cmapsto+M%28v%5Cotimes+w%29+%5Cend%7Balign%7D+%5Ctag%7B11%7D" alt="\begin{align} f^\prime: V \otimes W &amp;\to U \\ (v\otimes w) &amp;\mapsto M(v\otimes w) \end{align} \tag{11}" eeimg="1">
+                </p>
+                <p>
+                    类似前面的讨论，当Lie群以(9)线性作用时，(10)和(11)相应变成
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28%5Ctilde+v%2C%5Ctilde+w%29+%26%5Cmapsto+f%28%5Ctilde+v%2C%5Ctilde+w%29+%3D+f%28g+v%2Ch+w%29+%5C%5C+%28%5Ctilde+v%5Cotimes+%5Ctilde+w%29+%26%5Cmapsto+M%28%5Ctilde+v%5Cotimes+%5Ctilde+w%29+%3D+M%28g+v+%5Cotimes+h+w%29+%5Cend%7Balign%7D+%5Ctag%7B12%7D" alt="\begin{align} (\tilde v,\tilde w) &amp;\mapsto f(\tilde v,\tilde w) = f(g v,h w) \\ (\tilde v\otimes \tilde w) &amp;\mapsto M(\tilde v\otimes \tilde w) = M(g v \otimes h w) \end{align} \tag{12}" eeimg="1">
+                </p>
+                <p>
+                    上式中，第一行的双线性方式需要处理两个变量，而第二行的单线性映射直接操作张量，是现代数学物理常用的方法，其要点如同我们在(6)(7)所体验到的，在于借助Lie群本身的张量积
+                    <img src="https://www.zhihu.com/equation?tex=%28g+%5Cotimes+h%29" alt="(g \otimes h)" eeimg="1">
+                    来构造对张量空间
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Cotimes+W" alt="V \otimes W" eeimg="1">
+                    的单线性变换：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde+v+%5Cotimes+%5Ctilde+w+%3D+%28g+v%29+%5Cotimes+%28h+w%29+%3D+%28g+%5Cotimes+h%29%28v+%5Cotimes+w%29+%5Ctag%7B13%7D" alt="\tilde v \otimes \tilde w = (g v) \otimes (h w) = (g \otimes h)(v \otimes w) \tag{13}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在回到最初的矩阵乘法。上面我们没有限定线性空间和Lie群的类型。若
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28V%29+%3D+m" alt="\text{dim}(V) = m" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28W%29+%3D+n" alt="\text{dim}(W) = n" eeimg="1">
+                    ，那么作为可以用矩阵表示的典型群有
+                    <img src="https://www.zhihu.com/equation?tex=g+%5Cin+%5Cmathfrak+m+%3D+%5Cmathbb+K%5E%7Bm+%5Ctimes+m%7D" alt="g \in \mathfrak m = \mathbb K^{m \times m}" eeimg="1">
+                    及
+                    <img src="https://www.zhihu.com/equation?tex=h+%5Cin+%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D" alt="h \in \mathfrak n = \mathbb K^{n \times n}" eeimg="1">
+                    ，其矩阵表示的张量就是矩阵张量积
+                    <img src="https://www.zhihu.com/equation?tex=g+%5Cotimes+h+%5Cin+%5Cmathfrak+m+%5Cotimes+%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bmn+%5Ctimes+mn%7D" alt="g \otimes h \in \mathfrak m \otimes \mathfrak n = \mathbb K^{mn \times mn}" eeimg="1">
+                    ，从(11)中线性映射的角度看，
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28V%5Cotimes+W%29+%3D+mn" alt="\text{dim}(V\otimes W) = mn" eeimg="1">
+                    ，而矩阵张量积
+                    <img src="https://www.zhihu.com/equation?tex=g+%5Cotimes+h" alt="g \otimes h" eeimg="1">
+                    就是
+                    <img src="https://www.zhihu.com/equation?tex=V%5Cotimes+W" alt="V\otimes W" eeimg="1">
+                    上的线性变换(13)。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    矩阵的张量
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    进一步开阔视野，不要局限于线性空间的自同态，把前面Lie群的例子拓展为两个线性映射，
+                    <img src="https://www.zhihu.com/equation?tex=g%3A+V+%5Cto+V%5E%5Cprime" alt="g: V \to V^\prime" eeimg="1">
+                    作用于
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Cin+V" alt="v \in V" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=h%3A+W+%5Cto+W%5E%5Cprime" alt="h: W \to W^\prime" eeimg="1">
+                    作用于
+                    <img src="https://www.zhihu.com/equation?tex=w+%5Cin+W" alt="w \in W" eeimg="1">
+                    都是线性的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde+v+%3D+g+v%2C+%5Cquad+%5Ctilde+w+%3D+h+w+%5Ctag%7B14%7D" alt="\tilde v = g v, \quad \tilde w = h w \tag{14}" eeimg="1">
+                </p>
+                <p>
+                    以上(11)~(13)都可以类似推导。若
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28V%29+%3D+m%2C+%5Ctext%7Bdim%7D%28V%5E%5Cprime%29+%3D+m%5E%5Cprime" alt="\text{dim}(V) = m, \text{dim}(V^\prime) = m^\prime" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28W%29+%3D+n%2C+%5Ctext%7Bdim%7D%28W%5E%5Cprime%29+%3D+n%5E%5Cprime" alt="\text{dim}(W) = n, \text{dim}(W^\prime) = n^\prime" eeimg="1">
+                    ，那么作为可以用矩阵表示的线性映射有
+                    <img src="https://www.zhihu.com/equation?tex=g+%5Cin+%5Cmathbb+K%5E%7Bm+%5Ctimes+m%5E%5Cprime%7D" alt="g \in \mathbb K^{m \times m^\prime}" eeimg="1">
+                    及
+                    <img src="https://www.zhihu.com/equation?tex=h+%5Cin+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%5E%5Cprime%7D" alt="h \in \mathbb K^{n \times n^\prime}" eeimg="1">
+                    ，其矩阵表示的张量就是矩阵张量积
+                    <img src="https://www.zhihu.com/equation?tex=g+%5Cotimes+h+%5Cin+%5Cmathbb+K%5E%7Bmn+%5Ctimes+m%5E%5Cprime+n%5E%5Cprime%7D" alt="g \otimes h \in \mathbb K^{mn \times m^\prime n^\prime}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们准备从线性空间的张量过渡到模范畴上讨论。在线性代数中，取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Cin++%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7D%5Cmathfrak+l%29" alt="\mathbb K^{m \times l} \in  \text{Ob}(\textbf{Mod-}\mathfrak l)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D+%5Cin++%5Ctext%7BOb%7D%28%5Cmathfrak+l%5Ctextbf%7B-Mod%7D%29" alt="\mathbb K^{l \times n} \in  \text{Ob}(\mathfrak l\textbf{-Mod})" eeimg="1">
+                    ，矩阵乘法是相容的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D+%26%5Cto+%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D+%5C%5C+%28X%2CY%29+%26%5Cmapsto+X+%5Ccirc+Y+%5Cend%7Balign%7D+%5Ctag%7B15%7D" alt="\begin{align} \mathbb K^{m \times l} \times \mathbb K^{l \times n} &amp;\to \mathbb K^{m \times n} \\ (X,Y) &amp;\mapsto X \circ Y \end{align} \tag{15}" eeimg="1">
+                </p>
+                <p>
+                    方矩阵环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+l+%3D+%5Cmathbb+K%5E%7Bl+%5Ctimes+l%7D" alt="\mathfrak l = \mathbb K^{l \times l}" eeimg="1">
+                    对左右两个模起到的中介的作用，并且矩阵相乘后
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Ccirc+Y" alt="X \circ Y" eeimg="1">
+                    不再是环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+l" alt="\mathfrak l" eeimg="1">
+                    上的模，环的作用在矩阵乘法中被消去了——换句话说，直积
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D%29" alt="(\mathbb K^{m \times l} \times \mathbb K^{l \times n})" eeimg="1">
+                    保留了全部信息，而
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D" alt="\mathbb K^{m \times n}" eeimg="1">
+                    消去了线性算子环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+l+" alt="\mathfrak l" eeimg="1">
+                    而构成了某种商，不严格地说，以上矩阵乘法的过程实际上是在直积上商掉一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+l+" alt="\mathfrak l" eeimg="1">
+                    相关的等价关系
+                    <img src="https://www.zhihu.com/equation?tex=%5Csim_%5Cmathfrak+l+" alt="\sim_\mathfrak l" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D+%3D+%28%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D%29%2F%5Csim_%5Cmathfrak+l++%5Ctag%7B16%7D" alt="\mathbb K^{m \times n} = (\mathbb K^{m \times l} \times \mathbb K^{l \times n})/\sim_\mathfrak l  \tag{16}" eeimg="1">
+                </p>
+                <p>
+                    现在我们从矩阵的张量积来讨论。(15)中的矩阵乘法若改为张量积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D+%26%5Cto+%5Cmathbb+K%5E%7Bml+%5Ctimes+ln%7D+%5C%5C++%28X%2CY%29+%26%5Cmapsto+X+%5Cotimes+Y+%5Cend%7Balign%7D+%5Ctag%7B17%7D" alt="\begin{align}  \mathbb K^{m \times l} \times \mathbb K^{l \times n} &amp;\to \mathbb K^{ml \times ln} \\  (X,Y) &amp;\mapsto X \otimes Y \end{align} \tag{17}" eeimg="1">
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D+%5Csimeq+%5Cmathbb+K%5E%7Bml+%5Ctimes+ln%7D+" alt="\mathbb K^{m \times l} \times \mathbb K^{l \times n} \simeq \mathbb K^{ml \times ln}" eeimg="1">
+                    ，在直积中冗余的信息，在张量积中也可能冗余。(16)的商的过程，相当于：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D+%26%5Cto+%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D+%3D+%28%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D%29%2F%5Csim_%5Cmathfrak+l++%5C%5C+%28X%2CY%29+%26%5Cmapsto+%28X+%5Cotimes+Y%29%2F%5Csim_%5Cmathfrak+l+%5C%5C+%26%3D+X+%5Ccirc+Y+%5Cend%7Balign%7D+%5Ctag%7B18%7D" alt="\begin{align} \mathbb K^{m \times l} \times \mathbb K^{l \times n} &amp;\to \mathbb K^{m \times n} = (\mathbb K^{m \times l} \times \mathbb K^{l \times n})/\sim_\mathfrak l  \\ (X,Y) &amp;\mapsto (X \otimes Y)/\sim_\mathfrak l \\ &amp;= X \circ Y \end{align} \tag{18}" eeimg="1">
+                </p>
+                <p>
+                    这个商掉等价关系得道矩阵乘法的过程，就是张量的缩并。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

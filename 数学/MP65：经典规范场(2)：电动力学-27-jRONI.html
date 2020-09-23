@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP65：经典规范场(2)：电动力学
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-8123af8ef2c14576c14e9c8250e38884_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/50213234" target="_blank">
+                        MP65：经典规范场(2)：电动力学
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-11-29
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46700218" class="internal">
+                        MP60：平行移动与Levi-Civita联络
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46720067" class="internal">
+                        MP61：Riemann流形上的向量场
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47313691" class="internal">
+                        MP62：Riemann曲率张量
+                    </a>
+                </p>
+                <p>
+                    在前面介绍Riemann几何时讲到联络和曲率的问题。现在回到经典规范场上来看，我们手头已经有一个纤维丛的工具了。现在我们回顾一下电动力学中的有关概念，探讨如何从电动力学过渡到规范场，并且讨论一下Bianchi恒等式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        自同态丛
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回顾一下
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46502211" class="internal">
+                        MP64：经典规范场(1)：纤维丛
+                    </a>
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BU_k%5C%7D" alt="\{U_k\}" eeimg="1">
+                    是流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    的开覆盖，有线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    ，借助于作用在线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上的变换群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    。如果存在映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%3A+G+%5Cto+V" alt="\rho: G \to V" eeimg="1">
+                    可以对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+v+%5Cin+V" alt="\forall v \in V" eeimg="1">
+                    保持群结构，称
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho" alt="\rho" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上的群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的一个表示。不同的Lie群给出的是不同的Yang-Mills方程，可以描述标准模型中的各种力。这些群就是所谓的对称群或者规范群。从平凡丛
+                    <img src="https://www.zhihu.com/equation?tex=U_k+%5Ctimes+V" alt="U_k \times V" eeimg="1">
+                    建立向量丛
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi%3A+E+%5Cto+M" alt="\pi: E \to M" eeimg="1">
+                    ，得到了G-丛
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi%3A+E+%5Cto+M" alt="\pi: E \to M" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                    线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上映射到自身的线性函数称为
+                    <b>
+                        自同态(endomorphism)
+                    </b>
+                    ，其集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28V%29" alt="\text{End}(V)" eeimg="1">
+                    。这是一个线性空间，实空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5En" alt="\mathbb R^n" eeimg="1">
+                    的自同态就是实矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28%5Cmathbb+R%5En%29+%3D+%5Cmathbb+R%5E%7Bn+%5Ctimes+n%7D+%5Csimeq+V+%5Cotimes+V%5E%2A+" alt="\text{End}(\mathbb R^n) = \mathbb R^{n \times n} \simeq V \otimes V^*" eeimg="1">
+                    ，其作用方式为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+V+%5Cotimes+V%5E%2A+%26%5Cto+V%5E%2A+%5C%5C+%28v+%5Cotimes+f%29%28x%29+%26%5Cmapsto+f%28x%29v+%5Cend%7Balign%7D%5Ctag%7B1%7D" alt="\begin{align} V \otimes V^* &amp;\to V^* \\ (v \otimes f)(x) &amp;\mapsto f(x)v \end{align}\tag{1}" eeimg="1">
+                </p>
+                <p>
+                    这样，微分流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上的向量丛
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    ，可以构造自
+                    <b>
+                        同态丛(endomorphism bundle)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28E%29+%3D+E+%5Cotimes+E%5E%2A" alt="\text{End}(E) = E \otimes E^*" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28E%29" alt="\text{End}(E)" eeimg="1">
+                    的截面
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    确定了一个自映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+E_p+%26%5Cto+E_p+%5C%5C+v+%26%5Cmapsto+T%28p%29v+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} E_p &amp;\to E_p \\ v &amp;\mapsto T(p)v \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    即流形上的点
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+p+%5Cin+M" alt="\forall p \in M" eeimg="1">
+                    确定了规范群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=T%28p%29+%5Cin+%5Ctext%7BEnd%7D%28E_p%29" alt="T(p) \in \text{End}(E_p)" eeimg="1">
+                    ，这样进一步可以讨论Lie代数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+g" alt="\mathfrak g" eeimg="1">
+                    上的规范变换
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Bianchi恒等式
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在
+                    <a href="https://zhuanlan.zhihu.com/p/47313691" class="internal">
+                        MP62：Riemann曲率张量
+                    </a>
+                    中我们系统讨论过曲率问题。联络的曲率给出的是协变导数的不对易的程度，这是一种内蕴的理解。令微分流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上有向量丛
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma%28E%29" alt="\Gamma(E)" eeimg="1">
+                    表示截面的空间。流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上的联络
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    为任意一个向量场
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    给出了一个算子
+                    <img src="https://www.zhihu.com/equation?tex=D_v%3A+%5CGamma%28E%29+%5Cto+%5CGamma%28E%29" alt="D_v: \Gamma(E) \to \Gamma(E)" eeimg="1">
+                    ，满足各种线性规律和Leibniz律。如同方向导数算子是标量场的自映射，联络
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    的作用也类似地把截面映射到截面，这两种作用都满足Leibniz律，都是由向量场决定的微分算子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上若一个向量丛对应一个联络，若有
+                    <img src="https://www.zhihu.com/equation?tex=%28E%2C+D%29" alt="(E, D)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%28E%5E%5Cprime%2C+D%5E%5Cprime%29" alt="(E^\prime, D^\prime)" eeimg="1">
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=D+%5Coplus+D%5E%5Cprime" alt="D \oplus D^\prime" eeimg="1">
+                    构成
+                    <img src="https://www.zhihu.com/equation?tex=E+%5Coplus+E%5E%5Cprime" alt="E \oplus E^\prime" eeimg="1">
+                    的联络，而
+                    <img src="https://www.zhihu.com/equation?tex=D+%5Cotimes+D%5E%5Cprime" alt="D \otimes D^\prime" eeimg="1">
+                    构成
+                    <img src="https://www.zhihu.com/equation?tex=E+%5Cotimes+E%5E%5Cprime" alt="E \otimes E^\prime" eeimg="1">
+                    的联络。根据前面的讨论，在自同态丛
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28E%29+%3D+E+%5Cotimes+E%5E%2A" alt="\text{End}(E) = E \otimes E^*" eeimg="1">
+                    上也可以构建张量联络，记为
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    。数学上常见的Jacobi恒等式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5BA%2C%5BB%2CC%5D%5D%2B%5BB%2C%5BC%2CA%5D%5D%2B%5BC%2C%5BA%2CB%5D%5D%3D0+%5Ctag%7B3%7D" alt="[A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0 \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    在微分流形的向量场上体现为Bianchi恒等式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5BD_u%2C%5BD_v%2CD_w%5D%5D%2B%5BD_v%2C%5BD_w%2CD_u%5D%5D%2B%5BD_w%2C%5BD_u%2CD_v%5D%5D%3D0+%5Ctag%7B4%7D" alt="[D_u,[D_v,D_w]]+[D_v,[D_w,D_u]]+[D_w,[D_u,D_v]]=0 \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    Bianchi恒等式蕴含着一个信息，即曲率的某种微分运算的组合会退化为零。这里不加推导地指出，由联络构造出的Bianchi恒等式可以变成以下形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=d_D+F+%3D+0+%5Ctag%7B5%7D" alt="d_D F = 0 \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    是某种外微分，它具有一个低一阶的外微分势
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=F%3DdA" alt="F=dA" eeimg="1">
+                    。而过去的外微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    变成了由联络确定的外协变微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d_D" alt="d_D" eeimg="1">
+                    。这就是过去我们在
+                    <a href="https://zhuanlan.zhihu.com/p/46974773" class="internal">
+                        MP37：四维Hodge星算子、电磁势、规范变换
+                    </a>
+                    所简化的Maxwell方程的外微分形式的进一步概括。从这里开始，可以把Yang-Mills方程从电动力学进一步推广到更多的相互作用上。参考下文的详细过程：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46544376" class="internal">
+                        MP36：Maxwell方程的外微分形式
+                    </a>
+                </p>
+                <p>
+                    将Maxwell方程转化为一对
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    微分形式的方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D++dF+%3D+0+%5C%5C+%5Cstar+d+%5Cstar+F+%3D+J+%5Cend%7Bcases%7D+%5Ctag%7B6%7D" alt="\begin{cases}  dF = 0 \\ \star d \star F = J \end{cases} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=F+%3D+B+%2B+E+%5Cwedge+dt" alt="F = B + E \wedge dt" eeimg="1">
+                    ，等效于四个外微分形式的Maxwell方程:
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+d_SB+%26%3D+0+%5C%5C+%5Cpartial_tB%2Bd_SE+%26%3D+0+%5C%5C+%5Cstar_Sd_S%5Cstar_SE+%26%3D+0+%5C%5C+-%5Cpartial_tE%2B%5Cstar_Sd_S%5Cstar_SB+%26%3D+J+%5Cend%7Balign%7D+%5Ctag%7B7%7D" alt="\begin{align} d_SB &amp;= 0 \\ \partial_tB+d_SE &amp;= 0 \\ \star_Sd_S\star_SE &amp;= 0 \\ -\partial_tE+\star_Sd_S\star_SB &amp;= J \end{align} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    用微分形式描述的Maxwell方程(6)，推广为以下由联络决定的Yang-Mills方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D++d_DF+%3D+0+%5C%5C+%5Cstar+d_D+%5Cstar+F+%3D+J+%5Cend%7Bcases%7D+%5Ctag%7B8%7D" alt="\begin{cases}  d_DF = 0 \\ \star d_D \star F = J \end{cases} \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    当纤维丛由
+                    <img src="https://www.zhihu.com/equation?tex=U%281%29" alt="U(1)" eeimg="1">
+                    给出时，Yang-Mills方程就退化为Maxwell方程。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    关于本文所谈到的几个细节，包括张量丛的联络、由联络构造的Bianchi恒等式、变换群的选取等问题，等到详细讲规范场的时候再展开。本文主要让读者对Bianchi恒等式的物理意义有一些认识，以便我们回到广义相对论的时候，可以从Bianchi恒等式出发探讨Einstein场方程。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

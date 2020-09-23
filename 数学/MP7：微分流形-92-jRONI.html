@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP7：微分流形
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-e292b20f319647c2f9fdb4709fc1a82e_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44161489" target="_blank">
+                        MP7：微分流形
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-10
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    上一讲非常艰难地介绍了点集拓扑中的一些基础概念。我们现在要开始从泛泛而谈的拓扑空间过渡到流形上。掌握了微分流形后，后面的内容会越来越精彩。
+                    <b>
+                        流形（manifold）
+                    </b>
+                    是现代各种几何分支研究的主要对象，我们目前用到的主要是实拓扑流形、实微分流形、实光滑流形。粗略理解，在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上每次取一个开集区域，按照某种法则粘贴出来的几何体就是流形。粘贴的时候，如果保持了两边局部坐标区域重叠之处的连续性/可微性/光滑性，就成为拓扑/微分/光滑流形。
+                </p>
+                <p>
+                    本讲先从Hausdorff空间开始，通过局部开领域与Euclide空间同胚的条件，给出了拓扑流形的概念。接着，把同胚映射的条件加强，使其称为微分同胚，并且加上坐标，这样就构成了微分结构，产生了微分流形。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <hr>
+                <p>
+                    <br>
+                    <b>
+                        拓扑流形
+                    </b>
+                </p>
+                <p>
+                    <br>
+                    如果拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    的任何两个
+                    <b>
+                        不同点有不相交的邻域
+                    </b>
+                    ，则称它满足
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=T_2" alt="T_2" eeimg="1">
+                        分离公理
+                    </b>
+                    （自然还有其它的分离公理，请参考点集拓扑教材），此刻
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    称为
+                    <b>
+                        Hausdorff空间
+                    </b>
+                    。在Hausdorff空间中，一个序列不会收敛到两个以上的点，用数学分析的话说，收敛序列有唯一的极限点。
+                </p>
+                <p>
+                    对于Hausdorff空间
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    ，若它的任何一点都有一个开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    同胚于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    。则称
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维
+                    <b>
+                        拓扑流形
+                    </b>
+                    。注意
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    本身就是一个
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维拓扑流形。
+                </p>
+                <p>
+                    以上的标准定义告诉我们几个事实：
+                </p>
+                <ol>
+                    <li>
+                        一个（拓扑）流形，处处具有唯一的维度。一条不与自身相交的曲线和一个圆都是
+                        <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                        维的（拓扑）流形，而天花板和上面垂下来的一条线构成的整体却不是（拓扑）流形。
+                    </li>
+                    <li>
+                        定义中用了任意点的开邻域，这表示讨论是局限在这一点局部的，只要这一点满足条件，是不必关心其它点的。这种
+                        <b>
+                            局部化
+                        </b>
+                        的处理，在微分几何中比比皆是。我们在数学分析中学习的到点的收敛性、函数在某一点的连续性、可微性，本质上都是局部化处理。
+                    </li>
+                    <li>
+                        与
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                        同胚，提示我们可以用
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                        中的自然基和自然坐标来表示流形上的点，使流形被坐标化。拓扑流形是有
+                        <b>
+                            开覆盖
+                        </b>
+                        的（还记得实变函数么？），后面我们会介绍坐标卡，它本质上是可以用坐标转换相互过渡的开覆盖。坐标转换的性质决定了流形的性质（相容性、多少次可微）。
+                    </li>
+                    <li>
+                        如果
+                        <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                        维流形
+                        <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                        作为拓扑空间有边界点，则边界点的集合记为
+                        <img src="https://www.zhihu.com/equation?tex=%5Cpartial+M" alt="\partial M" eeimg="1">
+                        ，它构成一个
+                        <img src="https://www.zhihu.com/equation?tex=%28n-1%29" alt="(n-1)" eeimg="1">
+                        维流形，这个概念将来在Stokes定理（统一任意维度按外微分的积分，一维就是微积分基本的Newton-Leibniz定理）以及同调-上同调（代数拓扑的后继课程）中非常重要。
+                    </li>
+                </ol>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        微分流形
+                    </b>
+                </h2>
+                <p>
+                    如同数学分析中先研究连续性再研究可微性，在流形上，也是先由同胚（满足映射的连续性）得到拓扑流形，再给映射附加更强的坐标转换的相容性条件，得到微分流形。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    拳不离手，复习一下前面的范畴学知识，函子
+                    <img src="https://www.zhihu.com/equation?tex=F%3ATop+%5Cto+Set" alt="F:Top \to Set" eeimg="1">
+                    是一个遗忘函子：
+                </p>
+                <p>
+                    i. 它将拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5Ctau%29" alt="(X,\tau)" eeimg="1">
+                    （拓扑范畴中的对象）对应到它的集合
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    （集合范畴中的对象），遗忘了拓扑结构
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                </p>
+                <p>
+                    ii. 它将同胚（拓扑范畴中的态射）对应到映射（集合范畴中的态射），遗忘了同胚附加在映射上的连续性条件
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    那么类似地，函子
+                    <img src="https://www.zhihu.com/equation?tex=C%5EmM+%5Cto+M+" alt="C^mM \to M" eeimg="1">
+                    是一个遗忘函子：
+                </p>
+                <p>
+                    i. 它将
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    次可微的微分流形
+                    <img src="https://www.zhihu.com/equation?tex=C%5EmM" alt="C^mM" eeimg="1">
+                    （
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    次可微的微分流形范畴中的对象）对应到它的拓扑流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    （拓扑流形范畴中的对象），遗忘了
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    次可微的微分结构
+                </p>
+                <p>
+                    ii. 它将
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    次可微同胚（
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    次可微的微分流形范畴中的态射）对应到同胚（拓扑流形范畴中的态射），遗忘了附加在映射上的
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    次相容性条件
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    熟悉这套范畴的语言，微分流形的理解就非常容易。回到[Chern 1999]对微分流形的定义，其中出现了：
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维拓扑流形，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+p+%5Cin+M" alt="\forall p \in M" eeimg="1">
+                    都
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+U" alt="\exists U" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cin+U+%5Csubset+M" alt="p\in U \subset M" eeimg="1">
+                </p>
+                <p>
+                    使得开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中的开集同胚，将这个同胚记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3AU+%5Cto+%5Cvarphi%28U%29+%5Csubset+%5Cmathbb%7BR%7D%5En" alt="\varphi:U \to \varphi(U) \subset \mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    把开邻域及其同胚映射一起记为
+                    <b>
+                        坐标卡（coordinate chart）
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%28U%2C%5Cvarphi%29" alt="(U,\varphi)" eeimg="1">
+                    。坐标卡的意义在于，微分流形上的任何一个点
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    ，都会被至少一个坐标卡所在的开集
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    所覆盖，这个坐标卡的同胚
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    建立了点
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上一个（带自然坐标的）点的双向可逆而且连续（同胚的定义）的对应。于是，点
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    在这个坐标卡下被赋予一个
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的
+                    <b>
+                        局部坐标
+                    </b>
+                    。
+                </p>
+                <p>
+                    微分流形的定义中还谈到了坐标卡之间是
+                    <img src="https://www.zhihu.com/equation?tex=C%5Em" alt="C^m" eeimg="1">
+                    -
+                    <b>
+                        相容
+                    </b>
+                    的，也就是说，两个坐标卡重合（交集）的地方，其坐标变换的映射是
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    次可微的。我们把微分流形视作平直空间的区域，也就是一组坐标卡，粘合为整体几何结构。在粘合的地方，也就是两个坐标卡相互重合交集的地方，其中的每个点都有一个以上的
+                    <b>
+                        局部坐标
+                    </b>
+                    ，每个局部坐标都由所在的坐标卡
+                    <img src="https://www.zhihu.com/equation?tex=%28U%2C%5Cvarphi%29" alt="(U,\varphi)" eeimg="1">
+                    中的映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    决定。同一点有多个局部坐标，其间需要以可微的方式实现坐标变换（只有可微，才能在上面做数学分析），所以需要坐标卡之间
+                    <img src="https://www.zhihu.com/equation?tex=C%5Em" alt="C^m" eeimg="1">
+                    -
+                    <b>
+                        相容
+                    </b>
+                    的条件。
+                </p>
+                <p>
+                    既然坐标卡重叠的地方，实现了
+                    <img src="https://www.zhihu.com/equation?tex=C%5Em" alt="C^m" eeimg="1">
+                    -
+                    <b>
+                        相容
+                    </b>
+                    ，那么从微分流形上任何一点出发，前往任何另外一点的过程中，它在一个坐标卡内部显然可以相容过渡，在两个坐标卡之间穿行时，重叠之处也可以相容过渡，这样就实现了整体上的相容性。有了这样优秀的性质，就可以讨论微分流形上的可微函数乃至光滑函数的问题，从而开启微分几何领域的大门。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        物理学中的微分流形
+                    </b>
+                </h2>
+                <p>
+                    当你掌握了微分流形的概念之后，就会发现物理中处处都是微分流形，这类例子不胜枚举：
+                </p>
+                <ul>
+                    <li>
+                        约束在光滑曲面上运动的球，运动曲面是微分流形
+                    </li>
+                    <li>
+                        热力学系统在相空间上的轨迹，轨迹是微分流形
+                    </li>
+                    <li>
+                        被引力弯曲的时空，时空是微分流形
+                    </li>
+                    <li>
+                        非惯性系上的Maxwell方程，建立在Minkowski流形上
+                    </li>
+                    <li>
+                        各种典型群，作为Lie群它们都是微分流形
+                    </li>
+                    <li>
+                        ...
+                    </li>
+                </ul>
+                <p>
+                    所以，如果可能，请在学习四大力学之前就尽可能多地掌握微分几何的工具，后面对许多问题的理解将大不一样。微分几何的学习过程又需要反复地用到数学分析（微分几何的微分二字）和线性代数（大量的局部线性化技术），对刚学大学数学的朋友来说，这样对于巩固前面的知识也是非常有帮助的。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        微分流形上的场
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    现在有了微分流形的概念，逻辑上微分流形的第一个好处就是可以构造切空间/余切空间。我们打算应用[Chern 1999]的方法，比较深入地研究切空间/余切空间，这样的话进度推进起来就比较累一些。
+                </p>
+                <a target="_blank" href="https://link.zhihu.com/?target=https%3A//book.douban.com/subject/1070474/" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                [陈省身1999] 微分几何讲义
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                book.douban.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    因此，在正式推进之前，我们在接下来两讲中补充一些知识，建立一些对切向量、余切向量、函数芽局部化、参数曲线等方面的物理直观的认识。
+                </p>
+                <p>
+                    我们在学习多元微积分时，了解了在线性空间上建立的矢量分析和场论。现在我们有了微分流形的概念，过去场论的部分概念可以延展到微分流形上。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    微分流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上的标量场
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    就是定义在
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上的数量函数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=M+%5Cto+%5Cmathbb%7BR%7D" alt="M \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cmapsto+f%28p%29" alt="p \mapsto f(p)" eeimg="1">
+                </p>
+                <p>
+                    这很好理解。中学以及数学分析中，定义域为平直的空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    ，这里的定义域为微分流形，变成了可以是
+                    <b>
+                        弯曲
+                    </b>
+                    的定义域。物理直观也很明确，如果一个球面上每个点温度不同，那么就可以用标量场来描述。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面问题来了，在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上可以定义
+                    <b>
+                        向量场
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n \to \mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cmapsto+f%28p%29" alt="p \mapsto f(p)" eeimg="1">
+                </p>
+                <p>
+                    譬如
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    维空间的重力场、电场、磁场等，这些都是我们在物理中熟知的。那么矢量场的定义可以推广到流形吗？看看这样定义的是什么：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=M+%5Cto+%5Cmathbb%7BR%7D%5En" alt="M \to \mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cmapsto+f%28p%29" alt="p \mapsto f(p)" eeimg="1">
+                </p>
+                <p>
+                    举个例，如果每根头发类比为一个向量，头部可是视为流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    ，那么头发的分布是否是一个场？仔细考虑，我们发现这里的问题没那么简单：
+                </p>
+                <p>
+                    i. 头皮类比为流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    ，而这个流形是
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    维的；头发作为向量是
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    维的。我们或者可以认为我们站在
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    维的世界，观察嵌入其中的
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    维流形，然而
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    维的头发，又如何放入流形中研究呢？
+                </p>
+                <p>
+                    ii. 头上两点各有一根头发向量，两个向量如何比较呢？它们的向量起点处于不同的点，虽然都是空间向量，实际上生长的条件都不一样，怎么比较。
+                </p>
+                <p>
+                    类似这样的问题，虽然来自直观，但已经揭示出微分流形和平直空间非常不同的特性。微分流形的研究要复杂得多。平直空间中许多显然的结论，如
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的矢量场，完全是退化的特例。所以我们接着将要掌握更多的工具来解决一般微分流形上的向量场的问题。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP20：单形、复形、链群和边界算子
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-9b740668c28420237668e6a1e33ce6d4_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44758074" target="_blank">
+                        MP20：单形、复形、链群和边界算子
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-25
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    本讲介绍一种处理拓扑空间的方法，即三角剖分。网格是对造型的任意精度的逼近。抛开精度，我们如果只需要保持拓扑性质，那么网格可以大大简化。在拓扑中用的网格是通过类似三角形的简单几何体构造出来的。单形的几何直观很好理解，它用最少的点表达了维度信息。构成单形的点是仿射无关的，可以在仿射空间上构造变换群。
+                </p>
+                <p>
+                    通过去掉一点得到低一维单形的方式，归纳为单形的边界算子。进一步，用单形构造复形，研究复形的边界算子。再进一步，用复形构造出链群，研究链群的边界算子。
+                </p>
+                <p>
+                    单形、复形、链群，这样一部部构造出同调群的基础结构。边界算子和这些结构的作用将构成同调群的要素。
+                </p>
+                <hr>
+                <p>
+                    还记得我们的目标是要搞定微分流形上的Stokes公式么？因为一口吃不下来，要先打点拓扑的底子先解决积分区域的问题。前面学了一些拓扑的工具，有了连通、道路连通、同伦的几何直观，也学到了第一种可以用代数结构处理拓扑问题的工具——基本群。
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/44083782" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                MP19：拓扑加油站(1)：道路连通、同伦、基本群
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    然而现实中处理同伦和基本群是麻烦的，因为麻烦就不多说了。现在我们来学一些更常用的结构，这一讲先理解它们的几何直观。今后我们再将他代数化（同调）处理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        网格
+                    </b>
+                </h2>
+                <p>
+                    游戏和电影中使用的
+                    <b>
+                        计算机图形学(computer graphics)
+                    </b>
+                    ，主要的模型就是网格。网格的好处是将造型信息用顶点统一处理，简化计算过程，可以适应大规模快速并行的计算（GPU）。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-54fea2727074024fd03a352df4aa43d6_r.jpg">
+                    <figcaption>
+                        ZBrush中的网格化
+                    </figcaption>
+                </figure>
+                <p>
+                    网格是对造型的任意精度的逼近。抛开精度，我们如果只需要保持
+                    <b>
+                        拓扑性质
+                    </b>
+                    ，那么网格可以大大简化。实际上物理学家经常被人嘲笑的段子，就是用各种简单的几何体代替真实模型做计算2333
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        单形
+                    </b>
+                </h2>
+                <p>
+                    在拓扑中用的网格是通过类似三角形的简单几何体构造出来的。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-a9b60f04f91651cf0a197b5a0368e149_r.jpg">
+                    <figcaption>
+                        单形
+                    </figcaption>
+                </figure>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    -单形就是点
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -单形就是线段
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -单形就是三角形
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    -单形就是四面体
+                </p>
+                <p>
+                    单形的几何直观很好理解，它用最少的点表达了维度信息。用数学的黑话来定义的话，构成
+                    <b>
+                        单形(simplex)
+                    </b>
+                    的点是
+                    <b>
+                        仿射无关的
+                    </b>
+                    。所谓
+                    <b>
+                        仿射空间(affine space)
+                    </b>
+                    ，暂且理解为没有原点的空间，没有原点就不再有群的结构，也不可以做加法，但可以做两点之间的减法（图中的有向线段），也可以在仿射空间上构造变换群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中一组
+                    <img src="https://www.zhihu.com/equation?tex=%28q%2B1%29%2Cq%5Cleq+n" alt="(q+1),q\leq n" eeimg="1">
+                    个顶点
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Ba_0%2C+%5Cdots%2C+a_q%5C%7D" alt="\{a_0, \dots, a_q\}" eeimg="1">
+                    互相做减法（线段）产生的向量组构成了
+                    <b>
+                        线性无关向量组
+                    </b>
+                    （有向线段组），它们
+                    <b>
+                        张成
+                    </b>
+                    了一个线性子空间，对应为这些点在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中的一个
+                    <b>
+                        线性流形
+                    </b>
+                    ，这个线性流形上的每一点都可以通过顶点的坐标线性组合而成。如果限定为
+                    <b>
+                        非负归一化权重
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_i" alt="\lambda_i" eeimg="1">
+                    ，得到线性流形上的子集，它是由顶点围起来的
+                    <b>
+                        凸集
+                    </b>
+                    ，称为
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维单形：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%5Eq+%3D+%5C%7B+x+%3D+%5Csum_i+%5Clambda_ia_i+%5Cmid+%5Clambda%5Ei%5Cgeq+0%2C+%5Csum_i+%5Clambda_i+%3D+1+%5C%7D" alt="\sigma^q = \{ x = \sum_i \lambda_ia_i \mid \lambda^i\geq 0, \sum_i \lambda_i = 1 \}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    构成单形的顶点有初始给定的排列顺序，这给出了一个
+                    <b>
+                        定向(orientation)
+                    </b>
+                    。定向从代数上看是和顶点的
+                    <b>
+                        置换群(permutation group)
+                    </b>
+                    有关的，即顶点排列的奇偶置换确定了定向的方向。于是，也可以引入定向的单位元操作和求逆操作，这样便让顶点排列本身具备了Abel群的结构，是不是感到浓浓的代数意味？
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        单形的边界
+                    </b>
+                </h2>
+                <p>
+                    既然
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维单形是由仿射无关的顶点组构成的，那么任意减去其中一个定点，得到的顶点组依旧是仿射无关的，并且可以因此构成一个
+                    <img src="https://www.zhihu.com/equation?tex=q-1" alt="q-1" eeimg="1">
+                    维单形：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    -单形是点，没有边界
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -单形是线段，去掉一点得到
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    -单形点
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -单形是三角形，去掉一点得到
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -单形棱
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    -单形是四面体，去掉一点得到
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -单形三角形
+                    <br>
+                </p>
+                <p>
+                    这种通过去掉一点得到低一维单形的方式，归纳为单形的
+                    <b>
+                        边界算子
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial+%5Csigma%5Eq+%5Cmapsto+%5Csum_i+%28-1%29%5Ei+a%5E0+%5Cdots+%5Coverline%7Ba%7D%5Ei+%5Cdots+a%5Eq" alt="\partial \sigma^q \mapsto \sum_i (-1)^i a^0 \dots \overline{a}^i \dots a^q" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%28-1%29%5Ei" alt="(-1)^i" eeimg="1">
+                    决定了定向（奇偶性），
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7Ba%7D%5Ei" alt="\overline{a}^i" eeimg="1">
+                    表示去掉
+                    <img src="https://www.zhihu.com/equation?tex=a%5Ei" alt="a^i" eeimg="1">
+                    这一点。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-95a693949022f0755a1e6b6271fe5161_b.jpg">
+                    <figcaption>
+                        边界算子的作用效果
+                    </figcaption>
+                </figure>
+                <p>
+                    上图上部分，
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -单形点列
+                    <img src="https://www.zhihu.com/equation?tex=%5Bv_0%2Cv_1%2Cv_2%5D" alt="[v_0,v_1,v_2]" eeimg="1">
+                    给出一个定向，边界算子作用为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial+%5Bv_0%2Cv_1%2Cv_2%5D+%3D+%5Bv_1%2Cv_2%5D+-+%5Bv_0%2Cv_2%5D+%2B+%5Bv_0%2Cv_1%5D+%3D++%5Bv_0%2Cv_1%5D+%2B+%5Bv_1%2Cv_2%5D+%2B+%5Bv_2%2Cv_0%5D" alt="\partial [v_0,v_1,v_2] = [v_1,v_2] - [v_0,v_2] + [v_0,v_1] =  [v_0,v_1] + [v_1,v_2] + [v_2,v_0]" eeimg="1">
+                </p>
+                <p>
+                    下部分，
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    -单形点列
+                    <img src="https://www.zhihu.com/equation?tex=%5Bv_0%2Cv_1%2Cv_2%2Cv_3%5D" alt="[v_0,v_1,v_2,v_3]" eeimg="1">
+                    给出一个定向，边界算子作用为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial+%5Bv_0%2Cv_1%2Cv_2%2Cv_3%5D+%3D+%5Bv_1%2Cv_2%2Cv_3%5D+-+%5Bv_0%2Cv_2%2Cv_3%5D+%2B+%5Bv_0%2Cv_1%2Cv_3%5D+-+%5Bv_0%2Cv_1%2Cv_2%5D" alt="\partial [v_0,v_1,v_2,v_3] = [v_1,v_2,v_3] - [v_0,v_2,v_3] + [v_0,v_1,v_3] - [v_0,v_1,v_2]" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        复形
+                    </b>
+                </h2>
+                <p>
+                    用单形为积木，可以构建复形，也就是对物理中研究的几何体做
+                    <b>
+                        拓扑
+                    </b>
+                    上的建模，完全不考虑度量的精度——论一架飞机表面的磁通密度如何等效为四面体。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-16f8194af6c39828e9b528d4f7c6646e_r.jpg">
+                    <figcaption>
+                        复形
+                    </figcaption>
+                </figure>
+                <p>
+                    我们现在是来研究拓扑规律的，在用单形搭建复形的时候，我们希望单形是坚硬的实心几何体，也不会随意滑动。也就是说，两个单形要么分开，要么有重合的公共面（边界），这种情况称为两个单形是
+                    <b>
+                        规则相处
+                    </b>
+                    的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中有限个单形的集合
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    如果满足：
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Csigma%5Eq+%5Cin+K" alt="\forall \sigma^q \in K" eeimg="1">
+                        ，
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma%5Eq" alt="\sigma^q" eeimg="1">
+                        的任意一个
+                        <b>
+                            面
+                        </b>
+                        也属于
+                        <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                        ；
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                        中任意两个单形
+                        <b>
+                            规则相处
+                        </b>
+                        ；
+                    </li>
+                </ol>
+                <p>
+                    则
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    为
+                    <b>
+                        单纯复合形(simplicial complex)
+                    </b>
+                    或
+                    <b>
+                        复形
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    的维数就是其中维数最大的单形的维数。复形
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    是单形的集合。如果把每个单形都看作
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的子集，那么这些单形的并
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvert+K+%5Cvert" alt="\vert K \vert" eeimg="1">
+                    也是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的子集，称为
+                    <b>
+                        多面体(polyhedron)
+                    </b>
+                    ，而
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    为这个多面体的
+                    <b>
+                        单纯剖分
+                    </b>
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28K%29+%3D+%5Ctext%7Bdim%7D%5Cvert+K+%5Cvert" alt="\text{dim}(K) = \text{dim}\vert K \vert" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在，可以把世界简单化了。对于拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    和复形
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvert+K+%5Cvert" alt="\vert K \vert" eeimg="1">
+                    ，如果存在同胚
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3A%5Cvert+K+%5Cvert+%5Cto+X" alt="\varphi:\vert K \vert \to X" eeimg="1">
+                </p>
+                <p>
+                    就构造了
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    对
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的剖分。于是，我们所讨论的这一套网格系统，成为研究拓扑的工具。更重要的是，比起拓扑空间中无从下手的橡皮几何体，这套网格系统中的单形、复形等结构都可以很方便地讨论代数性质。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        复形的边界
+                    </b>
+                </h2>
+                <p>
+                    两条线段，连接一点后得到一根线段，即单形
+                    <img src="https://www.zhihu.com/equation?tex=%5Bv_0%2Cv_1%5D" alt="[v_0,v_1]" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Bv_1%2Cv_2%5D" alt="[v_1,v_2]" eeimg="1">
+                    连接后得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Bv_0%2Cv_1%5D%2B%5Bv_1%2Cv_2%5D" alt="[v_0,v_1]+[v_1,v_2]" eeimg="1">
+                </p>
+                <p>
+                    对它形式化地求
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -边界
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_1%28%5Bv_0%2Cv_1%5D%2B%5Bv_1%2Cv_2%5D%29+%3D%5Cpartial_1%5Bv_0%2Cv_1%5D%2B%5Cpartial_1%5Bv_1%2Cv_2%5D+" alt="\partial_1([v_0,v_1]+[v_1,v_2]) =\partial_1[v_0,v_1]+\partial_1[v_1,v_2]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%28v_1-v_0%29%2B%28v_2-v_1%29+%3Dv_2-v_0" alt="=(v_1-v_0)+(v_2-v_1) =v_2-v_0" eeimg="1">
+                </p>
+                <p>
+                    这相当于直接求
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_1%5Bv_0%2Cv_2%5D+%3D+v_2+-+v_0" alt="\partial_1[v_0,v_2] = v_2 - v_0" eeimg="1">
+                </p>
+                <p>
+                    显然，边界是拓扑性质，并不依赖于折线的中间构造。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        链群及其边界
+                    </b>
+                </h2>
+                <p>
+                    将复形
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    上所有
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维（定向）单形的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=T_q%28K%29" alt="T_q(K)" eeimg="1">
+                    ，现在用整数加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D%28%2B%2C0%29" alt="\mathbb{Z}(+,0)" eeimg="1">
+                    来构造整系数的形式和
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma+%3D+%5Csum_k+z_k%5Csigma_k+%3D+z_1%5Csigma_1+%2B+z_2%5Csigma_2+%2B+%5Cdots+%2B+z_k%5Csigma_k" alt="\sigma = \sum_k z_k\sigma_k = z_1\sigma_1 + z_2\sigma_2 + \dots + z_k\sigma_k" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bz_k%5C%7D" alt="\{z_k\}" eeimg="1">
+                    是整系数，
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B+%5Csigma_i+%5C%7D" alt="\{ \sigma_i \}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=T_q%28K%29" alt="T_q(K)" eeimg="1">
+                    中的单形。两个这样的形式和之间可以定义加法：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_k+x_k%5Csigma_k+%2B+%5Csum_k+y_k%5Csigma_k+%3D+%5Csum_k+%28x_k+%2B+y_k%29%5Csigma_k" alt="\sum_k x_k\sigma_k + \sum_k y_k\sigma_k = \sum_k (x_k + y_k)\sigma_k" eeimg="1">
+                </p>
+                <p>
+                    显然有从加群得到的单位元和逆元，于是这样的形式和构成一个Abel群，称为
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    <b>
+                        链群
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    边界算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial" alt="\partial" eeimg="1">
+                    总是把
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维单形映射到
+                    <img src="https://www.zhihu.com/equation?tex=%28q-1%29" alt="(q-1)" eeimg="1">
+                    维单形。由于链群是同维的单形自由生成的，于是边界算子也把
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维链群映射到
+                    <img src="https://www.zhihu.com/equation?tex=%28q-1%29" alt="(q-1)" eeimg="1">
+                    维链群：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_k%3A+C_k%28K%29+%5Cto+C_%7Bk-1%7D%28K%29" alt="\partial_k: C_k(K) \to C_{k-1}(K)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        讨论
+                    </b>
+                    <br>
+                </h2>
+                <p>
+                    链群的定义初看上去并不自然，单形
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma_i" alt="\sigma_i" eeimg="1">
+                    的整数运算
+                    <img src="https://www.zhihu.com/equation?tex=z_i%5Csigma_i" alt="z_i\sigma_i" eeimg="1">
+                    是什么？整系数的形式和又是什么？
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    个葡萄减去
+                    <img src="https://www.zhihu.com/equation?tex=4" alt="4" eeimg="1">
+                    个枣是什么鬼？以我们现在的基础，暂且理解为：
+                </p>
+                <p>
+                    同样维数的
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    单形可以通过整系数构造一个类似
+                    <b>
+                        线性
+                    </b>
+                    的形式和，即
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    链群。链群的边界算子，可以保持这个线性的特性（作为群同态），将
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    维链群映射到
+                    <img src="https://www.zhihu.com/equation?tex=%28q-1%29" alt="(q-1)" eeimg="1">
+                    维链群，构成同态序列，以方便进行代数处理（同调代数）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这一讲，我们把几何体通过网格化，构成了复形
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    ，然后将复形按照维度区分了单形的组合
+                    <img src="https://www.zhihu.com/equation?tex=T_q%28K%29" alt="T_q(K)" eeimg="1">
+                    ，借助整数加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D%28%2B%2C0%29" alt="\mathbb{Z}(+,0)" eeimg="1">
+                    得到了
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    链群，最后通过边界算子构成了同态序列，完成了从拓扑空间到代数对象的过渡。接下来就需要通过代数工具处理拓扑问题了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

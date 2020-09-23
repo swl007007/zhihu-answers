@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP106：Lorentz群表示论(3)：反射、旋转、正交、Witt理论
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-a705143f2a1f94b171dcbbdb509b0325_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/58326885" target="_blank">
+                        MP106：Lorentz群表示论(3)：反射、旋转、正交、Witt理论
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-03-05
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    生活中我们对正交概念具有很好的直观理解。在Lorentz群表示论的系列，我们的起点是 [
+                    <a href="https://zhuanlan.zhihu.com/p/57875335" class="internal">
+                        MP104：Lorentz群表示论(1)：二次型
+                    </a>
+                    ]，这样可以更自然地去研究正交群。根据初等解析几何的知识，Euclide空间就是对距离和角度的保持，正交群的构造有反射(针对超平面)和旋转(针对原点)两类。借助我们在二次空间上的表达方式，我们关心的是可以保持双线型的自同构，从而形成的自同构群——正交群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        旋转
+                    </b>
+                </h2>
+                <p>
+                    若线性空间是域构成的
+                    <img src="https://www.zhihu.com/equation?tex=V+%3D+F%5En" alt="V = F^n" eeimg="1">
+                    ，便具有自然基以及单位矩阵二次型
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    。我们过去熟知的正交群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+O%28n%29" alt="\text O(n)" eeimg="1">
+                    是矩阵群，而更加抽象地说，在(非退化的)二次空间
+                    <img src="https://www.zhihu.com/equation?tex=%28V%2Cq%29" alt="(V,q)" eeimg="1">
+                    上的等距双射构成的集合称为
+                    <img src="https://www.zhihu.com/equation?tex=q" alt="q" eeimg="1">
+                    的正交群，记
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+O%28q%29" alt="\text O(q)" eeimg="1">
+                    。矩阵群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+O%28n%29" alt="\text O(n)" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+O%28q%29" alt="\text O(q)" eeimg="1">
+                    的表示：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+O%28n%29+%3D+%5C%7B+M+%5Cin+%5Ctext%7BGL%7D%28n%2CF%29+%5C+%7C+%5C+M%5ETM%3DMM%5ET%3DI%5C%7D+%5Ctag%7B1%7D" alt="\text O(n) = \{ M \in \text{GL}(n,F) \ | \ M^TM=MM^T=I\} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    我们熟知旋转变换的矩阵其行列式为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ，因此旋转构成了特殊正交群。反射变换的矩阵是行列式为
+                    <img src="https://www.zhihu.com/equation?tex=-1" alt="-1" eeimg="1">
+                    ，且含有一个
+                    <img src="https://www.zhihu.com/equation?tex=-1" alt="-1" eeimg="1">
+                    特征值的正交矩阵。而且，两次反射变换的合成的矩阵行列式为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ——构成一个旋转变换。实际上，任何
+                    <b>
+                        旋转(rotation)
+                    </b>
+                    都可以分解为两次(针对不同超平面的)
+                    <b>
+                        反射(reflection)
+                    </b>
+                    。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-b7a9cd0c060725c0e379d09d87b6b798_r.jpg">
+                    <figcaption>
+                        通过两次反射合成构造旋转(wiki)
+                    </figcaption>
+                </figure>
+                <p>
+                    由两次反射可以合成一次旋转，反过来讲，作为半次旋转的反射，也可以视作
+                    <b>
+                        瑕旋转(improper rotation)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        反射
+                    </b>
+                </h2>
+                <p>
+                    记得 [
+                    <a href="https://zhuanlan.zhihu.com/p/57875335" class="internal">
+                        MP104：Lorentz群表示论(1)：二次型
+                    </a>
+                    ] 非退化的二次空间
+                    <img src="https://www.zhihu.com/equation?tex=%28V%2Cq%29" alt="(V,q)" eeimg="1">
+                    上二次型和双线性形式的关系
+                    <img src="https://www.zhihu.com/equation?tex=q%28x%29+%3D+b%28x%2Cx%29" alt="q(x) = b(x,x)" eeimg="1">
+                    。给定非迷向向量
+                    <img src="https://www.zhihu.com/equation?tex=y+%5Cin+%28V%2Cq%29" alt="y \in (V,q)" eeimg="1">
+                    可以诱导出
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+O%28q%29" alt="\text O(q)" eeimg="1">
+                    中的反射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctau_y%3A+V+%26%5Cto+V+%5C%5C+x+%26%5Cmapsto+%5Ctau_y%28x%29+%3D+x+-+%5Cfrac%7B2b%28x%2Cy%29%7D%7Bb%28y%2Cy%29%7Dy+%5Cend%7Balign%7D%5Ctag%7B2%7D" alt="\begin{align} \tau_y: V &amp;\to V \\ x &amp;\mapsto \tau_y(x) = x - \frac{2b(x,y)}{b(y,y)}y \end{align}\tag{2}" eeimg="1">
+                </p>
+                <p>
+                    限制为非迷向向量就是为了保证上式中的
+                    <img src="https://www.zhihu.com/equation?tex=b%28y%2Cy%29+%5Cneq+0" alt="b(y,y) \neq 0" eeimg="1">
+                    。用熟知的欧式空间易于说明，线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V+%3D+%5Cmathbb+R%5En" alt="V = \mathbb R^n" eeimg="1">
+                    ，双线性形式
+                    <img src="https://www.zhihu.com/equation?tex=b%28x%2Cy%29+%3D+%5Csum_k+x_ky_k" alt="b(x,y) = \sum_k x_ky_k" eeimg="1">
+                    ，二次型
+                    <img src="https://www.zhihu.com/equation?tex=q%28x%29+%3D+b%28x%2Cx%29+%3D+%5Csum_k+x_k%5E2" alt="q(x) = b(x,x) = \sum_k x_k^2" eeimg="1">
+                    。取
+                    <img src="https://www.zhihu.com/equation?tex=y+%5Cin+%5Cmathbb+R%5En" alt="y \in \mathbb R^n" eeimg="1">
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=q%28y%29+%3D+b%28y%2Cy%29+%3D+%5Csum_k+y_k%5E2+%3E+0" alt="q(y) = b(y,y) = \sum_k y_k^2 &gt; 0" eeimg="1">
+                    视为
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    到原点的距离平方。这里的
+                    <img src="https://www.zhihu.com/equation?tex=y+%5Cin+%5Cmathbb+R%5En" alt="y \in \mathbb R^n" eeimg="1">
+                    决定了反射的超平面，它过原点垂直于
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    。(2)式中的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bb%28x%2Cy%29%7D%7Bb%28y%2Cy%29%7Dy" alt="\frac{b(x,y)}{b(y,y)}y" eeimg="1">
+                    就是
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    到
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    的向量投影，当
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    平行时，反射向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau_y%28x%29+%3D+-x" alt="\tau_y(x) = -x" eeimg="1">
+                    ；当它们垂直时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau_y%28x%29+%3D+x" alt="\tau_y(x) = x" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    记得
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+%7BSO%7D%28n%29+%5Csubset+%5Ctext+O%28n%29" alt="\text {SO}(n) \subset \text O(n)" eeimg="1">
+                    ，显然旋转是正交的。反射也是正交的，且两次反射可以构成一次旋转。这些直观进一步加强为Cartan–Dieudonné定理：
+                </p>
+                <blockquote>
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维正交群中的正交变换可以写为不超过
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个反射的复合。
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Witt理论
+                    </b>
+                </h2>
+                <p>
+                    正交直和用
+                    <img src="https://www.zhihu.com/equation?tex=%7B%5Cperp%5Cmkern-20.7mu%5Cbigcirc%7D" alt="{\perp\mkern-20.7mu\bigcirc}" eeimg="1">
+                    符号表示，Witt理论给出了有关二次空间的一系列结论，首先是
+                    <b>
+                        Witt消去定理(Witt&#39;s cancellation theorem)
+                    </b>
+                    ：非退化的
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    -二次空间若满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28V_1%2Cq_1%29++%7B%5Cperp%5Cmkern-20.7mu%5Cbigcirc%7D+%28V%2Cq%29+%5Csimeq+%28V_2%2Cq_2%29++%7B%5Cperp%5Cmkern-20.7mu%5Cbigcirc%7D+%28V%2Cq%29++%5C%5C" alt="(V_1,q_1)  {\perp\mkern-20.7mu\bigcirc} (V,q) \simeq (V_2,q_2)  {\perp\mkern-20.7mu\bigcirc} (V,q)  \\" eeimg="1">
+                </p>
+                <p>
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=%28V_1%2Cq_1%29++%5Csimeq+%28V_2%2Cq_2%29+" alt="(V_1,q_1)  \simeq (V_2,q_2)" eeimg="1">
+                    是等距同构，即消去了上式中的二次空间
+                    <img src="https://www.zhihu.com/equation?tex=+%28V%2Cq%29" alt="(V,q)" eeimg="1">
+                    。在\cite{黎景辉2014}（高等线性代数学）中给出了证明，其中需要用到上面讨论的反射。
+                </p>
+                <p>
+                    Witt消去定理指出了一个方向，如何确定非退化的二次空间
+                    <img src="https://www.zhihu.com/equation?tex=+%28V%2Cq%29" alt="(V,q)" eeimg="1">
+                    中迷向向量的存在性 [
+                    <a href="https://zhuanlan.zhihu.com/p/57875335" class="internal">
+                        MP104
+                    </a>
+                    ]。进一步，如果
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cin+V" alt="x \in V" eeimg="1">
+                    是迷向向量，那么
+                    <img src="https://www.zhihu.com/equation?tex=+%28V%2Cq%29" alt="(V,q)" eeimg="1">
+                    成为迷向空间，
+                    <img src="https://www.zhihu.com/equation?tex=b%28x%2Cx%29+%3D+0" alt="b(x,x) = 0" eeimg="1">
+                    。此刻，选取
+                    <img src="https://www.zhihu.com/equation?tex=y+%5Cin+V" alt="y \in V" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=b%28x%2Cy%29+%5Cneq+0" alt="b(x,y) \neq 0" eeimg="1">
+                    非退化，那么
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    所生成的空间
+                    <img src="https://www.zhihu.com/equation?tex=H_1+%5Csubset+V" alt="H_1 \subset V" eeimg="1">
+                    称为双曲面。双曲与二次型乃至度量是密切相关的。我们特别感兴趣的是非退化的
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -维
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    -迷向空间
+                    <img src="https://www.zhihu.com/equation?tex=%28V%2Cq%29" alt="(V,q)" eeimg="1">
+                    。中学数学中大量学习圆锥曲线，我们熟知的二次曲线分为椭圆、抛物、双曲三种，它们实际上是由二次型中各项的符号关系决定的。在研究Minkowski空间时，我们关注的是
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdiag%7D%281%2C+1%2C1%2C+-1%29" alt="\text{diag}(1, 1,1, -1)" eeimg="1">
+                    中同时出现
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpm" alt="\pm" eeimg="1">
+                    号的情况，显然这种情况是
+                    <b>
+                        双曲(hyperbolic)
+                    </b>
+                    的。
+                </p>
+                <p>
+                    以上生成的双曲面空间
+                    <img src="https://www.zhihu.com/equation?tex=H_1+%5Csubset+V" alt="H_1 \subset V" eeimg="1">
+                    ，可以和其正交补
+                    <img src="https://www.zhihu.com/equation?tex=%28V%5E%5Cprime%2Cq%29" alt="(V^\prime,q)" eeimg="1">
+                    构成迷向空间的分解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28V%2Cq%29+%5Csimeq+%28H_1%2Cq%29++%7B%5Cperp%5Cmkern-20.7mu%5Cbigcirc%7D++%28V%5E%5Cprime%2Cq%29+%5C%5C" alt="(V,q) \simeq (H_1,q)  {\perp\mkern-20.7mu\bigcirc}  (V^\prime,q) \\" eeimg="1">
+                    <br>
+                    如果
+                    <img src="https://www.zhihu.com/equation?tex=%28V%5E%5Cprime%2Cq%29" alt="(V^\prime,q)" eeimg="1">
+                    也是迷向空间，则将其进一步分解，这样分解下去最后得到如下形式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28V%2Cq%29+%5Csimeq+%28H_1%2Cq%29++%7B%5Cperp%5Cmkern-20.7mu%5Cbigcirc%7D+%28H_2%2Cq%29++%7B%5Cperp%5Cmkern-20.7mu%5Cbigcirc%7D+%5Cdots+%28H_m%2Cq%29++%7B%5Cperp%5Cmkern-20.7mu%5Cbigcirc%7D++%28W%2Cq%29+%5C%5C" alt="(V,q) \simeq (H_1,q)  {\perp\mkern-20.7mu\bigcirc} (H_2,q)  {\perp\mkern-20.7mu\bigcirc} \dots (H_m,q)  {\perp\mkern-20.7mu\bigcirc}  (W,q) \\" eeimg="1">
+                </p>
+                <p>
+                    称为
+                    <b>
+                        Witt分解定理(Witt&#39;s decomposition theorem)
+                    </b>
+                    。在同构意义下，最终的非迷向部分
+                    <img src="https://www.zhihu.com/equation?tex=%28W%2Cq%29" alt="(W,q)" eeimg="1">
+                    是唯一的。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

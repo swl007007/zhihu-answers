@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP125：线性代数补习班(12)：Yoneda引理
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-02e5d343044397e013bdf844bae55971_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/50154596" target="_blank">
+                        MP125：线性代数补习班(12)：Yoneda引理
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-09-01
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <h2>
+                    函子范畴
+                </h2>
+                <p>
+                    通常把
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C+%5Cto+%5Cmathcal+D" alt="\mathcal C \to \mathcal D" eeimg="1">
+                    形共变/反变函子构成的范畴记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BFct%7D%28%5Cmathcal+C%2C%5Cmathcal+D%29%2C%5Cquad+%5Ctextbf%7BFct%7D%28%5Cmathcal+C%5E%5Ctext%7Bopp%7D%2C%5Cmathcal+D%29++%5C%5C" alt="\textbf{Fct}(\mathcal C,\mathcal D),\quad \textbf{Fct}(\mathcal C^\text{opp},\mathcal D)  \\" eeimg="1">
+                </p>
+                <p>
+                    函子范畴中的对象是函子，态射就是
+                    <b>
+                        函子态射(functorial morphism)
+                    </b>
+                    /
+                    <b>
+                        自然变换(natural transformation)
+                    </b>
+                    。以共变函子范畴为例，给定
+                    <img src="https://www.zhihu.com/equation?tex=F%2CG+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BFct%7D%28%5Cmathcal+C%2C%5Cmathcal+D%29%29" alt="F,G \in \text{Ob}(\textbf{Fct}(\mathcal C,\mathcal D))" eeimg="1">
+                    ，及自然变换
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi%3A+F+%5Cto+G" alt="\Phi: F \to G" eeimg="1">
+                    ，或者写成函子范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BFct%7D%28%5Cmathcal+C%2C%5Cmathcal+D%29" alt="\textbf{Fct}(\mathcal C,\mathcal D)" eeimg="1">
+                    中的态射
+                    <img src="https://www.zhihu.com/equation?tex=T+%5Cin+%5Ctext%7BHom%7D%28F%2CG%29" alt="T \in \text{Hom}(F,G)" eeimg="1">
+                    ，它作用到f范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    的对象上，得到范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+D" alt="\mathcal D" eeimg="1">
+                    中的态射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5CPhi%3A+%5Ctext%7BOb%7D%28%5Cmathcal+C%29+%26%5Cto+%5Ctext%7BMor%7D_%5Cmathcal+D+%5Cnonumber+%5C%5C+X+%26%5Cmapsto+%5CPhi_X+%5Cin+%5Ctext%7BHom%7D%28F%28X%29%2CG%28X%29%29++%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} \Phi: \text{Ob}(\mathcal C) &amp;\to \text{Mor}_\mathcal D \nonumber \\ X &amp;\mapsto \Phi_X \in \text{Hom}(F(X),G(X))  \nonumber \\ \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    作用到态射上，两个函子分别有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+F%3A+%5Ctext%7BHom%7D%28X%2CY%29+%26%5Cto+%5Ctext%7BHom%7D%28F%28X%29%2CF%28Y%29%29+%5Cnonumber+%5C%5C+f+%26%5Cmapsto+F%28f%29+%5Cnonumber+%5C%5C+G%3A+%5Ctext%7BHom%7D%28X%2CY%29+%26%5Cto+%5Ctext%7BHom%7D%28G%28X%29%2CG%28Y%29%29+%5Cnonumber+%5C%5C+f+%26%5Cmapsto+G%28f%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} F: \text{Hom}(X,Y) &amp;\to \text{Hom}(F(X),F(Y)) \nonumber \\ f &amp;\mapsto F(f) \nonumber \\ G: \text{Hom}(X,Y) &amp;\to \text{Hom}(G(X),G(Y)) \nonumber \\ f &amp;\mapsto G(f) \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    函子态射则给出以下交换图
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-51610e7f17c5037f35f7267e91b16b60_r.jpg">
+                </figure>
+                <h2>
+                    Hom函子
+                </h2>
+                <p>
+                    范畴的对象对应到其态射集上，构成一个函子。将这类共变/反变函子范畴分别记为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D%5E%5Cmathcal+C+%3D+%5Ctextbf%7BFct%7D%28%5Cmathcal+C%2C+%5Ctextbf%7BSet%7D%29%2C%5Cquad+%5Ctextbf%7BSet%7D_%5Cmathcal+C+%3D+%5Ctextbf%7BFct%7D%28%5Cmathcal+C%5E%5Ctext%7Bopp%7D%2C+%5Ctextbf%7BSet%7D%29+%5C%5C" alt="\textbf{Set}^\mathcal C = \textbf{Fct}(\mathcal C, \textbf{Set}),\quad \textbf{Set}_\mathcal C = \textbf{Fct}(\mathcal C^\text{opp}, \textbf{Set}) \\" eeimg="1">
+                </p>
+                <p>
+                    其中最重要的是Hom函子，它是一对共变/反变函子，由对象
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%5Ctext%7BObj%7D%28%5Cmathcal+C%29" alt="A \in \text{Obj}(\mathcal C)" eeimg="1">
+                    按照以下方式诱导：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX+%3D+%5Ctext%7BHom%7D%28X%2C-%29%2C+%5Cquad+h_X+%3D+%5Ctext%7BHom%7D%28-%2CX%29+%5C%5C" alt="h^X = \text{Hom}(X,-), \quad h_X = \text{Hom}(-,X) \\" eeimg="1">
+                </p>
+                <p>
+                    取共变Hom函子及另一个任意函子
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX+%3D+%5Ctext%7BHom%7D%28X%2C-%29%2CF+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BSet%7D%5E%5Cmathcal+C%29" alt="h^X = \text{Hom}(X,-),F \in \text{Ob}(\textbf{Set}^\mathcal C)" eeimg="1">
+                    ，将
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+%5Ctext%7BHom%7D%28Y%2CZ%29" alt="f \in \text{Hom}(Y,Z)" eeimg="1">
+                    分别进行了如下映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D++++f+%5Cin+%5Ctext%7BHom%7D%28Y%2CZ%29+%40%3Eh%5EX%3E%3E+%5Ctext%7BHom%7D%28X%2Cf%29+%5Cin++%5Ctext%7BHom%7D%28h%5EX%28Y%29%2Ch%5EX%28Z%29%29+%5C%5C++++%40%7C+%40.+%5C%5C+++f+%5Cin+%5Ctext%7BHom%7D%28Y%2CZ%29+%40%3EF%3E%3E+F%28f%29+%5Cin++%5Ctext%7BHom%7D%28F%28Y%29%2CF%28Z%29%29+%5C%5C++++%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD}    f \in \text{Hom}(Y,Z) @&gt;h^X&gt;&gt; \text{Hom}(X,f) \in  \text{Hom}(h^X(Y),h^X(Z)) \\    @| @. \\   f \in \text{Hom}(Y,Z) @&gt;F&gt;&gt; F(f) \in  \text{Hom}(F(Y),F(Z)) \\    \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX%28f%29" alt="h^X(f)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=F%28f%29" alt="F(f)" eeimg="1">
+                    的作用方式分别为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+++h%5EX%28f%29%3A+h%5EX%28Y%29+%26%5Cto+h%5EX%28Z%29+%5C%5C++g+%26%5Cmapsto+%28h%5EX%28f%29%29%28g%29+%3D+f+%5Ccirc+g+%5C%5C+++F%28f%29%3A+F%28Y%29+%26%5Cto+F%28Z%29+%5C%5C+g+%26%5Cmapsto+%28F%28f%29%29%28g%29+%5C%5C++%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}   h^X(f): h^X(Y) &amp;\to h^X(Z) \\  g &amp;\mapsto (h^X(f))(g) = f \circ g \\   F(f): F(Y) &amp;\to F(Z) \\ g &amp;\mapsto (F(f))(g) \\  \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    考虑范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D%5E%5Cmathcal+C+" alt="\textbf{Set}^\mathcal C" eeimg="1">
+                    中的自然变换
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi%3A+h%5EX+%5Cto+F" alt="\Phi: h^X \to F" eeimg="1">
+                    则有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D++++h%5EX%28Y%29+%40%3Eh%5EX%28f%29%3E%3E+h%5EX%28Z%29+%5C%5C++++%40V%5CPhi_Y+VV+%40VV%5CPhi_Z+V+%5C%5C++++F%28Y%29+%40%3E%3E%28%5CPhi%28h%5EX%29%29%28f%29+%3D+F%28f%29%3E+F%28Z%29+++%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD}    h^X(Y) @&gt;h^X(f)&gt;&gt; h^X(Z) \\    @V\Phi_Y VV @VV\Phi_Z V \\    F(Y) @&gt;&gt;(\Phi(h^X))(f) = F(f)&gt; F(Z)   \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    反变函子的讨论类似。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    恒同映射
+                </h2>
+                <p>
+                    考虑反变函子范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D_%5Cmathcal+C+" alt="\textbf{Set}_\mathcal C" eeimg="1">
+                    中的自然变换
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi%3A+h_X+%5Cto+F" alt="\Phi: h_X \to F" eeimg="1">
+                    。取
+                    <img src="https://www.zhihu.com/equation?tex=X%3DY%3DX" alt="X=Y=X" eeimg="1">
+                    ，考虑自然变换对恒同映射的作用：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5CPhi_X%3A+h_X%28X%29+%26%5Cto+F%28X%29+%5Cnonumber+%5C%5C+1_X+%26%5Cmapsto+%5CPhi_X%281_X%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \Phi_X: h_X(X) &amp;\to F(X) \nonumber \\ 1_X &amp;\mapsto \Phi_X(1_X) \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    即恒同映射
+                    <img src="https://www.zhihu.com/equation?tex=1_X+%5Cin+h_X%28X%29+%3D+%5Ctext%7BEnd%7D%28X%29+%3D+%5Ctext%7BHom%7D%28X%2CX%29" alt="1_X \in h_X(X) = \text{End}(X) = \text{Hom}(X,X)" eeimg="1">
+                    在态射
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_X" alt="\Phi_X" eeimg="1">
+                    下有
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_X%281_X%29+%5Cin+F%28X%29" alt="\Phi_X(1_X) \in F(X)" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D++++h_X%28X%29+%40%3Eh_X%281_X%29%3E%3E+h_X%28X%29+%5C%5C++++%40V+%5CPhi_X+VV+%40VV+%5CPhi_X+V+%5C%5C++++F%28X%29+%40%3E%3E%28%5CPhi_X%28h_X%29%29%281_X%29+%3D+F%281_X%29%3E+F%28X%29+++%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD}    h_X(X) @&gt;h_X(1_X)&gt;&gt; h_X(X) \\    @V \Phi_X VV @VV \Phi_X V \\    F(X) @&gt;&gt;(\Phi_X(h_X))(1_X) = F(1_X)&gt; F(X)   \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    Yoneda引理
+                </h2>
+                <p>
+                    在上述约定和符号下，有下列
+                    <b>
+                        Yoneda引理
+                    </b>
+                    ：
+                </p>
+                <p>
+                    以下映射是一一对应：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Calpha%3A+%5Ctext%7BHom%7D%28h_X%2CF%29+%26%5Cto+F%28X%29++%5Cnonumber+%5C%5C+%5CPhi+%26%5Cmapsto+%5Calpha%28%5CPhi%29+%3D+%5CPhi_X%281_X%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} \alpha: \text{Hom}(h_X,F) &amp;\to F(X)  \nonumber \\ \Phi &amp;\mapsto \alpha(\Phi) = \Phi_X(1_X) \nonumber \\ \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    即函子态射
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi+%5Cin+%5Ctext%7BHom%7D%28h_X%2CF%29" alt="\Phi \in \text{Hom}(h_X,F)" eeimg="1">
+                    由恒同映射
+                    <img src="https://www.zhihu.com/equation?tex=1_X+%5Cin+%5Ctext%7BEnd%7D%28X%29" alt="1_X \in \text{End}(X)" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi" alt="\Phi" eeimg="1">
+                    下的像
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_X%281_X%29" alt="\Phi_X(1_X)" eeimg="1">
+                    所决定。也就是说，存在逆映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%3A+%5CPhi_X%281_X%29+%5Cmapsto+%5CPhi+%5C%5C+" alt="\beta: \Phi_X(1_X) \mapsto \Phi \\" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        证明
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=F+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BSet%7D_%5Cmathcal+C%29" alt="F \in \text{Ob}(\textbf{Set}_\mathcal C)" eeimg="1">
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=F%28X%29+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BSet%7D_%5Cmathcal+C%29" alt="F(X) \in \text{Ob}(\textbf{Set}_\mathcal C)" eeimg="1">
+                    是范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    中的态射集。满足上述条件的逆映射具有如下形式：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cbeta%3A+F%28X%29+%26%5Cto+%5Ctext%7BHom%7D%28h_X%2CF%29++%5Cnonumber+%5C%5C+a+%26%5Cmapsto+%5Cbeta%28a%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} \beta: F(X) &amp;\to \text{Hom}(h_X,F)  \nonumber \\ a &amp;\mapsto \beta(a) \nonumber \\ \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    即把态射
+                    <img src="https://www.zhihu.com/equation?tex=a" alt="a" eeimg="1">
+                    映射为函子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28a%29" alt="\beta(a)" eeimg="1">
+                    。作为函子，根据(1)有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Cbeta%28a%29%3A+%5Ctext%7BOb%7D%28%5Cmathcal+C%5E%5Ctext%7Bopp%7D%29+%26%5Cto+%5Ctext%7BMor%7D_%5Ctextbf%7BSet%7D+%5Cnonumber+%5C%5C++Y+%26%5Cmapsto+%5Cbeta%28a%29_Y+%5Cin+%5Ctext%7BHom%7D%28h_X%28Y%29%2CF%28Y%29%29++%5Cnonumber+%5C%5C+++%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}  \beta(a): \text{Ob}(\mathcal C^\text{opp}) &amp;\to \text{Mor}_\textbf{Set} \nonumber \\  Y &amp;\mapsto \beta(a)_Y \in \text{Hom}(h_X(Y),F(Y))  \nonumber \\   \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    考虑态射
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+%5Ctext%7BHom%7D%28Y%2CX%29+%3D+h_X%28Y%29" alt="f \in \text{Hom}(Y,X) = h_X(Y)" eeimg="1">
+                    ，令：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28a%29_Y%28f%29+%3D+F%28f%29%28a%29+%5Ctag%7B4%7D" alt="\beta(a)_Y(f) = F(f)(a) \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    见如下交换图：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-4f522628df5276878c1ba55e4c0d5ac8_r.jpg">
+                </figure>
+                <p>
+                    我们将证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28a%29" alt="\beta(a)" eeimg="1">
+                    是函子态射，并证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                    的逆，从而使得Yoneda引理得证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    函子态射的证明
+                </h2>
+                <p>
+                    现在证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28a%29" alt="\beta(a)" eeimg="1">
+                    是函子态射，在下图中任意取态射
+                    <img src="https://www.zhihu.com/equation?tex=g+%5Cin+%5Ctext%7BHom%7D%28Y%2CZ%29" alt="g \in \text{Hom}(Y,Z)" eeimg="1">
+                    ，对于任取
+                    <img src="https://www.zhihu.com/equation?tex=k+%5Cin+%5Ctext%7BHom%7D%28Y%2CX%29+%3D+h_X%28Y%29" alt="k \in \text{Hom}(Y,X) = h_X(Y)" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+%28%5Cforall+k%5Cin%29h_X%28Y%29+%26+%40%3E+h_X%28g%29+%3E%3E++h_X%28Z%29+%5C%5C+%40V+%5Cbeta%28a%29_Y+VV+%26+%40VV+%5Cbeta%28a%29_Z+V+%5C%5C+F%28Y%29+%26+%40%3E%3E+F%28g%29+%3E+F%28Z%29+%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD} (\forall k\in)h_X(Y) &amp; @&gt; h_X(g) &gt;&gt;  h_X(Z) \\ @V \beta(a)_Y VV &amp; @VV \beta(a)_Z V \\ F(Y) &amp; @&gt;&gt; F(g) &gt; F(Z) \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    从上图左上角沿两条路径复合映射到右下角：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k+%5Cin+h_X%28Y%29+%5Cstackrel%7B%5Cbeta%28a%29_Y%7D%7B%5Clongrightarrow%7D+%5Cbeta%28a%29_Y%28k%29+%5Cin+F%28Y%29+%5Cstackrel%7BF%28g%29%7D%7B%5Clongrightarrow%7D+F%28g%29%28%5Cbeta%28a%29_Y%28k%29%29+%5Cin+F%28Z%29+%5C%5C" alt="k \in h_X(Y) \stackrel{\beta(a)_Y}{\longrightarrow} \beta(a)_Y(k) \in F(Y) \stackrel{F(g)}{\longrightarrow} F(g)(\beta(a)_Y(k)) \in F(Z) \\" eeimg="1">
+                </p>
+                <p>
+                    以及
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=k+%5Cin+h_X%28Y%29+%5Cstackrel%7Bh_X%28g%29%7D%7B%5Clongrightarrow%7D+h_X%28g%29%28k%29+%5Cin+h_X%28Z%29+%5Cstackrel%7B%5Cbeta%28a%29_Z%7D%7B%5Clongrightarrow%7D+%5Cbeta%28a%29_Z%28h_X%28g%29%28k%29%29+%5Cin+F%28Z%29+%5C%5C" alt="k \in h_X(Y) \stackrel{h_X(g)}{\longrightarrow} h_X(g)(k) \in h_X(Z) \stackrel{\beta(a)_Z}{\longrightarrow} \beta(a)_Z(h_X(g)(k)) \in F(Z) \\" eeimg="1">
+                </p>
+                <p>
+                    代入(4)中关于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    的定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28a%29_Y%28f%29+%3D+F%28f%29%28a%29+%5C%5C" alt="\beta(a)_Y(f) = F(f)(a) \\" eeimg="1">
+                </p>
+                <p>
+                    得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F%28g%29%28%5Cbeta%28a%29_Y%28k%29%29+%3D+F%28g%29%28F%28k%29%28a%29%29+%3D+F%28kg%29%28a%29+%5C%5C" alt="F(g)(\beta(a)_Y(k)) = F(g)(F(k)(a)) = F(kg)(a) \\" eeimg="1">
+                </p>
+                <p>
+                    和
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28a%29_Z%28h_X%28g%29%28k%29%29+%3D+%5Cbeta%28a%29_Z%28kg%29+%3D+F%28kg%29%28a%29+%5C%5C" alt="\beta(a)_Z(h_X(g)(k)) = \beta(a)_Z(kg) = F(kg)(a) \\" eeimg="1">
+                </p>
+                <p>
+                    于是上图交换，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28a%29" alt="\beta(a)" eeimg="1">
+                    为函子态射。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    逆的证明
+                </h2>
+                <p>
+                    现在证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                    的逆。(2)和(3)合写为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Calpha%3A+%5Ctext%7BHom%7D%28h_X%2CF%29+%26%5Cto+F%28X%29++%5Cnonumber+%5C%5C+%5Cbeta%3A+F%28X%29+%26%5Cto+%5Ctext%7BHom%7D%28h_X%2CF%29++%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}  \alpha: \text{Hom}(h_X,F) &amp;\to F(X)  \nonumber \\ \beta: F(X) &amp;\to \text{Hom}(h_X,F)  \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    分左右逆分别证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha+%5Cbeta+%3D+1_%7BF%28X%29%7D" alt="\alpha \beta = 1_{F(X)}" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%5Calpha+%3D+1_%7B%5Ctext%7BHom%7D%28h_X%2CF%29%7D" alt="\beta\alpha = 1_{\text{Hom}(h_X,F)}" eeimg="1">
+                    。先考虑：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F%28X%29+%5Cstackrel%7B%5Cbeta%7D%7B%5Clongrightarrow%7D+%5Ctext%7BHom%7D%28h_X%2CF%29+%5Cstackrel%7B%5Calpha%7D%7B%5Clongrightarrow%7D+F%28X%29+%5C%5C" alt="F(X) \stackrel{\beta}{\longrightarrow} \text{Hom}(h_X,F) \stackrel{\alpha}{\longrightarrow} F(X) \\" eeimg="1">
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+a+%5Cin+F%28X%29" alt="\forall a \in F(X)" eeimg="1">
+                    ，根据(2)有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha%28%5Cbeta%28a%29%29+%3D+%5Cbeta%28a%29_X%281_X%29+%3D+F%281_X%29%28a%29+%3D+1_%7BF%28X%29%7D%28a%29%3D+a+%5C%5C" alt="\alpha(\beta(a)) = \beta(a)_X(1_X) = F(1_X)(a) = 1_{F(X)}(a)= a \\" eeimg="1">
+                </p>
+                <p>
+                    于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha+%5Cbeta+%3D+1_%7BF%28X%29%7D+%5C%5C" alt="\alpha \beta = 1_{F(X)} \\" eeimg="1">
+                </p>
+                <p>
+                    最后需要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%5Calpha+%3D+1_%7B%5Ctext%7BHom%7D%28h_X%2CF%29%7D" alt="\beta\alpha = 1_{\text{Hom}(h_X,F)}" eeimg="1">
+                    。考虑：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D%28h_X%2CF%29+%5Cstackrel%7B%5Calpha%7D%7B%5Clongrightarrow%7D+F%28X%29++%5Cstackrel%7B%5Cbeta%7D%7B%5Clongrightarrow%7D+%5Ctext%7BHom%7D%28h_X%2CF%29++%5C%5C" alt="\text{Hom}(h_X,F) \stackrel{\alpha}{\longrightarrow} F(X)  \stackrel{\beta}{\longrightarrow} \text{Hom}(h_X,F)  \\" eeimg="1">
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5CPhi+%5Cin+%5Ctext%7BHom%7D%28h_X%2CF%29" alt="\forall \Phi \in \text{Hom}(h_X,F)" eeimg="1">
+                    ，需要证明
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28%5Calpha%28%5CPhi%29%29+%3D+%5CPhi" alt="\beta(\alpha(\Phi)) = \Phi" eeimg="1">
+                    。对于任意
+                    <img src="https://www.zhihu.com/equation?tex=Y+%5Cin+%5Ctext%7BOb%7D%28%5Cmathcal+C%29" alt="Y \in \text{Ob}(\mathcal C)" eeimg="1">
+                    ，考虑态射
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+%5Ctext%7BHom%7D%28Y%2CX%29+%3D+h_X%28Y%29" alt="f \in \text{Hom}(Y,X) = h_X(Y)" eeimg="1">
+                    ，有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28%5Calpha%28%5CPhi%29%29_Y%28f%29+%3D+F%28f%29%28a%28%5CPhi%29%29+%3D+F%28f%29%28%5CPhi_X%281_X%29%29+%5Ctag%7B5%7D" alt="\beta(\alpha(\Phi))_Y(f) = F(f)(a(\Phi)) = F(f)(\Phi_X(1_X)) \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    有交换图：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+1_X+%5Cin+h_X%28X%29+%26+%40%3E+h_X%28f%29+%3E%3E++h_X%28Y%29+%5C%5C+%40V+%5CPhi_X+VV+%26+%40VV+%5CPhi_Y+V+%5C%5C+F%28X%29+%26+%40%3E%3E+F%28f%29+%3E+F%28Y%29+%5C%5C+%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD} 1_X \in h_X(X) &amp; @&gt; h_X(f) &gt;&gt;  h_X(Y) \\ @V \Phi_X VV &amp; @VV \Phi_Y V \\ F(X) &amp; @&gt;&gt; F(f) &gt; F(Y) \\ \end{CD} \\" eeimg="1">
+                    <br>
+                    (5)体现了
+                    <img src="https://www.zhihu.com/equation?tex=F%28f%29+%5Ccirc+%5CPhi_X" alt="F(f) \circ \Phi_X" eeimg="1">
+                    的映射路径，另一条映射路径
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_Y+%5Ccirc+h_X%28f%29" alt="\Phi_Y \circ h_X(f)" eeimg="1">
+                    下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_Y%28h_X%28f%29%281_X%29%29+%3D+%5CPhi_Y%28f%29+%5C%5C" alt="\Phi_Y(h_X(f)(1_X)) = \Phi_Y(f) \\" eeimg="1">
+                </p>
+                <p>
+                    在交换图中它等于(5)，于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28%5Calpha%28%5CPhi%29%29_Y%28f%29+%3D%5CPhi_Y%28f%29+%5C%5C" alt="\beta(\alpha(\Phi))_Y(f) =\Phi_Y(f) \\" eeimg="1">
+                </p>
+                <p>
+                    对任意
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    成立，即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%28%5Calpha%28%5CPhi%29%29+%3D%5CPhi+%5CRightarrow+%5Cbeta%5Calpha+%3D+1_%7B%5Ctext%7BHom%7D%28h_X%2CF%29%7D+%5C%5C" alt="\beta(\alpha(\Phi)) =\Phi \Rightarrow \beta\alpha = 1_{\text{Hom}(h_X,F)} \\" eeimg="1">
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

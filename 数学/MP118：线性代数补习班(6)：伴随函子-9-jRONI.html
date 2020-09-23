@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP118：线性代数补习班(6)：伴随函子
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-15719fb8faa9cfdeba2325db0a2e3ef7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/45222721" target="_blank">
+                        MP118：线性代数补习班(6)：伴随函子
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-05-05
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <h2>
+                    伴随函子
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    用含有一个元素的集合
+                    <img src="https://www.zhihu.com/equation?tex=S+%3D+%5C%7B1%5C%7D" alt="S = \{1\}" eeimg="1">
+                    可以自由生成整数群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+Z%2C%2B%2C0%29" alt="(\mathbb Z,+,0)" eeimg="1">
+                    。在自由生成群的过程中，生成群的集合
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    称为
+                    <b>
+                        自由生成集(free generating set)
+                    </b>
+                    ，生成的群
+                    <img src="https://www.zhihu.com/equation?tex=F_S" alt="F_S" eeimg="1">
+                    称为
+                    <b>
+                        自由群(free group)
+                    </b>
+                    。自由群作为集合包含了自由生成集
+                    <img src="https://www.zhihu.com/equation?tex=S+%5Csubset+F_S" alt="S \subset F_S" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=S+%5Cto+F_S" alt="S \to F_S" eeimg="1">
+                    具有包含映射。分析其
+                    <b>
+                        泛性质(universal property)
+                    </b>
+                    。对于自由生成集
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    到任意群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的任意映射
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    ，存在唯一的群同态
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3A+F_S+%5Cto+G" alt="\varphi: F_S \to G" eeimg="1">
+                    使得下图交换。
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-dcd9f0670f68397a4d6c09e0e20636c8_b.jpg">
+                </figure>
+                <p>
+                    进一步将集合和群置于范畴中考虑，自由生成群的过程可以用函子描述为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctextbf%7BSet%7D+%26%5Cto+%5Ctextbf%7BGrp%7D+%5C%5C+S+%26%5Cmapsto+F_S+%5C%5C+f+%26%5Cmapsto+%5Cvarphi+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \textbf{Set} &amp;\to \textbf{Grp} \\ S &amp;\mapsto F_S \\ f &amp;\mapsto \varphi \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    它的反函子就是我们所熟悉的
+                    <b>
+                        遗忘函子(forgetfull functor)
+                    </b>
+                    ，两者放在一起：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D++%5Cmathop%7B%5Crightleftarrows%7D+%5Ctextbf%7BGrp%7D+%5C%5C" alt="\textbf{Set}  \mathop{\rightleftarrows} \textbf{Grp} \\" eeimg="1">
+                </p>
+                <p>
+                    这一对函子构成
+                    <b>
+                        伴随函子(adjoint functors)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C++%5Cmathop%7B%5Crightleftarrows%7D%5EG_F+%5Cmathcal+D" alt="\mathcal C  \mathop{\rightleftarrows}^G_F \mathcal D" eeimg="1">
+                    ，以及对象
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+X+%5Cin+%5Cmathcal+C%2C+%5Cforall+Y+%5Cin+%5Cmathcal+D" alt="\forall X \in \mathcal C, \forall Y \in \mathcal D" eeimg="1">
+                    ，函子对应了
+                    <img src="https://www.zhihu.com/equation?tex=G%28X%29+%5Cin+%5Cmathcal+D%2C+F%28Y%29+%5Cin+%5Cmathcal+C" alt="G(X) \in \mathcal D, F(Y) \in \mathcal C" eeimg="1">
+                    ，这样可以考虑态射集
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D_%5Cmathcal+C%28X%2CF%28Y%29%29" alt="\text{Hom}_\mathcal C(X,F(Y))" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D_%5Cmathcal+D%28Y%2CG%28X%29%29" alt="\text{Hom}_\mathcal D(Y,G(X))" eeimg="1">
+                    。在伴随函子的情况下，考虑下图的关系
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+++%5Cmathcal+C++%40%3D+%5Cmathcal+D+%5C%5C++++%40.+%40.+%5C%5C++++F%28Y%29++%40%3C+F+%3C%3C+Y+%5C%5C+++%40V+%5Ctext%7BHom%7D_%5Cmathcal+C%28F%28Y%29%2CX%29+VV+%40VV+%5Ctext%7BHom%7D_%5Cmathcal+D%28Y%2CG%28X%29%29+V+%5C%5C++++X++%40%3E+G+%3E%3E+G%28X%29+%5C%5C++++%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD}   \mathcal C  @= \mathcal D \\    @. @. \\    F(Y)  @&lt; F &lt;&lt; Y \\   @V \text{Hom}_\mathcal C(F(Y),X) VV @VV \text{Hom}_\mathcal D(Y,G(X)) V \\    X  @&gt; G &gt;&gt; G(X) \\    \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    有如下同构
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D_%5Cmathcal+C%28F%28Y%29%2CX%29+%5Csimeq+%5Ctext%7BHom%7D_%5Cmathcal+D%28Y%2CG%28X%29%29+%5C%5C" alt="\text{Hom}_\mathcal C(F(Y),X) \simeq \text{Hom}_\mathcal D(Y,G(X)) \\" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    Hom函子和张量函子
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    具体考虑环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    的右模范畴，若有伴随函子
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMod-%7DS++%5Cmathop%7B%5Crightleftarrows%7D%5EG_F+%5Ctextbf%7BMod-%7DR" alt="\textbf{Mod-}S  \mathop{\rightleftarrows}^G_F \textbf{Mod-}R" eeimg="1">
+                    ，那么对于
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DR%29" alt="A \in \text{Ob}(\textbf{Mod-}R)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=B+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DS%29" alt="B \in \text{Ob}(\textbf{Mod-}S)" eeimg="1">
+                    有以下同构：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D_S%28F%28A%29%2CB%29+%5Csimeq+%5Ctext%7BHom%7D_R%28A%2CG%28B%29%29+%5C%5C" alt="\text{Hom}_S(F(A),B) \simeq \text{Hom}_R(A,G(B)) \\" eeimg="1">
+                </p>
+                <p>
+                    注意到模范畴中的模同态态射集也是模。运用 [
+                    <a href="https://zhuanlan.zhihu.com/p/46332891" class="internal">
+                        MP114：线性代数补习班(2)：线性算子环与模范畴
+                    </a>
+                    ] 中通过双模把模同态诱导为其它模的技术：
+                </p>
+                <blockquote>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=_RU_S+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod-%7DS%29" alt="_RU_S \in \text{Ob}(R\textbf{-Mod-}S)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=+_RX+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod%7D%29" alt="_RX \in \text{Ob}(R\textbf{-Mod})" eeimg="1">
+                    ，可以进行以下诱导
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+X+%5Cmapsto+%5Ctext%7BHom%7D_%7BR-%7D%28U_S%2CX%29+%5Cin++%5Ctext%7BOb%7D%28S%5Ctextbf%7B-Mod%7D%29+%5C%5C+X+%5Cmapsto+%5Ctext%7BHom%7D_%7BR-%7D%28X%2CU_S%29+%5Cin++%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DS%29+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} X \mapsto \text{Hom}_{R-}(U_S,X) \in  \text{Ob}(S\textbf{-Mod}) \\ X \mapsto \text{Hom}_{R-}(X,U_S) \in  \text{Ob}(\textbf{Mod-}S) \\ \end{align} \tag{1}" eeimg="1">
+                    <br>
+                    <br>
+                    对于
+                    <img src="https://www.zhihu.com/equation?tex=_RU_S+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod-%7DS%29" alt="_RU_S \in \text{Ob}(R\textbf{-Mod-}S)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=Y_S+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DS%29" alt="Y_S \in \text{Ob}(\textbf{Mod-}S)" eeimg="1">
+                    ，可以进行以下诱导
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+Y+%5Cmapsto+%5Ctext%7BHom%7D_%7BR-%7D%28U_S%2CY%29+%5Cin++%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DS%29+%5C%5C+Y+%5Cmapsto+%5Ctext%7BHom%7D_%7BR-%7D%28Y%2CU_S%29+%5Cin++%5Ctext%7BOb%7D%28S%5Ctextbf%7B-Mod%7D%29+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} Y \mapsto \text{Hom}_{R-}(U_S,Y) \in  \text{Ob}(\textbf{Mod-}S) \\ Y \mapsto \text{Hom}_{R-}(Y,U_S) \in  \text{Ob}(S\textbf{-Mod}) \\ \end{align} \tag{2}" eeimg="1">
+                </blockquote>
+                <p>
+                    这种诱导方式可以发展为Hom函子和张量函子这一对伴随函子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    根据[
+                    <a href="https://zhuanlan.zhihu.com/p/46850715" class="internal">
+                        MP115：线性代数补习班(3)：Hom函子
+                    </a>
+                    ]，对于双模
+                    <img src="https://www.zhihu.com/equation?tex=C+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod-%7DS%29" alt="C \in \text{Ob}(R\textbf{-Mod-}S)" eeimg="1">
+                    ，它与
+                    <img src="https://www.zhihu.com/equation?tex=B+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DS%29" alt="B \in \text{Ob}(\textbf{Mod-}S)" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    -右模同态，根据以上诱导方式构成
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D_S%28C%2CB%29++%5Cin++%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DR%29" alt="\text{Hom}_S(C,B)  \in  \text{Ob}(\textbf{Mod-}R)" eeimg="1">
+                    ，从而由双模
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    诱导出Hom函子
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D%28C%2C-%29" alt="\text{Hom}(C,-)" eeimg="1">
+                    ，消去了环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    的因素：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctextbf%7BMod-%7DS++%26%5Cmathop%7B%5Clongrightarrow%7D%5E%7B%5Ctext%7BHom%7D%28C%2C-%29%7D+%5Ctextbf%7BMod-%7DR+%5C%5C+B+%26%5Cmapsto+%5Ctext%7BHom%7D_S%28C%2CB%29+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \textbf{Mod-}S  &amp;\mathop{\longrightarrow}^{\text{Hom}(C,-)} \textbf{Mod-}R \\ B &amp;\mapsto \text{Hom}_S(C,B) \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    张量函子 [
+                    <a href="https://zhuanlan.zhihu.com/p/44701702" class="internal">
+                        MP117：线性代数补习班(5)：模的张量积
+                    </a>
+                    ] 的作用是相反的。以环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    为中心，
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -右模
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    与
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -左模
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    进行环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    上的张量积，消去了环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    的因素，
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctextbf%7BMod-%7DR++%26%5Cmathop%7B%5Clongrightarrow%7D%5E%7BA+%5Cotimes+-%7D%5Ctextbf%7BMod-%7DS+%5C%5C+A+%26%5Cmapsto+A+%5Cotimes_R+C+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \textbf{Mod-}R  &amp;\mathop{\longrightarrow}^{A \otimes -}\textbf{Mod-}S \\ A &amp;\mapsto A \otimes_R C \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    于是由双模
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    诱导构造一对函子
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+++%5Ctextbf%7BMod-%7DS+%40.+%5Ctextbf%7BMod-%7DR+%5C%5C++++%40.+%40.+%5C%5C++++A+%5Cotimes_R+C+%40%3C+A+%5Cotimes+-+%3C%3C+A+%5C%5C+++%40V+%5Ctext%7BHom%7D_S%28A+%5Cotimes_R+C%2CB%29+VV+%40VV+%5Ctext%7BHom%7D_R%28A%2C%5Ctext%7BHom%7D_S%28C%2CB%29%29+V+%5C%5C++++B++%40%3E+%5Ctext%7BHom%7D%28C%2C-%29+%3E%3E+%5Ctext%7BHom%7D_S%28C%2CB%29+%5C%5C++++%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD}   \textbf{Mod-}S @. \textbf{Mod-}R \\    @. @. \\    A \otimes_R C @&lt; A \otimes - &lt;&lt; A \\   @V \text{Hom}_S(A \otimes_R C,B) VV @VV \text{Hom}_R(A,\text{Hom}_S(C,B)) V \\    B  @&gt; \text{Hom}(C,-) &gt;&gt; \text{Hom}_S(C,B) \\    \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    它们满足以下同构：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D%5Ctext%7BHom%7D_S%28A+%5Cotimes_R+C%2CB%29+%26%5Csimeq+%5Ctext%7BHom%7D_R%28A%2C%5Ctext%7BHom%7D_S%28C%2CB%29%29+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}\text{Hom}_S(A \otimes_R C,B) &amp;\simeq \text{Hom}_R(A,\text{Hom}_S(C,B)) \\ \end{align} \\" eeimg="1">
+                    从而构成伴随函子。Hom函子和张量函子是一对可加函子，是同调代数中最基础的一对函子。在它们的基础上可以产生许多同调和范畴中重要的研究对象。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP88：辛(symplectic)的起源(3)：辛矩阵
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-51829767fe42828ca997e525aeee45ea_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/53832002" target="_blank">
+                        MP88：辛(symplectic)的起源(3)：辛矩阵
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-01-02
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    接上讲的符号和约定：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/53815689" class="internal">
+                        MP86：辛(symplectic)的起源(1)：三角函数的线性性与Hermite内积
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/53829014" class="internal">
+                        MP87：辛(symplectic)的起源(2)：张量与Hermite内积的旋转不变量
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Hermite内积的复双线性矩阵
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E%7B2n%7D+%5Csim+%5Cmathbb+C%5En" alt="\mathbb R^{2n} \sim \mathbb C^n" eeimg="1">
+                    中的向量
+                    <img src="https://www.zhihu.com/equation?tex=z" alt="z" eeimg="1">
+                    ，用实向量表示具有
+                    <img src="https://www.zhihu.com/equation?tex=2n" alt="2n" eeimg="1">
+                    的维度，记为
+                    <img src="https://www.zhihu.com/equation?tex=z%3D%28x%2Cy%29" alt="z=(x,y)" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy+%5Cin+%5Cmathbb+R%5En" alt="x,y \in \mathbb R^n" eeimg="1">
+                    ，分量展开为
+                    <img src="https://www.zhihu.com/equation?tex=z%3D%28x%2Cy%29%3D%28x_1%2C%5Cdots%2Cx_n%2Cy_1%2C%5Cdots%2Cy_n%29+%5Cin+%5Cmathbb+R%5E%7B2n%7D" alt="z=(x,y)=(x_1,\dots,x_n,y_1,\dots,y_n) \in \mathbb R^{2n}" eeimg="1">
+                    ；用复向量表示具有
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    的维度，分量展开为
+                    <img src="https://www.zhihu.com/equation?tex=z+%3D+%5Bz_k%5D+%3D+%5Ba_k+%5Ctext%7Be%7D%5E%7Bi%5Calpha_k%7D%5D" alt="z = [z_k] = [a_k \text{e}^{i\alpha_k}]" eeimg="1">
+                    。在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E%7B2n%7D+%5Csim+%5Cmathbb+C%5En" alt="\mathbb R^{2n} \sim \mathbb C^n" eeimg="1">
+                    中取两个向量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+z%26%3D%28x%2Cy%29%3D%28x_1%2C%5Cdots%2Cx_n%2Cy_1%2C%5Cdots%2Cy_n%29%3D%5Ba_k%5Ctext+e%5E%7Bi%5Calpha_k%7D%5D%5C%5C+w%26%3D%28u%2Cv%29%3D%28u_1%2C%5Cdots%2Cu_n%2Cv_1%2C%5Cdots%2Cv_n%29%3D%5Bb_k%5Ctext+e%5E%7Bi%5Cbeta_k%7D%5D+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} z&amp;=(x,y)=(x_1,\dots,x_n,y_1,\dots,y_n)=[a_k\text e^{i\alpha_k}]\\ w&amp;=(u,v)=(u_1,\dots,u_n,v_1,\dots,v_n)=[b_k\text e^{i\beta_k}] \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    注意到每个复维度分量对应了一对实维度分量，在复维度的分量上讨论如同在复数上的讨论。在多维复空间中可以把前面的Hermite内积扩展为：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathbb+C%5En+%5Ctimes+%5Cmathbb+C%5En+%26+%5Cto+%5Cmathbb%7BC%7D+%5C%5C+%28z%2Cw%29+%26%5Cmapsto%5Clangle+z%2Cw+%5Crangle+%3D+z+%5Ccdot+%5Coverline+w+%5C%5C++%26%3D+%5Csum_k+z_k+%5Ccdot+%5Coverline+w_k+%5C%5C+%26%3D+%5Csum_k+%28x_ku_k%2By_kv_k%29+%2B+i%5Csum_k+%28u_ky_k-v_kx_k%29+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} \mathbb C^n \times \mathbb C^n &amp; \to \mathbb{C} \\ (z,w) &amp;\mapsto\langle z,w \rangle = z \cdot \overline w \\  &amp;= \sum_k z_k \cdot \overline w_k \\ &amp;= \sum_k (x_ku_k+y_kv_k) + i\sum_k (u_ky_k-v_kx_k) \\ \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    注意它的实部：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctext%7BRe%7D%28z+%5Ccdot+%5Coverline+w%29+%26%3D+%5Csum_k+%28x_ku_k%2By_kv_k%29+%5C%5C+%26%3D+z%5ET+%5Cbegin%7Bbmatrix%7D+I_n+%26+0+%5C%5C+0+%26+I_n+%5Cend%7Bbmatrix%7D+w+%5C%5C+%26%3D+%5Bx_1%2C%5Cdots+x_n%2C+y_1%2C+%5Cdots%2C+y_n%5D+%5Cbegin%7Bbmatrix%7D+I_n+%26+0+%5C%5C+0+%26+I_n+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7Du_1%5C%5C%5Cvdots%5C%5Cu_n%5C%5Cv_1%5C%5C%5Cvdots%5C%5Cv_n%5Cend%7Bbmatrix%7D+%5Cend%7Balign%7D" alt="\begin{align} \text{Re}(z \cdot \overline w) &amp;= \sum_k (x_ku_k+y_kv_k) \\ &amp;= z^T \begin{bmatrix} I_n &amp; 0 \\ 0 &amp; I_n \end{bmatrix} w \\ &amp;= [x_1,\dots x_n, y_1, \dots, y_n] \begin{bmatrix} I_n &amp; 0 \\ 0 &amp; I_n \end{bmatrix} \begin{bmatrix}u_1\\\vdots\\u_n\\v_1\\\vdots\\v_n\end{bmatrix} \end{align}" eeimg="1">
+                </p>
+                <p>
+                    类似的，在虚部也有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctext%7BIm%7D%28z+%5Ccdot+%5Coverline+w%29+%26%3D+%5Csum_k+%28-x_kv_k%2Bu_ky_k%29+%5C%5C+%26%3D+z%5ET+%5Cbegin%7Bbmatrix%7D+0+%26+-I_n+%5C%5C+I_n+%26+0+%5Cend%7Bbmatrix%7D+w+%5C%5C+%26%3D+%5Bx_1%2C%5Cdots+x_n%2C+y_1%2C+%5Cdots%2C+y_n%5D+%5Cbegin%7Bbmatrix%7D+0+%26+-I_n+%5C%5C+I_n+%26+0++%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7Du_1%5C%5C%5Cvdots%5C%5Cu_n%5C%5Cv_1%5C%5C%5Cvdots%5C%5Cv_n%5Cend%7Bbmatrix%7D+%5Cend%7Balign%7D" alt="\begin{align} \text{Im}(z \cdot \overline w) &amp;= \sum_k (-x_kv_k+u_ky_k) \\ &amp;= z^T \begin{bmatrix} 0 &amp; -I_n \\ I_n &amp; 0 \end{bmatrix} w \\ &amp;= [x_1,\dots x_n, y_1, \dots, y_n] \begin{bmatrix} 0 &amp; -I_n \\ I_n &amp; 0  \end{bmatrix} \begin{bmatrix}u_1\\\vdots\\u_n\\v_1\\\vdots\\v_n\end{bmatrix} \end{align}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    双线性映射是通过
+                    <img src="https://www.zhihu.com/equation?tex=2n" alt="2n" eeimg="1">
+                    -维方矩阵表达的。通过
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+I_n+%26+0+%5C%5C+0+%26+I_n+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} I_n &amp; 0 \\ 0 &amp; I_n \end{bmatrix}" eeimg="1">
+                    ，得到了两个
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维复向量之间的
+                    <img src="https://www.zhihu.com/equation?tex=2n" alt="2n" eeimg="1">
+                    -维实向量。通过
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bbmatrix%7D+0+%26+-I_n+%5C%5C+I_n+%26+0+%5Cend%7Bbmatrix%7D+" alt="\begin{bmatrix} 0 &amp; -I_n \\ I_n &amp; 0 \end{bmatrix}" eeimg="1">
+                    ，得到的是实辛内积(的反号)。这一对关系实际上是初等三角函数性质的体现：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ccos%5Cvarphi_k+%26%3D+%5Ccos%28%5Calpha_k-%5Cbeta_k%29+%3D++%5Cbegin%7Bbmatrix%7D+%5Ccos%5Calpha_k+%26+%5Csin%5Calpha_k+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+1+%26+0+%5C%5C+0+%26+1+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Cbeta_k+%5C%5C+%5Csin%5Cbeta_k+%5Cend%7Bbmatrix%7D+%5C%5C+%5Csin%5Cvarphi_k+%26%3D+%5Csin%28%5Calpha_k-%5Cbeta_k%29+%3D++%5Cbegin%7Bbmatrix%7D+%5Ccos%5Calpha_k+%26+%5Csin%5Calpha_k+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Cbeta_k+%5C%5C+%5Csin%5Cbeta_k+%5Cend%7Bbmatrix%7D++%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} \cos\varphi_k &amp;= \cos(\alpha_k-\beta_k) =  \begin{bmatrix} \cos\alpha_k &amp; \sin\alpha_k \end{bmatrix} \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} \begin{bmatrix} \cos\beta_k \\ \sin\beta_k \end{bmatrix} \\ \sin\varphi_k &amp;= \sin(\alpha_k-\beta_k) =  \begin{bmatrix} \cos\alpha_k &amp; \sin\alpha_k \end{bmatrix} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix} \cos\beta_k \\ \sin\beta_k \end{bmatrix}  \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    现在可以把Hermite内积记为：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathbb+C%5En+%5Ctimes+%5Cmathbb+C%5En+%26+%5Cto+%5Cmathbb%7BC%7D+%5C%5C+%28z%2Cw%29+%26%5Cmapsto%5Clangle+z%2Cw+%5Crangle+%3D+z+%5Ccdot+%5Coverline+w+%5C%5C++%26%3D+%5Csum_k+z_k+%5Ccdot+%5Coverline+w_k+%5C%5C+%26%3D+%5Csum_k+%28x_ku_k%2By_kv_k%29+%2B+i%5Csum_k+%28u_ky_k-v_kx_k%29+%5C%5C+%26%3Dz%5ET%5CBigg%28+%5Cbegin%7Bbmatrix%7D+I_n+%26+0+%5C%5C+0+%26+I_n+%5Cend%7Bbmatrix%7D+%2B+i+%5Cbegin%7Bbmatrix%7D+0+%26+-I_n+%5C%5C+I_n+%26+0+%5Cend%7Bbmatrix%7D++%5CBigg%29w+%5Cend%7Balign%7D+%5Ctag%7B4%7D" alt="\begin{align} \mathbb C^n \times \mathbb C^n &amp; \to \mathbb{C} \\ (z,w) &amp;\mapsto\langle z,w \rangle = z \cdot \overline w \\  &amp;= \sum_k z_k \cdot \overline w_k \\ &amp;= \sum_k (x_ku_k+y_kv_k) + i\sum_k (u_ky_k-v_kx_k) \\ &amp;=z^T\Bigg( \begin{bmatrix} I_n &amp; 0 \\ 0 &amp; I_n \end{bmatrix} + i \begin{bmatrix} 0 &amp; -I_n \\ I_n &amp; 0 \end{bmatrix}  \Bigg)w \end{align} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    我们知道了，Hermite内积的意义在于，它提取了实内积和辛内积的双线性映射的内核，并且通过一个复线性映射将两者统一起来。对于实内积我们已经有了足够的了解，后面我们关注的主要是辛内积。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        辛矩阵
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    (4)式中决定Hermite内积的线性映射性质的矩阵记为以下符号，其中虚部的矩阵一般取其反号的形式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+I+%3D+%5Cbegin%7Bbmatrix%7D+I_n+%26+0+%5C%5C+0+%26+I_n+%5Cend%7Bbmatrix%7D%2C%5C+%5Cmathbb+J+%3D+%5Cbegin%7Bbmatrix%7D+0+%26+I_n+%5C%5C+-+I_n+%26+0+%5Cend%7Bbmatrix%7D+%5Ctag%7B5%7D" alt="\mathbb I = \begin{bmatrix} I_n &amp; 0 \\ 0 &amp; I_n \end{bmatrix},\ \mathbb J = \begin{bmatrix} 0 &amp; I_n \\ - I_n &amp; 0 \end{bmatrix} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    显然
+                    <img src="https://www.zhihu.com/equation?tex=2n" alt="2n" eeimg="1">
+                    -维的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+I" alt="\mathbb I" eeimg="1">
+                    仍然是单位矩阵，而
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+J" alt="\mathbb J" eeimg="1">
+                    则称为
+                    <b>
+                        辛矩阵(symplectic matrix)
+                    </b>
+                    ，显然
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+J%5E%7B-1%7D+%3D+-+%5Cmathbb+J" alt="\mathbb J^{-1} = - \mathbb J" eeimg="1">
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+J%5E2+%3D+-%5Cmathbb+I" alt="\mathbb J^2 = -\mathbb I" eeimg="1">
+                    。这样我们立即联想到关于复结构的定义。辛矩阵代表着数学中广泛存在的复杂的交错对称结构。根据(3)以及前面的讨论我们知道，从正交分解的角度，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+I" alt="\mathbb I" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+J" alt="\mathbb J" eeimg="1">
+                    将面积投影到实部和虚部——如果我们可以理解
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+I" alt="\mathbb I" eeimg="1">
+                    是夹角的余弦，便容易理解
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+J" alt="\mathbb J" eeimg="1">
+                    是夹角的正弦。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        辛形式
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面我们一直在讨论的是复
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维向量的实
+                    <img src="https://www.zhihu.com/equation?tex=2n" alt="2n" eeimg="1">
+                    -维处理。在建立了坐标系，特别是在
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维实微分流形的
+                    <img src="https://www.zhihu.com/equation?tex=2n" alt="2n" eeimg="1">
+                    -维余切丛上，我们用局部的实坐标
+                    <img src="https://www.zhihu.com/equation?tex=%28q%2Cp%29" alt="(q,p)" eeimg="1">
+                    表示复向量
+                    <img src="https://www.zhihu.com/equation?tex=z" alt="z" eeimg="1">
+                    ，并记这个
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维复/
+                    <img src="https://www.zhihu.com/equation?tex=2n" alt="2n" eeimg="1">
+                    -维实向量空间为
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    ，其对偶空间为
+                    <img src="https://www.zhihu.com/equation?tex=Z%5E%2A" alt="Z^*" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    根据Riesz引理，自对偶线性空间上的内积
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Ccdot%2C%5Ccdot+%5Crangle+%3A+W+%5Ctimes+W%5E%2A+%5Cto+K" alt="\langle \cdot,\cdot \rangle : W \times W^* \to K" eeimg="1">
+                    可以等同于双线性映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Ccdot%2C%5Ccdot+%5Crangle+%3A+W+%5Ctimes+W+%5Cto+K" alt="\langle \cdot,\cdot \rangle : W \times W \to K" eeimg="1">
+                    。进一步我们记
+                    <img src="https://www.zhihu.com/equation?tex=Z+%3D+W+%5Ctimes+W+%5Csimeq+W+%5Ctimes+W%5E%2A" alt="Z = W \times W \simeq W \times W^*" eeimg="1">
+                    ，这相当于前面我们一直使用的技术，把一对
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维实空间通过Cartesian积构造成
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维复空间。那么内积空间
+                    <img src="https://www.zhihu.com/equation?tex=%28W%2C%5Clangle+%5Ccdot%2C%5Ccdot+%5Crangle%29" alt="(W,\langle \cdot,\cdot \rangle)" eeimg="1">
+                    可以诱导出双线性形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+Z+%5Ctimes+Z+%26%5Cto+K+%5C%5C+%5Cbig%28%28z%3Dx%2Biy%29%2C%28w%3Du%2Biv%29%5Cbig%29+%26%5Cmapsto%5COmega%28z%2Cw%29+%3D+%5COmega%28x%2Biy%2Cu%2Biv%29+%5C%5C+%26%3D%5Clangle+x%2Cv+%5Crangle+-+%5Clangle+y%2Cu+%5Crangle+%5Cend%7Balign%7D+%5Ctag%7B6%7D" alt="\begin{align} Z \times Z &amp;\to K \\ \big((z=x+iy),(w=u+iv)\big) &amp;\mapsto\Omega(z,w) = \Omega(x+iy,u+iv) \\ &amp;=\langle x,v \rangle - \langle y,u \rangle \end{align} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    这样，我们从实内积空间上构造出了一个
+                    <b>
+                        辛形式(symplectic form)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    实Banach空间上的双线性形式
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%3A+Z+%5Ctimes+Z+%5Cto+%5Cmathbb+R" alt="\Omega: Z \times Z \to \mathbb R" eeimg="1">
+                    称为
+                    <b>
+                        非退化的(non-degenerate)
+                    </b>
+                    ，如果对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+z_2+%5Cin+Z" alt="\forall z_2 \in Z" eeimg="1">
+                    它的取值都退化为
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%28z_1%2Cz_2%29%3D0" alt="\Omega(z_1,z_2)=0" eeimg="1">
+                    ，则必有
+                    <img src="https://www.zhihu.com/equation?tex=z_1%3D0" alt="z_1=0" eeimg="1">
+                    。换句话说，对于一个非退化的
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega" alt="\Omega" eeimg="1">
+                    ，只有当
+                    <img src="https://www.zhihu.com/equation?tex=z_1" alt="z_1" eeimg="1">
+                    退化为
+                    <img src="https://www.zhihu.com/equation?tex=z_1%3D0" alt="z_1=0" eeimg="1">
+                    这样强的条件下才能使
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%28z_1%2Cz_2%29%3D0" alt="\Omega(z_1,z_2)=0" eeimg="1">
+                    。在向量空间
+                    <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                    上定义的非退化的反对称双线性形式
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%3A+Z+%5Ctimes+Z+%5Cto+K" alt="\Omega: Z \times Z \to K" eeimg="1">
+                    称为辛形式，
+                    <img src="https://www.zhihu.com/equation?tex=%28Z%2C%5COmega%29" alt="(Z,\Omega)" eeimg="1">
+                    称为
+                    <b>
+                        辛向量空间(symplectic vector space)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从(6)很容易看到辛矩阵的作用。实际上前面在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C%5En" alt="\mathbb C^n" eeimg="1">
+                    上定义的Hermite内积，其虚部就构成了辛形式从而成为辛向量空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+C%5En%2C-%5Ctext%7BIm%7D%5Clangle+%5Ccdot%2C%5Ccdot+%5Crangle%29" alt="(\mathbb C^n,-\text{Im}\langle \cdot,\cdot \rangle)" eeimg="1">
+                    。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

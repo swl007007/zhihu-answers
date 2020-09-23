@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP119：线性代数补习班(7)：谱理论
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-f9e6b1e23d0694a0af5f00a5c959ba27_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46153316" target="_blank">
+                        MP119：线性代数补习班(7)：谱理论
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-05-05
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    接着我们在 [
+                    <a href="https://zhuanlan.zhihu.com/p/46332891" class="internal">
+                        MP114：线性代数补习班(2)：线性算子环与模范畴
+                    </a>
+                    ] 中的讨论，习惯性把可以为无穷维的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -线性空间记为
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BVct%7D_%5Cmathbb+K%29" alt="V \in \text{Ob}(\textbf{Vct}_\mathbb K)" eeimg="1">
+                    ，线性算子环
+                    <img src="https://www.zhihu.com/equation?tex=%28R%2C%2A%2CI%29" alt="(R,*,I)" eeimg="1">
+                    对线性空间的作用
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++A+%5Cin+%28R%2C%2A%2CI%29%3A+V+%26%5Cto+V+%5C%5C++x+%26%5Cmapsto+Ax+%3D+A%28x%29+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}  A \in (R,*,I): V &amp;\to V \\  x &amp;\mapsto Ax = A(x) \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    且算子环中幺元的作用为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++I+%5Cin+R%3A+V+%26%5Cto+V+%5C%5C++x+%26%5Cmapsto+Ix+%3D+x+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align}  I \in R: V &amp;\to V \\  x &amp;\mapsto Ix = x \\ \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod%7D%29" alt="V \in \text{Ob}(R\textbf{-Mod})" eeimg="1">
+                    构成
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -左模。线性代数用相当大的篇幅讨论矩阵的特征问题，进一步在泛函分析中谱理论构成线性算子理论中很大的一个分支，并延伸到算子代数的研究中。我们接下来站在模范畴的角度来讨论谱理论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    域和线性空间
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们将言简意赅地在模的基础上讨论线性空间：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-8a74406a17ff3019132191ef71255727_r.jpg">
+                    <figcaption>
+                        [Cartan1956] Homological algebra
+                    </figcaption>
+                </figure>
+                <p>
+                    以域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    为线性算子环构成的模称为线性空间。而域的定义可以简单归结为：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-28fc9fae08a731d3278c09db64fd37a0_r.jpg">
+                    <figcaption>
+                        (wiki)
+                    </figcaption>
+                </figure>
+                <p>
+                    域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    上有线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BVct%7D_%5Cmathbb+K%29" alt="V \in \text{Ob}(\textbf{Vct}_\mathbb K)" eeimg="1">
+                    ，也称为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -线性空间，这种称呼本身蕴含着环的结构，由于域在运算上良好的性质，有
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Cin+%5Ctext%7BOb%7D%28%5Cmathbb+K%5Ctextbf%7B-Mod-%7D%5Cmathbb+K%29" alt="V \in \text{Ob}(\mathbb K\textbf{-Mod-}\mathbb K)" eeimg="1">
+                    。实际上从线性空间的线性自同态
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28V%29" alt="\text{End}(V)" eeimg="1">
+                    的角度看，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x+%5Cin+V" alt="\forall x \in V" eeimg="1">
+                    ，假设以下结合律满足，那么模范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5Ctextbf%7B-Mod%7D" alt="\mathbb K\textbf{-Mod}" eeimg="1">
+                    和(1)中线性算子环上的模范畴
+                    <img src="https://www.zhihu.com/equation?tex=R%5Ctextbf%7B-Mod%7D" alt="R\textbf{-Mod}" eeimg="1">
+                    具有相同的作用方式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%28x%29+%3D+%5Clambda%28I%28x%29%29%3D+%28%5Clambda+I%29%28x%29+%5C%5C" alt="\lambda(x) = \lambda(I(x))= (\lambda I)(x) \\" eeimg="1">
+                    从域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    可以自然对应到任意线性算子环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    中的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -常系数算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+I+%5Cin+R" alt="\lambda I \in R" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathbb+K+%26%5Cto+%28R%2C%5Ccirc%2CI%29+%5C%5C+%5Clambda+%26%5Cmapsto+%5Clambda+I+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} \mathbb K &amp;\to (R,\circ,I) \\ \lambda &amp;\mapsto \lambda I \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    这是一类用
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -系数直接相乘的
+                    <b>
+                        乘法算子(multiplication operator)
+                    </b>
+                    ：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-37ec837721e8fd9b2f0bb60aced6d32a_r.jpg">
+                    <figcaption>
+                        (wiki)
+                    </figcaption>
+                </figure>
+                <p>
+                    (2)中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -常系数算子的作用相当于缩放。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    谱分析
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    [
+                    <a href="https://zhuanlan.zhihu.com/p/47534431" class="internal">
+                        MP45：Schrödinger方程(1)：分离变量法与解的结构
+                    </a>
+                    ] 中，Schrödinger方程是Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的算子方程，求满足Schrödinger方程的解集
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=i%5Chbar%5Cpartial_t%5Cpsi+%3D+H%5Cpsi+%5C%5C" alt="i\hbar\partial_t\psi = H\psi \\" eeimg="1">
+                    归纳为求复合算子的核问题
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi+%5Cin+%5Ctext%7BKer%7D%28i%5Chbar%5Cpartial_t+-+H%29+%5Clhd+%5Cmathscr+H+%5C%5C" alt="\psi \in \text{Ker}(i\hbar\partial_t - H) \lhd \mathscr H \\" eeimg="1">
+                </p>
+                <p>
+                    这个复合算子是线性的，解可以线性叠加，于是有求和形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28r%2Ct%29+%3D+%5Csum_k+c_k%5Cpsi_k%28r%29e%5E%7B-%5Cfrac%7Bi%5Clambda_k+t%7D%7B%5Chbar%7D%7D+%5C%5C" alt="\psi(r,t) = \sum_k c_k\psi_k(r)e^{-\frac{i\lambda_k t}{\hbar}} \\" eeimg="1">
+                </p>
+                <p>
+                    这就是Schrödinger方程的解的结构，其中的
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    确定了一个特征值
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_k" alt="\lambda_k" eeimg="1">
+                    、特征函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_k%28r%29" alt="\psi_k(r)" eeimg="1">
+                    和系数
+                    <img src="https://www.zhihu.com/equation?tex=c_k" alt="c_k" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    线性代数中矩阵的特征值/特征向量问题，泛函分析中的谱理论，实际上都基于一个实质的问题——线性算子
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%28R%2C%2A%2CI%29" alt="A \in (R,*,I)" eeimg="1">
+                    在什么样的条件下等同于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -常系数算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+I+%5Cin+%28R%2C%2A%2CI%29" alt="\lambda I \in (R,*,I)" eeimg="1">
+                    。这种等同性具有相当多的实际意义。在线性泛函分析中，将算子进行适当的谱分解，可以将算子简化为不同维度的乘法，将空间正交投影到不同的子空间，这样的技术在线性方程组、在微分几何、在PDE和量子力学里处处可见。这种等同性归纳为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K+%5Ctimes+V" alt="\mathbb K \times V" eeimg="1">
+                    中如下的特征方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+I+x+%3D+A+x+%5Ctag%7B3%7D" alt="\lambda I x = A x \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    在线性代数中，可对角化矩阵
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    存在一个正交矩阵
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    使得可以进行如下的对角化
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X+%3DBMB%5E%7B-1%7D%3D+B+%5Ccirc+%5Ctext%7Bdiag%7D%28%5Clambda_1%2C%5Cdots%2C%5Clambda_n%29+%5Ccirc+B%5E%7B-1%7D+%3D+B%5Cbegin%7Bbmatrix%7D+%5Clambda_1+%26+%26+%5C%5C+%26+%5Cddots+%26+%5C%5C+%26+%26+%5Clambda_n+%5Cend%7Bbmatrix%7DB%5E%7B-1%7D+%5C%5C" alt="X =BMB^{-1}= B \circ \text{diag}(\lambda_1,\dots,\lambda_n) \circ B^{-1} = B\begin{bmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n \end{bmatrix}B^{-1} \\" eeimg="1">
+                </p>
+                <p>
+                    对角化使得在每一个坐标上相当于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -常系数算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    的缩放作用，这样(3)式的处理极为简化。将(3)转为预解映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathscr+R_A%3A%5Cmathbb+K+%5Ctimes+V+%26%5Cto+V+%5C%5C+%28%5Clambda%2C+x%29+%26%5Cmapsto+%5Cmathscr+R_A%28%5Clambda%2Cx%29+%3D+%28%5Clambda+I+-+A%29+x+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \mathscr R_A:\mathbb K \times V &amp;\to V \\ (\lambda, x) &amp;\mapsto \mathscr R_A(\lambda,x) = (\lambda I - A) x \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    于是特征方程的问题就是求预解映射的核
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28%5Cmathscr+R_A%29+%5Clhd+%28%5Cmathbb+K+%5Ctimes+V%29+%5Ctag%7B4%7D" alt="\text{Ker}(\mathscr R_A) \lhd (\mathbb K \times V) \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    也即为求以下核空间
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28%5Clambda+I+-+A%29+%5Clhd+V+%5Ctag%7B5%7D" alt="\text{Ker}(\lambda I - A) \lhd V \tag{5}" eeimg="1">
+                    的非退化条件。根据同构定理：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V%2F%5Ctext%7BKer%7D%28%5Clambda+I+-+A%29+%5Csimeq+%5Ctext%7BIm%7D%28%5Clambda+I+-+A%29+%5C%5C" alt="V/\text{Ker}(\lambda I - A) \simeq \text{Im}(\lambda I - A) \\" eeimg="1">
+                    注意到：
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28%5Clambda+I+-+A%29" alt="\text{Ker}(\lambda I - A)" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28%5Clambda+I+-+A%29" alt="\text{Im}(\lambda I - A)" eeimg="1">
+                        是
+                        <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                        的线性子空间，这样就可以通过商空间的方式对线性空间进行特征子空间的分解，这些技术在量子力学里是非常基本的；
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=V+%5Cto+V%2F%5Ctext%7BKer%7D%28%5Clambda+I+-+A%29" alt="V \to V/\text{Ker}(\lambda I - A)" eeimg="1">
+                        是自然映射
+                    </li>
+                </ol>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    复数域与算子代数
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    到目前为止，我们所有的讨论都没有规定
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    是什么。实际上，在谱分析上必然是以复数域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K+%3D+%5Cmathbb+C" alt="\mathbb K = \mathbb C" eeimg="1">
+                    为基础来讨论的。用线性代数的基本知识可以解释这一点。在线性代数中讨论的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -方矩阵可以视为有限维
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -线性算子的表示。线性算子/矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+%5Ba_i%5Ej%5D+%5Cin+%5Cmathbb+C%5E%7Bn+%5Ctimes+n%7D" alt="A = [a_i^j] \in \mathbb C^{n \times n}" eeimg="1">
+                    的特征值就是以下代数方程的根
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdet%7D%28%5Clambda+I+-+A%29+%3D+%5Ctext%7Bdet%7D%5B%5Clambda+%5Cdelta_i%5Ej+-+a_i%5Ej%5D+%3D+0+%5C%5C" alt="\text{det}(\lambda I - A) = \text{det}[\lambda \delta_i^j - a_i^j] = 0 \\" eeimg="1">
+                </p>
+                <p>
+                    即由以上
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -次代数方程确定了
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个离散的谱点点集。现在，代数基本定理的意义非常清楚了，在代数封闭的复域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K+%3D+%5Cmathbb+C" alt="\mathbb K = \mathbb C" eeimg="1">
+                    上，讨论以上代数方程才能保证解的存在。我们注意到算子代数基本上是围绕复数域展开的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在复线性空间范畴中，取复线性空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+A" alt="\mathscr A" eeimg="1">
+                    并给定二元乘法运算
+                    <img src="https://www.zhihu.com/equation?tex=%5Ccirc%3A+%5Cmathscr+A+%5Ctimes+%5Cmathscr+A+%5Cto+%5Cmathscr+A" alt="\circ: \mathscr A \times \mathscr A \to \mathscr A" eeimg="1">
+                    ，若满足结合律、对线性空间加法的分配率、对线性空间数乘的交换律，则成为一个
+                    <b>
+                        代数(algebra)
+                    </b>
+                    。这样的代数的范畴记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BAg%7D" alt="\textbf{Ag}" eeimg="1">
+                    。显然复数域本身就是一个代数，且是最简单的可除交换代数。对于代数
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathscr+A%2C%5Ccirc%29+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BAg%7D%29" alt="(\mathscr A,\circ) \in \text{Ob}(\textbf{Ag})" eeimg="1">
+                    ，若其上定义了范数
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7C%5Ccdot%5C%7C" alt="\|\cdot\|" eeimg="1">
+                    且按照这个范数构成一个Banach空间，并且满足
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+a%2C+b+%5Cin+%28%5Cmathscr+A%2C%5Ccirc%2C%5C%7C%5Ccdot%5C%7C%29" alt="\forall a, b \in (\mathscr A,\circ,\|\cdot\|)" eeimg="1">
+                    有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Ca%5Ccirc+b%5C%7C+%5Cleq+%5C%7Ca%5C%7C%5C%7Cb%5C%7C+%5C%5C" alt="\|a\circ b\| \leq \|a\|\|b\| \\" eeimg="1">
+                    则称代数
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathscr+A%2C%5Ccirc%2C%5C%7C%5Ccdot%5C%7C%29" alt="(\mathscr A,\circ,\|\cdot\|)" eeimg="1">
+                    为
+                    <b>
+                        Banach代数
+                    </b>
+                    或
+                    <b>
+                        B-代数
+                    </b>
+                    。对于Banach空间
+                    <img src="https://www.zhihu.com/equation?tex=%28X%2C%5C%7C%5Ccdot%5C%7C%29" alt="(X,\|\cdot\|)" eeimg="1">
+                    ，其上的有界线性算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+B%28X%29" alt="\mathcal B(X)" eeimg="1">
+                    就构成一个非交换的，带有幺元（恒同算子）的B-代数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于含有幺元的交换代数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+A" alt="\mathscr A" eeimg="1">
+                    ，它所具有的环的结构使得算子代数可以构成模范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+A%5Ctextbf%7B-Mod%7D" alt="\mathscr A\textbf{-Mod}" eeimg="1">
+                    。将它的极大理想组成的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+M" alt="\mathfrak M" eeimg="1">
+                    ，取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+I+%5Cin+%5Cmathfrak+M" alt="\mathfrak I \in \mathfrak M" eeimg="1">
+                    可以构造以下映射，据Gelfand-Mazur定理（参考泛函分析的教科书），若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+A" alt="\mathscr A" eeimg="1">
+                    为可除的B-代数，则它等距同构于复数域：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+A+%5Cstackrel%7B%5Ctext%7BNatural%7D%7D%7B%5Clongrightarrow%7D+%5Cmathscr+A%2F%5Cmathfrak+I+%5Csimeq+%5Cmathbb+C+%5C%5C+%5Cmathscr+A+%5Cstackrel%7B%5Cvarphi_%5Cmathfrak+I%7D%7B%5Clongrightarrow%7D+%5Cmathbb+C+%5C%5C" alt="\mathscr A \stackrel{\text{Natural}}{\longrightarrow} \mathscr A/\mathfrak I \simeq \mathbb C \\ \mathscr A \stackrel{\varphi_\mathfrak I}{\longrightarrow} \mathbb C \\" eeimg="1">
+                    这样
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_%5Cmathfrak+I" alt="\varphi_\mathfrak I" eeimg="1">
+                    就构成了以B-代数中的算子为变元的复值函数。进一步考虑极大理想集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+M" alt="\mathfrak M" eeimg="1">
+                    ，根据如上的映射可以构造下图中的映射关系：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-7b73b532f90a3619edbd08394ae89bb9_r.jpg">
+                </figure>
+                <p>
+                    注意图中右边
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathscr+A+%5Ctimes+%5Cmathfrak+M+%26%5Cto+%5Cmathbb+C+%5C%5C+%28A%2C+m%29+%26%5Cmapsto+%5Cvarphi_%5Cmathfrak+J%28A%29+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \mathscr A \times \mathfrak M &amp;\to \mathbb C \\ (A, m) &amp;\mapsto \varphi_\mathfrak J(A) \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    相当于算子
+                    <img src="https://www.zhihu.com/equation?tex=+A+%5Cin+%5Cmathscr+A" alt="A \in \mathscr A" eeimg="1">
+                    ，诱导出了中间的映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cvarphi_A%3A+%5Cmathfrak+M+%26%5Cto+%5Cmathbb+C+%5C%5C+m+%26%5Cmapsto+%5Cvarphi_A%28m%29+%3D+%5Cvarphi_%5Cmathfrak+J%28A%29+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \varphi_A: \mathfrak M &amp;\to \mathbb C \\ m &amp;\mapsto \varphi_A(m) = \varphi_\mathfrak J(A) \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    它是以极大理想为变元的复值函数。我们把极大理想集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+M" alt="\mathfrak M" eeimg="1">
+                    上的连续复值函数集记为
+                    <img src="https://www.zhihu.com/equation?tex=C%28%5Cmathfrak+M%29" alt="C(\mathfrak M)" eeimg="1">
+                    。严格地将，这需要极大理想集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+M" alt="\mathfrak M" eeimg="1">
+                    本身构成拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathfrak+M%2C%5Ctau%29" alt="(\mathfrak M,\tau)" eeimg="1">
+                    。先把上式的诱导过程记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5CGamma%3A+%5Cmathscr+A+%26%5Cto+C%28%5Cmathfrak+M%29+%5C%5C+A+%26%5Cmapsto+%5CGamma%28A%29+%3D+%5Cvarphi_A+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \Gamma: \mathscr A &amp;\to C(\mathfrak M) \\ A &amp;\mapsto \Gamma(A) = \varphi_A \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    那么以上诱导
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma" alt="\Gamma" eeimg="1">
+                    就称为B代数的
+                    <b>
+                        Gelfand表示
+                    </b>
+                    。Gelfand表示的意义在于，它可以在极大理想集
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+M" alt="\mathfrak M" eeimg="1">
+                    上构造一个Gelfand拓扑
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                    ，在这个拓扑的意义上，映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_A%3A+%28%5Cmathfrak+M%2C%5Ctau%29+%5Cto+%5Cmathbb+C" alt="\varphi_A: (\mathfrak M,\tau) \to \mathbb C" eeimg="1">
+                    成为连续函数，从而使连续复值函数集
+                    <img src="https://www.zhihu.com/equation?tex=C%28%5Cmathfrak+M%29" alt="C(\mathfrak M)" eeimg="1">
+                    构成一个B-代数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在有幺元的B-代数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+A" alt="\mathscr A" eeimg="1">
+                    中定义算子的谱，它完全可以按照(5)来定义谱集
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28A%29+%5Csubset+%5Cmathbb+C" alt="\sigma(A) \subset \mathbb C" eeimg="1">
+                    。结合前面在Gelfand表示的成果，在算子代数中有如下结论：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28A%29+%3D+%5C%7B+%5Cvarphi_A%28m%29+%7C+m+%5Cin+%5Cmathfrak+M+%5C%7D+%3D+%5Ctext%7BRan%7D%5Cbig%28%5Cvarphi_A%28%5Cmathfrak+M%29%5Cbig%29+%5C%5C" alt="\sigma(A) = \{ \varphi_A(m) | m \in \mathfrak M \} = \text{Ran}\big(\varphi_A(\mathfrak M)\big) \\" eeimg="1">
+                    算子的谱集和Gelfand表示通过上式联系在一起，从而可以用算子代数的工具来研究算子的谱。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

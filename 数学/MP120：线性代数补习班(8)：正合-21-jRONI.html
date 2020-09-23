@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP120：线性代数补习班(8)：正合
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-15719fb8faa9cfdeba2325db0a2e3ef7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/54732293" target="_blank">
+                        MP120：线性代数补习班(8)：正合
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-05-06
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    我们将经常遇到平凡群。平凡或者退化叫做trivial，意味着不蕴含特别的信息。对于一般的群
+                    <img src="https://www.zhihu.com/equation?tex=%28G%2C%2A%2C%5Ctext%7BId%7D%29" alt="(G,*,\text{Id})" eeimg="1">
+                    ，作为子群的平凡群可以记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+1+%3D+%28%5C%7B%5Ctext%7BId%7D%5C%7D%2C+%2A%2C+%5Ctext%7BId%7D%29" alt="\textbf 1 = (\{\text{Id}\}, *, \text{Id})" eeimg="1">
+                    ，它只包含幺元
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BId%7D" alt="\text{Id}" eeimg="1">
+                    这唯一的元素。如果是Abel群
+                    <img src="https://www.zhihu.com/equation?tex=%28G%2C%2B%2C0%29" alt="(G,+,0)" eeimg="1">
+                    ，平凡群可以记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+0+%3D+%28%5C%7B0%5C%7D%2C+%2B%2C+0%29" alt="\textbf 0 = (\{0\}, +, 0)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    正交投影
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    [
+                    <a href="https://zhuanlan.zhihu.com/p/47396214" class="internal">
+                        MP49：线性算子(2)：依算子谱的正交分解、正交投影算子、投影算子值测度(p.v.m.)
+                    </a>
+                    ] 讲到Hilbert空间中的正交投影算子，它在谱分解和量子测量问题中起到基础的作用。用模范畴的语言说，若有线性算子环
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda" alt="\Lambda" eeimg="1">
+                    ，作用于Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BHlbt%7D%29+%5Csubset+%5Ctext%7BOb%7D%28%5CLambda%5Ctextbf%7B-Mod%7D%29" alt="\mathscr H \in \text{Ob}(\textbf{Hlbt}) \subset \text{Ob}(\Lambda\textbf{-Mod})" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%5CLambda" alt="A \in \Lambda" eeimg="1">
+                    满足
+                    <img src="https://www.zhihu.com/equation?tex=P%5E2%3DP" alt="P^2=P" eeimg="1">
+                    则称为
+                    <b>
+                        投影算子(projection)
+                    </b>
+                    。在
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28P%29+%5Clhd+%5Cmathscr+H" alt="\text{Im}(P) \lhd \mathscr H" eeimg="1">
+                    上，投影算子的作用相当于恒同算子。正交投影算子
+                    <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                    作用于正交补
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28P%29%5E%5Cbot+%5Clhd+%5Cmathscr+H" alt="\text{Im}(P)^\bot \lhd \mathscr H" eeimg="1">
+                    则相当于零算子。于是可以对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cpsi+%5Cin+%5Cmathscr+H" alt="\forall \psi \in \mathscr H" eeimg="1">
+                    进行唯一的正交投影分解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi+%3D+%5Cpsi_1+%2B+%5Cpsi_1+%5Ctag%7B1%7D" alt="\psi = \psi_1 + \psi_1 \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_1+%5Cin+%5Ctext%7BIm%7D%28P%29" alt="\psi_1 \in \text{Im}(P)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_2+%5Cin+%5Ctext%7BIm%7D%28P%29%5E%5Cbot" alt="\psi_2 \in \text{Im}(P)^\bot" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于有限维线性算子环，以下出现的算子、投影算子都是可以有矩阵表示的，算子的复合映射就是矩阵乘法，下面不再区分有限维线性算子和矩阵。若有两个互相正交的投影算子
+                    <img src="https://www.zhihu.com/equation?tex=P_1+%5Cbot+P_2+%5Cin+%5CLambda" alt="P_1 \bot P_2 \in \Lambda" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cpsi+%5Cin+%5Cmathscr+H" alt="\forall \psi \in \mathscr H" eeimg="1">
+                    可以正交分解为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi+%3D+P_1%5Cpsi+%2B+P_2%5Cpsi+%5C%5C" alt="\psi = P_1\psi + P_2\psi \\" eeimg="1">
+                    且从空间上看构成正交直和：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%3D+%5Ctext%7BIm%7D%28P_1%29+%5Coplus+%5Ctext%7BIm%7D%28P_2%29+%3D+P_1%5Cmathscr+H+%5Coplus+P_2%5Cmathscr+H+%5C%5C" alt="\mathscr H = \text{Im}(P_1) \oplus \text{Im}(P_2) = P_1\mathscr H \oplus P_2\mathscr H \\" eeimg="1">
+                    在有限维，我们容易借助几何直观理解，
+                    <img src="https://www.zhihu.com/equation?tex=P_1%2C+P_2+%5Cin+%5CLambda" alt="P_1, P_2 \in \Lambda" eeimg="1">
+                    往两个互相正交的方向投影，无论是投影出来的向量还是投影出来的空间都是正交的。更明确一些，如果有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28P_1%5Cmathscr+H%29+%3D+m%2C+%5Cquad+%5Ctext%7Bdim%7D%28P_2%5Cmathscr+H%29+%3D+n+%5C%5C" alt="\text{dim}(P_1\mathscr H) = m, \quad \text{dim}(P_2\mathscr H) = n \\" eeimg="1">
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdim%7D%28H%29+%3D+m+%2B+n" alt="\text{dim}(H) = m + n" eeimg="1">
+                    ，且选定适当的基后，投影算子的矩阵表示具有以下形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P_1+%5Cin+%5Cmathbb+K%5E%7B%28m%2Bn%29+%5Ctimes+m%7D%2C+%5Cquad+P_2+%5Cin+%5Cmathbb+K%5E%7B%28m%2Bn%29+%5Ctimes+n%7D+%5C%5C" alt="P_1 \in \mathbb K^{(m+n) \times m}, \quad P_2 \in \mathbb K^{(m+n) \times n} \\" eeimg="1">
+                </p>
+                <h2>
+                    正合
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以上的两个投影算子的复合映射作用如下
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%5Cstackrel%7BP_1%7D%7B%5Clongrightarrow%7D+%5Ctext%7BIm%7D%28P_1%29%7C_%7B%5Cmathscr+H%7D+%3D+P_1%5Cmathscr+H+%5Cstackrel%7BP_2%7D%7B%5Clongrightarrow%7D+%5Ctext%7BIm%7D%28P_2%29%7C_%7BP_1%5Cmathscr+H%7D+%3D+%5Ctext%7BIm%7D%28P_2+%5Ccirc+P_1%29%7C_%7B%5Cmathscr+H%7D+%3D%5Ctextbf+0+%5C%5C" alt="\mathscr H \stackrel{P_1}{\longrightarrow} \text{Im}(P_1)|_{\mathscr H} = P_1\mathscr H \stackrel{P_2}{\longrightarrow} \text{Im}(P_2)|_{P_1\mathscr H} = \text{Im}(P_2 \circ P_1)|_{\mathscr H} =\textbf 0 \\" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+0+%5Clhd+%5Cmathscr+H" alt="\textbf 0 \lhd \mathscr H" eeimg="1">
+                    为平凡群，以上关键的一条是在同调中重要的二次复合为零映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=P_2%5Ccirc+P_1+%3D+0+%5Ctag%7B2%7D" alt="P_2\circ P_1 = 0 \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    凡是在复合映射中出现
+                    <img src="https://www.zhihu.com/equation?tex=B+%5Ccirc+A+%3D+0" alt="B \circ A = 0" eeimg="1">
+                    的情况，在同调的观点来看都意味着
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28A%29+%5Csubseteq+%5Ctext%7BKer%7D%28B%29" alt="\text{Im}(A) \subseteq \text{Ker}(B)" eeimg="1">
+                    ，而同调的起点就是研究非退化的情况——蕴含在
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28B%29%2F%5Ctext%7BIm%7D%28A%29" alt="\text{Ker}(B)/\text{Im}(A)" eeimg="1">
+                    中的信息，否则在退化的情况下这个商群就是平凡群。从拓扑学中发展出了同调群：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H_i%28A%29+%3D+%5Ctext%7BKer%7D%28%5Cpartial_i%29%2F%5Ctext%7BIm%7D%28%5Cpartial_%7Bi%2B1%7D%29+%5C%5C" alt="H_i(A) = \text{Ker}(\partial_i)/\text{Im}(\partial_{i+1}) \\" eeimg="1">
+                </p>
+                <p>
+                    这类群的特点是由映射的核
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D" alt="\text{Ker}" eeimg="1">
+                    对映射的像
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D" alt="\text{Im}" eeimg="1">
+                    做商群。以此为基础，发展出了庞大的同调代数的体系。同调代数主要是在模范畴上讨论的，回到(2)，我们可以用线性代数的方式，即矩阵乘法表示的投影算子复合映射，阐述同调的基本概念：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28P_1%29+%5Csubseteq+%5Ctext%7BKer%7D%28P_2%29+%5C%5C" alt="\text{Im}(P_1) \subseteq \text{Ker}(P_2) \\" eeimg="1">
+                </p>
+                <p>
+                    即
+                    <img src="https://www.zhihu.com/equation?tex=P_1" alt="P_1" eeimg="1">
+                    映射的像一定落入
+                    <img src="https://www.zhihu.com/equation?tex=P_2" alt="P_2" eeimg="1">
+                    映射的核。注意到这里出现了一个
+                    <b>
+                        正合(exact)
+                    </b>
+                    关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28P_1%29+%3D+%5Ctext%7BKer%7D%28P_2%29+%5CRightarrow+%5Ctext%7BKer%7D%28P_2%29%2F%5Ctext%7BIm%7D%28P_1%29+%3D+%5Ctextbf+0+%5Ctag%7B3%7D" alt="\text{Im}(P_1) = \text{Ker}(P_2) \Rightarrow \text{Ker}(P_2)/\text{Im}(P_1) = \textbf 0 \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    这就是同调中最基础的概念——同调使前后映射的商群构成平凡群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    借助投影的例子，便于理解线性代数中关于线性映射的正合性。下面给出了一个更一般的例子：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-9b6ac533b2ff6dc01853eff6f3f8e768_r.jpg">
+                    <figcaption>
+                        [Weibel1994] An Introduction to Homological Algebra
+                    </figcaption>
+                </figure>
+                <p>
+                    简单地说，过去在线性代数中我们需要通过繁琐的论证来讨论矩阵的秩，以便研究复合映射的核的问题。上面的例子告诉我们，用同调的语言，只研究同调模即可。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        短正合序列
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    [
+                    <a href="https://zhuanlan.zhihu.com/p/44776557" class="internal">
+                        MP22：同调群
+                    </a>
+                    ] 中讨论过闭链群、边缘链群、同调群这三类可以构成同态序列的代数对象。在同调代数中，对于同态序列（我们这里只讨论Abel群同态）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdots+%5Cto+G_%7Bk%7D+%5Cstackrel%7B%5Crho_k%7D%7B%5Clongrightarrow%7D+G_%7Bk%2B1%7D+%5Cstackrel%7B%5Crho_%7Bk%2B1%7D%7D%7B%5Clongrightarrow%7D+G_%7Bk%2B2%7D+%5Cstackrel%7B%5Crho_%7Bk%2B2%7D%7D%7B%5Clongrightarrow%7D+%5Cdots+%5C%5C" alt="\dots \to G_{k} \stackrel{\rho_k}{\longrightarrow} G_{k+1} \stackrel{\rho_{k+1}}{\longrightarrow} G_{k+2} \stackrel{\rho_{k+2}}{\longrightarrow} \dots \\" eeimg="1">
+                </p>
+                <p>
+                    如果前后映射都具有(3)的正合关系，则称为
+                    <b>
+                        正合序列(exact sequence)
+                    </b>
+                    。正合往往意味着平凡的，在代数拓扑中，不正合的、非平凡的同调群蕴含着拓扑的信息。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    [
+                    <a href="https://zhuanlan.zhihu.com/p/57871599" class="internal">
+                        MP109：Lorentz群表示论(6)：Lie群的中心扩张
+                    </a>
+                    ] 谈到同调代数中十分重要的
+                    <b>
+                        短正合序列(short exact sequence)
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+1+%5Cstackrel%7Be%7D%7B%5Clongrightarrow%7D+A+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+B+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+C+%5Cstackrel%7Bh%7D%7B%5Clongrightarrow%7D+%5Ctextbf+1%5Ctag%7B4%7D" alt="\textbf 1 \stackrel{e}{\longrightarrow} A \stackrel{f}{\longrightarrow} B \stackrel{g}{\longrightarrow} C \stackrel{h}{\longrightarrow} \textbf 1\tag{4}" eeimg="1">
+                </p>
+                <p>
+                    头尾都出现了平凡群。
+                </p>
+                <ol>
+                    <li>
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+1+%5Cstackrel%7Be%7D%7B%5Clongrightarrow%7D+A+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+B" alt="\textbf 1 \stackrel{e}{\longrightarrow} A \stackrel{f}{\longrightarrow} B" eeimg="1">
+                        中，由于
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28e%29+%3D+0+%3D+%5Ctext%7BKer%7D%28f%29" alt="\text{Im}(e) = 0 = \text{Ker}(f)" eeimg="1">
+                        ，同态
+                        <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                        的核为零为单同态，有
+                        <img src="https://www.zhihu.com/equation?tex=A+%5Csimeq+%5Ctext%7BIm%7D%28f%29+%5Clhd+B" alt="A \simeq \text{Im}(f) \lhd B" eeimg="1">
+                        ；
+                    </li>
+                    <li>
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=B+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+C+%5Cstackrel%7Bh%7D%7B%5Clongrightarrow%7D+%5Ctextbf+1+" alt="B \stackrel{g}{\longrightarrow} C \stackrel{h}{\longrightarrow} \textbf 1" eeimg="1">
+                        中，显然
+                        <img src="https://www.zhihu.com/equation?tex=h" alt="h" eeimg="1">
+                        是满射，
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28g%29%3D%5Ctext%7BKer%7D%28h%29+%3D+C" alt="\text{Im}(g)=\text{Ker}(h) = C" eeimg="1">
+                        ，故
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                        是满同态；
+                    </li>
+                    <li>
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=A+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+B+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+C" alt="A \stackrel{f}{\longrightarrow} B \stackrel{g}{\longrightarrow} C" eeimg="1">
+                        中，根据同构定理及上面两条性质有：
+                    </li>
+                </ol>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=C+%3D+%5Ctext%7BIm%7D%28g%29+%5Csimeq+B%2F%5Ctext%7BKer%7D%28g%29+%3D+B%2F%5Ctext%7BIm%7D%28f%29+%3D+B%2FA+%5C%5C" alt="C = \text{Im}(g) \simeq B/\text{Ker}(g) = B/\text{Im}(f) = B/A \\" eeimg="1">
+                </p>
+                <p>
+                    这样便在短正合序列(4)中发现了一个商同构的关系，于是有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+1+%5Cstackrel%7Be%7D%7B%5Clongrightarrow%7D+A+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+B+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+B%2FA+%5Cstackrel%7Bh%7D%7B%5Clongrightarrow%7D+%5Ctextbf+1%5Ctag%7B5%7D" alt="\textbf 1 \stackrel{e}{\longrightarrow} A \stackrel{f}{\longrightarrow} B \stackrel{g}{\longrightarrow} B/A \stackrel{h}{\longrightarrow} \textbf 1\tag{5}" eeimg="1">
+                </p>
+                <p>
+                    最常见的例子就是实数的紧化：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+0+%5Cstackrel%7Be%7D%7B%5Clongrightarrow%7D+%5Cmathbb+Z+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+%5Cmathbb+R+%5Cstackrel%7Bg%7D%7B%5Clongrightarrow%7D+%5Cmathbb+R%2F%5Cmathbb+Z+%5Cstackrel%7Bh%7D%7B%5Clongrightarrow%7D+%5Ctextbf+0+%5C%5C" alt="\textbf 0 \stackrel{e}{\longrightarrow} \mathbb Z \stackrel{f}{\longrightarrow} \mathbb R \stackrel{g}{\longrightarrow} \mathbb R/\mathbb Z \stackrel{h}{\longrightarrow} \textbf 0 \\" eeimg="1">
+                </p>
+                <p>
+                    短正合序列给出了同调代数中的一种基本研究思路：给定模
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    ，通过它的子模
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    和商模
+                    <img src="https://www.zhihu.com/equation?tex=C+%5Csimeq+B%2FA" alt="C \simeq B/A" eeimg="1">
+                    ，构造短正合序列。在群中，这种技术就是群扩张。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

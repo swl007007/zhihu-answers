@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP3：SO(2)的求导：算子谱分析和复结构
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-7f7e4d9fb76a9ecb839f2c4bbf574240_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/43986106" target="_blank">
+                        MP3：SO(2)的求导：算子谱分析和复结构
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    现在我们在平面旋转群中挖掘一些真正有趣的数学结构。平面旋转群SO(2)的矩阵表示和复数表示是同构的，和实数加群也是同构的。这样我们可以让矩阵和复数都对实数求导，得到两种不同形式的导数。我们发现，一次求导和二次求导，在矩阵和复数中都出现了相似的求导算子，在这种算子上研究其特征值和特征向量，就是泛函分析的基本研究方法。此外，求导算子体现出一种特别的结构，这种结构归纳为复结构，它的两次复合映射将元素映射到其逆元。
+                </p>
+                <p>
+                    我们带着新学到的求导算子、谱分析、复结构这三个概念，回顾我们所熟悉的一阶和二阶微分方程，在物理上对于世界上广泛存在的各类动态系统有了新的认识。
+                </p>
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <hr>
+                <p>
+                    上一讲静态地讨论了平面旋转群
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    的一些代数性质，帮助大家理解一些基本的代数概念。现在我们要继续研究
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    的动态特性，也就是用一些数学分析和泛函分析的方法来研究它，引出更加丰富的结构来。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        群同态的导数
+                    </b>
+                </h2>
+                <p>
+                    回顾前面讨论的群同态关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%3A%5Cmathbb%7BR%7D+%5Cto+SO%282%29" alt="\rho:\mathbb{R} \to SO(2)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta+%5Cmapsto+%5Crho%28%5Ctheta%29+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="\theta \mapsto \rho(\theta) = \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    群同态
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho" alt="\rho" eeimg="1">
+                    是可以求导的：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5Crho%7D%7Bd%5Ctheta%7D+%3D+%5Cfrac%7Bd%7D%7Bd%5Ctheta%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+-%5Csin+%5Ctheta+%26+-%5Ccos+%5Ctheta+%5C%5C+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos%28%5Cfrac%7B%5Cpi%7D%7B2%7D+%2B+%5Ctheta%29+%26+-%5Csin%28%5Cfrac%7B%5Cpi%7D%7B2%7D+%2B+%5Ctheta%29+%5C%5C+%5Csin%28%5Cfrac%7B%5Cpi%7D%7B2%7D+%2B+%5Ctheta%29+%26+%5Ccos%28%5Cfrac%7B%5Cpi%7D%7B2%7D+%2B+%5Ctheta%29+%5Cend%7Bbmatrix%7D+" alt="\frac{d\rho}{d\theta} = \frac{d}{d\theta} \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} =\begin{bmatrix} -\sin \theta &amp; -\cos \theta \\ \cos \theta &amp; -\sin \theta \end{bmatrix} =\begin{bmatrix} \cos(\frac{\pi}{2} + \theta) &amp; -\sin(\frac{\pi}{2} + \theta) \\ \sin(\frac{\pi}{2} + \theta) &amp; \cos(\frac{\pi}{2} + \theta) \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Cfrac%7B%5Cpi%7D%7B2%7D+%26+-%5Csin+%5Cfrac%7B%5Cpi%7D%7B2%7D+%5C%5C+%5Csin+%5Cfrac%7B%5Cpi%7D%7B2%7D+%26+%5Ccos+%5Cfrac%7B%5Cpi%7D%7B2%7D+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="= \begin{bmatrix} \cos \frac{\pi}{2} &amp; -\sin \frac{\pi}{2} \\ \sin \frac{\pi}{2} &amp; \cos \frac{\pi}{2} \end{bmatrix} \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5E2%5Crho%7D%7Bd%5Ctheta%5E2%7D+%3D+%5Cfrac%7Bd%5E2%7D%7Bd%5Ctheta%5E2%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+-%5Ccos+%5Ctheta+%26+%5Csin+%5Ctheta+%5C%5C+-%5Csin+%5Ctheta+%26+-%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="\frac{d^2\rho}{d\theta^2} = \frac{d^2}{d\theta^2} \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} =\begin{bmatrix} -\cos \theta &amp; \sin \theta \\ -\sin \theta &amp; -\cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Cpi+%26+-%5Csin+%5Cpi+%5C%5C+%5Csin+%5Cpi+%26+%5Ccos+%5Cpi+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%3D-%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+" alt="=\begin{bmatrix} \cos \pi &amp; -\sin \pi \\ \sin \pi &amp; \cos \pi \end{bmatrix} \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} =-\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    令
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J%3D%5Crho%28%5Cpi%2F2%29%3D%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Cfrac%7B%5Cpi%7D%7B2%7D+%26+-%5Csin+%5Cfrac%7B%5Cpi%7D%7B2%7D+%5C%5C+%5Csin+%5Cfrac%7B%5Cpi%7D%7B2%7D+%26+%5Ccos+%5Cfrac%7B%5Cpi%7D%7B2%7D+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D" alt="J=\rho(\pi/2)=\begin{bmatrix} \cos \frac{\pi}{2} &amp; -\sin \frac{\pi}{2} \\ \sin \frac{\pi}{2} &amp; \cos \frac{\pi}{2} \end{bmatrix} =\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    且
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J%5E2%3D%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+-1+%26+0+%5C%5C+0+%26+-1+%5Cend%7Bbmatrix%7D+%3D+-I" alt="J^2=\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} =\begin{bmatrix} -1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix} = -I" eeimg="1">
+                </p>
+                <p>
+                    则
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5Crho%7D%7Bd%5Ctheta%7D+%3DJ%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%3DJ+%5Ccdot+%5Crho" alt="\frac{d\rho}{d\theta} =J\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} =J \cdot \rho" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5E2%5Crho%7D%7Bd%5Ctheta%5E2%7D+%3D-%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%3DJ%5E2+%5Ccdot+%5Crho" alt="\frac{d^2\rho}{d\theta^2} =-\begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} =J^2 \cdot \rho" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    类似的，考虑另一个群同态：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%3A%5Cmathbb%7BR%7D+%5Cto+%5C%7Be%5E%7Bi%5Ctheta%7D+%5Cvert+%5Ctheta%5Cin%5Cmathbb%7BR%7D%5C%7D" alt="\tau:\mathbb{R} \to \{e^{i\theta} \vert \theta\in\mathbb{R}\}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cmapsto+%5Ctau%28%5Ctheta%29+%3D+e%5E%7Bi%5Ctheta%7D" alt="\tau \mapsto \tau(\theta) = e^{i\theta}" eeimg="1">
+                </p>
+                <p>
+                    也可以求导：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5Ctau%7D%7Bd%5Ctheta%7D+%3D+%5Cfrac%7Bd+e%5E%7Bi%5Ctheta%7D%7D%7Bd%5Ctheta%7D+%3D+i+%5Ccdot+e%5E%7Bi%5Ctheta%7D" alt="\frac{d\tau}{d\theta} = \frac{d e^{i\theta}}{d\theta} = i \cdot e^{i\theta}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5E2%5Ctau%7D%7Bd%5Ctheta%5E2%7D+%3D+%5Cfrac%7Bd%5E2+e%5E%7Bi%5Ctheta%7D%7D%7Bd%5Ctheta%5E2%7D+%3D-e%5E%7Bi%5Ctheta%7D%3D+i%5E2+%5Ccdot+e%5E%7Bi%5Ctheta%7D" alt="\frac{d^2\tau}{d\theta^2} = \frac{d^2 e^{i\theta}}{d\theta^2} =-e^{i\theta}= i^2 \cdot e^{i\theta}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        作为线性算子的导数
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    我们把视野放到更大的函数空间。把函数空间
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上线性自映射算子全体记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=L%28X%29%3A+X+%5Cto+X" alt="L(X): X \to X" eeimg="1">
+                </p>
+                <p>
+                    以上两个群同态都可以视为函数空间的元素：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cin+X%5B%5Cmathbb%7BR%7D%2CSO%282%29%5D" alt="\rho \in X[\mathbb{R},SO(2)]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cin+X%5B%5Cmathbb%7BR%7D%2C%5C%7Be%5E%7Bi%5Ctheta%7D+%5Cvert+%5Ctheta%5Cin%5Cmathbb%7BR%7D%5C%7D%5D" alt="\tau \in X[\mathbb{R},\{e^{i\theta} \vert \theta\in\mathbb{R}\}]" eeimg="1">
+                </p>
+                <p>
+                    将求导视为一个
+                    <b>
+                        算子
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=D+%3D+%5Cfrac%7Bd%7D%7Bd%5Ctheta%7D" alt="D = \frac{d}{d\theta}" eeimg="1">
+                    ，它的作用相当于线性自映射：
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D+%5Cin+L%5B%5Cmathbb%7BR%7D%2CSO%282%29%5D" alt="D \in L[\mathbb{R},SO(2)]" eeimg="1">
+                    时，对矩阵求导：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D%3A+L%5B%5Cmathbb%7BR%7D%2CSO%282%29%5D+%5Cto+L%5B%5Cmathbb%7BR%7D%2CSO%282%29%5D" alt="D: L[\mathbb{R},SO(2)] \to L[\mathbb{R},SO(2)]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cmapsto+D%5Crho+%3D+J+%5Ccdot+%5Crho" alt="\rho \mapsto D\rho = J \cdot \rho" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cmapsto+D%5E2%5Crho+%3D+J%5E2+%5Ccdot+%5Crho+%3D+-%5Crho" alt="\rho \mapsto D^2\rho = J^2 \cdot \rho = -\rho" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D+%5Cin+L%5B%5Cmathbb%7BR%7D%2C%5C%7Be%5E%7Bi%5Ctheta%7D+%5Cvert+%5Ctheta%5Cin%5Cmathbb%7BR%7D%5C%7D%5D" alt="D \in L[\mathbb{R},\{e^{i\theta} \vert \theta\in\mathbb{R}\}]" eeimg="1">
+                    时，对单位复数求导：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D%3AL%5B%5Cmathbb%7BR%7D%2C%5C%7Be%5E%7Bi%5Ctheta%7D+%5Cvert+%5Ctheta%5Cin%5Cmathbb%7BR%7D%5C%7D%5D+%5Cto+L%5B%5Cmathbb%7BR%7D%2C%5C%7Be%5E%7Bi%5Ctheta%7D+%5Cvert+%5Ctheta%5Cin%5Cmathbb%7BR%7D%5C%7D%5D" alt="D:L[\mathbb{R},\{e^{i\theta} \vert \theta\in\mathbb{R}\}] \to L[\mathbb{R},\{e^{i\theta} \vert \theta\in\mathbb{R}\}]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cmapsto+D%5Ctau+%3D+J+%5Ccdot+%5Crho" alt="\tau \mapsto D\tau = J \cdot \rho" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cmapsto+D%5E2%5Ctau+%3D+i%5E2+%5Ccdot+%5Ctau+%3D+-%5Ctau" alt="\tau \mapsto D^2\tau = i^2 \cdot \tau = -\tau" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        求导算子的谱分析
+                    </b>
+                </h2>
+                <p>
+                    前面的例子中，我们注意到二阶求导算子
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2" alt="D^2" eeimg="1">
+                    起到了相同的作用，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2%3A+L%5BX%5D+%5Cto+L%5BX%5D" alt="D^2: L[X] \to L[X]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cmapsto+D%5E2+x+%3D+%5Clambda+x+%3D+-x" alt="x \mapsto D^2 x = \lambda x = -x" eeimg="1">
+                </p>
+                <p>
+                    从算子
+                    <b>
+                        谱理论
+                    </b>
+                    的角度，这里的
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cin+%5Cmathbb%7BC%7D" alt="\lambda \in \mathbb{C}" eeimg="1">
+                    是算子
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2" alt="D^2" eeimg="1">
+                    的
+                    <b>
+                        特征值（eigenvalue）
+                    </b>
+                    。也就是说，如果存在这样一个特征值，并存在一个
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    满足一次求导的条件：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2+x+%3D+%5Clambda+x" alt="D^2 x = \lambda x" eeimg="1">
+                </p>
+                <p>
+                    那么算子
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2" alt="D^2" eeimg="1">
+                    对
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    作用的结果，相当于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    和一个常系数
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    在进行向量缩放的结果。常见的表达方式是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28D%5E2+-+%5Clambda+I%29x+%3D+0" alt="(D^2 - \lambda I)x = 0" eeimg="1">
+                </p>
+                <p>
+                    回忆我们在线性代数中学到的有限维谱分析，函数空间自映射的特征值也具有类似的效果。满足这一条件的
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    也称为
+                    <b>
+                        特征向量（eigenvector）
+                    </b>
+                    。由于
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    是函数空间（作为向量空间）中的一个函数（作为向量），所以
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    就是求导算子算子
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2" alt="D^2" eeimg="1">
+                    确定的微分方程
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2+x+%3D+%5Clambda+x" alt="D^2 x = \lambda x" eeimg="1">
+                    的解。
+                </p>
+                <p>
+                    <br>
+                    我们在这里看到，在这里用算子表达的微分方程中，算子的作用都相当于常系数特征值作用的结果，这代表了物理中一大类广泛应用的线性微分方程。
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        复结构
+                    </b>
+                </h2>
+                <p>
+                    在上面的例子中，求导算子
+                    <img src="https://www.zhihu.com/equation?tex=D" alt="D" eeimg="1">
+                    的作用相当于某种常值的算子，在一阶求导表现为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cmapsto+D%5Crho+%3D+J+%5Ccdot+%5Crho" alt="\rho \mapsto D\rho = J \cdot \rho" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cmapsto+D%5Ctau+%3D+i+%5Ccdot+%5Ctau" alt="\tau \mapsto D\tau = i \cdot \tau" eeimg="1">
+                </p>
+                <p>
+                    二阶表现为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cmapsto+D%5E2%5Ctau+%3D+J%5E2+%5Ccdot+%5Crho+%3D+-%5Crho" alt="\rho \mapsto D^2\tau = J^2 \cdot \rho = -\rho" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cmapsto+D%5E2%5Ctau+%3D+i%5E2+%5Ccdot+%5Ctau+%3D+-%5Ctau" alt="\tau \mapsto D^2\tau = i^2 \cdot \tau = -\tau" eeimg="1">
+                </p>
+                <p>
+                    更有趣的是，在复数中：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=i%5E2%3Di+%5Ccdot+i%3D-1" alt="i^2=i \cdot i=-1" eeimg="1">
+                </p>
+                <p>
+                    而在矩阵中：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J%5E2%3D%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+-1+%26+0+%5C%5C+0+%26+-1+%5Cend%7Bbmatrix%7D+%3D+-I" alt="J^2=\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} =\begin{bmatrix} -1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix} = -I" eeimg="1">
+                    <br>
+                    常值算子
+                    <img src="https://www.zhihu.com/equation?tex=J" alt="J" eeimg="1">
+                    起到了一种类似于虚数单位
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    的作用，而这种作用在现代数学中是广泛存在的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <a target="_blank" href="https://www.zhihu.com/question/25097016/answer/184478705" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                如何直观理解辛几何？
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                www.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                    按照[Chern1999] 上的定义：
+                </p>
+                <blockquote>
+                    假设
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    维实向量空间。
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上的一个
+                    <b>
+                        复结构
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=J" alt="J" eeimg="1">
+                    是一个线性自映射：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=J%3AV+%5Cto+V" alt="J:V \to V" eeimg="1">
+                    <br>
+                    满足：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=J%5E2%3D-id" alt="J^2=-id" eeimg="1">
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以这个复结构的定义为基础，当我们储备了足够的线性代数和微分流形的知识后，我们可以进一步学习近复结构、Kahler几何、symplectic几何...其中许多的概念成为当今数学物理前沿的行话（黑话23333）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从前面讨论过的二阶求导算子谱分析的角度看：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2%3A+L%5BX%5D+%5Cto+L%5BX%5D" alt="D^2: L[X] \to L[X]" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5E2+%5Cmapsto+D%5E2+x+%3D+%5Clambda+x+%3D+-x" alt="x^2 \mapsto D^2 x = \lambda x = -x" eeimg="1">
+                </p>
+                <p>
+                    特征值
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%3D+-1" alt="\lambda = -1" eeimg="1">
+                    。为了实现两次求导得到这一特征值，需要让一次求导为复结构。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        物理意义：算子谱分析观点
+                    </b>
+                </h2>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    是相当常见的物理模型，所有和波动有关的地方都可以见到它的影子，这就是为何复数广泛应用于物理、机械、电子等领域的原因。在物理中，更多讨论的是时间
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    ，通过适当的单位转换，可以等同于角度，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%3A%5Cmathbb%7BR%7D+%5Cto+SO%282%29" alt="\rho:\mathbb{R} \to SO(2)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cmapsto+%5Crho%28t%29+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+t+%26+-%5Csin+t+%5C%5C+%5Csin+t+%26+%5Ccos+t+%5Cend%7Bbmatrix%7D+" alt="t \mapsto \rho(t) = \begin{bmatrix} \cos t &amp; -\sin t \\ \sin t &amp; \cos t \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    以及
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%3A%5Cmathbb%7BR%7D+%5Cto+%5C%7Be%5E%7Bit%7D+%5Cvert+t%5Cin%5Cmathbb%7BR%7D%5C%7D" alt="\tau:\mathbb{R} \to \{e^{it} \vert t\in\mathbb{R}\}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cmapsto+%5Ctau%28t%29+%3D+e%5E%7Bit%7D" alt="\tau \mapsto \tau(t) = e^{it}" eeimg="1">
+                </p>
+                <p>
+                    我们再看导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cmapsto+D%5Crho+%3D+J+%5Ccdot+%5Crho" alt="\rho \mapsto D\rho = J \cdot \rho" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cmapsto+D%5Ctau+%3D+i+%5Ccdot+%5Ctau" alt="\tau \mapsto D\tau = i \cdot \tau" eeimg="1">
+                </p>
+                <p>
+                    二阶表现为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cmapsto+D%5E2%5Ctau+%3D+J%5E2+%5Ccdot+%5Crho+%3D+-%5Crho" alt="\rho \mapsto D^2\tau = J^2 \cdot \rho = -\rho" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau+%5Cmapsto+D%5E2%5Ctau+%3D+i%5E2+%5Ccdot+%5Ctau+%3D+-%5Ctau" alt="\tau \mapsto D^2\tau = i^2 \cdot \tau = -\tau" eeimg="1">
+                </p>
+                <p>
+                    这里反应出物理中振动所隐含的微分方程条件。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以水平弹簧谐振子为例，依据Newton定律：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F%28x%29%3Dm%5Cddot%7Bx%7D%3D-kx" alt="F(x)=m\ddot{x}=-kx" eeimg="1">
+                </p>
+                <p>
+                    通过单位转换使得
+                    <img src="https://www.zhihu.com/equation?tex=k%2Fm%3D1" alt="k/m=1" eeimg="1">
+                    后：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cddot%7Bx%7D%3D-x" alt="\ddot{x}=-x" eeimg="1">
+                </p>
+                <p>
+                    这个微分方程的内涵是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D+%3D+J%2CD%5E2+%3D+-I" alt="D = J,D^2 = -I" eeimg="1">
+                </p>
+                <p>
+                    二次求导算子
+                    <img src="https://www.zhihu.com/equation?tex=D%5E2" alt="D^2" eeimg="1">
+                    的特征值
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%3D-1" alt="\lambda=-1" eeimg="1">
+                    而特征向量是微分方程的解，具有虚数指数函数的形式，它的表现为简谐振动。根据我们刚刚学到的概念，这个微分方程中的负号实质上是复结构的表现，导致位置和速度构成的相空间
+                    <img src="https://www.zhihu.com/equation?tex=%28x%2C%5Cdot%7Bx%7D%29" alt="(x,\dot{x})" eeimg="1">
+                    上必然表现出简谐振动的形态，即圆型相曲线。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个例子还可以进一步探讨。由于所有的质点简谐振动问题都可以归结为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cddot%7Bx%7D%3D-x" alt="\ddot{x}=-x" eeimg="1">
+                </p>
+                <p>
+                    我们可以把问题更换为单摆的微小摆动，或者钢球在球面的微小摆动。钢球所在的球面不是凹的，而是像碗一样倒扣过来，成为凸的球面，那么运动方程的受力就完全相反了，成为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cddot%7Bx%7D%3Dx" alt="\ddot{x}=x" eeimg="1">
+                </p>
+                <p>
+                    我们发现，满足这个方程的是实指数函数，也只有实指数函数能够满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D+%3D+I%2CD%5E2+%3D+I" alt="D = I,D^2 = I" eeimg="1">
+                </p>
+                <p>
+                    在这里，特征值变成了
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%3D1" alt="\lambda=1" eeimg="1">
+                    而特征向量即微分方程的解为实数指数函数，它的表现为指数增长。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这两个例子放在一起，总的表现为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cddot%7Bx%7D%3D%5Clambda+x%2C+%5Clambda+%5Cin+%5Cmathbb%7BR%7D" alt="\ddot{x}=\lambda x, \lambda \in \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    在自然界中，我们最常见到的现象，都可以用这个二次线性微分方程描述：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%3E0" alt="\lambda&gt;0" eeimg="1">
+                    时为指数增长
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%3D0" alt="\lambda=0" eeimg="1">
+                    时为惯性
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%3C0" alt="\lambda&lt;0" eeimg="1">
+                    时为简谐振动
+                </p>
+                <p>
+                    上述情况还可以线性组合，如阻尼震荡衰减。
+                </p>
+                <p>
+                    不仅常微分方程如此，物理学中偏微分方程的本质也大体与此相关。譬如，弦、板、体上的机械振动方程，抛开其复杂的外表，内核就是一个线性算子的特征值问题。不仅力学问题如此，热力学、电动力学、量子力学等方面的数学物理方程大多与此有关。无论问题的外表如何复杂，这些现象最后在复指数函数下统一起来，成为物理研究的基础工具。
+                </p>
+                <p>
+                    将来在系统讲过泛函分析和算子理论时，我们还会继续深入探讨这方面的问题。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

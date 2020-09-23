@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP101：泛函分析补习班(5)：算子半群
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-e930ea2e36c33e43021faa5045c4d1ac_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/56266672" target="_blank">
+                        MP101：泛函分析补习班(5)：算子半群
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-02-22
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    在群的公理中，去掉对幺元和逆元的要求，便得到弱一些也更加灵活的结构——半群(semigroup)。在泛函分析的算子理论中，半群的结构十分有利于研究时间演化——单参数变换问题，这一理论构成算子半群的研究领域。
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/56262200" class="internal">
+                        MP99：泛函分析补习班(3)：对角化与指数映射
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/56277809" class="internal">
+                        MP100：泛函分析补习班(4)：单参数酉群
+                    </a>
+                </p>
+                <p>
+                    过去两讲集中讨论了指数映射问题，这是算子半群的基础性问题。指数映射的源头是线性微分方程。算子半群的理论将帮助我们把线性微分方程的定解问题发展为线性算子方程的定解问题。
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        微分方程中的指数映射
+                    </b>
+                </h2>
+                <p>
+                    先考虑如下最简单的线性ODE的初值问题：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+%5Cfrac%7Bdx%28t%29%7D%7Bdt%7D+%26%3D+ax+%5C%5C+x%280%29+%26%3D+x_0+%5Cend%7Bcases%7D+%5Ctag%7B1%7D" alt="\begin{cases} \frac{dx(t)}{dt} &amp;= ax \\ x(0) &amp;= x_0 \end{cases} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    其解为
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29+%3D+x_0%5Ctext+e%5E%7Bat%7D" alt="x(t) = x_0\text e^{at}" eeimg="1">
+                    。指数函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+e%5E%7Bat%7D%3A+x%280%29+%5Cmapsto+x%28t%29" alt="\text e^{at}: x(0) \mapsto x(t)" eeimg="1">
+                    可以视为一个算子，并可以建立单参数(时间)和这个算子之间的同态：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctext%7Bexp%7D%3A+%5Cmathbb+R+%26%5Cto+%5Cmathcal+B%28C%5E%5Cinfty%28%5Cmathbb+R%29%29+%5C%5C+t+%26%5Cmapsto+%5Ctext+e%5E%7Bat%7D+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} \text{exp}: \mathbb R &amp;\to \mathcal B(C^\infty(\mathbb R)) \\ t &amp;\mapsto \text e^{at} \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    使得指数函数算子的集合
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Ctext+e%5E%7Bat%7D%5C%7D" alt="\{\text e^{at}\}" eeimg="1">
+                    有了半群的结构。以上的步骤可以直接推广到矩阵ODE、矩阵Lie群的指数映射等。将(1)推广到矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%5Cmathbb+R%5E%7Bn+%5Ctimes+n%7D" alt="A \in \mathbb R^{n \times n}" eeimg="1">
+                    （作为线性算子）所构成的线性ODE方程组：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+%5Cfrac%7Bdx%28t%29%7D%7Bdt%7D+%26%3D+Ax+%5C%5C+x%280%29+%26%3D+x_0+%5Cend%7Bcases%7D+%5Ctag%7B3%7D" alt="\begin{cases} \frac{dx(t)}{dt} &amp;= Ax \\ x(0) &amp;= x_0 \end{cases} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    此时(2)用到矩阵的指数映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+e%5E%7BtA%7D+%3D+%5Csum_%7Bk%3D0%7D%5E%5Cinfty+%5Cfrac%7Bt%5EkA%5Ek%7D%7Bk%21%7D+%5Ctag%7B4%7D" alt="\text e^{tA} = \sum_{k=0}^\infty \frac{t^kA^k}{k!} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        算子半群
+                    </b>
+                </h2>
+                <p>
+                    更一般地，算子半群讨论的是Banach空间
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的有界自映射线性算子所构造的单参数半群结构。由于往往归为微分方程/算子方程的初值问题，我们只讨论参数
+                    <img src="https://www.zhihu.com/equation?tex=t%5Cin%5Cmathbb+R%5E%2B" alt="t\in\mathbb R^+" eeimg="1">
+                    上的情况，不要求逆的封闭性，于是定义：Banach空间
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    的有界自映射线性算子集合
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BT%28t%29+%5C+%7C+%5C+t+%5Cin+%5Cmathbb+R%5E%2B%5C%7D" alt="\{T(t) \ | \ t \in \mathbb R^+\}" eeimg="1">
+                    ，若与单参数群是
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    模（作为Banach空间）连续的同态，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%3A+t+%5Cmapsto+T%28t%29" alt="\tau: t \mapsto T(t)" eeimg="1">
+                    满足：
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=T%280%29%3D%5Ctext%7Bid%7D_X" alt="T(0)=\text{id}_X" eeimg="1">
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=T%28s%29T%28t%29%3DT%28s%2Bt%29%2C%5C+%5Cforall+s%2Ct%5Cgeq+0" alt="T(s)T(t)=T(s+t),\ \forall s,t\geq 0" eeimg="1">
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        模下连续
+                    </li>
+                </ol>
+                <p>
+                    则这个算子群成为强连续线性算子半群。
+                </p>
+                <p>
+                    <br>
+                    前面的例子中，我们用指数映射(2)和(4)表示了算子半群
+                    <img src="https://www.zhihu.com/equation?tex=T%28t%29+%3D+%5Ctext+e%5E%7Bat%7D" alt="T(t) = \text e^{at}" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=T%28t%29+%3D+%5Cexp%28tA%29" alt="T(t) = \exp(tA)" eeimg="1">
+                    。然而，这并非是显然的。对于Banach空间
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    上一般的强连续线性算子半群
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BT%28t%29+%5C+%7C+%5C+t+%5Cin+%5Cmathbb+R%5E%2B%5C%7D" alt="\{T(t) \ | \ t \in \mathbb R^+\}" eeimg="1">
+                    ，是否存在一个线性算子
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%5Cmathcal+B%28X%29" alt="A \in \mathcal B(X)" eeimg="1">
+                    ，可以得到一个指数映射的表示
+                    <img src="https://www.zhihu.com/equation?tex=T%28t%29+%3D+%5Cexp%28tA%29" alt="T(t) = \exp(tA)" eeimg="1">
+                    ？以上讨论的微分方程，以及我们在Lie理论中发展出的矩阵指数映射，还有Stone定理，都给出了可行的路径。为了将基础建立在一般性的算子理论上，需要先了解算子半群的无穷小生成元，以及重要的Hille-Yosida定理。
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        无穷小生成元
+                    </b>
+                </h2>
+                <p>
+                    指数映射
+                    <img src="https://www.zhihu.com/equation?tex=T%28t%29+%3D+%5Cexp%28tA%29" alt="T(t) = \exp(tA)" eeimg="1">
+                    需要继承指数函数(2)和(4)的微分性质，并且隐含了对易性条件，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cfrac%7BdT%7D%7Bdt%7D+%26%3D+%5Cfrac%7Bd%5Ctext+e%5E%7BtA%7D%7D%7Bdt%7D%5C%5C+%26%3DA%5Cfrac%7Bd%5Ctext+e%5E%7BtA%7D%7D%7Bdt%7D+%3D+AT%5C%5C+%26%3D%5Cfrac%7Bd%5Ctext+e%5E%7BtA%7D%7D%7Bdt%7DA+%3D+TA+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} \frac{dT}{dt} &amp;= \frac{d\text e^{tA}}{dt}\\ &amp;=A\frac{d\text e^{tA}}{dt} = AT\\ &amp;=\frac{d\text e^{tA}}{dt}A = TA \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    为了尝试构造这样的线性算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，需要构造一种算子的极限。定义如下算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A_t+%3D+%5Cfrac%7BT%28t%29-I%7D%7Bt%7D%2C%5C+t+%5Cin+%5Cmathbb+R%5E%2B+%5Ctag%7B6%7D" alt="A_t = \frac{T(t)-I}{t},\ t \in \mathbb R^+ \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    它取决于参数
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    。由于
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cto+0" alt="t \to 0" eeimg="1">
+                    时，上式的分子和分母趋近于零算子和零，于是分式可能收敛，将这种可能的收敛极限记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+%5Clim_%7Bt%5Cto+0%7DA_t+%3D+%5Clim_%7Bt%5Cto+0%7D%5Cfrac%7BT%28t%29-I%7D%7Bt%7D+%5Ctag%7B7%7D" alt="A = \lim_{t\to 0}A_t = \lim_{t\to 0}\frac{T(t)-I}{t} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    这样取Banach空间的元
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cin+X" alt="x \in X" eeimg="1">
+                    可以得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5E%2A+%3D+Ax+%3D+%5Clim_%7Bt%5Cto+0%7DA_t+x+%3D+%5Clim_%7Bt%5Cto+0%7D%5Cfrac%7BT%28t%29-I%7D%7Bt%7D++x+%5Ctag%7B8%7D" alt="x^* = Ax = \lim_{t\to 0}A_t x = \lim_{t\to 0}\frac{T(t)-I}{t}  x \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    即(7)中的极限成为算子
+                    <img src="https://www.zhihu.com/equation?tex=A%3Ax%5Cmapsto+x%5E%2A" alt="A:x\mapsto x^*" eeimg="1">
+                    。现在，直接将极限(7)存在的子集定义为算子的定义域：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D%28A%29+%3D+%5C%7B+x%5Cin+X+%5C+%7C+%5C+%5Cexists+x%5E%2A+%5Cin+X%2C%5C+%5Ctext%7Bs.t.%7D+%5C+%5Clim_%7Bt%5Cto+0%7D%7BA_tx%7D%3Dx%5E%2A+%5C%7D+%5Ctag%7B9%7D" alt="D(A) = \{ x\in X \ | \ \exists x^* \in X,\ \text{s.t.} \ \lim_{t\to 0}{A_tx}=x^* \} \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    极限算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    称为算子半群的
+                    <b>
+                        无穷小生成元
+                    </b>
+                    。可以证明它是稠定的线性算子，且满足(5)，这样我们通过算子半群的无穷小生成元得到了相当多的指数映射的性质。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        算子半群的Laplace变换与生成元的预解式
+                    </b>
+                </h2>
+                <p>
+                    微分方程的初值问题可以转换为
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cin+%5Cmathbb+R%5E%2B" alt="t \in \mathbb R^+" eeimg="1">
+                    上的积分，解微分方程常用到的Laplace变换就具有这一特点，将其作用于算子半群（作为算子积分，这并非在Laplace变换通常的定义域上）：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T%28t%29+%5Cto+L%28%5Clambda%29+%3D+%5Cint_%7B%5Cmathbb+R%5E%2B%7D+%5Ctext+e%5E%7B-%5Clambda+t%7DT%28t%29dt+%5C%5C" alt="T(t) \to L(\lambda) = \int_{\mathbb R^+} \text e^{-\lambda t}T(t)dt \\" eeimg="1">
+                </p>
+                <p>
+                    (5)作为算子方程有形式解
+                    <img src="https://www.zhihu.com/equation?tex=T%28t%29+%3D+%5Cexp%28tA%29" alt="T(t) = \exp(tA)" eeimg="1">
+                    ，带入Laplace变换：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+L%28%5Clambda%29+%26%3D+%5Cint_%7B%5Cmathbb+R%5E%2B%7D+%5Ctext+e%5E%7B-%5Clambda+t%7DT%28t%29dt+%5C%5C+%26%3D+%5Cint_%7B%5Cmathbb+R%5E%2B%7D+%5Ctext+e%5E%7B-%5Clambda+t%7D%5Ctext+e%5E%7BtA%7Ddt+%5C%5C+%26%3D+%5Cint_%7B%5Cmathbb+R%5E%2B%7D+%5Ctext+e%5E%7B%28A-%5Clambda+I%29+t%7D+%5C%5C+%26%3D+%28%5Clambda+I+-+A%29%5E%7B-1%7D+%5C%5C+%26%3D+R_%5Clambda%28A%29+%5Cend%7Balign%7D+%5Ctag%7B10%7D" alt="\begin{align} L(\lambda) &amp;= \int_{\mathbb R^+} \text e^{-\lambda t}T(t)dt \\ &amp;= \int_{\mathbb R^+} \text e^{-\lambda t}\text e^{tA}dt \\ &amp;= \int_{\mathbb R^+} \text e^{(A-\lambda I) t} \\ &amp;= (\lambda I - A)^{-1} \\ &amp;= R_\lambda(A) \end{align} \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    上式联系了算子半群的Laplace变换
+                    <img src="https://www.zhihu.com/equation?tex=L%28%5Clambda%29+%3D+%5Cint_%7B%5Cmathbb+R%5E%2B%7D+%5Ctext+e%5E%7B-%5Clambda+t%7DT%28t%29dt" alt="L(\lambda) = \int_{\mathbb R^+} \text e^{-\lambda t}T(t)dt" eeimg="1">
+                    与无穷小生成元的预解式
+                    <img src="https://www.zhihu.com/equation?tex=R_%5Clambda%28A%29+%3D+%28%5Clambda+I+-+A%29%5E%7B-1%7D" alt="R_\lambda(A) = (\lambda I - A)^{-1}" eeimg="1">
+                    。作为一个形式化的表述，等式两边都是算子，需要讨论在何等条件下可以满足以上关系。
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Hille-Yosida定理
+                    </b>
+                </h2>
+                <p>
+                    由于篇幅过大，我们不加证明地给出以下引理和定理，细节请参考Yosida的泛函分析。
+                    <a href="https://zhuanlan.zhihu.com/p/56277809" class="internal">
+                        MP100：泛函分析补习班(4)：单参数酉群
+                    </a>
+                    上讲给出了单参数酉群的Stone定理。在本讲算子半群的语境下，Stone定理的现代表述为：闭稠定算子
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    是Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的单参数强连续酉算子群
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BU%28t%29%2C%5C+t%5Cin%5Cmathbb+R%5E%2B%5C%7D" alt="\{U(t),\ t\in\mathbb R^+\}" eeimg="1">
+                    的无穷小生成元，当且仅当存在自伴算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=B%3D%5Ctext+iA" alt="B=\text iA" eeimg="1">
+                    ，此时
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=U%28t%29+%3D+%5Ctext+e%5E%7B%5Ctext+itA%7D+%5C%5C" alt="U(t) = \text e^{\text itA} \\" eeimg="1">
+                </p>
+                <p>
+                    称自伴算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    生成了强连续酉算子群
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BU%28t%29%2C%5C+t%5Cin%5Cmathbb+R%5E%2B%5C%7D" alt="\{U(t),\ t\in\mathbb R^+\}" eeimg="1">
+                    。酉算子半群和指数映射的生成关系，在更广泛的算子半群中，发展为压缩半群的相关理论。
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定义
+                    </b>
+                    ：如果（强连续线性）算子半群的算子模
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7CT%28t%29%5C%7C+%5Cleq+1" alt="\|T(t)\| \leq 1" eeimg="1">
+                    ，称其为（强连续线性算子）
+                    <b>
+                        压缩半群(contraction semigroup)
+                    </b>
+                    。压缩半群的定义给出的条件可以让(10)式中的积分在
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BRe%7D%28%5Clambda%29+%3E+0" alt="\text{Re}(\lambda) &gt; 0" eeimg="1">
+                    时收敛，且构成一个有界线性算子并满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7CR_%5Clambda%5C%7C+%5Cleq+%5Cint_%7B%5Cmathbb+R%5E%2B%7D+%5Ctext+e%5E%7B-%5Ctext%7BRe%7D%28%5Clambda%29+t%7Ddt+%3D+%5Cfrac%7B1%7D%7B%5Ctext%7BRe%7D%28%5Clambda%29%7D+++%5Ctag%7B11%7D" alt="\|R_\lambda\| \leq \int_{\mathbb R^+} \text e^{-\text{Re}(\lambda) t}dt = \frac{1}{\text{Re}(\lambda)}   \tag{11}" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        引理
+                    </b>
+                    ：令
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为压缩半群
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BT%28t%29+%5C+%7C+%5C+t+%5Cin+%5Cmathbb+R%5E%2B+%5C%7D" alt="\{T(t) \ | \ t \in \mathbb R^+ \}" eeimg="1">
+                    的生成元，则
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B+%5Clambda+%5Cin+%5Cmathbb+C+%5C+%7C+%5C+%5Ctext%7BRe%7D%28%5Clambda%29+%3E+0+%5C%7D+%5Csubset+%5Crho%28A%29" alt="\{ \lambda \in \mathbb C \ | \ \text{Re}(\lambda) &gt; 0 \} \subset \rho(A)" eeimg="1">
+                    ，且当
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BRe%7D%28%5Clambda%29+%3E+0" alt="\text{Re}(\lambda) &gt; 0" eeimg="1">
+                    时，(10)成立。
+                </p>
+                <p>
+                    <b>
+                        定理(Hille-Yosida)
+                    </b>
+                    ：线性稠定闭算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是压缩半群的生成元，iff
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E%2B+%5Csubset+%5Crho%28A%29" alt="\mathbb R^+ \subset \rho(A)" eeimg="1">
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5C%7CR_%5Clambda%28A%29%5C%7C+%5Cleq+%5Cfrac%7B1%7D%7B%5Clambda%7D" alt="\|R_\lambda(A)\| \leq \frac{1}{\lambda}" eeimg="1">
+                        在
+                        <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Clambda+%3E0" alt="\forall \lambda &gt;0" eeimg="1">
+                        成立
+                    </li>
+                </ol>
+                <p>
+                    <b>
+                        定理(Hille-Yosida-Phillips)
+                    </b>
+                    ：线性稠定闭算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是强连续算子半群的生成元，iff
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Comega_0+%3E0+%5C+%5Ctext%7Bs.t.%7D%5C+%28%5Comega_0%2C%5Cinfty%29+%5Csubset+%5Crho%28A%29" alt="\exists \omega_0 &gt;0 \ \text{s.t.}\ (\omega_0,\infty) \subset \rho(A)" eeimg="1">
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Cexists+M+%3E+0" alt="\exists M &gt; 0" eeimg="1">
+                        ，使得当
+                        <img src="https://www.zhihu.com/equation?tex=%5Clambda+%3E+%5Comega+%3E+%5Comega_0" alt="\lambda &gt; \omega &gt; \omega_0" eeimg="1">
+                        时
+                        <img src="https://www.zhihu.com/equation?tex=%5C%7C+%28%5Clambda+-+A%29%5E%7B-k%7D+%5C%7C+%5Cleq+%5Cfrac%7BM%7D%7B%28%5Clambda+-+%5Comega%29%5Ek%7D" alt="\| (\lambda - A)^{-k} \| \leq \frac{M}{(\lambda - \omega)^k}" eeimg="1">
+                    </li>
+                </ol>
+                <p>
+                    以上层层推进最终给出了算子微分方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+%5Cfrac%7Bdx%28t%29%7D%7Bdt%7D+%26%3D+Ax+%5C%5C+x%280%29+%26%3D+x_0+%5Cend%7Bcases%7D+%5Ctag%7B12%7D" alt="\begin{cases} \frac{dx(t)}{dt} &amp;= Ax \\ x(0) &amp;= x_0 \end{cases} \tag{12}" eeimg="1">
+                </p>
+                <p>
+                    的存在唯一解正是
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29+%3D+T%28t%29x_0" alt="x(t) = T(t)x_0" eeimg="1">
+                    。这是(3)的更加推广的算子形式。在ODE或矩阵ODE中，并没有增加任何需要理解的地方，而在更一般的算子微分方程中，前面的定理就是基本的保障。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

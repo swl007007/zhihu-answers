@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP21：代数加油站(1)：同态的像与核、闭与恰当
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-2cd35bd0c91e77b426db76b0e8d6cc41_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44758141" target="_blank">
+                        MP21：代数加油站(1)：同态的像与核、闭与恰当
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-26
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    不了解
+                    <b>
+                        Stokes公式
+                    </b>
+                    就无法以现代眼光了解电动力学以及后面更多的现代数学物理概念；
+                </p>
+                <p>
+                    不学习
+                    <b>
+                        同调群
+                    </b>
+                    就无法深刻地理解Stokes公式背后的拓扑背景；
+                </p>
+                <p>
+                    不学习
+                    <b>
+                        群论
+                    </b>
+                    就无法深刻理解同调群；
+                </p>
+                <p>
+                    ...
+                </p>
+                <p>
+                    用计算机科学的话说，这是一个堆栈(stack)，它迫使我们在学习电动力学前先往下深挖几层，最深的那一层永远是代数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本讲先系统讲解一下商结构。简单地说，通过商实现了信息压缩，把不必要的干扰信息都商掉了（就像除法一样），只留下感兴趣的等价结构。然后介绍群的商群、引入群同态定理，介绍同态的像与核。
+                </p>
+                <p>
+                    然后，我们给出一个平行投影的例子，深入讲解像与核在映射中所起的作用。最后我们还介绍了其它的一些相关代数概念，包括余像、余核、恰当、闭。
+                </p>
+                <hr>
+                <p>
+                    <b>
+                        同调群
+                    </b>
+                    大约是这样一个公式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H_i%28A%29+%3D+%5Ctext%7BKer%7D%28%5Cpartial_i%29%2F%5Ctext%7BIm%7D%28%5Cpartial_%7Bi%2B1%7D%29" alt="H_i(A) = \text{Ker}(\partial_i)/\text{Im}(\partial_{i+1})" eeimg="1">
+                </p>
+                <p>
+                    待我们往后推进，还会遇到一个概念叫做上同调(cohomology)，它又会表现出类似的形式。为了让大家在后面不要疯掉，也为了让笔者的阐述以后可以更加简洁，我们不得不在现在就给大家在代数上加点油了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        商、同态的像与核
+                    </b>
+                </h2>
+                <p>
+                    学习数学一直会遇到
+                    <b>
+                        商(quotient)
+                    </b>
+                    结构的问题。从不定积分到余切空间，我们都大量用到了等价关系构造的
+                    <b>
+                        商集
+                    </b>
+                    。紧接着要学习的同调群也是一个
+                    <b>
+                        商群
+                    </b>
+                    结构。我们在这里系统讲解一下商结构。简单地说，通过商实现了信息压缩，把不必要的干扰信息都商掉了（就像除法一样），只留下感兴趣的等价结构。比如说整数的同余就是等价关系，在二进制中，对
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    的同余相当于二进制的最后一位，分为奇偶两个等价类。计算机中经常用最后一位来进行容错处理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在朴素的集合论中没有定义群那样的运算，只有两条性质是我们可以往后发展的
+                </p>
+                <ol>
+                    <li>
+                        集合
+                        <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                        上的等价关系
+                        <img src="https://www.zhihu.com/equation?tex=%5Csim" alt="\sim" eeimg="1">
+                        ，利用等价关系可以构建商集
+                        <img src="https://www.zhihu.com/equation?tex=S%2F%5Csim" alt="S/\sim" eeimg="1">
+                        ，或者说对集合进行划分
+                    </li>
+                    <li>
+                        映射
+                        <img src="https://www.zhihu.com/equation?tex=f%3AS+%5Cto+S%5E%5Cprime" alt="f:S \to S^\prime" eeimg="1">
+                        的像
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28f%29+%5Csubset+S%5E%5Cprime" alt="\text{Im}(f) \subset S^\prime" eeimg="1">
+                    </li>
+                </ol>
+                <p>
+                    在类似的Abel群同态
+                    <img src="https://www.zhihu.com/equation?tex=f%3AG+%5Cto+G%5E%5Cprime" alt="f:G \to G^\prime" eeimg="1">
+                    中，由于群本身更加丰富的结构，以及群同态对群结构的保持，在以上集合映射的性质中增加了一些重要的概念
+                </p>
+                <ol>
+                    <li>
+                        群
+                        <img src="https://www.zhihu.com/equation?tex=G%5E%5Cprime" alt="G^\prime" eeimg="1">
+                        的单位元
+                        <img src="https://www.zhihu.com/equation?tex=0%5E%5Cprime" alt="0^\prime" eeimg="1">
+                        所确定的映射的核
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28f%29+%5Csubset+G" alt="\text{Ker}(f) \subset G" eeimg="1">
+                    </li>
+                    <li>
+                        Abel群的加法和逆元确定了减法
+                        <img src="https://www.zhihu.com/equation?tex=-" alt="-" eeimg="1">
+                        ，两个群元
+                        <img src="https://www.zhihu.com/equation?tex=x%2Cy+%5Cin+G" alt="x,y \in G" eeimg="1">
+                        之间通过减法得到的差异
+                        <img src="https://www.zhihu.com/equation?tex=x-y" alt="x-y" eeimg="1">
+                        落在映射的核中：
+                        <img src="https://www.zhihu.com/equation?tex=x-y+%5Cin+%5Ctext%7BKer%7D%28f%29" alt="x-y \in \text{Ker}(f)" eeimg="1">
+                        ，这样确定了等价关系
+                        <img src="https://www.zhihu.com/equation?tex=x+%5Csim+y" alt="x \sim y" eeimg="1">
+                        及其商结构
+                        <img src="https://www.zhihu.com/equation?tex=G%2F%5Csim" alt="G/\sim" eeimg="1">
+                    </li>
+                </ol>
+                <p>
+                    由于我们是通过减法来构造等价关系的，这种操作仅限于Abel群（否则不能保证减法的存在）。代数中证明了Abel群的子群都是
+                    <b>
+                        正规子群
+                    </b>
+                    。而群对其正规子群可以构造
+                    <b>
+                        商群
+                    </b>
+                    ，它就是我们通过减法构造的等价关系所诱导的商群
+                    <img src="https://www.zhihu.com/equation?tex=G%2F%5Csim" alt="G/\sim" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        群同态定理
+                    </b>
+                </h2>
+                <p>
+                    群论中最基本的群同态定理是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=G%2F%5Ctext%7BKer%7D%28f%29+%5Csimeq+%5Ctext%7BIm%7D%28f%29" alt="G/\text{Ker}(f) \simeq \text{Im}(f)" eeimg="1">
+                </p>
+                <p>
+                    这个定理通过构造商群，以同构（单满同态）表达式联系了同态的
+                    <b>
+                        像(image)
+                    </b>
+                    与
+                    <b>
+                        核(kernel)
+                    </b>
+                    。定理的证明涉及到正规子群、陪集等技术细节，请参考代数教科书。单满同态为
+                    <b>
+                        同构
+                    </b>
+                    ，同构视为等效。同态的
+                    <b>
+                        核
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28f%29" alt="\text{Ker}(f)" eeimg="1">
+                    体现了
+                    <b>
+                        单射(injective)的程度
+                    </b>
+                    ，同态的
+                    <b>
+                        像
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28f%29" alt="\text{Im}(f)" eeimg="1">
+                    体现了
+                    <b>
+                        满射(surjective)的程度
+                    </b>
+                    ，两者一起描述了同态偏离同构的程度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        平行投影的例子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-1184cf3c8bd56d76f1487ee1244b267d_r.jpg">
+                    <figcaption>
+                        日光的平行投影视为同态，日晷的石板视为线性子空间，日晷的针尖从线性空间投影到石板上，与线性子空间上一点重合
+                    </figcaption>
+                </figure>
+                <p>
+                    我们以三维空间
+                    <img src="https://www.zhihu.com/equation?tex=V%3D%5Cmathbb%7BR%7D%5E3" alt="V=\mathbb{R}^3" eeimg="1">
+                    到日晷石板所在的二维子空间
+                    <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                    的日光平行投影为例子来研究。平行投影是线性映射。这一讲我们只关心群结构，所以平行投影视为两个群之间的同态：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%3AV+%5Cto+W" alt="f:V \to W" eeimg="1">
+                </p>
+                <p>
+                    日晷针尖的影子为何和石板重叠？这是一个
+                    <b>
+                        等价关系
+                    </b>
+                    。令日晷针尖为
+                    <img src="https://www.zhihu.com/equation?tex=v%5Cin+V" alt="v\in V" eeimg="1">
+                    ，投影的作用
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Cmapsto+w%3Df%28v%29+%5Cin+W" alt="v \mapsto w=f(v) \in W" eeimg="1">
+                </p>
+                <p>
+                    把针尖映射到石板上的点
+                    <img src="https://www.zhihu.com/equation?tex=f%28v%29" alt="f(v)" eeimg="1">
+                    ，这一点就是针尖的影子。同时，这一点也是石板上的点，影子和石板重叠，所以
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    显然不是单射。我们用
+                    <img src="https://www.zhihu.com/equation?tex=f%28v%29" alt="f(v)" eeimg="1">
+                    强调影子，它来源于针尖
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    ；用
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    强调石板上的点，它本身不受针尖的影响。
+                </p>
+                <p>
+                    日晷针尖
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    的影子
+                    <img src="https://www.zhihu.com/equation?tex=f%28v%29" alt="f(v)" eeimg="1">
+                    和石板上的点
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    重合，即
+                    <img src="https://www.zhihu.com/equation?tex=w%3Df%28v%29" alt="w=f(v)" eeimg="1">
+                    。投影后
+                    <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                    上重合的两点，构成
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上的等价关系
+                    <img src="https://www.zhihu.com/equation?tex=w+%5Csim+f%28v%29" alt="w \sim f(v)" eeimg="1">
+                    。在
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    中，根据Abel群的运算可以构造减法，得到
+                    <img src="https://www.zhihu.com/equation?tex=w-v+%5Cin+V" alt="w-v \in V" eeimg="1">
+                    ，这是空间中两点的差向量，与投影方向平行。投影
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    的方向向量可以构造一个线性子空间
+                    <img src="https://www.zhihu.com/equation?tex=W%5E%5Cbot" alt="W^\bot" eeimg="1">
+                    ，它是投影面
+                    <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                    的
+                    <b>
+                        正交补
+                    </b>
+                    ，即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V+%3D+W+%5Coplus+W%5E%5Cbot" alt="V = W \oplus W^\bot" eeimg="1">
+                </p>
+                <p>
+                    日晷针尖
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    和石板上的点
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    的差向量
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=w-v+%5Cin+W%5E%5Cbot" alt="w-v \in W^\bot" eeimg="1">
+                </p>
+                <p>
+                    而注意到投影方向上任意向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+w%5E%5Cbot+%5Cin+W%5E%5Cbot%3A+f%28w%5E%5Cbot%29+%3D+0" alt="\forall w^\bot \in W^\bot: f(w^\bot) = 0" eeimg="1">
+                    ，不难验证
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=W%5E%5Cbot+%3D+%5Ctext%7BKer%7D%28f%29" alt="W^\bot = \text{Ker}(f)" eeimg="1">
+                </p>
+                <p>
+                    从群的角度看，投影同态的核
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28f%29" alt="\text{Ker}(f)" eeimg="1">
+                    诱导了空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    中的等价关系，使得空间中
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy+%5Cin+V" alt="x,y \in V" eeimg="1">
+                    只要满足
+                    <img src="https://www.zhihu.com/equation?tex=x-y+%5Cin+%5Ctext%7BKer%7D%28f%29" alt="x-y \in \text{Ker}(f)" eeimg="1">
+                    就是等价的，整个空间的等价类就是投影面：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V%2F%5Ctext%7BKer%7D%28f%29+%5Csimeq+W" alt="V/\text{Ker}(f) \simeq W" eeimg="1">
+                </p>
+                <p>
+                    用我们的例子说，如果空间中两点
+                    <img src="https://www.zhihu.com/equation?tex=x%2Cy+%5Cin+V" alt="x,y \in V" eeimg="1">
+                    之差在投影映射核的方向上
+                    <img src="https://www.zhihu.com/equation?tex=x-y+%5Cin+%5Ctext%7BKer%7D%28f%29" alt="x-y \in \text{Ker}(f)" eeimg="1">
+                    ，那么这两点在投影面上重合，即视作一点
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3Df%28y%29" alt="f(x)=f(y)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在再看群论中最基本的定理，用例子中的符号表达为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V%2F%5Ctext%7BKer%7D%28f%29+%5Csimeq+%5Ctext%7BIm%7D%28f%29+%3D+W" alt="V/\text{Ker}(f) \simeq \text{Im}(f) = W" eeimg="1">
+                </p>
+                <blockquote>
+                    这个定理通过构造商群，以同构（单满同态）表达式联系了同态的
+                    <b>
+                        像(image)
+                    </b>
+                    与
+                    <b>
+                        核(kernel)
+                    </b>
+                    。单满同态为
+                    <b>
+                        同构
+                    </b>
+                    ，同构视为等效。同态的
+                    <b>
+                        核
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28f%29" alt="\text{Ker}(f)" eeimg="1">
+                    体现了
+                    <b>
+                        单射的程度
+                    </b>
+                    ，同态的
+                    <b>
+                        像
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28f%29" alt="\text{Im}(f)" eeimg="1">
+                    体现了
+                    <b>
+                        满射的程度
+                    </b>
+                    ，两者一起描述了同态偏离同构的程度。
+                </blockquote>
+                <p>
+                    我们可以将其理解为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Csimeq+%5Ctext%7BIm%7D%28f%29+%5Coplus+%5Ctext%7BKer%7D%28f%29+%3D+W+%5Coplus+%5Ctext%7BKer%7D%28f%29" alt="V \simeq \text{Im}(f) \oplus \text{Ker}(f) = W \oplus \text{Ker}(f)" eeimg="1">
+                </p>
+                <p>
+                    其中的意思请仔细体味。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        余像和余核
+                    </b>
+                </h2>
+                <p>
+                    按照
+                    <a href="https://link.zhihu.com/?target=https%3A//www.amazon.cn/dp/B0066LPIOA/ref%3Dsr_1_4%3Fie%3DUTF8%26qid%3D1537323477%26sr%3D8-4%26keywords%3Dhomological%2Balgebra" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        [E.Cartan 1956] Homological Algebra
+                    </a>
+                    的写法，同态
+                    <img src="https://www.zhihu.com/equation?tex=f%3AA+%5Cto+B" alt="f:A \to B" eeimg="1">
+                    可以定义
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+%5Ctext%7BCoim%7D%28f%29+%3D+A%2F%5Ctext%7BKer%7D%28f%29+%5C%5C+%5Ctext%7BCoker%7D%28f%29+%3D+B%2F%5Ctext%7BIm%7D%28f%29+%5Cend%7Bcases%7D+" alt="\begin{cases} \text{Coim}(f) = A/\text{Ker}(f) \\ \text{Coker}(f) = B/\text{Im}(f) \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    读作：映射的
+                    <b>
+                        余像(coimage)
+                    </b>
+                    就是定义域对映射
+                    <b>
+                        核(kernel)
+                    </b>
+                    的商集，映射的
+                    <b>
+                        余核(cokernel)
+                    </b>
+                    就是值域对映射
+                    <b>
+                        像(image)
+                    </b>
+                    的商集。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在前面平行投影的例子中
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%3AV+%5Cto+W" alt="f:V \to W" eeimg="1">
+                </p>
+                <p>
+                    映射的余像
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BCoim%7D%28f%29+%3D+V%2F%5Ctext%7BKer%7D%28f+%29" alt="\text{Coim}(f) = V/\text{Ker}(f )" eeimg="1">
+                    相当于让我们让我们站在投影的角度去看空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    ，我们看到的是石板
+                    <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                    ，而投影方向的信息
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28f%29" alt="\text{Ker}(f)" eeimg="1">
+                    被“余掉”（等价掉）了。映射的余核
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BCoker%7D%28f%29+%3D+W%2F%5Ctext%7BIm%7D%28f%29" alt="\text{Coker}(f) = W/\text{Im}(f)" eeimg="1">
+                    是平凡的，也就是说，石板
+                    <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                    满满地接受了来自空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    的投影，投影映射是满射。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        闭与恰当
+                    </b>
+                </h2>
+                <p>
+                    深刻认识了像与核的意义之后，就可以进入
+                    <b>
+                        同调代数(homological algebra)
+                    </b>
+                    了。在当前阶段学习中只需要简单掌握最基本的同调代数概念。我们在
+                    <a href="https://zhuanlan.zhihu.com/p/44081214" class="internal">
+                        MP18：反对称、外积、外代数、微分形式
+                    </a>
+                    中讲到过外微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    ，在
+                    <a href="https://zhuanlan.zhihu.com/p/44758074" class="internal">
+                        MP20：单形、复形、链群和边界算子
+                    </a>
+                    中讲到过边界算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial" alt="\partial" eeimg="1">
+                    ，它们共同的特点是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=d%5E2+%3D+0" alt="d^2 = 0" eeimg="1">
+                    ，微分形式的外微分是平凡的
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial%5E2+%3D+0" alt="\partial^2 = 0" eeimg="1">
+                    ，边界是没有边界的
+                </p>
+                <p>
+                    实际上这两个算子是对偶的，将来我们会了解到，这种对偶性会体现在Stokes公式和同调-上同调对偶关系中。我们在下一讲会用边界算子构造同调群，这里我们以外微分算子为例，如果存在以下复合映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=d_1+%5Ccirc+d_2+%3A+%5Calpha+%5Cmapsto+d_2%5Calpha+%3D+%5Comega+%5Cmapsto+d_1%5Comega+%3D+0" alt="d_1 \circ d_2 : \alpha \mapsto d_2\alpha = \omega \mapsto d_1\omega = 0" eeimg="1">
+                </p>
+                <p>
+                    可以理解为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Calpha%3A+%5Calpha+%5Cmapsto+d_2%5Calpha+%3D+%5Comega+%5CRightarrow+%5Comega+%5Cin+%5Ctext%7BIm%7D%28d_2%29" alt="\exists \alpha: \alpha \mapsto d_2\alpha = \omega \Rightarrow \omega \in \text{Im}(d_2)" eeimg="1">
+                    ，此刻称
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    为
+                    <b>
+                        闭形式(closed form)
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega+%5Cmapsto+d_1%5Comega+%3D+0+%5CRightarrow+%5Ctext%7BKer%7D%28d_1%29" alt="\omega \mapsto d_1\omega = 0 \Rightarrow \text{Ker}(d_1)" eeimg="1">
+                    ，此刻称
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega" alt="\omega" eeimg="1">
+                    为
+                    <b>
+                        恰当形式(exact form)
+                    </b>
+                </p>
+                <p>
+                    由于复合映射
+                    <img src="https://www.zhihu.com/equation?tex=d%5E2%3Dd_1+%5Ccirc+d_2+%3D+0" alt="d^2=d_1 \circ d_2 = 0" eeimg="1">
+                    ，有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28d_2%29+%5Csubseteq+%5Ctext%7BKer%7D%28d_1%29" alt="\text{Im}(d_2) \subseteq \text{Ker}(d_1)" eeimg="1">
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

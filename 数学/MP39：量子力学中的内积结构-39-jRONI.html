@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP39：量子力学中的内积结构
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-7edab2400cee699bb94bddc014733a08_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44825641" target="_blank">
+                        MP39：量子力学中的内积结构
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-19
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    我们在这一系列的主要关注点是线性算子。为了尽快进入线性算子的学习，上一讲介绍了一些基本的泛函分析概念：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46403590" class="internal">
+                        MP38：泛函分析与量子力学
+                    </a>
+                </p>
+                <p>
+                    我们泛泛了解了Banach空间、Hilbert空间、线性算子等概念。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本讲我们详细讨论自伴算子、Hermite复共轭及构建其上的Hilbert空间。
+                </p>
+                <ul>
+                    <li>
+                        我们先从实转置矩阵开始，介绍线性代数中对偶空间的拉回映射。然后从实转置矩阵推广到Banach空间，介绍了伴随算子和自伴算子的概念；
+                    </li>
+                    <li>
+                        为了处理量子力学中的频域/动量方面的问题，需要引入Fourier分析等工具，所以有必要处理复自伴算子。我们仍然从复矩阵开始，将实转置对应为复共轭转置，形成自伴算子，然后从复共轭转置矩阵推广到复平方可积空间。相应地，复Hermite内积也对应到平方可积函数的Hermite共轭内积。
+                    </li>
+                    <li>
+                        最后我们介绍Dirac符号，在前面的内积结构下理解Dirac符号是非常自然的。
+                    </li>
+                </ul>
+                <hr>
+                <h2>
+                    <b>
+                        实转置矩阵
+                    </b>
+                </h2>
+                <p>
+                    线性代数中的实矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+%5Ba_i%5Ej%5D+%5Cin+%5Cmathbb%7BR%7D%5E%7Bm+%5Ctimes+n%7D" alt="A = [a_i^j] \in \mathbb{R}^{m \times n}" eeimg="1">
+                    可以看作线性算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D%5Em" alt="\mathbb{R}^n \to \mathbb{R}^m" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cmapsto+y+%3DAx" alt="x \mapsto y =Ax" eeimg="1">
+                </p>
+                <p>
+                    反过来，转置矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A%5ET+%3D+%5Ba_j%5Ei%5D+%5Cin+%5Cmathbb%7BR%7D%5E%7Bn+%5Ctimes+m%7D" alt="A^T = [a_j^i] \in \mathbb{R}^{n \times m}" eeimg="1">
+                    可以看作线性算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5Em+%5Cto+%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^m \to \mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    在有限维线性空间中，对偶空间之间同维同构，于是转置矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A%5ET" alt="A^T" eeimg="1">
+                    也可以视为对偶空间的拉回映射
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A" alt="A^*" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BR%7D%5Em%29%5E%2A+%5Cto+%28%5Cmathbb%7BR%7D%5En%29%5E%2A" alt="(\mathbb{R}^m)^* \to (\mathbb{R}^n)^*" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=y%5E%2A+%5Cmapsto+x%5E%2A+%3D+A%5E%2Ay%5E%2A" alt="y^* \mapsto x^* = A^*y^*" eeimg="1">
+                </p>
+                <p>
+                    且可以验证，在实行列向量的自然内积意义下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+A%5E%2A+y%5E%2A%2C+x+%5Crangle+%3D+%5Clangle+y%5E%2A%2C+Ax+%5Crangle%2C+%5Cforall+y%5E%2A%5Cin+%28%5Cmathbb%7BR%7D%5Em%29%5E%2A%2C+x+%5Cin+%5Cmathbb%7BR%7D%5En" alt="\langle A^* y^*, x \rangle = \langle y^*, Ax \rangle, \forall y^*\in (\mathbb{R}^m)^*, x \in \mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        伴随算子与自伴算子
+                    </b>
+                </h2>
+                <p>
+                    转置矩阵的性质可以推广到泛函分析中，令
+                    <img src="https://www.zhihu.com/equation?tex=A%3AX+%5Cto+Y" alt="A:X \to Y" eeimg="1">
+                    是Banach空间之间的有界线性算子。
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的
+                    <b>
+                        伴随(adjoint)
+                    </b>
+                    算子为对偶空间的有界线性算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A%3AY%5E%2A+%5Cto+X%5E%2A" alt="A^*:Y^* \to X^*" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28A%5E%2A+y%5E%2A%29%28x%29+%3D+y%5E%2A%28Ax%29%2C+%5Cforall+y%5E%2A%5Cin+%28%5Cmathbb%7BR%7D%5Em%29%5E%2A%2C+x+%5Cin+%5Cmathbb%7BR%7D%5En" alt="(A^* y^*)(x) = y^*(Ax), \forall y^*\in (\mathbb{R}^m)^*, x \in \mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    注意这里并没有用内积符号，因为不需要内积那么强的条件。上式的左边是双线性映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%5E%2A+%5Ctimes+X+%5Cto+%5Cmathbb%7BF%7D" alt="X^* \times X \to \mathbb{F}" eeimg="1">
+                </p>
+                <p>
+                    右边则是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Y%5E%2A+%5Ctimes+Y+%5Cto+%5Cmathbb%7BF%7D" alt="Y^* \times Y \to \mathbb{F}" eeimg="1">
+                </p>
+                <p>
+                    伴随算子联系着对偶空间的运算。Hilbert空间上的有界算子若满足
+                    <img src="https://www.zhihu.com/equation?tex=A%3DA%5E%2A" alt="A=A^*" eeimg="1">
+                    则称为
+                    <b>
+                        自伴(self-adjoint)
+                    </b>
+                    算子。
+                </p>
+                <h2>
+                    <br>
+                    <br>
+                    <b>
+                        复共轭转置
+                    </b>
+                </h2>
+                <p>
+                    在量子力学中，需要用Fourier变换处理时域/频域、位置/动量的联系。我们一步步阐述这个过程，首先要把实矩阵转置和自伴的概念推广到复矩阵的共轭转置和自伴。线性代数中的复方矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    可以视为复内积向量空间
+                    <img src="https://www.zhihu.com/equation?tex=V%5Clangle+%5Ccdot%2C+%5Ccdot+%5Crangle" alt="V\langle \cdot, \cdot \rangle" eeimg="1">
+                    上的自线性映射，若满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+A%5E%5Cdagger+%3D%28+%5Coverline%7BA%7D%29%5ET" alt="A = A^\dagger =( \overline{A})^T" eeimg="1">
+                </p>
+                <p>
+                    即矩阵等于其
+                    <b>
+                        共轭转置(conjugate transpose)
+                    </b>
+                    ，称为
+                    <b>
+                        Hermite(厄米、厄尔米特、Hermitian)
+                    </b>
+                    的。根据有限维的谱定理，
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上存在一个
+                    <b>
+                        正交归一(orthonormal)
+                    </b>
+                    基，在这个基上
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    可以按照实数
+                    <b>
+                        特征值(eigenvalue)
+                    </b>
+                    对角化，成为
+                    <b>
+                        对角矩阵(diagonal matrix)
+                    </b>
+                    。
+                </p>
+                <p>
+                    量子力学常见的可观测量有位置算子、动量算子、角动量算子、自旋算子、Hamilton算子等。在泛函分析和量子力学的学习中，很大的篇幅就是将前面的结果推广到一般的自伴算子，乃至没有自伴这样强条件的算子上：
+                </p>
+                <ul>
+                    <li>
+                        有限维线性代数
+                        <img src="https://www.zhihu.com/equation?tex=%5Cto" alt="\to" eeimg="1">
+                        无穷维线性泛函分析
+                    </li>
+                    <li>
+                        有限维复内积向量空间
+                        <img src="https://www.zhihu.com/equation?tex=%5Cto" alt="\to" eeimg="1">
+                        可分（可数无穷维）Hilbert空间
+                    </li>
+                    <li>
+                        共轭转置的Hermite矩阵
+                        <img src="https://www.zhihu.com/equation?tex=%5Cto" alt="\to" eeimg="1">
+                        自伴算子
+                    </li>
+                    <li>
+                        对角矩阵的实对角元
+                        <img src="https://www.zhihu.com/equation?tex=%5Cto" alt="\to" eeimg="1">
+                        算子的实特征值
+                    </li>
+                </ul>
+                <p>
+                    <br>
+                    注意到，自伴本身是按照对偶空间上的双线性映射来给定的，并没有强制要求有一个内积结构（因为内积的结构更强）。按照自然基坐标的实内积给定双线性映射，那么实矩阵情形中自伴算子就是转置矩阵。现在考虑复数情况：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+%5Ba_i%5Ej%5D+%5Cin+%5Cmathbb%7BC%7D%5E%7Bn+%5Ctimes+n%7D" alt="A = [a_i^j] \in \mathbb{C}^{n \times n}" eeimg="1">
+                </p>
+                <p>
+                    复向量的Hermite内积是通过共轭实现的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BC%7D%5En+%5Ctimes+%5Cmathbb%7BC%7D%5En+%5Cto+%5Cmathbb%7BC%7D" alt="\mathbb{C}^n \times \mathbb{C}^n \to \mathbb{C}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28z%3Dx%2Biy%2C+w%3Du%2Biv%29+%5Cmapsto+%5Clangle+z%2C+w+%5Crangle+%3D+z%5Ei%5Coverline%7Bw%7D_i" alt="(z=x+iy, w=u+iv) \mapsto \langle z, w \rangle = z^i\overline{w}_i" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%28x%5Eiu_i%2By%5Eiv_i%29+%2B+i%28y%5Eiu_i-x%5Eiv_i%29" alt="=(x^iu_i+y^iv_i) + i(y^iu_i-x^iv_i)" eeimg="1">
+                </p>
+                <p>
+                    它的实部是实内积，虚部是辛形式（相差一个负号）。
+                </p>
+                <p>
+                    <br>
+                    现在考虑复矩阵
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+%5Ba_i%5Ej%5D+%5Cin+%5Cmathbb%7BC%7D%5E%7Bn+%5Ctimes+n%7D" alt="A = [a_i^j] \in \mathbb{C}^{n \times n}" eeimg="1">
+                </p>
+                <p>
+                    及其转置共轭矩阵
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%5Cdagger+%3D+%5Coverline%7B%5Ba_j%5Ei%5D%7D+%5Cin+%5Cmathbb%7BC%7D%5E%7Bn+%5Ctimes+n%7D" alt="A^\dagger = \overline{[a_j^i]} \in \mathbb{C}^{n \times n}" eeimg="1">
+                </p>
+                <p>
+                    也可以视为对偶空间的拉回映射
+                    <img src="https://www.zhihu.com/equation?tex=A%5E%2A" alt="A^*" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb%7BC%7D%5En%29%5E%2A+%5Cto+%28%5Cmathbb%7BC%7D%5En%29%5E%2A" alt="(\mathbb{C}^n)^* \to (\mathbb{C}^n)^*" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=y%5E%2A+%5Cmapsto+x%5E%2A%3DA%5E%2Ay%5E%2A" alt="y^* \mapsto x^*=A^*y^*" eeimg="1">
+                </p>
+                <p>
+                    且可以验证，在复向量的Hermite内积意义下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+A%5E%2A+y%5E%2A%2C+x+%5Crangle+%3D+%5Clangle+y%5E%2A%2C+Ax+%5Crangle%2C+%5Cforall+y%5E%2A%5Cin+%28%5Cmathbb%7BC%7D%5En%29%5E%2A%2C+x+%5Cin+%5Cmathbb%7BC%7D%5En" alt="\langle A^* y^*, x \rangle = \langle y^*, Ax \rangle, \forall y^*\in (\mathbb{C}^n)^*, x \in \mathbb{C}^n" eeimg="1">
+                </p>
+                <p>
+                    即满足
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+A%5E%5Cdagger" alt="A = A^\dagger" eeimg="1">
+                </p>
+                <p>
+                    的复矩阵为自伴算子。
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        复平方可积函数空间——Hilbert空间
+                    </b>
+                </h2>
+                <p>
+                    我们在这里学的知识都是要用到量子力学的。讲到量子力学，Hilbert空间为波函数这种无穷维向量之间建立了复Hermite内积。复向量的Hermite内积
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Ccdot%2C+%5Ccdot+%5Crangle+" alt="\langle \cdot, \cdot \rangle" eeimg="1">
+                    可以推广到平方可积函数空间
+                    <img src="https://www.zhihu.com/equation?tex=L%5E2" alt="L^2" eeimg="1">
+                    上对测度的积分：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cphi%2C+%5Cpsi+%5Crangle+%3D+%5Cint_%5COmega+%5Coverline%7B%5Cphi%28x%29%7D%5Cpsi%28x%29dx" alt="\langle \phi, \psi \rangle = \int_\Omega \overline{\phi(x)}\psi(x)dx" eeimg="1">
+                </p>
+                <p>
+                    构成复Hilbert空间。物理中习惯把共轭放在前面。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29" alt="\psi(x)" eeimg="1">
+                    的概率归一化相当于对自身的内积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cpsi%2C+%5Cpsi+%5Crangle+%3D+%5Cint_%5COmega+%5Coverline%7B%5Cpsi%28x%29%7D%5Cpsi%28x%29dx+%3D+%5Cint_%5COmega+%7C%5Cpsi%28x%29%7C%5E2dx+%3D+1" alt="\langle \psi, \psi \rangle = \int_\Omega \overline{\psi(x)}\psi(x)dx = \int_\Omega |\psi(x)|^2dx = 1" eeimg="1">
+                </p>
+                <p>
+                    它成为了线性二次型，粒子出现在
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的概率密度即
+                    <img src="https://www.zhihu.com/equation?tex=%7C%5Cpsi%28x%29%7C%5E2" alt="|\psi(x)|^2" eeimg="1">
+                    ，这里的要点在于被积项在所有点上都满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Cpsi%28x%29%7D%5Cpsi%28x%29+%3D+%7C%5Cpsi%28x%29%7C%5E2" alt="\overline{\psi(x)}\psi(x) = |\psi(x)|^2" eeimg="1">
+                </p>
+                <p>
+                    这里重要的不是Hilbert空间而是测度积分形式的Hermite内积。实际上许多数学和物理书上都没有讲清为什么要用Hermite内积，为什么要整一个共轭出来？有人说这样是为了保证得到实概率密度，这只理解了一半。我们过去谈过Hermite共轭的几何意义：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/43612010" class="internal">
+                        MP5：内积、外积、面积、Hermit内积、辛内积
+                    </a>
+                </p>
+                <p>
+                    简单地说，两个复数直接相乘是角度相加、旋转合成；而一个复数乘另一个复数的共轭是角度相减。相减是什么？就是夹角，依赖于左右矢量的相位之差，而不依赖于它们的绝对相位。这反应了波函数的绝对相位无关性。
+                </p>
+                <p>
+                    再说Hilbert空间，对于无穷维的两个波函数，终究可以依赖Hermite内积给它们生成一个夹角，虽然无法直观看到，毕竟有夹角了。这个夹角好处太多，可以定义平行、正交，可以投影可以补 。。。。总之是一种花样繁多的二元运算，在局部它们是Hermite内积，在整体他们是Hilbert空间。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Dirac符号
+                    </b>
+                </h2>
+                <p>
+                    理解了内积结构便很容易理解Dirac符号，它最初理解为一对对偶空间上的双线性映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28L%5E2%29%5E%2A+%5Ctimes+L%5E2+%5Cto+%5Cmathbb%7BC%7D" alt="(L^2)^* \times L^2 \to \mathbb{C}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Clangle+%5Cphi%2C+%5Cpsi%5Crangle%29+%5Cmapsto+%5Clangle+%5Cphi%7C%5Cpsi+%5Crangle+%3D+%5Cint_%5COmega+%5Coverline%7B%5Cphi%28x%29%7D%5Cpsi%28x%29dx" alt="(\langle \phi, \psi\rangle) \mapsto \langle \phi|\psi \rangle = \int_\Omega \overline{\phi(x)}\psi(x)dx" eeimg="1">
+                </p>
+                <p>
+                    这个
+                    <b>
+                        括号(bracket)
+                    </b>
+                    被分为
+                    <b>
+                        左矢(bra)
+                    </b>
+                    ，可以理解为无穷维的行向量
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cphi+%5Cin+%28L%5E2%29%5E%2A" alt="\langle \phi \in (L^2)^*" eeimg="1">
+                </p>
+                <p>
+                    和
+                    <b>
+                        右矢(ket)
+                    </b>
+                    ，可以理解为无穷维的列向量
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%5Crangle+%5Cin+L%5E2" alt="\psi\rangle \in L^2" eeimg="1">
+                </p>
+                <p>
+                    按照我们过去的理解，对偶向量作为函数作用如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Clangle+%5Cphi%7C%29%28%5Cpsi+%5Crangle%29+%3D%5Cphi%28%5Cpsi%29+%3D++%5Clangle+%5Cphi%7C%5Cpsi+%5Crangle+%3D+%5Cint_%5COmega+%5Coverline%7B%5Cphi%28x%29%7D%5Cpsi%28x%29dx" alt="(\langle \phi|)(\psi \rangle) =\phi(\psi) =  \langle \phi|\psi \rangle = \int_\Omega \overline{\phi(x)}\psi(x)dx" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上讲给出的Riesz引理让我们得以将以下几种运算联系起来：
+                </p>
+                <ul>
+                    <li>
+                        向量 vs. 向量
+                    </li>
+                    <li>
+                        对偶向量 vs. 对偶向量
+                    </li>
+                    <li>
+                        向量 vs. 对偶向量及vice versa
+                    </li>
+                </ul>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46403590" class="internal">
+                        MP38：泛函分析与量子力学
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在Dirac符号中，默认在Riesz引理的保证下，不再区分这几种情况：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cphi%7CA%7C%5Cpsi+%5Crangle+%3D%28%5Clangle+%5Cphi%7CA%29%7C%5Cpsi+%5Crangle+%3D%5Clangle+%5Cphi%7C%28A%7C%5Cpsi+%5Crangle%29" alt="\langle \phi|A|\psi \rangle =(\langle \phi|A)|\psi \rangle =\langle \phi|(A|\psi \rangle)" eeimg="1">
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

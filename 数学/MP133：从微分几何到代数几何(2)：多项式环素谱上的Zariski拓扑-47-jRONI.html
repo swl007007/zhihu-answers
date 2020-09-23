@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP133：从微分几何到代数几何(2)：多项式环素谱上的Zariski拓扑
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-a060ef20f6add095f6e6166d62e63d66_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/51307794" target="_blank">
+                        MP133：从微分几何到代数几何(2)：多项式环素谱上的Zariski拓扑
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-12-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47077723" class="internal">
+                        MP129：从微分几何到代数几何(1)：函数层
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    代数几何研究多项式的解集，在代数封闭域
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    上，
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维仿射空间
+                    <img src="https://www.zhihu.com/equation?tex=K%5En" alt="K^n" eeimg="1">
+                    有
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    -多项式环
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D+%3D+K%5Bx_1%2C%5Ccdots%2Cx_n%5D+%5C%5C" alt="K[x] = K[x_1,\cdots,x_n] \\" eeimg="1">
+                    它是
+                    <img src="https://www.zhihu.com/equation?tex=K%5En+%5Cto+K" alt="K^n \to K" eeimg="1">
+                    多项式的全体，并由
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    上的运算赋予自然的环的加法、乘法和相应幺元。下图给出了常见的映射关系，带框的部分表示可以定义Zariski拓扑，图中体现了下文中(4)(8)这两个Zariski拓扑和(6)Hilbert零点定理：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-710163943b0e964e3e7f473609d78556_r.jpg">
+                </figure>
+                <p>
+                    孤立点、紧的圆周、嵌入在高维空间的直线、超平面、曲面... 这些都可以构成多项式集合的解集，从直观上人们感觉这些解集是闭集，相应地解集的补集是开集。这种直观通过Zariski拓扑的方式严格表述为Zariski拓扑，后面我们将讨论几个不同的Zariski拓扑空间的关系。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        理想
+                    </b>
+                </h2>
+                <p>
+                    在环论中理想的地位（构造商环）相当于群论中的正规子群（构造商群）。我们注意到对理想的研究远远地多于子环，这是因为理想是一类特殊的子环：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-21e7574a6ba20efd09718b00c4da8db1_r.jpg">
+                    <figcaption>
+                        子环和理想的对比
+                    </figcaption>
+                </figure>
+                <p>
+                    对于环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    理想
+                    <img src="https://www.zhihu.com/equation?tex=I" alt="I" eeimg="1">
+                    ，不仅要求理想自身作为子环的环乘封闭，还要求理想对
+                    <img src="https://www.zhihu.com/equation?tex=R%5Cbackslash+I" alt="R\backslash I" eeimg="1">
+                    中环元能够环乘封闭，故理想
+                    <img src="https://www.zhihu.com/equation?tex=I" alt="I" eeimg="1">
+                    比子环更多反映出环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    本身的性质，而子环
+                    <img src="https://www.zhihu.com/equation?tex=R%5E%5Cprime" alt="R^\prime" eeimg="1">
+                    已经可以完全无视
+                    <img src="https://www.zhihu.com/equation?tex=R%5Cbackslash+R%5E%5Cprime" alt="R\backslash R^\prime" eeimg="1">
+                    的影响。
+                </p>
+                <p>
+                    理想的加法和乘法定义如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak%7Ba%7D%2B%5Cmathfrak%7Bb%7D%3D%5C%7Ba%2Bb+%7C+a+%5Cin+%5Cmathfrak%7Ba%7D+%5Ctext+%7B+and+%7D+b+%5Cin+%5Cmathfrak%7Bb%7D%5C%7D+%5C%5C" alt="\mathfrak{a}+\mathfrak{b}=\{a+b | a \in \mathfrak{a} \text { and } b \in \mathfrak{b}\} \\" eeimg="1">
+                    以及
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak%7Ba%7D+%5Cmathfrak%7Bb%7D%3D%5Cleft%5C%7B+%5Csum_%7Bk%3D1%7D%5En+a_k+b_k+%5C+%7C+%5C+a_k+%5Cin+%5Cmathfrak%7Ba%7D%2C+b_k+%5Cin+%5Cmathfrak%7Bb%7D+%5Cright%5C%7D+%5C%5C" alt="\mathfrak{a} \mathfrak{b}=\left\{ \sum_{k=1}^n a_k b_k \ | \ a_k \in \mathfrak{a}, b_k \in \mathfrak{b} \right\} \\" eeimg="1">
+                </p>
+                <p>
+                    环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    中的子集
+                    <img src="https://www.zhihu.com/equation?tex=S+%5Csubset+R" alt="S \subset R" eeimg="1">
+                    生成的理想记为
+                    <img src="https://www.zhihu.com/equation?tex=%28S%29" alt="(S)" eeimg="1">
+                    。
+                    <br>
+                </p>
+                <h2>
+                    多项式环
+                </h2>
+                <p>
+                    以下映射给出了多项式的公共零点集
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+Z%3A+2%5E%7BK%5Bx%5D%7D+%26%5Cto+K%5En+%5Cnonumber+%5C%5C+S+%26%5Cmapsto+Z%28S%29+%3D+%5C%7B+x+%5Cin+K%5En+%5C+%7C+%5C+%5Cforall+f+%5Cin+S%3A+f%28x%29+%3D+0+%5C%7D+%5Cnonumber+%5Ctag%7B1%7D+%5Cend%7Balign%7D%5C%5C" alt="\begin{align} Z: 2^{K[x]} &amp;\to K^n \nonumber \\ S &amp;\mapsto Z(S) = \{ x \in K^n \ | \ \forall f \in S: f(x) = 0 \} \nonumber \tag{1} \end{align}\\" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=K%5En" alt="K^n" eeimg="1">
+                    中的子集，如果可以表示为多项式集合的公共零点集，称为
+                    <b>
+                        代数集(algebraic set)
+                    </b>
+                    。[Hartshorne1977]给出了代数集上的
+                    <b>
+                        Zariski拓扑(Zariski topology)
+                    </b>
+                    ，相应地将
+                    <img src="https://www.zhihu.com/equation?tex=K%5En" alt="K^n" eeimg="1">
+                    上的闭集构成的集族记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline%7B%5Cmathfrak%7BTop%7D%7D%28K%5En%29" alt="\overline{\mathfrak{Top}}(K^n)" eeimg="1">
+                    （这里借用了开集范畴的记号）。
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-8b7c093f2e31b747029a43e7c8b1c65f_r.jpg">
+                </figure>
+                <p>
+                    反过来考虑：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+I%3A++K%5En+%26%5Cto+2%5E%7BK%5Bx%5D%7D%5Cnonumber+%5C%5C+Y+%26%5Cmapsto+I%28Y%29+%5Cnonumber+%5C%5C+%26++%3D+%5C%7B+f+%5Cin+K%5Bx%5D+%5C+%7C+%5C+%5Cforall+x+%5Cin+Y%3A+f%28x%29+%3D+0+%5C%7D+%5Cnonumber+%5C%5C+%26++%3D+%5C%7B+f+%5Cin+K%5Bx%5D+%5C+%7C+%5C+Y%5Csubset+Z%5C%7Bf%5C%7D+%5C%7D+%5Cnonumber+%5C%5C%5Cend%7Balign%7D%5Ctag%7B2%7D" alt="\begin{align} I:  K^n &amp;\to 2^{K[x]}\nonumber \\ Y &amp;\mapsto I(Y) \nonumber \\ &amp;  = \{ f \in K[x] \ | \ \forall x \in Y: f(x) = 0 \} \nonumber \\ &amp;  = \{ f \in K[x] \ | \ Y\subset Z\{f\} \} \nonumber \\\end{align}\tag{2}" eeimg="1">
+                </p>
+                <p>
+                    即
+                    <img src="https://www.zhihu.com/equation?tex=I%28Y%29" alt="I(Y)" eeimg="1">
+                    是解集包含
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的多项式的集合。
+                </p>
+                <p>
+                    多项式环上定义的乘法和多项式的理想有密切的关系，若
+                    <img src="https://www.zhihu.com/equation?tex=Y+%3D+Z%28S%29+%5Csubset+K%5En" alt="Y = Z(S) \subset K^n" eeimg="1">
+                    是一组多项式
+                    <img src="https://www.zhihu.com/equation?tex=S+%5Cin+K%5En" alt="S \in K^n" eeimg="1">
+                    的解集，显然
+                    <img src="https://www.zhihu.com/equation?tex=I%28Y%29" alt="I(Y)" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=K%5En" alt="K^n" eeimg="1">
+                    的子环，多项式的乘法确保了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+f+%5Cin+I%28Y%29" alt="\forall f \in I(Y)" eeimg="1">
+                    和任意环元
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cin+K%5En" alt="p\in K^n" eeimg="1">
+                    的乘积
+                    <img src="https://www.zhihu.com/equation?tex=fp" alt="fp" eeimg="1">
+                    的解集仍然包含
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    ，于是
+                    <img src="https://www.zhihu.com/equation?tex=I%28Y%29" alt="I(Y)" eeimg="1">
+                    构成一个理想。为了研究代数集
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    ，往往要考虑限制在
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    上相等的多项式等价类（类似函数芽在邻域相等），
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    确定的这个理想诱导了一个商环，称为
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的
+                    <b>
+                        坐标环(coordinate ring)
+                    </b>
+                    或者
+                    <b>
+                        结构环(structure ring)
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D%2FI%28V%29+%5C%5C" alt="K[x]/I(V) \\" eeimg="1">
+                    任意取
+                    <img src="https://www.zhihu.com/equation?tex=g+%5Cin+K%5Bx%5D" alt="g \in K[x]" eeimg="1">
+                    有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+f+%5Cin+S%2C+x%5Cin+Y%3A+%5C+%28fg%29%28x%29+%3D+f%28x%29+g%28x%29+%3D+0+%5CRightarrow+x%5Cin+Z%28fg%29+%5C%5C" alt="\forall f \in S, x\in Y: \ (fg)(x) = f(x) g(x) = 0 \Rightarrow x\in Z(fg) \\" eeimg="1">
+                    它满足了理想中对任意环元的封闭性，于是可以考虑由
+                    <img src="https://www.zhihu.com/equation?tex=S" alt="S" eeimg="1">
+                    生成的理想
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+s+%3D+%28S%29++%5Cin+%5Ctext%7BIdeal%7D%28K%5Bx%5D%29+%5C%5C" alt="\mathfrak s = (S)  \in \text{Ideal}(K[x]) \\" eeimg="1">
+                    对于任意
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin+Y" alt="x\in Y" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=f%5Cin+S" alt="f\in S" eeimg="1">
+                    都满足
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29+%3D+0" alt="f(x) = 0" eeimg="1">
+                    ，故
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    也是它生成的理想中的零点，即
+                    <img src="https://www.zhihu.com/equation?tex=Z%28S%29+%5Csubseteq+Z%28%5Cmathfrak+s%29" alt="Z(S) \subseteq Z(\mathfrak s)" eeimg="1">
+                    。又由于
+                    <img src="https://www.zhihu.com/equation?tex=S+%5Csubseteq+%5Cmathfrak+s+%3D+%28S%29+%5Csubseteq+K%5En" alt="S \subseteq \mathfrak s = (S) \subseteq K^n" eeimg="1">
+                    ，有
+                    <img src="https://www.zhihu.com/equation?tex=Z%28S%29+%5Csupseteq+Z%28%5Cmathfrak+s%29" alt="Z(S) \supseteq Z(\mathfrak s)" eeimg="1">
+                    。于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Z%28S%29+%3D+Z%28%5Cmathfrak+s%29+%5Ctag%7B3%7D" alt="Z(S) = Z(\mathfrak s) \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    由于交换代数的成果，后面的讨论将从多项式环
+                    <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D" alt="K[x]" eeimg="1">
+                    转向环上的理想的集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIdeal%7D%28K%5Bx%5D%29" alt="\text{Ideal}(K[x])" eeimg="1">
+                    。由于多项式集的零点集可以直接替换为多项式集生成的理想的零点集，于是有了对应：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+Z%3A+%5Ctext%7BIdeal%7D%28K%5Bx%5D%29+%26%5Cto+%5Coverline%7B%5Cmathfrak%7BTop%7D%7D%28K%5En%29+%5Cnonumber+%5C%5C+%5Cmathfrak+s+%26%5Cmapsto+Z%28%5Cmathfrak+s%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B4%7D" alt="\begin{align} Z: \text{Ideal}(K[x]) &amp;\to \overline{\mathfrak{Top}}(K^n) \nonumber \\ \mathfrak s &amp;\mapsto Z(\mathfrak s) \nonumber \\ \end{align} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    Hilbert零点定理
+                </h2>
+                <p>
+                    (4)和(2)的复合映射为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+I%5Ccirc+Z%3A+%5Ctext%7BIdeal%7D%28K%5Bx%5D%29+%26%5Cto+%5Ctext%7BIdeal%7D%28K%5Bx%5D%29+%5Cnonumber+%5C%5C+%5Cmathfrak+s+%26%5Cmapsto+I%28Z%28%5Cmathfrak+s%29%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} I\circ Z: \text{Ideal}(K[x]) &amp;\to \text{Ideal}(K[x]) \nonumber \\ \mathfrak s &amp;\mapsto I(Z(\mathfrak s)) \nonumber \\ \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    构成了
+                    <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D" alt="K[x]" eeimg="1">
+                    的理想到理想的映射。
+                    <b>
+                        Hilbert零点定理(Hilbert&#39;s Nullstellensatz)
+                    </b>
+                    给出了重要的对应：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+s+%5Csubset+I%28Z%28%5Cmathfrak+s%29%29+%3D+%5Csqrt%7B%5Cmathfrak+s%7D++%3D+%5C%7B+r+%5Cin+K%5Bx%5D+%5C+%7C+%5C+%5Cexists+n+%5Cin+%5Cmathbb+Z%5E%2B%3A+r%5En+%5Cin+%5Cmathfrak+s+%5C%7D+%5Ctag%7B6%7D" alt="\mathfrak s \subset I(Z(\mathfrak s)) = \sqrt{\mathfrak s}  = \{ r \in K[x] \ | \ \exists n \in \mathbb Z^+: r^n \in \mathfrak s \} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    这样
+                    <img src="https://www.zhihu.com/equation?tex=K%5En" alt="K^n" eeimg="1">
+                    中的代数集、
+                    <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D" alt="K[x]" eeimg="1">
+                    中多项式的理想、根理想都对应起来了。
+                </p>
+                <p>
+                    在拓扑空间中，非空子集若不能表示为两个非空闭真子集的并，则称为
+                    <b>
+                        不可约的(irreducible)
+                    </b>
+                    。在Zariski拓扑下，不可约的代数集称为
+                    <b>
+                        代数簇(algebraic variety)
+                    </b>
+                    。[Hartshorne1977]：
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-49eb0fd2c5a3577b8872e0e0c662c496_r.jpg">
+                </figure>
+                <p>
+                    Hilbert零点定理给出了代数集
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    和根理想
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt+Y" alt="\sqrt Y" eeimg="1">
+                    的对应，而代数集能够构成代数簇的不可约的条件则对应着
+                    <b>
+                        素理想(prime ideal)
+                    </b>
+                    ，即要求
+                    <img src="https://www.zhihu.com/equation?tex=I%28Y%29" alt="I(Y)" eeimg="1">
+                    是素理想，这一条件也相当于
+                    <img src="https://www.zhihu.com/equation?tex=Y" alt="Y" eeimg="1">
+                    的坐标环
+                    <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D%2FI%28Y%29" alt="K[x]/I(Y)" eeimg="1">
+                    是整环。代数几何研究代数簇，故后面将集中于对多项式环
+                    <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D" alt="K[x]" eeimg="1">
+                    中素理想的研究。
+                    <br>
+                </p>
+                <h2>
+                    素谱
+                </h2>
+                <p>
+                    环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    的素理想构成的集合，称为
+                    <b>
+                        素谱(spectrum)
+                    </b>
+                    ，记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSpec%7D+%5C+R" alt="\text{Spec} \ R" eeimg="1">
+                    。我们将要分三个阶段来理解它：
+                </p>
+                <ol>
+                    <li>
+                        作为集合：素谱
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSpec%7D+%5C+K%5Bx%5D" alt="\text{Spec} \ K[x]" eeimg="1">
+                        是环
+                        <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D" alt="K[x]" eeimg="1">
+                        的素理想构成的集合
+                    </li>
+                    <li>
+                        作为拓扑空间
+                    </li>
+                    <li>
+                        作为结构层
+                    </li>
+                </ol>
+                <p>
+                    完成这几个阶段后就得到了仿射概形，也就是概形的局部模型。先考虑素谱上的拓扑。对于任意的理想
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+s+%5Cin+%5Ctext%7BIdeal%7D%28K%5Bx%5D%29" alt="\mathfrak s \in \text{Ideal}(K[x])" eeimg="1">
+                    ，包含它的素理想的集合记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+V%3A+%5Ctext%7BIdeal%7D%28K%5Bx%5D%29+%26%5Cto+%5Ctext%7BSpec%7D+%5C+K%5Bx%5D+%5Cnonumber+%5C%5C+%5Cmathfrak+s+%26%5Cmapsto+V%28%5Cmathfrak+s%29+%3D+%5C%7B+%5Cmathfrak+a+%5Cin+%5Ctext%7BSpec%7D+%5C+K%5Bx%5D+%5C+%7C+%5C+%5Cmathfrak+a+%5Csupset+%5Cmathfrak+s+%5C%7D+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B7%7D" alt="\begin{align} V: \text{Ideal}(K[x]) &amp;\to \text{Spec} \ K[x] \nonumber \\ \mathfrak s &amp;\mapsto V(\mathfrak s) = \{ \mathfrak a \in \text{Spec} \ K[x] \ | \ \mathfrak a \supset \mathfrak s \} \nonumber \\ \end{align} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    其补集记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Coverline+V%28%5Cmathfrak+s%29+%3D+%5Ctext%7BSpec%7D+%5C+K%5Bx%5D%5Cbackslash+V%28%5Cmathfrak+s%29" alt="\overline V(\mathfrak s) = \text{Spec} \ K[x]\backslash V(\mathfrak s)" eeimg="1">
+                    ，
+                </p>
+                <p>
+                    [Atiyah1969]给出了素谱上的Zariski拓扑：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-5cc2158fd4126c3e26fb3aabc46dd59a_r.jpg">
+                </figure>
+                <p>
+                    类似(4)，素谱上的Zariski拓扑的诱导可以写作
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+V%3A+%5Ctext%7BIdeal%7D%28K%5Bx%5D%29+%26%5Cto+%5Coverline%7B%5Cmathfrak%7BTop%7D%7D%28%5Ctext%7BSpec%7D+%5C+K%5Bx%5D%29+%5Cnonumber+%5C%5C+%5Cmathfrak+s+%26%5Cmapsto+V%28%5Cmathfrak+s%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B8%7D" alt="\begin{align} V: \text{Ideal}(K[x]) &amp;\to \overline{\mathfrak{Top}}(\text{Spec} \ K[x]) \nonumber \\ \mathfrak s &amp;\mapsto V(\mathfrak s) \nonumber \\ \end{align} \tag{8}" eeimg="1">
+                    <br>
+                    <br>
+                    (4)和(8)告诉我们，多项式环
+                    <img src="https://www.zhihu.com/equation?tex=K%5Bx%5D" alt="K[x]" eeimg="1">
+                    中的理想
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+s" alt="\mathfrak s" eeimg="1">
+                    ，对应着
+                    <img src="https://www.zhihu.com/equation?tex=K%5En" alt="K^n" eeimg="1">
+                    上的闭集
+                    <img src="https://www.zhihu.com/equation?tex=Z%28%5Cmathfrak+s%29+" alt="Z(\mathfrak s)" eeimg="1">
+                    和素谱
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSpec%7D+%5C+K%5Bx%5D" alt="\text{Spec} \ K[x]" eeimg="1">
+                    上的闭集
+                    <img src="https://www.zhihu.com/equation?tex=V%28%5Cmathfrak+s%29+" alt="V(\mathfrak s)" eeimg="1">
+                    ，这样就让素谱上的拓扑的几何意义可以明确地通过
+                    <img src="https://www.zhihu.com/equation?tex=K%5En" alt="K^n" eeimg="1">
+                    上的拓扑体现出来。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

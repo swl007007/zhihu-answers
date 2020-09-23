@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP103：泛函分析补习班(7)：Feynman路径积分
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-e930ea2e36c33e43021faa5045c4d1ac_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/56279009" target="_blank">
+                        MP103：泛函分析补习班(7)：Feynman路径积分
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-02-24
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    前面我们巩固了Lie变换群、指数映射、算子半群、Trotter乘积等方面的知识，借助本讲我们可以进一步探讨路径积分、Lagrange量等方面的内容，这些都是QFT中基本的工具。
+                </p>
+                <p>
+                    Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    中，Schrödinger方程
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+i%5Cpartial_t+%3D+H" alt="\text i\partial_t = H" eeimg="1">
+                    中归一化后的Schrödinger算子为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H+%3D+-%5CDelta+%2B+V+%3D+H_0+%2B+H_1+%5Ctag%7B1%7D" alt="H = -\Delta + V = H_0 + H_1 \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    在 [
+                    <a href="https://zhuanlan.zhihu.com/p/56253573" class="internal">
+                        MP102：泛函分析补习班(6)：微扰与Trotter乘积
+                    </a>
+                    ] 中我们探讨了两个算子叠加的问题。下面先关注自由Schrödinger方程中波函数的卷积解。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        波函数的卷积形式
+                    </b>
+                </h2>
+                <p>
+                    Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    中一类性质良好（譬如可积性）的波函数，其中取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_0" alt="\psi_0" eeimg="1">
+                    ，求其Fourier变换为
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat+%5Cpsi_0" alt="\hat \psi_0" eeimg="1">
+                    ，定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cpsi%28x%2Ct%29+%26%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cint_%5Cmathbb+R+%5Chat+%5Cpsi_0%28k%29%5Ctext+e%5E%7B%5Ctext+i%28kx-%5Comega%28k%29t%29%7Ddk+%5C%5C++%26%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cint_%5Cmathbb+R+%5Ctext+e%5E%7B%5Ctext+i+kx%7D+%5Cbig%28%5Chat+%5Cpsi_0%28k%29%5Ctext+e%5E%7B-%5Ctext+i%5Comega%28k%29t%7D%5Cbig%29+dk+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} \psi(x,t) &amp;= \frac{1}{\sqrt{2\pi}}\int_\mathbb R \hat \psi_0(k)\text e^{\text i(kx-\omega(k)t)}dk \\  &amp;= \frac{1}{\sqrt{2\pi}}\int_\mathbb R \text e^{\text i kx} \big(\hat \psi_0(k)\text e^{-\text i\omega(k)t}\big) dk \\ \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%28k%29+%3D+%5Cfrac%7B%5Chbar+k%5E2%7D%7B2m%7D" alt="\omega(k) = \frac{\hbar k^2}{2m}" eeimg="1">
+                    。这就是Schrödinger方程以
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_0" alt="\psi_0" eeimg="1">
+                    为初值的Fourier级数解。代入
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%28k%29" alt="\omega(k)" eeimg="1">
+                    可以求得其Fourier变换为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Chat+%5Cpsi%28k%2Ct%29+%3D+%5Chat+%5Cpsi_0%28k%29+%5Ctext+e%5E%7B-%5Ctext+i%5Cfrac%7B%5Chbar+k%5E2t%7D%7B2m%7D%7D+%5Ctag%7B3%7D" alt="\hat \psi(k,t) = \hat \psi_0(k) \text e^{-\text i\frac{\hbar k^2t}{2m}} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    这样就得到了我们在算子半群中所讨论的指数映射的形式。更进一步我们可以用卷积来讨论，卷积定义为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathscr+H+%5Ctimes+%5Cmathscr+H+%26%5Cto+%5Cmathscr+H+%5C%5C+%28%5Cvarphi%28x%29%2C%5Cpsi%28x%29%29+%26%5Cmapsto+%28%5Cvarphi+%2A+%5Cpsi%29%28x%29+%3D%5Cint_%5Cmathbb+R+%5Cvarphi%28x-y%29%5Cpsi%28y%29+dy+%5Cend%7Balign%7D%5Ctag%7B4%7D" alt="\begin{align} \mathscr H \times \mathscr H &amp;\to \mathscr H \\ (\varphi(x),\psi(x)) &amp;\mapsto (\varphi * \psi)(x) =\int_\mathbb R \varphi(x-y)\psi(y) dy \end{align}\tag{4}" eeimg="1">
+                </p>
+                <p>
+                    (2)中的波函数具有卷积形式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%2Ct%29+%3D+%5Cpsi_0+%2A+K%28t%29+%5Ctag%7B5%7D" alt="\psi(x,t) = \psi_0 * K(t) \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=K%28t%29+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7DF%5E%7B-1%7D%28%5Ctext+e%5E%7B-%5Ctext+i%5Cfrac%7B%5Chbar+k%5E2t%7D%7B2m%7D%7D+%29+%5C%5C" alt="K(t) = \frac{1}{\sqrt{2\pi}}F^{-1}(\text e^{-\text i\frac{\hbar k^2t}{2m}} ) \\" eeimg="1">
+                </p>
+                <p>
+                    略去繁琐的定性理论，仅从结果上说，Fourier的反变换得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=K%28x%2Ct%29+%3D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%5Cpi%7D%7D%5Cint_%5Cmathbb+R+%5Ctext+e%5E%7B%5Ctext+i+kx%7D+%5Ctext+e%5E%7B-%5Ctext+i%5Cfrac%7B%5Chbar+k%5E2t%7D%7B2m%7D%7D+dk+%3D+%5Csqrt%7B%5Cfrac%7Bm%7D%7B2%5Cpi%5Ctext+i%5Chbar+t%7D%7D%5Ctext+e%5E%7B%5Ctext+i%5Cfrac%7Bmx%5E2%7D%7B2t%5Chbar%7D%7D++%5C%5C" alt="K(x,t) =\frac{1}{\sqrt{2\pi}}\int_\mathbb R \text e^{\text i kx} \text e^{-\text i\frac{\hbar k^2t}{2m}} dk = \sqrt{\frac{m}{2\pi\text i\hbar t}}\text e^{\text i\frac{mx^2}{2t\hbar}}  \\" eeimg="1">
+                </p>
+                <p>
+                    这一结果，可以给出波函数的卷积形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%2Ct%29+%3D+%5Csqrt%7B%5Cfrac%7Bm%7D%7B2%5Cpi%5Ctext+i+t+%5Chbar%7D%7D%5Cint_%5Cmathbb+R+%5Ctext+e%5E%7B%5Ctext+i%5Cfrac%7Bm%28x-y%29%5E2%7D%7B2t%5Chbar%7D%7D+%5Cpsi_0%28y%29+dy+%3D+%5Cfrac%7BK%28x%2Ct%29+%2A+%5Cpsi_0%7D%7B%5Csqrt%7B2%5Cpi%7D%7D+%5Ctag%7B6%7D" alt="\psi(x,t) = \sqrt{\frac{m}{2\pi\text i t \hbar}}\int_\mathbb R \text e^{\text i\frac{m(x-y)^2}{2t\hbar}} \psi_0(y) dy = \frac{K(x,t) * \psi_0}{\sqrt{2\pi}} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Trotter乘积
+                    </b>
+                </h2>
+                <p>
+                    [
+                    <a href="https://zhuanlan.zhihu.com/p/56253573" class="internal">
+                        MP102
+                    </a>
+                    ] 根据Trotter乘积公式：令
+                    <img src="https://www.zhihu.com/equation?tex=A%2CB" alt="A,B" eeimg="1">
+                    为Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    中的自伴算子，在
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BDom%7D%28A%29+%5Ccap+%5Ctext%7BDom%7D%28B%29" alt="\text{Dom}(A) \cap \text{Dom}(B)" eeimg="1">
+                    上
+                    <img src="https://www.zhihu.com/equation?tex=A%2BB" alt="A+B" eeimg="1">
+                    是稠定且本质自伴的，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Cpsi+%5Cin+%5Cmathscr+H" alt="\forall \psi \in \mathscr H" eeimg="1">
+                    存在极限
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7BN%5Cto%5Cinfty%7D+%5CBig%5C%7C+%5Ctext+e%5E%7B%5Ctext+it%28A%2BB%29%7D%5Cpsi+-+%5Cbig%28%5Ctext+e%5E%7B%5Ctext+itA%2FN%7D+e%5E%7B%5Ctext+itB%2FN%7D%5Cbig%29%5EN%5Cpsi+%5CBig%5C%7C+%5Ctag%7B7%7D" alt="\lim_{N\to\infty} \Big\| \text e^{\text it(A+B)}\psi - \big(\text e^{\text itA/N} e^{\text itB/N}\big)^N\psi \Big\| \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    对于(1)中的Schrödinger算子
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=H+%3D+-%5CDelta+%2B+V+%3D+H_0+%2B+H_1+%5C%5C" alt="H = -\Delta + V = H_0 + H_1 \\" eeimg="1">
+                </p>
+                <p>
+                    得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+e+%5E%7B-%5Ctext+itH%7D+%5Cpsi+%3D+%5Clim_%7BN%5Cto%5Cinfty%7D+%5Cbig%28%5Ctext+e%5E%7B%5Ctext+it%5CDelta%2F2N%7D+e%5E%7B-%5Ctext+itV%2FN%7D%5Cbig%29%5EN%5Cpsi+%5Ctag%7B8%7D" alt="\text e ^{-\text itH} \psi = \lim_{N\to\infty} \big(\text e^{\text it\Delta/2N} e^{-\text itV/N}\big)^N\psi \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    (6)给出了波函数的卷积形式，现在可以计算出动能部分：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+e%5E%7B%5Ctext+i%5Cfrac%7Bt%5Chbar%5CDelta%7D%7B2mN%7D%7D+%5Cpsi%28x_0%29+%3D+%5CBig%28%5Cfrac%7BmN%7D%7B%5Ctext+it%5Chbar%7D%5CBig%29%5E%7Bn%2F2%7D%5Cint_%7B%5Cmathbb+R%5En%7D+%5Ctext+e%5E%7B%5Ctext+i%5Cfrac%7BmN%7D%7B2t%5Chbar%7D%7Cx_1-x_0%7C%5E2%7D%5Cpsi%28x_1%29dx_1+%5Ctag%7B9%7D" alt="\text e^{\text i\frac{t\hbar\Delta}{2mN}} \psi(x_0) = \Big(\frac{mN}{\text it\hbar}\Big)^{n/2}\int_{\mathbb R^n} \text e^{\text i\frac{mN}{2t\hbar}|x_1-x_0|^2}\psi(x_1)dx_1 \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    而势能部分的
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+e%5E%7B-%5Ctext+i%5Cfrac%7BtV%7D%7BN%5Chbar%7D%7D" alt="\text e^{-\text i\frac{tV}{N\hbar}}" eeimg="1">
+                    是一个乘法算子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        路径积分
+                    </b>
+                </h2>
+                <p>
+                    借助Trotter乘积以及(6)计算以上动能和势能部分的复合作用：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CBigg%28+%5CBig%28+%5Ctext+e%5E%7B%5Ctext+i%5Cfrac%7Bt%5Chbar%5CDelta%7D%7B2mN%7D%7D+%5Ctext+e%5E%7B-%5Ctext+i%5Cfrac%7BtV%7D%7BN%5Chbar%7D%7D++%5CBig%29%5EN%5Cpsi+%5CBigg%29%28x_0%29+%5C%5C" alt="\Bigg( \Big( \text e^{\text i\frac{t\hbar\Delta}{2mN}} \text e^{-\text i\frac{tV}{N\hbar}}  \Big)^N\psi \Bigg)(x_0) \\" eeimg="1">
+                </p>
+                <p>
+                    上式中出现的
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    次幂，每一次都可以按照卷积方式展开为一重积分，根据Trotter乘积公式(7)，构成
+                    <img src="https://www.zhihu.com/equation?tex=N+%5Cto+%5Cinfty" alt="N \to \infty" eeimg="1">
+                    重积分，记
+                    <img src="https://www.zhihu.com/equation?tex=C+%3D+%5CBig%28+%5Cfrac%7BmN%7D%7B%5Ctext+i+t+%5Chbar%7D+%5CBig%29%5E%7BnN%2F2%7D" alt="C = \Big( \frac{mN}{\text i t \hbar} \Big)^{nN/2}" eeimg="1">
+                    ，得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CBig%28%5Ctext+e%5E%7B-%5Ctext+i+%5Cfrac%7BtH%7D%7B%5Chbar%7D%7D%5Cpsi%5CBig%29%28x_0%29+%3D+%5Clim_%7BN%5Cto%5Cinfty%7D+C%5Cint_%7B%28%5Cmathbb+R%5En%29%5EN%7D+%5Cexp+%5CBigg%5C%7B+%5Cfrac%7B%5Ctext+i%7D%7B%5Chbar%7D+%5Csum_%7Bk%3D1%7D%5E%7BN%7D+%5Cfrac%7Bt%7D%7BN%7D+%5CBig%28+%5Cfrac%7Bm%7D%7B2%7D%5CBig%7C%5Cfrac%7Bx_k+-+x_%7Bk-1%7D%7D%7Bt%2FN%7D%5CBig%7C%5E2+-+V%28x_%7Bk-1%7D%29+%5CBig%29+%5CBigg%5C%7D+%5Cpsi%28x_N%29+dx_1+dx_2+%5Cdots+dx_N+%5Ctag%7B10%7D" alt="\Big(\text e^{-\text i \frac{tH}{\hbar}}\psi\Big)(x_0) = \lim_{N\to\infty} C\int_{(\mathbb R^n)^N} \exp \Bigg\{ \frac{\text i}{\hbar} \sum_{k=1}^{N} \frac{t}{N} \Big( \frac{m}{2}\Big|\frac{x_k - x_{k-1}}{t/N}\Big|^2 - V(x_{k-1}) \Big) \Bigg\} \psi(x_N) dx_1 dx_2 \dots dx_N \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以上的
+                    <img src="https://www.zhihu.com/equation?tex=N+%5Cto+%5Cinfty" alt="N \to \infty" eeimg="1">
+                    重积分求极限要严格论证是不容易的。先从Feynman的角度考虑物理直观。从(7)、(8)到(10)，Trotter乘积的极限公式的要点在于它在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5En" alt="\mathbb R^n" eeimg="1">
+                    中给出了一系列点，而(10)中适当交换积分顺序后可以将这些点连成一条折线，通过求极限构成一条路径，记为
+                    <img src="https://www.zhihu.com/equation?tex=x%28s%29" alt="x(s)" eeimg="1">
+                    。我们把所有这样的路径中，起点为
+                    <img src="https://www.zhihu.com/equation?tex=x%280%29+%3D+x_0" alt="x(0) = x_0" eeimg="1">
+                    的路径/参数曲线的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+P+%3D+%5C%7B+x%28%5Ccdot%29%3A+%5B0%2CT%5D+%5Cto+%5Cmathbb+R%5En%2C%5C+x%280%29+%3D+x_0+%5C%7D" alt="\mathcal P = \{ x(\cdot): [0,T] \to \mathbb R^n,\ x(0) = x_0 \}" eeimg="1">
+                    ，这样(10)可以表述为对某种测度的积分：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CBig%28%5Ctext+e%5E%7B-%5Ctext+i+%5Cfrac%7BtH%7D%7B%5Chbar%7D%7D%5Cpsi%5CBig%29%28x_0%29+%3D+C%5Cint_%5Cmathcal+P++%5Cexp+%5CBigg%5C%7B+%5Cfrac%7B%5Ctext+i%7D%7B%5Chbar%7D+%5Cint_0%5ET+%5CBig%28+%5Cfrac%7Bm%7D%7B2%7D%5CBig%7C%5Cfrac%7Bdx%7D%7Bds%7D%5CBig%7C%5E2+-+V%28x%28s%29%29+%5CBig%29ds+%5CBigg%5C%7D+%5Cpsi%28x%28t%29%29+%5Ctextbf%7B+dx%7D%28%5Ccdot%29+%5Ctag%7B11%7D" alt="\Big(\text e^{-\text i \frac{tH}{\hbar}}\psi\Big)(x_0) = C\int_\mathcal P  \exp \Bigg\{ \frac{\text i}{\hbar} \int_0^T \Big( \frac{m}{2}\Big|\frac{dx}{ds}\Big|^2 - V(x(s)) \Big)ds \Bigg\} \psi(x(t)) \textbf{ dx}(\cdot) \tag{11}" eeimg="1">
+                </p>
+                <p>
+                    这里的
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7B+dx%7D%28%5Ccdot%29" alt="\textbf{ dx}(\cdot)" eeimg="1">
+                    可以理解为某种路径测度，整个积分这是在路径空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+P" alt="\mathcal P" eeimg="1">
+                    上的积分。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        Lagrange量与Feynman路径积分
+                    </b>
+                </h2>
+                <p>
+                    [
+                    <a href="https://zhuanlan.zhihu.com/p/44078754" class="internal">
+                        MP14
+                    </a>
+                    ] 中给出的Lagrange量
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=L%28q%2C%5Cdot%7Bq%7D%29%3DT%28%5Cdot%7Bq%7D%29-V%28q%29%3D%5Cfrac%7B1%7D%7B2%7Dm%5Cdot%7Bq%7D%5E2-V%28q%29+%5Ctag%7B12%7D" alt="L(q,\dot{q})=T(\dot{q})-V(q)=\frac{1}{2}m\dot{q}^2-V(q) \tag{12}" eeimg="1">
+                </p>
+                <p>
+                    在这里和(11)有了结合，注意(11)中的被积表达式就是一个Lagrange量。用Lagrange力学的作用量方式表达：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=S+%3D+S%28x%28%5Ccdot%29%2Ca%2Cb%29+%3D+%5Cint_a%5Eb+%5CBig%28+%5Cfrac%7Bm%7D%7B2%7D%5CBig%7C%5Cfrac%7Bdx%7D%7Bds%7D%5CBig%7C%5E2+-+V%28x%28s%29%29+%5CBig%29ds+%5Ctag%7B13%7D" alt="S = S(x(\cdot),a,b) = \int_a^b \Big( \frac{m}{2}\Big|\frac{dx}{ds}\Big|^2 - V(x(s)) \Big)ds \tag{13}" eeimg="1">
+                </p>
+                <p>
+                    这样我们得到了路径求长形式的积分，这样(1)可以得到Feynman路径积分公式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CBig%28%5Ctext+e%5E%7B-%5Ctext+i+%5Cfrac%7BtH%7D%7B%5Chbar%7D%7D%5Cpsi%5CBig%29%28x_0%29+%3D+C%5Cint_%5Cmathcal+P++%5Ctext+e%5E%7B+%5Cfrac%7B%5Ctext+i%7D%7B%5Chbar%7D+S++%7D+%5Cpsi%28x%28t%29%29+%5Ctextbf%7B+dx%7D%28%5Ccdot%29+%5Ctag%7B14%7D" alt="\Big(\text e^{-\text i \frac{tH}{\hbar}}\psi\Big)(x_0) = C\int_\mathcal P  \text e^{ \frac{\text i}{\hbar} S  } \psi(x(t)) \textbf{ dx}(\cdot) \tag{14}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

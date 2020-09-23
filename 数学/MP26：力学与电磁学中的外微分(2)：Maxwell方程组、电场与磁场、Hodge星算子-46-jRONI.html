@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP26：力学与电磁学中的外微分(2)：Maxwell方程组、电场与磁场、Hodge星算子
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-fb0f285c058dfc0a23a5b68be0022341_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46151627" target="_blank">
+                        MP26：力学与电磁学中的外微分(2)：Maxwell方程组、电场与磁场、Hodge星算子
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    接上讲
+                </p>
+                <p>
+                    <br>
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/45777678" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                MP25：力学与电磁学中的外微分(1)：镜像、极/轴向量、叉乘、nabla算子/外微分算子
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        电场与磁场
+                    </b>
+                </h2>
+                <p>
+                    在中学物理看来，电场
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+E_xi+%2B+E_yj+%2B+E_zk" alt="E = E_xi + E_yj + E_zk" eeimg="1">
+                </p>
+                <p>
+                    和磁场
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=B+%3D+B_xi+%2B+B_yj+%2B+B_zk" alt="B = B_xi + B_yj + B_zk" eeimg="1">
+                </p>
+                <p>
+                    都是向量场，
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bi%2Cj%2Ck%5C%7D" alt="\{i,j,k\}" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E3" alt="\mathbb{R}^3" eeimg="1">
+                    的自然基。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    回忆一下中学物理，电场
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    视作电势
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    的梯度：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+%5Ctext%7Bgrad%7D%28U%29+%3D+%5Cnabla+U" alt="E = \text{grad}(U) = \nabla U" eeimg="1">
+                </p>
+                <p>
+                    前面讲到，梯度算子运算的结果是微分形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bgrad%7D+%3D+%5Cnabla+%3A+%5COmega%5E0%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{grad} = \nabla : \Omega^0(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^1(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    电势作为标量场是一个
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    -微分形式，于是更加严格地说电场
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    实际上是一个
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -微分形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+dU+%3D+E_xdx+%2B+E_ydy+%2B+E_zdz" alt="E = dU = E_xdx + E_ydy + E_zdz" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%2Cdy%2Cdz%5C%7D" alt="\{dx,dy,dz\}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -形式
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29" alt="\Omega^1(\mathbb{R}^3)" eeimg="1">
+                    的自然基。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们知道电场是满足镜像的，而磁场被视为
+                    <b>
+                        轴向量(axial vector)
+                    </b>
+                    。更加严格地说轴向量的磁场是一个
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -形式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=B+%3D+B_x+dy+%5Cwedge+dz+%2B+B_y+dz+%5Cwedge+dx+%2B+B_z+dx+%5Cwedge+dy" alt="B = B_x dy \wedge dz + B_y dz \wedge dx + B_z dx \wedge dy" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx+%5Cwedge+dy%2C+dy+%5Cwedge+dz%2C+dz+%5Cwedge+dx%5C%7D" alt="\{dx \wedge dy, dy \wedge dz, dz \wedge dx\}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -形式
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%5E2%28%5Cmathbb%7BR%7D%5E3%29" alt="\Omega^2(\mathbb{R}^3)" eeimg="1">
+                    的自然基。原因如下。
+                </p>
+                <h2>
+                    <b>
+                        经典Maxwell方程
+                    </b>
+                </h2>
+                <p>
+                    国际单位制中真空Maxwell方程组为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D++%5Ctext%7Brot%7D+B+%3D+%5Cmu_0%5Cvarepsilon_0+%5Cfrac%7B%5Cpartial+E%7D%7B%5Cpartial+t%7D+%2B+%5Cmu_0j+%5C%5C+%5Ctext%7Brot%7D+E+%3D+-%5Cfrac%7B%5Cpartial+B%7D%7B%5Cpartial+t%7D+%5C%5C+%5Ctext%7Bdiv%7D+B+%3D+0+%5C%5C+%5Ctext%7Bdiv%7D+E+%3D+%5Crho%2F%5Cvarepsilon_0+%5Cend%7Bcases%7D" alt="\begin{cases}  \text{rot} B = \mu_0\varepsilon_0 \frac{\partial E}{\partial t} + \mu_0j \\ \text{rot} E = -\frac{\partial B}{\partial t} \\ \text{div} B = 0 \\ \text{div} E = \rho/\varepsilon_0 \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    或者写为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D++%5Cnabla+%5Ctimes+B+%3D+%5Cmu_0%5Cvarepsilon_0+%5Cfrac%7B%5Cpartial+E%7D%7B%5Cpartial+t%7D+%2B+%5Cmu_0j+%5C%5C+%5Cnabla+%5Ctimes+E+%3D+-%5Cfrac%7B%5Cpartial+B%7D%7B%5Cpartial+t%7D+%5C%5C+%5Cnabla+%5Ccdot+B+%3D+0+%5C%5C+%5Cnabla+%5Ccdot+E+%3D+%5Crho%2F%5Cvarepsilon_0+%5Cend%7Bcases%7D" alt="\begin{cases}  \nabla \times B = \mu_0\varepsilon_0 \frac{\partial E}{\partial t} + \mu_0j \\ \nabla \times E = -\frac{\partial B}{\partial t} \\ \nabla \cdot B = 0 \\ \nabla \cdot E = \rho/\varepsilon_0 \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    既然电场
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    实际上是一个
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -微分形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+dU+%3D+E_xdx+%2B+E_ydy+%2B+E_zdz" alt="E = dU = E_xdx + E_ydy + E_zdz" eeimg="1">
+                </p>
+                <p>
+                    那么电场继续进行外微分运算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Brot%7D+%3D+%5Cnabla+%5Ctimes+%3A+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E2%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{rot} = \nabla \times : \Omega^1(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^2(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    实际上是在对电场求旋度，根据Maxwell方程得到磁场的变化率：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Brot%7D%28E%29+%3D+%5Cnabla+%5Ctimes+E+%3D+dE+%3D+-%5Cfrac%7B%5Cpartial+B%7D%7B%5Cpartial+t%7D" alt="\text{rot}(E) = \nabla \times E = dE = -\frac{\partial B}{\partial t}" eeimg="1">
+                </p>
+                <p>
+                    磁场是
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -形式，其变化率也是
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -形式，这符合我们对磁场的观点。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    继续对
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -形式的磁场
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=B+%3D+B_x+dy+%5Cwedge+dz+%2B+B_y+dz+%5Cwedge+dx+%2B+B_z+dx+%5Cwedge+dy" alt="B = B_x dy \wedge dz + B_y dz \wedge dx + B_z dx \wedge dy" eeimg="1">
+                </p>
+                <p>
+                    进行外微分运算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdiv%7D+%3D+%5Cnabla+%5Ccdot+%3A+%5COmega%5E2%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E3%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{div} = \nabla \cdot : \Omega^2(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^3(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    实际上是在对磁场求散度，根据Maxwell方程得到零：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdiv%7D%28B%29+%3D+%5Cnabla+%5Ccdot+B+%3D+dB+%3D+0" alt="\text{div}(B) = \nabla \cdot B = dB = 0" eeimg="1">
+                </p>
+                <h2>
+                    <b>
+                        Hodge星算子
+                    </b>
+                </h2>
+                <p>
+                    注意到，一般我们理解的散度是一个标量，从nabla算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla" alt="\nabla" eeimg="1">
+                    和向量（微分形式）
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的内积符号，也能感受到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+%5Ccdot+B" alt="\nabla \cdot B" eeimg="1">
+                    是一个标量。可是，以上外微分运算的结果应该是一个
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    -形式，而如何理解：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+%5Ccdot+B+%3D+dB+%3D+0+%5Cin+%5COmega%5E3%28%5Cmathbb%7BR%7D%5E3%29" alt="\nabla \cdot B = dB = 0 \in \Omega^3(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    呢？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在三维空间中，磁场
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的表现非常类似于一般的向量场，以至于在学习微分几何之前，我们几乎不太注意到磁场的特殊性。前面的讨论充分展示了磁场
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    是一个2-微分形式，可我们过去学过的物理大部分情况都把它直接作为向量场对待。究其根源，是因为三维空间中的2-微分形式与向量场有等效的关系。
+                </p>
+                <p>
+                    定义
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维光滑流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上的
+                    <b>
+                        Hodge星算子(Hodge star operator)
+                    </b>
+                    如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cstar%3A%5COmega%5Ek%28M%29+%5Cto+%5COmega%5E%7Bn-k%7D%28M%29" alt="\star:\Omega^k(M) \to \Omega^{n-k}(M)" eeimg="1">
+                </p>
+                <p>
+                    通过Hodge星算子，可以建立起
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维光滑流形中
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -微分形式和
+                    <img src="https://www.zhihu.com/equation?tex=%28n-k%29" alt="(n-k)" eeimg="1">
+                    -微分形式之间的等效关系。
+                </p>
+                <p>
+                    磁场
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    的表现非常类似于一般的向量场，是因为在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E3" alt="\mathbb{R}^3" eeimg="1">
+                    中，
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -形式和
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -形式等效，所以我们在初等教材中从不区分磁场和一般向量场的区别。
+                </p>
+                <p>
+                    磁场
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    没有散度：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+%5Ccdot+B+%3D+dB+%3D+0+%5Cin+%5COmega%5E3%28%5Cmathbb%7BR%7D%5E3%29" alt="\nabla \cdot B = dB = 0 \in \Omega^3(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    是因为在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E3" alt="\mathbb{R}^3" eeimg="1">
+                    中，
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    -形式和
+                    <img src="https://www.zhihu.com/equation?tex=3" alt="3" eeimg="1">
+                    -形式等效，磁场的散度为常数
+                    <img src="https://www.zhihu.com/equation?tex=0+%5Cin+%5COmega%5E0%28%5Cmathbb%7BR%7D%5E3%29" alt="0 \in \Omega^0(\mathbb{R}^3)" eeimg="1">
+                    相当于：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=+dB+%3D+0+dx+%5Cwedge+dy+%5Cwedge+dz" alt="dB = 0 dx \wedge dy \wedge dz" eeimg="1">
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx+%5Cwedge+dy+%5Cwedge+dz%5C%7D" alt="\{dx \wedge dy \wedge dz\}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -形式
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%5E3%28%5Cmathbb%7BR%7D%5E3%29" alt="\Omega^3(\mathbb{R}^3)" eeimg="1">
+                    的自然基。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在Hodge星算子的作用下，我们可以重新定义nabla算子和外微分的关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bgrad%7D+%3D+%5Cnabla+%3D+d+%3A+%5COmega%5E0%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{grad} = \nabla = d : \Omega^0(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^1(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Brot%7D+%3D+%5Cnabla+%5Ctimes+%3D+%5Cstar+d+%3A+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{rot} = \nabla \times = \star d : \Omega^1(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^1(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdiv%7D+%3D+%5Cnabla+%5Ccdot+%3D+%5Cstar+d+%5Cstar+%3A+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E0%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{div} = \nabla \cdot = \star d \star : \Omega^1(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^0(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    前面的等效关系就十分清楚了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Maxwell方程的进一步探讨
+                    </b>
+                </h2>
+                <p>
+                    在静态状况，Maxwell方程中的两项可以写为：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+%5Cnabla+%5Ctimes+E+%3D+0+%5C%5C+%5Cnabla+%5Ccdot+B+%3D+0+%5Cend%7Bcases%7D" alt="\begin{cases} \nabla \times E = 0 \\ \nabla \cdot B = 0 \end{cases}" eeimg="1">
+                </p>
+                <p>
+                    前面我们将电场和磁场视为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+E_xdx+%2B+E_ydy+%2B+E_zdz+%5Cin+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29" alt="E = E_xdx + E_ydy + E_zdz \in \Omega^1(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=B+%3D+B_xi+%2B+B_yj+%2B+B_zk+%5Cin+%5COmega%5E2%28%5Cmathbb%7BR%7D%5E3%29" alt="B = B_xi + B_yj + B_zk \in \Omega^2(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    根据
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+%5Ctimes+E+%3D+0" alt="\nabla \times E = 0" eeimg="1">
+                </p>
+                <p>
+                    有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=dE+%3D+0" alt="dE = 0" eeimg="1">
+                </p>
+                <p>
+                    根据
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+%5Ccdot+B+%3D+0" alt="\nabla \cdot B = 0" eeimg="1">
+                </p>
+                <p>
+                    有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=dB+%3D+0" alt="dB = 0" eeimg="1">
+                </p>
+                <p>
+                    如果我们可以把电场和磁场合写为一个量的两个项的形式和：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=F+%3D+B+%2B+E+%5Cwedge+dt" alt="F = B + E \wedge dt" eeimg="1">
+                </p>
+                <p>
+                    由于外微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    的线性性，Maxwell方程中的两个可以合并为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=dF%3D0" alt="dF=0" eeimg="1">
+                </p>
+                <p>
+                    推导到这一步将大大简化对电磁场的理解，并引申出电磁作为整体的电磁势。所谓势，就是指可以被外微分的物理量，我们在分析力学和电磁学里面已经多次遇到了。然而目前，我们还没有解决Maxwell方程的解和光速不变性的问题，要完全展开对电磁势的讨论，需要考虑狭义相对论，在Minkowski空间上完成，今后将会再详谈。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

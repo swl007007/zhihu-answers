@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP127：线性代数补习班(14)：单子(monad)
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-15719fb8faa9cfdeba2325db0a2e3ef7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/33906385" target="_blank">
+                        MP127：线性代数补习班(14)：单子(monad)
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-09-03
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    计算机领域硬核的
+                    <b>
+                        函数式编程(functional programming)
+                    </b>
+                    方面有一句著名的黑话：
+                </p>
+                <blockquote>
+                    <b>
+                        A monad is a monoid in the category of endofunctors
+                    </b>
+                    单子不过就是自函子范畴上的一个幺半群而已
+                </blockquote>
+                <p>
+                    ——Philip Wadler (Haskell委员会成员，把monad引入Haskell)
+                </p>
+                <p>
+                    实际上这句话来源于：
+                </p>
+                <blockquote>
+                    <b>
+                        All told, a monad in
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    <b>
+                        is just a monoid in the category of endofunctors of
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    中的单子不过就是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    的自函子范畴上的一个幺半群而已
+                </blockquote>
+                <p>
+                    ——Saunders MacLane (范畴学奠基人，Categories for the Working Mathematician, GTM 5)
+                </p>
+                <p>
+                    <b>
+                        单子(monad)
+                    </b>
+                    不是洪水猛兽，只需要理解
+                    <b>
+                        自函子范畴(endofunctor category)
+                    </b>
+                    和
+                    <b>
+                        幺半群(monoid)
+                    </b>
+                    就不难理解它。
+                </p>
+                <h2>
+                    幺半群(monoid)
+                </h2>
+                <p>
+                    <br>
+                    在集合
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上给定封闭的二元运算
+                    <img src="https://www.zhihu.com/equation?tex=%5Ccirc" alt="\circ" eeimg="1">
+                    ，若满足：
+                </p>
+                <ol>
+                    <li>
+                        <b>
+                            结合律(associativity)
+                        </b>
+                        ：对于任何
+                        <img src="https://www.zhihu.com/equation?tex=a%2Cb%2Cc+%5Cin+M" alt="a,b,c \in M" eeimg="1">
+                        有
+                        <img src="https://www.zhihu.com/equation?tex=a+%5Ccirc+%28b+%5Ccirc+c%29+%3D+%28a+%5Ccirc+b%29+%5Ccirc+c" alt="a \circ (b \circ c) = (a \circ b) \circ c" eeimg="1">
+                    </li>
+                    <li>
+                        <b>
+                            幺元(identity element)
+                        </b>
+                        ：存在
+                        <img src="https://www.zhihu.com/equation?tex=e+%5Cin+M" alt="e \in M" eeimg="1">
+                        使得对于任意
+                        <img src="https://www.zhihu.com/equation?tex=a+%5Cin+M" alt="a \in M" eeimg="1">
+                        有
+                        <img src="https://www.zhihu.com/equation?tex=a+%5Ccirc+e+%3D+e+%5Ccirc+a+%3D+a" alt="a \circ e = e \circ a = a" eeimg="1">
+                    </li>
+                </ol>
+                <p>
+                    称
+                    <img src="https://www.zhihu.com/equation?tex=%28M%2C%5Ccirc%2Ce%29" alt="(M,\circ,e)" eeimg="1">
+                    为
+                    <b>
+                        幺半群(monoid)
+                    </b>
+                    。幺半群之间保持运算结构的映射称为幺半群同态。以幺半群为对象，以幺半群同态为态射，构成幺半群范畴，记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMon%7D" alt="\textbf{Mon}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    相对于群而言，幺半群没有对逆元的要求，这样可以抽象一大类数学结构。就线性代数的例子而言，将域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=n+%5Ctimes+n" alt="n \times n" eeimg="1">
+                    维
+                    <b>
+                        方矩阵(phalanx)
+                    </b>
+                    的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D" alt="\mathfrak n = \mathbb K^{n \times n}" eeimg="1">
+                    ，它是一个非交换的环
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D%2C+%2B%2C+%5Ccirc%2C+I_n+%5Cneq+0_n%29" alt="(\mathfrak n = \mathbb K^{n \times n}, +, \circ, I_n \neq 0_n)" eeimg="1">
+                    。放到环的定义中可见，方矩阵在矩阵加法下构成Abel群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D%2C+%2B%2C+0_n%29+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BAb%7D%29" alt="(\mathfrak n = \mathbb K^{n \times n}, +, 0_n) \in \text{Ob}(\textbf{Ab})" eeimg="1">
+                    ，去除加法幺元后在矩阵乘法下构成幺半群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D%5Cbackslash%7B0_n%7D%2C+%5Ccirc%2C+I_n%29+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMon%7D%29" alt="(\mathbb K^{n \times n}\backslash{0_n}, \circ, I_n) \in \text{Ob}(\textbf{Mon})" eeimg="1">
+                    。
+                </p>
+                <p>
+                    在线性代数中我们熟知，满足维数条件的矩阵之间可以相乘，在方矩阵环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D" alt="\mathfrak n = \mathbb K^{n \times n}" eeimg="1">
+                    中，矩阵相乘就构成了环乘法，且不要求可逆。至于可逆，则延伸出另一个问题——Lie群。以
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R" alt="\mathbb R" eeimg="1">
+                    或者
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                    为例，
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维可逆的方阵构成一个群，称为
+                    <b>
+                        矩阵群(matrix group)
+                    </b>
+                    。这个群作为方矩阵环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D" alt="\mathfrak n = \mathbb K^{n \times n}" eeimg="1">
+                    的子环，不仅对矩阵加法是Abel群，而且由于可逆，对矩阵的乘法从幺半群加强为群，这个群就是Lie群。最大的叫做一般线性群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BGL%7D%28n%2C%5Cmathbb+K%29" alt="\text{GL}(n,\mathbb K)" eeimg="1">
+                    ，其矩阵乘法群的子群使其构成了各种Lie子群。
+                </p>
+                <p>
+                    总的来说，对于没有可逆性或者交换性（物理上常叫做对易性）要求的映射问题，几乎都可以用幺半群范畴来研究。最好的例子是线性空间，上面讨论的方矩阵实际上就行线性空间范畴中的自态射。线性空间范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BVct%7D" alt="\textbf{Vct}" eeimg="1">
+                    由线性空间构成对象，由线性空间之间的线性映射构成态射。态射的复合和恒同映射都属于态射，这一点对任意的范畴都成立。我们特别关心一类特殊的线性映射——线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V%5Cin%5Ctext%7BOb%7D%28%5Ctextbf%7BVct%7D%29" alt="V\in\text{Ob}(\textbf{Vct})" eeimg="1">
+                    上的
+                    <b>
+                        线性自同态(linear endomorphism)
+                    </b>
+                    ，线性空间到自身的线性映射往往记为
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+%5Ctext%7BEnd%7D%28V%29" alt="f \in \text{End}(V)" eeimg="1">
+                    。若有线性映射
+                    <img src="https://www.zhihu.com/equation?tex=f_1%2Cf_2+%5Cin+%5Ctext%7BEnd%7D%28V%29" alt="f_1,f_2 \in \text{End}(V)" eeimg="1">
+                    ，由于线性映射的复合仍然是线性映射，容易理解
+                    <img src="https://www.zhihu.com/equation?tex=f_2+%5Ccirc+f_1+%5Cin+%5Ctext%7BEnd%7D%28V%29" alt="f_2 \circ f_1 \in \text{End}(V)" eeimg="1">
+                    。恒同映射也是线性自同态，即
+                    <img src="https://www.zhihu.com/equation?tex=1_V+%5Cin+%5Ctext%7BEnd%7D%28V%29" alt="1_V \in \text{End}(V)" eeimg="1">
+                    ，在矩阵表示下就是单位矩阵。这样，在线性空间范畴的固定的对象
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BVct%7D%29" alt="V \in \text{Ob}(\textbf{Vct})" eeimg="1">
+                    上，借助线性自同态态射的复合运算和恒同映射，态射集
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28V%29+%3D+%5Ctext%7BHom%7D%28V%2CV%29" alt="\text{End}(V) = \text{Hom}(V,V)" eeimg="1">
+                    构成一个幺半群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    单子(monad)
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    的自函子范畴中有恒同函子和函子
+                    <img src="https://www.zhihu.com/equation?tex=1_%5Cmathcal+C%2CT+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BEnd%7D_%5Cmathcal+C%29" alt="1_\mathcal C,T \in \text{Ob}(\textbf{End}_\mathcal C)" eeimg="1">
+                    ，若存在自然变换
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ceta+%5Cin+%5Ctext%7BHom%7D%281_%5Cmathcal+C%2CT%29%2C%5Cquad+%5Cmu+%5Cin+%5Ctext%7BHom%7D%28T%5E2%2CT%29+%5C%5C" alt="\eta \in \text{Hom}(1_\mathcal C,T),\quad \mu \in \text{Hom}(T^2,T) \\" eeimg="1">
+                </p>
+                <p>
+                    满足上讲提到过的一致条件：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+T%5E3+%40%3ET%5Cmu%3E%3E+T%5E2+%5C%5C+%40V%5Cmu+TVV+%40VV%5Cmu+V+%5C%5C+T%5E2+%40%3E%3E%5Cmu%3E+T+%5Cend%7BCD%7D+%5Cquad+%5Cbegin%7BCD%7D+T+%40%3E%5Ceta+T%3E%3E+T%5E2+%5C%5C+%40VT%5Ceta+VV+%40VV%5Cmu+V+%5C%5C+T%5E2+%40%3E%3E%5Cmu%3E+T+%5Cend%7BCD%7D+%5C%5C++" alt="\begin{CD} T^3 @&gt;T\mu&gt;&gt; T^2 \\ @V\mu TVV @VV\mu V \\ T^2 @&gt;&gt;\mu&gt; T \end{CD} \quad \begin{CD} T @&gt;\eta T&gt;&gt; T^2 \\ @VT\eta VV @VV\mu V \\ T^2 @&gt;&gt;\mu&gt; T \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    则称
+                    <img src="https://www.zhihu.com/equation?tex=T+%3D+%28T%2C%5Ceta%2C%5Cmu%29" alt="T = (T,\eta,\mu)" eeimg="1">
+                    为
+                    <b>
+                        单子(monad)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在谈一下如何从幺半群构造单子。幺半群
+                    <img src="https://www.zhihu.com/equation?tex=%28M%2C%5Ccirc%2Ce%29" alt="(M,\circ,e)" eeimg="1">
+                    上的三个要素进行如下对应：
+                </p>
+                <ul>
+                    <li>
+                        令集合为：
+                        <img src="https://www.zhihu.com/equation?tex=%5C%7BT%5C%7D" alt="\{T\}" eeimg="1">
+                    </li>
+                    <li>
+                        令二元运算为自然变换：
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmu%3A+T%5E2+%5Cto+T" alt="\mu: T^2 \to T" eeimg="1">
+                    </li>
+                    <li>
+                        令幺元为自然变换：
+                        <img src="https://www.zhihu.com/equation?tex=%5Ceta%3A+1_%5Cmathcal+C+%5Cto+T" alt="\eta: 1_\mathcal C \to T" eeimg="1">
+                    </li>
+                </ul>
+                <p>
+                    可以证明
+                    <img src="https://www.zhihu.com/equation?tex=%28%5C%7BT%5C%7D%2C%5Cmu%2C%5Ceta%29" alt="(\{T\},\mu,\eta)" eeimg="1">
+                    构成幺半群。于是：
+                </p>
+                <blockquote>
+                    单子不过就是自函子范畴上的一个幺半群而已。
+                </blockquote>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP95：粒子物理
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-cb4a4187d30815a60b6c07b1f4a17ce4_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/55817373" target="_blank">
+                        MP95：粒子物理
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-01-27
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    我们谈论粒子物理，差不多理解为是在谈论高能物理。所谓的高能，差不多理解为必须要考虑相对论了。过去的量子力学差不多理解为是围绕Schrödinger方程展开的，而Schrödinger方程是非相对论的，不能处理高速/高能的粒子问题。量子场论将提供这方面的方案，我们将在QFT中学到各种相对论的、Lorentz协变的方法，在数学上当然是可以通过学习去理解抽象的概念的。然而对于习惯本系列的读者，习惯于由数学推动的物理学习者而言，到底什么是需要同时考虑相对论和量子的研究对象呢？我们需要简要介绍一下真实世界的背景。
+                </p>
+                <p>
+                    公众在物理学领域热衷讨论的是加速器、对撞机、暗物质/暗能量、高能现象（最著名的是黑洞）的天文观测、反应堆和深山中的中微子探测 ... 这些热点问题，和我们在过去近百讲的数学物理相隔多远呢？笔者希望能够尽管地带领读者走到这些热点上，中间需要或者可以补上的有：QFT、一些代数几何、SUSY ...
+                </p>
+                <p>
+                    在做这些数学或者理论之前，我们注意到我们已经越来越进入了一个实体的领域。二次量子化指向的研究对象从几何上的直观与过去的宏观有很大的不同。粒子物理的系统非常庞大，相关的参考资料也很多，在这里我们尽量简要地交代一下粒子物理的背景知识，以便后面继续的时候不至于一头雾水。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Bose子和Fermi子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/54732380" class="internal">
+                        MP93：二次量子化(1)：生灭算子
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46840250" class="internal">
+                        MP94：二次量子化(2)：玻色子与费米子
+                    </a>
+                </p>
+                <p>
+                    前面从能级出发，得到了基本粒子的两种对易关系——Bose子和Fermi子。Bose子的自旋为整数，而Fermi子的两次自旋为整数。由于前面提到过的Fermi子成对的湮灭效应，量子系统中相同的量子态（所有量子数，如自旋、轨道量子数、磁量子数都相同）上只能有0或1个Fermi子。我们最熟悉的就是化学中电子轨道的Pauli不相容原理。
+                </p>
+                <p>
+                    在多粒子构成的系统中，Bose子构成的系统服从Bose-Einstein统计，而Fermi子构成的系统服从Fermi-Dirac统计。具体地说，多粒子系统波函数，在两个粒子发生位置交换时，Bose子的B-E统计是对称的，而Fermi子的F-D统计是反对称的。由于Pauli不相容原理，两种粒子的统计分布是不同的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%28%5Cvarepsilon_i%29+%3D+%5Cfrac%7B1%7D%7B%5Ctext+e%5E%7B%28%5Cvarepsilon_i-%5Cmu%29%2FkT%7D+%5Cpm+1%7D+%5Ctag%7B1%7D" alt="f(\varepsilon_i) = \frac{1}{\text e^{(\varepsilon_i-\mu)/kT} \pm 1} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    为温度、
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    为Boltzmann常数、
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    为化学式，
+                    <img src="https://www.zhihu.com/equation?tex=f%28%5Cvarepsilon_i%29" alt="f(\varepsilon_i)" eeimg="1">
+                    为能量为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon_i" alt="\varepsilon_i" eeimg="1">
+                    的量子态
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    上的平均粒子数，取正号为F-D分布，取负号为B-E分布。凝聚态中重要的Bose-Einstein凝聚即来源于这里的B-E分布。
+                </p>
+                <p>
+                    在物质构成上，Fermi子可以看作材料，如构成原子的夸克、电子，Bose子则将材料束缚在一起，如光子。根据汤川秀树(Yukawa)的理论，粒子具有场的特性，相互作用是通过Bose子作为媒介来传递作用力的。粒子所携带的场包含了相互作用的信息，将这个场量子化，若满足Klein-Gordon方程则代表Bose子，若满足Dirac方程则代表Fermi子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        反粒子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    为了理解粒子和反粒子，我们需要略微了解一下Dirac方程。过去在量子力学中学习的Schrödinger方程是非相对论的，不能处理高速粒子。Dirac方程则解决了Lorentz协变问题。根据相对论有动质能公式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5E2+%3D%28cp%29%5E2%2B%28mc%5E2%29%5E2%3D+c%5E2p%5E2+%2B+m%5E2c%5E4+%5C%5C" alt="E^2 =(cp)^2+(mc^2)^2= c^2p^2 + m^2c^4 \\" eeimg="1">
+                </p>
+                <p>
+                    按照惯例，今后都将光速和Plank常数归一化，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5E2+%3D+p%5E2+%2B+m%5E2+%5Ctag%7B2%7D" alt="E^2 = p^2 + m^2 \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    将时空切空间的基记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_%5Cmu+%3D+%28%5Cpartial_0%2C%5Cpartial_1%2C%5Cpartial_2%2C%5Cpartial_3%29+%3D+%28%5Cpartial_t%2C%5Cpartial_%7Bx_1%7D%2C%5Cpartial_%7Bx_2%7D%2C%5Cpartial_%7Bx_3%7D%29" alt="\partial_\mu = (\partial_0,\partial_1,\partial_2,\partial_3) = (\partial_t,\partial_{x_1},\partial_{x_2},\partial_{x_3})" eeimg="1">
+                    ，将Pauli矩阵(ref.
+                    <a href="https://zhuanlan.zhihu.com/p/51684298" class="internal">
+                        MP69
+                    </a>
+                    )记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma_1%3D%5Cbegin%7Bbmatrix%7D+0+%26+1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D%2C%5C+%5Csigma_2%3D%5Cbegin%7Bbmatrix%7D+0+%26+-i+%5C%5C+i+%26+0+%5Cend%7Bbmatrix%7D%2C%5C+%5Csigma_3%3D%5Cbegin%7Bbmatrix%7D+1+%26+0+%5C%5C+0+%26+-1+%5Cend%7Bbmatrix%7D%5C%5C" alt="\sigma_1=\begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix},\ \sigma_2=\begin{bmatrix} 0 &amp; -i \\ i &amp; 0 \end{bmatrix},\ \sigma_3=\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}\\" eeimg="1">
+                </p>
+                <p>
+                    用Pauli矩阵构成Dirac矩阵
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cgamma%5E0%3D%5Cbegin%7Bbmatrix%7D+I+%26+0+%5C%5C+0+%26+-I+%5Cend%7Bbmatrix%7D%2C%5C+%5Cgamma%5Ek+%3D%5Cbegin%7Bbmatrix%7D+0+%26+%5Csigma_k+%5C%5C+-%5Csigma_k+%26+0+%5Cend%7Bbmatrix%7D%5C%5C" alt="\gamma^0=\begin{bmatrix} I &amp; 0 \\ 0 &amp; -I \end{bmatrix},\ \gamma^k =\begin{bmatrix} 0 &amp; \sigma_k \\ -\sigma_k &amp; 0 \end{bmatrix}\\" eeimg="1">
+                </p>
+                <p>
+                    Dirac方程用Pauli矩阵表示为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28i%5Cgamma%5E%5Cmu%5Cpartial_%5Cmu+-+m%29%5Cpsi+%3D+0+%5Ctag%7B3%7D" alt="(i\gamma^\mu\partial_\mu - m)\psi = 0 \tag{3}" eeimg="1">
+                    <br>
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=4" alt="4" eeimg="1">
+                    -向量的波函数。具体的意义与推导以后会详细讨论。(2)中的能量可以有负数解，反应在Dirac方程(3)中，电子在电磁作用下辐射光子同时损失能量，这样使得正能态的电子跃迁到负能态上，并且无限地下降（负能谱是无穷的）。
+                </p>
+                <p>
+                    Dirac为了解决这一缺陷，假设真空态的所有负能态都被电子占满，使得根据Pauli不相容原理，电子无法进一步下降能级。如果给予负能态的电子能量使其跃迁到正能态，便产生了一个可观测的电子，而原先的能级上留下一个空穴，这个空穴就是正电子，它是电子的反粒子。1932年Anderson发现了正电子，支持了Dirac的假说。此后又发现了一系列的反粒子。电子及其反粒子的生灭现象，如今表述为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=2%5Cgamma+%5Cto+e%5E-+%2B+e%5E%2B+%5C%5C+e%5E-%2Be%5E%2B+%5Cto+2%5Cgamma" alt="2\gamma \to e^- + e^+ \\ e^-+e^+ \to 2\gamma" eeimg="1">
+                </p>
+                <p>
+                    这里的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cgamma" alt="\gamma" eeimg="1">
+                    为
+                    <b>
+                        光子(photon)
+                    </b>
+                    。从Dirac方程的推导以及实验的验证可知，正反粒子：
+                </p>
+                <ul>
+                    <li>
+                        具有相同的质量、自旋、寿命
+                    </li>
+                    <li>
+                        具有相反的电荷、重子数、轻子数
+                    </li>
+                </ul>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        衰变、辐射、散射
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    我们很早就了解，
+                    <b>
+                        质子(proton)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    和（负）
+                    <b>
+                        电子(electron)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=e%5E-" alt="e^-" eeimg="1">
+                    的电荷平衡使得宏观世界保持了电中性，而电中性的
+                    <b>
+                        中子(neutron)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    经过
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    衰变为质子
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    和负电子
+                    <img src="https://www.zhihu.com/equation?tex=e%5E-" alt="e^-" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=n+%5Cto+p+%2B+e%5E-+%2B+%5Cbar+v_e+%5Ctag%7B4%7D" alt="n \to p + e^- + \bar v_e \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    其中出现的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbar+v_e" alt="\bar v_e" eeimg="1">
+                    为反电中微子。以上衰变得到的是相当稳定的粒子。注意到质子
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    的质量小于中子
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    的质量。在有质量的粒子中，除了电子和质子，所有粒子都要发生衰变，而衰变是从高质量/能量向低质量/能量的方向发生的。以上的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    衰变，若给予能量的补充，则可以反向得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cto+n+%2B+e%5E%2B+%2B+v_e+%5Ctag%7B5%7D" alt="p \to n + e^+ + v_e \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    我们这里讨论的许多粒子都被视为基本粒子。然而，衰变的事实提醒我们，或许衰变就意味着内部结构——答案就靠读者自己去探索了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    光子的激发对应了辐射。在电动力学中，加速运动的电子发射光子，在量子力学中，还可以通过能级的跃迁发射（吸收）光子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5E-+%5Cto+e%5E-+%2B+%5Cgamma+%5Ctag%7B6%7D" alt="e^- \to e^- + \gamma \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    电子在能级跃迁过程中与光子的作用，引起了对电磁场量子化的需求，以及量子电动力学的研究。
+                </p>
+                <p>
+                    <br>
+                    高能物理的主要研究方式就是碰撞散射了。(5)实际上涉及了散射问题，写为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p+%2B+%5Cgamma+%5Cto+n+%2B+e%5E%2B+%2B+v_e+%5Ctag%7B7%7D" alt="p + \gamma \to n + e^+ + v_e \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    即质子在与光子的碰撞下，获得了能量，产生了质量/能量更高的中子。在散射过程中，初态粒子在电磁作用、强作用、弱作用的影响下，产生终态粒子。高能物理中，通过加速器人工产生高速/高能粒子，用高能粒子碰撞目标粒子，促发散射过程，从而发现新的粒子和高能现象。QFT的主要研究都是与散射相关的，如散射矩阵/S矩阵、Feynman图、Feynman规则、重整化等等。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        各种粒子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面谈到粒子最基本的分类是Bose子/Fermi子。我们还可以分别讨论轻子、force carriers、夸克、强子、Higgs子（就是大新闻那个）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        轻子(lepton)
+                    </b>
+                    。(4)的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    衰变过程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=n+%5Cto+p+%2B+e%5E-+%2B+%5Cbar+v_e+%5C%5C" alt="n \to p + e^- + \bar v_e \\" eeimg="1">
+                </p>
+                <p>
+                    质子
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    和(负)电子
+                    <img src="https://www.zhihu.com/equation?tex=e%5E-" alt="e^-" eeimg="1">
+                    是我们熟悉的粒子，它们决定了大部分的电学和化学性质。电子
+                    <img src="https://www.zhihu.com/equation?tex=e%5E-" alt="e^-" eeimg="1">
+                    的反粒子就是正电子
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%2B" alt="e^+" eeimg="1">
+                    。除了电子
+                    <img src="https://www.zhihu.com/equation?tex=e%5E-" alt="e^-" eeimg="1">
+                    外，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    子(muon)、
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                    子(tau)也是带一个负电荷的粒子，这三种带一个负电荷的粒子均有一个反粒子，这样一共是六种：
+                </p>
+                <p>
+                    电子：
+                    <img src="https://www.zhihu.com/equation?tex=%28e%5E-%2Ce%5E%2B%29" alt="(e^-,e^+)" eeimg="1">
+                    、
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1">
+                    子
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmu%5E-%2C%5Cmu%5E%2B%29" alt="(\mu^-,\mu^+)" eeimg="1">
+                    、
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                    子
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctau%5E-%2C%5Ctau%5E%2B%29" alt="(\tau^-,\tau^+)" eeimg="1">
+                </p>
+                <p>
+                    每一种粒子对应一个不带电荷、也没有质量的中微子，包括以上
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    衰变中出现的反电中微子，一共12种粒子，称为
+                    <b>
+                        轻子(lepton)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28e%5E-%2C%5Cnu_e%29%2C%28e%5E%2B%2C%5Cbar%5Cnu_e%29%2C%28%5Cmu%5E-%2C%5Cnu_%5Cmu%29%2C%28%5Cmu%5E%2B%2C%5Cbar%5Cnu_%5Cmu%29%2C%28%5Ctau%5E-%2C%5Cnu_%5Ctau%29%2C%28%5Ctau%5E%2B%2C%5Cbar%5Cnu_%5Ctau%29" alt="(e^-,\nu_e),(e^+,\bar\nu_e),(\mu^-,\nu_\mu),(\mu^+,\bar\nu_\mu),(\tau^-,\nu_\tau),(\tau^+,\bar\nu_\tau)" eeimg="1">
+                </p>
+                <p>
+                    所有的轻子都是自旋为
+                    <img src="https://www.zhihu.com/equation?tex=s%3D%5Cfrac%7B1%7D%7B2%7D" alt="s=\frac{1}{2}" eeimg="1">
+                    的Fermi子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        Force carriers
+                    </b>
+                    。Yukawa理论提出，每种相互作用都对应了一种Bose子来传递作用力，这种粒子称为force carriers：
+                </p>
+                <ul>
+                    <li>
+                        引力场：引力子(gion)
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    </li>
+                    <li>
+                        电磁场：光子
+                        <img src="https://www.zhihu.com/equation?tex=%5Cgamma+" alt="\gamma" eeimg="1">
+                    </li>
+                    <li>
+                        强作用场：胶子(gluon)
+                        <img src="https://www.zhihu.com/equation?tex=g" alt="g" eeimg="1">
+                    </li>
+                    <li>
+                        弱作用场：
+                        <img src="https://www.zhihu.com/equation?tex=W" alt="W" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=Z" alt="Z" eeimg="1">
+                        Bose子
+                    </li>
+                </ul>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        夸克(quark)
+                    </b>
+                    。夸克是自旋为
+                    <img src="https://www.zhihu.com/equation?tex=s%3D%5Cfrac%7B1%7D%7B2%7D" alt="s=\frac{1}{2}" eeimg="1">
+                    ，带电为
+                    <img src="https://www.zhihu.com/equation?tex=-%5Cfrac%7B1%7D%7B3%7De" alt="-\frac{1}{3}e" eeimg="1">
+                    或者
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B2%7D%7B3%7De" alt="\frac{2}{3}e" eeimg="1">
+                    的Fermi子。其中带电
+                    <img src="https://www.zhihu.com/equation?tex=-%5Cfrac%7B1%7D%7B3%7De" alt="-\frac{1}{3}e" eeimg="1">
+                    的夸克为
+                    <img src="https://www.zhihu.com/equation?tex=d%2Cs%2Cb" alt="d,s,b" eeimg="1">
+                    夸克；带电
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B2%7D%7B3%7De" alt="\frac{2}{3}e" eeimg="1">
+                    的夸克为
+                    <img src="https://www.zhihu.com/equation?tex=u%2Cc%2Ct" alt="u,c,t" eeimg="1">
+                    夸克，加之各自的正反粒子，一共是：
+                </p>
+                <ul>
+                    <li>
+                        正夸克
+                        <img src="https://www.zhihu.com/equation?tex=%28d%2Cu%29%2C%28s%2Cc%29%2C%28b%2Ct%29" alt="(d,u),(s,c),(b,t)" eeimg="1">
+                    </li>
+                    <li>
+                        反夸克
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Cbar+d%2C%5Cbar+u%29%2C%28%5Cbar+s%2C%5Cbar+c%29%2C%28%5Cbar+b%2C%5Cbar+t%29" alt="(\bar d,\bar u),(\bar s,\bar c),(\bar b,\bar t)" eeimg="1">
+                    </li>
+                </ul>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    目前还没有发现游离的夸克。根据前面的讨论，一对正反夸克在一起，其带电抵消，构成
+                    <b>
+                        介子(meson)
+                    </b>
+                    ，这是一种Bose子。三个夸克在一起形成
+                    <b>
+                        重子(baryon)
+                    </b>
+                    ，其带电是整数，是一种Fermi子。介子和重子统称
+                    <b>
+                        强子(hadron)
+                    </b>
+                    ——就是大名鼎鼎的CERN的LHC(Large Hadron Collider)那个强子，Dan Brown同名小说电影《天使与恶魔》中的反物质就是在那里获取的。就是CERN宣称发现了网红粒子——Higgs子——上帝粒子，它是一种带质量的标量Bose子，它在弱相互作用过程中赋予其它粒子质量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以上就是大体的背景，没有什么推导可言，也谈不上多少需要去理解的。读者若有进一步的兴趣，有大量资料可以参考。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

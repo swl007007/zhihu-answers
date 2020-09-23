@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP72：典型群(6)：单参数子群与指数映射
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-fe579f8038a9b130debb7350f444010e_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/51942489" target="_blank">
+                        MP72：典型群(6)：单参数子群与指数映射
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-09
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/51682183" class="internal">
+                        MP71：典型群(5)：流形的Lie代数和Lie群的左不变向量场
+                    </a>
+                </p>
+                <p>
+                    Lie群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的左不变向量场的全体记为
+                    <img src="https://www.zhihu.com/equation?tex=L%28G%29" alt="L(G)" eeimg="1">
+                    ，它是Lie群上向量场全体
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+X_G" alt="\mathfrak X_G" eeimg="1">
+                    的线性子空间。 上讲我们知道
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+X_G%5B%5Ccdot%2C%5Ccdot%5D" alt="\mathfrak X_G[\cdot,\cdot]" eeimg="1">
+                    是一个Lie代数，现在我们要给出一个事实：左不变向量场
+                    <img src="https://www.zhihu.com/equation?tex=L%28G%29" alt="L(G)" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+X_G%5B%5Ccdot%2C%5Ccdot%5D" alt="\mathfrak X_G[\cdot,\cdot]" eeimg="1">
+                    的Lie子代数，它就是Lie群的Lie代数。或者说，在同构的意义下，Lie群的左不变向量场与Lie群在幺元的切空间都是Lie群的Lie代数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+g+%3D+L%28G%29+%5Csimeq+T_eG+%5Ctag%7B1%7D" alt="\mathfrak g = L(G) \simeq T_eG \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上讲提到的Lie群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+R%5En%2C%2B%2C0%29" alt="(\mathbb R^n,+,0)" eeimg="1">
+                    可以很清楚地看到，张成左不变向量场
+                    <img src="https://www.zhihu.com/equation?tex=L%28G%29" alt="L(G)" eeimg="1">
+                    的基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_k%5C%7D" alt="\{\partial_k\}" eeimg="1">
+                    就是自然基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_i%5C%7D" alt="\{x_i\}" eeimg="1">
+                    诱导出的切空间上的自然基，已经蕴含了两者同构的关系。这样的同构关系对于所有的Lie群都成立，这样我们便可以通过研究Lie群的Lie代数——在幺元处的切空间，来研究Lie群的性质。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        单参数子群
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    Lie群之间的映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3A+G+%5Cto+H" alt="\varphi: G \to H" eeimg="1">
+                    ，若：
+                </p>
+                <ul>
+                    <li>
+                        作为群映射是同态
+                    </li>
+                    <li>
+                        作为微分流形映射是光滑的
+                    </li>
+                </ul>
+                <p>
+                    则称为Lie同态。其中我们关注一种特殊的Lie同态：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cvarphi%3A+%5Cmathbb+R+%26%5Cto+G+%5C%5C+t+%26%5Cmapsto+%5Cvarphi%28t%29+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} \varphi: \mathbb R &amp;\to G \\ t &amp;\mapsto \varphi(t) \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    它很像参数曲线，由于映射到Lie群，且作为Lie同态保持了群结构，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cmathbb+R%29+%5Clhd+G" alt="\varphi(\mathbb R) \lhd G" eeimg="1">
+                    是Abel子群，所以称其为Lie群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的单参数子群，它是
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    上经过幺元
+                    <img src="https://www.zhihu.com/equation?tex=e+%3D+t%280%29" alt="e = t(0)" eeimg="1">
+                    的参数曲线。这个Lie同态诱导出切映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+d%5Cvarphi%3A+T_0%5Cmathbb+R+%26%5Cto+T_eG+%5C%5C+%5Clambda%5Cfrac%7Bd%7D%7Bdt%7D+%26%5Cmapsto+%5Clambda+X+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} d\varphi: T_0\mathbb R &amp;\to T_eG \\ \lambda\frac{d}{dt} &amp;\mapsto \lambda X \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    解释一下，
+                    <img src="https://www.zhihu.com/equation?tex=T_0%5Cmathbb+R" alt="T_0\mathbb R" eeimg="1">
+                    是幺元上的一维的切空间/Lie代数，其基为
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cfrac%7Bd%7D%7Bdt%7D%5C%7D" alt="\{\frac{d}{dt}\}" eeimg="1">
+                    ，其上的切向量为
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Clambda%5Cfrac%7Bd%7D%7Bdt%7D%5C%7D" alt="\{\lambda\frac{d}{dt}\}" eeimg="1">
+                    ，而切映射在幺元上得到了基向量
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，切向量则同比例缩放为
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+X" alt="\lambda X" eeimg="1">
+                    ，这就是最简单的数乘。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们在上讲
+                    <a href="https://zhuanlan.zhihu.com/p/51682183" class="internal">
+                        MP71：典型群(5)：流形的Lie代数和Lie群的左不变向量场
+                    </a>
+                    定义左不变向量场时，通过&#34;数乘&#34;的方式把向量场的集合
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+X" alt="\mathfrak X" eeimg="1">
+                    构建成函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F" alt="\mathscr F" eeimg="1">
+                    -模。现在，结合(3)中的数乘和左不变向量场，我们有一个结论：Lie群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的每一个单参数子群都和一个左不变向量场相对应。不仅单参数子群确定左不变向量场，左不变向量场
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    也生成单参数子群。令Lie群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    在幺元的切空间
+                    <img src="https://www.zhihu.com/equation?tex=T_eG" alt="T_eG" eeimg="1">
+                    上有基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_k%5C%7D" alt="\{\partial_k\}" eeimg="1">
+                    ，那么
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    上的向量场
+                    <img src="https://www.zhihu.com/equation?tex=X+%3D+%5C%7Ba%5Ei%28x%29%5Cpartial_i%5C%7D" alt="X = \{a^i(x)\partial_i\}" eeimg="1">
+                    确定一个单参数子群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3A+%5Cmathbb+R+%5Cto+G" alt="\varphi: \mathbb R \to G" eeimg="1">
+                    ，使得过
+                    <img src="https://www.zhihu.com/equation?tex=e" alt="e" eeimg="1">
+                    的曲线的切向量就是
+                    <img src="https://www.zhihu.com/equation?tex=X_e" alt="X_e" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Lie群对流形的作用
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    在物理中，Lie群的意义在于它是作用于流形的变换群。我们多次强调这一观念：
+                    <a href="https://zhuanlan.zhihu.com/p/46346265" class="internal">
+                        MP30：仿射空间、变换群、Lie群
+                    </a>
+                    。平凡的例子就是加法
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R+%5Ctimes+%5Cmathbb+R+%5Cto+%5Cmathbb+R" alt="\mathbb R \times \mathbb R \to \mathbb R" eeimg="1">
+                    ，稍微好点的例子有
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BSO%7D%282%29+%5Ctimes+%5Cmathbb+R%5E2+%5Cto+%5Cmathbb+R%5E2" alt="\text{SO}(2) \times \mathbb R^2 \to \mathbb R^2" eeimg="1">
+                    ，我们再看看更一般的Lie群对流形的
+                    <b>
+                        作用(action)
+                    </b>
+                    ，将其记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Csigma%3A+G+%5Ctimes+M+%26%5Cto+M+%5C%5C+%28g%2Cp%29+%26%5Cmapsto+gp%3D%5Csigma%28g%2Cp%29+%5Cend%7Balign%7D+%5Ctag%7B4%7D" alt="\begin{align} \sigma: G \times M &amp;\to M \\ (g,p) &amp;\mapsto gp=\sigma(g,p) \end{align} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    如果以上映射在幺元上有
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28e%2Cp%29%3Dep%3Dp" alt="\sigma(e,p)=ep=p" eeimg="1">
+                    （保持代数结构），且满足复合映射的结合律
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28g_1%2C%5Csigma%28g_2%2Cp%29%29+%3D+%5Csigma%28g_1g_2%2Cp%29" alt="\sigma(g_1,\sigma(g_2,p)) = \sigma(g_1g_2,p)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        指数映射
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由于Lie群是微分流形，它天然具有连续可微群的结构，可以用分析的方法讨论无穷小变换，所谓的无穷小自然可以相对于某个特定的起点——幺元而言。我们在量子力学里面实际上已经用到了算子半群、酉变换群的概念。利用前面单参数子群的方法，Lie群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    上可以非常自然地映射到Lie群的Lie代数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+g" alt="\mathfrak g" eeimg="1">
+                    ，即指数映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bexp%7D%3A%5Cmathfrak+g+%5Cto+G" alt="\text{exp}:\mathfrak g \to G" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    (2)给出的任何一个单参数子群，建立了平凡的Lie群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+R%2C%2B%2C0%29" alt="(\mathbb R,+,0)" eeimg="1">
+                    和嵌入Lie群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    中的参数曲线子群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%28%5Cmathbb+R%29" alt="\varphi(\mathbb R)" eeimg="1">
+                    的同构。对于
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cin+%5Cmathfrak+g+%5Csimeq+T_eG" alt="X \in \mathfrak g \simeq T_eG" eeimg="1">
+                    ，它确定了一个左不变向量场，进而确定了一个特别的单参数子群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_X%3A%5Cmathbb+R+%5Cto+G" alt="\varphi_X:\mathbb R \to G" eeimg="1">
+                    ，在幺元
+                    <img src="https://www.zhihu.com/equation?tex=e" alt="e" eeimg="1">
+                    处
+                    <img src="https://www.zhihu.com/equation?tex=X+%3D+%5Cvarphi_X%280%29" alt="X = \varphi_X(0)" eeimg="1">
+                    。自然地，我们要求指数映射在定义上满足
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bexp%7D%28X%29+%3D+X+%3D+%5Cvarphi_X%280%29" alt="\text{exp}(X) = X = \varphi_X(0)" eeimg="1">
+                    ，这样容易证明：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi_X%28t%29+%3D+%5Ctext%7Bexp%7D%28tX%29+%5Ctag%7B5%7D" alt="\varphi_X(t) = \text{exp}(tX) \tag{5}" eeimg="1">
+                    也就是说，从幺元的切空间
+                    <img src="https://www.zhihu.com/equation?tex=T_eG" alt="T_eG" eeimg="1">
+                    出发，按照切向量
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cin+%5Cmathfrak+g+%5Csimeq+T_eG" alt="X \in \mathfrak g \simeq T_eG" eeimg="1">
+                    的方向，进行行程为
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cin+%5Cmathbb+R" alt="t \in \mathbb R" eeimg="1">
+                    的指数映射，可以达到Lie群上的某一点
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bexp%7D%28tX%29+%5Cin+G" alt="\text{exp}(tX) \in G" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由于我们目前见到的Lie群都是矩阵群，先熟悉一下矩阵的指数函数和指数映射。
+                    <a href="https://zhuanlan.zhihu.com/p/43974422" class="internal">
+                        MP2：平面旋转群SO(2)
+                    </a>
+                    简要讨论过指数函数，为了对任意群
+                    <img src="https://www.zhihu.com/equation?tex=G%28%2A%2C0%29" alt="G(*,0)" eeimg="1">
+                    实现类似的指数化操作，我们注意到整数次幂可以实现群中的自映射，而指数函数又具有整数次幂级数求和的形式，于是启发我们按照级数和定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctext%7Bexp%7D%3A+G+%26%5Cto+G+%5C%5C+X+%26%5Cmapsto+%5Ctext%7Bexp%7D%28X%29+%5C%5C+%26%3D%5Csum_%7Bk%3D0%7D%5E%5Cinfty+%7B+%5Cfrac%7BX%5Ek%7D%7Bk%21%7D+%7D+%5Cend%7Balign%7D+%5Ctag%7B6%7D" alt="\begin{align} \text{exp}: G &amp;\to G \\ X &amp;\mapsto \text{exp}(X) \\ &amp;=\sum_{k=0}^\infty { \frac{X^k}{k!} } \end{align} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    就得到了矩阵的指数函数。以上级数的收敛性易于证明。根据上式，实际上建立了一般线性群上的指数映射
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bexp%7D%3A%5Cmathfrak%7Bgl%7D%28n%2C%5Cmathbb+R%29+%5Cto+%5Ctext%7BGL%7D%28n%2C%5Cmathbb+R%29" alt="\text{exp}:\mathfrak{gl}(n,\mathbb R) \to \text{GL}(n,\mathbb R)" eeimg="1">
+                    ，对于复数域也是适用的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        三维无穷小转动
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在我们可以分析一下
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E3" alt="\mathbb R^3" eeimg="1">
+                    中无穷小转动所生成的单参数子群问题。平面旋转
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=R%28t%29+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+t+%26+-%5Csin+t+%5C%5C+%5Csin+t+%26+%5Ccos+t+%5Cend%7Bbmatrix%7D+%5Cin+%5Ctext%7BSO%7D%282%29+%5Ctag%7B7%7D" alt="R(t) = \begin{bmatrix} \cos t &amp; -\sin t \\ \sin t &amp; \cos t \end{bmatrix} \in \text{SO}(2) \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    将其扩展到三维空间，成为绕
+                    <img src="https://www.zhihu.com/equation?tex=z" alt="z" eeimg="1">
+                    轴的转动，则有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=R_z%28t%29+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+t+%26+-%5Csin+t+%26+0+%5C%5C+%5Csin+t+%26+%5Ccos+t+%26+0+%5C%5C+0+%26+0+%26+1+%5Cend%7Bbmatrix%7D+%5Cin+%5Ctext%7BSO%7D%283%29+%5Ctag%7B8%7D" alt="R_z(t) = \begin{bmatrix} \cos t &amp; -\sin t &amp; 0 \\ \sin t &amp; \cos t &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix} \in \text{SO}(3) \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    微小的转动
+                    <img src="https://www.zhihu.com/equation?tex=R_z%28t%29" alt="R_z(t)" eeimg="1">
+                    相对于恒同映射
+                    <img src="https://www.zhihu.com/equation?tex=I_3" alt="I_3" eeimg="1">
+                    的差异，通过求极限的方式可以得到一个导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+X_z+%26%3D+%5CBig%5B%5Cfrac%7BdR%28t%29%7D%7Bdt%7D%5CBig%5D_%7Bt%3D0%7D+%5C%5C+%26%3D%5Clim_%7Bt%5Cto+0%7D+%5Cfrac%7BR%28t%29-I_3%7D%7Bt%7D+%5C%5C+%26%3D+%5Cbegin%7Bbmatrix%7D+0+%26+-1+%26+0+%5C%5C+1+%26+0+%26+0+%5C%5C+0+%26+0+%26+0+%5Cend%7Bbmatrix%7D+%5Cend%7Balign%7D+%5Ctag%7B9%7D" alt="\begin{align} X_z &amp;= \Big[\frac{dR(t)}{dt}\Big]_{t=0} \\ &amp;=\lim_{t\to 0} \frac{R(t)-I_3}{t} \\ &amp;= \begin{bmatrix} 0 &amp; -1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix} \end{align} \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                    这个导数
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    就是某种意义上的切向量。根据(6)和(8)很容易算出：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bexp%7D%28tX%29%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+t+%26+-%5Csin+t+%26+0+%5C%5C+%5Csin+t+%26+%5Ccos+t+%26+0+%5C%5C+0+%26+0+%26+1+%5Cend%7Bbmatrix%7D+%3DR_z%28t%29+%5Ctag%7B10%7D" alt="\text{exp}(tX)= \begin{bmatrix} \cos t &amp; -\sin t &amp; 0 \\ \sin t &amp; \cos t &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix} =R_z(t) \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    对绕
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    轴旋转的情况也有类似的关系，类似(9)得到的三个矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B+X_x%2C+X_y%2C+X_z%5C%7D" alt="\{ X_x, X_y, X_z\}" eeimg="1">
+                    构成
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BO%7D%283%29" alt="\text{O}(3)" eeimg="1">
+                    的Lie代数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+o%283%29" alt="\mathfrak o(3)" eeimg="1">
+                    的一个基。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

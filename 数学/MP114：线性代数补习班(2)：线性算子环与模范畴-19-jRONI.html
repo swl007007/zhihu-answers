@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP114：线性代数补习班(2)：线性算子环与模范畴
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-15719fb8faa9cfdeba2325db0a2e3ef7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46332891" target="_blank">
+                        MP114：线性代数补习班(2)：线性算子环与模范畴
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-05-01
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <h2>
+                    线性算子环
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    模的精华在于在Abel群
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上构造一个线性算子环
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda" alt="\Lambda" eeimg="1">
+                    ，作用于自身。下面用量子力学的例子[
+                    <a href="https://zhuanlan.zhihu.com/p/44825641" class="internal">
+                        MP39：量子力学中的内积结构
+                    </a>
+                    ] 来阐述这一观点。在平方可积函数空间
+                    <img src="https://www.zhihu.com/equation?tex=L%5E2" alt="L^2" eeimg="1">
+                    上，无穷维复值函数的Hermite内积，按测度积分，构成函数空间的内积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Cphi%2C+%5Cpsi+%5Crangle+%3D+%5Cint_%5COmega+%5Coverline%7B%5Cphi%28x%29%7D%5Cpsi%28x%29dx+%5C%5C" alt="\langle \phi, \psi \rangle = \int_\Omega \overline{\phi(x)}\psi(x)dx \\" eeimg="1">
+                </p>
+                <p>
+                    这样构成的复Hilbert空间记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    。量子力学关注于这个空间上的线性算子，将符合某种特性（自伴、对称、正规、有界...）的线性算子构成的环记为算子环
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda" alt="\Lambda" eeimg="1">
+                    ，线性算子的作用为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+A+%5Cin+%5CLambda%3A+%5Cmathscr+H+%26%5Cto+%5Cmathscr+H+%5C%5C+%5Cpsi+%26%5Cmapsto+A%5Cpsi+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} A \in \Lambda: \mathscr H &amp;\to \mathscr H \\ \psi &amp;\mapsto A\psi \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    Hilbert空间记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    显然是个Abel群，线性、封闭性意味着
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    构成
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda" alt="\Lambda" eeimg="1">
+                    -左模。量子力学中的不对易性体现在算子环
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda" alt="\Lambda" eeimg="1">
+                    不是交换环。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    进一步，以量子力学为代表的大量研究的是谱理论。按照以上把量子态Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    视为
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda" alt="\Lambda" eeimg="1">
+                    -左模的表述方式，我们熟知的预解式(resolvent)方程为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Clambda+I+-+A%29%5Cpsi+%3D+0+%5C%5C" alt="(\lambda I - A)\psi = 0 \\" eeimg="1">
+                </p>
+                <p>
+                    注意到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cpsi+%3D+A%5Cpsi+%5C%5C" alt="\lambda \psi = A\psi \\" eeimg="1">
+                </p>
+                <p>
+                    本质上是两个不同的模作用的结果，LHS中
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cpsi+" alt="\lambda \psi" eeimg="1">
+                    表示Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    是复数环上的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                    -模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%5Cin+%5Ctext%7BOb%7D%28%5Cmathbb+C%5Ctextbf%7B-Mod%7D%29" alt="\mathscr H \in \text{Ob}(\mathbb C\textbf{-Mod})" eeimg="1">
+                    ，RHS中
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cpsi+" alt="A \psi" eeimg="1">
+                    表示
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    是算子环上的
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda" alt="\Lambda" eeimg="1">
+                    -模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H+%5Cin+%5Ctext%7BOb%7D%28%5CLambda%5Ctextbf%7B-Mod%7D%29" alt="\mathscr H \in \text{Ob}(\Lambda\textbf{-Mod})" eeimg="1">
+                    。预解式的作用就是把
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                    -模上的作用过渡到算子环
+                    <img src="https://www.zhihu.com/equation?tex=%5CLambda" alt="\Lambda" eeimg="1">
+                    -模上：
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+I+-+A+%5Cin+%5CLambda" alt="\lambda I - A \in \Lambda" eeimg="1">
+                    ，构成一个线性算子，从而可以考虑它的核
+                    <img src="https://www.zhihu.com/equation?tex=+%5Ctext%7BKer%7D%28%5Clambda+I+-+A%29" alt="\text{Ker}(\lambda I - A)" eeimg="1">
+                    ，这样就可以通过商空间的方式对线性空间进行特征子空间的分解 [
+                    <a href="https://zhuanlan.zhihu.com/p/56891666" class="internal">
+                        MP98：泛函分析补习班(2)：谱理论与算子的核
+                    </a>
+                    ]。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    下面我们进一步用线性代数来加深理解——在有限维的情况，非对易算子环上的模最好的例子就是矩阵乘法。沿用 [
+                    <a href="https://zhuanlan.zhihu.com/p/45549324" class="internal">
+                        MP113：线性代数补习班(1)：范畴
+                    </a>
+                    ] 中的约定，将域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=n+%5Ctimes+n" alt="n \times n" eeimg="1">
+                    维
+                    <b>
+                        方矩阵(phalanx)
+                    </b>
+                    的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D" alt="\mathfrak n = \mathbb K^{n \times n}" eeimg="1">
+                    ，类似地
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+p+%3D+%5Cmathbb+K%5E%7Bp+%5Ctimes+p%7D" alt="\mathfrak p = \mathbb K^{p \times p}" eeimg="1">
+                    ,
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+q+%3D+%5Cmathbb+K%5E%7Bq+%5Ctimes+q%7D" alt="\mathfrak q = \mathbb K^{q \times q}" eeimg="1">
+                    ... 矩阵乘法下它们都是非交换环。这类有限维
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -方矩阵环及其环同态构成一个范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BPhx%7D" alt="\textbf{Phx}" eeimg="1">
+                    ，其中每个环元都可以相应诱导出模范畴。这些模范畴的总和可以构成一个模范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+M+%3D+%5Ctextbf%7BMod%7D_%5Cmathbb+K" alt="\textbf M = \textbf{Mod}_\mathbb K" eeimg="1">
+                    ，其中的态射就是不同模之间的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -模同态/线性映射。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    双模
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    矩阵乘法是两个不同维数线性空间的连接，下面我们将以矩阵乘法为例子说明双模如何构成两个模的连接。在线性代数中可以用一个
+                    <img src="https://www.zhihu.com/equation?tex=%28p+%5Ctimes+q%29" alt="(p \times q)" eeimg="1">
+                    -维的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    右乘表示如下线性映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cvarphi+%5Cin+%5Cmathbb+K%5E%7Bp+%5Ctimes+q%7D%3A+%5Cmathbb+K%5E%7Bm+%5Ctimes+p%7D+%26%5Cto+%5Cmathbb+K%5E%7Bm+%5Ctimes+q%7D+%5C%5C+X+%26%5Cmapsto+X%5Ccirc+%5Cvarphi+%5C%5C+%5Cbegin%7Bbmatrix%7D+x_1%5E1+%26+%26+x_1%5Ep+%5C%5C+%26+%5Cddots+%26+%5C%5C+x_m%5E1+%26+%26++x_m%5Ep+%5C%5C+%5Cend%7Bbmatrix%7D+%26%5Cmapsto+%5Cbegin%7Bbmatrix%7D+x_1%5E1+%26+%26+x_1%5Ep+%5C%5C+%26+%5Cddots+%26+%5C%5C+x_m%5E1+%26+%26++x_m%5Ep+%5C%5C+%5Cend%7Bbmatrix%7D+%5Ccirc+%5Cbegin%7Bbmatrix%7D+%5Cvarphi_1%5E1+%26+%26+%5Cvarphi_1%5Eq+%5C%5C+%26+%5Cddots+%26+%5C%5C+%5Cvarphi_p%5E1+%26+%26++%5Cvarphi_p%5Eq+%5C%5C+%5Cend%7Bbmatrix%7D+%5C%5C+%5Cend%7Balign%7D%5Ctag%7B1%7D" alt="\begin{align} \varphi \in \mathbb K^{p \times q}: \mathbb K^{m \times p} &amp;\to \mathbb K^{m \times q} \\ X &amp;\mapsto X\circ \varphi \\ \begin{bmatrix} x_1^1 &amp; &amp; x_1^p \\ &amp; \ddots &amp; \\ x_m^1 &amp; &amp;  x_m^p \\ \end{bmatrix} &amp;\mapsto \begin{bmatrix} x_1^1 &amp; &amp; x_1^p \\ &amp; \ddots &amp; \\ x_m^1 &amp; &amp;  x_m^p \\ \end{bmatrix} \circ \begin{bmatrix} \varphi_1^1 &amp; &amp; \varphi_1^q \\ &amp; \ddots &amp; \\ \varphi_p^1 &amp; &amp;  \varphi_p^q \\ \end{bmatrix} \\ \end{align}\tag{1}" eeimg="1">
+                </p>
+                <p>
+                    在域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    上不限定方矩阵环维数的模范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+M+%3D+%5Ctextbf%7BMod%7D_%5Cmathbb+K" alt="\textbf M = \textbf{Mod}_\mathbb K" eeimg="1">
+                    中，上式可以用范畴语言表示为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi+%5Cin+%5Ctext%7BHom%7D_%5Ctextbf+M%28%5Cmathbb+K%5E%7Bm+%5Ctimes+p%7D%2C%5Cmathbb+K%5E%7Bm+%5Ctimes+q%7D+%29++%5C%5C" alt="\varphi \in \text{Hom}_\textbf M(\mathbb K^{m \times p},\mathbb K^{m \times q} )  \\" eeimg="1">
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+p%7D%2C+%5Cmathbb+K%5E%7Bm+%5Ctimes+q%7D+%5Cin+%5Ctext%7BOb%7D%28%5Cmathfrak+m%5Ctextbf%7B-Mod%7D%29" alt="\mathbb K^{m \times p}, \mathbb K^{m \times q} \in \text{Ob}(\mathfrak m\textbf{-Mod})" eeimg="1">
+                    ，可以把讨论缩小到
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m%5Ctextbf%7B-Mod%7D" alt="\mathfrak m\textbf{-Mod}" eeimg="1">
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+M+%3D+%5Ctextbf%7BMod%7D_%5Cmathbb+K" alt="\textbf M = \textbf{Mod}_\mathbb K" eeimg="1">
+                    的子范畴中：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi+%5Cin+%5Ctext%7BHom%7D_%7B%5Cmathfrak+m-%7D%28%5Cmathbb+K%5E%7Bm+%5Ctimes+p%7D%2C%5Cmathbb+K%5E%7Bm+%5Ctimes+q%7D+%29++%5C%5C" alt="\varphi \in \text{Hom}_{\mathfrak m-}(\mathbb K^{m \times p},\mathbb K^{m \times q} )  \\" eeimg="1">
+                </p>
+                <p>
+                    而且这样的线性映射的集合本身是一个双模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bp+%5Ctimes+q%7D+%5Cin+%5Ctext%7BOb%7D%28%5Cmathfrak+p%5Ctextbf%7B-Mod-%7D%5Cmathfrak+q%29" alt="\mathbb K^{p \times q} \in \text{Ob}(\mathfrak p\textbf{-Mod-}\mathfrak q)" eeimg="1">
+                    ，即(1)中的线性映射，把
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m%5Ctextbf%7B-Mod%7D" alt="\mathfrak m\textbf{-Mod}" eeimg="1">
+                    中的态射和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+p%5Ctextbf%7B-Mod-%7D%5Cmathfrak+q" alt="\mathfrak p\textbf{-Mod-}\mathfrak q" eeimg="1">
+                    中的双模联系起来了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    类似可以用一个
+                    <img src="https://www.zhihu.com/equation?tex=%28q+%5Ctimes+p%29" alt="(q \times p)" eeimg="1">
+                    -维的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K" alt="\mathbb K" eeimg="1">
+                    -矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    左乘表示如下线性映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cpsi+%5Cin+%5Cmathbb+K%5E%7Bq+%5Ctimes+p%7D%3A+%5Cmathbb+K%5E%7Bp+%5Ctimes+n%7D+%26%5Cto+%5Cmathbb+K%5E%7Bq+%5Ctimes+n%7D+%5C%5C+Y+%26%5Cmapsto+%5Cpsi%5Ccirc+Y+%5C%5C+%5Cbegin%7Bbmatrix%7D+y_1%5E1+%26+%26+y_1%5En+%5C%5C+%26+%5Cddots+%26+%5C%5C+y_p%5E1+%26+%26++y_p%5En+%5C%5C++%5Cend%7Bbmatrix%7D+%26%5Cmapsto+%5Cbegin%7Bbmatrix%7D+%5Cpsi_1%5E1+%26+%26+%5Cpsi_1%5Ep+%5C%5C+%26+%5Cddots+%26+%5C%5C+%5Cpsi_q%5E1+%26+%26++%5Cpsi_q%5Ep+%5C%5C+%5Cend%7Bbmatrix%7D++%5Ccirc+%5Cbegin%7Bbmatrix%7D+y_1%5E1+%26+%26+y_1%5En+%5C%5C+%26+%5Cddots+%26+%5C%5C+y_p%5E1+%26+%26++y_p%5En+%5C%5C+%5Cend%7Bbmatrix%7D+%5Cend%7Balign%7D%5Ctag%7B2%7D" alt="\begin{align} \psi \in \mathbb K^{q \times p}: \mathbb K^{p \times n} &amp;\to \mathbb K^{q \times n} \\ Y &amp;\mapsto \psi\circ Y \\ \begin{bmatrix} y_1^1 &amp; &amp; y_1^n \\ &amp; \ddots &amp; \\ y_p^1 &amp; &amp;  y_p^n \\  \end{bmatrix} &amp;\mapsto \begin{bmatrix} \psi_1^1 &amp; &amp; \psi_1^p \\ &amp; \ddots &amp; \\ \psi_q^1 &amp; &amp;  \psi_q^p \\ \end{bmatrix}  \circ \begin{bmatrix} y_1^1 &amp; &amp; y_1^n \\ &amp; \ddots &amp; \\ y_p^1 &amp; &amp;  y_p^n \\ \end{bmatrix} \end{align}\tag{2}" eeimg="1">
+                </p>
+                <p>
+                    类似的，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bp+%5Ctimes+n%7D%2C+%5Cmathbb+K%5E%7Bq+%5Ctimes+n%7D+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7D%5Cmathfrak+n%29" alt="\mathbb K^{p \times n}, \mathbb K^{q \times n} \in \text{Ob}(\textbf{Mod-}\mathfrak n)" eeimg="1">
+                    ，于是在
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMod-%7D%5Cmathfrak+n" alt="\textbf{Mod-}\mathfrak n" eeimg="1">
+                    中：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi+%5Cin+%5Ctext%7BHom%7D_%7B-%5Cmathfrak+n%7D%28%5Cmathbb+K%5E%7Bp+%5Ctimes+n%7D%2C+%5Cmathbb+K%5E%7Bq+%5Ctimes+n%7D%29++%5C%5C" alt="\psi \in \text{Hom}_{-\mathfrak n}(\mathbb K^{p \times n}, \mathbb K^{q \times n})  \\" eeimg="1">
+                </p>
+                <p>
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bq+%5Ctimes+p%7D+%5Cin+%5Ctext%7BOb%7D%28%5Cmathfrak+q%5Ctextbf%7B-Mod-%7D%5Cmathfrak+p%29" alt="\mathbb K^{q \times p} \in \text{Ob}(\mathfrak q\textbf{-Mod-}\mathfrak p)" eeimg="1">
+                    ，即(2)中的线性映射，把
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMod-%7D%5Cmathfrak+n" alt="\textbf{Mod-}\mathfrak n" eeimg="1">
+                    中的态射和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+q%5Ctextbf%7B-Mod-%7D%5Cmathfrak+p" alt="\mathfrak q\textbf{-Mod-}\mathfrak p" eeimg="1">
+                    中的双模联系起来了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以上例子体现了命题（\cite{Anderson1992}环与模范畴）：
+                </p>
+                <ol>
+                    <li>
+                        左模范畴
+                        <img src="https://www.zhihu.com/equation?tex=M%5Ctextbf%7B-Mod%7D" alt="M\textbf{-Mod}" eeimg="1">
+                        中，两个双模
+                        <img src="https://www.zhihu.com/equation?tex=_MA_P" alt="_MA_P" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=_MB_Q" alt="_MB_Q" eeimg="1">
+                        的态射集
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D_%7BM-%7D%28A_P%2CB_Q%29" alt="\text{Hom}_{M-}(A_P,B_Q)" eeimg="1">
+                        中可以诱导出
+                        <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                        -左
+                        <img src="https://www.zhihu.com/equation?tex=Q" alt="Q" eeimg="1">
+                        -右模
+                        <img src="https://www.zhihu.com/equation?tex=L_1%28A%2CB%29+%5Cin+%5Ctext%7BOb%7D%28P%5Ctextbf%7B-Mod-%7DQ%29" alt="L_1(A,B) \in \text{Ob}(P\textbf{-Mod-}Q)" eeimg="1">
+                        。
+                    </li>
+                    <li>
+                        右模范畴
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMod-%7DN" alt="\textbf{Mod-}N" eeimg="1">
+                        中，两个双模
+                        <img src="https://www.zhihu.com/equation?tex=_PA_N" alt="_PA_N" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=_QB_N" alt="_QB_N" eeimg="1">
+                        的态射集
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D_%7B-N%7D%28_PA%2C_QB%29" alt="\text{Hom}_{-N}(_PA,_QB)" eeimg="1">
+                        中可以诱导出
+                        <img src="https://www.zhihu.com/equation?tex=Q" alt="Q" eeimg="1">
+                        -左
+                        <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                        -右模
+                        <img src="https://www.zhihu.com/equation?tex=L_2%28A%2CB%29+%5Cin+%5Ctext%7BOb%7D%28Q%5Ctextbf%7B-Mod-%7DP%29" alt="L_2(A,B) \in \text{Ob}(Q\textbf{-Mod-}P)" eeimg="1">
+                        。
+                    </li>
+                </ol>
+                <p>
+                    即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+M%5Ctextbf%7B-Mod-%7DP+%5Ctimes+M%5Ctextbf%7B-Mod-%7DQ+%26%5Cto+P%5Ctextbf%7B-Mod-%7DQ+%5C%5C+P%5Ctextbf%7B-Mod-%7DN+%5Ctimes+Q%5Ctextbf%7B-Mod-%7DN+%26%5Cto+Q%5Ctextbf%7B-Mod-%7DP+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} M\textbf{-Mod-}P \times M\textbf{-Mod-}Q &amp;\to P\textbf{-Mod-}Q \\ P\textbf{-Mod-}N \times Q\textbf{-Mod-}N &amp;\to Q\textbf{-Mod-}P \\ \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    模范畴中的诱导
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D" alt="\mathbb K^{m \times n}" eeimg="1">
+                    矩阵空间，令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm%7D" alt="\mathbb K^{m}" eeimg="1">
+                    为向量空间，它们都可以和
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    -维方矩阵左乘构成
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m" alt="\mathfrak m" eeimg="1">
+                    -左模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D%2C+%5Cmathbb+K%5E%7Bm%7D+%5Cin+%5Ctext%7BOb%7D%28%5Cmathfrak+m%5Ctextbf%7B-Mod%7D%29" alt="\mathbb K^{m \times n}, \mathbb K^{m} \in \text{Ob}(\mathfrak m\textbf{-Mod})" eeimg="1">
+                    。根据(1)可以用矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    右乘表示他们的线性映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cvarphi+%5Cin+%5Cmathbb+K%5E%7Bn+%5Ctimes+1%7D%3A+%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D+%26%5Cto+%5Cmathbb+K%5Em+%5C%5C+X+%26%5Cmapsto+X%5Ccirc+%5Cvarphi+%5C%5C+%5Cbegin%7Bbmatrix%7D+x_1%5E1+%26+%26+x_1%5En+%5C%5C+%26+%5Cddots+%26+%5C%5C+x_m%5E1+%26+%26++x_m%5En+%5C%5C+%5Cend%7Bbmatrix%7D+%26%5Cmapsto+%5Cbegin%7Bbmatrix%7D+x_1%5E1+%26+%26+x_1%5En+%5C%5C+%26+%5Cddots+%26+%5C%5C+x_m%5E1+%26+%26++x_m%5En+%5C%5C+%5Cend%7Bbmatrix%7D+%5Ccirc+%5Cbegin%7Bbmatrix%7D+%5Cvarphi_1+%5C%5C+%5Cvdots+%5C%5C+%5Cvarphi_n+%5Cend%7Bbmatrix%7D+%5C%5C+%5Cend%7Balign%7D%5C%5C" alt="\begin{align} \varphi \in \mathbb K^{n \times 1}: \mathbb K^{m \times n} &amp;\to \mathbb K^m \\ X &amp;\mapsto X\circ \varphi \\ \begin{bmatrix} x_1^1 &amp; &amp; x_1^n \\ &amp; \ddots &amp; \\ x_m^1 &amp; &amp;  x_m^n \\ \end{bmatrix} &amp;\mapsto \begin{bmatrix} x_1^1 &amp; &amp; x_1^n \\ &amp; \ddots &amp; \\ x_m^1 &amp; &amp;  x_m^n \\ \end{bmatrix} \circ \begin{bmatrix} \varphi_1 \\ \vdots \\ \varphi_n \end{bmatrix} \\ \end{align}\\" eeimg="1">
+                </p>
+                <p>
+                    根据前面的讨论，线性映射构成双模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bn+%5Ctimes+1%7D+%5Cin+%5Ctext%7BOb%7D%28%5Cmathfrak+n%5Ctextbf%7B-Mod-%7D%5Cmathbb+K%29+%5Csubset+%5Ctext%7BOb%7D%28%5Cmathfrak+n%5Ctextbf%7B-Mod%7D%29" alt="\mathbb K^{n \times 1} \in \text{Ob}(\mathfrak n\textbf{-Mod-}\mathbb K) \subset \text{Ob}(\mathfrak n\textbf{-Mod})" eeimg="1">
+                    。根据(1)可以用矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi" alt="\varphi" eeimg="1">
+                    右乘表示反向的线性映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cvarphi+%5Cin+%5Cmathbb+K%5E%7B1+%5Ctimes+n%7D%3A+%5Cmathbb+K%5E%7Bm%7D+%26%5Cto+%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D+%5C%5C+X+%26%5Cmapsto+X%5Ccirc+%5Cvarphi+%5C%5C+%5Cbegin%7Bbmatrix%7D+x_1+%5C%5C+%5Cvdots+%5C%5C+x_n+%5Cend%7Bbmatrix%7D++%26%5Cmapsto+%5Cbegin%7Bbmatrix%7D+x_1+%5C%5C+%5Cvdots+%5C%5C+x_n+%5Cend%7Bbmatrix%7D++%5Ccirc+%5Cbegin%7Bbmatrix%7D+%5Cvarphi%5E1+%26+%5Ccdots+%26+%5Cvarphi%5En+%5Cend%7Bbmatrix%7D+%5Cend%7Balign%7D%5C%5C" alt="\begin{align} \varphi \in \mathbb K^{1 \times n}: \mathbb K^{m} &amp;\to \mathbb K^{m \times n} \\ X &amp;\mapsto X\circ \varphi \\ \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}  &amp;\mapsto \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}  \circ \begin{bmatrix} \varphi^1 &amp; \cdots &amp; \varphi^n \end{bmatrix} \end{align}\\" eeimg="1">
+                </p>
+                <p>
+                    它们构成双模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7B1+%5Ctimes+n%7D+%5Cin+%5Ctext%7BOb%7D%28%5Cmathbb+K%5Ctextbf%7B-Mod-%7D%5Cmathfrak+n%29+%5Csubset+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7D%5Cmathfrak+n%29" alt="\mathbb K^{1 \times n} \in \text{Ob}(\mathbb K\textbf{-Mod-}\mathfrak n) \subset \text{Ob}(\textbf{Mod-}\mathfrak n)" eeimg="1">
+                    。作为例子，它体现了 \cite{Anderson1992}中的命题：对于
+                    <img src="https://www.zhihu.com/equation?tex=_RU_S+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod-%7DS%29" alt="_RU_S \in \text{Ob}(R\textbf{-Mod-}S)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=+_RX+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod%7D%29" alt="_RX \in \text{Ob}(R\textbf{-Mod})" eeimg="1">
+                    ，可以进行以下诱导
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+X+%5Cmapsto+%5Ctext%7BHom%7D_%7BR-%7D%28U_S%2CX%29+%5Cin++%5Ctext%7BOb%7D%28S%5Ctextbf%7B-Mod%7D%29+%5C%5C+X+%5Cmapsto+%5Ctext%7BHom%7D_%7BR-%7D%28X%2CU_S%29+%5Cin++%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DS%29+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B4%7D" alt="\begin{align} X \mapsto \text{Hom}_{R-}(U_S,X) \in  \text{Ob}(S\textbf{-Mod}) \\ X \mapsto \text{Hom}_{R-}(X,U_S) \in  \text{Ob}(\textbf{Mod-}S) \\ \end{align} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    然后考虑行向量构成的对偶空间
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+K%5En%29%5E%2A" alt="(\mathbb K^n)^*" eeimg="1">
+                    ，它们都可以和
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维方矩阵右乘构成
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+n" alt="\mathfrak n" eeimg="1">
+                    -右模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D%2C+%28%5Cmathbb+K%5En%29%5E%2A+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7D%5Cmathfrak+n%29" alt="\mathbb K^{m \times n}, (\mathbb K^n)^* \in \text{Ob}(\textbf{Mod-}\mathfrak n)" eeimg="1">
+                    。根据(2)可以用矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    左乘表示为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cvarphi+%5Cin+%5Cmathbb+K%5E%7B1+%5Ctimes+m%7D%3A+%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D+%26%5Cto+%28%5Cmathbb+K%5En%29%5E%2A+%5C%5C+Y+%26%5Cmapsto+%5Cpsi%5Ccirc+Y+%5C%5C+%5Cbegin%7Bbmatrix%7D+y_1%5E1+%26+%26+y_1%5En+%5C%5C+%26+%5Cddots+%26+%5C%5C+y_m%5E1+%26+%26++y_m%5En+%5C%5C+%5Cend%7Bbmatrix%7D+%26%5Cmapsto+%5Cbegin%7Bbmatrix%7D+%5Cvarphi%5E1+%26+%5Ccdots+%26+%5Cvarphi%5Em+%5Cend%7Bbmatrix%7D++%5Ccirc+%5Cbegin%7Bbmatrix%7D+y_1%5E1+%26+%26+y_1%5En+%5C%5C+%26+%5Cddots+%26+%5C%5C+y_m%5E1+%26+%26++y_m%5En+%5C%5C+%5Cend%7Bbmatrix%7D+%5Cend%7Balign%7D%5C%5C" alt="\begin{align} \varphi \in \mathbb K^{1 \times m}: \mathbb K^{m \times n} &amp;\to (\mathbb K^n)^* \\ Y &amp;\mapsto \psi\circ Y \\ \begin{bmatrix} y_1^1 &amp; &amp; y_1^n \\ &amp; \ddots &amp; \\ y_m^1 &amp; &amp;  y_m^n \\ \end{bmatrix} &amp;\mapsto \begin{bmatrix} \varphi^1 &amp; \cdots &amp; \varphi^m \end{bmatrix}  \circ \begin{bmatrix} y_1^1 &amp; &amp; y_1^n \\ &amp; \ddots &amp; \\ y_m^1 &amp; &amp;  y_m^n \\ \end{bmatrix} \end{align}\\" eeimg="1">
+                </p>
+                <p>
+                    根据前面的讨论，线性映射构成双模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7B1+%5Ctimes+m%7D+%5Cin+%5Ctext%7BOb%7D%28%5Cmathbb+K%5Ctextbf%7B-Mod-%7D%5Cmathfrak+m%29+%5Csubset+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7D%5Cmathfrak+m%29" alt="\mathbb K^{1 \times m} \in \text{Ob}(\mathbb K\textbf{-Mod-}\mathfrak m) \subset \text{Ob}(\textbf{Mod-}\mathfrak m)" eeimg="1">
+                    。反过来考虑
+                    <img src="https://www.zhihu.com/equation?tex=+%28%5Cmathbb+K%5En%29%5E%2A+%5Cto+%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D" alt="(\mathbb K^n)^* \to \mathbb K^{m \times n}" eeimg="1">
+                    的线性映射（模同态），根据(2)可以用矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    左乘表示为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cvarphi+%5Cin+%5Cmathbb+K%5E%7Bm+%5Ctimes+1%7D%3A++%28%5Cmathbb+K%5En%29%5E%2A+%26%5Cto+%5Cmathbb+K%5E%7Bm+%5Ctimes+n%7D+%5C%5C+Y+%26%5Cmapsto+%5Cpsi%5Ccirc+Y+%5C%5C+%5Cbegin%7Bbmatrix%7D+y%5E1+%26+%5Ccdots+%26+y%5En+%5Cend%7Bbmatrix%7D++%26%5Cmapsto+%5Cbegin%7Bbmatrix%7D+%5Cpsi_1+%5C%5C+%5Cvdots+%5C%5C+%5Cpsi_m+%5Cend%7Bbmatrix%7D++%5Ccirc+%5Cbegin%7Bbmatrix%7D+y%5E1+%26+%5Ccdots+%26+y%5En+%5Cend%7Bbmatrix%7D++%5Cend%7Balign%7D%5C%5C" alt="\begin{align} \varphi \in \mathbb K^{m \times 1}:  (\mathbb K^n)^* &amp;\to \mathbb K^{m \times n} \\ Y &amp;\mapsto \psi\circ Y \\ \begin{bmatrix} y^1 &amp; \cdots &amp; y^n \end{bmatrix}  &amp;\mapsto \begin{bmatrix} \psi_1 \\ \vdots \\ \psi_m \end{bmatrix}  \circ \begin{bmatrix} y^1 &amp; \cdots &amp; y^n \end{bmatrix}  \end{align}\\" eeimg="1">
+                </p>
+                <p>
+                    它们构成双模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+1%7D+%5Cin+%5Ctext%7BOb%7D%28%5Cmathfrak+m%5Ctextbf%7B-Mod-%7D%5Cmathbb+K%29+%5Csubset+%5Ctext%7BOb%7D%28%5Cmathfrak+m%5Ctextbf%7B-Mod%7D%29" alt="\mathbb K^{m \times 1} \in \text{Ob}(\mathfrak m\textbf{-Mod-}\mathbb K) \subset \text{Ob}(\mathfrak m\textbf{-Mod})" eeimg="1">
+                    。类似(4)，对于
+                    <img src="https://www.zhihu.com/equation?tex=_RU_S+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod-%7DS%29" alt="_RU_S \in \text{Ob}(R\textbf{-Mod-}S)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=Y_S+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DS%29" alt="Y_S \in \text{Ob}(\textbf{Mod-}S)" eeimg="1">
+                    ，可以进行以下诱导
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+Y+%5Cmapsto+%5Ctext%7BHom%7D_%7BR-%7D%28U_S%2CY%29+%5Cin++%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DS%29+%5C%5C+Y+%5Cmapsto+%5Ctext%7BHom%7D_%7BR-%7D%28Y%2CU_S%29+%5Cin++%5Ctext%7BOb%7D%28S%5Ctextbf%7B-Mod%7D%29+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} Y \mapsto \text{Hom}_{R-}(U_S,Y) \in  \text{Ob}(\textbf{Mod-}S) \\ Y \mapsto \text{Hom}_{R-}(Y,U_S) \in  \text{Ob}(S\textbf{-Mod}) \\ \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

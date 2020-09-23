@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP9：重新认识向量场：方向导数、偏导数、梯度
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-b0b0900cbb9ed65152545af0279b3930_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44115400" target="_blank">
+                        MP9：重新认识向量场：方向导数、偏导数、梯度
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-11
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    本讲对高等数学中学习的方向导数、偏导数、梯度进行回归。主要体现在两个新的思想认识，即：
+                </p>
+                <p>
+                    矢量就是方向导数算子
+                </p>
+                <p>
+                    1-形式就是梯度
+                </p>
+                <p>
+                    我们首先确认方向导数是方向向量和梯度的双线性映射。这种双线性映射可以表达为内积的形式，方向向量和梯度的分量互为对方的线性组合系数。
+                </p>
+                <p>
+                    然后，我们回顾方向导数的定义，确认向量可以定义为给标量函数求方向导数的东西，这种定义的好处是它只依赖于局部结构，而不需要原点或者位置的概念。
+                </p>
+                <p>
+                    接着，我们继续上讲中关于1-形式的讨论，发现梯度和1-形式是相等的。它们不仅在运算结果上相等，在几何直观上也是等效的，于是我们确认1-形式就是梯度。
+                </p>
+                <p>
+                    以上的讨论使我们脱离了过去在平直的线性空间中固有的思维关系，为进一步推进到微分流形奠定了基础。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <hr>
+                <p>
+                    上一讲谈到：作为1-形式，
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%28%5Cpartial_i+f%29+dx%5Ei" alt="df=(\partial_i f) dx^i" eeimg="1">
+                    体现了基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    的线性组合，几何上看，就是这一组具有固定梯度的平行平面系，通过系数（偏导数
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i+f%5C%7D" alt="\{\partial_i f\}" eeimg="1">
+                    ）组合，构成了具有任意
+                    <b>
+                        梯度
+                    </b>
+                    的平行平面。
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/44227806" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：MP8：局部线性化：从Taylor展开到微分形式
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这一讲我们仍然不去碰微分流形，而是在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中进一步讨论场论的问题，并且前面关于1-形式的理解融合到场论中。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        回顾我们所理解的向量场：方向导数、偏导数、梯度
+                    </b>
+                </h2>
+                <p>
+                    关于我们过去在多元微积分和矢量分析与场论中所学到的方向导数、偏导数、梯度的基本概念，在给中学生写的高等数学的系列中有直观的阐明，需要复习请参考：
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/43792478" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                善人之资：Gap5：方向导数、偏导数、梯度、全微分
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中，记自然基为
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_i%5C%7D" alt="\{x_i\}" eeimg="1">
+                    ，记偏导数求导符号为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_i%3D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+x_i%7D" alt="\partial_i= \frac{\partial}{\partial x_i}" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <b>
+                        方向导数（directional derivative）
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=D_vf" alt="D_vf" eeimg="1">
+                    是数量函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    以向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    作为方向求导所得到的导数，它也是一个数量函数
+                </p>
+                <p>
+                    <b>
+                        偏导数(partial derivative)
+                    </b>
+                    :
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_i+f%3D+%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D" alt="\partial_i f= \frac{\partial f}{\partial x_i}" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    沿自然基向量
+                    <img src="https://www.zhihu.com/equation?tex=x_i" alt="x_i" eeimg="1">
+                    方向求得的方向导数
+                </p>
+                <p>
+                    <b>
+                        梯度（gradient）
+                    </b>
+                    :
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在某点上沿所有方向求导时，在某个方向达到最大方向导数，梯度
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f+%3D+%5Cbegin%7Bbmatrix%7D+%5Cpartial_1+f+%26+%5Cdots+%26+%5Cpartial_n+f+%5Cend%7Bbmatrix%7D%5ET" alt="\nabla f = \begin{bmatrix} \partial_1 f &amp; \dots &amp; \partial_n f \end{bmatrix}^T" eeimg="1">
+                </p>
+                <p>
+                    是一个矢量，其分量是各个坐标上的偏导数。
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在某点上沿所有方向求导时，在梯度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f" alt="\nabla f" eeimg="1">
+                    的方向达到最大方向导数，其大小就是梯度的长度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    方向导数是方向向量和梯度的双线性映射。将来我们会知道，方向向量和梯度是一对
+                    <b>
+                        对偶空间
+                    </b>
+                    ，故写成：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V+%5Ctimes+V%5E%2A+%5Cto+%5Cmathbb%7BR%7D" alt="V \times V^* \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28v%28p%29%2C%5Cnabla+f%28p%29%29+%5Cmapsto+D_vf" alt="(v(p),\nabla f(p)) \mapsto D_vf" eeimg="1">
+                </p>
+                <p>
+                    实际上可以写为内积形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_vf+%3D+v+%5Ccdot+%5Cnabla+f+%3D%5Cbegin%7Bbmatrix%7D+v%5E1+%5Cdots+v%5En+%5Cend%7Bbmatrix%7D+%5Ccdot+%5Cbegin%7Bbmatrix%7D+%5Cpartial_1+%5C%5C+%5Cvdots+%5C%5C+%5Cpartial+_n+%5Cend%7Bbmatrix%7D+f" alt="D_vf = v \cdot \nabla f =\begin{bmatrix} v^1 \dots v^n \end{bmatrix} \cdot \begin{bmatrix} \partial_1 \\ \vdots \\ \partial _n \end{bmatrix} f" eeimg="1">
+                </p>
+                <p>
+                    这个式子有很多个理解的角度。我们可以将方向导数视为以方向向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    的各分量作为线性系数，将偏导数进行线性组合。i.e.,
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i+f%5C%7D" alt="\{\partial_i f\}" eeimg="1">
+                    作为某种基，通过方向
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    上分量的组合构成了函数的总变化率，即方向导数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        换个角度理解向量：向量就是那个可以求方向导数的家伙
+                    </b>
+                    <br>
+                </h2>
+                <p>
+                    我们发现，前面所讨论的方向导数
+                    <img src="https://www.zhihu.com/equation?tex=D_vf+" alt="D_vf" eeimg="1">
+                    本身的性质是和具体的函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    无关的。从算子的角度分析，将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的所有光滑（无限次可微，方便讨论）标量场/数量函数的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=C%5E%5Cinfty%28%5Cmathbb%7BR%7D%5En%29" alt="C^\infty(\mathbb{R}^n)" eeimg="1">
+                    ，那么任何一个函数
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+C%5E%5Cinfty%28%5Cmathbb%7BR%7D%5En%29" alt="f \in C^\infty(\mathbb{R}^n)" eeimg="1">
+                    都是形如以下的映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D" alt="\mathbb{R}^n \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cmapsto+f%28p%29" alt="p \mapsto f(p)" eeimg="1">
+                </p>
+                <p>
+                    于是方向导数
+                    <img src="https://www.zhihu.com/equation?tex=D_v" alt="D_v" eeimg="1">
+                    、梯度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla" alt="\nabla" eeimg="1">
+                    、偏导数
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i%5C%7D" alt="\{\partial_i\}" eeimg="1">
+                    都可以视作算子。方向导数
+                    <img src="https://www.zhihu.com/equation?tex=D_v" alt="D_v" eeimg="1">
+                    作为算子视作偏导数算子
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i%5C%7D" alt="\{\partial_i\}" eeimg="1">
+                    的线性组合：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_v+%3D+v+%5Ccdot+%5Cnabla+%3D+v%5Ei%5Cpartial_i" alt="D_v = v \cdot \nabla = v^i\partial_i" eeimg="1">
+                </p>
+                <p>
+                    这里用了Einstein求和约定。注意：偏导数也是一种方向导数，偏导数之间是线性无关的，所有偏导数构成一个基。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    基于我们原先的知识和直观理解，我们认为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的向量场是在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的每一点上密密麻麻生长出来的箭头：
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-b53f86964d560281adacdf84abdc57de_r.jpg">
+                    <figcaption>
+                        我们理解的向量场
+                    </figcaption>
+                </figure>
+                <p>
+                    现在，为了学习强大的微分几何（理论物理横扫四大力学的神器），我们需要换一个角度理解向量：
+                </p>
+                <blockquote>
+                    向量就是那个
+                    <b>
+                        可以给函数求方向导数
+                    </b>
+                    的家伙
+                </blockquote>
+                <p>
+                    这句话来自[Baez]，推荐阅读：
+                </p>
+                <a target="_blank" href="https://link.zhihu.com/?target=https%3A//book.douban.com/subject/3495755/" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                [Baez 2009] 规范场、纽结和引力
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                book.douban.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们过去理解的
+                    <b>
+                        那堆箭头
+                    </b>
+                    可以表述为
+                    <img src="https://www.zhihu.com/equation?tex=V%3D%5C%7B+v%28p%29+%5Cvert+p+%5Cin+%5Cmathbb%7BR%7D%5En%5C%7D" alt="V=\{ v(p) \vert p \in \mathbb{R}^n\}" eeimg="1">
+                    ，这是在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中的自然表述，它偏重于
+                    <b>
+                        点
+                    </b>
+                    或者
+                    <b>
+                        位置
+                    </b>
+                    的概念。，而方向导数
+                    <img src="https://www.zhihu.com/equation?tex=D_v" alt="D_v" eeimg="1">
+                    算子是由这堆箭头
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    所决定的，在每一个
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+%5Cmathbb%7BR%7D%5En" alt="p \in \mathbb{R}^n" eeimg="1">
+                    上，都可以对任意光滑函数在
+                    <img src="https://www.zhihu.com/equation?tex=v%28p%29" alt="v(p)" eeimg="1">
+                    的方向求导的算子。既然箭头和方向导数如此对应，索性就把向量定义为：
+                </p>
+                <blockquote>
+                    <b>
+                        可以给函数求方向导数
+                    </b>
+                    的家伙
+                </blockquote>
+                <p>
+                    相比于前面偏重于
+                    <b>
+                        点
+                    </b>
+                    或
+                    <b>
+                        位置
+                    </b>
+                    的定义，这样的定义偏重于向量的
+                    <b>
+                        方向
+                    </b>
+                    和
+                    <b>
+                        长度
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面提到方向导数
+                    <img src="https://www.zhihu.com/equation?tex=D_v" alt="D_v" eeimg="1">
+                    作为算子可以视作偏导数算子
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i%5C%7D" alt="\{\partial_i\}" eeimg="1">
+                    的线性组合：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_v+%3D+v+%5Ccdot+%5Cnabla+%3D+v%5Ei%5Cpartial_i" alt="D_v = v \cdot \nabla = v^i\partial_i" eeimg="1">
+                </p>
+                <p>
+                    于是我们用算子重新定义
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+%5Cmathbb%7BR%7D%5En" alt="p \in \mathbb{R}^n" eeimg="1">
+                    上的向量
+                    <img src="https://www.zhihu.com/equation?tex=v%28p%29" alt="v(p)" eeimg="1">
+                    ：在
+                    <img src="https://www.zhihu.com/equation?tex=p" alt="p" eeimg="1">
+                    点上，对任意函数都有偏导数算子
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i%5C%7D" alt="\{\partial_i\}" eeimg="1">
+                    。以偏导数算子
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i%5C%7D" alt="\{\partial_i\}" eeimg="1">
+                    为基进行线性组合得到
+                    <b>
+                        向量
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_v%28p%29+%3D+v%28p%29+%5Ccdot+%5Cnabla+%3D+v%5Ei%28p%29%5Cpartial_i" alt="D_v(p) = v(p) \cdot \nabla = v^i(p)\partial_i" eeimg="1">
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的每一点如此定义，得到向量场：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V%3D%5C%7BD_v%28p%29%5Cvert+p+%5Cin+%5Cmathbb%7BR%7D%5En%5C%7D" alt="V=\{D_v(p)\vert p \in \mathbb{R}^n\}" eeimg="1">
+                </p>
+                <p>
+                    我们把
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i%5C%7D" alt="\{\partial_i\}" eeimg="1">
+                    称为点
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+%5Cmathbb%7BR%7D%5En" alt="p \in \mathbb{R}^n" eeimg="1">
+                    上向量的基，这种定义方式已经有了
+                    <b>
+                        向量丛
+                    </b>
+                    的味道，以后详谈。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        作为对偶向量的梯度
+                    </b>
+                </h2>
+                <p>
+                    我们回到梯度。
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在某点上沿所有方向求导时，在某个方向达到最大方向导数，梯度
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f+%3D+%5Cbegin%7Bbmatrix%7D+%5Cpartial_1+f+%26+%5Cdots+%26+%5Cpartial_n+f+%5Cend%7Bbmatrix%7D%5ET" alt="\nabla f = \begin{bmatrix} \partial_1 f &amp; \dots &amp; \partial_n f \end{bmatrix}^T" eeimg="1">
+                </p>
+                <p>
+                    是一个矢量，其分量是各个坐标上的偏导数。
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在某点上沿所有方向求导时，在梯度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f" alt="\nabla f" eeimg="1">
+                    的方向达到最大方向导数，其大小就是梯度的长度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面我们知道向量就是用来给函数求方向导数的。那么任意给一个向量
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    都决定了一个方向导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_vf+%3D+v+%5Ccdot+%5Cnabla+f+%3D+v%5Ei%28%5Cpartial_i+f%29" alt="D_vf = v \cdot \nabla f = v^i(\partial_i f)" eeimg="1">
+                </p>
+                <p>
+                    注意到，在
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+%5Cmathbb%7BR%7D%5En" alt="p \in \mathbb{R}^n" eeimg="1">
+                    附近（凡是讲到附近就意味着存在无限小的领域），方向导数是两个矢量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f+%3D+v%5Ei%28%5Cpartial_i+f%29" alt="\nabla f = v^i(\partial_i f)" eeimg="1">
+                    的内积，确切地说，是
+                    <img src="https://www.zhihu.com/equation?tex=v%28p%29" alt="v(p)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f%28p%29+%3D+v%5Ei%28%5Cpartial_i+f%28p%29%29" alt="\nabla f(p) = v^i(\partial_i f(p))" eeimg="1">
+                    的内积。若是给定了向量场
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    ，而让
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f" alt="\nabla f" eeimg="1">
+                    去变化又如何？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面我们学过对偶空间和对偶向量，不难验证，此刻
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f" alt="\nabla f" eeimg="1">
+                    是相对于
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    的对偶向量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Cmapsto+%28%5Cnabla+f%29%28v%29%3Dv+%5Ccdot+%5Cnabla+f+%3D+D_vf+%5Cin+%5Cmathbb%7BR%7D" alt="v \mapsto (\nabla f)(v)=v \cdot \nabla f = D_vf \in \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    我们印象中的梯度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f" alt="\nabla f" eeimg="1">
+                    是一个
+                    <b>
+                        向量
+                    </b>
+                    。这里，我们看到，确切地说梯度是一个
+                    <b>
+                        对偶向量
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        梯度与1-形式
+                    </b>
+                </h2>
+                <p>
+                    上一讲的最后谈到：1-形式
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%28%5Cpartial_i+f%29+dx%5Ei" alt="df=(\partial_i f) dx^i" eeimg="1">
+                    体现了基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    的线性组合，几何上看，就是这一组相互正交的超平面元，通过系数（偏导数
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i+f%5C%7D" alt="\{\partial_i f\}" eeimg="1">
+                    ）组合，构成了具有任意
+                    <b>
+                        梯度
+                    </b>
+                    的超平面元。我们有意在那里提到梯度，就是为了联想到刚才我们所谈到的，作为对偶向量的梯度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    1-形式的几何意义是具有梯度的超面元。
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    代表了
+                    <b>
+                        一组
+                    </b>
+                    相差为常数的，体现为平行超平面的线性函数，这一组线性函数求微分后得到了相同的
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    。对1-形式可以展开为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%28%5Cpartial_i+f%29+dx%5Ei++%3D%5Cbegin%7Bbmatrix%7D+dx%5E1+%5Cdots+dx%5En+%5Cend%7Bbmatrix%7D+%5Ccdot+%5Cbegin%7Bbmatrix%7D+%5Cpartial_1+%5C%5C+%5Cvdots+%5C%5C+%5Cpartial+_n+%5Cend%7Bbmatrix%7Df+%3D%5Cbegin%7Bbmatrix%7D+dx%5E1+%5Cdots+dx%5En+%5Cend%7Bbmatrix%7D+%5Ccdot+%5Cnabla+f" alt="df=(\partial_i f) dx^i  =\begin{bmatrix} dx^1 \dots dx^n \end{bmatrix} \cdot \begin{bmatrix} \partial_1 \\ \vdots \\ \partial _n \end{bmatrix}f =\begin{bmatrix} dx^1 \dots dx^n \end{bmatrix} \cdot \nabla f" eeimg="1">
+                </p>
+                <p>
+                    这里解读为，以梯度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f" alt="\nabla f" eeimg="1">
+                    的分量为线性系数，可以在基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    上通过线性组合构建1-形式。即梯度决定1-形式。反过来，上一讲谈到，1-形式是超平面元，超平面确定了梯度。于是，我们现在认为
+                    <b>
+                        梯度等效于1-形式
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    令向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    在基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i%5C%7D" alt="\{\partial_i\}" eeimg="1">
+                    中表为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v%3Dv%5Ei%5Cpartial_i" alt="v=v^i\partial_i" eeimg="1">
+                </p>
+                <p>
+                    那么方向导数则为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Ccdot+df+%3D+%28v%5Ei%5Cpartial_i%29+%5Ccdot+%28%28%5Cpartial_j+f%29+dx%5Ej+%29" alt="v \cdot df = (v^i\partial_i) \cdot ((\partial_j f) dx^j )" eeimg="1">
+                </p>
+                <p>
+                    由于
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_i+dx%5Ej+%3D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+x_i%7Ddx%5Ej%3D%5Cdelta_%7Bij%7D" alt="\partial_i dx^j = \frac{\partial}{\partial x_i}dx^j=\delta_{ij}" eeimg="1">
+                </p>
+                <p>
+                    以上两个Einstein求和（线性组合）项再做内积，通过Kronecker符号消去大部分，仅留下指标
+                    <img src="https://www.zhihu.com/equation?tex=i%3Dj" alt="i=j" eeimg="1">
+                    的情况，于是整理式子得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Ccdot+df+%3D+v%5Ei%28%5Cpartial_i+f%29+%3D+D_vf+" alt="v \cdot df = v^i(\partial_i f) = D_vf" eeimg="1">
+                </p>
+                <p>
+                    通过以上一对对偶向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    在一对对偶基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i%5C%7D" alt="\{\partial_i\}" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    上的运算，我们得到了方向导数
+                    <img src="https://www.zhihu.com/equation?tex=D_vf+" alt="D_vf" eeimg="1">
+                    。再根据前面的讨论
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v+%5Ccdot+df+%3D+D_vf++%3Dv+%5Ccdot+%5Cnabla+f" alt="v \cdot df = D_vf  =v \cdot \nabla f" eeimg="1">
+                </p>
+                <p>
+                    对任意向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    成立，我们有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df+%3D+%5Cnabla+f" alt="df = \nabla f" eeimg="1">
+                </p>
+                <p>
+                    即1-形式就是梯度。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        小结
+                    </b>
+                </h2>
+                <p>
+                    这一讲中我们得到两个新的观点：
+                </p>
+                <blockquote>
+                    矢量就是方向导数算子
+                    <br>
+                    1-形式就是梯度
+                </blockquote>
+                <p>
+                    并且，也直观认知到了矢量和1-形式互为对偶向量，
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbig%5C%7B+%5Cpartial_i+%3D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+x_i%7D+%5Cbig%5C%7D" alt="\big\{ \partial_i = \frac{\partial}{\partial x_i} \big\}" eeimg="1">
+                    互为对偶基。固定点上的这两类向量-对偶向量构成对偶空间，这就是微分流形上切空间-余切空间的雏形。有这一讲的铺垫，我们将来会比较容易地把这些概念推广到微分流形上。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

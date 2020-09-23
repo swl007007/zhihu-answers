@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP43：从经典力学到量子力学(4)：正则对易关系、Poisson括号、对易子
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-147d2782a8ab4c981b401a3e5fd1093c_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/47299385" target="_blank">
+                        MP43：从经典力学到量子力学(4)：正则对易关系、Poisson括号、对易子
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-23
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    接着上讲，我们通过位置算符和动量算符的复合作用，证明这两个算子是非对易的，且满足正则对易关系。我们把正则对易关系发展为算子的二元闭运算，即对易子。这种关系使我们联想到经典力学的Poisson括号中的类似关系。我们回顾了Poisson括号的定义，以及用Poisson括号表达的Hamilton方程。接着讨论了经典力学中可观测量随时间演化的方式，它是Hamilton量和可观测量的泊松括号。这些关系，都给出了量子力学的类比。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本讲关于经典力学的内容请参考
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/42702657" class="internal">
+                        MP16：Hamilton力学
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <hr>
+                <h2>
+                    <b>
+                        正则对易关系
+                    </b>
+                </h2>
+                <p>
+                    位置算符和动量算符复合作用于量子态
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29+%5Cin+%5Cmathscr+H" alt="\psi(x) \in \mathscr H" eeimg="1">
+                    的结果是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=PX%5Cpsi+%3D+-i%5Chbar+%5Cfrac%7Bd%7D%7Bdx%7D%28x%5Cpsi%29" alt="PX\psi = -i\hbar \frac{d}{dx}(x\psi)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+-i%5Chbar%28%5Cpsi+%2B+x%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%29" alt="= -i\hbar(\psi + x\frac{d\psi}{dx})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+-i%5Chbar%281+%2B+x%5Cfrac%7Bd%7D%7Bdx%7D%29%5Cpsi" alt="= -i\hbar(1 + x\frac{d}{dx})\psi" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%28-i%5Chbar+-i%5Chbar+x%5Cfrac%7Bd%7D%7Bdx%7D%29%5Cpsi" alt="= (-i\hbar -i\hbar x\frac{d}{dx})\psi" eeimg="1">
+                </p>
+                <p>
+                    得到算子方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=PX+%3D++-i%5Chbar+-i%5Chbar+x%5Cfrac%7Bd%7D%7Bdx%7D" alt="PX =  -i\hbar -i\hbar x\frac{d}{dx}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+-i%5Chbar+%2B+x%28-i%5Chbar+%5Cfrac%7Bd%7D%7Bdx%7D%29" alt="= -i\hbar + x(-i\hbar \frac{d}{dx})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+-i%5Chbar+%2B+XP" alt="= -i\hbar + XP" eeimg="1">
+                </p>
+                <p>
+                    于是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=XP+-+PX+%3D+i%5Chbar" alt="XP - PX = i\hbar" eeimg="1">
+                </p>
+                <p>
+                    这个式子就是
+                    <b>
+                        正则对易关系(canonical commutation relation)
+                    </b>
+                    。所谓对易，数学上叫做交换。不对易就是非交换的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=xy+%5Cneq+yx+%5CLeftrightarrow+xy-yx+%5Cneq+0" alt="xy \neq yx \Leftrightarrow xy-yx \neq 0" eeimg="1">
+                </p>
+                <p>
+                    这种通过
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=xy-yx" alt="xy-yx" eeimg="1">
+                </p>
+                <p>
+                    来度量偏离零的程度的方法，往往用来评估
+                    <b>
+                        不对易
+                    </b>
+                    的程度。我们将来要学到的Lie括号与不对易性有重要的关系，今后会有更多的非交换/不对易的问题涌现，我们会在适当的时候引进相关的新知识。后面我们看到的对易子，也可以理解为不对易子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        对易子
+                    </b>
+                </h2>
+                <p>
+                    这启发我们把这种结构推广到任意算子。在量子力学中，量子态Hilbert空间上的线性算子记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+L%28%5Cmathscr+H%29" alt="\mathcal L(\mathscr H)" eeimg="1">
+                    ，那么可观测量之间可以建立二元运算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+L%28%5Cmathscr+H%29+%5Ctimes+%5Cmathcal+L%28%5Cmathscr+H%29+%5Cto+%5Cmathcal+L%28%5Cmathscr+H%29" alt="\mathcal L(\mathscr H) \times \mathcal L(\mathscr H) \to \mathcal L(\mathscr H)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5B+%5Chat+A%2C%5Chat+B+%5D%3D%5Chat+A+%5Chat+B+-+%5Chat+B+%5Chat+A++%5Cin+%5Cmathcal+L%28%5Cmathscr+H%29" alt="[ \hat A,\hat B ]=\hat A \hat B - \hat B \hat A  \in \mathcal L(\mathscr H)" eeimg="1">
+                </p>
+                <p>
+                    称为
+                    <b>
+                        对易子(commutator)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    根据正则对易关系我们了解到，位置算子
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    和动量算子
+                    <img src="https://www.zhihu.com/equation?tex=P" alt="P" eeimg="1">
+                    不交换，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5BX%2CP%5D+%3D+XP+-+PX+%3D+i%5Chbar" alt="[X,P] = XP - PX = i\hbar" eeimg="1">
+                </p>
+                <p>
+                    当它们复合作用于一个波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    时，复合的顺序会影响映射的结果：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5BX%2CP%5D%5Cpsi+%3D+i%5Chbar%5Cpsi" alt="[X,P]\psi = i\hbar\psi" eeimg="1">
+                </p>
+                <p>
+                    我们注意到算子
+                    <img src="https://www.zhihu.com/equation?tex=%5BX%2CP%5D" alt="[X,P]" eeimg="1">
+                    的特征值就是
+                    <img src="https://www.zhihu.com/equation?tex=i%5Chbar" alt="i\hbar" eeimg="1">
+                    ，而通过适当的单位可以约去Plank常数
+                    <img src="https://www.zhihu.com/equation?tex=%5Chbar" alt="\hbar" eeimg="1">
+                    ，这样特征值变成
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    ，也就是说，作为算子的对易子
+                    <img src="https://www.zhihu.com/equation?tex=%5BX%2CP%5D" alt="[X,P]" eeimg="1">
+                    对波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    的映射，相当于让波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%29" alt="\psi(x)" eeimg="1">
+                    整体上在每个位置
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    上都进行了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi%2F2" alt="\pi/2" eeimg="1">
+                    的旋转。其中的意义，将来有机会会详细阐述。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        Poisson括号
+                    </b>
+                </h2>
+                <p>
+                    对易子的结构让我们联想到经典Hamilton力学中的Poisson括号。考虑相空间
+                    <img src="https://www.zhihu.com/equation?tex=%28q%2Cp%29" alt="(q,p)" eeimg="1">
+                    上对时间
+                    <img src="https://www.zhihu.com/equation?tex=t" alt="t" eeimg="1">
+                    的微分算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+t%7D+%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cdot%7Bq%7D%5Ek+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%5Ek%7D+%2B+%5Cdot%7Bp%7D%5Ek+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+p%5Ek%7D+%5CBig%29" alt="\frac{\partial}{\partial t} = \sum_{k=1}^{n} \Big( \dot{q}^k \frac{\partial}{\partial q^k} + \dot{p}^k \frac{\partial}{\partial p^k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    若有Hamilton量
+                    <img src="https://www.zhihu.com/equation?tex=H" alt="H" eeimg="1">
+                    ，则可以代入经典力学的Hamilton方程
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p%5Ek%7D+%3D+%5Cdot%7Bq%7D_k%2C+%5C+%5C+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q_k%7D+%3D-+%5Cdot%7Bp%7D%5Ek" alt="\frac{\partial H}{\partial p^k} = \dot{q}_k, \ \ \frac{\partial H}{\partial q_k} =- \dot{p}^k" eeimg="1">
+                </p>
+                <p>
+                    得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+t%7D+%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p_k%7D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+q%5Ek%7D+-+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q_k%7D+%5Cfrac%7B%5Cpartial+%7D%7B%5Cpartial+p%5Ek%7D+%5CBig%29" alt="\frac{\partial}{\partial t} = \sum_{k=1}^{n} \Big( \frac{\partial H}{\partial p_k} \frac{\partial}{\partial q^k} - \frac{\partial H}{\partial q_k} \frac{\partial }{\partial p^k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    令余切丛
+                    <img src="https://www.zhihu.com/equation?tex=T%5E%2AM" alt="T^*M" eeimg="1">
+                    上的光滑函数则可以构造二元运算：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr%7BX%7D++%5Ctimes+%5Cmathscr%7BX%7D++%5Cto+%5Cmathscr%7BX%7D" alt="\mathscr{X}  \times \mathscr{X}  \to \mathscr{X}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B+F%2CG%5C%7D%3D+%5Csum_%7Bk%3D1%7D%5E%7Bn%7D+%5CBig%28+%5Cfrac%7B%5Cpartial+F%7D%7B%5Cpartial+q%5Ek%7D%5Cfrac%7B%5Cpartial+G%7D%7B%5Cpartial+p_k%7D+-+%5Cfrac%7B%5Cpartial+F%7D%7B%5Cpartial+p%5Ek%7D+%5Cfrac%7B%5Cpartial+G%7D%7B%5Cpartial+q_k%7D+%5CBig%29" alt="\{ F,G\}= \sum_{k=1}^{n} \Big( \frac{\partial F}{\partial q^k}\frac{\partial G}{\partial p_k} - \frac{\partial F}{\partial p^k} \frac{\partial G}{\partial q_k} \Big)" eeimg="1">
+                </p>
+                <p>
+                    这就是
+                    <b>
+                        Poisson括号
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                    在经典力学中，任何
+                    <b>
+                        可观察量(observable)
+                    </b>
+                    都可以视为相空间上的函数，包括Hamilton方程中涉及到的动量
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bp_i%5C%7D" alt="\{p_i\}" eeimg="1">
+                    、位置
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bq%5Ei%5C%7D" alt="\{q^i\}" eeimg="1">
+                    、Hamilton量
+                    <img src="https://www.zhihu.com/equation?tex=H" alt="H" eeimg="1">
+                    。从Lagrange方程过渡到Hamilton方程，使二阶微分方程过渡到一阶微分方程。对于任意可观察量
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    代入Hamilton方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd+A%7D%7Bdt%7D+%3D+%5Cfrac%7Bd%7D%7Bdt%7DA%28p%2Cq%29+" alt="\frac{d A}{dt} = \frac{d}{dt}A(p,q)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%5Cfrac%7B%5Cpartial+A%7D%7B%5Cpartial+q%5Ei%7D+%5Cfrac%7Bdq_i%7D%7Bdt%7D+%2B+%5Cfrac%7B%5Cpartial+A%7D%7B%5Cpartial+p_i%7D+%5Cfrac%7Bdq%5Ei%7D%7Bdt%7D" alt="= \frac{\partial A}{\partial q^i} \frac{dq_i}{dt} + \frac{\partial A}{\partial p_i} \frac{dq^i}{dt}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%5Cfrac%7B%5Cpartial+A%7D%7B%5Cpartial+q%5Ei%7D+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+p_i%7D+-+%5Cfrac%7B%5Cpartial+A%7D%7B%5Cpartial+p_i%7D+%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+q%5Ei%7D" alt="= \frac{\partial A}{\partial q^i} \frac{\partial H}{\partial p_i} - \frac{\partial A}{\partial p_i} \frac{\partial H}{\partial q^i}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%5C%7BH%2CA%5C%7D" alt="= \{H,A\}" eeimg="1">
+                </p>
+                <p>
+                    换言之，可观察量
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    对时间的变化速度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd+A%7D%7Bdt%7D" alt="\frac{d A}{dt}" eeimg="1">
+                    由它和Hamilton量的Poisson括号决定，是Hamilton量生成了可观察量的时间演化。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        量子力学的表达
+                    </b>
+                </h2>
+                <p>
+                    经典力学的Hamilton方程可以用Poisson括号改写为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot%7Bp%7D%5Ek+%3D+%5C%7Bp%5Ek%2C+H%5C%7D%2C+%5C+%5C+%5Cdot%7Bq%7D_k+%3D+%5C%7Bq_k%2C+H%5C%7D" alt="\dot{p}^k = \{p^k, H\}, \ \ \dot{q}_k = \{q_k, H\}" eeimg="1">
+                </p>
+                <p>
+                    坐标与动量的对易关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bp_i%2C+p_j%5C%7D+%3D+0%2C+%5C+%5C+%5C%7Bq_i%2C+q_j%5C%7D+%3D+0%2C+%5C+%5C+%5C%7Bq_i%2C+p_j%5C%7D+%3D+%5Cdelta_i%5Ej" alt="\{p_i, p_j\} = 0, \ \ \{q_i, q_j\} = 0, \ \ \{q_i, p_j\} = \delta_i^j" eeimg="1">
+                </p>
+                <p>
+                    时间演化方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd+A%7D%7Bdt%7D+%3D+%5C%7BH%2C+A%5C%7D" alt="\frac{d A}{dt} = \{H, A\}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                    量子力学中对应为对易子的方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=+%5Cfrac%7Bd%5Chat+p%5Ek%7D%7Bdt%7D+%3D+%5Cfrac%7B1%7D%7Bi%5Chbar%7D+%5Bp%5Ek%2C+H%5D%2C+%5C+%5C+%5Cfrac%7Bd%5Chat+q_k%7D%7Bdt%7D+%3D+%5Cfrac%7B1%7D%7Bi%5Chbar%7D+%5Bq_k%2C+H%5D+" alt="\frac{d\hat p^k}{dt} = \frac{1}{i\hbar} [p^k, H], \ \ \frac{d\hat q_k}{dt} = \frac{1}{i\hbar} [q_k, H]" eeimg="1">
+                </p>
+                <p>
+                    正则对易关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5B%5Chat+p_i%2C+%5Chat+p_j%5D+%3D+0%2C+%5C+%5C+%5B%5Chat+q_i%2C+%5Chat+q_j%5D+%3D+0%2C+%5C+%5C+%5B%5Chat+q_i%2C+%5Chat+p_j%5D+%3D+i%5Chbar%5Cdelta_i%5Ej" alt="[\hat p_i, \hat p_j] = 0, \ \ [\hat q_i, \hat q_j] = 0, \ \ [\hat q_i, \hat p_j] = i\hbar\delta_i^j" eeimg="1">
+                </p>
+                <p>
+                    时间演化方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5Chat+A%7D%7Bdt%7D+%3D+%5Cfrac%7Bi%7D%7B%5Chbar%7D%5B%5Chat+H%2C+%5Chat+A%5D" alt="\frac{d\hat A}{dt} = \frac{i}{\hbar}[\hat H, \hat A]" eeimg="1">
+                </p>
+                <p>
+                    这是Heisenberg运动方程，今后详细论述。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

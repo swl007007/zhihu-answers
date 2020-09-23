@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP1：重温高等数学：复平面与Euler公式
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-eaf91c0aefba5a174bcfacadac9ee77d_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/42639576" target="_blank">
+                        MP1：重温高等数学：复平面与Euler公式
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-04
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这是数学物理私塾课系列（MP）的第一讲。实际上数学物理方法是个很笼统的说法。泛泛而言，复数在物理中的出现频率是高于数学的。自然界的许多问题提炼为线性微分方程，而这些微分方程的解往往具有指数函数的性质。实数指数函数往往反映衰减的物理现象，而虚数指数函数往往反映波动，两者在复数下共同作用。因此，我们的数学物理方法课从复数开始，起点是中学数学，i.e.，从逻辑顺序上说中学生有能力把这个系列的知识自洽地学习下去，这也是本私塾课的目标。广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    作为承接基础高等数学、线性代数、复数，向数学物理前沿推进的起点，我们在这一讲中站在更高的层面理解一下过去所了解的复数知识。这一讲我们主要解决如下几个问题：
+                </p>
+                <ol>
+                    <li>
+                        实平面和二维实向量 vs. 复平面和复向量，这两者在加法上的同构
+                    </li>
+                    <li>
+                        用旋转所表达的复数乘法，作为复平面上附加的代数结构
+                    </li>
+                    <li>
+                        Euler公式的本质
+                    </li>
+                </ol>
+                <hr>
+                <p>
+                    标准复数/复变函数/复分析教材给出了三个莫名其妙的定义：
+                </p>
+                <ol>
+                    <li>
+                        虚数单位：
+                        <img src="https://www.zhihu.com/equation?tex=i%3D%5Csqrt%7B-1%7D" alt="i=\sqrt{-1}" eeimg="1">
+                    </li>
+                    <li>
+                        复数乘法：
+                        <img src="https://www.zhihu.com/equation?tex=%28a%2Bib%29%28c%2Bid%29%3D%28ac-bd%29%2Bi%28ad%2Bbc%29" alt="(a+ib)(c+id)=(ac-bd)+i(ad+bc)" eeimg="1">
+                    </li>
+                    <li>
+                        Euler公式：
+                        <img src="https://www.zhihu.com/equation?tex=e%5E%7Bix%7D%3D%5Ccos+x+%2B+i%5Csin+x" alt="e^{ix}=\cos x + i\sin x" eeimg="1">
+                    </li>
+                </ol>
+                <p>
+                    然后就在繁琐的计算中推进复分析的学习，却避而不谈这三个定义的内涵。这一节中，我们探讨一下实平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    和复平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BC%7D" alt="\mathbb{C}" eeimg="1">
+                    的本质区别，重新建立对以上三个定义的理解，以便后面的推进。
+                </p>
+                <h2>
+                    <b>
+                        实平面与复平面
+                    </b>
+                </h2>
+                <p>
+                    我们先从抽象代数的角度来比较一下实平面和复平面。我们非常熟悉的实平面上的向量加法，构成一个加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2%28%2B%2C%280%2C0%29%29" alt="\mathbb{R}^2(+,(0,0))" eeimg="1">
+                </p>
+                <blockquote>
+                    令有集合
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    及
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%2Cy%2Cz%5Cin+G" alt="\forall x,y,z\in G" eeimg="1">
+                    ，在其上定义一个封闭的二元映射/运算：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%2A%3A+G+%5Ctimes+G+%5Cto+G" alt="*: G \times G \to G" eeimg="1">
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%28x%2Cy%29+%5Cmapsto+x%2Ay" alt="(x,y) \mapsto x*y" eeimg="1">
+                    <br>
+                    满足：
+                    <br>
+                    <b>
+                        结合律
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=x%2A%28y%2Az%29%3D%28x%2Ay%29%2Az" alt="x*(y*z)=(x*y)*z" eeimg="1">
+                    <br>
+                    <b>
+                        单位元
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+id+%5Cin+G%2C+s.t.x%2Aid%3Did%2Ax%3Dx" alt="\exists id \in G, s.t.x*id=id*x=x" eeimg="1">
+                    <br>
+                    <b>
+                        逆元
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x+%5Cin+G%2C+%5Cexists+x%5E%7B-1%7D+%5Cin+G%2C+s.t.x%2Ax%5E%7B-1%7D%3Dx%5E%7B-1%7D%2Ax%3Did" alt="\forall x \in G, \exists x^{-1} \in G, s.t.x*x^{-1}=x^{-1}*x=id" eeimg="1">
+                    <br>
+                    则集合构成一个
+                    <b>
+                        群
+                    </b>
+                    ，记为
+                    <img src="https://www.zhihu.com/equation?tex=G%28%2A%2Cid%29" alt="G(*,id)" eeimg="1">
+                    <br>
+                    若群的运算满足交换律称为
+                    <b>
+                        Abel群
+                    </b>
+                    ，整数的加法和零构成Abel群，称为
+                    <b>
+                        加群
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BZ%7D%28%2B%2C0%29" alt="\mathbb{Z}(+,0)" eeimg="1">
+                    ，简单推广，实数上的加法和零点构成加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%28%2B%2C0%29" alt="\mathbb{R}(+,0)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维实空间对向量加法和原点构成加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En%28%2B%2C%280%2C...%2C0%29%29" alt="\mathbb{R}^n(+,(0,...,0))" eeimg="1">
+                    。
+                </blockquote>
+                <p>
+                    这个代数结构可以原封不动地应用在复平面上，构成复平面上的向量加群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BC%7D%28%2B%2C0%29" alt="\mathbb{C}(+,0)" eeimg="1">
+                    。注意到，作为集合，实平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    和复平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BC%7D" alt="\mathbb{C}" eeimg="1">
+                    的点是一一对应的（
+                    <b>
+                        单满映射
+                    </b>
+                    ），此外两者具有相同的向量加法（
+                    <b>
+                        同构
+                    </b>
+                    ）。实平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    的原点
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C0%29" alt="(0,0)" eeimg="1">
+                    和复平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BC%7D" alt="\mathbb{C}" eeimg="1">
+                    的原点也是对应的，因为复平面原点也可以写成向量形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=0%3D0+%5Ccdot+1+%2B+0+%5Ccdot+i+%3D+%5Cbegin%7Bbmatrix%7D+0+%5C%5C+0+%5Cend%7Bbmatrix%7D" alt="0=0 \cdot 1 + 0 \cdot i = \begin{bmatrix} 0 \\ 0 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    那么，抛开陈见，虚数单位
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    在这里，无非起着一个向量空间的基的作用。
+                </p>
+                <blockquote>
+                    实空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    中一组向量
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be_i%5C%7D" alt="\{e_i\}" eeimg="1">
+                    ，由系数
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_i%5C%7D" alt="\{x_i\}" eeimg="1">
+                    决定了
+                    <b>
+                        线性组合
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dx_ie_i" alt="\sum_{i=1}^{n}x_ie_i" eeimg="1">
+                    <br>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+e%5Cin+%5C%7Be_i%5C%7D" alt="\forall e\in \{e_i\}" eeimg="1">
+                    都不能表示为其它向量的线性组合，则称
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be_i%5C%7D" alt="\{e_i\}" eeimg="1">
+                    为
+                    <b>
+                        线性无关
+                    </b>
+                    <br>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+v+%5Cin+V" alt="\forall v \in V" eeimg="1">
+                    都可以表示为线性无关向量集
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be_i%5C%7D" alt="\{e_i\}" eeimg="1">
+                    的线性组合，称
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be_i%5C%7D" alt="\{e_i\}" eeimg="1">
+                    为空间的
+                    <b>
+                        基
+                    </b>
+                    ，其中的元素称为
+                    <b>
+                        基向量
+                    </b>
+                </blockquote>
+                <p>
+                    实平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    的自然基是
+                    <img src="https://www.zhihu.com/equation?tex=%281%2C0%29" alt="(1,0)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%280%2C1%29" alt="(0,1)" eeimg="1">
+                    ，作为类比，复平面的自然基是
+                    <img src="https://www.zhihu.com/equation?tex=1+%3D+1+%5Ccdot+1+%2B+0+%5Ccdot+i" alt="1 = 1 \cdot 1 + 0 \cdot i" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=i+%3D+0+%5Ccdot+1+%2B+1+%5Ccdot+i" alt="i = 0 \cdot 1 + 1 \cdot i" eeimg="1">
+                    ，其实是一种简化的书写方式。于是我们发现从（实）向量空间的角度看，实平面和复平面也是类似的，事实上两者在向量空间中的向量加法也是一致的。
+                </p>
+                <p>
+                    复数的引入，在加法意义上并没有给实平面增加任何有趣的结构，这启发我们把注意力转向复数的乘法。
+                </p>
+                <h2>
+                    <b>
+                        虚数单位
+                    </b>
+                </h2>
+                <p>
+                    按照定义，虚数单位
+                    <img src="https://www.zhihu.com/equation?tex=i%3D%5Csqrt%7B-1%7D" alt="i=\sqrt{-1}" eeimg="1">
+                    ，这是很莫名其妙的，而且按照中学的知识体系，这是解二次方程所演化来的。问题在于，这样引入虚数单位看似解出了二次方程，但含有虚数的二次方程的解，理我们的生活认知还是很遥远，几乎就是某种数字游戏而已。
+                </p>
+                <p>
+                    换个角度考虑就非常有趣了，我们这样定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=i%5E2%3D-1" alt="i^2=-1" eeimg="1">
+                </p>
+                <p>
+                    从映射的角度看，如果
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    是一种映射，则它的平方是两次映射的合成，其结果是得到了逆元（负号）。我们对于某个“数”如何能够平方得到负数并没有直观思维。然而，我们可以想象通过两个分阶段的操作，将一个正数镜像为它的逆（取负号）。
+                </p>
+                <blockquote>
+                    将来在微分几何中会学习到近复结构（almost complex structure），其本质就是如何看待一种具有“复”特性的映射。
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        复数乘法
+                    </b>
+                </h2>
+                <p>
+                    复数乘法可以认为是在可以认为是在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    上附加了平面旋转群的结构，即单位向量的复数乘法。平面旋转群本质上同构于圆周上的加群，将来可以过渡到抽象调和分析。
+                </p>
+                <p>
+                    我们看复数乘法的定义：
+                    <img src="https://www.zhihu.com/equation?tex=%28a%2Bib%29%28c%2Bid%29%3D%28ac-bd%29%2Bi%28ad%2Bbc%29" alt="(a+ib)(c+id)=(ac-bd)+i(ad+bc)" eeimg="1">
+                    ，考虑非退化的情况，令：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=u%3D%5Cfrac%7Ba%2Bib%7D%7B%5Csqrt%7Ba%5E2%2Bb%5E2%7D%7D%3D%5Ccos%5Calpha+%2B+i%5Csin%5Calpha%2C+v%3D%5Cfrac%7Bc%2Bid%7D%7B%5Csqrt%7Bc%5E2%2Bd%5E2%7D%7D+%3D+%5Ccos%5Cbeta+%2Bi%5Csin%5Cbeta" alt="u=\frac{a+ib}{\sqrt{a^2+b^2}}=\cos\alpha + i\sin\alpha, v=\frac{c+id}{\sqrt{c^2+d^2}} = \cos\beta +i\sin\beta" eeimg="1">
+                </p>
+                <p>
+                    则
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28a%2Bib%29%28c%2Bid%29%3D%5Csqrt%7Ba%5E2%2Bb%5E2%7D%5Csqrt%7Bc%5E2%2Bd%5E2%7Duv" alt="(a+ib)(c+id)=\sqrt{a^2+b^2}\sqrt{c^2+d^2}uv" eeimg="1">
+                </p>
+                <p>
+                    分解为模的乘积和单位向量的乘积两部分，我们只考虑比较复杂的单位向量乘积问题：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=uv%3D%28%5Ccos%5Calpha+%2B+i%5Csin%5Calpha%29%28%5Ccos%5Cbeta+%2Bi%5Csin%5Cbeta%29" alt="uv=(\cos\alpha + i\sin\alpha)(\cos\beta +i\sin\beta)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%28%5Ccos%5Calpha%5Ccos%5Cbeta+-+%5Csin%5Calpha%5Csin%5Cbeta%29%2Bi%28%5Ccos%5Calpha%5Csin%5Cbeta+%2B+%5Csin%5Calpha%5Ccos%5Cbeta%29" alt="=(\cos\alpha\cos\beta - \sin\alpha\sin\beta)+i(\cos\alpha\sin\beta + \sin\alpha\cos\beta)" eeimg="1">
+                </p>
+                <p>
+                    这里用到了中学的三角函数公式。改写成矩阵乘法：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=uv%3D%5Cbegin%7Bbmatrix%7D+cos%5Calpha%5Ccos%5Cbeta+-+%5Csin%5Calpha%5Csin%5Cbeta+%5C%5C+%5Ccos%5Calpha%5Csin%5Cbeta+%2B+%5Csin%5Calpha%5Ccos%5Cbeta%5Cend%7Bbmatrix%7D+%3D%5Cbegin%7Bbmatrix%7D+%5Ccos%5Calpha+%26+-+%5Csin%5Calpha+%5C%5C+%5Csin%5Calpha+%26+%5Ccos%5Calpha%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Cbeta+%5C%5C+%5Csin%5Cbeta%5Cend%7Bbmatrix%7D" alt="uv=\begin{bmatrix} cos\alpha\cos\beta - \sin\alpha\sin\beta \\ \cos\alpha\sin\beta + \sin\alpha\cos\beta\end{bmatrix} =\begin{bmatrix} \cos\alpha &amp; - \sin\alpha \\ \sin\alpha &amp; \cos\alpha\end{bmatrix} \begin{bmatrix} \cos\beta \\ \sin\beta\end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    用线性代数的语言解释，即单位圆上角度为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    的单位向量，在角度为
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                    的平面旋转变换矩阵的作用下，得到了角度为
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Calpha%2B%5Cbeta%29" alt="(\alpha+\beta)" eeimg="1">
+                    的单位向量。
+                </p>
+                <p>
+                    于是我们现在知道，复数的定义是保持了平面旋转的代数结构。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Euler公式
+                    </b>
+                </h2>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D" alt="\mathbb{R}" eeimg="1">
+                    上定义的光滑（无限次可导）函数的全体记为
+                    <img src="https://www.zhihu.com/equation?tex=C%5E%5Cinfty%28%5Cmathbb%7BR%7D%29" alt="C^\infty(\mathbb{R})" eeimg="1">
+                    ，那么其中的一个元素：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+C%5E%5Cinfty%28%5Cmathbb%7BR%7D%29" alt="f \in C^\infty(\mathbb{R})" eeimg="1">
+                </p>
+                <p>
+                    就是一个光滑函数。将求导视为一个
+                    <b>
+                        算子
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial+%3D+%5Cfrac%7Bd%7D%7Bd%5Ctheta%7D" alt="\partial = \frac{d}{d\theta}" eeimg="1">
+                    ，（这里使用偏微分算子是为了把求导
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial" alt="\partial" eeimg="1">
+                    和求微分
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    区别开来，在微分几何中，这种符号区别尤为重要），则它相当于一个映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial%3A+C%5E%5Cinfty%28%5Cmathbb%7BR%7D%29+%5Cto+C%5E%5Cinfty%28%5Cmathbb%7BR%7D%29" alt="\partial: C^\infty(\mathbb{R}) \to C^\infty(\mathbb{R})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cmapsto+%5Cpartial+f+%3D+%5Cfrac%7Bdf%28x%29%7D%7Bdx%7D" alt="f \mapsto \partial f = \frac{df(x)}{dx}" eeimg="1">
+                </p>
+                <p>
+                    在所有的光滑函数中，我们希望有一种特殊的函数可以满足：
+                    <b>
+                        一个函数的导数等于它自身
+                    </b>
+                    ，而指数函数就满足这个条件，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial+e%5Ex+%3D+e%5Ex" alt="\partial e^x = e^x" eeimg="1">
+                </p>
+                <p>
+                    实际上，通过级数展开：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5Ex%3D%5Csum_%7Bn%3D0%7D%5E%5Cinfty%5Cfrac%7Bx%5En%7D%7Bn%21%7D" alt="e^x=\sum_{n=0}^\infty\frac{x^n}{n!}" eeimg="1">
+                </p>
+                <p>
+                    对
+                    <img src="https://www.zhihu.com/equation?tex=e%5Ex" alt="e^x" eeimg="1">
+                    求导，相当于对级数的每一项求导，其结果任然等于它本身：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bde%5Ex%7D%7Bdx%7D%3D%5Cfrac%7Bd%7D%7Bdx%7D%5Csum_%7Bn%3D0%7D%5E%5Cinfty%5Cfrac%7Bx%5En%7D%7Bn%21%7D+%3D%5Csum_%7Bn%3D0%7D%5E%5Cinfty+%5Cfrac%7Bd%7D%7Bdx%7D%5Cfrac%7Bx%5En%7D%7Bn%21%7D+%3D%5Csum_%7Bn%3D1%7D%5E%5Cinfty+%5Cfrac%7Bx%5E%7B%28n-1%29%7D%7D%7B%28n-1%29%21%7D+%3D%5Csum_%7Bn%3D0%7D%5E%5Cinfty%5Cfrac%7Bx%5En%7D%7Bn%21%7D%3De%5Ex" alt="\frac{de^x}{dx}=\frac{d}{dx}\sum_{n=0}^\infty\frac{x^n}{n!} =\sum_{n=0}^\infty \frac{d}{dx}\frac{x^n}{n!} =\sum_{n=1}^\infty \frac{x^{(n-1)}}{(n-1)!} =\sum_{n=0}^\infty\frac{x^n}{n!}=e^x" eeimg="1">
+                </p>
+                <p>
+                    这一良好的特性，需要靠Euler公式推广到
+                    <img src="https://www.zhihu.com/equation?tex=C%5E%5Cinfty%28%5Cmathbb%7BC%7D%29" alt="C^\infty(\mathbb{C})" eeimg="1">
+                    上（更严格说是
+                    <b>
+                        全纯函数
+                    </b>
+                    ）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注意到实域中的三角函数可以用级数展开为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ccos+x+%3D+1+-+%5Cfrac%7Bx%5E2%7D%7B2%21%7D+%2B+%5Cfrac%7Bx%5E4%7D%7B4%21%7D+%2B+..." alt="\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + ..." eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csin+x+%3D+x+-+%5Cfrac%7Bx%5E3%7D%7B3%21%7D+%2B+%5Cfrac%7Bx%5E5%7D%7B5%21%7D+%2B+..." alt="\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} + ..." eeimg="1">
+                </p>
+                <p>
+                    进一步：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ccos+x+%3D+%28ix%29%5E0+%2B+%5Cfrac%7B%28ix%29%5E2%7D%7B2%21%7D+%2B+%5Cfrac%7B%28ix%29%5E4%7D%7B4%21%7D+%2B+..." alt="\cos x = (ix)^0 + \frac{(ix)^2}{2!} + \frac{(ix)^4}{4!} + ..." eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=i%5Csin+x+%3D+ix+%2B+%5Cfrac%7B%28ix%29%5E3%7D%7B3%21%7D+%2B+%5Cfrac%7B%28ix%29%5E5%7D%7B5%21%7D+%2B+..." alt="i\sin x = ix + \frac{(ix)^3}{3!} + \frac{(ix)^5}{5!} + ..." eeimg="1">
+                </p>
+                <p>
+                    上下相加：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ccos+x+%2B+i%5Csin+x+%3D+%28ix%29%5E0+%2B+%5Cfrac%7B%28ix%29%5E2%7D%7B2%21%7D+%2B+%5Cfrac%7B%28ix%29%5E4%7D%7B4%21%7D+%2B+...+ix+%2B+%5Cfrac%7B%28ix%29%5E3%7D%7B3%21%7D+%2B+%5Cfrac%7B%28ix%29%5E5%7D%7B5%21%7D+%2B+..." alt="\cos x + i\sin x = (ix)^0 + \frac{(ix)^2}{2!} + \frac{(ix)^4}{4!} + ... ix + \frac{(ix)^3}{3!} + \frac{(ix)^5}{5!} + ..." eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Csum_%7Bn%3D0%7D%5E%5Cinfty%5Cfrac%7B%28ix%29%5En%7D%7Bn%21%7D" alt="=\sum_{n=0}^\infty\frac{(ix)^n}{n!}" eeimg="1">
+                </p>
+                <p>
+                    它相当于把
+                    <img src="https://www.zhihu.com/equation?tex=ix" alt="ix" eeimg="1">
+                    作为变量给级数形式的指数函数。我们得到了Euler公式的形式化表达。当然严格的证明还需要复级数的知识，请参考有关教材。通过Euler公式得到的指数函数，在复域上完整的形式为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7Ba%2Bib%7D+%3D+e%5Ea%28%5Ccos+b+%2B+i%5Csin+b%29" alt="e^{a+ib} = e^a(\cos b + i\sin b)" eeimg="1">
+                </p>
+                <p>
+                    考虑复求导算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial%3A+C%5E%5Cinfty%28%5Cmathbb%7BC%7D%29+%5Cto+C%5E%5Cinfty%28%5Cmathbb%7BC%7D%29" alt="\partial: C^\infty(\mathbb{C}) \to C^\infty(\mathbb{C})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cmapsto+%5Cpartial+f+%3D+%5Cfrac%7Bdf%28x%29%7D%7Bdx%7D" alt="f \mapsto \partial f = \frac{df(x)}{dx}" eeimg="1">
+                </p>
+                <p>
+                    在所有的光滑函数中，我们希望有一种特殊的函数可以满足：
+                    <b>
+                        一个函数的导数等于它自身
+                    </b>
+                    ，而复指数函数就满足这个条件，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial+e%5Ex+%3D+e%5Ex" alt="\partial e^x = e^x" eeimg="1">
+                </p>
+                <p>
+                    将级数展开即可证明。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP96：勾股定理、Klein-Gordon方程与Dirac方程
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-51cffd8fc63b366ee25094d1f77b1fd7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/55824445" target="_blank">
+                        MP96：勾股定理、Klein-Gordon方程与Dirac方程
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-01-28
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    我们用一种特别的方式来介绍相对论量子化——勾股定理。相对论的产生，可以用两个勾股定理来概括：速度的勾股定理和能量的勾股定理。勾股定理体现了某种玄学的思想——正交分解，即
+                    <img src="https://www.zhihu.com/equation?tex=a%5E2%2Bb%5E2%3Dc%5E2" alt="a^2+b^2=c^2" eeimg="1">
+                    。这种分解又蕴含了不等式
+                    <img src="https://www.zhihu.com/equation?tex=%7Ca%7C+%5Cleq+%7Cc%7C%2C%5C+%7Cb%7C+%5Cleq+%7Cc%7C" alt="|a| \leq |c|,\ |b| \leq |c|" eeimg="1">
+                    ，还成为复数研究的源头：
+                    <img src="https://www.zhihu.com/equation?tex=a%5E2+%2B+b%5E2+%3D+%28a%2B%5Ctext+ib%29%28a-%5Ctext+ib%29" alt="a^2 + b^2 = (a+\text ib)(a-\text ib)" eeimg="1">
+                    ，以及
+                    <img src="https://www.zhihu.com/equation?tex=a%5E2+-+b%5E2+%3D+a%5E2+%2B+%28%5Ctext+ib%29%5E2+" alt="a^2 - b^2 = a^2 + (\text ib)^2" eeimg="1">
+                    ，并且导致了二次问题的共轭化——还记得生灭算子是如何从正则对易算子中产生的么？还记得Minkowski度量是如何线性表示的么？
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        勾股定理
+                    </b>
+                </h2>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44083367" class="internal">
+                        MP31
+                    </a>
+                    介绍了从经典Maxwell方程到Lorentz变换的过渡。真空中电场方程
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla%5E2+E+%3D+%5Cfrac%7B%5Cpartial%5E2+E%7D%7B%5Cpartial+t%5E2%7D" alt="\nabla^2 E = \frac{\partial^2 E}{\partial t^2}" eeimg="1">
+                    和磁场方程
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla%5E2+B+%3D+%5Cfrac%7B%5Cpartial%5E2+B%7D%7B%5Cpartial+t%5E2%7D" alt="\nabla^2 B = \frac{\partial^2 B}{\partial t^2}" eeimg="1">
+                    在四维仿射空间
+                    <img src="https://www.zhihu.com/equation?tex=A%5E4%3D%28t%2Cx%2Cy%2Cz%29" alt="A^4=(t,x,y,z)" eeimg="1">
+                    上表达为算子方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cpartial_t%5E2+-+%5Cnabla%5E2+%29+%5Cvarphi+%3D+0+%5Ctag%7B1%7D" alt="(\partial_t^2 - \nabla^2 ) \varphi = 0 \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    其中电场
+                    <img src="https://www.zhihu.com/equation?tex=B" alt="B" eeimg="1">
+                    和磁场
+                    <img src="https://www.zhihu.com/equation?tex=E" alt="E" eeimg="1">
+                    的波函数均视作
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi+%5Cin+C%5E%5Cinfty%28A%5E4%29" alt="\varphi \in C^\infty(A^4)" eeimg="1">
+                    。经过相对空间速度为
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    的Galileo变换，(1)对应着另一个仿射空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde+A%5E4+%3D+%28%5Ctilde+t%2C%5Ctilde+x%2C%5Ctilde+y%2C%5Ctilde+z%29" alt="\tilde A^4 = (\tilde t,\tilde x,\tilde y,\tilde z)" eeimg="1">
+                    上的方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CBigg%28+%5Cfrac%7B%28v+%5Ccdot+%5Cnabla+%2B+%5Cpartial_t%29%5E2%7D%7Bc%5E2%7D+-+%5Cnabla%5E2%5CBigg%29+%5Cvarphi+%3D+0+%5Ctag%7B2%7D" alt="\Bigg( \frac{(v \cdot \nabla + \partial_t)^2}{c^2} - \nabla^2\Bigg) \varphi = 0 \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    (1)和(2)深刻的矛盾导致Lorentz变换和相对论的产生。以下为Lorentz变换：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D++%5Ctilde+t+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B1+-+v%5E2%2Fc%5E2%7D%7D+%28t+-+xv%2Fc%5E2%29+%5C%5C++%5Ctilde+x+%3D+%5Cfrac%7B1%7D%7B%5Csqrt%7B1+-+v%5E2%2Fc%5E2%7D%7D+%28x+-+vt%29+%5C%5C+%5Ctilde+y+%3D+y+%5C%5C+%5Ctilde+z+%3D+z+%5Cend%7Bcases%7D+%5Ctag%7B3%7D" alt="\begin{cases}  \tilde t = \frac{1}{\sqrt{1 - v^2/c^2}} (t - xv/c^2) \\  \tilde x = \frac{1}{\sqrt{1 - v^2/c^2}} (x - vt) \\ \tilde y = y \\ \tilde z = z \end{cases} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    其中多次出现因子
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B1+-+v%5E2%2Fc%5E2%7D" alt="\sqrt{1 - v^2/c^2}" eeimg="1">
+                    ，为了不对其中的负数开根号，必须保证
+                    <img src="https://www.zhihu.com/equation?tex=%7Cv%7C+%5Cleq+%7Cc%7C" alt="|v| \leq |c|" eeimg="1">
+                    ，于是证明了
+                    <b>
+                        没有超过光速的速度
+                    </b>
+                    。注意到
+                    <img src="https://www.zhihu.com/equation?tex=%5CBig%28c%5Csqrt%7B1+-+v%5E2%2Fc%5E2%7D%5CBig%29%5E2+%2B+v%5E2+%3D+c%5E2" alt="\Big(c\sqrt{1 - v^2/c^2}\Big)^2 + v^2 = c^2" eeimg="1">
+                    ，这就是
+                    <b>
+                        勾股定理
+                    </b>
+                    。在Einstein的时空观中，一切事物都有一个恒定的运动速度——光速
+                    <img src="https://www.zhihu.com/equation?tex=c" alt="c" eeimg="1">
+                    。在坐标系中所能观测的速度是光速在时间和空间两个正交坐标轴上的投影：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v_x%5E2+%2B+v_t%5E2+%3D+c%5E2+%5Ctag%7B4%7D" alt="v_x^2 + v_t^2 = c^2 \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    Lorentz变换就是勾股定律的物理表现，空间速度
+                    <img src="https://www.zhihu.com/equation?tex=v_x" alt="v_x" eeimg="1">
+                    和时间速度
+                    <img src="https://www.zhihu.com/equation?tex=v_t" alt="v_t" eeimg="1">
+                    合成了光速。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46700297" class="internal">
+                        MP35
+                    </a>
+                    谈到Lorentz变换前后的关系
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28%5Ctilde%7Bx%7D%5E2+%2B+%5Ctilde%7By%7D%5E2+%2B+%5Ctilde%7Bz%7D%5E2%29+-+%28x%5E2+%2B+y%5E2+%2B+z%5E2%29+%26%3D+%5Ctilde%7Bc%7D%5E2%5Ctilde%7Bt%7D%5E2+-+c%5E2t%5E2+%5C%5C+%28%5Ctilde%7Bx%7D%5E2+%2B+%5Ctilde%7By%7D%5E2+%2B+%5Ctilde%7Bz%7D%5E2%29+-+%5Ctilde%7Bc%7D%5E2%5Ctilde%7Bt%7D%5E2+%26%3D%28x%5E2+%2B+y%5E2+%2B+z%5E2%29+-+c%5E2t%5E2+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} (\tilde{x}^2 + \tilde{y}^2 + \tilde{z}^2) - (x^2 + y^2 + z^2) &amp;= \tilde{c}^2\tilde{t}^2 - c^2t^2 \\ (\tilde{x}^2 + \tilde{y}^2 + \tilde{z}^2) - \tilde{c}^2\tilde{t}^2 &amp;=(x^2 + y^2 + z^2) - c^2t^2 \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    这里提示我们用复数处理平方项之差，于是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctilde%7Bx%7D%5E2+%2B+%5Ctilde%7By%7D%5E2+%2B+%5Ctilde%7Bz%7D%5E2%29+%2B+%28i%5Ctilde%7Bc%7D%5Ctilde%7Bt%7D%29%5E2+%3D%28x%5E2+%2B+y%5E2+%2B+z%5E2%29+%2B+%28ict%29%5E2+%5Ctag%7B6%7D" alt="(\tilde{x}^2 + \tilde{y}^2 + \tilde{z}^2) + (i\tilde{c}\tilde{t})^2 =(x^2 + y^2 + z^2) + (ict)^2 \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    这样，Lorentz变换不仅更清晰地表达了更深入一个层面的勾股定理，而且揭示了它的某种不变性——时空的旋转不变性。我们将在今后从(6)为起点研究Lorentz群的表示问题。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47291940" class="internal">
+                        MP63
+                    </a>
+                    中将(6)的关系发展为Minkowski空间的度量（这里交换了时/空对应的实部/虚部）：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=ds%5E2+%3D+c%5E2dt%5E2+-+dx%5E2+-+dy%5E2+-+dz%5E2+%5Ctag%7B7%7D" alt="ds^2 = c^2dt^2 - dx^2 - dy^2 - dz^2 \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    根据
+                    <a href="https://zhuanlan.zhihu.com/p/47291940" class="internal">
+                        MP63
+                    </a>
+                    的推导，得到Lorentz协变的作用量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=L%3D-mc%5E2%5Csqrt%7B1-v%5E2%2Fc%5E2%7D+%5Ctag%7B8%7D" alt="L=-mc^2\sqrt{1-v^2/c^2} \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    进一步得到共轭动量
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p+%3D+%5Cfrac%7B%5Cpartial+L%7D%7B%5Cpartial+%5Cdot%7Bq%7D%7D+%3D-mc%5E2+%5Cfrac%7B%5Cpartial+%7D%7B%5Cpartial+%5Cdot+q%7D%5Csqrt%7B1-v%5E2%2Fc%5E2%7D+%3D+%5Cfrac%7Bmv%7D%7B%5Csqrt%7B1+-+v%5E2%2Fc%5E2%7D%7D+%5Ctag%7B9%7D" alt="p = \frac{\partial L}{\partial \dot{q}} =-mc^2 \frac{\partial }{\partial \dot q}\sqrt{1-v^2/c^2} = \frac{mv}{\sqrt{1 - v^2/c^2}} \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    以及通过Legendre变换后的Hamilton量/能量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+pv+-+L+%3D+%5Cfrac%7Bmc%5E2%7D%7B%5Csqrt%7B1-v%5E2%2Fc%5E2%7D%7D+%5Ctag%7B10%7D" alt="E = pv - L = \frac{mc^2}{\sqrt{1-v^2/c^2}} \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    以上一系列公式，在低速下都可以求极限得到Newton力学、Lagrange力学和Hamilton力学的对应结果。(9)和(10)可以建立动量与能量的关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=p+%3D+%5Cfrac%7BEv%7D%7Bc%5E2%7D+%5Ctag%7B11%7D" alt="p = \frac{Ev}{c^2} \tag{11}" eeimg="1">
+                </p>
+                <p>
+                    变化上式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+cp+%26%3D+%5Cfrac%7BEv%7D%7Bc%7D+%5C%5C+%28cp%29%5E2+%26%3D+E%5E2%5Cfrac%7Bv%5E2%7D%7Bc%5E2%7D+%5C%5C+%28cp%29%5E2+%26%3D+-E%5E2%5CBig%281-%5Cfrac%7Bv%5E2%7D%7Bc%5E2%7D%5CBig%29+%2B+E%5E2+%5C%5C++E%5E2+%26%3D+%28cp%29%5E2+%2B+E%5E2%5CBig%281-%5Cfrac%7Bv%5E2%7D%7Bc%5E2%7D%5CBig%29+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} cp &amp;= \frac{Ev}{c} \\ (cp)^2 &amp;= E^2\frac{v^2}{c^2} \\ (cp)^2 &amp;= -E^2\Big(1-\frac{v^2}{c^2}\Big) + E^2 \\  E^2 &amp;= (cp)^2 + E^2\Big(1-\frac{v^2}{c^2}\Big) \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    将(10)代入最后一行得到相对论动质能公式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5E2+%3D%28cp%29%5E2%2B%28mc%5E2%29%5E2%3D+c%5E2p%5E2+%2B+m%5E2c%5E4+%5Ctag%7B12%7D" alt="E^2 =(cp)^2+(mc^2)^2= c^2p^2 + m^2c^4 \tag{12}" eeimg="1">
+                </p>
+                <p>
+                    这是狭义相对论的精华所在，也是勾股定理的另一个呈现——能量分解为动量所对应的部分和质量所对应的部分。我们从这里开始进行相对论的量子化。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Klein-Gordon方程
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    所谓的量子化，对于很多不求甚解的人看来就是符号替换而已。在非相对论场合，符号替换
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+%5Ctext+i%5Chbar%5Cpartial_t%2C+p+%5Cto+-%5Ctext+i%5Chbar%5Cnabla" alt="E = \text i\hbar\partial_t, p \to -\text i\hbar\nabla" eeimg="1">
+                    就从经典力学的Hamilton方程量子化得到Schrödinger方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+i%5Chbar%5Cpartial_t%5Cpsi+%3D+-%5Cfrac%7B%5Chbar%5E2%7D%7B2m%7D%5Cnabla%5E2%5Cpsi+%5Ctag%7B13%7D" alt="\text i\hbar\partial_t\psi = -\frac{\hbar^2}{2m}\nabla^2\psi \tag{13}" eeimg="1">
+                </p>
+                <p>
+                    其实Klein-Gordon方程也不离这个小把戏。将物理常数归一化后，根据相对论令
+                    <img src="https://www.zhihu.com/equation?tex=c%3D1" alt="c=1" eeimg="1">
+                    ，(12)中的动质能公式成为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E%5E2+%3D+p%5E2+%2B+m%5E2+%5Ctag%7B14%7D" alt="E^2 = p^2 + m^2 \tag{14}" eeimg="1">
+                </p>
+                <p>
+                    同样对其进行符号替换/量子化，令
+                    <img src="https://www.zhihu.com/equation?tex=%5Chbar%3D1" alt="\hbar=1" eeimg="1">
+                    有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=-%5Cpartial_t%5E2%5Cpsi+%3D+%28-%5Cnabla%5E2+%2B+m%5E2%29%5Cpsi+%5Ctag%7B15%7D" alt="-\partial_t^2\psi = (-\nabla^2 + m^2)\psi \tag{15}" eeimg="1">
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=4" alt="4" eeimg="1">
+                    -向量时空中
+                    <img src="https://www.zhihu.com/equation?tex=A%5E4%3D%28t%2Cx%2Cy%2Cz%29" alt="A^4=(t,x,y,z)" eeimg="1">
+                    ，微分算子记为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cpartial_0%2C%5Cpartial_1%2C%5Cpartial_2%2C%5Cpartial_3%29+%3D+%28%5Cpartial_t%2C%5Cpartial_x%2C%5Cpartial_y%2C%5Cpartial_z%29+%5Ctag%7B16%7D" alt="(\partial_0,\partial_1,\partial_2,\partial_3) = (\partial_t,\partial_x,\partial_y,\partial_z) \tag{16}" eeimg="1">
+                </p>
+                <p>
+                    令
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial%5E2+%3D+%5Cpartial_t%5E2+-+%5Cnabla%5E2+%5Ctag%7B17%7D" alt="\partial^2 = \partial_t^2 - \nabla^2 \tag{17}" eeimg="1">
+                </p>
+                <p>
+                    则由(15)得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cpartial%5E2%2Bm%5E2%29%5Cpsi+%3D+0+%5Ctag%7B18%7D" alt="(\partial^2+m^2)\psi = 0 \tag{18}" eeimg="1">
+                </p>
+                <p>
+                    这就是Klein-Gordon方程。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Dirac方程
+                    </b>
+                </h2>
+                <p>
+                    Klein-Gordon方程中的二阶微分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial%5E2+%3D+%5Cpartial_t%5E2+-+%5Cnabla%5E2" alt="\partial^2 = \partial_t^2 - \nabla^2" eeimg="1">
+                    体现了Minkowski时空中的很多微妙内涵。Dirac注意到，K-G方程的负能态问题和负概率问题，本质都来源于这个二阶微分有关。他试图将这个二阶微分方程降一阶得到线性方程，于是考虑如下形式的可能性——又是勾股定理：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cpartial%5E2%2Bm%5E2%29+%3D+%28%5Csqrt%7B%5Cpartial%5E2%7D+%2B+%5Ctext+im%29%28%5Csqrt%7B%5Cpartial%5E2%7D+-+%5Ctext+im%29+%5Ctag%7B19%7D" alt="(\partial^2+m^2) = (\sqrt{\partial^2} + \text im)(\sqrt{\partial^2} - \text im) \tag{19}" eeimg="1">
+                </p>
+                <p>
+                    但是这毕竟不是代数方程，作为算子方程，
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B%5Cpartial%5E2%7D+%3D+%5Cpartial" alt="\sqrt{\partial^2} = \partial" eeimg="1">
+                    这样的好事是不存在的，何况我们需要的是来自(17)的
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B%5Cpartial%5E2%7D+%3D+%5Csqrt%7B%5Cpartial_t%5E2+-+%5Cnabla%5E2%7D" alt="\sqrt{\partial^2} = \sqrt{\partial_t^2 - \nabla^2}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Dirac找到了Pauli矩阵：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma_1%3D%5Cbegin%7Bbmatrix%7D+0+%26+1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D%2C%5C+%5Csigma_2%3D%5Cbegin%7Bbmatrix%7D+0+%26+-%5Ctext+i+%5C%5C+%5Ctext+i+%26+0+%5Cend%7Bbmatrix%7D%2C%5C+%5Csigma_3%3D%5Cbegin%7Bbmatrix%7D+1+%26+0+%5C%5C+0+%26+-1+%5Cend%7Bbmatrix%7D%5Ctag%7B20%7D" alt="\sigma_1=\begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix},\ \sigma_2=\begin{bmatrix} 0 &amp; -\text i \\ \text i &amp; 0 \end{bmatrix},\ \sigma_3=\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}\tag{20}" eeimg="1">
+                </p>
+                <blockquote>
+                    <a href="https://zhuanlan.zhihu.com/p/51684298" class="internal">
+                        MP69
+                    </a>
+                    中介绍过，Pauli矩阵构成了二维Hermite矩阵的一个基，并且通过以下构造：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=I+%3D+-%5Ctext+i%5Csigma_1+%3D+%5Cbegin%7Bbmatrix%7D+0+%26+-%5Ctext+i+%5C%5C+-%5Ctext+i+%26+0+%5Cend%7Bbmatrix%7D%2C+%5C+%5C+J+%3D+-%5Ctext+i%5Csigma_2+%3D+%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D%2C+%5C+%5C+K+%3D+-%5Ctext+i%5Csigma_3+%3D+%5Cbegin%7Bbmatrix%7D+-%5Ctext+i+%26+0+%5C%5C+0+%26+%5Ctext+i+%5Cend%7Bbmatrix%7D+%5C%5C" alt="I = -\text i\sigma_1 = \begin{bmatrix} 0 &amp; -\text i \\ -\text i &amp; 0 \end{bmatrix}, \ \ J = -\text i\sigma_2 = \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}, \ \ K = -\text i\sigma_3 = \begin{bmatrix} -\text i &amp; 0 \\ 0 &amp; \text i \end{bmatrix} \\" eeimg="1">
+                    <br>
+                    得到三个复结构：
+                    <img src="https://www.zhihu.com/equation?tex=I%5E2+%3D+J%5E2+%3DK%5E2+%3D+-%5Cmathbb+I_2+%5C%5C" alt="I^2 = J^2 =K^2 = -\mathbb I_2 \\" eeimg="1">
+                    <br>
+                    将单位矩阵以及这三个复结构进行
+                    <b>
+                        实
+                    </b>
+                    线性组合，得到一个代数结构：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+H+%3D+%5Ctext%7BSpan%7D%28%5Cmathbb+I_2%2C+I%2C+J%2C+K%29+%3D+%5C%7B+a+%2B+bI+%2B+cJ+%2B+dK%3A+a%2Cb%2Cc%2Cd+%5Cin+%5Cmathbb+R+%5C%7D+%5C%5C" alt="\mathbb H = \text{Span}(\mathbb I_2, I, J, K) = \{ a + bI + cJ + dK: a,b,c,d \in \mathbb R \} \\" eeimg="1">
+                    <br>
+                    它就是
+                    <b>
+                        四元数(quaternions)
+                    </b>
+                    的一个表示。显然
+                    <img src="https://www.zhihu.com/equation?tex=SU%282%29+%5Csubset+%5Cmathbb+H" alt="SU(2) \subset \mathbb H" eeimg="1">
+                    ，它满足
+                    <img src="https://www.zhihu.com/equation?tex=a%5E2+%2B+b%5E2+%2B+c%5E2+%2B+d%5E2+%3D1" alt="a^2 + b^2 + c^2 + d^2 =1" eeimg="1">
+                    ，也就是说
+                    <img src="https://www.zhihu.com/equation?tex=SU%282%29+%5Csimeq+S%5E3" alt="SU(2) \simeq S^3" eeimg="1">
+                    ，它就是单位球面——单位球面是立体旋转的集合，所以
+                    <img src="https://www.zhihu.com/equation?tex=SU%282%29" alt="SU(2)" eeimg="1">
+                    用于表示四元数是非常自然的。
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们把张成四元数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+H" alt="\mathbb H" eeimg="1">
+                    的单位矩阵以及这三个复结构称为Dirac矩阵，记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cgamma%5Ek" alt="\gamma^k" eeimg="1">
+                    ，现在：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cgamma%5E0%5Cpartial_t+%2B+%5Cgamma%5E1%5Cpartial_x+%2B+%5Cgamma%5E2%5Cpartial_y+%2B+%5Cgamma%5E3%5Cpartial_z%29%5E2+%3D+%28%5Cgamma%5E%5Cmu%5Cpartial_%5Cmu%29%5E2+%5Ctag%7B21%7D" alt="(\gamma^0\partial_t + \gamma^1\partial_x + \gamma^2\partial_y + \gamma^3\partial_z)^2 = (\gamma^\mu\partial_\mu)^2 \tag{21}" eeimg="1">
+                </p>
+                <p>
+                    经过这轮骚操作，Dirac找到了根
+                    <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7B%5Cpartial%5E2%7D+%3D+%5Cgamma%5E%5Cmu%5Cpartial_%5Cmu" alt="\sqrt{\partial^2} = \gamma^\mu\partial_\mu" eeimg="1">
+                    。后面的事情迎刃而解，(18)中的Klein-Gordon方程经过以上分解，取其正符号部分
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Csqrt%7B%5Cpartial%5E2%7D+%2B+%5Ctext+im%29%5Cpsi+%3D+0+%5Ctag%7B22%7D" alt="(\sqrt{\partial^2} + \text im)\psi = 0 \tag{22}" eeimg="1">
+                </p>
+                <p>
+                    代入根并消去质量上的虚数得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctext+i%5Cgamma%5E%5Cmu%5Cpartial_%5Cmu+-+m%29%5Cpsi+%3D+0+%5Ctag%7B23%7D" alt="(\text i\gamma^\mu\partial_\mu - m)\psi = 0 \tag{23}" eeimg="1">
+                </p>
+                <p>
+                    这就是Dirac方程。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

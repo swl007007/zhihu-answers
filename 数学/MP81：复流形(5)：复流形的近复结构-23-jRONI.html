@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP81：复流形(5)：复流形的近复结构
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-0e0ae9419f2199315755921b2afa4da4_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/52812078" target="_blank">
+                        MP81：复流形(5)：复流形的近复结构
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-24
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <h2>
+                    <b>
+                        复结构
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    虚数单位定义为
+                    <img src="https://www.zhihu.com/equation?tex=i%5E2%3D-1" alt="i^2=-1" eeimg="1">
+                    ，现在我们从代数的角度看这个问题。在群
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+R%2C%2B%2C0%29" alt="(\mathbb R,+,0)" eeimg="1">
+                    上考虑自同态
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi%3A+%28%5Cmathbb+R%2C%2B%2C0%29+%5Cto+%28%5Cmathbb+R%2C%2B%2C0%29" alt="\varphi: (\mathbb R,+,0) \to (\mathbb R,+,0)" eeimg="1">
+                    ，它本身构成一个群叫做自同态群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BEnd%7D%28%5Cmathbb+R%29" alt="\text{End}(\mathbb R)" eeimg="1">
+                    。有一种特殊的自同态叫做恒同算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bid%7D+%5Cin+%5Ctext%7BEnd%7D%28%5Cmathbb+R%29" alt="\text{id} \in \text{End}(\mathbb R)" eeimg="1">
+                    ，由于群的结构它有一个逆元
+                    <img src="https://www.zhihu.com/equation?tex=-%5Ctext%7Bid%7D" alt="-\text{id}" eeimg="1">
+                    。将这些结构扩展到复域上，有
+                    <img src="https://www.zhihu.com/equation?tex=-%5Ctext%7Bid%7D+%5Cin+%5Ctext%7BEnd%7D%28%5Cmathbb+C%29" alt="-\text{id} \in \text{End}(\mathbb C)" eeimg="1">
+                    。现在虚数单位的定义更明确写成
+                    <img src="https://www.zhihu.com/equation?tex=i%5E2+%3D+-%5Ctext%7Bid%7D" alt="i^2 = -\text{id}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上的自同构/线性变换
+                    <img src="https://www.zhihu.com/equation?tex=J+%5Cin+%5Ctext%7BEnd%7D%28V%29" alt="J \in \text{End}(V)" eeimg="1">
+                    若满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J%5E2+%3D+-%5Ctext%7Bid%7D+%5Ctag%7B1%7D" alt="J^2 = -\text{id} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    则称为
+                    <b>
+                        复结构(complex structure)
+                    </b>
+                    。显然虚数单位
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    视作变换(以乘法方式作用)就是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                    上的复结构。正如
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E2" alt="\mathbb R^2" eeimg="1">
+                    上赋予了虚数单位
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    (作为复结构)和复数乘法(作为变换运算)，就构成了
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                    ，线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    赋予复结构也可以构成复线性空间。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        近复结构/流形
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    复结构定义在线性空间上。进一步推广，在
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维光滑实流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上若有
+                    <img src="https://www.zhihu.com/equation?tex=%281%2C1%29" alt="(1,1)" eeimg="1">
+                    -形光滑张量场
+                    <img src="https://www.zhihu.com/equation?tex=J" alt="J" eeimg="1">
+                    ，它构成了切丛的自同态
+                    <img src="https://www.zhihu.com/equation?tex=J%3A+TM+%5Cto+TM" alt="J: TM \to TM" eeimg="1">
+                    ，（即，对于任意点
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x+%5Cin+M" alt="\forall x \in M" eeimg="1">
+                    有切空间
+                    <img src="https://www.zhihu.com/equation?tex=T_xM" alt="T_xM" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=J_x%3A+T_xM+%5Cto+T_xM" alt="J_x: T_xM \to T_xM" eeimg="1">
+                    ）且映射的二次合成满足
+                    <img src="https://www.zhihu.com/equation?tex=J%5E2+%3D+-%5Ctext%7Bid%7D" alt="J^2 = -\text{id}" eeimg="1">
+                    ，则将这种类似于复机构的
+                    <img src="https://www.zhihu.com/equation?tex=J" alt="J" eeimg="1">
+                    称为
+                    <b>
+                        近复结构(almost complex structure)
+                    </b>
+                    ，赋予了近复结构的流形
+                    <img src="https://www.zhihu.com/equation?tex=%28M%2CJ%29" alt="(M,J)" eeimg="1">
+                    称为
+                    <b>
+                        近复流形(almost complex manifold)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维实近复流形的任意一点
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cin+%28M%2CJ%29" alt="x \in (M,J)" eeimg="1">
+                    上，由于
+                    <img src="https://www.zhihu.com/equation?tex=J_x%5E2+%3D+-%5Ctext%7Bid%7D+%3D+-1" alt="J_x^2 = -\text{id} = -1" eeimg="1">
+                    ，显然
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdet%28J_x%29%5E2+%3D+%28-1%29%5En" alt="\det(J_x)^2 = (-1)^n" eeimg="1">
+                    ，只有当维数
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    为偶数时才能成立，即实近复流形都具有偶数维度。
+                </p>
+                <h2>
+                    <br>
+                    <br>
+                    <b>
+                        复流形
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    过去我们对流形应该非常熟悉了。拓扑流形是局部同胚于相同维欧式空间的结构，其覆盖的相交部分在粘合的过程由连续函数转换。在此基础上，覆盖成员赋予坐标卡(chart)的结构，覆盖赋予图册(atlas)的结构，相交的坐标卡之间由可微函数转换，则升级为微分流形。如果对于复的坐标，相交坐标卡之间有全纯函数转换，则成为
+                    <b>
+                        复流形
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    复流形的条件是很强的，其全纯函数的基础决定了它一定是光滑流形。复流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    的定义自然给出了复流形上的全纯函数集合，结合前面我们在层论中的讨论，对于函子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F%3A+%5Cmathfrak+T%28M%29+%5Cto+%5Ctext%7BSet%7D" alt="\mathscr F: \mathfrak T(M) \to \text{Set}" eeimg="1">
+                    ，这里的全纯函数集合可以直接理解为全纯函数层
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+O_M+%3D+%5Cmathscr+F%28M%29" alt="\mathcal O_M = \mathscr F(M)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                    对于复流形的点
+                    <img src="https://www.zhihu.com/equation?tex=z+%5Cin+M" alt="z \in M" eeimg="1">
+                    ，在复坐标卡中点的坐标表示为
+                    <img src="https://www.zhihu.com/equation?tex=z+%3D+%5Bz_k%5D+%3D+%5Bx_k+%2B+iy_k%5D" alt="z = [z_k] = [x_k + iy_k]" eeimg="1">
+                    ，那么切空间
+                    <img src="https://www.zhihu.com/equation?tex=T_zM" alt="T_zM" eeimg="1">
+                    有自然基
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E_z+%3D+%5CBig%5C%7B+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+x_1%7D%2C+%5Cdots%2C+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+x_n%7D%2C+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+y_1%7D%2C+%5Cdots%2C+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+y_n%7D+%5CBig%5C%7D+%5Ctag%7B2%7D" alt="E_z = \Big\{ \frac{\partial}{\partial x_1}, \dots, \frac{\partial}{\partial x_n}, \frac{\partial}{\partial y_1}, \dots, \frac{\partial}{\partial y_n} \Big\} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    余切空间
+                    <img src="https://www.zhihu.com/equation?tex=%28T_zM%29%5E%2A+%3D+T_z%5E%2AM" alt="(T_zM)^* = T_z^*M" eeimg="1">
+                    ，有对偶自然基
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=E_z%5E%2A+%3D+%5C%7B+dx%5E1%2C+%5Cdots%2C+dx%5En%2C+dy%5E1%2C+%5Cdots%2C+dy%5En+%5C%7D+%5Ctag%7B3%7D" alt="E_z^* = \{ dx^1, \dots, dx^n, dy^1, \dots, dy^n \} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    注意到，对偶自然基满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=dz%5Ek+%3D+dx%5Ek+%2B+idy%5Ek%2C+%5C+%5C+d%5Cbar+z%5Ek+%3D+dx%5Ek+-+idy%5Ek+%5Ctag%7B4%7D" alt="dz^k = dx^k + idy^k, \ \ d\bar z^k = dx^k - idy^k \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    而根据上讲推导出的微分算子，在这里成为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+z_k%7D+%3D+%5Cfrac%7B1%7D%7B2%7D+%5CBig%28+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+x_k%7D+-+i%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+y_k%7D+%5CBig%29%2C%5C+%5C+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+%5Coverline+z_k%7D+%3D+%5Cfrac%7B1%7D%7B2%7D+%5CBig%28+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+x_k%7D+%2B+i%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+y_k%7D+%5CBig%29+%5Ctag%7B5%7D" alt="\frac{\partial}{\partial z_k} = \frac{1}{2} \Big( \frac{\partial}{\partial x_k} - i\frac{\partial}{\partial y_k} \Big),\ \ \frac{\partial}{\partial \overline z_k} = \frac{1}{2} \Big( \frac{\partial}{\partial x_k} + i\frac{\partial}{\partial y_k} \Big) \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这样我们得到了一对新的对偶基，读者可自行验证。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        复流形的近复结构
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维复流形一点
+                    <img src="https://www.zhihu.com/equation?tex=z+%5Cin+M" alt="z \in M" eeimg="1">
+                    上，考虑的切空间上的线性自同态
+                    <img src="https://www.zhihu.com/equation?tex=+J_z%3A+T_zM+%5Cto+T_zM" alt="J_z: T_zM \to T_zM" eeimg="1">
+                    。方便起见，用(2)式的自然基下的坐标表示点
+                    <img src="https://www.zhihu.com/equation?tex=%28p%2Cq%29+%5Cin+T_zM" alt="(p,q) \in T_zM" eeimg="1">
+                    ，若自同态按照以下规则映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+J_z%3A+T_zM+%26%5Cto+T_zM+%5C%5C+%28p%2Cq%29+%26%5Cmapsto+J_z%28p%2Cq%29+%3D+%28-q%2Cp%29+%5Cend%7Balign%7D+%5Ctag%7B6%7D" alt="\begin{align} J_z: T_zM &amp;\to T_zM \\ (p,q) &amp;\mapsto J_z(p,q) = (-q,p) \end{align} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    易于验证
+                    <img src="https://www.zhihu.com/equation?tex=J_z%5E2+%3D+-+%5Ctext%7Bid%7D" alt="J_z^2 = - \text{id}" eeimg="1">
+                    ，即它是一个近复结构。
+                    <img src="https://www.zhihu.com/equation?tex=J_x" alt="J_x" eeimg="1">
+                    视为张量，那么在整个流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上，
+                    <img src="https://www.zhihu.com/equation?tex=J" alt="J" eeimg="1">
+                    构成了切丛
+                    <img src="https://www.zhihu.com/equation?tex=TM" alt="TM" eeimg="1">
+                    上的线性自同态，也是一个张量丛。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    (6)中的线性变换在基(2)下可以用矩阵表示为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J_z+%3D+%5Cbegin%7Bbmatrix%7D+0+%26+-I_n+%5C%5C+I_n+%26+0+%5Cend%7Bbmatrix%7D+%5Ctag%7B7%7D" alt="J_z = \begin{bmatrix} 0 &amp; -I_n \\ I_n &amp; 0 \end{bmatrix} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    这是用
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -维实单位矩阵
+                    <img src="https://www.zhihu.com/equation?tex=I_n" alt="I_n" eeimg="1">
+                    构造的反对称矩阵。这样的表示与局部坐标无关，在张量场
+                    <img src="https://www.zhihu.com/equation?tex=J" alt="J" eeimg="1">
+                    上具有恒定的形式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

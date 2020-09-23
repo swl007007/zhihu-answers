@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP76：作用量原理(3)：Lagrange量
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-96eb9f9d7b14418941569c5cd633db6e_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/51674995" target="_blank">
+                        MP76：作用量原理(3)：Lagrange量
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-17
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <h2>
+                    <b>
+                        Dirac函数
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上讲给出了泛函导数的定义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cdelta+F%7D%7B%5Cdelta+f%7D%5CBigg%7C_%5Cvarphi+%3D+%5Clim_%7B%5Cvarepsilon+%5Crightarrow+0%7D%7B%5Cfrac%7BF%5Bf+%2B+%5Cvarepsilon%5Cvarphi%5D+-+F%5Bf%5D%7D%7B%5Cvarepsilon%7D%7D+%5Ctag%7B1%7D" alt="\frac{\delta F}{\delta f}\Bigg|_\varphi = \lim_{\varepsilon \rightarrow 0}{\frac{F[f + \varepsilon\varphi] - F[f]}{\varepsilon}} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi+%5Cin+%28C%2C%2B%2C0%29" alt="\varphi \in (C,+,0)" eeimg="1">
+                    是任意的函数变化量。物理学中经常用Dirac函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdelta%28x-y%29" alt="\delta(x-y)" eeimg="1">
+                    （注意区别于变分符号）替代任意的函数变化量。Dirac函数可以理解为阶跃函数的广义导函数，其积分是有限的。这里涉及到广义函数的问题，但由于积分的形式，Dirac函数参与的被积项最后还是可以得到有限的积分，因此可以很好地让计算运行下去——对物理学家已经够用了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    应用Dirac函数，
+                    <img src="https://www.zhihu.com/equation?tex=F%5Bf%5D" alt="F[f]" eeimg="1">
+                    的泛函导数成为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cdelta+F%7D%7B%5Cdelta+f%7D+%3D+%5Cfrac%7B%5Cdelta+F%7D%7B%5Cdelta+f%7D%5CBigg%7C_%7B%5Cdelta%28x-y%29%7D+%3D+%5Clim_%7B%5Cvarepsilon+%5Cto+0%7D%7B%5Cfrac%7BF%5Bf%28y%29+%2B+%5Cvarepsilon%5Cdelta%28x-y%29%5D-F%5Bf%28y%29%5D%7D%7B%5Cvarepsilon%7D%7D+%5Ctag%7B2%7D" alt="\frac{\delta F}{\delta f} = \frac{\delta F}{\delta f}\Bigg|_{\delta(x-y)} = \lim_{\varepsilon \to 0}{\frac{F[f(y) + \varepsilon\delta(x-y)]-F[f(y)]}{\varepsilon}} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    先算一个简单的例子，令
+                    <img src="https://www.zhihu.com/equation?tex=F%5Bf%5D+%3D+%5Cint_R+f%28t%29dt" alt="F[f] = \int_R f(t)dt" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Cfrac%7B%5Cdelta+F%7D%7B%5Cdelta+f%7D++%26%3D+%5Cfrac%7B%5Cdelta%7D%7B%5Cdelta+f%7D%5Cint_R+f%28t%29dt+%5C%5C++%26%3D+%5Clim_%7B%5Cvarepsilon+%5Cto+0%7D%7B%7B%5Cfrac%7BF%5Bf+%2B+%5Cvarepsilon%5Cdelta%28x-t%29%5D-F%5Bf%5D%7D%7B%5Cvarepsilon%7D%7D%7D++%5C%5C++%26%3D+%5Clim_%7B%5Cvarepsilon+%5Cto+0%7D%7B%5Cint_R%5Cdelta%28x-t%29dt%7D+%5C%5C+%26%3D+%5Cint_R+%5Cdelta%28x-t%29dt+%5C%5C+%26%3D%5Cbegin%7Bcases%7D+1%2C+%5C+%5C+x+%5Cin+R+%5C%5C+0%2C+%5C+%5C+x+%5Cnotin+R+%5C%5C+%5Cend%7Bcases%7D+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align}  \frac{\delta F}{\delta f}  &amp;= \frac{\delta}{\delta f}\int_R f(t)dt \\  &amp;= \lim_{\varepsilon \to 0}{{\frac{F[f + \varepsilon\delta(x-t)]-F[f]}{\varepsilon}}}  \\  &amp;= \lim_{\varepsilon \to 0}{\int_R\delta(x-t)dt} \\ &amp;= \int_R \delta(x-t)dt \\ &amp;=\begin{cases} 1, \ \ x \in R \\ 0, \ \ x \notin R \\ \end{cases} \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        能量的泛函导数
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在粒子运动中，参数曲线
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cmapsto+%28x%28t%29%2C%5Cdot%7Bx%7D%28t%29%29" alt="t \mapsto (x(t),\dot{x}(t))" eeimg="1">
+                    确定了位置轨迹函数
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29" alt="x(t)" eeimg="1">
+                    和速度轨迹函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot+x%28t%29" alt="\dot x(t)" eeimg="1">
+                    ， 考察时间段
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C%5Ctau%5D" alt="[0,\tau]" eeimg="1">
+                    中的路径，在这段运动中的平均动能和平均势能可以写为泛函的形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D++%5Coverline+T%5B%5Cdot+x%28t%29%5D+%26%3D+%5Cfrac%7B1%7D%7B%5Ctau%7D%5Cint_0%5E%5Ctau+%5Cfrac%7B1%7D%7B2%7Dm%5Cdot+x%5E2%28t%29+dt+%5C%5C++%5Coverline+V%5Bx%28t%29%5D+%26%3D+%5Cfrac%7B1%7D%7B%5Ctau%7D%5Cint_0%5E%5Ctau+V%28x%28t%29%29+dt++%5Cend%7Bcases%7D+%5Ctag%7B4%7D" alt="\begin{cases}  \overline T[\dot x(t)] &amp;= \frac{1}{\tau}\int_0^\tau \frac{1}{2}m\dot x^2(t) dt \\  \overline V[x(t)] &amp;= \frac{1}{\tau}\int_0^\tau V(x(t)) dt  \end{cases} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    泛函导数为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D++%5Cfrac%7B%5Cdelta%5Coverline+T%5Bx%5D%7D%7B%5Cdelta+x%7D+%26%3D+-%5Cfrac%7Bm%5Cddot+x%7D%7B%5Ctau%7D+%5C%5C++%5Cfrac%7B%5Cdelta%5Coverline+V%5Bx%5D%7D%7B%5Cdelta+x%7D+%26%3D+%5Cfrac%7BV%5E%5Cprime%5Bx%5D%7D%7B%5Ctau%7D+%5Cend%7Bcases%7D+%5Ctag%7B5%7D" alt="\begin{cases}  \frac{\delta\overline T[x]}{\delta x} &amp;= -\frac{m\ddot x}{\tau} \\  \frac{\delta\overline V[x]}{\delta x} &amp;= \frac{V^\prime[x]}{\tau} \end{cases} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    上式合并后：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cdelta%5Coverline+T%5Bx%5D%7D%7B%5Cdelta+x%7D+-+%5Cfrac%7B%5Cdelta%5Coverline+V%5Bx%5D%7D%7B%5Cdelta+x%7D+%3D+-%5Cfrac%7Bm%5Cddot+x%7D%7B%5Ctau%7D+-++%5Cfrac%7BV%5E%5Cprime%5Bx%5D%7D%7B%5Ctau%7D" alt="\frac{\delta\overline T[x]}{\delta x} - \frac{\delta\overline V[x]}{\delta x} = -\frac{m\ddot x}{\tau} -  \frac{V^\prime[x]}{\tau}" eeimg="1">
+                </p>
+                <p>
+                    在保守场中，
+                    <img src="https://www.zhihu.com/equation?tex=F+%3D+m%5Cddot+x+%3D+-+V%5E%5Cprime%28x%29" alt="F = m\ddot x = - V^\prime(x)" eeimg="1">
+                    ，故上式成为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B1%7D%7B%5Cdelta+x%7D%28%5Coverline+T%5Bx%5D+-+%5Coverline+V%5Bx%5D%29+%3D+0" alt="\frac{1}{\delta x}(\overline T[x] - \overline V[x]) = 0" eeimg="1">
+                </p>
+                <p>
+                    由速度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cdot+x" alt="\dot x" eeimg="1">
+                    确定的动量
+                    <img src="https://www.zhihu.com/equation?tex=T%28%5Cdot+x%29" alt="T(\dot x)" eeimg="1">
+                    经过变分(5)的运算得到了二阶的加速度表达式
+                    <img src="https://www.zhihu.com/equation?tex=m%5Cddot+x" alt="m\ddot x" eeimg="1">
+                    ，这样就通过受力和势能关联起来，体现了Newton运动定律。这就是
+                    <b>
+                        Lagrange量
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=L+%3D+T+-+V" alt="L = T - V" eeimg="1">
+                    的由来。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        作用量
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    作用量就是以参数曲线
+                    <img src="https://www.zhihu.com/equation?tex=t+%5Cmapsto+%28x%28t%29%2C%5Cdot%7Bx%7D%28t%29%29" alt="t \mapsto (x(t),\dot{x}(t))" eeimg="1">
+                    为变元的泛函：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=S+%3D+%5Cint_0%5E%5Cpi+L+dt+%3D+%5Cint_0%5E%5Cpi+%28T%28%5Cdot+x%29-V%28x%29%29+dt+%3D%5Cpi%28%5Coverline+T%5Bx%5D+-+%5Coverline+V%5Bx%5D%29+%5Ctag%7B6%7D" alt="S = \int_0^\pi L dt = \int_0^\pi (T(\dot x)-V(x)) dt =\pi(\overline T[x] - \overline V[x]) \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    作用量具有能量乘时间的量纲——和Plank常数一样。由上式得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cdelta+S%7D%7B%5Cdelta+x%7D+%3D+0" alt="\frac{\delta S}{\delta x} = 0" eeimg="1">
+                </p>
+                <p>
+                    这个极值条件即Hamilton最小作用量原理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Lagrange密度
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在数学物理方法中，弦上的一维波是通过微元法推导的。下图给出了位置元
+                    <img src="https://www.zhihu.com/equation?tex=dx" alt="dx" eeimg="1">
+                    ，按照质量密度
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho" alt="\rho" eeimg="1">
+                    有质量元
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+dx" alt="\rho dx" eeimg="1">
+                    ，需要推出波函数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%28x%2Ct%29" alt="\psi(x,t)" eeimg="1">
+                    。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-413ee087952b8dcd8a9514a061304f03_r.jpg">
+                </figure>
+                <p>
+                    学过数学物理方法的同学显然熟悉这个过程：
+                </p>
+                <blockquote>
+                    先用
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+x" alt="\Delta x" eeimg="1">
+                    分析非极限下的情况，质量元
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5CDelta+x" alt="\rho \Delta x" eeimg="1">
+                    视为质点，其运动方程由它的受力性质决定。
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5CDelta+x" alt="\rho \Delta x" eeimg="1">
+                    唯一的受力是弦从两边相同大小的张力
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+T" alt="\mathcal T" eeimg="1">
+                    。但这个合力不能视为零，因为在固定时刻，
+                    <img src="https://www.zhihu.com/equation?tex=%5Bx%2Cx%2B%5CDelta+x%5D" alt="[x,x+\Delta x]" eeimg="1">
+                    的区间中由于导数
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x%29" alt="\frac{d\psi}{dx}(x)" eeimg="1">
+                    的变化，造成区间两端的切线并不处于一条直线上，从而使两边的张力形成了一个非零的合力，实际上合力可以用两边的切线表示：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+T%5CBig%28%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x+%2B+%5CDelta+x%29+-+%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x%29%5CBig%29" alt="\mathcal T\Big(\frac{d\psi}{dx}(x + \Delta x) - \frac{d\psi}{dx}(x)\Big)" eeimg="1">
+                    <br>
+                    于是运动方程为：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cddot+x+%3D+%5Cfrac%7B%5Cmathcal+T%7D%7B%5Crho+%5CDelta+x%7D%5CBig%28%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x+%2B+%5CDelta+x%29+-+%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x%29%5CBig%29" alt="\ddot x = \frac{\mathcal T}{\rho \Delta x}\Big(\frac{d\psi}{dx}(x + \Delta x) - \frac{d\psi}{dx}(x)\Big)" eeimg="1">
+                    <br>
+                    求极限：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Clim_%7B%5CDelta+x+%5Cto+0%7D+%5Cddot+x+%26%3D+%5Clim_%7B%5CDelta+x+%5Cto+0%7D+%5Cfrac%7B%5Cmathcal+T%7D%7B%5Crho+%5CDelta+x%7D%5CBig%28%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x+%2B+%5CDelta+x%29+-+%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x%29%5CBig%29+%5C%5C+%26%3D%5Cfrac%7B%5Cmathcal+T%7D%7B%5Crho%7D+%5Clim_%7B%5CDelta+x+%5Cto+0%7D+%5Cfrac%7B1%7D%7B%5CDelta+x%7D%5CBig%28%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x+%2B+%5CDelta+x%29+-+%5Cfrac%7Bd%5Cpsi%7D%7Bdx%7D%28x%29%5CBig%29+%5C%5C+%26%3D+%5Cfrac%7B%5Cmathcal+T%7D%7B%5Crho%7D+%5Cfrac%7Bd%5E2%5Cpsi%7D%7Bdx%5E2%7D++%5Cend%7Balign%7D" alt="\begin{align} \lim_{\Delta x \to 0} \ddot x &amp;= \lim_{\Delta x \to 0} \frac{\mathcal T}{\rho \Delta x}\Big(\frac{d\psi}{dx}(x + \Delta x) - \frac{d\psi}{dx}(x)\Big) \\ &amp;=\frac{\mathcal T}{\rho} \lim_{\Delta x \to 0} \frac{1}{\Delta x}\Big(\frac{d\psi}{dx}(x + \Delta x) - \frac{d\psi}{dx}(x)\Big) \\ &amp;= \frac{\mathcal T}{\rho} \frac{d^2\psi}{dx^2}  \end{align}" eeimg="1">
+                    <br>
+                    即：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%5E2%5Cpsi%7D%7B%5Cpartial+t%5E2%7D+%3D+%5Cfrac%7B%5Cmathcal+T%7D%7B%5Crho%7D%5Cfrac%7B%5Cpartial%5E2%5Cpsi%7D%7B%5Cpartial+x%5E2%7D" alt="\frac{\partial^2\psi}{\partial t^2} = \frac{\mathcal T}{\rho}\frac{\partial^2\psi}{\partial x^2}" eeimg="1">
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当Lagrange量写为volume form的积分形式时，称为
+                    <b>
+                        拉格朗日密度(Lagrangian density)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+L" alt="\mathcal L" eeimg="1">
+                    的Lagrange量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=L%3D%5Cint+%5Cmathcal+L+dx+%5Ctag%7B7%7D" alt="L=\int \mathcal L dx \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    此时的作用量为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=S%3D%5Cint+Ldt+%3D+%5Cint+%5Cmathcal+L+dxdt+%5Ctag%7B8%7D" alt="S=\int Ldt = \int \mathcal L dxdt \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    从Lagrange密度的角度看前面的弦上的一维波问题，则不必拘泥于Newton力学的受力分析。动能和势能直接表示为能量密度的积分：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+T+%3D+%5Cint+dT+%3D+%5Cfrac%7B%5Crho%7D%7B2%7D%5Cint+%5CBig%28%5Cfrac%7B%5Cpartial%5Cpsi%7D%7B%5Cpartial+t%7D%5CBig%29%5E2dx+%5C%5C+V+%3D+%5Cint+dV+%3D+%5Cfrac%7B%5Cmathcal+T%7D%7B2%7D%5Cint+%5CBig%28%5Cfrac%7B%5Cpartial%5Cpsi%7D%7B%5Cpartial+x%7D%5CBig%29%5E2dx+%5Cend%7Bcases%7D+%5Ctag%7B9%7D" alt="\begin{cases} T = \int dT = \frac{\rho}{2}\int \Big(\frac{\partial\psi}{\partial t}\Big)^2dx \\ V = \int dV = \frac{\mathcal T}{2}\int \Big(\frac{\partial\psi}{\partial x}\Big)^2dx \end{cases} \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    作用量为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=S%3D%5Cint+%28T-V%29dt+%3D+%5Cint+%5CBigg%28%5Cfrac%7B%5Crho%7D%7B2%7D%5CBig%28%5Cfrac%7B%5Cpartial%5Cpsi%7D%7B%5Cpartial+t%7D%5CBig%29%5E2+-+%5Cfrac%7B%5Cmathcal+T%7D%7B2%7D%5CBig%28%5Cfrac%7B%5Cpartial%5Cpsi%7D%7B%5Cpartial+x%7D%5CBig%29%5E2+%5CBigg%29dxdt+%5Ctag%7B10%7D" alt="S=\int (T-V)dt = \int \Bigg(\frac{\rho}{2}\Big(\frac{\partial\psi}{\partial t}\Big)^2 - \frac{\mathcal T}{2}\Big(\frac{\partial\psi}{\partial x}\Big)^2 \Bigg)dxdt \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    用E-L方程可以得到同样的振动方程。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

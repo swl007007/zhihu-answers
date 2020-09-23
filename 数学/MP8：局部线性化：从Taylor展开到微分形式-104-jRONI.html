@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP8：局部线性化：从Taylor展开到微分形式
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-00481a960b38dd2296cfd6ee57200fe7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44227806" target="_blank">
+                        MP8：局部线性化：从Taylor展开到微分形式
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-10
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    本讲回顾了高等数学/数学分析中经典的Taylor展开技术。我们关注的是Taylor展开的线性部分，这部分的线性系数就是函数的导数。在多元函数中，这部分的一组线性系数构成了某种线性组合。
+                </p>
+                <p>
+                    站在线性代数的角度看待Taylor展开的线性部分，我们考虑两个问题：
+                </p>
+                <p>
+                    坐标的微分能否构成某种线性空间的向量？
+                </p>
+                <p>
+                    坐标的微分能否构成这个线性空间的基？
+                </p>
+                <p>
+                    我们研究了坐标分量函数，这类函数的微分就是坐标的微分，几何上它们构成了一组正交的超平面系。借助这类函数，我们发展出了微分形式的概念，确认了以上两个问题，即坐标的微分就是对偶空间的向量，坐标的微分正是这个线性对偶空间的基。
+                </p>
+                <p>
+                    之后我们研究了这类微分形式的几何意义，通过它们线性组合，可以构成具有任意梯度的微分形式。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <hr>
+                <p>
+                    上一讲中，我们在考虑如何把
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的向量场推广到一般的光滑流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    时，遇到了一些问题。这些问题反映出流形和平直空间内在的不同。这些问题的解决需要等到完全理解
+                    <b>
+                        切空间/余切空间
+                    </b>
+                    的概念。在展开讲解之前，在这一讲中我们先谈谈局部线性化的思想，同时储备一些技术工具。
+                </p>
+                <p>
+                    回顾微分流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    的定义，其中提到
+                </p>
+                <blockquote>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+p+%5Cin+M" alt="\forall p \in M" eeimg="1">
+                    都
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+U" alt="\exists U" eeimg="1">
+                    ：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cin+U+%5Csubset+M" alt="p\in U \subset M" eeimg="1">
+                    <br>
+                    使得开邻域
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中的开集同胚。
+                </blockquote>
+                <p>
+                    这使我们注意到：
+                </p>
+                <ol>
+                    <li>
+                        这里是
+                        <b>
+                            逐点定义
+                        </b>
+                        的，且只考虑每一点的某个
+                        <b>
+                            邻域
+                        </b>
+                        的存在性。这提示我们采用了
+                        <b>
+                            局部
+                        </b>
+                        的方法。
+                    </li>
+                    <li>
+                        局部（开邻域）和
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                        中的开集同胚，意味着在局部试图接近
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                        这样的平直空间，所谓平直，就是
+                        <b>
+                            线性
+                        </b>
+                        ，实际上
+                        <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                        中嵌入的平直空间（直线、平面、超平面）就称为
+                        <b>
+                            线性流形
+                        </b>
+                        。
+                    </li>
+                </ol>
+                <p>
+                    这些思路，我们总结为
+                    <b>
+                        局部线性化
+                    </b>
+                    。局部线性化的思想贯穿于微分几何的研究中，这也是我们一直强调同学们学好线性代数的原因（另一个思想是借助拓扑学的整体微分几何）。这一讲中，我们详细谈一下如何借助古老的Taylor展开技术，把局部线性化的方法发展为微分形式。
+                </p>
+                <h2>
+                    <b>
+                        Taylor展开
+                    </b>
+                </h2>
+                <p>
+                    微积分中我们熟知
+                    <b>
+                        Taylor展开
+                    </b>
+                    ，在一维的情况，函数
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    在点
+                    <img src="https://www.zhihu.com/equation?tex=x_0+%5Cin+%5Cmathbb%7BR%7D" alt="x_0 \in \mathbb{R}" eeimg="1">
+                    附近可以写为幂级数和的形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29+%3D+%5Csum_%7Bk%3D0%7D%5E%5Cinfty+%7B+%5Cfrac%7Bf%5E%7B%28k%29%7D%28x_0%29%7D%7Bk%21%7D%28x-x_0%29%5Ek+%7D+" alt="f(x) = \sum_{k=0}^\infty { \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k }" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+f%28x_0%29+%2B+%5Cfrac%7Bf%5E%5Cprime%28x_0%29%7D%7B1%21%7D%28x-x_0%29+%2B+%5Cfrac%7Bf%5E%7B%5Cprime%5Cprime%7D%28x_0%29%7D%7B2%21%7D%28x-x_0%29%5E2+%2B+%5Cdots" alt="= f(x_0) + \frac{f^\prime(x_0)}{1!}(x-x_0) + \frac{f^{\prime\prime}(x_0)}{2!}(x-x_0)^2 + \dots" eeimg="1">
+                </p>
+                <p>
+                    注意到
+                    <img src="https://www.zhihu.com/equation?tex=k%3D0" alt="k=0" eeimg="1">
+                    次项
+                    <img src="https://www.zhihu.com/equation?tex=f%28x_0%29" alt="f(x_0)" eeimg="1">
+                    是常数项，而当
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cto+x_0" alt="x \to x_0" eeimg="1">
+                    求极限时：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdf%7D%7Bdx%7D%28x%29+%5CBigg%5Cvert_%7Bx%3Dx_0%7D+++%3D%5Clim_%7Bx+%5Crightarrow+x_0%7D+%7B+%5Cfrac%7Bf%28x%29-f%28x_0%29%7D%7Bx-x_0%7D+%7D" alt="\frac{df}{dx}(x) \Bigg\vert_{x=x_0}   =\lim_{x \rightarrow x_0} { \frac{f(x)-f(x_0)}{x-x_0} }" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D%5Clim_%7Bx+%5Crightarrow+x_0%7D+%5Cfrac%7B1%7D%7Bx-x_0%7D+%5CBigg%5C%7B++%5Cfrac%7Bf%5E%5Cprime%28x_0%29%7D%7B1%21%7D%28x-x_0%29+%2B+%5Cfrac%7Bf%5E%7B%5Cprime%5Cprime%7D%28x_0%29%7D%7B2%21%7D%28x-x_0%29%5E2+%2B+%5Cdots+%5CBigg%5C%7D" alt="=\lim_{x \rightarrow x_0} \frac{1}{x-x_0} \Bigg\{  \frac{f^\prime(x_0)}{1!}(x-x_0) + \frac{f^{\prime\prime}(x_0)}{2!}(x-x_0)^2 + \dots \Bigg\}" eeimg="1">
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    处求导将消去
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    次以上高阶无穷小量，只剩下
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    次的线性项，得到我们熟知的关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdf%7D%7Bdx%7D%28x%29+%5CBigg%5Cvert_%7Bx%3Dx_0%7D+%3D+f%5E%5Cprime%28x_0%29" alt="\frac{df}{dx}(x) \Bigg\vert_{x=x_0} = f^\prime(x_0)" eeimg="1">
+                </p>
+                <p>
+                    站在我们现在的角度看，Taylor展开就是一种函数逼近技术，当考察固定点
+                    <img src="https://www.zhihu.com/equation?tex=x_0+%5Cin+%5Cmathbb%7BR%7D" alt="x_0 \in \mathbb{R}" eeimg="1">
+                    附近的局部（邻域）时，成为了一种
+                    <b>
+                        线性化
+                    </b>
+                    的，只保留一次导数
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%5Cprime%28x_0%29" alt="f^\prime(x_0)" eeimg="1">
+                    的逼近。
+                </p>
+                <p>
+                    注意到Taylor展开的局部线性化也可以表示成：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df%3Df%5E%5Cprime+dx" alt="df=f^\prime dx" eeimg="1">
+                </p>
+                <p>
+                    这一方面反映了导数的局部线性的性质，另一方面，导数
+                    <img src="https://www.zhihu.com/equation?tex=f%5E%5Cprime" alt="f^\prime" eeimg="1">
+                    在固定点上是常数，它本身可以视为
+                    <b>
+                        线性系数
+                    </b>
+                    。在
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维看得更加清楚。
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维函数
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    在点
+                    <img src="https://www.zhihu.com/equation?tex=x_0+%5Cin+%5Cmathbb%7BR%7D%5En" alt="x_0 \in \mathbb{R}^n" eeimg="1">
+                    附近的Taylor展开，进行局部线性化后得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%5Csum_%7Bk%3D1%7D%5En+%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D+dx%5Ei+%3D%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D+dx%5Ei+%3D%28%5Cpartial_i+f%29+dx%5Ei" alt="df=\sum_{k=1}^n \frac{\partial f}{\partial x_i} dx^i =\frac{\partial f}{\partial x_i} dx^i =(\partial_i f) dx^i" eeimg="1">
+                </p>
+                <p>
+                    这里用了Einstein求和约定。显然，偏导数
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B+%5Cpartial_i+f+%5C%7D" alt="\{ \partial_i f \}" eeimg="1">
+                    起到了
+                    <b>
+                        线性系数
+                    </b>
+                    的作用。现在我们得到了某种类似
+                    <b>
+                        线性组合
+                    </b>
+                    的关系。然而，若要放心地用线性代数的方法来处理，我们首先需要明确两个问题：
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                        是否是某个向量空间中的向量？
+                    </li>
+                    <li>
+                        如果是，
+                        <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                        能否构成基？
+                    </li>
+                </ol>
+                <p>
+                    如果我们能够解决这两个问题，过去我们所理解的所谓
+                    <b>
+                        无穷小量
+                    </b>
+                    的
+                    <b>
+                        微分
+                    </b>
+                    将被赋予线性空间的新的内涵，它是将来要讨论的
+                    <b>
+                        余切向量
+                    </b>
+                    的原形。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        超平面系
+                    </b>
+                </h2>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中，记自然基为
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_i%5C%7D" alt="\{x_i\}" eeimg="1">
+                    。考虑一组特殊的函数
+                    <b>
+                        分量函数
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=C%3D%5C%7Bx%5Ei%28x%29%3Dx_i%5C%7D" alt="C=\{x^i(x)=x_i\}" eeimg="1">
+                    ，其中每一个表现为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei%3A%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D" alt="x^i:\mathbb{R}^n \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cmapsto+x%5Ei%28x%29+%3D+x_i" alt="x \mapsto x^i(x) = x_i" eeimg="1">
+                </p>
+                <p>
+                    即把点
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin%5Cmathbb%7BR%7D%5En" alt="\forall x\in\mathbb{R}^n" eeimg="1">
+                    的第
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    个分量
+                    <img src="https://www.zhihu.com/equation?tex=x_i" alt="x_i" eeimg="1">
+                    输出为函数值。
+                </p>
+                <blockquote>
+                    注意：指标
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    在上面表示它是
+                    <b>
+                        函数
+                    </b>
+                    ：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei%3Dx%5Ei%28x%29" alt="x^i=x^i(x)" eeimg="1">
+                    <br>
+                    指标在下面表示它是坐标
+                    <b>
+                        分量
+                    </b>
+                    ：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=x_i+%5Cin+%5Cmathbb%7BR%7D" alt="x_i \in \mathbb{R}" eeimg="1">
+                </blockquote>
+                <p>
+                    分量函数
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei%3Dx%5Ei%28x%29" alt="x^i=x^i(x)" eeimg="1">
+                    对分量
+                    <img src="https://www.zhihu.com/equation?tex=x_j" alt="x_j" eeimg="1">
+                    求偏导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdx%5Ei%28x%29%7D%7Bdx_j%7D%3D%5Cdelta_%7Bij%7D" alt="\frac{dx^i(x)}{dx_j}=\delta_{ij}" eeimg="1">
+                </p>
+                <p>
+                    这里用了Kronecker记号。于是仅在指标
+                    <img src="https://www.zhihu.com/equation?tex=i%3Dj" alt="i=j" eeimg="1">
+                    时有意义：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdx%5Ei%28x%29%7D%7Bdx_i%7D%3D%5Cdelta_%7Bii%7D+%3D+1" alt="\frac{dx^i(x)}{dx_i}=\delta_{ii} = 1" eeimg="1">
+                </p>
+                <p>
+                    即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=dx%5Ei%3Ddx%5Ei%28x%29%3Ddx_i" alt="dx^i=dx^i(x)=dx_i" eeimg="1">
+                </p>
+                <p>
+                    上式中，左边的指标
+                    <img src="https://www.zhihu.com/equation?tex=i" alt="i" eeimg="1">
+                    在上面表示函数的微分，右边的指标在下面表示自变量的微分。我们理解为，
+                    <b>
+                        函数微分
+                    </b>
+                    和
+                    <b>
+                        自变量微分
+                    </b>
+                    可以等同看待。
+                </p>
+                <p>
+                    由分量函数的函数微分和自变量微分的等同关系可见，分量函数
+                    <img src="https://www.zhihu.com/equation?tex=C%3D%5C%7Bx%5Ei%28x%29%3Dx_i%5C%7D" alt="C=\{x^i(x)=x_i\}" eeimg="1">
+                    的几何意义是，每一个函数
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei%28x%29%3Dx_i" alt="x^i(x)=x_i" eeimg="1">
+                    都是线性函数，它构成一个
+                    <b>
+                        超平面（线性流形）
+                    </b>
+                    ，这组超平面相互
+                    <b>
+                        正交
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        1-微分形式
+                    </b>
+                </h2>
+                <p>
+                    将
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维实线性函数所构成的空间记为
+                    <img src="https://www.zhihu.com/equation?tex=L%28%5Cmathbb%7BR%7D%5En%29" alt="L(\mathbb{R}^n)" eeimg="1">
+                    。这个线性函数空间蕴含了自然的线性运算，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Calpha%2C%5Cbeta+%5Cin+%5Cmathbb%7BR%7D%2C+%5Cforall+f%2C+g+%5Cin+L%28%5Cmathbb%7BR%7D%5En%29" alt="\forall \alpha,\beta \in \mathbb{R}, \forall f, g \in L(\mathbb{R}^n)" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%2C+g%3A+%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D" alt="f, g: \mathbb{R}^n \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Calpha+f+%2B+%5Cbeta+g%29%28x%29+%3D+%5Calpha+f%28x%29+%2B+%5Cbeta+f%28x%29%2C+%5Cforall+x+%5Cin+%5Cmathbb%7BR%7D%5En" alt="(\alpha f + \beta g)(x) = \alpha f(x) + \beta f(x), \forall x \in \mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    我们注意到上面讨论的分量函数
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=C%3D%5C%7Bx%5Ei%28x%29%3Dx_i%5C%7D" alt="C=\{x^i(x)=x_i\}" eeimg="1">
+                </p>
+                <p>
+                    中的每个函数都是
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维实线性函数。前面谈到它们构成了正交的超平面，代数上意味着
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    是函数空间
+                    <img src="https://www.zhihu.com/equation?tex=L%28%5Cmathbb%7BR%7D%5En%29" alt="L(\mathbb{R}^n)" eeimg="1">
+                    中的
+                    <b>
+                        线性无关
+                    </b>
+                    子集。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在考虑某一点
+                    <img src="https://www.zhihu.com/equation?tex=x_0+%5Cin+%5Cmathbb%7BR%7D%5En" alt="x_0 \in \mathbb{R}^n" eeimg="1">
+                    附近的线性函数空间
+                    <img src="https://www.zhihu.com/equation?tex=L_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="L_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    。如前面的讨论，任意函数
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    在点
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    附近若可微，则可以通过Taylor展开，在
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    附近消去高阶无穷小量后，局部视为一个线性函数
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+L_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="f \in L_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%3A+%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D" alt="f: \mathbb{R}^n \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cmapsto+f%28x%29%3Df%28x_0%29+%2B+%5Clambda_i+x%5Ei" alt="x \mapsto f(x)=f(x_0) + \lambda_i x^i" eeimg="1">
+                </p>
+                <p>
+                    更重要的，可以把这个线性函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    表达为点
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    附近分量函数
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=C%3D%5C%7Bx%5Ei%28x%29%3Dx_i%5C%7D+%5Csubset+L_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="C=\{x^i(x)=x_i\} \subset L_{x_0}(\mathbb{R}^n)" eeimg="1">
+                </p>
+                <p>
+                    的线性组合：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29%3Df%28x_0%29+%2B+%5Clambda_i+x%5Ei+%3Df%28x_0%29+%2B+%5Clambda_i+x%5Ei%28x%29+" alt="f(x)=f(x_0) + \lambda_i x^i =f(x_0) + \lambda_i x^i(x)" eeimg="1">
+                </p>
+                <p>
+                    对它求全微分：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%5Csum_%7Bk%3D1%7D%5En+%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D+dx%5Ei+%3D%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D+dx%5Ei+%3D%28%5Cpartial_i+f%29+dx%5Ei+%3D+%5Clambda_i+dx%5Ei" alt="df=\sum_{k=1}^n \frac{\partial f}{\partial x_i} dx^i =\frac{\partial f}{\partial x_i} dx^i =(\partial_i f) dx^i = \lambda_i dx^i" eeimg="1">
+                </p>
+                <p>
+                    这里的
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_i++%3D+%5Cpartial_i+f" alt="\lambda_i  = \partial_i f" eeimg="1">
+                    是线性系数。这里出现的
+                    <img src="https://www.zhihu.com/equation?tex=dx%5Ei" alt="dx^i" eeimg="1">
+                    既可以视为变量
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei" alt="x^i" eeimg="1">
+                    的微分，也可以视为函数
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei%28x%29%3Dx_i" alt="x^i(x)=x_i" eeimg="1">
+                    的微分。
+                    <b>
+                        非常重要！
+                    </b>
+                    回到前面我们提出的问题：
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                        是否是某个向量空间中的向量？
+                    </li>
+                    <li>
+                        如果是，
+                        <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                        能否构成基？
+                    </li>
+                </ol>
+                <p>
+                    现在，在某一点
+                    <img src="https://www.zhihu.com/equation?tex=x_0+%5Cin+%5Cmathbb%7BR%7D%5En" alt="x_0 \in \mathbb{R}^n" eeimg="1">
+                    附近，由于
+                    <img src="https://www.zhihu.com/equation?tex=f%3Df%28x%29" alt="f=f(x)" eeimg="1">
+                    被局部线性化，
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx%5Ei%28x%29%3Dx_i%5C%7D" alt="\{x^i(x)=x_i\}" eeimg="1">
+                    的成员都是
+                    <img src="https://www.zhihu.com/equation?tex=L_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="L_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    中的元素。我们把微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    视为从
+                    <b>
+                        线性函数空间
+                    </b>
+                    到
+                    <b>
+                        函数微分集合
+                    </b>
+                    的映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=d%3AL_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29+%5Cto+D_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="d:L_{x_0}(\mathbb{R}^n) \to D_{x_0}(\mathbb{R}^n)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cmapsto+df" alt="f \mapsto df" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei+%3D+x%5Ei%28x%29+%5Cmapsto+dx%5Ei" alt="x^i = x^i(x) \mapsto dx^i" eeimg="1">
+                </p>
+                <p>
+                    由于微分的
+                    <b>
+                        线性性
+                    </b>
+                    ，自然可以在函数微分集合
+                    <img src="https://www.zhihu.com/equation?tex=D_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="D_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    中构建线性运算，构成线性的
+                    <b>
+                        函数微分空间
+                    </b>
+                    。于是，
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    是函数微分线性空间
+                    <img src="https://www.zhihu.com/equation?tex=D_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="D_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    中的向量。
+                </p>
+                <p>
+                    其次，由于
+                    <img src="https://www.zhihu.com/equation?tex=C%3D%5C%7Bx%5Ei%28x%29%3Dx_i%5C%7D+%5Csubset+L_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="C=\{x^i(x)=x_i\} \subset L_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    是一个线性无关的集合，可以证明微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    将它映射成函数微分线性空间
+                    <img src="https://www.zhihu.com/equation?tex=D_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="D_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    中的基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    最后，根据全微分公式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%28%5Cpartial_i+f%29+dx%5Ei+%3D+%5Clambda_i+dx%5Ei" alt="df=(\partial_i f) dx^i = \lambda_i dx^i" eeimg="1">
+                </p>
+                <p>
+                    即：任意函数
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    在点
+                    <img src="https://www.zhihu.com/equation?tex=x_0+%5Cin+%5Cmathbb%7BR%7D%5En" alt="x_0 \in \mathbb{R}^n" eeimg="1">
+                    附近若可微，则可以通过Taylor展开在
+                    <img src="https://www.zhihu.com/equation?tex=x_0" alt="x_0" eeimg="1">
+                    附近进行局部线性化，得到函数微分
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%28%5Cpartial_i+f%29+dx%5Ei" alt="df=(\partial_i f) dx^i" eeimg="1">
+                    ，它是基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    的线性组合。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    这个函数微分线性空间
+                    <img src="https://www.zhihu.com/equation?tex=D_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="D_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    中的元素称为
+                    <b>
+                        1-微分形式(differential form)
+                    </b>
+                    ，简称
+                    <b>
+                        1-形式
+                    </b>
+                    。本质上，1-形式相当于局部（在相差一个常数的意义下等价，后面详述）线性函数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        1-形式的几何直观
+                    </b>
+                </h2>
+                <p>
+                    函数
+                    <img src="https://www.zhihu.com/equation?tex=C%3D%5C%7Bx%5Ei%28x%29%3Dx_i%5C%7D" alt="C=\{x^i(x)=x_i\}" eeimg="1">
+                    的几何意义是，在点
+                    <img src="https://www.zhihu.com/equation?tex=x_0+%5Cin+%5Cmathbb%7BR%7D%5En" alt="x_0 \in \mathbb{R}^n" eeimg="1">
+                    附近，每一个函数
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei%28x%29%3Dx_i" alt="x^i(x)=x_i" eeimg="1">
+                    都是
+                    <img src="https://www.zhihu.com/equation?tex=L_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="L_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    中的线性函数，它构成一个
+                    <b>
+                        超平面（线性流形）
+                    </b>
+                    ，这组超平面相互
+                    <b>
+                        正交
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    将这组线性函数映射成函数微分，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=d%3AL_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29+%5Cto+D_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="d:L_{x_0}(\mathbb{R}^n) \to D_{x_0}(\mathbb{R}^n)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei+%3D+x%5Ei%28x%29+%5Cmapsto+dx%5Ei" alt="x^i = x^i(x) \mapsto dx^i" eeimg="1">
+                </p>
+                <p>
+                    注意这种映射不是单射，若有任意实数
+                    <img src="https://www.zhihu.com/equation?tex=c%5Cin+%5Cmathbb%7BR%7D" alt="c\in \mathbb{R}" eeimg="1">
+                    则：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei%28x%29+%5Cmapsto+dx%5Ei" alt="x^i(x) \mapsto dx^i" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5Ei%28x%29+%2B+c+%5Cmapsto+d%28x%5Ei+%2B+c%29+%3D+dx%5Ei" alt="x^i(x) + c \mapsto d(x^i + c) = dx^i" eeimg="1">
+                </p>
+                <p>
+                    即，相差为常数的线性函数具有相同的函数微分，相同的函数微分对应着等价类。由于任意线性函数也是
+                    <img src="https://www.zhihu.com/equation?tex=C%3D%5C%7Bx%5Ei%28x%29%3Dx_i%5C%7D" alt="C=\{x^i(x)=x_i\}" eeimg="1">
+                    的线性组合，这种等价关系对于任意函数微分
+                    <img src="https://www.zhihu.com/equation?tex=df+%5Cin+D_%7Bx_0%7D%28%5Cmathbb%7BR%7D%5En%29" alt="df \in D_{x_0}(\mathbb{R}^n)" eeimg="1">
+                    都成立。于是满足微分为
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    的线性函数是一个集合，这个集合中的线性函数两两之间相差一个常数。几何上看，
+                    <img src="https://www.zhihu.com/equation?tex=df" alt="df" eeimg="1">
+                    决定了一组平行的（相差常数）超平面（线性函数）。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    作为1-形式，
+                    <img src="https://www.zhihu.com/equation?tex=df%3D%28%5Cpartial_i+f%29+dx%5Ei" alt="df=(\partial_i f) dx^i" eeimg="1">
+                    体现了基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bdx%5Ei%5C%7D" alt="\{dx^i\}" eeimg="1">
+                    的线性组合，几何上看，每一个基向量（1-微分形式）都代表一组平行超平面，基向量之间相互正交，通过系数（偏导数
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Cpartial_i+f%5C%7D" alt="\{\partial_i f\}" eeimg="1">
+                    ）组合，构成了具有任意
+                    <b>
+                        梯度
+                    </b>
+                    的一组平行超平面。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

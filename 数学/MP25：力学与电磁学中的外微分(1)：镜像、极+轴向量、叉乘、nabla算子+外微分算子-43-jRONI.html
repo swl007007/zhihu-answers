@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP25：力学与电磁学中的外微分(1)：镜像、极/轴向量、叉乘、nabla算子/外微分算子
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-c6faf65811d5d3697781a99f66083373_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/45777678" target="_blank">
+                        MP25：力学与电磁学中的外微分(1)：镜像、极/轴向量、叉乘、nabla算子/外微分算子
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic1.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-07
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    过去我们多次讨论了微分形式，为了巩固理解，还学习了张量和一系列的外数学：
+                </p>
+                <p>
+                    外积、外代数、外形式、外微分。。。
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/43792478" class="internal">
+                        Gap5：方向导数、偏导数、梯度、全微分
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/43749205" class="internal">
+                        MP4：对偶、逆变与协变
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44227806" class="internal">
+                        MP8：局部线性化：从Taylor展开到微分形式
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44115400" class="internal">
+                        MP9：重新认识向量场：方向导数、偏导数、梯度
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44190499" class="internal">
+                        MP11：余切空间
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44081214" class="internal">
+                        MP18：反对称、外积、外代数、微分形式
+                    </a>
+                    <br>
+                    <a href="https://zhuanlan.zhihu.com/p/45703308" class="internal">
+                        MP23：张量积、张量、张量丛
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/45718571" class="internal">
+                        MP24：再论外代数、外形式、外微分
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在我们结合电磁学讲讲外微分的物理意义。我们将通过镜像的实例，揭示向量与微分形式之间微妙的物理意义上的区别。然后从外微分的角度讨论Maxwell方程，并介绍Hodge星算子，了解电和磁之间相似性的根源所在。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        镜像：极向量与轴向量
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    一辆面向我们行驶的汽车，它的水平镜像也是一辆面向我们行驶的汽车。汽车和它的镜像并排，就像一根轴上有四个轮子。汽车的一对轮子具有同样的角速度，角速度的方向指向一边。镜像中的那对轮子也具有指向同一边的角速度。现在我们发现问题了，角速度作为有方向的向量，并没有随着镜像所预期的那样指向另外一边。
+                </p>
+                <figure>
+                    <img src="https://pic2.zhimg.com/v2-5d1b1b722589ab226d5bbf48c62348d3_r.jpg">
+                    <figcaption>
+                        车轮和镜像的角速度方向(wiki)
+                    </figcaption>
+                </figure>
+                <p>
+                    角速度是圆周产生的向量。如果我们把汽车轮子的旋转类比为闭合圆周电流，那么这样的电流会产生磁场。类似汽车的角速度，磁场的方向也不复合镜像的预期。如果我们把线圈从垂直旋转到水平，可以发现磁场的方向和镜像线圈磁场的方向开始偏移，直到变成一个朝上一个朝下。
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-fcdee25a0f8b6a1f6b33babb9e645c54_r.jpg">
+                    <figcaption>
+                        闭合圆周电流及其镜像的磁场方向(wiki)
+                    </figcaption>
+                </figure>
+                <p>
+                    区别与我们一般理解的向量，这种不满足镜像规则的向量，称为
+                    <b>
+                        赝向量(pseudovector)
+                    </b>
+                    或
+                    <b>
+                        轴向量(axial vector)
+                    </b>
+                    。
+                </p>
+                <p>
+                    正常理解的向量，相对于轴向量而言叫做
+                    <b>
+                        极向量(polar vector)
+                    </b>
+                    。位移、速度（除以时间标量）、动量（乘以质量标量）这些都满足镜像规律，是极向量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        叉乘：轴向量的构造
+                    </b>
+                </h2>
+                <p>
+                    所谓轴向量，用叉乘就很容易理解。两个
+                    <b>
+                        极向量
+                    </b>
+                    的叉乘产生一个
+                    <b>
+                        轴向量
+                    </b>
+                    。我们用力向量和径向量的叉乘可以产生力矩向量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=M+%3D+F+%5Ctimes+r" alt="M = F \times r" eeimg="1">
+                </p>
+                <p>
+                    类似前面车轮角速度的例子，如果有人换轮胎，用扳手松开车轮的螺丝，那么松开螺丝的力矩和镜像的力矩也是不满足镜像的，因此力矩也是轴向量。在中学物理中我们一般采用右手系，通过叉乘得到的力矩、磁感应等物理量，这类通过有序（叉乘的反交换律）运算产生的都是轴向量。
+                </p>
+                <p>
+                    前后两个极向量叉乘，若两个向量平行，则：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbf+%7Ba%7D+%5Ctimes+%5Cmathbf%7Bb%7D+%3D+0" alt="\mathbf {a} \times \mathbf{b} = 0" eeimg="1">
+                </p>
+                <p>
+                    即它们是
+                    <b>
+                        线性相关
+                    </b>
+                    的，否则，它们作为基可以确定一个平面，而叉乘产生的轴向量就是这个平面的
+                    <b>
+                        法向量
+                    </b>
+                    ，就像旋转平面的轴，因此而得名。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在第一讲中，我们用简单的三角函数解释了复数乘法的内涵——旋转角度的相加/旋转的合成。请参考
+                    <a href="https://zhuanlan.zhihu.com/p/42639576" class="internal">
+                        MP1：重温高等数学：复平面与Euler公式
+                    </a>
+                    ；现在故伎重演，我们要研究两个平面向量的角度之差——夹角，它是叉乘的本意。相关的阐述初见于：
+                    <a href="https://zhuanlan.zhihu.com/p/43612010" class="internal">
+                        MP5：内积、外积、面积、Hermit内积、辛内积
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    考虑三维情况，在两个极向量所张的平面
+                    <img src="https://www.zhihu.com/equation?tex=W+%5Csubset+%5Cmathbb%7BR%7D%5E3" alt="W \subset \mathbb{R}^3" eeimg="1">
+                    上建立坐标系，那么叉乘构造了直和
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E3+%3D+W+%5Coplus+W%5E%5Cbot" alt="\mathbb{R}^3 = W \oplus W^\bot" eeimg="1">
+                </p>
+                <p>
+                    归一化的极向量可以用三角函数表达为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cmathbf+%7Ba%7D%7D%7B%5C%7Ca%5C%7C%7D+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Calpha+%5C%5C+%5Csin%5Calpha+%5Cend%7Bbmatrix%7D" alt="\frac{\mathbf {a}}{\|a\|} = \begin{bmatrix} \cos\alpha \\ \sin\alpha \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cmathbf+%7Bb%7D%7D%7B%5C%7Cb%5C%7C%7D+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Cbeta+%5C%5C+%5Csin%5Cbeta+%5Cend%7Bbmatrix%7D" alt="\frac{\mathbf {b}}{\|b\|} = \begin{bmatrix} \cos\beta \\ \sin\beta \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    于是极向量的三角表示与坐标表示有如下关系
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbf+%7Ba%7D+%3D+%5C%7Ca%5C%7C+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Calpha+%5C%5C+%5Csin%5Calpha+%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D+a_1+%5C%5C+a_2+%5Cend%7Bbmatrix%7D" alt="\mathbf {a} = \|a\| \begin{bmatrix} \cos\alpha \\ \sin\alpha \end{bmatrix} = \begin{bmatrix} a_1 \\ a_2 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbf+%7Bb%7D+%3D+%5C%7Cb%5C%7C+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Cbeta+%5C%5C+%5Csin%5Cbeta+%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D+b_1+%5C%5C+b_2+%5Cend%7Bbmatrix%7D" alt="\mathbf {b} = \|b\| \begin{bmatrix} \cos\beta \\ \sin\beta \end{bmatrix} = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    由于两个极向量的叉乘的大小为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7C+%5Cmathbf+%7Ba%7D+%5Ctimes+%5Cmathbf%7Bb%7D+%5C%7C+%3D+%5C%7Ca%5C%7C%5C%7Cb%5C%7C%5Csin%5Ctheta" alt="\| \mathbf {a} \times \mathbf{b} \| = \|a\|\|b\|\sin\theta" eeimg="1">
+                </p>
+                <p>
+                    加上叉乘对于两个变元的数乘线性律，于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7C+%5Cmathbf+%7Ba%7D+%5Ctimes+%5Cmathbf%7Bb%7D+%5C%7C++%3D+%5C%7Ca%5C%7C%5C%7Cb%5C%7C+%5CBigg%5C%7C+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Calpha+%5C%5C+%5Csin%5Calpha+%5Cend%7Bbmatrix%7D+%5Ctimes+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Cbeta+%5C%5C+%5Csin%5Cbeta+%5Cend%7Bbmatrix%7D+%5CBigg%5C%7C" alt="\| \mathbf {a} \times \mathbf{b} \|  = \|a\|\|b\| \Bigg\| \begin{bmatrix} \cos\alpha \\ \sin\alpha \end{bmatrix} \times \begin{bmatrix} \cos\beta \\ \sin\beta \end{bmatrix} \Bigg\|" eeimg="1">
+                </p>
+                <p>
+                    我们得到两个归一化单位极向量叉乘的关系
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CBigg%5C%7C+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Calpha+%5C%5C+%5Csin%5Calpha+%5Cend%7Bbmatrix%7D+%5Ctimes+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Cbeta+%5C%5C+%5Csin%5Cbeta+%5Cend%7Bbmatrix%7D+%5CBigg%5C%7C+%3D%5Csin%5Ctheta+%3D+%5Csin%28%5Calpha-%5Cbeta%29+%3D%5Csin%5Calpha%5Ccos%5Cbeta+-+%5Ccos%5Calpha%5Csin%5Cbeta" alt="\Bigg\| \begin{bmatrix} \cos\alpha \\ \sin\alpha \end{bmatrix} \times \begin{bmatrix} \cos\beta \\ \sin\beta \end{bmatrix} \Bigg\| =\sin\theta = \sin(\alpha-\beta) =\sin\alpha\cos\beta - \cos\alpha\sin\beta" eeimg="1">
+                </p>
+                <p>
+                    于是我们得到坐标表示的叉乘大小：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7C+%5Cmathbf+%7Ba%7D+%5Ctimes+%5Cmathbf%7Bb%7D+%5C%7C++%3D+a_2b_1+-+a_1b_2" alt="\| \mathbf {a} \times \mathbf{b} \|  = a_2b_1 - a_1b_2" eeimg="1">
+                </p>
+                <p>
+                    去掉大小的符号，则
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbf+%7Ba%7D+%5Ctimes+%5Cmathbf%7Bb%7D+++%3D+a_2b_1+-+a_1b_2+%3D++%5Cbegin%7Bbmatrix%7D+a_1+%26+a_2+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+0+%26+-1+%5C%5C+1+%26+0+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+b_1+%5C%5C+b_2+%5Cend%7Bbmatrix%7D" alt="\mathbf {a} \times \mathbf{b}   = a_2b_1 - a_1b_2 =  \begin{bmatrix} a_1 &amp; a_2 \end{bmatrix} \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \begin{bmatrix} b_1 \\ b_2 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    就是叉乘在正交补（法线）
+                    <img src="https://www.zhihu.com/equation?tex=W%5E%5Cbot" alt="W^\bot" eeimg="1">
+                    上的分量（唯一非退化的分量）。
+                    <br>
+                </p>
+                <p>
+                    在正交归一基下，三维空间的叉乘可以写为基的线性组合：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbf+%7Ba%7D+%5Ctimes+%5Cmathbf%7Bb%7D+%3D++%28a%5E2b%5E3+-+a%5E3b%5E2%29+%5Cmathbf+%7Be%7D_1+%2B+%28a%5E3b%5E1+-+a%5E1b%5E3%29+%5Cmathbf+%7Be%7D_2+%2B+%28a%5E1b%5E2+-+a%5E2b%5E1%29+%5Cmathbf+%7Be%7D_3" alt="\mathbf {a} \times \mathbf{b} =  (a^2b^3 - a^3b^2) \mathbf {e}_1 + (a^3b^1 - a^1b^3) \mathbf {e}_2 + (a^1b^2 - a^2b^1) \mathbf {e}_3" eeimg="1">
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        Nabla算子与外微分算子
+                    </b>
+                </h2>
+                <p>
+                    回忆一下矢量分析中常见的nabla算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla" alt="\nabla" eeimg="1">
+                    ，它作用于标量场得到
+                    <b>
+                        梯度
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bgrad%7D%28F%29+%3D+%5Cnabla+f" alt="\text{grad}(F) = \nabla f" eeimg="1">
+                </p>
+                <p>
+                    以内积作用于向量场得到
+                    <b>
+                        散度
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdiv%7D%28F%29+%3D+%5Cnabla+%5Ccdot+F" alt="\text{div}(F) = \nabla \cdot F" eeimg="1">
+                </p>
+                <p>
+                    以叉乘作用于向量场得到
+                    <b>
+                        旋度
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Brot%7D%28F%29+%3D+%5Cnabla+%5Ctimes+F" alt="\text{rot}(F) = \nabla \times F" eeimg="1">
+                </p>
+                <p>
+                    注意到叉乘运算产生的是轴向量。
+                </p>
+                <p>
+                    扩展阅读请见
+                    <a href="https://zhuanlan.zhihu.com/p/35323714" class="internal">
+                        10935 梯度、散度、旋度、Jacobian、Hessian、Laplacian 的关系图
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    过去我们发现，在某种意义上，作为梯度算子的nabla算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla" alt="\nabla" eeimg="1">
+                    相当于
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    -形式中的外微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    ，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f+%3D+df" alt="\nabla f = df" eeimg="1">
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44115400" class="internal">
+                        MP9：重新认识向量场：方向导数、偏导数、梯度
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    实际上，这一关系可以推广到多个维度，令
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%5Ek%28%5Cmathbb%7BR%7D%5E3%29" alt="\Omega^k(\mathbb{R}^3)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E3" alt="\mathbb{R}^3" eeimg="1">
+                    中的全体
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -形式。这里不加证明地提出，nabla算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla" alt="\nabla" eeimg="1">
+                    的各种作用相应由外微分算子
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    承担：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bgrad%7D+%3D+%5Cnabla+%3A+%5COmega%5E0%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{grad} = \nabla : \Omega^0(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^1(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Brot%7D+%3D+%5Cnabla+%5Ctimes+%3A+%5COmega%5E1%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E2%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{rot} = \nabla \times : \Omega^1(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^2(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdiv%7D+%3D+%5Cnabla+%5Ccdot+%3A+%5COmega%5E2%28%5Cmathbb%7BR%7D%5E3%29+%5Cstackrel%7Bd%7D%7B%5Clongrightarrow%7D+%5COmega%5E3%28%5Cmathbb%7BR%7D%5E3%29" alt="\text{div} = \nabla \cdot : \Omega^2(\mathbb{R}^3) \stackrel{d}{\longrightarrow} \Omega^3(\mathbb{R}^3)" eeimg="1">
+                </p>
+                <p>
+                    下讲继续：
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/46151627" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                MP26：力学与电磁学中的外微分(2)：Maxwell方程组、电场与磁场、Hodge星算子
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP85：复流形(9)：复微分形式
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-0e0ae9419f2199315755921b2afa4da4_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/53270661" target="_blank">
+                        MP85：复流形(9)：复微分形式
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-30
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <h2>
+                    <b>
+                        实微分形式
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    讨论微分形式涉及的主要两个运算是外积/楔积
+                    <img src="https://www.zhihu.com/equation?tex=%5Cwedge" alt="\wedge" eeimg="1">
+                    和外微分
+                    <img src="https://www.zhihu.com/equation?tex=d" alt="d" eeimg="1">
+                    。在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5En" alt="\mathbb R^n" eeimg="1">
+                    中，外积/楔积
+                    <img src="https://www.zhihu.com/equation?tex=%5Cwedge" alt="\wedge" eeimg="1">
+                    是反对称的交错积
+                    <img src="https://www.zhihu.com/equation?tex=dx%5Ei+%5Cwedge+dx%5Ej+%2B+dx%5Ej+%5Cwedge+dx%5Ei+%3D+0" alt="dx^i \wedge dx^j + dx^j \wedge dx^i = 0" eeimg="1">
+                    ，而
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega+%3D+fdx%5E%5Calpha" alt="\omega = fdx^\alpha" eeimg="1">
+                    的外微分运算为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+d%3A%5COmega%5Ek%28%5Cmathbb+R%5En%29+%26%5Cto+%5COmega%5E%7Bk%2B1%7D%28%5Cmathbb+R%5En%29+%5C%5C+%5Comega+%3D+fdx%5E%5Calpha+%26%3D+dw+%5C%5C+%26+%3D+%5Csum_%7Bi%3D1%7D%5En+%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D+dx%5Ei+%5Cwedge+dx%5E%5Calpha+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} d:\Omega^k(\mathbb R^n) &amp;\to \Omega^{k+1}(\mathbb R^n) \\ \omega = fdx^\alpha &amp;= dw \\ &amp; = \sum_{i=1}^n \frac{\partial f}{\partial x_i} dx^i \wedge dx^\alpha \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    光滑流形的点
+                    <img src="https://www.zhihu.com/equation?tex=p%5Cin+M" alt="p\in M" eeimg="1">
+                    上的余切空间的
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    次外幂空间为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigwedge%5Ek+T_p%5E%2AM" alt="\bigwedge^k T_p^*M" eeimg="1">
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -微分形式是余切丛
+                    <img src="https://www.zhihu.com/equation?tex=T%5E%2AM" alt="T^*M" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    次外幂(exterior power)
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigwedge%5Ek+T%5E%2AM" alt="\bigwedge^k T^*M" eeimg="1">
+                    的光滑截面(smooth section)。
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上所有的
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -微分形式构成一个向量空间
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega%5Ek%28M%29" alt="\Omega^k(M)" eeimg="1">
+                    。对于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta_p+%5Cin+%5Cbigwedge%5Ek+T_p%5E%2AM" alt="\beta_p \in \bigwedge^k T_p^*M" eeimg="1">
+                    ，它对对偶的切空间的
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    次外幂空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbigwedge%5Ek+T_pM" alt="\bigwedge^k T_pM" eeimg="1">
+                    的作用为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta_p%3A+%5Cbigwedge%5Ek+T_pM+%5Cto+%5Cmathbb+R" alt="\beta_p: \bigwedge^k T_pM \to \mathbb R" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    外代数是张量代数中的子代数，体现为切空间中的交错映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BAlt%7D%3A+%5Cbigotimes%5Ek+T%5E%2AM+%5Cto+%5Cbigotimes%5Ek+T%5E%2AM" alt="\text{Alt}: \bigotimes^k T^*M \to \bigotimes^k T^*M" eeimg="1">
+                </p>
+                <p>
+                    使得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BAlt%7D%28%5Comega%29%28x_1%2C%5Cdots%2Cx_k%29+%3D%5Cfrac%7B1%7D%7Bk%21%7D+%5Csum_%7B%5Csigma+%5Cin+S_k%7D+%5Ctext%7Bsgn%7D%28%5Csigma%29%5Comega%28x_%7B%5Csigma%281%29%7D%2C%5Cdots%2Cx_%7B%5Csigma%28k%29%7D%29" alt="\text{Alt}(\omega)(x_1,\dots,x_k) =\frac{1}{k!} \sum_{\sigma \in S_k} \text{sgn}(\sigma)\omega(x_{\sigma(1)},\dots,x_{\sigma(k)})" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=S_k" alt="S_k" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -对称群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        复微分形式
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                    复维度为
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    的复流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    ，其实维度为
+                    <img src="https://www.zhihu.com/equation?tex=2n" alt="2n" eeimg="1">
+                    。在点
+                    <img src="https://www.zhihu.com/equation?tex=z+%5Cin+M" alt="z \in M" eeimg="1">
+                    上取两个实
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%2C%5Ceta+%5Cin+%5COmega_z%5Ek%28M%29" alt="\omega,\eta \in \Omega_z^k(M)" eeimg="1">
+                    ，可以构造一个复
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    -形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Czeta+%3D+%5Comega+%2B+i%5Ceta+%5Cin+%5COmega_z%5Ek%28M%29%5E%5Cmathbb+C" alt="\zeta = \omega + i\eta \in \Omega_z^k(M)^\mathbb C" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在分解的复切空间
+                    <img src="https://www.zhihu.com/equation?tex=T_zM%5E%5Cmathbb+C%3DT_zM%5E%2B+%5Coplus+T_zM%5E-" alt="T_zM^\mathbb C=T_zM^+ \oplus T_zM^-" eeimg="1">
+                    中，取
+                    <img src="https://www.zhihu.com/equation?tex=r%2Cs+%5Cin+%5Cmathbb+Z%5E%2B" alt="r,s \in \mathbb Z^+" eeimg="1">
+                    且
+                    <img src="https://www.zhihu.com/equation?tex=0+%5Cleq+r+%2B+s+%3D+k+%5Cleq+2n" alt="0 \leq r + s = k \leq 2n" eeimg="1">
+                    ，分别为两个子空间中的向量，然后考虑
+                    <img src="https://www.zhihu.com/equation?tex=r%2Bs%3Dk" alt="r+s=k" eeimg="1">
+                    次的点
+                    <img src="https://www.zhihu.com/equation?tex=z+%5Cin+M" alt="z \in M" eeimg="1">
+                    上的外形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega+%5Cin+%5COmega_z%5E%7Br%2Cs%7D%28M%29%5E%5Cmathbb+C" alt="\omega \in \Omega_z^{r,s}(M)^\mathbb C" eeimg="1">
+                    ，也记为
+                    <img src="https://www.zhihu.com/equation?tex=%28r%2Cs%29" alt="(r,s)" eeimg="1">
+                    -形式。既然余切空间的自然基为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B+dz%5E1%2C%5Cdots%2Cdz%5Er%2Cd%5Cbar+z%5E1%2C%5Cdots%2Cd%5Cbar+z%5Es+%5C%7D+%5Ctag%7B2%7D" alt="\{ dz^1,\dots,dz^r,d\bar z^1,\dots,d\bar z^s \} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5COmega_z%5E%7Br%2Cs%7D%28M%29%5E%5Cmathbb+C" alt="\Omega_z^{r,s}(M)^\mathbb C" eeimg="1">
+                    的自然基中的成员具有以下形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=dz%5E%7B%5Cmu_1%7D+%5Cwedge+%5Cdots+%5Cwedge+dz%5E%7B%5Cmu_r%7D+%5Cwedge+d%5Cbar+z%5E%7B%5Cnu_1%7D+%5Cwedge+%5Cdots+%5Cwedge+d%5Cbar+z%5E%7B%5Cnu_s%7D+%5Ctag%7B3%7D" alt="dz^{\mu_1} \wedge \dots \wedge dz^{\mu_r} \wedge d\bar z^{\nu_1} \wedge \dots \wedge d\bar z^{\nu_s} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28r%2Cs%29" alt="(r,s)" eeimg="1">
+                    -形式在自然基下写为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega+%3D+%5Cfrac%7B1%7D%7Br%21s%21%7D%5Comega_%7B%5Cmu_1%5Cdots%5Cmu_r%5Cnu_1%5Cdots%5Cnu_s%7D+dz%5E%7B%5Cmu_1%7D+%5Cwedge+%5Cdots+%5Cwedge+dz%5E%7B%5Cmu_r%7D+%5Cwedge+d%5Cbar+z%5E%7B%5Cnu_1%7D+%5Cwedge+%5Cdots+%5Cwedge+d%5Cbar+z%5E%7B%5Cnu_s%7D+%5Ctag%7B4%7D" alt="\omega = \frac{1}{r!s!}\omega_{\mu_1\dots\mu_r\nu_1\dots\nu_s} dz^{\mu_1} \wedge \dots \wedge dz^{\mu_r} \wedge d\bar z^{\nu_1} \wedge \dots \wedge d\bar z^{\nu_s} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Dolbeault算子
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在对
+                    <img src="https://www.zhihu.com/equation?tex=%28r%2Cs%29" alt="(r,s)" eeimg="1">
+                    -形式
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega+%5Cin+%5COmega_z%5E%7Br%2Cs%7D%28M%29%5E%5Cmathbb+C" alt="\omega \in \Omega_z^{r,s}(M)^\mathbb C" eeimg="1">
+                    求外微分，根据(4)有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+d%5Comega+%3D%26+%5Cfrac%7B1%7D%7Br%21s%21%7D+d%28%5Comega_%7B%5Cmu_1%5Cdots%5Cmu_r%5Cnu_1%5Cdots%5Cnu_s%7D+dz%5E%7B%5Cmu_1%7D+%5Cwedge+%5Cdots+%5Cwedge+dz%5E%7B%5Cmu_r%7D+%5Cwedge+d%5Cbar+z%5E%7B%5Cnu_1%7D+%5Cwedge+%5Cdots+%5Cwedge+d%5Cbar+z%5E%7B%5Cnu_s%7D%29+%5C%5C+%3D%26+%5Cfrac%7B1%7D%7Br%21s%21%7D+%5CBig%28+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+z%5E%5Clambda%7D%5Comega_%7B%5Cmu_1%5Cdots%5Cmu_r%5Cbar%5Cnu_1%5Cdots%5Cbar%5Cnu_s%7D+dz%5E%5Clambda+%2B%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+%5Cbar+z%5E%5Clambda%7D%5Comega_%7B%5Cmu_1%5Cdots%5Cmu_r%5Cbar%5Cnu_1%5Cdots%5Cbar%5Cnu_s%7D+d%5Cbar+z%5E%5Clambda++%5CBig%29+%5C%5C+%26+dz%5E%7B%5Cmu_1%7D+%5Cwedge+%5Cdots+%5Cwedge+dz%5E%7B%5Cmu_r%7D+%5Cwedge+d%5Cbar+z%5E%7B%5Cnu_1%7D+%5Cwedge+%5Cdots+%5Cwedge+d%5Cbar+z%5E%7B%5Cnu_s%7D+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} d\omega =&amp; \frac{1}{r!s!} d(\omega_{\mu_1\dots\mu_r\nu_1\dots\nu_s} dz^{\mu_1} \wedge \dots \wedge dz^{\mu_r} \wedge d\bar z^{\nu_1} \wedge \dots \wedge d\bar z^{\nu_s}) \\ =&amp; \frac{1}{r!s!} \Big( \frac{\partial}{\partial z^\lambda}\omega_{\mu_1\dots\mu_r\bar\nu_1\dots\bar\nu_s} dz^\lambda +\frac{\partial}{\partial \bar z^\lambda}\omega_{\mu_1\dots\mu_r\bar\nu_1\dots\bar\nu_s} d\bar z^\lambda  \Big) \\ &amp; dz^{\mu_1} \wedge \dots \wedge dz^{\mu_r} \wedge d\bar z^{\nu_1} \wedge \dots \wedge d\bar z^{\nu_s} \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    这里出现了两个项，一个是
+                    <img src="https://www.zhihu.com/equation?tex=%28r%2B1%2Cs%29" alt="(r+1,s)" eeimg="1">
+                    -形式，另一个是
+                    <img src="https://www.zhihu.com/equation?tex=%28r%2Cs%2B1%29" alt="(r,s+1)" eeimg="1">
+                    -形式。这里提示我们外微分算子可以被分解为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=d+%3D+%5Cpartial+%2B+%5Cbar%5Cpartial+%5Ctag%7B6%7D" alt="d = \partial + \bar\partial \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial%3A+%5COmega%5E%7Br%2Cs%7D%28M%29+%5Cto+%5COmega%5E%7Br%2B1%2Cs%7D%28M%29" alt="\partial: \Omega^{r,s}(M) \to \Omega^{r+1,s}(M)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbar%5Cpartial%3A+%5COmega%5E%7Br%2Cs%7D%28M%29+%5Cto+%5COmega%5E%7Br%2Cs%2B1%7D%28M%29" alt="\bar\partial: \Omega^{r,s}(M) \to \Omega^{r,s+1}(M)" eeimg="1">
+                    ，称为
+                    <b>
+                        Dolbeault算子
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

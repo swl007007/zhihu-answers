@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP117：线性代数补习班(5)：模的张量积
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-15719fb8faa9cfdeba2325db0a2e3ef7_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/44701702" target="_blank">
+                        MP117：线性代数补习班(5)：模的张量积
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-05-03
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    给定环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    ，考虑一对右模
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BMod-%7DR%29" alt="A \in \text{Ob}(\textbf{Mod-}R)" eeimg="1">
+                    和左模
+                    <img src="https://www.zhihu.com/equation?tex=B+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod%7D%29" alt="B \in \text{Ob}(R\textbf{-Mod})" eeimg="1">
+                    ，它们之间除了
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Ctimes+B" alt="A \times B" eeimg="1">
+                    的直积以外，更需要注意环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    的中介作用，通过消去环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    相关的某些等价性质
+                    <img src="https://www.zhihu.com/equation?tex=%5Csim_R" alt="\sim_R" eeimg="1">
+                    ，使得直积
+                    <img src="https://www.zhihu.com/equation?tex=%28A+%5Ctimes+B%29" alt="(A \times B)" eeimg="1">
+                    化简为某种特别的结构——张量积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+A+%5Ctimes+B+%26%5Cto+A+%5Cotimes_R+B+%3D+%28A+%5Ctimes+B%29%2F%5Csim_R+%5C%5C+%28a%2Cb%29+%26%5Cmapsto+a+%5Cotimes+b+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} A \times B &amp;\to A \otimes_R B = (A \times B)/\sim_R \\ (a,b) &amp;\mapsto a \otimes b \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    平衡映射
+                </h2>
+                <p>
+                    <br>
+                    沿用上面的符号，若有Abel群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    和映射
+                    <img src="https://www.zhihu.com/equation?tex=f%3A+A+%5Ctimes+B+%5Cto+G" alt="f: A \times B \to G" eeimg="1">
+                    ，对于任意变元满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+f%28a_1%2Ba_2%2C+b%29%26%3Df%28a_1%2C+y%29%2Bf%28a_2%2C+b%29+%5C%5C+f%28a%2Cb_1%2Bb_2%29%26%3Df%28a%2Cb_1%29%2Bf%28a%2Cb_2%29+%5C%5C+f%28a+%5Ccdot+r%2C+b%29%26%3Df%28a%2C+r+%5Ccdot+b%29+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} f(a_1+a_2, b)&amp;=f(a_1, y)+f(a_2, b) \\ f(a,b_1+b_2)&amp;=f(a,b_1)+f(a,b_2) \\ f(a \cdot r, b)&amp;=f(a, r \cdot b) \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    称
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    为左右模的
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -平衡映射，
+                    <img src="https://www.zhihu.com/equation?tex=f%28%5Cto+G%29" alt="f(\to G)" eeimg="1">
+                    为
+                    <b>
+                        平衡积(balanced product)
+                    </b>
+                    。
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -模体现了线性性，上式第三行的模乘法体现了环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    的中介作用，而平衡映射在左右
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -模的线性性质上构造出了双线性的结构，这些平衡映射的集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5BG%5D" alt="[G]" eeimg="1">
+                    ，易于证明它构成Abel群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    固定这对左右模的直积
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Ctimes+B" alt="A \times B" eeimg="1">
+                    ，它对Abel群的平衡映射集合构成一个范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BBlc%7D" alt="\textbf{Blc}" eeimg="1">
+                    ，它是
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BAb%7D" alt="\textbf{Ab}" eeimg="1">
+                    的子范畴，用共变函子表示：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctextbf%7BAb%7D+%26%5Cto+%5Ctextbf%7BBlc%7D+%5C%5C+G+%26%5Cmapsto+%5BG%5D+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \textbf{Ab} &amp;\to \textbf{Blc} \\ G &amp;\mapsto [G] \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    张量积是一个中心对象
+                    <img src="https://www.zhihu.com/equation?tex=T+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BAb%7D%29" alt="T \in \text{Ob}(\textbf{Ab})" eeimg="1">
+                    ，上述函子将其对应到
+                    <img src="https://www.zhihu.com/equation?tex=%5BT%5D+%5Cin+%5Ctext%7BOb%7D%28%5Ctextbf%7BBlc%7D%29" alt="[T] \in \text{Ob}(\textbf{Blc})" eeimg="1">
+                    ，其中有一个平衡积
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Ctau%5Cin+%5BT%5D%29%3AA+%5Ctimes+B+%5Cto+T" alt="(\tau\in [T]):A \times B \to T" eeimg="1">
+                    就是张量积，若对于任意平衡积
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta+%5Cin+%5BG%5D" alt="\beta \in [G]" eeimg="1">
+                    ，在以下复合映射中：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Ctimes+B+%5Cstackrel%7B%5Ctau%7D%7B%5Clongrightarrow%7D+T+%5Cstackrel%7Bf%7D%7B%5Clongrightarrow%7D+G+%5C%5C+A+%5Ctimes+B+%5Cstackrel%7B%5Cbeta%7D%7B%5Clongrightarrow%7D+G" alt="A \times B \stackrel{\tau}{\longrightarrow} T \stackrel{f}{\longrightarrow} G \\ A \times B \stackrel{\beta}{\longrightarrow} G" eeimg="1">
+                </p>
+                <p>
+                    平衡积
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau" alt="\tau" eeimg="1">
+                    将任意的双线性平衡积
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">
+                    转化为唯一存在的Abel群同态
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+%5Ctext%7BHom%7D_%5Ctextbf%7BAb%7D%28T%2CA%29" alt="f \in \text{Hom}_\textbf{Ab}(T,A)" eeimg="1">
+                    ， 使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbeta%3D+f+%5Ccirc+%5Ctau" alt="\beta= f \circ \tau" eeimg="1">
+                    ，那么记
+                    <img src="https://www.zhihu.com/equation?tex=T+%3D+A+%5Cotimes_R+B" alt="T = A \otimes_R B" eeimg="1">
+                    为左右
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -模的张量积，得到(1)中的结构。反过来说，在Abel群范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BAb%7D" alt="\textbf{Ab}" eeimg="1">
+                    中，张量积
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%28%5Cto+T%29" alt="\tau(\to T)" eeimg="1">
+                    所诱导的映射如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctext%7BHom%7D%28T%2CG%29+%26%5Cto+%5Ctext%7BHom%7D%28A+%5Ctimes+B%2CG%29+%5C%5C+f+%26%5Cmapsto+%5Cbeta+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} \text{Hom}(T,G) &amp;\to \text{Hom}(A \times B,G) \\ f &amp;\mapsto \beta \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    \cite{Anderson1992} 用纯范畴的方法讨论这一映射的存在唯一性：如果一对左右模
+                    <img src="https://www.zhihu.com/equation?tex=%28A%2C+B%29" alt="(A, B)" eeimg="1">
+                    有两个张量积
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%28%5Cto+T%29" alt="\tau(\to T)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%5E%5Cprime%28%5Cto+T%5E%5Cprime%29" alt="\tau^\prime(\to T^\prime)" eeimg="1">
+                    ，那么存在同构
+                    <img src="https://www.zhihu.com/equation?tex=f%3A+T%5Csimeq+T%5E%5Cprime" alt="f: T\simeq T^\prime" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctau%5E%5Cprime+%3D+f+%5Ccirc+%5Ctau" alt="\tau^\prime = f \circ \tau" eeimg="1">
+                    。
+                </p>
+                <h2>
+                    <br>
+                    模的张量积
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在同调代数中，通常用双线性的条件构造自由Abel群的商群，得到张量积。首先用
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%28a%2Cb%29+%5Cin+%28A%2CB%29%5C%7D" alt="\{(a,b) \in (A,B)\}" eeimg="1">
+                    构造自由Abel群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F+%3D+%5Cmathscr+F%28a%2Cb%29" alt="\mathscr F = \mathscr F(a,b)" eeimg="1">
+                    。其中，以下形式的元素
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Bcases%7D+%28a%2Ba%5E%5Cprime%2Cb%29+-+%28a%2Cb%29+-+%28a%5E%5Cprime%2Cb%29+%5C%5C+%28a%2Cb%2Bb%5E%5Cprime%29+-+%28a%2Cb%29+-+%28a%2Cb%5E%5Cprime%29+%5C%5C+%28a%5Clambda%2Cc%29+-+%28a%2C%5Clambda+c%29+%5Cend%7Bcases%7D+%5Ctag%7B4%7D" alt="\begin{cases} (a+a^\prime,b) - (a,b) - (a^\prime,b) \\ (a,b+b^\prime) - (a,b) - (a,b^\prime) \\ (a\lambda,c) - (a,\lambda c) \end{cases} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    也生成一个子群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+R+%5Clhd+%5Cmathscr+F" alt="\mathscr R \lhd \mathscr F" eeimg="1">
+                    ，于是定义商群
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cotimes+B+%3D+A+%5Cotimes_%5CLambda+B+%3D+%5Cmathscr+F%2F%5Cmathscr+R+%5Ctag%7B5%7D" alt="A \otimes B = A \otimes_\Lambda B = \mathscr F/\mathscr R \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    为张量积，其中的元素为
+                    <img src="https://www.zhihu.com/equation?tex=a+%5Cotimes+b" alt="a \otimes b" eeimg="1">
+                    。以上的定义与平衡积方式的定义是等价的。要点在于(4)所表达的线性等价关系，(5)构成一个平衡积，因为(4)中不平衡的非线性因素都被商掉了。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    (2)和(4)所体现的双线性性质可以拆分为四个性质：
+                </p>
+                <ul>
+                    <li>
+                        性质
+                        <img src="https://www.zhihu.com/equation?tex=%28a%29" alt="(a)" eeimg="1">
+                        ：对第一个变元
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Cin+A%29" alt="(\in A)" eeimg="1">
+                        的可加性
+                    </li>
+                    <li>
+                        性质
+                        <img src="https://www.zhihu.com/equation?tex=%28b%29" alt="(b)" eeimg="1">
+                        ：对第二个变元
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Cin+B%29" alt="(\in B)" eeimg="1">
+                        的可加性
+                    </li>
+                    <li>
+                        性质
+                        <img src="https://www.zhihu.com/equation?tex=%28c%29" alt="(c)" eeimg="1">
+                        ：对第一个变元
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Cin+A%29" alt="(\in A)" eeimg="1">
+                        的模乘齐次性
+                    </li>
+                    <li>
+                        性质
+                        <img src="https://www.zhihu.com/equation?tex=%28d%29" alt="(d)" eeimg="1">
+                        ：对第二个变元
+                        <img src="https://www.zhihu.com/equation?tex=%28%5Cin+B%29" alt="(\in B)" eeimg="1">
+                        的模乘齐次性
+                    </li>
+                </ul>
+                <p>
+                    以性质
+                    <img src="https://www.zhihu.com/equation?tex=%28a%29" alt="(a)" eeimg="1">
+                    为例，若
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Ctimes+B" alt="A \times B" eeimg="1">
+                    中有基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be%5Ek%5C%7D" alt="\{e^k\}" eeimg="1">
+                    ，其中的元素可以用基表为
+                    <img src="https://www.zhihu.com/equation?tex=%28x%2Cy%29+%3D++r_k+e%5Ek" alt="(x,y) =  r_k e^k" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%28x%5E%5Cprime%2Cy%29+%3D+r%5E%5Cprime_k+e%5Ek" alt="(x^\prime,y) = r^\prime_k e^k" eeimg="1">
+                    (Einstein求和公式)，它们可以构造两种加法：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28x%2Cy%29+%2B+%28x%5E%5Cprime%2Cy%29+%26%3D+r_k+e%5Ek+%2B+r%5E%5Cprime_k+e%5Ek+%3D+%28r_k+%2B+r%5E%5Cprime_k%29+e%5Ek+%5C%5C++%28x%2Bx%5E%5Cprime%2Cy%29+%26%3D+u_k+e%5Ek++%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} (x,y) + (x^\prime,y) &amp;= r_k e^k + r^\prime_k e^k = (r_k + r^\prime_k) e^k \\  (x+x^\prime,y) &amp;= u_k e^k  \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    性质
+                    <img src="https://www.zhihu.com/equation?tex=%28a%29" alt="(a)" eeimg="1">
+                    对第一个变元有可加性的要求，即需要以上两种加法
+                    <img src="https://www.zhihu.com/equation?tex=%28x%2Cy%29+%2B+%28x%5E%5Cprime%2Cy%29+" alt="(x,y) + (x^\prime,y)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%28x%2Bx%5E%5Cprime%2Cy%29" alt="(x+x^\prime,y)" eeimg="1">
+                    等价——记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Csim_a" alt="\sim_a" eeimg="1">
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28x%2Bx%5E%5Cprime%2Cy%29+-+%28x%2Cy%29+-+%28x%5E%5Cprime%2Cy%29+%26%3D+u_k+e%5Ek+-+%28r_k+%2B+r%5E%5Cprime_k%29+e%5Ek+++%5C%5C+%26%3D+%28u_k+-+r_k+-+r%5E%5Cprime_k%29+e%5Ek++%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} (x+x^\prime,y) - (x,y) - (x^\prime,y) &amp;= u_k e^k - (r_k + r^\prime_k) e^k   \\ &amp;= (u_k - r_k - r^\prime_k) e^k  \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    作为(4)中构造的一部分，形如
+                    <img src="https://www.zhihu.com/equation?tex=%28u_k+-+r_k+-+r%5E%5Cprime_k%29+e%5Ek" alt="(u_k - r_k - r^\prime_k) e^k" eeimg="1">
+                    的元素构成子群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+R_a+%5Clhd+%5Cmathscr+F" alt="\mathscr R_a \lhd \mathscr F" eeimg="1">
+                    ，这样
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F%2F%5Cmathscr+R_a" alt="\mathscr F/\mathscr R_a" eeimg="1">
+                    构成商群，于是对第一个变元在可加意义上的等价
+                    <img src="https://www.zhihu.com/equation?tex=%5Csim_a" alt="\sim_a" eeimg="1">
+                    可以表述为商群上的相等：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28x%2Cy%29+%2B+%28x%5E%5Cprime%2Cy%29++%5Csim_a+%28x%2Bx%5E%5Cprime%2Cy%29+%5CLeftrightarrow++%5B%28x%2Cy%29+%2B+%28x%5E%5Cprime%2Cy%29%5D++%3D+%5B%28x%2Bx%5E%5Cprime%2Cy%29%5D+%5Cin+%5Cmathscr+F%2F%5Cmathscr+R_a+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} (x,y) + (x^\prime,y)  \sim_a (x+x^\prime,y) \Leftrightarrow  [(x,y) + (x^\prime,y)]  = [(x+x^\prime,y)] \in \mathscr F/\mathscr R_a \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    类似如上通过商
+                    <img src="https://www.zhihu.com/equation?tex=D_a" alt="D_a" eeimg="1">
+                    构造等价关系
+                    <img src="https://www.zhihu.com/equation?tex=%5Csim_a" alt="\sim_a" eeimg="1">
+                    的方式，考虑以上双线性结构中的
+                    <img src="https://www.zhihu.com/equation?tex=%28a%29%2C%28b%29%2C%28c%29%2C%28d%29" alt="(a),(b),(c),(d)" eeimg="1">
+                    诸要点，就是(4)所生成的子群
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+R" alt="\mathscr R" eeimg="1">
+                    ，从而得到商
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F%2F%5Cmathscr+R" alt="\mathscr F/\mathscr R" eeimg="1">
+                    。它将
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    -自由模
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+F+" alt="\mathscr F" eeimg="1">
+                    中不满足双线性的构造成分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+R" alt="\mathscr R" eeimg="1">
+                    商掉，得到的是完全满足双线性的结构。从映射上看，张量积的作用为自由模对商群的自然投影映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathscr+F+%26%5Cto+%5Cmathscr+F%2F%5Cmathscr+R+%5C%5C+%28x_1%2Cy_1%29+%26%5Cmapsto+%5B%28x_1%2Cy_1%29%5D%3Dx_1%5Cotimes+y_1+%5C%5C+%28x_2%2Cy_2%29+%26%5Cmapsto+%5B%28x_2%2Cy_2%29%5D%3Dx_2%5Cotimes+y_2+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \mathscr F &amp;\to \mathscr F/\mathscr R \\ (x_1,y_1) &amp;\mapsto [(x_1,y_1)]=x_1\otimes y_1 \\ (x_2,y_2) &amp;\mapsto [(x_2,y_2)]=x_2\otimes y_2 \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    在双线性意义下等价意味着：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28x_1%2Cy_1%29+%5Csim+%28x_2%2Cy_2%29+%5CLeftrightarrow+%5B%28x_1%2Cy_1%29%5D+%3D+%5Bx_2%2Cy_2%5D+%5CLeftrightarrow+x_1+%5Cotimes+y_1+%3D+x_2+%5Cotimes+y_2+%5C%5C" alt="(x_1,y_1) \sim (x_2,y_2) \Leftrightarrow [(x_1,y_1)] = [x_2,y_2] \Leftrightarrow x_1 \otimes y_1 = x_2 \otimes y_2 \\" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    张量函子
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在用类似 [
+                    <a href="https://zhuanlan.zhihu.com/p/46850715" class="internal">
+                        MP115：线性代数补习班(3)：Hom函子
+                    </a>
+                    ] 的方法来讨论模范畴的张量及张量函子。在模范畴中，
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%5Ctext%7BOb%7D%28S%5Ctextbf%7B-Mod-%7DR%29" alt="A \in \text{Ob}(S\textbf{-Mod-}R)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=B+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod-%7DT%29" alt="B \in \text{Ob}(R\textbf{-Mod-}T)" eeimg="1">
+                    的张量积本身可以构成一个双模，通过
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    起到连接模范畴
+                    <img src="https://www.zhihu.com/equation?tex=S%5Ctextbf%7B-Mod%7D" alt="S\textbf{-Mod}" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BMod-%7DT" alt="\textbf{Mod-}T" eeimg="1">
+                    的作用：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cotimes_R+B+%5Cin+%5Ctext%7BOb%7D%28S%5Ctextbf%7B-Mod-%7DT%29+%5Ctag%7B6%7D" alt="A \otimes_R B \in \text{Ob}(S\textbf{-Mod-}T) \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    这种由双模产生的具有中介意义的性质，十分类似于线性映射和Hom函子中的讨论 \cite{Anderson1992}。[
+                    <a href="https://zhuanlan.zhihu.com/p/51325488" class="internal">
+                        MP116：线性代数补习班(4)：矩阵的张量积
+                    </a>
+                    ] 中讨论的矩阵张量就是一个很好的例子：取
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Cin++%5Ctext%7BOb%7D%28%5Cmathfrak+m%5Ctextbf%7B-Mod-%7D%5Cmathfrak+l%29" alt="\mathbb K^{m \times l} \in  \text{Ob}(\mathfrak m\textbf{-Mod-}\mathfrak l)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D+%5Cin++%5Ctext%7BOb%7D%28%5Cmathfrak+l%5Ctextbf%7B-Mod-%7D%5Cmathfrak+n%29" alt="\mathbb K^{l \times n} \in  \text{Ob}(\mathfrak l\textbf{-Mod-}\mathfrak n)" eeimg="1">
+                    ，其矩阵张量积具有如下映射形式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D+%26%5Cto+%5Cmathbb+K%5E%7Bml+%5Ctimes+ln%7D+%5C%5C++%28X%2CY%29+%26%5Cmapsto+X+%5Cotimes+Y+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}  \mathbb K^{m \times l} \times \mathbb K^{l \times n} &amp;\to \mathbb K^{ml \times ln} \\  (X,Y) &amp;\mapsto X \otimes Y \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    可以理解为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cotimes+Y+%5Cin+%5Cmathbb+K%5E%7Bm+%5Ctimes+l%7D+%5Ctimes+%5Cmathbb+K%5E%7Bl+%5Ctimes+n%7D+%5Csimeq+%5Cmathbb+K%5E%7Bml+%5Ctimes+ln%7D+%5Csimeq+%5Cmathbb+K%5E%7Bm+%5Ctimes+%28l+%5Ctimes+l%29+%5Ctimes+n%7D+%5C%5C" alt="X \otimes Y \in \mathbb K^{m \times l} \times \mathbb K^{l \times n} \simeq \mathbb K^{ml \times ln} \simeq \mathbb K^{m \times (l \times l) \times n} \\" eeimg="1">
+                </p>
+                <p>
+                    这是某种对左乘
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m+%3D+%5Cmathbb+K%5E%7Bm+%5Ctimes+m%7D" alt="\mathfrak m = \mathbb K^{m \times m}" eeimg="1">
+                    以及对右乘
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+n+%3D+%5Cmathbb+K%5E%7Bn+%5Ctimes+n%7D" alt="\mathfrak n = \mathbb K^{n \times n}" eeimg="1">
+                    相容的超矩阵结构，使得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cotimes+Y+%5Cin+%5Ctext%7BOb%7D%28%5Cmathfrak+m%5Ctextbf%7B-Mod-%7D%5Cmathfrak+n%29+%5C%5C" alt="X \otimes Y \in \text{Ob}(\mathfrak m\textbf{-Mod-}\mathfrak n) \\" eeimg="1">
+                </p>
+                <p>
+                    相当于(6)在线性空间的体现。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在模范畴中给定
+                    <img src="https://www.zhihu.com/equation?tex=U+%5Cin+%5Ctext%7BOb%7D%28S%5Ctextbf%7B-Mod-%7DR%29" alt="U \in \text{Ob}(S\textbf{-Mod-}R)" eeimg="1">
+                    ，它作为右模可以和左模
+                    <img src="https://www.zhihu.com/equation?tex=M+%5Cin+%5Ctext%7BOb%7D%28R%5Ctextbf%7B-Mod%7D%29" alt="M \in \text{Ob}(R\textbf{-Mod})" eeimg="1">
+                    构造张量积
+                    <img src="https://www.zhihu.com/equation?tex=U+%5Cotimes_R+M" alt="U \otimes_R M" eeimg="1">
+                    ，从而诱导出如下函子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28U+%5Cotimes_R-%29%3A+R%5Ctextbf%7B-Mod%7D+%26%5Cto+S%5Ctextbf%7B-Mod%7D+%5C%5C+M+%26%5Cmapsto+U+%5Cotimes_R+M+%5C%5C+%5Ctext%7BHom%7D_%7BR-%7D%28M%2CN%29+%26%5Cto+%5Ctext%7BHom%7D_%7BS-%7D%28U+%5Cotimes_R+M%2CU+%5Cotimes_R+N%29+%5C%5C+f+%26%5Cmapsto+%28U+%5Cotimes_R%2Cf%29%3D+1_U+%5Cotimes_R+f+%5Cend%7Balign%7D+%5Ctag%7B7%7D" alt="\begin{align} (U \otimes_R-): R\textbf{-Mod} &amp;\to S\textbf{-Mod} \\ M &amp;\mapsto U \otimes_R M \\ \text{Hom}_{R-}(M,N) &amp;\to \text{Hom}_{S-}(U \otimes_R M,U \otimes_R N) \\ f &amp;\mapsto (U \otimes_R,f)= 1_U \otimes_R f \end{align} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    可以验证这是一个可加函子。类似定义函子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28-%5Cotimes_S+U%29%3A+%5Ctextbf%7BMod-%7DS+%26%5Cto+%5Ctextbf%7BMod-%7DR+%5C%5C+N+%26%5Cmapsto+N+%5Cotimes_S+U+%5C%5C+%5Ctext%7BHom%7D_%7B-S%7D%28M%2CN%29+%26%5Cto+%5Ctext%7BHom%7D_%7B-R%7D%28N+%5Cotimes_S+U%2CM+%5Cotimes_S+U%29+%5C%5C+f+%26%5Cmapsto+%28f%2C+%5Cotimes_S+U%29+%3D+f+%5Cotimes_S+1_U+%5Cend%7Balign%7D+%5Ctag%7B8%7D" alt="\begin{align} (-\otimes_S U): \textbf{Mod-}S &amp;\to \textbf{Mod-}R \\ N &amp;\mapsto N \otimes_S U \\ \text{Hom}_{-S}(M,N) &amp;\to \text{Hom}_{-R}(N \otimes_S U,M \otimes_S U) \\ f &amp;\mapsto (f, \otimes_S U) = f \otimes_S 1_U \end{align} \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    这样得到了
+                    <b>
+                        张量函子(tensor functors)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在放在固定的环
+                    <img src="https://www.zhihu.com/equation?tex=R" alt="R" eeimg="1">
+                    上考虑，这对张量函子
+                    <img src="https://www.zhihu.com/equation?tex=%28U+%5Cotimes_R-%29" alt="(U \otimes_R-)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%28-%5Cotimes_R+U%29" alt="(-\otimes_R U)" eeimg="1">
+                    可以在
+                    <b>
+                        乘积范畴(product category)
+                    </b>
+                    上构建张量双函子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28-%5Cotimes_R-%29%3A+%5Ctextbf%7BMod-%7DR+%5Ctimes+R%5Ctextbf%7B-Mod%7D++%5Cto+%5Ctextbf%7BAb%7D+%5Ctag%7B9%7D" alt="(-\otimes_R-): \textbf{Mod-}R \times R\textbf{-Mod}  \to \textbf{Ab} \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    将其中的
+                    <img src="https://www.zhihu.com/equation?tex=-" alt="-" eeimg="1">
+                    用对象代替，相当于通过对象诱导出了张量函子
+                    <img src="https://www.zhihu.com/equation?tex=%28U+%5Cotimes_R-%29" alt="(U \otimes_R-)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=%28-%5Cotimes_R+U%29" alt="(-\otimes_R U)" eeimg="1">
+                    。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

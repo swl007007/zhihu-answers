@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Gap5：方向导数、偏导数、梯度、全微分
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://picb.zhimg.com/v2-cc4ca222fff65619d726285e790c5ae3_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/43792478" target="_blank">
+                        Gap5：方向导数、偏导数、梯度、全微分
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-09-14
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    前面研究了最简单的函数
+                    <img src="https://www.zhihu.com/equation?tex=f%3A+%5Cmathbb%7BR%7D+%5Cto+%5Cmathbb%7BR%7D" alt="f: \mathbb{R} \to \mathbb{R}" eeimg="1">
+                    ，得到了微分和积分的基本知识：
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/40949079" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                Gap1：导数的概念
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/43790843" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                Gap2：重要的导数
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/43792036" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                Gap3：积分
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们通过上一讲，又对线性代数有了基本了解。线性代数是围绕着多维线性空间，特别是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    来研究的：
+                </p>
+                <a target="_blank" href="https://zhuanlan.zhihu.com/p/43792297" class="LinkCard">
+                    <span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)">
+                    </span>
+                    <span class="LinkCard-content">
+                        <span class="LinkCard-text">
+                            <span class="LinkCard-title">
+                                Gap4：线性代数基本慨念
+                            </span>
+                            <span class="LinkCard-meta">
+                                <span style="display:inline-flex;align-items:center">
+                                    ​
+                                    <svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="17" height="17">
+                                        <path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd">
+                                        </path>
+                                    </svg>
+                                </span>
+                                zhuanlan.zhihu.com
+                            </span>
+                        </span>
+                        <span class="LinkCard-imageCell">
+                            <img class="LinkCard-image" alt="图标" src="https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg">
+                        </span>
+                    </span>
+                </a>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    现在，借助我们所了解的线性代数知识，把前面学到的微积分的概念推广到定义域为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的多元映射上。广告：高中生想快速学会微积分、线性代数，尝试大学数学物理知识戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com/" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        场
+                    </b>
+                </h2>
+                <p>
+                    在学习微积分之前我们已经在中学物理中大量接触了场的概念。定义域为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的多元实值函数
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D" alt="\mathbb{R}^n \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cmapsto+f%28x%29" alt="x \mapsto f(x)" eeimg="1">
+                </p>
+                <p>
+                    它具有清晰的几何直观。
+                </p>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-350997f1be1d16f255a38a849ec7d7a1_r.jpg">
+                    <figcaption>
+                        地形图中，高度是平面坐标的函数
+                    </figcaption>
+                </figure>
+                <p>
+                    我们也将多元实值函数称为
+                    <b>
+                        标量场(scalar field)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    定义域为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的多元实
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维向量函数
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n \to \mathbb{R}^n" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cmapsto+f%28x%29" alt="x \mapsto f(x)" eeimg="1">
+                </p>
+                <p>
+                    也是常见的，如电场、磁场、力场等
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-a48b6f19e2ff8c6dec7d52428c6972a6_r.jpg">
+                    <figcaption>
+                        磁场对每一点给出了一个向量
+                    </figcaption>
+                </figure>
+                <p>
+                    将多元实
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维向量函数称为
+                    <b>
+                        向量场(vector field)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        方向导数
+                    </b>
+                </h2>
+                <p>
+                    现在开始研究
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的微积分，也就是场的微积分。以山区公路规划为例，假设我们是公路勘测设计人员，现在需要让公路通向山顶。我们可以选择公路从当前点
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin%5Cmathbb%7BR%7D%5E2" alt="x\in\mathbb{R}^2" eeimg="1">
+                    沿各种可能的方向上山。这个方向相当于向量场
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n \to \mathbb{R}^n" eeimg="1">
+                    上的一个向量
+                    <img src="https://www.zhihu.com/equation?tex=v_x+%3D+v%28x%29++%5Cin+%5Cmathbb%7BR%7D%5En" alt="v_x = v(x)  \in \mathbb{R}^n" eeimg="1">
+                    。当前点的高度相当于标量场
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En+%5Cto+%5Cmathbb%7BR%7D" alt="\mathbb{R}^n \to \mathbb{R}" eeimg="1">
+                    上的一个标量
+                    <img src="https://www.zhihu.com/equation?tex=f_x+%3D+f%28x%29++%5Cin+%5Cmathbb%7BR%7D+" alt="f_x = f(x)  \in \mathbb{R}" eeimg="1">
+                    。现在我们在当前点上同时有了一个高度
+                    <b>
+                        标量
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=f_x" alt="f_x" eeimg="1">
+                    和一个方向
+                    <b>
+                        向量
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=v_x" alt="v_x" eeimg="1">
+                    ，下面看一下这两者在一起有什么意义。
+                </p>
+                <p>
+                    如果我们从当前点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    沿着不同的方向步行、骑车或开车，所需要的功率输出是不同的，因为不同的方向，高度
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    的
+                    <b>
+                        变化率
+                    </b>
+                    不同。研究这种变化率是非常有实际意义的，如果在规划公路的时候，这种变化率高于车辆可以承受的功率范围，那么车就无法上坡了。一般来说，改变山区高度
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%29" alt="f(x)" eeimg="1">
+                    的成本比较高，所以在设计公路的时候，需要逐点设计公路的方向
+                    <img src="https://www.zhihu.com/equation?tex=v%28x%29" alt="v(x)" eeimg="1">
+                    ，使得变化率在车辆功率允许的范围内。
+                </p>
+                <p>
+                    在固定点
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cin%5Cmathbb%7BR%7D%5E2" alt="x\in\mathbb{R}^2" eeimg="1">
+                    上，高度的变化率取决于高度标量
+                    <img src="https://www.zhihu.com/equation?tex=f_x" alt="f_x" eeimg="1">
+                    和方向向量
+                    <img src="https://www.zhihu.com/equation?tex=v_x" alt="v_x" eeimg="1">
+                    在点附近的分布。定义
+                    <b>
+                        方向导数（directional derivative）
+                    </b>
+                    为如下极限
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_vf%28x%29%3D%5Clim_%7B%5CDelta+x+%5Crightarrow+0%7D%7B%5Cfrac%7Bf%28x%2B%5CDelta+x%29+-+f%28x%29%7D%7B%5Cvert+%5CDelta+x+%5Cvert%7D%7D" alt="D_vf(x)=\lim_{\Delta x \rightarrow 0}{\frac{f(x+\Delta x) - f(x)}{\vert \Delta x \vert}}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维向量
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+x+%5Cto+0" alt="\Delta x \to 0" eeimg="1">
+                    沿着向量
+                    <img src="https://www.zhihu.com/equation?tex=v_x" alt="v_x" eeimg="1">
+                    的方向。方向导数
+                    <img src="https://www.zhihu.com/equation?tex=D_vf" alt="D_vf" eeimg="1">
+                    是数量函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    以向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    作为方向求导所得到的导数，它也是一个数量函数。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        偏导数
+                    </b>
+                </h2>
+                <p>
+                    现在我们需要用到坐标系，在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    中表示点的坐标一般用
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%3D%28x_1+%5Cdots+x_n%29" alt="x=(x_1 \dots x_n)" eeimg="1">
+                </p>
+                <p>
+                    表示，它本质上是
+                    <b>
+                        自然基
+                    </b>
+                    的自然坐标表示。
+                </p>
+                <blockquote>
+                    这里阐明一下，过去我们所熟悉的矢量分析中，二维矢量可以表达为：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=xi+%2B+yj" alt="xi + yj" eeimg="1">
+                    <br>
+                    这里
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bi%2Cj%5C%7D" alt="\{i,j\}" eeimg="1">
+                    是自然基，
+                    <img src="https://www.zhihu.com/equation?tex=%28x%2Cy%29" alt="(x,y)" eeimg="1">
+                    是坐标表示；
+                    <br>
+                    <br>
+                    三维矢量可以表达为：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=xi+%2B+yj+%2B+zk" alt="xi + yj + zk" eeimg="1">
+                    <br>
+                    这里
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bi%2Cj%2Ck%5C%7D" alt="\{i,j,k\}" eeimg="1">
+                    是自然基，
+                    <img src="https://www.zhihu.com/equation?tex=%28x%2Cy%2Cz%29" alt="(x,y,z)" eeimg="1">
+                    是坐标表示。
+                </blockquote>
+                <p>
+                    我们前面谈过方向导数
+                    <img src="https://www.zhihu.com/equation?tex=D_vf" alt="D_vf" eeimg="1">
+                    是数量函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    以向量
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    作为方向求导所得到的导数。在所有可能的方向中，我们对沿着坐标轴的方向特别感兴趣。以山区公路的例子而言，在美国的城市中，特别明显可以看到棋盘式的格局：
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-08a9b41edd772e9e61f9f54c1a1e15cd_r.jpg">
+                    <figcaption>
+                        纽约曼哈顿上西区
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img src="https://pic4.zhimg.com/v2-7b22a9ed5293d9748212467336166c09_r.jpg">
+                    <figcaption>
+                        旧金山特色：直路陡坡
+                    </figcaption>
+                </figure>
+                <p>
+                    这种直路陡坡，可以理解为公路一直沿着纵横坐标的方向建造。这种情况，方向导数是沿着坐标轴方向计算的。
+                    <b>
+                        偏导数(partial derivative)
+                    </b>
+                    就是
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    沿自然基向量
+                    <img src="https://www.zhihu.com/equation?tex=x_i" alt="x_i" eeimg="1">
+                    方向（也就是坐标
+                    <img src="https://www.zhihu.com/equation?tex=x_i" alt="x_i" eeimg="1">
+                    方向）求得的方向导数，记为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_i+f%3D+%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D" alt="\partial_i f= \frac{\partial f}{\partial x_i}" eeimg="1">
+                </p>
+                <p>
+                    偏导数求导符号为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_i%3D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+x_i%7D" alt="\partial_i= \frac{\partial}{\partial x_i}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        梯度
+                    </b>
+                </h2>
+                <p>
+                    沿着哪个方向上山，高度上升的速度最快？这是由高度函数
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    决定的。除非在山顶、山脚、鞍点这类所谓的奇点，在任何一点上都由高度函数在点附近的分布，决定了这样一个高度上升速度最快的方向。整体上，构成一个向量场。
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-cc4ca222fff65619d726285e790c5ae3_r.jpg">
+                    <figcaption>
+                        梯度场
+                    </figcaption>
+                </figure>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    把函数在点上沿各个坐标
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_i%5C%7D" alt="\{x_i\}" eeimg="1">
+                    方向的偏导数（标量）合成一个
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维向量，称为
+                    <b>
+                        梯度(gradient)
+                    </b>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f+%3D+%5Cbegin%7Bbmatrix%7D+%5Cpartial_1+f+%26+%5Cdots+%26+%5Cpartial_n+f+%5Cend%7Bbmatrix%7D" alt="\nabla f = \begin{bmatrix} \partial_1 f &amp; \dots &amp; \partial_n f \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    若给定方向向量
+                    <img src="https://www.zhihu.com/equation?tex=v%3D%28v_1+%5Cdots+v_n%29" alt="v=(v_1 \dots v_n)" eeimg="1">
+                    ，其坐标就是它在各个坐标上的投影。显然，梯度所指的方向和
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    改变的速度有关。譬如，在一个十字路口，往东西方向直行坡度大，往南北方向直行坡度小，那就意味着梯度投影在东西方向的大小超过南北方向。
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    的方向给一个无穷小的变化，则这个变化投影在各坐标
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_i%5C%7D" alt="\{x_i\}" eeimg="1">
+                    方向上的比例和
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    本身在各坐标的投影比例相等。函数在这个方向上求方向导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_vf+%3D+%5Csum_i+v%5Ei%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D%3D+v%5Ei%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D%3Dv%5Ei+%28%5Cpartial_if%29" alt="D_vf = \sum_i v^i\frac{\partial f}{\partial x_i}= v^i\frac{\partial f}{\partial x_i}=v^i (\partial_if)" eeimg="1">
+                </p>
+                <p>
+                    这里用到了Einstein求和约定。方向导数实际上可以写为内积形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_vf+%3D+v+%5Ccdot+%5Cnabla+f+%3D%5Cbegin%7Bbmatrix%7D+v%5E1+%5Cdots+v%5En+%5Cend%7Bbmatrix%7D+%5Ccdot+%5Cbegin%7Bbmatrix%7D+%5Cpartial_1+%5C%5C+%5Cvdots+%5C%5C+%5Cpartial+_n+%5Cend%7Bbmatrix%7D+f" alt="D_vf = v \cdot \nabla f =\begin{bmatrix} v^1 \dots v^n \end{bmatrix} \cdot \begin{bmatrix} \partial_1 \\ \vdots \\ \partial _n \end{bmatrix} f" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f" alt="f" eeimg="1">
+                    在某点上沿所有方向求导时，在梯度
+                    <img src="https://www.zhihu.com/equation?tex=%5Cnabla+f" alt="\nabla f" eeimg="1">
+                    的方向达到最大方向导数，其大小就是梯度的长度。也可以理解为，方向导数是梯度在方向上的投影。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        全微分
+                    </b>
+                </h2>
+                <p>
+                    结合过去我们在线性代数中的理解，方向导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_vf+%3D+v%5Ei%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7D%3Dv%5Ei+%28%5Cpartial_if%29" alt="D_vf = v^i\frac{\partial f}{\partial x_i}=v^i (\partial_if)" eeimg="1">
+                </p>
+                <p>
+                    可以看作
+                    <img src="https://www.zhihu.com/equation?tex=v" alt="v" eeimg="1">
+                    在不同坐标投影上造成的函数变化率的线性组合。那么，如果坐标
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    发生了任意变化，变化量按分量表示
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+x+%3D+%28%5CDelta+x%5E1+%5Cdots+%5CDelta+x%5En%29" alt="\Delta x = (\Delta x^1 \dots \Delta x^n)" eeimg="1">
+                </p>
+                <p>
+                    那么，函数的变化是由这些分量决定的
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+f+%3D+%5CDelta+f%28%5CDelta+x%29+%3D+%5CDelta+f+%28%5CDelta+x_1+%5Cdots+%5CDelta+x_n%29" alt="\Delta f = \Delta f(\Delta x) = \Delta f (\Delta x_1 \dots \Delta x_n)" eeimg="1">
+                </p>
+                <p>
+                    类似一元求导数的过程，我们求极限使得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7B%5CDelta+x+%5Crightarrow+0%7D%7B+%5CDelta+x+%7D+%3D+dx" alt="\lim_{\Delta x \rightarrow 0}{ \Delta x } = dx" eeimg="1">
+                </p>
+                <p>
+                    即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7B%5CDelta+x+%5Crightarrow+0%7D%7B+%28%5CDelta+x%5E1+%5Cdots+%5CDelta+x%5En%29+%7D+%3D+%28dx%5E1+%5Cdots+dx%5En%29" alt="\lim_{\Delta x \rightarrow 0}{ (\Delta x^1 \dots \Delta x^n) } = (dx^1 \dots dx^n)" eeimg="1">
+                </p>
+                <p>
+                    便可以得到
+                    <b>
+                        全微分
+                    </b>
+                    的表达式
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=df+%3D+%5Csum_i+%5Cfrac%7B%5Cpartial+f%7D%7B%5Cpartial+x_i%7Ddx%5Ei+%3D+%28%5Cpartial_if%29dx%5Ei" alt="df = \sum_i \frac{\partial f}{\partial x_i}dx^i = (\partial_if)dx^i" eeimg="1">
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

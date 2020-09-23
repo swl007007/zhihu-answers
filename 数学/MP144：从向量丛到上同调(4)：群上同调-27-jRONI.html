@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP144：从向量丛到上同调(4)：群上同调
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-a060ef20f6add095f6e6166d62e63d66_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/47934082" target="_blank">
+                        MP144：从向量丛到上同调(4)：群上同调
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-07-20
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    [
+                    <a href="https://zhuanlan.zhihu.com/p/51318464" class="internal">
+                        MP141：从向量丛到上同调(1)：向量丛
+                    </a>
+                    ] 讨论了G-丛上的cocycle条件，它体现了在交集中的点
+                    <img src="https://www.zhihu.com/equation?tex=p+%5Cin+U_1+%5Ccap+U_2+%5Ccap+U_3" alt="p \in U_1 \cap U_2 \cap U_3" eeimg="1">
+                    ，经过群元
+                    <img src="https://www.zhihu.com/equation?tex=g_%7B12%7D%2Cg_%7B23%7D%2Cg_%7B31%7D+%5Cin+G" alt="g_{12},g_{23},g_{31} \in G" eeimg="1">
+                    的作用，循环回来是恒等的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g_%7B12%7Dg_%7B23%7Dg_%7B31%7D+%3D+1+%5C%5C" alt="g_{12}g_{23}g_{31} = 1 \\" eeimg="1">
+                    在Abel范畴中通常用
+                    <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    替代上式的幺元
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ，用加法表示交换的群运算，在上同调理论中常见的形式为
+                    <img src="https://www.zhihu.com/equation?tex=u_%7B13%7D+%3D+u_%7B12%7D+%2B+u_%7B23%7D" alt="u_{13} = u_{12} + u_{23}" eeimg="1">
+                    ，它是结合律的体现，cocycle的条件有利于理解上同调理论中上边界的交错（定向）的意义。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    射影线性表示
+                </h2>
+                <p>
+                    群
+                    <img src="https://www.zhihu.com/equation?tex=G%5Cin%5Ctextbf%7BGrp%7D" alt="G\in\textbf{Grp}" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V%5Cin%5Ctextbf%7BVct%7D_F" alt="V\in\textbf{Vct}_F" eeimg="1">
+                    上的表示是群范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BGrp%7D" alt="\textbf{Grp}" eeimg="1">
+                    中的态射
+                    <img src="https://www.zhihu.com/equation?tex=p%3A+G+%5Cto+%5Ctext%7BGL%7D%28V%29" alt="p: G \to \text{GL}(V)" eeimg="1">
+                    。域
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    自身的非退化元，在数量乘法下也构成
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    的变换群，它是正规子群，记为
+                    <img src="https://www.zhihu.com/equation?tex=F%5E%5Ctimes+%3D+%28F%5Cbackslash%5C%7B0%5C%7D%2C%5Ccdot%2C1%29+%5Clhd+%5Ctext%7BGL%7D%28V%29" alt="F^\times = (F\backslash\{0\},\cdot,1) \lhd \text{GL}(V)" eeimg="1">
+                    。商群构成
+                    <b>
+                        射影线性群(projective linear group)
+                    </b>
+                    :
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BPGL%7D%28V%29+%3D+%5Ctext%7BGL%7D%28V%29%2FF%5E%5Ctimes+%5C%5C" alt="\text{PGL}(V) = \text{GL}(V)/F^\times \\" eeimg="1">
+                    这样，群表示
+                    <img src="https://www.zhihu.com/equation?tex=p%3A+G+%5Cto+%5Ctext%7BGL%7D%28V%29" alt="p: G \to \text{GL}(V)" eeimg="1">
+                    在自然投影
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi%3A+%5Ctext%7BGL%7D%28V%29+%5Cto+%5Ctext%7BPGL%7D" alt="\pi: \text{GL}(V) \to \text{PGL}" eeimg="1">
+                    下构成射影表示：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=G+%5Cstackrel%7Bp%7D%7B%5Clongrightarrow%7D+%5Ctext%7BGL%7D%28V%29+%5Cstackrel%7B%5Cpi%7D%7B%5Clongrightarrow%7D+%5Ctext%7BPGL%7D%28V%29+%5C%5C" alt="G \stackrel{p}{\longrightarrow} \text{GL}(V) \stackrel{\pi}{\longrightarrow} \text{PGL}(V) \\" eeimg="1">
+                    以下为群范畴中的图示
+                </p>
+                <figure>
+                    <img src="https://pic1.zhimg.com/v2-8171de8367dd5d718de295095e52faa3_r.jpg">
+                </figure>
+                <p>
+                    量子物理中，量子态是复可分Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    中的向量，若存在单位复数
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+e%5E%7B2%5Cpi%5Ctext+i%5Comega%7D%5Cin%5Ctext%7BU%7D%281%29" alt="\text e^{2\pi\text i\omega}\in\text{U}(1)" eeimg="1">
+                    使得两个量子态满足
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_1+%3D+%5Ctext+e%5E%7B2%5Cpi%5Ctext+i%5Comega%7D%5Cpsi_2" alt="\psi_1 = \text e^{2\pi\text i\omega}\psi_2" eeimg="1">
+                    则二者等价
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi_1%5Csim%5Cpsi_2" alt="\psi_1\sim\psi_2" eeimg="1">
+                    。物理对称性通常由Lie群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    描述，考虑它在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的
+                    <b>
+                        射影酉表示(projective unitary representation)
+                    </b>
+                    ，即连续同态
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=G+%5Cstackrel%7B%7D%7B%5Clongrightarrow%7D+%5Ctext%7BU%7D%28%5Cmathscr+H%29+%5Cstackrel%7B%5Cpi%7D%7B%5Clongrightarrow%7D+%5Ctext%7BPU%7D%28%5Cmathscr+H%29++%3D+%5Ctext%7BU%7D%28%5Cmathscr+H%29%2F%5Ctext%7BU%7D%281%29+%5C%5C" alt="G \stackrel{}{\longrightarrow} \text{U}(\mathscr H) \stackrel{\pi}{\longrightarrow} \text{PU}(\mathscr H)  = \text{U}(\mathscr H)/\text{U}(1) \\" eeimg="1">
+                    有限维线性空间上有矩阵表示，群元
+                    <img src="https://www.zhihu.com/equation?tex=g%5Cin+G" alt="g\in G" eeimg="1">
+                    对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    的作用表示为酉矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BU%7D%28g%29" alt="\text{U}(g)" eeimg="1">
+                    ，群作用的作用要求
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+U%28g_1%29%5Ctext+U%28g_2%29+%3D+%5Ctext+U%28g_1g_2%29" alt="\text U(g_1)\text U(g_2) = \text U(g_1g_2)" eeimg="1">
+                    而量子力学允许相差一个相位
+                    <img src="https://www.zhihu.com/equation?tex=%5Cxi_%7B1%2C2%7D+%3D+%5Cxi%28g_1%2Cg_2%29+%3D+%5Ctext+e%5E%7B2%5Cpi%5Ctext+i%5Comega%28g_1g_2%29%7D%5Cin%5Ctext%7BU%7D%281%29" alt="\xi_{1,2} = \xi(g_1,g_2) = \text e^{2\pi\text i\omega(g_1g_2)}\in\text{U}(1)" eeimg="1">
+                    使得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+U%28g_1%29+%5Ctext+U%28g_2%29+%3D+%5Cxi_%7B1%2C2%7D%5Ctext+U%28g_1g_2%29+%5Ctag%7B1%7D" alt="\text U(g_1) \text U(g_2) = \xi_{1,2}\text U(g_1g_2) \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    我们要讨论以群元为变量的二元函数
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    的性质。考虑
+                    <img src="https://www.zhihu.com/equation?tex=g_1%2Cg_2%2Cg_3%5Cin+G" alt="g_1,g_2,g_3\in G" eeimg="1">
+                    的酉矩阵表示的结合律问题：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+U%28g_1%29+%28%5Ctext+U%28g_2%29+%5Ctext+U%28g_3%29%29+%3D+%28%5Ctext+U%28g_1%29+%5Ctext+U%28g_2%29%29+%5Ctext+U%28g_3%29+%5C%5C" alt="\text U(g_1) (\text U(g_2) \text U(g_3)) = (\text U(g_1) \text U(g_2)) \text U(g_3) \\" eeimg="1">
+                    于是：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Cquad+%5Ctext+U%28g_1%29+%28%5Ctext+U%28g_2%29+%5Ctext+U%28g_3%29%29+%26%3D+%28%5Ctext+U%28g_1%29+%5Ctext+U%28g_2%29%29+%5Ctext+U%28g_3%29+%5Cnonumber+%5C%5C++%5Ctext+U%28g_1%29+%28%5Cxi_%7B2%2C3%7D%5Ctext+U%28g_2g_3%29%29+%26%3D+%28%5Cxi_%7B1%2C2%7D%5Ctext+U%28g_1g_2%29%29+%5Ctext+U%28g_3%29+%5Cnonumber+%5C%5C++%5Cxi_%7B1%2C23%7D%5Cxi_%7B2%2C3%7D%5Ctext+U%28g_1g_2g_3%29+%26%3D+%5Cxi_%7B1%2C2%7D%5Cxi_%7B12%2C3%7D%5Ctext+U%28g_1g_2g_3%29+%5Cnonumber+%5C%5C++%5Cxi_%7B1%2C23%7D%5Cxi_%7B2%2C3%7D+%26%3D+%5Cxi_%7B1%2C2%7D%5Cxi_%7B12%2C3%7D+%5Cnonumber+%5C%5C++%5Ctext+e%5E%7B2%5Cpi%5Ctext+i%5Comega%28g1%2Cg_2g_3%29%7D%5Ctext+e%5E%7B2%5Cpi%5Ctext+i%5Comega%28g_2%2Cg_3%29%7D+%26%3D+%5Ctext+e%5E%7B2%5Cpi%5Ctext+i%5Comega%28g_1%2Cg_2%29%7D%5Ctext+e%5E%7B2%5Cpi%5Ctext+i%5Comega%28g_1g_2%2Cg_3%29%7D+%5Cnonumber+%5C%5C+%5Comega%28g_1%2Cg_2g_3%29+%2B+%5Comega%28g_2%2Cg_3%29+%26%3D+%5Comega%28g_1%2Cg_2%29%2B%5Comega%28g_1g_2%2Cg_3%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}  \quad \text U(g_1) (\text U(g_2) \text U(g_3)) &amp;= (\text U(g_1) \text U(g_2)) \text U(g_3) \nonumber \\  \text U(g_1) (\xi_{2,3}\text U(g_2g_3)) &amp;= (\xi_{1,2}\text U(g_1g_2)) \text U(g_3) \nonumber \\  \xi_{1,23}\xi_{2,3}\text U(g_1g_2g_3) &amp;= \xi_{1,2}\xi_{12,3}\text U(g_1g_2g_3) \nonumber \\  \xi_{1,23}\xi_{2,3} &amp;= \xi_{1,2}\xi_{12,3} \nonumber \\  \text e^{2\pi\text i\omega(g1,g_2g_3)}\text e^{2\pi\text i\omega(g_2,g_3)} &amp;= \text e^{2\pi\text i\omega(g_1,g_2)}\text e^{2\pi\text i\omega(g_1g_2,g_3)} \nonumber \\ \omega(g_1,g_2g_3) + \omega(g_2,g_3) &amp;= \omega(g_1,g_2)+\omega(g_1g_2,g_3) \nonumber \\ \end{align} \\" eeimg="1">
+                    于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Comega%28g_2%2Cg_3%29+-%5Comega%28g_1g_2%2Cg_3%29%2B%5Comega%28g_1%2Cg_2g_3%29+-%5Comega%28g_1%2Cg_2%29++%3D+0+%5Ctag%7B2%7D" alt="\omega(g_2,g_3) -\omega(g_1g_2,g_3)+\omega(g_1,g_2g_3) -\omega(g_1,g_2)  = 0 \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    这样，从(1)相差一个相位意义下的等价，得到了以群元为变量的二元函数
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    的cocycle条件。这里
+                    <img src="https://www.zhihu.com/equation?tex=w" alt="w" eeimg="1">
+                    视为群上的二元函数，那么可以定义升阶的算子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctext+d%3A+h_%5Cmathbb+R+G%5E2+%26%5Cto+h_%5Cmathbb+R+G%5E%7B2%2B1%7D+%5Cnonumber+%5C%5C+w+%26%5Cmapsto+%5Ctext+d+w+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \text d: h_\mathbb R G^2 &amp;\to h_\mathbb R G^{2+1} \nonumber \\ w &amp;\mapsto \text d w \nonumber \\ \end{align} \\" eeimg="1">
+                    使得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+dw%28g_1%2Cg_2%2Cg_3%29+%3D+%5Comega%28g_2%2Cg_3%29+-%5Comega%28g_1g_2%2Cg_3%29%2B%5Comega%28g_1%2Cg_2g_3%29+-%5Comega%28g_1%2Cg_2%29+%5C%5C" alt="\text dw(g_1,g_2,g_3) = \omega(g_2,g_3) -\omega(g_1g_2,g_3)+\omega(g_1,g_2g_3) -\omega(g_1,g_2) \\" eeimg="1">
+                    上述
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+dw%28g_1%2Cg_2%2Cg_3%29+%3D+0" alt="\text dw(g_1,g_2,g_3) = 0" eeimg="1">
+                    的条件就是cocycle条件。我们通过群直积上的函数构造升阶算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+d" alt="\text d" eeimg="1">
+                    的过程，相当于用反变Hom函子在构造对偶的上同调理论，现在可以从上同调的角度来看
+                    <b>
+                        上闭链(cocycle)
+                    </b>
+                    的意义，考虑
+                    <b>
+                        群上同调(group cohomology)
+                    </b>
+                    的问题。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    G-模
+                </h2>
+                <p>
+                    群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    在Abel群
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上的表示，是群范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BGrp%7D" alt="\textbf{Grp}" eeimg="1">
+                    中的态射
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi+%5Cin+%5Ctext%7BHom%7D%28G%2C%5Ctext%7BEnd%7D%28M%29%29+%5Cnonumber+" alt="\pi \in \text{Hom}(G,\text{End}(M)) \nonumber" eeimg="1">
+                    ，使得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cpi%3A+G+%26%5Cto+%5Ctext%7BEnd%7D%28M%29+%5Cnonumber+%5C%5C+g+%26%5Cmapsto+%5Cpi%28g%29+%5Cnonumber+%5C%5C+G+%5Ctimes+M+%26%5Cto+M+%5Cnonumber+%5C%5C+%28g%2Cx%29+%26%5Cmapsto+%5Cpi%28g%29%28x%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \pi: G &amp;\to \text{End}(M) \nonumber \\ g &amp;\mapsto \pi(g) \nonumber \\ G \times M &amp;\to M \nonumber \\ (g,x) &amp;\mapsto \pi(g)(x) \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    Abel群范畴中的态射可加，故可以考虑以整数环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+Z" alt="\mathbb Z" eeimg="1">
+                    为系数的
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    的有限形式和构成整群环
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+ZG" alt="\mathbb ZG" eeimg="1">
+                    ，它作为一个自同态，是其生成元对应的自同态
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpi%28g%29" alt="\pi(g)" eeimg="1">
+                    的整系数叠加：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathbb+ZG+%5Ctimes+M+%26%5Cto+M+%5Cnonumber+%5C%5C+%5Cleft%28%5Csum_%7Bg%5Cin+G%7D+z_g+g%2Cx%5Cright%29+%26%5Cmapsto+%5Csum_%7Bg%5Cin+G%7D+z_g+%5Cpi%28g%29%28x%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \mathbb ZG \times M &amp;\to M \nonumber \\ \left(\sum_{g\in G} z_g g,x\right) &amp;\mapsto \sum_{g\in G} z_g \pi(g)(x) \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    这样
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    构成
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+ZG" alt="\mathbb ZG" eeimg="1">
+                    -左模，这个模范畴记为
+                    <img src="https://www.zhihu.com/equation?tex=G%5Ctextbf%7B-Mod%7D+%3D+%5Cmathbb+ZG%5Ctextbf%7B-Mod%7D" alt="G\textbf{-Mod} = \mathbb ZG\textbf{-Mod}" eeimg="1">
+                    ，称为
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    -模。
+                </p>
+                <figure>
+                    <img src="https://pic3.zhimg.com/v2-801f7f8fa0e2aab7a30de604bf1f18f3_r.jpg">
+                    <figcaption>
+                        [黎景辉2014]
+                    </figcaption>
+                </figure>
+                <h2>
+                    群直积的链群
+                </h2>
+                <p>
+                    考虑模
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    ，将其视为某种拓扑空间，而直积
+                    <img src="https://www.zhihu.com/equation?tex=G%5En" alt="G^n" eeimg="1">
+                    视为
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -单形构成的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -
+                    <b>
+                        链群(chain)
+                    </b>
+                    。[
+                    <a href="https://zhuanlan.zhihu.com/p/46850778" class="internal">
+                        MP143：从向量丛到上同调(3)：用反变Hom函子构造上同调
+                    </a>
+                    ] 中给出了上同调理论的构造框架，即反变Hom函子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++h_M%3A+%5Ctextbf%7BMod%7D+%26%5Cto+%5Ctextbf%7BMod%7D+%5Cnonumber+%5C%5C++G%5En+%26%5Cmapsto+C%5En%28G%2CM%29+%3D+h_MG%5En+%3D+%5Ctext%7BHom%7D%28G%5En%2CM%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}  h_M: \textbf{Mod} &amp;\to \textbf{Mod} \nonumber \\  G^n &amp;\mapsto C^n(G,M) = h_MG^n = \text{Hom}(G^n,M) \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    得到了
+                    <img src="https://www.zhihu.com/equation?tex=G%5En" alt="G^n" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    -值函数集合，它是一个Abel群。显然，它就是群上同调的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -
+                    <b>
+                        上链(cochain)
+                    </b>
+                    。反变Hom函子构造了同调/上同调的对偶关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D++C_%7Bn%2B1%7D%28G%2CM%29+%3D+C%5E%7Bn%2B1%7D++%40%3Eh_R%3E%3E+C%5E%7Bn%2B1%7D%28G%2CM%29+%3D+h_RC%5E%7Bn%2B1%7D+%3D+%5Ctext%7BHom%7D%28C%5E%7Bn%2B1%7D%2CM%29+%5Cnonumber+%5C%5C++%40V%7B%5Cpartial_%7Bn%2B1%7D%7DVV++%40AA%7B%5Ctext+d%5E%7Bn%2B1%7D%7DA+%5Cnonumber+%5C%5C+C_%7Bn%7D%28G%2CM%29+%3D+C%5E%7Bn%7D++%40%3E%3Eh_R%3E+C%5E%7Bn%7D%28G%2CM%29+%3D+h_RC%5E%7Bn%7D+%3D+%5Ctext%7BHom%7D%28C%5E%7Bn%7D%2CM%29+%5Cnonumber+%5C%5C+%5Cend%7BCD%7D+%5Ctag%7B3%7D" alt="\begin{CD}  C_{n+1}(G,M) = C^{n+1}  @&gt;h_R&gt;&gt; C^{n+1}(G,M) = h_RC^{n+1} = \text{Hom}(C^{n+1},M) \nonumber \\  @V{\partial_{n+1}}VV  @AA{\text d^{n+1}}A \nonumber \\ C_{n}(G,M) = C^{n}  @&gt;&gt;h_R&gt; C^{n}(G,M) = h_RC^{n} = \text{Hom}(C^{n},M) \nonumber \\ \end{CD} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    偏边界态射
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cpartial_%7Bn%2B1%7D%29_k" alt="(\partial_{n+1})_k" eeimg="1">
+                    显然可以通过拿掉指标为
+                    <img src="https://www.zhihu.com/equation?tex=k" alt="k" eeimg="1">
+                    的元来实现降维：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%7B%28%5Cpartial_%7Bn%2B1%7D%29%7D_k+%28g_0%2C%5Ccdots%2C+g_n%29+%3D+%28g_0%2C+%5Ccdots%2C+%5Cbar%7Bg_k%7D%2C%5Ccdots%2C+g_p%29+%3D+%28g_0%2C+%5Ccdots%2C+g_%7Bk-1%7D%2C+g_%7Bk%2B1%7D%2C+%5Ccdots%2C+g_p%29+%5C%5C" alt="{(\partial_{n+1})}_k (g_0,\cdots, g_n) = (g_0, \cdots, \bar{g_k},\cdots, g_p) = (g_0, \cdots, g_{k-1}, g_{k+1}, \cdots, g_p) \\" eeimg="1">
+                    类似其它同调理论的通常做法，做交错求和：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_%7Bn%2B1%7D+%3D+%5Csum_k+%28-1%29%5Ek%7B%28%5Cpartial_%7Bn%2B1%7D%29%7D_k+%5C%5C" alt="\partial_{n+1} = \sum_k (-1)^k{(\partial_{n+1})}_k \\" eeimg="1">
+                    相邻的二次复合退化，于是
+                    <img src="https://www.zhihu.com/equation?tex=%28C_%5Cbullet%28G%2CM%29%2C%5Cpartial%29" alt="(C_\bullet(G,M),\partial)" eeimg="1">
+                    构成链复形，可以做同调群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    群上同调
+                </h2>
+                <p>
+                    在群直和构造的链复形上，用对偶的方式构造上同调的版本。升维的上边界态射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctext+d%5E%7Bn%2B1%7D%3A+C%5En%28G%2CM%29+%26%5Cto+C%5E%7Bn%2B1%7D%28G%2CM%29+%5Cnonumber+%5C%5C+w+%26%5Cmapsto+%5Ctext+d%5E%7Bn%2B1%7D+w+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B4%7D" alt="\begin{align} \text d^{n+1}: C^n(G,M) &amp;\to C^{n+1}(G,M) \nonumber \\ w &amp;\mapsto \text d^{n+1} w \nonumber \\ \end{align} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    要求相邻的二次复合退化，才能构造上链复形。作为上述射影表示例子(2)中的一般性结果如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cleft%28d%5E%7Bn%2B1%7Dw%5Cright%29%28g_%7B1%7D%2C%5Cldots+%2Cg_%7Bn%2B1%7D%29+%26%3Dg_%7B1%7Dw%28g_%7B2%7D%2C%5Cdots+%2Cg_%7Bn%2B1%7D%29+%5Cnonumber+%5C%5C+%26%2B%5Csum+_%7Bi%3D1%7D%5E%7Bn%7D%28-1%29%5E%7Bi%7Dw%5Cleft%28g_%7B1%7D%2C%5Cldots+%2Cg_%7Bi-1%7D%2Cg_%7Bi%7Dg_%7Bi%2B1%7D%2C%5Cldots+%2Cg_%7Bn%2B1%7D%5Cright%29+%5Cnonumber+%5C%5C+%26%2B%28-1%29%5E%7Bn%2B1%7Dw+%28g_%7B1%7D%2C%5Cldots+%2Cg_%7Bn%7D%29++%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} \left(d^{n+1}w\right)(g_{1},\ldots ,g_{n+1}) &amp;=g_{1}w(g_{2},\dots ,g_{n+1}) \nonumber \\ &amp;+\sum _{i=1}^{n}(-1)^{i}w\left(g_{1},\ldots ,g_{i-1},g_{i}g_{i+1},\ldots ,g_{n+1}\right) \nonumber \\ &amp;+(-1)^{n+1}w (g_{1},\ldots ,g_{n})  \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    可以验证
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext+d%5E%7Bn%2B1%7D%5Ctext+d%5En+%3D+0+%5C%5C" alt="\text d^{n+1}\text d^n = 0 \\" eeimg="1">
+                    故
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7BC%5En%28G%2CM%29%5C%7D" alt="\{C^n(G,M)\}" eeimg="1">
+                    是复形的上链群，
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Ctext+d%5En%5C%7D" alt="\{\text d^n\}" eeimg="1">
+                    是上边界算子，显然可以构造群上同调。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

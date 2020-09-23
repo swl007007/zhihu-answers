@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP60：平行移动与Levi-Civita联络
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-50c4341a5d8ef241d8c50f51f16fab23_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46700218" target="_blank">
+                        MP60：平行移动与Levi-Civita联络
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-11-10
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    上一讲我们提到过：我们将特别关注切丛、联络——在弯曲时空流形上的平行移动。在切丛上有一种叫做Levi-Civita的联络，可以保持度量且是无挠的。实际上任何的度量都可以确定这样的联络，它成为Riemann流形的切丛上最合适的联络，而这个联络的曲率就是Riemann曲率张量。
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47026560" class="internal">
+                        MP59：几何与物理III：Riemann几何与广义相对论
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    本讲首先讨论平行移动，回顾过去在纤维丛里面特别关注的不同点上的向量的归属问题。不仅不同两点，属于两个切空间的向量要考虑平行移动，整个流形上的张量场上，任何不同两点上的张量都需要考虑平行移动。能够支持张量在两点之间的路径上平行移动的结构叫做联络。
+                </p>
+                <p>
+                    然后，我们在平直的空间上分析联络的性质，用类似于平直空间方向导数/偏导数的方式，形式化地得到了协变导数的结构。进一步，我们利用曲线坐标系中的自然标架，给出了Christoffel记号的定义。用Riemann度量求导，得到了Riemann度量和Christoffel记号的关系。将Christoffel记号作为联络的结构，我们得到了重要的Levi-Civita联络。在Riemann流形上所有这些平行移动中，我们希望能满足两个条件：
+                </p>
+                <ol>
+                    <li>
+                        度量得到保持
+                    </li>
+                    <li>
+                        无挠
+                    </li>
+                </ol>
+                <p>
+                    这两个条件符合我们的基本几何直观。而Riemann几何中最基本的结论之一就是，决定这样的平行移动的联络是唯一的，它就是Levi-Civita联络。
+                </p>
+                <hr>
+                <h2>
+                    <b>
+                        平行移动
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    一个向量的
+                    <b>
+                        平行移动(parallel transport)
+                    </b>
+                    是如此简单的事情，简单到其中精细的问题难以被觉察，以至于到Riemann几何中要反复提醒，避免理解的差错。我们很早就对这个问题进行过铺垫：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44304211" class="internal">
+                        MP13：纤维丛
+                    </a>
+                </p>
+                <p>
+                    我们最早就是从向量平移的逻辑问题为缘由开始介绍纤维丛的：
+                </p>
+                <blockquote>
+                    过去，由于我们长期在欧式空间上处理问题，我们对欧式空间的点和平移点的向量之间的微妙关系缺少认识。现在到了微分流形上，我们逐渐要将点和点上生长的向量区分开 ... ... 纤维丛，就是数学上精确地描述如何在流形的点上生长向量，从而在流形的所有点上都长出线性空间的结构 ... ... 过去许多人对
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    的理解产生了一些根深蒂固的观念。比如说，在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    上的一点长出来的向量，和这一点本身是混淆的。过去我们所熟知的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    拥有太多好的性质了，导致刚学习微分流形的时候，把很多
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5En" alt="\mathbb{R}^n" eeimg="1">
+                    特有的特性想当然也带来了。
+                </blockquote>
+                <p>
+                    由纤维丛的概念我们得以能够区分流形
+                    <img src="https://www.zhihu.com/equation?tex=M" alt="M" eeimg="1">
+                    上的点和点上的(切)向量，而比较两个不同点
+                    <img src="https://www.zhihu.com/equation?tex=x%2C+y+%5Cin+M" alt="x, y \in M" eeimg="1">
+                    上的向量，则需要平行移动，即将一个向量从
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    点移动到
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    点，保持向量的长度不变，然后和
+                    <img src="https://www.zhihu.com/equation?tex=y" alt="y" eeimg="1">
+                    点上的另一个向量在
+                    <b>
+                        同一个向量空间
+                    </b>
+                    中进行比较。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们强调比较两个向量的重要性，所谓的比较实际上就是求差，这样对向量的变化差求极限可以得到(方向)导数。过去我们谈到过，求差这个操作并非是平凡的：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46346265" class="internal">
+                        MP30：仿射空间、变换群、Lie群
+                    </a>
+                </p>
+                <p>
+                    不仅不同两点，属于两个切空间的向量要考虑平行移动，整个流形上的张量场上，任何不同两点上的张量都需要考虑平行移动。能够支持张量在两点之间的路径上平行移动的结构叫做
+                    <b>
+                        联络(connection)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        平直空间上的联络
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5En" alt="\mathbb R^n" eeimg="1">
+                    上定义方向导数时，暗含了一个联络的条件
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=D_vf%28x%29%3D%5Clim_%7B%5CDelta+x+%5Crightarrow+0%7D%7B%5Cfrac%7Bf%28x%2B%5CDelta+x%29+-+f%28x%29%7D%7B%5CDelta+x%7D%7D" alt="D_vf(x)=\lim_{\Delta x \rightarrow 0}{\frac{f(x+\Delta x) - f(x)}{\Delta x}}" eeimg="1">
+                </p>
+                <p>
+                    其中向量
+                    <img src="https://www.zhihu.com/equation?tex=x+%2B+%5CDelta+x" alt="x + \Delta x" eeimg="1">
+                    是向量
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    平行移动的结果。在初级的微积分中，没有考虑平行移动和联络的问题，是因为平直的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5En" alt="\mathbb R^n" eeimg="1">
+                    上向量平行移动是平凡的。现在考虑向量场
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    两点上的两个向量
+                    <img src="https://www.zhihu.com/equation?tex=V%28x%29%2C+V%28x%2B%5CDelta+x%29" alt="V(x), V(x+\Delta x)" eeimg="1">
+                    ，先做以下平行移动：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V%28x%29+%5Cto+%5Ctilde+V%28x%2B%5CDelta+x%29" alt="V(x) \to \tilde V(x+\Delta x)" eeimg="1">
+                </p>
+                <p>
+                    然后在同一个点上比较两向量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=V%28x+%2B+%5CDelta+x%29+-+%5Ctilde+V%28x+%2B+%5CDelta+x%29" alt="V(x + \Delta x) - \tilde V(x + \Delta x)" eeimg="1">
+                </p>
+                <p>
+                    以上的差值若与两点的差值
+                    <img src="https://www.zhihu.com/equation?tex=%5CDelta+x" alt="\Delta x" eeimg="1">
+                    具有某种线性关系，利用坐标系
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_k%5C%7D" alt="\{x_k\}" eeimg="1">
+                    以模仿偏导数的方式定义如下的极限
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7B%5CDelta+x%5Ej+%5Crightarrow+0%7D%7B%5Cfrac%7BV%5Ei%28x+%2B+%5CDelta+x%29+-+%5Ctilde+V%5Ei%28x+%2B+%5CDelta+x%29%7D%7B%5CDelta+x%5Ej%7D+%5Cpartial_i+%7D" alt="\lim_{\Delta x^j \rightarrow 0}{\frac{V^i(x + \Delta x) - \tilde V^i(x + \Delta x)}{\Delta x^j} \partial_i }" eeimg="1">
+                </p>
+                <p>
+                    它称为向量场
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    的
+                    <b>
+                        协变导数(covariant derivative)
+                    </b>
+                    。若要满足所谓的某种线性关系，协变导数应具有以下形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CBig%28+%5Cfrac%7B%5Cpartial+V%5Ei%7D%7B%5Cpartial+x_j%7D+%2B+V%5Ek+%5CGamma_%7Bjk%7D%5Ei++%5CBig%29%5Cpartial_i" alt="\Big( \frac{\partial V^i}{\partial x_j} + V^k \Gamma_{jk}^i  \Big)\partial_i" eeimg="1">
+                </p>
+                <p>
+                    平行移动的法则就取决于其中的
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma_%7Bjk%7D%5Ei" alt="\Gamma_{jk}^i" eeimg="1">
+                    。在Riemann几何中有一个很重要的结论，就是通过Riemann度量可以诱导出唯一一个满足某些特殊要求的联络，称为Levi-Civita联络，从而确定平行移动的法则。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Christoffel记号
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面讲到，点在曲线坐标中可以表示为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Br%7D+%3D+%5Ctextbf%7Br%7D%28x%5E1%2Cx%5E2%2Cx%5E3%29+%3D+%5Ctextbf%7Br%7D%28u%5E1%2Cu%5E2%2Cu%5E3%29" alt="\textbf{r} = \textbf{r}(x^1,x^2,x^3) = \textbf{r}(u^1,u^2,u^3)" eeimg="1">
+                </p>
+                <p>
+                    由坐标在点上的偏导数可以得到
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Br%7D_i+%3D+%5Cfrac%7B%5Cpartial%5Ctextbf%7Br%7D%7D%7B%5Cpartial+u%5Ei%7D" alt="\textbf{r}_i = \frac{\partial\textbf{r}}{\partial u^i}" eeimg="1">
+                </p>
+                <p>
+                    这是构造自然标架的切向量。当点
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Br%7D" alt="\text{r}" eeimg="1">
+                    在运动时，对应的自然标架也会运动。现在考虑它如何随着某个曲线坐标运动，考虑如下偏导数
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_j%5Ctextbf%7Br%7D_i+%3D+%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial+u_j%7D+%5CBig%28+%5Cfrac%7B%5Cpartial%5Ctextbf%7Br%7D%7D%7B%5Cpartial+u%5Ei%7D+%5CBig%29+%3D+%5Cfrac%7B%5Cpartial%5E2+%5Ctextbf%7Br%7D%7D%7B%5Cpartial+u_j+%5Cpartial+u_i%7D" alt="\partial_j\textbf{r}_i = \frac{\partial}{\partial u_j} \Big( \frac{\partial\textbf{r}}{\partial u^i} \Big) = \frac{\partial^2 \textbf{r}}{\partial u_j \partial u_i}" eeimg="1">
+                </p>
+                <p>
+                    它也是一个向量，用自然坐标展开为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_j%5Ctextbf%7Br%7D_i+%3D+%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+k+%5C%5C+ji+%5Cend%7Bmatrix%7D%5CBig%5C%7D+%5Ctextbf%7Br%7D_k" alt="\partial_j\textbf{r}_i = \Big\{\begin{matrix} k \\ ji \end{matrix}\Big\} \textbf{r}_k" eeimg="1">
+                </p>
+                <p>
+                    其中由
+                    <img src="https://www.zhihu.com/equation?tex=i%2Cj%2Ck" alt="i,j,k" eeimg="1">
+                    三个指标决定的展开系数称为
+                    <b>
+                        Christoffel记号
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    由于Riemann度量的分量可以表示为自然坐标的内积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=g_i%5Ej+%3D+%5Clangle+%5Ctextbf%7Br%7D_i+%2C+%5Ctextbf%7Br%7D_j+%5Crangle" alt="g_i^j = \langle \textbf{r}_i , \textbf{r}_j \rangle" eeimg="1">
+                </p>
+                <p>
+                    于是
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpartial_k+g_i%5Ej+%3D+%5Clangle+%5Cpartial_k%5Ctextbf%7Br%7D_i+%2C+%5Ctextbf%7Br%7D_j+%5Crangle+%2B+%5Clangle+%5Ctextbf%7Br%7D_i+%2C+%5Cpartial_k%5Ctextbf%7Br%7D_j+%5Crangle" alt="\partial_k g_i^j = \langle \partial_k\textbf{r}_i , \textbf{r}_j \rangle + \langle \textbf{r}_i , \partial_k\textbf{r}_j \rangle" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%5Clangle+%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+l+%5C%5C+ki+%5Cend%7Bmatrix%7D%5CBig%5C%7D+%5Ctextbf%7Br%7D_l+%2C+%5Ctextbf%7Br%7D_j+%5Crangle+%2B+%5Clangle+%5Ctextbf%7Br%7D_i+%2C+%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+l+%5C%5C+kj+%5Cend%7Bmatrix%7D%5CBig%5C%7D+%5Ctextbf%7Br%7D_l+%5Crangle" alt="= \langle \Big\{\begin{matrix} l \\ ki \end{matrix}\Big\} \textbf{r}_l , \textbf{r}_j \rangle + \langle \textbf{r}_i , \Big\{\begin{matrix} l \\ kj \end{matrix}\Big\} \textbf{r}_l \rangle" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+l+%5C%5C+ki+%5Cend%7Bmatrix%7D%5CBig%5C%7D%5Clangle+%5Ctextbf%7Br%7D_l+%2C+%5Ctextbf%7Br%7D_j+%5Crangle+%2B+%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+l+%5C%5C+kj+%5Cend%7Bmatrix%7D%5CBig%5C%7D%5Clangle+%5Ctextbf%7Br%7D_i+%2C++%5Ctextbf%7Br%7D_l+%5Crangle" alt="= \Big\{\begin{matrix} l \\ ki \end{matrix}\Big\}\langle \textbf{r}_l , \textbf{r}_j \rangle + \Big\{\begin{matrix} l \\ kj \end{matrix}\Big\}\langle \textbf{r}_i ,  \textbf{r}_l \rangle" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+l+%5C%5C+ki+%5Cend%7Bmatrix%7D%5CBig%5C%7D+g_l%5Ej+%2B+%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+l+%5C%5C+kj+%5Cend%7Bmatrix%7D%5CBig%5C%7Dg_i%5El" alt="= \Big\{\begin{matrix} l \\ ki \end{matrix}\Big\} g_l^j + \Big\{\begin{matrix} l \\ kj \end{matrix}\Big\}g_i^l" eeimg="1">
+                </p>
+                <p>
+                    根据以上这种Christoffel记号和Riemann度量的关系，容易证得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+k+%5C%5C+ji+%5Cend%7Bmatrix%7D%5CBig%5C%7D+%3D+%5Cfrac%7B1%7D%7B2%7Dg_k%5El%28%5Cpartial_j+g_i%5El+%2B+%5Cpartial_i+g_j%5El+-+%5Cpartial_l+g_j%5Ei%29" alt="\Big\{\begin{matrix} k \\ ji \end{matrix}\Big\} = \frac{1}{2}g_k^l(\partial_j g_i^l + \partial_i g_j^l - \partial_l g_j^i)" eeimg="1">
+                </p>
+                <p>
+                    在自然坐标系中，度量
+                    <img src="https://www.zhihu.com/equation?tex=g_i%5Ej" alt="g_i^j" eeimg="1">
+                    是常数不变的，故Christoffel记号为零。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Levi-Civita联络
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面通过Riemann度量得到了Christoffel记号的表达式，再结合我们在平行移动中讨论的确定平行移动法则的
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma_%7Bj%2Ck%7D%5Ei" alt="\Gamma_{j,k}^i" eeimg="1">
+                    ，若有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CGamma_%7Bji%7D%5Ek+%3D+%5CBig%5C%7B%5Cbegin%7Bmatrix%7D+k+%5C%5C+ji+%5Cend%7Bmatrix%7D%5CBig%5C%7D+%3D+%5Cfrac%7B1%7D%7B2%7Dg_k%5El%28%5Cpartial_j+g_i%5El+%2B+%5Cpartial_i+g_j%5El+-+%5Cpartial_l+g_j%5Ei%29" alt="\Gamma_{ji}^k = \Big\{\begin{matrix} k \\ ji \end{matrix}\Big\} = \frac{1}{2}g_k^l(\partial_j g_i^l + \partial_i g_j^l - \partial_l g_j^i)" eeimg="1">
+                </p>
+                <p>
+                    那么将如此生成的平行移动法则称为
+                    <b>
+                        Levi-Civita联络
+                    </b>
+                    。在Riemann流形上，可以定义各种不同的平行移动法则，它们联系了流形两点之间的切空间。在所有这些平行移动中，我们希望能满足两个条件：
+                </p>
+                <ol>
+                    <li>
+                        度量得到保持
+                    </li>
+                    <li>
+                        无挠
+                    </li>
+                </ol>
+                <p>
+                    这两个条件符合我们的基本几何直观。而Riemann几何中最基本的结论之一就是，决定这样的平行移动的联络是唯一的，它就是Levi-Civita联络。
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

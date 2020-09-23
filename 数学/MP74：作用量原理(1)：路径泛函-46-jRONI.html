@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP74：作用量原理(1)：路径泛函
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-96eb9f9d7b14418941569c5cd633db6e_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/51483375" target="_blank">
+                        MP74：作用量原理(1)：路径泛函
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-15
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    我们系列的短期目标是要进入理论物理和数学研究的某些前沿，量子场论应该是到达前沿的一个基本要求。目前学习的微分几何和经典场论中许多的知识是在为量子场论做铺垫，降低在QFT中基础知识要求的压力。前面集中讲了一些Lie群Lie代数的知识，我们接着讲一些作用量原理方面的知识，为经典场论和量子场论中无处不在的路径积分打基础。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/44078754" class="internal">
+                        MP14：Lagrange力学
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/43612205" class="internal">
+                        MP15：Legendre变换
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/42702657" class="internal">
+                        MP16：Hamilton力学
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47291940" class="internal">
+                        MP63：相对论分析力学
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        路径泛函
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    以一维为例，路径(path)/运动轨迹(trajectory)由
+                    <img src="https://www.zhihu.com/equation?tex=%28t%2C+x%28t%29%29" alt="(t, x(t))" eeimg="1">
+                    的图像产生，考察时间段
+                    <img src="https://www.zhihu.com/equation?tex=%5B0%2C%5Ctau%5D" alt="[0,\tau]" eeimg="1">
+                    中的路径，在这段运动中的平均动能和平均势能为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Coverline+T+%26%3D+%5Cfrac%7B1%7D%7B%5Ctau%7D%5Cint_0%5E%5Ctau+%5Cfrac%7B1%7D%7B2%7Dm%5Cdot+x%5E2+dt+%5C%5C+%5Coverline+V+%26%3D+%5Cfrac%7B1%7D%7B%5Ctau%7D%5Cint_0%5E%5Ctau+V%28x%29+dt+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} \overline T &amp;= \frac{1}{\tau}\int_0^\tau \frac{1}{2}m\dot x^2 dt \\ \overline V &amp;= \frac{1}{\tau}\int_0^\tau V(x) dt \end{align} \tag{1}" eeimg="1">
+                    <br>
+                    两种能量之和体现了机械能的守恒
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+%5Coverline+E+%3D+%5Coverline+T+%2B+%5Coverline+V" alt="E = \overline E = \overline T + \overline V" eeimg="1">
+                    ，这自然是Hamilton量的基础。然而Lagrange量却是两种能量之差，这里实际上反映了当路径产生局部变化时，两种能量的某些变化规律。为了系统地研究路径的变化问题，需要讨论一下变分法——变化的不是数而是路径，以路径为变量的积分很自然地成为一种泛函，任何映射到数域的映射都可以叫做泛函，我们主要考虑从路径函数的集合
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    映射到实数的这类泛函
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    ，一般记为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+F%3A+C+%26%5Cto+%5Cmathbb+R+%5C%5C+f+%26%5Cmapsto+F%5Bf%5D+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} F: C &amp;\to \mathbb R \\ f &amp;\mapsto F[f] \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        函数的变化率和导数
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    过去在分析力学、广义相对论中都了解过相关的背景，现在要学量子场论了，我们索性把它讲透彻。先回顾一下一元函数导数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bd+f%7D%7Bd+x%7D+%3D+%5Clim_%7B%5Cvarepsilon+%5Cto+0%7D%7B%5Cfrac%7Bf%28x%2B+%5Cvarepsilon%29-f%28x%29%7D%7B%5Cvarepsilon%7D%7D+%5Ctag%7B3%7D" alt="\frac{d f}{d x} = \lim_{\varepsilon \to 0}{\frac{f(x+ \varepsilon)-f(x)}{\varepsilon}} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    我们用一种代数的方法来看这个式子。首先不看极限，只考虑某个固定点
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    上产生变化量
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    构成的差分变化率问题：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5CDelta+f%7D%7B%5Cvarepsilon%7D+%3D+%5Cfrac%7Bf%28x%2B+%5Cvarepsilon%29-f%28x%29%7D%7B%5Cvarepsilon%7D+%5Ctag%7B4%7D" alt="\frac{\Delta f}{\varepsilon} = \frac{f(x+ \varepsilon)-f(x)}{\varepsilon} \tag{4}" eeimg="1">
+                    <br>
+                    回忆一下仿射空间上的变换群，
+                    <a href="https://zhuanlan.zhihu.com/p/46346265" class="internal">
+                        MP30：仿射空间、变换群、Lie群
+                    </a>
+                    ，我们可以把自变量和函数值取值的空间视作
+                    <b>
+                        仿射空间
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=x%2C+f%28x%29+%5Cin+%28%5Cmathbb+R%2C+-%29" alt="x, f(x) \in (\mathbb R, -)" eeimg="1">
+                    ，把两者的变化量取值的空间视为这个仿射空间上的
+                    <b>
+                        变换群
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon%2C+%5CDelta+f+%5Cin+%28%5Cmathbb+R%2C+%2B%2C+0%29" alt="\varepsilon, \Delta f \in (\mathbb R, +, 0)" eeimg="1">
+                    。那么(4)不考虑极限时是如下两个映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28%5Cmathbb+R%2C%2B%2C0%29+%26%5Cto+%28%5Cmathbb+R%2C%2B%2C0%29+%5Ctimes+%28%5Cmathbb+R%2C%2B%2C0%29+%5C%5C+%5Cvarepsilon+%26%5Cmapsto+%28%5CDelta+f%2C+%5Cvarepsilon%29%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} (\mathbb R,+,0) &amp;\to (\mathbb R,+,0) \times (\mathbb R,+,0) \\ \varepsilon &amp;\mapsto (\Delta f, \varepsilon)\end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    和
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28%5Cmathbb+R%2C%2B%2C0%29+%5Ctimes+%28%5Cmathbb+R%2C%2B%2C0%29+%26%5Cto+%5Cmathbb+R+%5C%5C+%28%5CDelta+f%2C+%5Cvarepsilon%29+%26%5Cmapsto+%5Cfrac%7B%5CDelta+f%7D%7B%5Cvarepsilon%7D+%3D+%5Cfrac%7Bf%28x%2B+%5Cvarepsilon%29-f%28x%29%7D%7B%5Cvarepsilon%7D+%5Cend%7Balign%7D+%5Ctag%7B6%7D" alt="\begin{align} (\mathbb R,+,0) \times (\mathbb R,+,0) &amp;\to \mathbb R \\ (\Delta f, \varepsilon) &amp;\mapsto \frac{\Delta f}{\varepsilon} = \frac{f(x+ \varepsilon)-f(x)}{\varepsilon} \end{align} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    (5)中
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    的变化造成了函数值和它同时产生的变化
+                    <img src="https://www.zhihu.com/equation?tex=%28%5CDelta+f%2C+%5Cvarepsilon%29" alt="(\Delta f, \varepsilon)" eeimg="1">
+                    ，两者的变化构成一个比率也就是(6)中的差分变化率。注意到(5)是一元函数，(6)是二元函数，两者的合成是一元函数：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+R%5E%5CDelta%3A%28%5Cmathbb+R%2C%2B%2C0%29+%26%5Cto+%5Cmathbb+R+%5C%5C+%5Cvarepsilon+%26%5Cmapsto+R%5E%5CDelta%28%5Cvarepsilon%29+%5C%5C++%26%3D+%5Cfrac%7B%5CDelta+f%28%5Cvarepsilon%29%7D%7B%5Cvarepsilon%7D+%3D+%5Cfrac%7Bf%28x%2B+%5Cvarepsilon%29-f%28x%29%7D%7B%5Cvarepsilon%7D+%5Cend%7Balign%7D+%5Ctag%7B7%7D" alt="\begin{align} R^\Delta:(\mathbb R,+,0) &amp;\to \mathbb R \\ \varepsilon &amp;\mapsto R^\Delta(\varepsilon) \\  &amp;= \frac{\Delta f(\varepsilon)}{\varepsilon} = \frac{f(x+ \varepsilon)-f(x)}{\varepsilon} \end{align} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    我们从小学的导数，无非是将这个一元函数
+                    <b>
+                        通过极限的方式局部线性化
+                    </b>
+                    ，构成一个常数(前面假设
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    点已固定)，也就是通过(3)的过程，让差分变化率的极限不再依赖于
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon" alt="\varepsilon" eeimg="1">
+                    ，使得函数
+                    <img src="https://www.zhihu.com/equation?tex=R%5E%5CDelta%28%5Cvarepsilon%29" alt="R^\Delta(\varepsilon)" eeimg="1">
+                    退化为固定的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Bdf%7D%7Bdx%7D" alt="\frac{df}{dx}" eeimg="1">
+                    。微积分的思想跨度，说白了就是在这里通过极限消去了一个变元而已。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        变分
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    我们在这里讲如此初等的内容，是为了让大家熟悉一种代数化的思维，它立即就可以用到变分法中。令
+                    <img src="https://www.zhihu.com/equation?tex=C" alt="C" eeimg="1">
+                    为我们所考察的路径集合，我们关心的泛函具有(2)中的形式。现在我们将其形式略作改写，强调空间和变换群：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++F%3A%28C%2C-%29+%26%5Cto+%28%5Cmathbb+R%2C-%29+%5C%5C+f+%26%5Cmapsto+F%5Bf%5D+%5Cend%7Balign%7D+%5Ctag%7B8%7D" alt="\begin{align}  F:(C,-) &amp;\to (\mathbb R,-) \\ f &amp;\mapsto F[f] \end{align} \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    前面函数求导的例子中，映射是在仿射空间之间进行的，可以和上式作对比。再考虑空间的变换群，上式中
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+R%2C-%29" alt="(\mathbb R,-)" eeimg="1">
+                    的变换群显然是
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Cmathbb+R%2C%2B%2C0%29" alt="(\mathbb R,+,0)" eeimg="1">
+                    。泛函和函数的不同在于
+                    <img src="https://www.zhihu.com/equation?tex=%28C%2C-%29" alt="(C,-)" eeimg="1">
+                    的变换群，形式上我们仍然可以写为
+                    <img src="https://www.zhihu.com/equation?tex=%28C%2C%2B%2C0%29" alt="(C,+,0)" eeimg="1">
+                    。既然如此，我们可以考虑局部微小的变换/差分
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarepsilon+%5Cin+%28C%2C%2B%2C0%29" alt="\varepsilon \in (C,+,0)" eeimg="1">
+                    ，它的作用类似于(5)：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28C%2C%2B%2C0%29+%26%5Cto+%28%5Cmathbb+R%2C%2B%2C0%29+%5Ctimes+%28C%2C%2B%2C0%29+%5C%5C++%5Cvarepsilon+%26%5Cmapsto+%28%5CDelta+F%2C+%5Cvarepsilon%29%5Cend%7Balign%7D+%5Ctag%7B9%7D" alt="\begin{align} (C,+,0) &amp;\to (\mathbb R,+,0) \times (C,+,0) \\  \varepsilon &amp;\mapsto (\Delta F, \varepsilon)\end{align} \tag{9}" eeimg="1">
+                    <br>
+                    对比(6)构造映射（后面会解释这样的映射不会是必然的）
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%28C%2C%2B%2C0%29+%5Ctimes+%28%5Cmathbb+R%2C%2B%2C0%29+%26%5Cto+%5Cmathbb+R+%5C%5C++%28%5CDelta+F%2C+%5Cvarepsilon%29+%26%5Cmapsto+%5Cfrac%7B%5CDelta+F%7D%7B%5Cvarepsilon%7D+%3D+%5Cfrac%7BF%5Bf+%2B+%5Cvarepsilon%5D-F%28f%29%7D%7B%5Cvarepsilon%7D+%5Cend%7Balign%7D+%5Ctag%7B10%7D" alt="\begin{align}  (C,+,0) \times (\mathbb R,+,0) &amp;\to \mathbb R \\  (\Delta F, \varepsilon) &amp;\mapsto \frac{\Delta F}{\varepsilon} = \frac{F[f + \varepsilon]-F(f)}{\varepsilon} \end{align} \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    对比(7)构造合成映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+R%5E%5CDelta%3A%28C%2C%2B%2C0%29+%26%5Cto+%5Cmathbb+R+%5C%5C+%5Cvarepsilon+%26%5Cmapsto+R%5E%5CDelta%28%5Cvarepsilon%29+%5C%5C++%26%3D+%5Cfrac%7B%5CDelta+F%28%5Cvarepsilon%29%7D%7B%5Cvarepsilon%7D+%3D+%5Cfrac%7BF%5Bf%2B+%5Cvarepsilon%5D-F%28f%29%7D%7B%5Cvarepsilon%7D+%5Cend%7Balign%7D+%5Ctag%7B11%7D" alt="\begin{align} R^\Delta:(C,+,0) &amp;\to \mathbb R \\ \varepsilon &amp;\mapsto R^\Delta(\varepsilon) \\  &amp;= \frac{\Delta F(\varepsilon)}{\varepsilon} = \frac{F[f+ \varepsilon]-F(f)}{\varepsilon} \end{align} \tag{11}" eeimg="1">
+                </p>
+                <p>
+                    现在我们发现了问题，分子的实数是没法除分母的函数的，以上的映射不能保证映射到实数。究其原因，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5CDelta+F%7D%7B%5Cvarepsilon%7D" alt="\frac{\Delta F}{\varepsilon}" eeimg="1">
+                    只是一个形式化的比，它并没有脱离Cartesian积的
+                    <img src="https://www.zhihu.com/equation?tex=%28%5CDelta+F%2C+%5Cvarepsilon%29" alt="(\Delta F, \varepsilon)" eeimg="1">
+                    二元特性，只有在某些情况下它可以构造为实数。可以类比一下多项式的比/比域问题，两个实多项式的比并不能自动对应到一个多项式。实际上在分析学中，大部分的例子不能自动地用一个数来代替变化量之比：
+                </p>
+                <ul>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=f%3A+%5Cmathbb+R%5En+%5Cto+%5Cmathbb+R" alt="f: \mathbb R^n \to \mathbb R" eeimg="1">
+                        的方向导数问题：需要将分母由变化的向量处理为向量的长度；
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=f%3A+%5Cmathbb+R%5En+%5Cto+%5Cmathbb+R%5En" alt="f: \mathbb R^n \to \mathbb R^n" eeimg="1">
+                        问题：需要用Jacobi矩阵描述；
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=f%3A+%5Cmathbb+C+%5Cto+%5Cmathbb+C" alt="f: \mathbb C \to \mathbb C" eeimg="1">
+                        问题：导数的存在需要Cauchy-Riemann方程来约束
+                    </li>
+                </ul>
+                <p>
+                    我们需要学习方向导数的思想，通过某个数来替代分母，构造我们所需的泛函导数。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

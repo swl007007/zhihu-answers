@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP67：典型群(1)：拓扑性质
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-7f7e4d9fb76a9ecb839f2c4bbf574240_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/51199404" target="_blank">
+                        MP67：典型群(1)：拓扑性质
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-12-03
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    这一讲是补充前面没有深入展开的Lie群问题，由于Lie群在规范理论中的重要性，这里特别专门探讨。本讲的内容不直接影响到广义相对论和Riemann几何的学习。我们又要讲我们的老朋友Lie群了。过去它是配角，到规范场中就是主角了。
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46346265" class="internal">
+                        MP30：仿射空间、变换群、Lie群
+                    </a>
+                </p>
+                <p>
+                    过去反复研究的
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    群也是Lie群，在电动力学中讨论的Lorentz群也是Lie群。
+                    <a href="https://zhuanlan.zhihu.com/p/46700351" class="internal">
+                        MP34：张量专题(3)：O(3)的张量、轴向量、Levi-Civita张量
+                    </a>
+                    中还讨论了
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    。我们手头已经有对Lie群足够多的直观认识，可以进一步深入讨论。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        拓扑群
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在拓扑空间
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    上给定群的乘法
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%2A%3A+G+%5Ctimes+G+%26%5Cto+G+%5C%5C+%28g_1%2Cg_2%29+%26%5Cmapsto+g_1+%2A+g_2+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} *: G \times G &amp;\to G \\ (g_1,g_2) &amp;\mapsto g_1 * g_2 \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    及逆运算
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+G+%26%5Cto+G+%5C%5C+g+%26%5Cmapsto+g%5E%7B-1%7D+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} G &amp;\to G \\ g &amp;\mapsto g^{-1} \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    使得这两种映射构成连续映射，那么这种被赋予群结构的拓扑空间称为拓扑群。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5En%28%2B%2C0%29" alt="\mathbb R^n(+,0)" eeimg="1">
+                    就是拓扑群，也是Abel群。域
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    上的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维方阵
+                    <img src="https://www.zhihu.com/equation?tex=K+%5E%7Bn+%5Ctimes+n%7D" alt="K ^{n \times n}" eeimg="1">
+                    描述了
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    维
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    线性空间的线性自同态。为了在其上构造拓扑群，我们要确保逆元的存在唯一性，于是定义一般线性群为
+                    <img src="https://www.zhihu.com/equation?tex=GL%28n%2CL%29+%3D+%5C%7B+g+%5Cin+K%5E%7Bn+%5Ctimes+n%7D%3A+%5C+%5Ctext%7Bdet%7D%28g%29+%5Cneq+0+%5C%7D+%5Ctag%7B3%7D" alt="GL(n,L) = \{ g \in K^{n \times n}: \ \text{det}(g) \neq 0 \} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <img src="https://www.zhihu.com/equation?tex=GL%28n%2C%5Cmathbb+R%29" alt="GL(n,\mathbb R)" eeimg="1">
+                    <b>
+                        的拓扑
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    一般线性群作为线性空间的子空间，继承了Euclide空间的拓扑性质。以实一般线性群为例：
+                    <img src="https://www.zhihu.com/equation?tex=GL%28n%2C%5Cmathbb+R%29+%3D+%5C%7B+A+%5Cin+%5Cmathbb+R%5E%7Bn+%5Ctimes+n%7D+%5C+%7C+%5C+%5Ctext%7Bdet%7D%28A%29+%5Cneq+0+%5C%7D%5Ctag%7B4%7D" alt="GL(n,\mathbb R) = \{ A \in \mathbb R^{n \times n} \ | \ \text{det}(A) \neq 0 \}\tag{4}" eeimg="1">
+                </p>
+                <p>
+                    在线性空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E%7Bn%5E2%7D" alt="\mathbb R^{n^2}" eeimg="1">
+                    中，我们建立一套开集系统。一般线性群的元可以表示为
+                    <img src="https://www.zhihu.com/equation?tex=n%5E2" alt="n^2" eeimg="1">
+                    维的实向量，即
+                    <img src="https://www.zhihu.com/equation?tex=%28a_%7Bij%7D%29+%5Cin+%5Cmathbb+R%5E%7Bn%5E2%7D" alt="(a_{ij}) \in \mathbb R^{n^2}" eeimg="1">
+                    。将行列式视为函数，根据(1)给出的非奇异的定义，以下映射是连续的
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Ctext%7Bdet%7D%3A%5Cmathbb+R%5E%7Bn%5E2%7D+%26%5Cto+%5Cmathbb+R+-+%5C%7B0%5C%7D+%5C%5C+%28a_%7Bij%7D%29+%26%5Cmapsto+%5Ctext%7Bdet%7D%28a_%7Bij%7D%29+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align} \text{det}:\mathbb R^{n^2} &amp;\to \mathbb R - \{0\} \\ (a_{ij}) &amp;\mapsto \text{det}(a_{ij}) \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    且映射的像
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R+-+%5C%7B0%5C%7D" alt="\mathbb R - \{0\}" eeimg="1">
+                    是实数上的开集。像就是实数上挖掉了一点，易于理解。而如何证明
+                    <img src="https://www.zhihu.com/equation?tex=GL%28n%2C%5Cmathbb+R%29" alt="GL(n,\mathbb R)" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E%7Bn%5E2%7D+" alt="\mathbb R^{n^2}" eeimg="1">
+                    中的开集呢？显然在定义域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E%7Bn%5E2%7D+" alt="\mathbb R^{n^2}" eeimg="1">
+                    上
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28%5Ctext%7Bdet%7D%29+" alt="\text{Ker}(\text{det})" eeimg="1">
+                    绝非一个点。根据拓扑的知识，连续映射将开集映射到开集，于是
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdet%7D%5E%7B-1%7D%28%5Cmathbb+R+-+%5C%7B0%5C%7D%29" alt="\text{det}^{-1}(\mathbb R - \{0\})" eeimg="1">
+                    是
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R%5E%7Bn%5E2%7D+" alt="\mathbb R^{n^2}" eeimg="1">
+                    中的开集，也是开子流形。这样我们建立了一般线性群的拓扑流形。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Lie群
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    在拓扑群上加上微分结构，让拓扑群的拓扑空间称为微分流形，那么这样的拓扑群就称为Lie群。显然一般线性群
+                    <img src="https://www.zhihu.com/equation?tex=GL%28n%2CK%29" alt="GL(n,K)" eeimg="1">
+                    是Lie群。各种Lie群的缩写说明如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=GL" alt="GL" eeimg="1">
+                    ：General Linear，一般线性群：具有非零的行列式；
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=SL" alt="SL" eeimg="1">
+                    ：Special Linear，特殊线性群：行列式为
+                    <img src="https://www.zhihu.com/equation?tex=1" alt="1" eeimg="1">
+                    ；
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=O" alt="O" eeimg="1">
+                    ：Orthogonal，正交群：由正交元构成；
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=SO" alt="SO" eeimg="1">
+                    ：Special Orthogonal，特殊正交群；
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=U" alt="U" eeimg="1">
+                    ：Unitary，酉群：由共轭正交元构成；
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=SU" alt="SU" eeimg="1">
+                    ：Special Unitary，特殊酉群
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=Sp" alt="Sp" eeimg="1">
+                    ：Symplectic，辛群
+                </p>
+                <p>
+                    我们对
+                    <img src="https://www.zhihu.com/equation?tex=GL%28n%2CK%29" alt="GL(n,K)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    都比较熟悉了。本讲主要讨论拓扑性质，我们从最简单的一维酉群开始。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        一维酉群
+                        <img src="https://www.zhihu.com/equation?tex=U%281%29" alt="U(1)" eeimg="1">
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面讨论过Maxwell方程就是
+                    <img src="https://www.zhihu.com/equation?tex=U%281%29" alt="U(1)" eeimg="1">
+                    上的Yang-Mills方程。作为一维的酉群，它无非是一个复数而已：
+                    <img src="https://www.zhihu.com/equation?tex=U%281%29+%3D+%5C%7B+e%5E%7Bi%5Ctheta%7D%3A+%5Ctheta+%5Cin+%5Cmathbb+R+%5C%7D+%5Ctag%7B6%7D" alt="U(1) = \{ e^{i\theta}: \theta \in \mathbb R \} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    作为单位复向量，其物理意义也就是一个
+                    <b>
+                        相(phase)
+                    </b>
+                    。它同构于我们熟悉的
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28e%5E%7Bi%5Ctheta%7D%29+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos%5Ctheta+%26+%5Csin%5Ctheta+%5C%5C+-%5Csin%5Ctheta+%26+%5Ccos%5Ctheta+%5Cend%7Bbmatrix%7D+%5Ctag%7B7%7D" alt="\rho(e^{i\theta}) = \begin{bmatrix} \cos\theta &amp; \sin\theta \\ -\sin\theta &amp; \cos\theta \end{bmatrix} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    在调和分析中经常使用的圆环
+                    <img src="https://www.zhihu.com/equation?tex=T%5E1" alt="T^1" eeimg="1">
+                    相当于
+                    <img src="https://www.zhihu.com/equation?tex=U%281%29" alt="U(1)" eeimg="1">
+                    ，单位圆
+                    <img src="https://www.zhihu.com/equation?tex=S%5E1+%3D+%5C%7B%28x%2Cy%29%3A+%5C+x%5E2+%2B+y%5E2+%3D+1%5C%7D" alt="S^1 = \{(x,y): \ x^2 + y^2 = 1\}" eeimg="1">
+                    也相当于
+                    <img src="https://www.zhihu.com/equation?tex=U%281%29" alt="U(1)" eeimg="1">
+                    ，所以它的拓扑特性已经是非常清楚的了。
+                    <img src="https://www.zhihu.com/equation?tex=U%281%29" alt="U(1)" eeimg="1">
+                    的特别之处在于，它是为数不多的Abel群，而在规范理论中，若规范群/对称群是Abel群，那么Yang-Mills方程就是线性的，这也是为什么构建在
+                    <img src="https://www.zhihu.com/equation?tex=U%281%29" alt="U(1)" eeimg="1">
+                    上的电动力学的Maxwell方程可以最早纳入规范理论体系的原因。当考虑更多的相互作用时，譬如强相互作用的
+                    <img src="https://www.zhihu.com/equation?tex=SU%283%29" alt="SU(3)" eeimg="1">
+                    就是非Abel群，各种复杂的问题就变得棘手了。
+                    <b>
+                        电弱(electroweak)
+                    </b>
+                    相互作用的规范群是
+                    <img src="https://www.zhihu.com/equation?tex=SU%282%29+%5Ctimes+U%281%29" alt="SU(2) \times U(1)" eeimg="1">
+                    ，后面可以继续讨论这里出现的
+                    <img src="https://www.zhihu.com/equation?tex=SU%282%29" alt="SU(2)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        三维特殊正交群
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上面
+                    <img src="https://www.zhihu.com/equation?tex=GL%28n%2C%5Cmathbb+R%29" alt="GL(n,\mathbb R)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=T%5E1%3DS%5E1%3DU%281%29" alt="T^1=S^1=U(1)" eeimg="1">
+                    的例子让我们注意到Lie群内所蕴含的拓扑性质。我们过去讨论过道路连通问题，它是基本群的基础概念：
+                    <a href="https://zhuanlan.zhihu.com/p/44083782" class="internal">
+                        MP19：拓扑加油站(1)：道路连通、同伦、基本群
+                    </a>
+                    。现在我们从拓扑流形的视角来研究Lie群的道路连通性。
+                </p>
+                <p>
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    <b>
+                        微分同胚(diffeomorphic)
+                    </b>
+                    于三维实射影空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+RP%5E3" alt="\mathbb RP^3" eeimg="1">
+                    。既然提到射影空间，当然要考虑穿过球心的对径点问题。实际上，
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    所代表的三维旋转，其旋转轴
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    和单位球面的交点就是射影中的对径点。简单地说，单位球面上的任意一点
+                    <img src="https://www.zhihu.com/equation?tex=s%5E%2B+%5Cin+S%5E2" alt="s^+ \in S^2" eeimg="1">
+                    可以确定一条旋转轴
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    ，而穿过圆心的对径点
+                    <img src="https://www.zhihu.com/equation?tex=s%5E-+%5Cin+S%5E2" alt="s^- \in S^2" eeimg="1">
+                    也可以确定同样一个旋转轴
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    ，这两个点上以相反的角度旋转，造成的旋转效果是相同的。熟悉代数的我们立即就可以发现这是一个等价关系，射影空间就是用球面商掉这个等价关系构造出来的。
+                    <br>
+                </p>
+                <p>
+                    决定三维旋转的除了旋转轴
+                    <img src="https://www.zhihu.com/equation?tex=N" alt="N" eeimg="1">
+                    还有旋转角度，我们可以令旋转角在
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpm+%5Cpi" alt="\pm \pi" eeimg="1">
+                    内，既然商掉等价关系的
+                    <img src="https://www.zhihu.com/equation?tex=S%5E3" alt="S^3" eeimg="1">
+                    决定了旋转轴，那么我们可以用径向表达旋转角，这样构成一个实心的球体，球体中的点同时决定了旋转轴(和圆心的连线)和旋转角(点到圆心的距离)，显然在这样的拓扑下
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    是道路连通的。
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    上的闭曲线有两类，一类可以连续收缩成一点，另一类不能，它是双连通的。
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        三维正交群
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    三维正交群
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    相当于三维特殊正交群
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    及其镜像
+                    <img src="https://www.zhihu.com/equation?tex=-SO%283%29" alt="-SO(3)" eeimg="1">
+                    的并：
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29+%3D+SO%283%29+%5Ccup+-SO%283%29%5Ctag%7B8%7D" alt="O(3) = SO(3) \cup -SO(3)\tag{8}" eeimg="1">
+                </p>
+                <p>
+                    这两者都可以构成正交元。三维正交群
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    中任意群元
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+g+%5Cin+O%283%29" alt="\forall g \in O(3)" eeimg="1">
+                    的行列式为
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdet%7D%28g%29%3D+%5Cpm+1" alt="\text{det}(g)= \pm 1" eeimg="1">
+                    ，而矩阵的行列式是矩阵元的连续函数，这就意味着行列式无法连续地改变符号。从拓扑看，立体正交群
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    分成道路不连通的，由
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    及其镜像
+                    <img src="https://www.zhihu.com/equation?tex=-SO%283%29" alt="-SO(3)" eeimg="1">
+                    分别构成一个分支。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    从以上的讨论看出，三维正交群的拓扑性质由三维特殊正交群决定，而三维特殊正交群的拓扑性质并非是那么平凡/简单的。我们接下来会进一步讨论
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=SU%282%29" alt="SU(2)" eeimg="1">
+                    的拓扑上的关系。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

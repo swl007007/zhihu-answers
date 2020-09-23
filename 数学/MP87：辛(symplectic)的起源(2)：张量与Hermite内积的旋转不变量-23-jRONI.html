@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP87：辛(symplectic)的起源(2)：张量与Hermite内积的旋转不变量
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-51829767fe42828ca997e525aeee45ea_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/53829014" target="_blank">
+                        MP87：辛(symplectic)的起源(2)：张量与Hermite内积的旋转不变量
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic3.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-01-01
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    接上讲的符号和约定：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/53815689" class="internal">
+                        MP86：辛(symplectic)的起源(1)：三角函数的线性性与Hermite内积
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    根据上讲讨论，两个平面向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+a%2C%5Ctextbf+b" alt="\textbf a,\textbf b" eeimg="1">
+                    的内积和外积可以合成写为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cbegin%7Bbmatrix%7D+%5Ctextbf%7Ba%7D+%5Ccdot+%5Ctextbf%7Bb%7D%5C%5C+%7C+%5Ctextbf%7Ba%7D+%5Ctimes+%5Ctextbf%7Bb%7D+%7C+%5Cend%7Bbmatrix%7D++%26+%3D+%5Cbegin%7Bbmatrix%7Dab%5Ccos%28%5Calpha-%5Cbeta%29+%5C%5C+ab%5Csin%28%5Calpha-%5Cbeta%29%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D+a_1b_1+%2B+a_2b_2+%5C%5C+-a_1b_2+%2B+a_2b_1+%5Cend%7Bbmatrix%7D++%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} \begin{bmatrix} \textbf{a} \cdot \textbf{b}\\ | \textbf{a} \times \textbf{b} | \end{bmatrix}  &amp; = \begin{bmatrix}ab\cos(\alpha-\beta) \\ ab\sin(\alpha-\beta)\end{bmatrix} = \begin{bmatrix} a_1b_1 + a_2b_2 \\ -a_1b_2 + a_2b_1 \end{bmatrix}  \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    这里出现了由
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    个向量的分量交替相乘产生的
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -齐次项
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Ba_ib_j%5C%7D" alt="\{a_ib_j\}" eeimg="1">
+                    。将两向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf+a%2C%5Ctextbf+b" alt="\textbf a,\textbf b" eeimg="1">
+                    所能产生的所有
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -齐次项用一个向量表示：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=v_%7Bab%7D+%3D+v%28%5Ctextbf%7Ba%7D%2C+%5Ctextbf%7Bb%7D%29+%3D+ab%5Cbegin%7Bbmatrix%7D+%5Ccos%5Calpha%5Ccos%5Cbeta+%5C%5C+%5Ccos%5Calpha%5Csin%5Cbeta+%5C%5C+%5Csin%5Calpha%5Ccos%5Cbeta+%5C%5C+%5Csin%5Calpha%5Csin%5Cbeta+%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D+a_1b_1+%5C%5C+a_1b_2+%5C%5C+a_2b_1+%5C%5C+a_2b_2+%5Cend%7Bbmatrix%7D+%5Ctag%7B2%7D" alt="v_{ab} = v(\textbf{a}, \textbf{b}) = ab\begin{bmatrix} \cos\alpha\cos\beta \\ \cos\alpha\sin\beta \\ \sin\alpha\cos\beta \\ \sin\alpha\sin\beta \end{bmatrix} = \begin{bmatrix} a_1b_1 \\ a_1b_2 \\ a_2b_1 \\ a_2b_2 \end{bmatrix} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    称为
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -齐次向量。这样可以通过对
+                    <img src="https://www.zhihu.com/equation?tex=v_%7Bab%7D" alt="v_{ab}" eeimg="1">
+                    中的分量加加减减来构造内积和外积，它蕴含了形成内积和外积的所有信息。有趣的是，内积和外积都只与夹角
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi+%3D+%5Calpha+-+%5Cbeta" alt="\varphi = \alpha - \beta" eeimg="1">
+                    有关，和绝对的角度
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha%2C+%5Cbeta" alt="\alpha, \beta" eeimg="1">
+                    没有关系。进一步我们还注意到内积和外积对于两向量都是双线性的，这蕴含着某种可能的统一，需要把内积和外积放在一起考虑。前面通过Hermite内积完成了某种形式的统一，下面我们用张量对其进行统一，详细推导参考
+                    <a href="https://zhuanlan.zhihu.com/p/46687123" class="internal">
+                        MP32：张量专题(1)：SO(2)和平面向量的张量
+                    </a>
+                    。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        张量积与旋转不变量
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    前面是在平面
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    的自然基中考虑了夹角
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi+%3D+%5Calpha+-+%5Cbeta" alt="\varphi = \alpha - \beta" eeimg="1">
+                    。进一步若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E2" alt="\mathbb{R}^2" eeimg="1">
+                    有两个正交归一基
+                    <img src="https://www.zhihu.com/equation?tex=E+%3D+%5Bi+%7C+j%5D%2C+%5Ctilde%7BE%7D+%3D+%5B%5Ctilde%7Bi%7D%7C%5Ctilde%7Bj%7D%5D" alt="E = [i | j], \tilde{E} = [\tilde{i}|\tilde{j}]" eeimg="1">
+                    ，通过平面旋转变换
+                    <img src="https://www.zhihu.com/equation?tex=R_%5Ctheta+%5Cin+SO%282%29" alt="R_\theta \in SO(2)" eeimg="1">
+                    有如下基变换规律：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7BE%7D+%3D+R_%5Ctheta+E+%3D+%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+E+%5Ctag%7B3%7D" alt="\tilde{E} = R_\theta E = \begin{bmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{bmatrix} E \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    那么向量的坐标会发生逆变：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Ctextbf%7Ba%7D%7D+%3D+R_%5Ctheta%5E%7B-1%7D+%5Ctextbf%7Ba%7D%2C+%5C+%5Ctilde%7B%5Ctextbf%7Bb%7D%7D+%3D+R_%5Ctheta%5E%7B-1%7D+%5Ctextbf%7Bb%7D+%5C%5C+%5Ctag%7B4%7D" alt="\tilde{\textbf{a}} = R_\theta^{-1} \textbf{a}, \ \tilde{\textbf{b}} = R_\theta^{-1} \textbf{b} \\ \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    展开为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5Cbegin%7Bbmatrix%7D+%5Ctilde%7Ba%7D_1+%5C%5C+%5Ctilde%7Ba%7D_2+%5Cend%7Bbmatrix%7D+%26+%3D+R_%5Ctheta%5E%7B-1%7D+%5Cbegin%7Bbmatrix%7D+a_1+%5C%5C+a_2+%5Cend%7Bbmatrix%7D+%3D++%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+%5Csin+%5Ctheta+%5C%5C+-%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+a_1+%5C%5C+a_2+%5Cend%7Bbmatrix%7D+%5C%5C+%5Cbegin%7Bbmatrix%7D+%5Ctilde%7Bb%7D_1+%5C%5C+%5Ctilde%7Bb%7D_2+%5Cend%7Bbmatrix%7D+%26%3D+R_%5Ctheta%5E%7B-1%7D+%5Cbegin%7Bbmatrix%7D+b_1+%5C%5C+b_2+%5Cend%7Bbmatrix%7D+%3D++%5Cbegin%7Bbmatrix%7D+%5Ccos+%5Ctheta+%26+%5Csin+%5Ctheta+%5C%5C+-%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Cend%7Bbmatrix%7D+%5Cbegin%7Bbmatrix%7D+b_1+%5C%5C+b_2+%5Cend%7Bbmatrix%7D+%5Cend%7Balign%7D+%5Ctag%7B5%7D" alt="\begin{align}  \begin{bmatrix} \tilde{a}_1 \\ \tilde{a}_2 \end{bmatrix} &amp; = R_\theta^{-1} \begin{bmatrix} a_1 \\ a_2 \end{bmatrix} =  \begin{bmatrix} \cos \theta &amp; \sin \theta \\ -\sin \theta &amp; \cos \theta \end{bmatrix} \begin{bmatrix} a_1 \\ a_2 \end{bmatrix} \\ \begin{bmatrix} \tilde{b}_1 \\ \tilde{b}_2 \end{bmatrix} &amp;= R_\theta^{-1} \begin{bmatrix} b_1 \\ b_2 \end{bmatrix} =  \begin{bmatrix} \cos \theta &amp; \sin \theta \\ -\sin \theta &amp; \cos \theta \end{bmatrix} \begin{bmatrix} b_1 \\ b_2 \end{bmatrix} \end{align} \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    根据(4)的逆变关系，考虑
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -齐次向量
+                    <img src="https://www.zhihu.com/equation?tex=v_%7Bab%7D+%5Cmapsto+%5Ctilde%7Bv%7D_%7Bab%7D" alt="v_{ab} \mapsto \tilde{v}_{ab}" eeimg="1">
+                    是如何随基的变换而变换的。直接展开有如下关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cbegin%7Bbmatrix%7D+%5Ctilde%7Ba%7D_1%5Ctilde%7Bb%7D_1+%5C%5C+%5Ctilde%7Ba%7D_1%5Ctilde%7Bb%7D_2+%5C%5C+%5Ctilde%7Ba%7D_2%5Ctilde%7Bb%7D_1+%5C%5C+%5Ctilde%7Ba%7D_2%5Ctilde%7Bb%7D_2+%5Cend%7Bbmatrix%7D+%3D+%5Cbegin%7Bbmatrix%7D++%5Ccos+%5Ctheta%5Ccos+%5Ctheta%26+%5Ccos+%5Ctheta%5Csin+%5Ctheta+%26+%5Csin+%5Ctheta%5Ccos+%5Ctheta+%26+%5Csin+%5Ctheta+%5Csin+%5Ctheta+%5C%5C++-%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%5C%5C++-%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%5C%5C+%5Csin+%5Ctheta+%5Csin+%5Ctheta+%26+-%5Csin+%5Ctheta+%5Ccos+%5Ctheta+%26+-%5Ccos+%5Ctheta+%5Csin+%5Ctheta+%26+%5Ccos+%5Ctheta+%5Ccos+%5Ctheta+%5C%5C+%5Cend%7Bbmatrix%7D++%5Cbegin%7Bbmatrix%7D+a_1b_1+%5C%5C+a_1b_2+%5C%5C+a_2b_1+%5C%5C+a_2b_2+%5Cend%7Bbmatrix%7D+%5Cend%7Balign%7D+%5Ctag%7B6%7D" alt="\begin{align} \begin{bmatrix} \tilde{a}_1\tilde{b}_1 \\ \tilde{a}_1\tilde{b}_2 \\ \tilde{a}_2\tilde{b}_1 \\ \tilde{a}_2\tilde{b}_2 \end{bmatrix} = \begin{bmatrix}  \cos \theta\cos \theta&amp; \cos \theta\sin \theta &amp; \sin \theta\cos \theta &amp; \sin \theta \sin \theta \\  -\cos \theta \sin \theta &amp; \cos \theta \cos \theta &amp; -\sin \theta \sin \theta &amp; \sin \theta \cos \theta \\  -\sin \theta \cos \theta &amp; -\sin \theta \sin \theta &amp; \cos \theta \cos \theta &amp; \cos \theta \sin \theta \\ \sin \theta \sin \theta &amp; -\sin \theta \cos \theta &amp; -\cos \theta \sin \theta &amp; \cos \theta \cos \theta \\ \end{bmatrix}  \begin{bmatrix} a_1b_1 \\ a_1b_2 \\ a_2b_1 \\ a_2b_2 \end{bmatrix} \end{align} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    中间的这个
+                    <img src="https://www.zhihu.com/equation?tex=%284+%5Ctimes+4%29" alt="(4 \times 4)" eeimg="1">
+                    变换矩阵表示了张量积
+                    <img src="https://www.zhihu.com/equation?tex=+R_%5Ctheta%5E%7B-1%7D+%5Cotimes+R_%5Ctheta%5E%7B-1%7D" alt="R_\theta^{-1} \otimes R_\theta^{-1}" eeimg="1">
+                    。注意到
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    -齐次向量也有类似的构成，可以形式化记
+                    <img src="https://www.zhihu.com/equation?tex=v_%7Bab%7D+%3D+%5Ctextbf+a+%5Cotimes+%5Ctextbf+b" alt="v_{ab} = \textbf a \otimes \textbf b" eeimg="1">
+                    ，这样得到基的变换下齐次向量的变换关系，即构成以下映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+R_%5Ctheta%5E%7B-1%7D+%5Cotimes+R_%5Ctheta%5E%7B-1%7D%EF%BC%9A+%5Cmathbb+R%5E2+%5Cotimes+%5Cmathbb+R%5E2+%26%5Cto+%5Cmathbb+R%5E2+%5Cotimes+%5Cmathbb+R%5E2+%5C%5C+v_%7Bab%7D+%26%5Cmapsto+%5Ctilde%7Bv%7D_%7Bab%7D+%5C%5C+%5Ctextbf%7Ba%7D+%5Cotimes+%5Ctextbf%7Bb%7D+%26+%5Cmapsto+%5Ctilde%7B%5Ctextbf%7Ba%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bb%7D%7D+%5C%5C+%26+%3D+%28R_%5Ctheta%5E%7B-1%7D+%5Cotimes+R_%5Ctheta%5E%7B-1%7D%29%28%5Ctextbf%7Ba%7D+%5Cotimes+%5Ctextbf%7Bb%7D%29+%5Cend%7Balign%7D+%5Ctag%7B7%7D" alt="\begin{align} R_\theta^{-1} \otimes R_\theta^{-1}： \mathbb R^2 \otimes \mathbb R^2 &amp;\to \mathbb R^2 \otimes \mathbb R^2 \\ v_{ab} &amp;\mapsto \tilde{v}_{ab} \\ \textbf{a} \otimes \textbf{b} &amp; \mapsto \tilde{\textbf{a}} \otimes \tilde{\textbf{b}} \\ &amp; = (R_\theta^{-1} \otimes R_\theta^{-1})(\textbf{a} \otimes \textbf{b}) \end{align} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    映射
+                    <img src="https://www.zhihu.com/equation?tex=R_%5Ctheta%5E%7B-1%7D+%5Cotimes+R_%5Ctheta%5E%7B-1%7D" alt="R_\theta^{-1} \otimes R_\theta^{-1}" eeimg="1">
+                    称为平面旋转群
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=2" alt="2" eeimg="1">
+                    阶
+                    <b>
+                        逆变张量(tensor)
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Hermite内积的旋转不变量
+                    </b>
+                </h2>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    上节讲到Hermite内积
+                    <img src="https://www.zhihu.com/equation?tex=%5Clangle+%5Ccdot%2C%5Ccdot+%5Crangle" alt="\langle \cdot,\cdot \rangle" eeimg="1">
+                    视为双线性映射：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathbb%7BC%7D+%5Ctimes+%5Cmathbb%7BC%7D+%26+%5Cto+%5Cmathbb%7BC%7D+%5C%5C+%28%5Ctextbf%7Ba%7D%2C%5Ctextbf%7Bb%7D%29+%26%5Cmapsto%5Clangle+%5Ctextbf%7Ba%7D%2C%5Ctextbf%7Bb%7D+%5Crangle+%3D%5Ctextbf%7Ba%7D+%5Ccdot+%5Coverline%7B%5Ctextbf%7Bb%7D%7D+%5C%5C+%26%3D+ab+%5Ctext+e%5E%7Bi%28%5Calpha-%5Cbeta%29%7D+%3D+%28a%5Ctext+e%5E%7Bi%5Calpha%7D%29%28b%5Ctext+e%5E%7B-i%5Cbeta%7D%29+%3D+ab%5Ctext+e%5E%7Bi%5Cvarphi%7D++%5C%5C+%26%3Dab%28%5Ccos%5Calpha%2Bi%5Csin%5Calpha%29+%5Ccdot+%28%5Ccos%5Cbeta-i%5Csin%5Cbeta%29+%5C%5C+%26%3Dab%28%5Ccos%5Calpha%5Ccos%5Cbeta+%2B+%5Csin%5Calpha%5Csin%5Cbeta%29+%5C%5C+%26%2B+iab%28-%5Ccos%5Calpha%5Csin%5Cbeta%2B%5Csin%5Calpha%5Ccos%5Cbeta%29+%5C%5C+%26%3D+%28%5Ctextbf%7Ba%7D+%5Ccdot+%5Ctextbf%7Bb%7D%29+%2B+i%28%5Ctextbf%7Ba%7D+%5Ctimes+%5Ctextbf%7Bb%7D%29+%5C%5C+%26%3D+%28a_1b_1%2Ba_2b_2%29%2Bi%28-a_1b_2%2Ba_2b_1%29+%5Cend%7Balign%7D+%5Ctag%7B8%7D" alt="\begin{align} \mathbb{C} \times \mathbb{C} &amp; \to \mathbb{C} \\ (\textbf{a},\textbf{b}) &amp;\mapsto\langle \textbf{a},\textbf{b} \rangle =\textbf{a} \cdot \overline{\textbf{b}} \\ &amp;= ab \text e^{i(\alpha-\beta)} = (a\text e^{i\alpha})(b\text e^{-i\beta}) = ab\text e^{i\varphi}  \\ &amp;=ab(\cos\alpha+i\sin\alpha) \cdot (\cos\beta-i\sin\beta) \\ &amp;=ab(\cos\alpha\cos\beta + \sin\alpha\sin\beta) \\ &amp;+ iab(-\cos\alpha\sin\beta+\sin\alpha\cos\beta) \\ &amp;= (\textbf{a} \cdot \textbf{b}) + i(\textbf{a} \times \textbf{b}) \\ &amp;= (a_1b_1+a_2b_2)+i(-a_1b_2+a_2b_1) \end{align} \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    注意到正是张量积
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Ba%7D+%5Cotimes+%5Ctextbf%7Bb%7D" alt="\textbf{a} \otimes \textbf{b}" eeimg="1">
+                    中的齐次项决定了Hermite内积中实内积和实外积的组成成分，所以Hermite内积可以视为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+H%3A+%5Cmathbb+R%5E2+%5Cotimes+%5Cmathbb+R%5E2+%26%5Cto+%5Cmathbb+C+%5C%5C+%5Ctextbf+a+%5Cotimes+%5Ctextbf+b+%26%5Cmapsto+H%28%5Ctextbf+a+%5Cotimes+%5Ctextbf+b%29+%5Cend%7Balign%7D+%5Ctag%7B9%7D" alt="\begin{align} H: \mathbb R^2 \otimes \mathbb R^2 &amp;\to \mathbb C \\ \textbf a \otimes \textbf b &amp;\mapsto H(\textbf a \otimes \textbf b) \end{align} \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    当基按照(3)变换时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Ba%7D+%5Cotimes+%5Ctextbf%7Bb%7D+%5Cmapsto+%5Ctilde%7B%5Ctextbf%7Ba%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bb%7D%7D" alt="\textbf{a} \otimes \textbf{b} \mapsto \tilde{\textbf{a}} \otimes \tilde{\textbf{b}}" eeimg="1">
+                    按照(7)中的张量
+                    <img src="https://www.zhihu.com/equation?tex=+R_%5Ctheta%5E%7B-1%7D+%5Cotimes+R_%5Ctheta%5E%7B-1%7D" alt="R_\theta^{-1} \otimes R_\theta^{-1}" eeimg="1">
+                    变换，满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+H%28%5Ctilde%7B%5Ctextbf%7Ba%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bb%7D%7D%29+%26%3D+H%5Cbig%28%28R_%5Ctheta%5E%7B-1%7D+%5Cotimes+R_%5Ctheta%5E%7B-1%7D%29%28%5Ctextbf%7Ba%7D+%5Cotimes+%5Ctextbf%7Bb%7D%29+%5Cbig%29+%5C%5C+%26%3DH%28%5Ctextbf+a+%5Cotimes+%5Ctextbf+b%29+%5Cend%7Balign%7D+%5Ctag%7B10%7D" alt="\begin{align} H(\tilde{\textbf{a}} \otimes \tilde{\textbf{b}}) &amp;= H\big((R_\theta^{-1} \otimes R_\theta^{-1})(\textbf{a} \otimes \textbf{b}) \big) \\ &amp;=H(\textbf a \otimes \textbf b) \end{align} \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    Hermite内积、实内积、实外积都只和夹角
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi+%3D+%5Calpha+-+%5Cbeta" alt="\varphi = \alpha - \beta" eeimg="1">
+                    有关，而和两个向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Ba%7D%2C+%5Ctextbf%7Bb%7D" alt="\textbf{a}, \textbf{b}" eeimg="1">
+                    的绝对角度无关。经过基变换和相应的二阶逆变张量变换
+                    <img src="https://www.zhihu.com/equation?tex=R_%5Ctheta%5E%7B-1%7D+%5Cotimes+R_%5Ctheta%5E%7B-1%7D" alt="R_\theta^{-1} \otimes R_\theta^{-1}" eeimg="1">
+                    后，新的张量积
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Ctextbf%7Ba%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bb%7D%7D" alt="\tilde{\textbf{a}} \otimes \tilde{\textbf{b}}" eeimg="1">
+                    仍然只和夹角
+                    <img src="https://www.zhihu.com/equation?tex=%5Cvarphi+%3D+%5Calpha+-+%5Cbeta" alt="\varphi = \alpha - \beta" eeimg="1">
+                    有关，而和两个向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Ba%7D%2C+%5Ctextbf%7Bb%7D" alt="\textbf{a}, \textbf{b}" eeimg="1">
+                    的绝对角度无关。实际上这里反映出了
+                    <img src="https://www.zhihu.com/equation?tex=R_%5Ctheta+%5Cin+SO%282%29" alt="R_\theta \in SO(2)" eeimg="1">
+                    对两个向量夹角的保持——平面旋转作用于基，使得向量
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Ba%7D%2C+%5Ctextbf%7Bb%7D" alt="\textbf{a}, \textbf{b}" eeimg="1">
+                    在基下的绝对角度产生了变换，然而平面旋转是正交变换，不改变两向量的夹角，所以它们的相对角度不变。
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

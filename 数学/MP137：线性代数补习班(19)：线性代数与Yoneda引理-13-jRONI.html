@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP137：线性代数补习班(19)：线性代数与Yoneda引理
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic1.zhimg.com/v2-8d0af90c192a860710877aed50d46638_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/47021404" target="_blank">
+                        MP137：线性代数补习班(19)：线性代数与Yoneda引理
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2020-03-11
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    广告：高中生想学范畴论戳这里
+                    <a href="https://link.zhihu.com/?target=http%3A//jroni.com" class="wrap external" target="_blank" rel="nofollow noreferrer">
+                        网上私教 学霸养成
+                    </a>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    记
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    为实域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+R" alt="\mathbb R" eeimg="1">
+                    或复域
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C" alt="\mathbb C" eeimg="1">
+                    。用
+                    <img src="https://www.zhihu.com/equation?tex=K_m%5En" alt="K_m^n" eeimg="1">
+                    表示
+                    <img src="https://www.zhihu.com/equation?tex=m" alt="m" eeimg="1">
+                    行
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    列
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    矩阵构成的集合，它是
+                    <img src="https://www.zhihu.com/equation?tex=K" alt="K" eeimg="1">
+                    线性空间范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BVct%7D_K" alt="\textbf{Vct}_K" eeimg="1">
+                    中的对象。这种写法的方便之处在于矩阵乘法的维度约束可以通过相邻的上下标对比而判断：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=K_a%5Eb+%5Ccirc+K_b%5Ec+%5Ccirc+K_c%5Ed++%5C%5C" alt="K_a^b \circ K_b^c \circ K_c^d  \\" eeimg="1">
+                    把方矩阵集合记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m+%3D+K_n%5En+%5Cin+%5Ctextbf%7BGrp%7D" alt="\mathfrak m = K_n^n \in \textbf{Grp}" eeimg="1">
+                    ，这种记法强调它是一个非交换的矩阵环，从而可以讨论
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m" alt="\mathfrak m" eeimg="1">
+                    -模，分记
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m%5Ctextbf%7B-Mod%7D%2C%5Ctextbf%7BMod-%7D%5Cmathfrak+n%2C%5Cmathfrak+m%5Ctextbf%7B-Mod-%7D%5Cmathfrak+n" alt="\mathfrak m\textbf{-Mod},\textbf{Mod-}\mathfrak n,\mathfrak m\textbf{-Mod-}\mathfrak n" eeimg="1">
+                    为左模、右模、双模范畴。
+                </p>
+                <hr>
+                <h2>
+                    Hom函子
+                </h2>
+                <p>
+                    有限维线性空间的线性映射有矩阵表示，矩阵表示随着基的变换有
+                    <b>
+                        共变(covariant)
+                    </b>
+                    或
+                    <b>
+                        反变(contravariant)
+                    </b>
+                    的特性。以共变为例，对应的是行向量表示的线性空间和矩阵右乘表示的线性映射。后面我们一直固定一个对象
+                    <img src="https://www.zhihu.com/equation?tex=X%3DK_m%5En" alt="X=K_m^n" eeimg="1">
+                    ，讨论在这个对象上衍生出的现象：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%28X%3DK_m%5En%29+%26%5Cstackrel%7Ba%5Cin+K_n%5Ep%7D%7B%5Clongrightarrow%7D+K_m%5Ep+%5Cnonumber+%5C%5C+x+%26%5Cmapsto+x+%5Ccirc+a+%5Cnonumber+%5C%5C+%26%3D+%5Cbegin%7Bbmatrix%7D+x_1%5E1+%26+%5Ccdots+%26+x_1%5En+%5C%5C+%5Cvdots+%26+%5Cddots+%26+%5Cvdots+%5C%5C+x_m%5E1+%26+%5Ccdots+%26+x_m%5En+%5C%5C+%5Cend%7Bbmatrix%7D+%5Ccirc+%5Cbegin%7Bbmatrix%7D+a_1%5E1+%26+%5Ccdots+%26+a_1%5Ep+%5C%5C+%5Cvdots+%26+%5Cddots+%26+%5Cvdots+%5C%5C+a_n%5E1+%26+%5Ccdots+%26+a_n%5Ep+%5C%5C+%5Cend%7Bbmatrix%7D+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} (X=K_m^n) &amp;\stackrel{a\in K_n^p}{\longrightarrow} K_m^p \nonumber \\ x &amp;\mapsto x \circ a \nonumber \\ &amp;= \begin{bmatrix} x_1^1 &amp; \cdots &amp; x_1^n \\ \vdots &amp; \ddots &amp; \vdots \\ x_m^1 &amp; \cdots &amp; x_m^n \\ \end{bmatrix} \circ \begin{bmatrix} a_1^1 &amp; \cdots &amp; a_1^p \\ \vdots &amp; \ddots &amp; \vdots \\ a_n^1 &amp; \cdots &amp; a_n^p \\ \end{bmatrix} \nonumber \\ \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    从范畴的角度看，上式是范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m%5Ctextbf%7B-Mod%7D" alt="\mathfrak m\textbf{-Mod}" eeimg="1">
+                    中的一个用矩阵表示的态射，这样的态射的全体为态射集
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D%28X%2CK_m%5Ep%29+%3D+%5Ctext%7BHom%7D%28K_m%5En%2CK_m%5Ep%29" alt="\text{Hom}(X,K_m^p) = \text{Hom}(K_m^n,K_m^p)" eeimg="1">
+                    。用共变hom函子表示：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h%5EX%3A%5Cmathfrak+m%5Ctextbf%7B-Mod%7D+%26%5Cto+%5Ctextbf%7BSet%7D+%5Cnonumber+%5C%5C++K_m%5Ep+%26%5Cmapsto+h%5EX%28K_m%5Ep%29+%3D%5Ctext%7BHom%7D%28X%2CK_m%5Ep%29+%5Cnonumber+%5C%5C++%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} h^X:\mathfrak m\textbf{-Mod} &amp;\to \textbf{Set} \nonumber \\  K_m^p &amp;\mapsto h^X(K_m^p) =\text{Hom}(X,K_m^p) \nonumber \\  \end{align} \\" eeimg="1">
+                    从(1)易于理解在左
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m" alt="\mathfrak m" eeimg="1">
+                    -模范畴中矩阵空间和态射集的同构：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=a%5Cin+K_n%5Ep+%5Csimeq+h%5EX%28K_m%5Ep%29+%3D%5Ctext%7BHom%7D%28X%2CK_m%5Ep%29+%5C%5C" alt="a\in K_n^p \simeq h^X(K_m^p) =\text{Hom}(X,K_m^p) \\" eeimg="1">
+                    以及范畴中任意有限维态射相当于如下形式的矩阵：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=f+%5Cin+%5Ctext%7BHom%7D%28K_m%5Ep%2CK_m%5Eq%29+%5Csimeq+K_p%5Eq+%5C%5C" alt="f \in \text{Hom}(K_m^p,K_m^q) \simeq K_p^q \\" eeimg="1">
+                    基于
+                    <img src="https://www.zhihu.com/equation?tex=K_n%5Ep+%5Csimeq+h%5EX%28K_m%5Ep%29" alt="K_n^p \simeq h^X(K_m^p)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=K_n%5Eq+%5Csimeq+h%5EX%28K_m%5Eq%29" alt="K_n^q \simeq h^X(K_m^q)" eeimg="1">
+                    ，通过矩阵乘法就可以构造复合映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h%5EX%28K_m%5Ep%29+%26%5Cto+h%5EX%28K_m%5Eq%29+%5Cnonumber+%5C%5C+a+%26%5Cmapsto+a+%5Ccirc+f+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} h^X(K_m^p) &amp;\to h^X(K_m^q) \nonumber \\ a &amp;\mapsto a \circ f \nonumber \\ \end{align} \\" eeimg="1">
+                    即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28h%5EX%28f%29%29%28a%29+%3D+a+%5Ccirc+f+%5Cin+K_n%5Eq+%5Csimeq+h%5EX%28K_m%5Eq%29+%5C%5C" alt="(h^X(f))(a) = a \circ f \in K_n^q \simeq h^X(K_m^q) \\" eeimg="1">
+                </p>
+                <p>
+                    上述讨论整理为下图：
+                </p>
+                <figure>
+                    <img src="https://picb.zhimg.com/v2-9b42852a764dbf2a7dff9d8fa0978338_r.jpg">
+                </figure>
+                <p>
+                    这实际上是抽象范畴中的共变hom函子的作用在线性空间的具体体现：即任意左
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+m" alt="\mathfrak m" eeimg="1">
+                    -模诱导出左
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathfrak+n" alt="\mathfrak n" eeimg="1">
+                    -模范如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Cmathfrak+m%5Ctextbf%7B-Mod%7D+%26%5Cto+%5Cmathfrak+n%5Ctextbf%7B-Mod%7D+%5Cnonumber+%5C%5C+K_m%5Ep+%26%5Cmapsto+K_n%5Ep+%5Csimeq+h%5EX%28K_m%5Ep%29+%3D+%5Ctext%7BHom%7D%5B%5Cmathfrak+m-%5D%28X%3DK_m%5En%2CK_m%5Ep%29+%5Cnonumber+%5C%5C+K_m%5Eq+%26%5Cmapsto+K_n%5Eq+%5Csimeq+h%5EX%28K_m%5Eq%29+%3D+%5Ctext%7BHom%7D%5B%5Cmathfrak+m-%5D%28X%3DK_m%5En%2CK_m%5Eq%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} \mathfrak m\textbf{-Mod} &amp;\to \mathfrak n\textbf{-Mod} \nonumber \\ K_m^p &amp;\mapsto K_n^p \simeq h^X(K_m^p) = \text{Hom}[\mathfrak m-](X=K_m^n,K_m^p) \nonumber \\ K_m^q &amp;\mapsto K_n^q \simeq h^X(K_m^q) = \text{Hom}[\mathfrak m-](X=K_m^n,K_m^q) \nonumber \\ \end{align} \\" eeimg="1">
+                    共变hom函子
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX%3A+%5Cmathfrak+m%5Ctextbf%7B-Mod%7D+%5Cto+%5Ctextbf%7BSet%7D" alt="h^X: \mathfrak m\textbf{-Mod} \to \textbf{Set}" eeimg="1">
+                    的作用相当于如下函子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h%5EX%3A%5Cmathfrak+m%5Ctextbf%7B-Mod%7D+%26%5Cto+%5Cmathfrak+n%5Ctextbf%7B-Mod%7D+%5Cnonumber+%5C%5C+K_m%5Ep+%26%5Cmapsto+h%5EX%28K_m%5Ep%29+%5Cnonumber+%5C%5C+K_m%5Eq+%26%5Cmapsto+h%5EX%28K_m%5Eq%29+%5Cnonumber+%5C%5C+h%5EX%3A+%5Ctext%7BHom%7D%28K_m%5Ep%2CK_m%5Eq%29+%26%5Cto+%5Ctext%7BHom%7D%28h%5EX%28K_m%5Ep%29%2Ch%5EX%28K_m%5Eq%29%29+%5Cnonumber+%5C%5C+f+%26%5Cmapsto+h%5EX%28f%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B2%7D" alt="\begin{align} h^X:\mathfrak m\textbf{-Mod} &amp;\to \mathfrak n\textbf{-Mod} \nonumber \\ K_m^p &amp;\mapsto h^X(K_m^p) \nonumber \\ K_m^q &amp;\mapsto h^X(K_m^q) \nonumber \\ h^X: \text{Hom}(K_m^p,K_m^q) &amp;\to \text{Hom}(h^X(K_m^p),h^X(K_m^q)) \nonumber \\ f &amp;\mapsto h^X(f) \nonumber \\ \end{align} \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    可表函子
+                </h2>
+                <p>
+                    函子
+                    <img src="https://www.zhihu.com/equation?tex=F%2CG+%3A+%5Cmathcal+C+%5Cto+%5Cmathcal+D" alt="F,G : \mathcal C \to \mathcal D" eeimg="1">
+                    把任意对象
+                    <img src="https://www.zhihu.com/equation?tex=X%5Cin%5Cmathcal+C" alt="X\in\mathcal C" eeimg="1">
+                    映射到不同的
+                    <img src="https://www.zhihu.com/equation?tex=F%28X%29+%5Cneq+G%28X%29+%5Cin+%5Cmathcal+D" alt="F(X) \neq G(X) \in \mathcal D" eeimg="1">
+                    ，并且，范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    中的任意态射
+                    <img src="https://www.zhihu.com/equation?tex=f%5Cin%5Ctext%7BHom%7D%28Y%2CZ%29" alt="f\in\text{Hom}(Y,Z)" eeimg="1">
+                    在函子的作用下也会映射到不同的
+                    <img src="https://www.zhihu.com/equation?tex=F%28f%29+%5Cin+%5Ctext%7BHom%7D%28F%28Y%29%2CF%28Z%29%29" alt="F(f) \in \text{Hom}(F(Y),F(Z))" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=G%28f%29+%5Cin+%5Ctext%7BHom%7D%28G%28Y%29%2CG%28Z%29%29" alt="G(f) \in \text{Hom}(G(Y),G(Z))" eeimg="1">
+                    。现在来建立它们之间的联系。先考虑范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+D" alt="\mathcal D" eeimg="1">
+                    中
+                    <img src="https://www.zhihu.com/equation?tex=F%28X%29+%5Cto+G%28X%29" alt="F(X) \to G(X)" eeimg="1">
+                    的态射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5CPhi%3A+%5Cmathcal+C+%26%5Cto++%5Ctext%7BHom%7D%28F%28X%29%2CG%28X%29%29+%5Cnonumber+%5C%5C++X+%26%5Cmapsto+%5CPhi_X+%5Cnonumber+%5C%5C+++%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align}  \Phi: \mathcal C &amp;\to  \text{Hom}(F(X),G(X)) \nonumber \\  X &amp;\mapsto \Phi_X \nonumber \\   \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    它若在范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+D" alt="\mathcal D" eeimg="1">
+                    中下图交换
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+F%28Y%29+%40%3E+%5CPhi_Y+%3E%3E+G%28Y%29+%5C%5C+%40V+F%28f%29+VV+%40VV+G%28f%29+V+%5C%5C+F%28Z%29+%40%3E%3E+%5CPhi_Z+%3E+G%28Z%29+%5C%5C+%5Cend%7BCD%7D+%5Ctag%7B4%7D" alt="\begin{CD} F(Y) @&gt; \Phi_Y &gt;&gt; G(Y) \\ @V F(f) VV @VV G(f) V \\ F(Z) @&gt;&gt; \Phi_Z &gt; G(Z) \\ \end{CD} \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    则称其为
+                    <b>
+                        函子态射(functor morphism)
+                    </b>
+                    或
+                    <b>
+                        自然变换(natural transformation)
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C+%5Cto+%5Cmathcal+D" alt="\mathcal C \to \mathcal D" eeimg="1">
+                    型函子对象，在函子态射下构成函子范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BFct%7D%28%5Cmathcal+C%2C%5Cmathcal+D%29" alt="\textbf{Fct}(\mathcal C,\mathcal D)" eeimg="1">
+                    。函子范畴的构造与(3)中的态射集
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D%28F%28X%29%2CG%28X%29%29" alt="\text{Hom}(F(X),G(X))" eeimg="1">
+                    相关，通常将其放在集合范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D" alt="\textbf{Set}" eeimg="1">
+                    中考虑。
+                </p>
+                <p>
+                    通过态射集合来研究函子之间的关系，使人们特别关注这样的函子范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D%5E%5Cmathcal+C+%3D+%5Ctextbf%7BFct%7D%28%5Cmathcal+C%2C%5Ctextbf%7BSet%7D%29" alt="\textbf{Set}^\mathcal C = \textbf{Fct}(\mathcal C,\textbf{Set})" eeimg="1">
+                    ，前面讨论的hom函子就是其中的函子对象。在群范畴中，群
+                    <img src="https://www.zhihu.com/equation?tex=G" alt="G" eeimg="1">
+                    到线性空间
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    的一般线性群
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BGL%7D%28V%29" alt="\text{GL}(V)" eeimg="1">
+                    的群同态构成了群表示。范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+C" alt="\mathcal C" eeimg="1">
+                    到集合范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D" alt="\textbf{Set}" eeimg="1">
+                    也有类似的关系，实际上从固定对象诱导出hom函子也可以视为一个函子：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h%5E-%3A+%5Cmathcal+C+%26%5Cto+%5Ctextbf%7BSet%7D%5E%5Cmathcal+C+%5Cnonumber+%5C%5C+X+%26%5Cmapsto+h%5EX+%3D+%5Ctext%7BHom%7D%28X%2C-%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} h^-: \mathcal C &amp;\to \textbf{Set}^\mathcal C \nonumber \\ X &amp;\mapsto h^X = \text{Hom}(X,-) \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    Yoneda引理告诉我们这是一个完全忠实的函子，这样的函子称为
+                    <b>
+                        Yoneda嵌入(Yoneda embedding)
+                    </b>
+                    。在Yoneda引理中考虑的是这个范畴中的函子
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    与hom函子的关系，对于
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX%2CF+%5Cin+%5Ctextbf%7BSet%7D%5E%5Cmathcal+C%5C%5C" alt="h^X,F \in \textbf{Set}^\mathcal C\\" eeimg="1">
+                    两个函子的作用方式分别如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=+%5Cbegin%7BCD%7D+Y+%40%3E+h%5EX+%3E%3E+h%5EX%28Y%29+%5C%5C+%40V+f+VV+%40VV+h%5EX%28f%29+V+%5C%5C+Z+%40%3E%3E+h%5EX+%3E+h%5EX%28Z%29++%5C%5C+%5Cend%7BCD%7D+%5Cquad+%5Cbegin%7BCD%7D+Y+%40%3E+F+%3E%3E+F%28Y%29+%5C%5C+%40V+f+VV+%40VV+F%28f%29+V+%5C%5C+Z+%40%3E%3E+F+%3E+F%28Z%29++%5C%5C+%5Cend%7BCD%7D++%5Ctag%7B5%7D" alt="\begin{CD} Y @&gt; h^X &gt;&gt; h^X(Y) \\ @V f VV @VV h^X(f) V \\ Z @&gt;&gt; h^X &gt; h^X(Z)  \\ \end{CD} \quad \begin{CD} Y @&gt; F &gt;&gt; F(Y) \\ @V f VV @VV F(f) V \\ Z @&gt;&gt; F &gt; F(Z)  \\ \end{CD}  \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    如果存在
+                    <img src="https://www.zhihu.com/equation?tex=X+%5Cin+%5Cmathcal+C" alt="X \in \mathcal C" eeimg="1">
+                    使得
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX+%5Csimeq+F" alt="h^X \simeq F" eeimg="1">
+                    ，即称
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    为
+                    <b>
+                        可表函子(representable functor)
+                    </b>
+                    。回顾前面的讨论，可以理解为函子
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX+%5Cin+%5Ctextbf%7BFct%7D%28%5Cmathcal+C%2C+%5Cmathcal+D%29" alt="h^X \in \textbf{Fct}(\mathcal C, \mathcal D)" eeimg="1">
+                    被函子范畴
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BSet%7D%5E%5Cmathcal+C" alt="\textbf{Set}^\mathcal C" eeimg="1">
+                    中的自身所代表。
+                </p>
+                <p>
+                    考虑另外一个函子
+                    <img src="https://www.zhihu.com/equation?tex=F+%5Cin+%5Ctextbf%7BSet%7D%5E%5Cmathcal+C" alt="F \in \textbf{Set}^\mathcal C" eeimg="1">
+                    ，在构造态射
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX+%5Cto+F" alt="h^X \to F" eeimg="1">
+                    时(3)成为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D++%5CPhi%3A+%5Cmathcal+C+%26%5Cto++%5Ctext%7BHom%7D%28h%5EX%28Y%29%2CF%28Y%29%29+%5Cnonumber+%5C%5C+Y+%26%5Cmapsto+%5CPhi_Y+%5Cnonumber+%5C%5C+++%5Cend%7Balign%7D+%5C%5C" alt="\begin{align}  \Phi: \mathcal C &amp;\to  \text{Hom}(h^X(Y),F(Y)) \nonumber \\ Y &amp;\mapsto \Phi_Y \nonumber \\   \end{align} \\" eeimg="1">
+                    在这样的背景下，Yoneda引理告诉我们，对于可表函子
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    有如下同构：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BHom%7D%28h%5EX%2CF%29+%5Csimeq+F%28X%29+%5C%5C" alt="\text{Hom}(h^X,F) \simeq F(X) \\" eeimg="1">
+                    任何一个表示
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho+%5Cin+%5Ctext%7BHom%7D%28h%5EX%2CF%29+" alt="\rho \in \text{Hom}(h^X,F)" eeimg="1">
+                    由函子
+                    <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                    的
+                    <b>
+                        泛元(universal element)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho_X%281_X%29" alt="\rho_X(1_X)" eeimg="1">
+                    决定。
+                </p>
+                <h2>
+                    <br>
+                    Yoneda引理
+                </h2>
+                <p>
+                    (4)和(5)可以得到：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+h%5EX%28Y%29+%40%3E+%5CPhi_Y+%3E%3E+F%28Y%29+%5C%5C+%40V+h%5EX%28f%29+VV+%40VV+F%28f%29+V+%5C%5C+h%5EX%28Z%29+%40%3E%3E+%5CPhi_Z+%3E+F%28Z%29+%5C%5C+%5Cend%7BCD%7D+%5Ctag%7B6%7D" alt="\begin{CD} h^X(Y) @&gt; \Phi_Y &gt;&gt; F(Y) \\ @V h^X(f) VV @VV F(f) V \\ h^X(Z) @&gt;&gt; \Phi_Z &gt; F(Z) \\ \end{CD} \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    前面借助矩阵乘法讨论过，hom函子对于态射的作用就是构造复合映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h%5EX%3A+%5Ctext%7BHom%7D%28Y%2CZ%29+%26%5Cto+%5Ctext%7BHom%7D%28h%5EX%28Y%29%2Ch%5EX%28Z%29%29+%5Cnonumber+%5C%5C+f+%26%5Cmapsto+h%5EX%28f%29+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} h^X: \text{Hom}(Y,Z) &amp;\to \text{Hom}(h^X(Y),h^X(Z)) \nonumber \\ f &amp;\mapsto h^X(f) \nonumber \\ \end{align} \\" eeimg="1">
+                    使得
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h%5EX%28f%29%3A+h%5EX%28Y%29+%26%5Cmapsto+h%5EX%28Z%29+%5Cnonumber+%5C%5C+a+%26%5Cmapsto+a+%5Ccirc+f+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} h^X(f): h^X(Y) &amp;\mapsto h^X(Z) \nonumber \\ a &amp;\mapsto a \circ f \nonumber \\ \end{align} \\" eeimg="1">
+                    当上式
+                    <img src="https://www.zhihu.com/equation?tex=X%3DY" alt="X=Y" eeimg="1">
+                    时，(6)变成
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+h%5EX%28X%29+%40%3E+%5CPhi_X+%3E%3E+F%28X%29+%5C%5C+%40V+h%5EX%28f%29+VV+%40VV+F%28f%29+V+%5C%5C+h%5EX%28Z%29+%40%3E%3E+%5CPhi_Z+%3E+F%28Z%29+%5C%5C+%5Cend%7BCD%7D+%5Ctag%7B7%7D" alt="\begin{CD} h^X(X) @&gt; \Phi_X &gt;&gt; F(X) \\ @V h^X(f) VV @VV F(f) V \\ h^X(Z) @&gt;&gt; \Phi_Z &gt; F(Z) \\ \end{CD} \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    上图的交换性要求
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_Z+%5Ccirc+h%5EX%28f%29+%3D+F%28f%29+%5Ccirc+%5CPhi_X+%5Ctag%7B8%7D" alt="\Phi_Z \circ h^X(f) = F(f) \circ \Phi_X \tag{8}" eeimg="1">
+                </p>
+                <p>
+                    上式左边对恒等态射的作用为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h%5EX%28f%29%3A+h%5EX%28X%29+%26%5Cmapsto+h%5EX%28Z%29+%5Cnonumber+%5C%5C+1_X+%26%5Cmapsto+%28h%5EX%28f%29%29%281_X%29+%3D+1_X+%5Ccirc+f+%3D+f+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5Ctag%7B9%7D" alt="\begin{align} h^X(f): h^X(X) &amp;\mapsto h^X(Z) \nonumber \\ 1_X &amp;\mapsto (h^X(f))(1_X) = 1_X \circ f = f \nonumber \\ \end{align} \tag{9}" eeimg="1">
+                </p>
+                <p>
+                    于是(7)成为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+1_X+%5Cin+h%5EX%28X%29+%40%3E+%5CPhi_X+%3E%3E+%5CPhi_X%281_X%29+%5Cin+F%28X%29+%5C%5C+%40V+h%5EX%28f%29+VV+%40VV+F%28f%29+V+%5C%5C+%28h%5EX%28f%29%29%281_X%29+%3D+f+%5Cin+h%5EX%28Z%29+%40%3E%3E+%5CPhi_Z+%3E+F%28Z%29+%5C%5C+%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD} 1_X \in h^X(X) @&gt; \Phi_X &gt;&gt; \Phi_X(1_X) \in F(X) \\ @V h^X(f) VV @VV F(f) V \\ (h^X(f))(1_X) = f \in h^X(Z) @&gt;&gt; \Phi_Z &gt; F(Z) \\ \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    根据(8)中的交换性要求，代入变元并根据(9)有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_Z+%28h%5EX%28f%29%281_X%29%29+%3D%5CPhi_Z%28f%29%3D+%28F%28f%29%29%28%5CPhi_X%281_X%29%29+%5C%5C" alt="\Phi_Z (h^X(f)(1_X)) =\Phi_Z(f)= (F(f))(\Phi_X(1_X)) \\" eeimg="1">
+                </p>
+                <p>
+                    解读
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_Z%28f%29%3D+%28F%28f%29%29%28%5CPhi_X%281_X%29%29+%5Ctag%7B10%7D" alt="\Phi_Z(f)= (F(f))(\Phi_X(1_X)) \tag{10}" eeimg="1">
+                </p>
+                <p>
+                    逻辑顺序为：
+                </p>
+                <ol>
+                    <li>
+                        自然变换
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi+%5Cin+%5Ctext%7BHom%7D%28h%5EX%2CF%29" alt="\Phi \in \text{Hom}(h^X,F)" eeimg="1">
+                        从对象
+                        <img src="https://www.zhihu.com/equation?tex=X%5Cin%5Cmathcal+C" alt="X\in\mathcal C" eeimg="1">
+                        诱导出态射
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi_X+%5Cin+%5Ctext%7BHom%7D%28h%5EX%28X%29%2CF%28X%29%29" alt="\Phi_X \in \text{Hom}(h^X(X),F(X))" eeimg="1">
+                        ；
+                    </li>
+                    <li>
+                        态射
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi_X" alt="\Phi_X" eeimg="1">
+                        把恒等映射
+                        <img src="https://www.zhihu.com/equation?tex=1_X+%5Cin+h%5EX%28X%29" alt="1_X \in h^X(X)" eeimg="1">
+                        映射为
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi_X%281_X%29+%5Cin+F%28X%29" alt="\Phi_X(1_X) \in F(X)" eeimg="1">
+                        ，它就是函子
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        的泛元；
+                    </li>
+                    <li>
+                        根据(10)，泛元
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi_X%281_X%29" alt="\Phi_X(1_X)" eeimg="1">
+                        决定了
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi" alt="\Phi" eeimg="1">
+                        。
+                    </li>
+                </ol>
+                <p>
+                    这就是Yoneda引理。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    线性代数
+                </h2>
+                <p>
+                    回到(2)的设定，固定对象
+                    <img src="https://www.zhihu.com/equation?tex=X%3DK_m%5En+%5Cin+%5Cmathcal+C+%3D+%5Cmathfrak+m%5Ctextbf%7B-Mod%7D" alt="X=K_m^n \in \mathcal C = \mathfrak m\textbf{-Mod}" eeimg="1">
+                    ，对于
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=h%5EX%2CF+%5Cin+%5Ctextbf%7BSet%7D%5E%5Cmathcal+C%5C%5C" alt="h^X,F \in \textbf{Set}^\mathcal C\\" eeimg="1">
+                    (7)成为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+%5Cmathfrak+n+%5Csimeq+h%5EX%28X%29+%40%3E+%5CPhi_X+%3E%3E+F%28X%29+%5C%5C+%40V+h%5EX%28f%29+VV+%40VV+F%28f%29+V+%5C%5C+K_n%5Eq+%5Csimeq+h%5EX%28K_m%5Eq%29+%40%3E%3E+%5CPhi_Z+%3E+F%28K_m%5Eq%29+%5C%5C+%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD} \mathfrak n \simeq h^X(X) @&gt; \Phi_X &gt;&gt; F(X) \\ @V h^X(f) VV @VV F(f) V \\ K_n^q \simeq h^X(K_m^q) @&gt;&gt; \Phi_Z &gt; F(K_m^q) \\ \end{CD} \\" eeimg="1">
+                    根据(1)的矩阵右乘规则，恒等算子就是单位矩阵：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=1_X+%3D+I_n+%5Cin+h%5EX%28X%29+%5C%5C" alt="1_X = I_n \in h^X(X) \\" eeimg="1">
+                    于是类似(9)有
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+h%5EX%28f%29%3A+h%5EX%28X%29+%26%5Cmapsto+h%5EX%28K_m%5Eq%29+%5Cnonumber+%5C%5C+I_n+%26%5Cmapsto+%28h%5EX%28f%29%29%28I_n%29+%3D+I_n+%5Ccirc+f+%3D+f+%5Cnonumber+%5C%5C+%5Cend%7Balign%7D+%5C%5C" alt="\begin{align} h^X(f): h^X(X) &amp;\mapsto h^X(K_m^q) \nonumber \\ I_n &amp;\mapsto (h^X(f))(I_n) = I_n \circ f = f \nonumber \\ \end{align} \\" eeimg="1">
+                </p>
+                <p>
+                    进而
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7BCD%7D+I_n+%5Cin+h%5EX%28X%29+%40%3E+%5CPhi_X+%3E%3E+%5CPhi_X%28I_n%29+%5Cin+F%28X%29+%5C%5C+%40V+h%5EX%28f%29+VV+%40VV+F%28f%29+V+%5C%5C+%28h%5EX%28f%29%29%28I_n%29+%3D+f+%5Cin+h%5EX%28K_m%5Eq%29+%40%3E%3E+%5CPhi_%7BK_m%5Eq%7D+%3E+F%28K_m%5Eq%29+%5C%5C+%5Cend%7BCD%7D+%5C%5C" alt="\begin{CD} I_n \in h^X(X) @&gt; \Phi_X &gt;&gt; \Phi_X(I_n) \in F(X) \\ @V h^X(f) VV @VV F(f) V \\ (h^X(f))(I_n) = f \in h^X(K_m^q) @&gt;&gt; \Phi_{K_m^q} &gt; F(K_m^q) \\ \end{CD} \\" eeimg="1">
+                </p>
+                <p>
+                    (10)对应着
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5CPhi_%7BK_m%5Eq%7D%28f%29%3D+%28F%28f%29%29%28%5CPhi_X%28I_n%29%29+%5C%5C" alt="\Phi_{K_m^q}(f)= (F(f))(\Phi_X(I_n)) \\" eeimg="1">
+                </p>
+                <p>
+                    逻辑顺序为：
+                </p>
+                <ol>
+                    <li>
+                        自然变换
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi+%5Cin+%5Ctext%7BHom%7D%28h%5EX%2CF%29" alt="\Phi \in \text{Hom}(h^X,F)" eeimg="1">
+                        从对象
+                        <img src="https://www.zhihu.com/equation?tex=X%5Cin%5Cmathcal+C" alt="X\in\mathcal C" eeimg="1">
+                        诱导出态射
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi_X+%5Cin+%5Ctext%7BHom%7D%28h%5EX%28X%29%2CF%28X%29%29" alt="\Phi_X \in \text{Hom}(h^X(X),F(X))" eeimg="1">
+                        ；
+                    </li>
+                    <li>
+                        态射
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi_X" alt="\Phi_X" eeimg="1">
+                        把单位矩阵
+                        <img src="https://www.zhihu.com/equation?tex=1_X+%3D+I_n++%5Cin+h%5EX%28X%29" alt="1_X = I_n  \in h^X(X)" eeimg="1">
+                        映射为
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi_X%28I_n+%29+%5Cin+F%28X%29" alt="\Phi_X(I_n ) \in F(X)" eeimg="1">
+                        ，它就是函子
+                        <img src="https://www.zhihu.com/equation?tex=F" alt="F" eeimg="1">
+                        的泛元；
+                    </li>
+                    <li>
+                        泛元
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi_X%28I_n+%29" alt="\Phi_X(I_n )" eeimg="1">
+                        决定了
+                        <img src="https://www.zhihu.com/equation?tex=%5CPhi" alt="\Phi" eeimg="1">
+                        。
+                    </li>
+                </ol>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

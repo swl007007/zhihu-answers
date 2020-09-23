@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP98：泛函分析补习班(2)：谱理论与算子的核
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic3.zhimg.com/v2-e930ea2e36c33e43021faa5045c4d1ac_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/56891666" target="_blank">
+                        MP98：泛函分析补习班(2)：谱理论与算子的核
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2019-02-16
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                </p>
+                <p>
+                    根据吉田耕作(Yosida)经典的泛函分析，在线性拓扑空间上给定线性算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    ，谱理论就是研究这个算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+I+-+A" alt="\lambda I - A" eeimg="1">
+                    可逆时
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cin+%5Cmathbb+C" alt="\lambda \in \mathbb C" eeimg="1">
+                    在复平面的分布问题。无论是线性代数中的正交矩阵对角化，还是Hilbert空间中自伴算子的谱分解，都归结到这个根本的问题上。然而，为什么会有
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+I+-+A" alt="\lambda I - A" eeimg="1">
+                    这个特别的形式？我们试图从代数上阐述其中的本源——谱问题是由线性的本质所自然而然引出的。
+                    <a href="https://zhuanlan.zhihu.com/p/53167765" class="internal">
+                        代数大补丸
+                    </a>
+                    ：
+                </p>
+                <blockquote>
+                    从交换环的结构看，群自同态构成了群上附加的乘法运算，产生了环的定义，线性的概念即来自环以及描述环自同态的模。
+                </blockquote>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        算子的预解式与核
+                    </b>
+                </h2>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    为线性空间，令
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+B%28X%29+" alt="\mathcal B(X)" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    到自身的线性算子的集合，
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    中的向量可以用基表示为
+                    <img src="https://www.zhihu.com/equation?tex=x+%3D+%5Csum_%5Calpha+x_%5Calpha+e_%5Calpha" alt="x = \sum_\alpha x_\alpha e_\alpha" eeimg="1">
+                    ，其中
+                    <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="\alpha" eeimg="1">
+                    代表抽象指标，
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be_%5Calpha%5C%7D" alt="\{e_\alpha\}" eeimg="1">
+                    为基，
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Bx_%5Calpha%5C%7D" alt="\{x_\alpha\}" eeimg="1">
+                    为复坐标系数。作为线性空间自然有一个模的结构，假设我们讨论的代数闭域为复数，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Clambda+%5Cin+%5Cmathbb+C" alt="\forall \lambda \in \mathbb C" eeimg="1">
+                    作用于
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cin+X" alt="x \in X" eeimg="1">
+                    的结果都是封闭的
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+x+%3D+x+%5Clambda+%5Cin+X" alt="\lambda x = x \lambda \in X" eeimg="1">
+                    ，这一模乘法(数乘)作用相当于一个线性算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+I+%5Cin+%5Cmathcal+B%28X%29" alt="\lambda I \in \mathcal B(X)" eeimg="1">
+                    。用基表示这一映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%5Clambda+I+%5Cin+%5Cmathcal+B%28X%29%3A+X+%26%5Cto+X+%5C%5C+x+%26%5Cmapsto+%5Clambda+x+%3D+%5Clambda+I+x++%5C%5C+%26%3D+%5Clambda%5Csum_%5Calpha+x_%5Calpha+e_%5Calpha++%3D+%5Csum_%5Calpha+%28%5Clambda+x_%5Calpha%29+e_%5Calpha+%5Cend%7Balign%7D+%5Ctag%7B1%7D" alt="\begin{align} \lambda I \in \mathcal B(X): X &amp;\to X \\ x &amp;\mapsto \lambda x = \lambda I x  \\ &amp;= \lambda\sum_\alpha x_\alpha e_\alpha  = \sum_\alpha (\lambda x_\alpha) e_\alpha \end{align} \tag{1}" eeimg="1">
+                </p>
+                <p>
+                    在同一个基
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7Be_%5Calpha%5C%7D" alt="\{e_\alpha\}" eeimg="1">
+                    下讨论，线性算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    作用于
+                    <img src="https://www.zhihu.com/equation?tex=x+%3D+%5Bx_%5Calpha%5D" alt="x = [x_\alpha]" eeimg="1">
+                    得到了每个坐标分量上相同系数的缩放
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+x+%3D+%5B%5Clambda+x_%5Calpha%5D" alt="\lambda x = [\lambda x_\alpha]" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    谱理论关注的是当
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+x+%3D+Ax" alt="\lambda x = Ax" eeimg="1">
+                    在非退化的
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cneq+0" alt="x \neq 0" eeimg="1">
+                    下成立时，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cin+%5Csigma%28A%29+%5Csubset+%5Cmathbb+C" alt="\lambda \in \sigma(A) \subset \mathbb C" eeimg="1">
+                    的分布（即算子的谱集
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28A%29" alt="\sigma(A)" eeimg="1">
+                    ）问题。读者可以自行用(1)的方式在某个基下面表述这一条件。总的来说，当
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+x+%3D+Ax" alt="\lambda x = Ax" eeimg="1">
+                    在非退化的
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cneq+0" alt="x \neq 0" eeimg="1">
+                    下成立时，线性算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    对向量
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    的作用相当于一个数乘的缩放作用，此刻
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Clambda%2Cx%29" alt="(\lambda,x)" eeimg="1">
+                    二者就是我们熟知的特征值/特征向量。这一条件可以表达为
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Clambda+I+-+A%29x+%3D+0+%5Ctag%7B2%7D" alt="(\lambda I - A)x = 0 \tag{2}" eeimg="1">
+                </p>
+                <p>
+                    这里涉及到
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+I+-+A+%5Cin+%5Cmathcal+B%28X%29" alt="\lambda I - A \in \mathcal B(X)" eeimg="1">
+                    和对应的
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cin+X" alt="x \in X" eeimg="1">
+                    的存在性问题。注意预解式(resolvent)可以视为映射：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+L_%5Clambda%3A%5Cmathbb+C+%26%5Cto+%5Cmathcal+B%28X%29+%5C%5C+%5Clambda+%26%5Cmapsto+L_%5Clambda+%3D+%5Clambda+I+-+A+%5Cend%7Balign%7D+%5Ctag%7B3%7D" alt="\begin{align} L_\lambda:\mathbb C &amp;\to \mathcal B(X) \\ \lambda &amp;\mapsto L_\lambda = \lambda I - A \end{align} \tag{3}" eeimg="1">
+                </p>
+                <p>
+                    给定
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cin+%5Cmathbb+C" alt="\lambda \in \mathbb C" eeimg="1">
+                    ，由上式得到线性算子
+                    <img src="https://www.zhihu.com/equation?tex=L_%5Clambda+%3D+%5Clambda+I+-+A+%5Cin+%5Cmathcal+B%28X%29" alt="L_\lambda = \lambda I - A \in \mathcal B(X)" eeimg="1">
+                    ，而这个算子作用于线性空间
+                    <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                    ，作为一个群同态(线性算子)自然可以考虑它的核
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28L_%5Clambda%29+%3D+%5Ctext%7BKer%7D%28%5Clambda+I+-+A%29" alt="\text{Ker}(L_\lambda) = \text{Ker}(\lambda I - A)" eeimg="1">
+                    ，于是我们可以将谱理论所研究的问题(2)，考虑为这个映射核非空的条件问题。由于线性空间继承了群的性质，我们可以立即使用第一群同构定理表述以下事实：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=X%2F%5Ctext%7BKer%7D%28L_%5Clambda%29+%5Csimeq+%5Ctext%7BIm%7D%28L_%5Clambda%29+%5Ctag%7B4%7D" alt="X/\text{Ker}(L_\lambda) \simeq \text{Im}(L_\lambda) \tag{4}" eeimg="1">
+                </p>
+                <p>
+                    我们注意到：
+                </p>
+                <ol>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28L_%5Clambda%29" alt="\text{Ker}(L_\lambda)" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BIm%7D%28L_%5Clambda%29" alt="\text{Im}(L_\lambda)" eeimg="1">
+                        是
+                        <img src="https://www.zhihu.com/equation?tex=X" alt="X" eeimg="1">
+                        的线性子空间
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=X+%5Cto+X%2F%5Ctext%7BKer%7D%28L_%5Clambda%29" alt="X \to X/\text{Ker}(L_\lambda)" eeimg="1">
+                        是自然映射
+                    </li>
+                </ol>
+                <p>
+                    谱理论已经体现出了非常代数化的一面，下面我们用线性代数的知识来研究它。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        矩阵的谱
+                    </b>
+                </h2>
+                <p>
+                    在线性代数中讨论的方矩阵可以视为有限维线性算子的表示。线性算子/矩阵
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+%5Ba_i%5Ej%5D+%5Cin+%5Cmathbb+C%5E%7Bn+%5Ctimes+n%7D" alt="A = [a_i^j] \in \mathbb C^{n \times n}" eeimg="1">
+                    的特征值就是以下代数方程的根：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7Bdet%7D%28%5Clambda+I+-+A%29+%3D+%5Ctext%7Bdet%7D%5B%5Clambda+%5Cdelta_i%5Ej+-+a_i%5Ej%5D+%3D+0+%5Ctag%7B5%7D" alt="\text{det}(\lambda I - A) = \text{det}[\lambda \delta_i^j - a_i^j] = 0 \tag{5}" eeimg="1">
+                </p>
+                <p>
+                    这样我们得到了有限维谱理论的表述，即由以上
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    -次代数方程确定了
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    个离散的谱点点集，分布于复平面上。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    正如在自伴算子中经常类比讨论的，假设矩阵
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde+A+%5Cin+%5Cmathbb+R%5E%7Bn+%5Ctimes+n%7D" alt="\tilde A \in \mathbb R^{n \times n}" eeimg="1">
+                    可以通过正交矩阵的相似变换对角化为
+                    <img src="https://www.zhihu.com/equation?tex=A+%3D+%5Ctext%7Bdiag%7D%28%5Clambda_1%2C%5Cdots%2C%5Clambda_n%29" alt="A = \text{diag}(\lambda_1,\dots,\lambda_n)" eeimg="1">
+                    ，其中不同的实值
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_k+%5Cin+%5Cmathbb+R" alt="\lambda_k \in \mathbb R" eeimg="1">
+                    都是
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde+A" alt="\tilde A" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的特征值，(5)中的代数方程可以因式分解为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cprod_%7Bk%3D1%7D%5E%7Bn%7D%28%5Clambda_k+-+%5Clambda%29+%3D+0+%5Ctag%7B6%7D" alt="\prod_{k=1}^{n}(\lambda_k - \lambda) = 0 \tag{6}" eeimg="1">
+                </p>
+                <p>
+                    上式的因式分解对应了线性空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C%5En" alt="\mathbb C^n" eeimg="1">
+                    的分解，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_k+%5Csim+x_k+%5Csim+%5Ctext%7BSpan%7D%28x_k%29" alt="\lambda_k \sim x_k \sim \text{Span}(x_k)" eeimg="1">
+                    。而且，不同的特征向量
+                    <img src="https://www.zhihu.com/equation?tex=x_k" alt="x_k" eeimg="1">
+                    之间线性无关。从谱的分布上看，它们都处于实轴。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        从算子的核看谱分解
+                    </b>
+                </h2>
+                <p>
+                    线性代数中的例子有助于我们理解(4)中的关系。若
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%5E%5Cprime+%5Cnotin+%5Csigma%28A%29" alt="\lambda^\prime \notin \sigma(A)" eeimg="1">
+                    不在谱集中，那么
+                    <img src="https://www.zhihu.com/equation?tex=L_%7B%5Clambda%5E%5Cprime%7D+%3D+%5Clambda%5E%5Cprime+I+-+A" alt="L_{\lambda^\prime} = \lambda^\prime I - A" eeimg="1">
+                    仅当作用于退化的
+                    <img src="https://www.zhihu.com/equation?tex=x+%3D+0" alt="x = 0" eeimg="1">
+                    时才能得到零，即
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28L_%7B%5Clambda%5E%5Cprime%7D%29+%3D+%5C%7B+0+%5C%7D+" alt="\text{Ker}(L_{\lambda^\prime}) = \{ 0 \}" eeimg="1">
+                    ，根据(4)有
+                    <img src="https://www.zhihu.com/equation?tex=X%2F%5Ctext%7BKer%7D%28L_%7B%5Clambda%5E%5Cprime%7D%29+%3D+x%2F%5C%7B0%5C%7D+%3D+x+%5Csimeq+%5Ctext%7BIm%7D%28L_%7B%5Clambda%5E%5Cprime%7D%29+" alt="X/\text{Ker}(L_{\lambda^\prime}) = x/\{0\} = x \simeq \text{Im}(L_{\lambda^\prime})" eeimg="1">
+                    。这样强的同构关系实际上蕴含了最初谱分析的条件——
+                    <img src="https://www.zhihu.com/equation?tex=L_%7B%5Clambda%5E%5Cprime%7D%5E%7B-1%7D+%3D+%28%5Clambda%5E%5Cprime+I+-+A%29%5E%7B-1%7D" alt="L_{\lambda^\prime}^{-1} = (\lambda^\prime I - A)^{-1}" eeimg="1">
+                    存在。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    更有趣的是给定了谱点的情况。此时谱点
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    对应了（至少一个）特征向量
+                    <img src="https://www.zhihu.com/equation?tex=x" alt="x" eeimg="1">
+                    满足(2)，即线性算子
+                    <img src="https://www.zhihu.com/equation?tex=L_%5Clambda+%3D+%5Clambda+I+-+A" alt="L_\lambda = \lambda I - A" eeimg="1">
+                    作用于非退化的
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cneq+0" alt="x \neq 0" eeimg="1">
+                    时可以得到零，于是
+                    <img src="https://www.zhihu.com/equation?tex=x+%5Cin+%5Ctext%7BKer%7D%28L_%5Clambda%29+" alt="x \in \text{Ker}(L_\lambda)" eeimg="1">
+                    。由于映射的核是线性子空间，实际上有
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28L_%5Clambda%29+%3D+%5Ctext%7BSpan%7D%28x%29" alt="\text{Ker}(L_\lambda) = \text{Span}(x)" eeimg="1">
+                    。更进一步，(6)提示我们一组谱点
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Clambda_k%5C%7D+%5Csubset+%5Csigma%28A%29" alt="\{\lambda_k\} \subset \sigma(A)" eeimg="1">
+                    所构成的算子
+                    <img src="https://www.zhihu.com/equation?tex=%5Cprod_k+L_%7B%5Clambda_k%7D" alt="\prod_k L_{\lambda_k}" eeimg="1">
+                    可以将
+                    <img src="https://www.zhihu.com/equation?tex=%5Cprod_k+%5Ctext%7BKer%7D%28L_%7B%5Clambda_k%7D%29" alt="\prod_k \text{Ker}(L_{\lambda_k})" eeimg="1">
+                    映射到零。于是，如果每个
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_k" alt="\lambda_k" eeimg="1">
+                    对应一个
+                    <img src="https://www.zhihu.com/equation?tex=x_k+%5Cin+X" alt="x_k \in X" eeimg="1">
+                    ，那么：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%5CBig%28%5Cprod_k+L_%7B%5Clambda_k%7D%5CBig%29+%3D+%5Ctext%7BSpan%7D%28x_k%29+%5Ctag%7B7%7D" alt="\text{Ker}\Big(\prod_k L_{\lambda_k}\Big) = \text{Span}(x_k) \tag{7}" eeimg="1">
+                </p>
+                <p>
+                    以上讨论自然地便于理解一般的Hilbert空间的谱定理：
+                </p>
+                <blockquote>
+                    <b>
+                        Hilbert空间上的自伴算子，其谱是实数，特征向量相互正交，谱集的子集所对应的向量张成特征子空间
+                    </b>
+                </blockquote>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

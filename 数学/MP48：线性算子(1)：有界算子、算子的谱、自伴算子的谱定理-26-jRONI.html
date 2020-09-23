@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP48：线性算子(1)：有界算子、算子的谱、自伴算子的谱定理
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic4.zhimg.com/v2-9e5a487cd7e344ecae3ac5407f377e38_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46986534" target="_blank">
+                        MP48：线性算子(1)：有界算子、算子的谱、自伴算子的谱定理
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic2.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-30
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    现在我们回到泛函分析，开始进行线性算子的专题讨论。先研究最简单的有界线性算子。有界算子的好处是它有范数，可以构成一个Banach空间。
+                </p>
+                <p>
+                    线性代数大篇幅地研究特征值，泛函分析相应地也要大篇幅研究算子的谱。前面我们在经典力学和量子力学的基本数学模型中已经大量遇到本征值和本征态问题：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/43986106" class="internal">
+                        MP3：SO(2)的求导：算子谱分析和复结构
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47247498" class="internal">
+                        MP40：从经典力学到量子力学(1)：Hamilton力学、可观测量、本征态
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47534431" class="internal">
+                        MP45：Schrödinger方程(1)：分离变量法与解的结构
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47778385" class="internal">
+                        MP46：Schrödinger方程(2)：谐振子、算子的共轭分解、下降/提升算子、基态
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47778440" class="internal">
+                        MP47：Schrödinger方程(3)：基态与激发态、Hermite多项式、数学物理方法
+                    </a>
+                </p>
+                <p>
+                    今后在线性算子专题学习中要继续深入研究。除了解微分方程的需要，算子的谱本身提供了有关算子结构的信息，在无限维空间中这种信息尤为重要。
+                </p>
+                <p>
+                    最后我们给出了自伴算子的谱定理，结合过去的实例探讨其意义。
+                </p>
+                <hr>
+                <h2>
+                    <b>
+                        有界算子
+                    </b>
+                </h2>
+                <p>
+                    算子就是映射。相对于映射这个词，算子隐含着它是映射集合中的元素，而映射的集合可能具有特别的结构。线性算子可以把线性赋范空间映射到另一个线性赋范空间。由于映射的两边都有范数，我们可以用两边范数之比值来评估线性算子的放大作用。如果这种放大不至于过于强烈，就可以认为算子的放大率是有界的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上有自映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3A+%5Cmathscr+H+%5Cto+%5Cmathscr+H" alt="A: \mathscr H \to \mathscr H" eeimg="1">
+                </p>
+                <p>
+                    按照Hilbert空间中的内积诱导一个范数，那么
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    是线性赋范空间。如果有常数
+                    <img src="https://www.zhihu.com/equation?tex=M+%5Cgeq+0" alt="M \geq 0" eeimg="1">
+                    使得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5C%7C+A%5Cpsi+%5C%7C%7D%7B%5C%7C+%5Cpsi+%5C%7C%7D+%5Cleq+M+%2C+%5C+%5Cforall+%5Cpsi+%5Cin+%5Cmathscr+H+%5Cbackslash+%5C%7B0%5C%7D" alt="\frac{\| A\psi \|}{\| \psi \|} \leq M , \ \forall \psi \in \mathscr H \backslash \{0\}" eeimg="1">
+                </p>
+                <p>
+                    则算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    是
+                    <b>
+                        有界(bounded)
+                    </b>
+                    的，左边表达式的最大值就是算子范数
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7CA%5C%7C" alt="\|A\|" eeimg="1">
+                    。注意算子的有界性是对于线性赋范空间定义的，并非一定要有内积的结构。可分Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的
+                    <b>
+                        有界算子
+                    </b>
+                    ，按照
+                    <b>
+                        算子范数
+                    </b>
+                    构成一个Banach空间，记为
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathcal+B%28%5Cmathscr+H%29" alt="\mathcal B(\mathscr H)" eeimg="1">
+                    。
+                </p>
+                <h2>
+                    <br>
+                    <b>
+                        算子的谱
+                    </b>
+                </h2>
+                <p>
+                    令算子
+                    <img src="https://www.zhihu.com/equation?tex=A+%5Cin+%5Cmathcal+B%28%5Cmathscr+H%29" alt="A \in \mathcal B(\mathscr H)" eeimg="1">
+                    ，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cexists+%5Cpsi+%5Cin+%5Cmathscr+H+%5Cbackslash+%5C%7B0%5C%7D%2C+%5Clambda+%5Cin+%5Cmathbb%7BC%7D" alt="\exists \psi \in \mathscr H \backslash \{0\}, \lambda \in \mathbb{C}" eeimg="1">
+                    满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%5Cpsi%3D%5Clambda+%5Cpsi" alt="A\psi=\lambda \psi" eeimg="1">
+                </p>
+                <p>
+                    称
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi" alt="\psi" eeimg="1">
+                    为
+                    <b>
+                        特征向量(eigenvector)
+                    </b>
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cin+%5Cmathbb%7BC%7D" alt="\lambda \in \mathbb{C}" eeimg="1">
+                    为
+                    <b>
+                        特征值(eigenvalue)
+                    </b>
+                    。令
+                    <img src="https://www.zhihu.com/equation?tex=I+%5Cin+%5Cmathcal+B%28%5Cmathscr+H%29" alt="I \in \mathcal B(\mathscr H)" eeimg="1">
+                    为恒同映射，则特征方程具有以下形式：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%28%5Clambda+I+-+A%29%5Cpsi+%3D+0" alt="(\lambda I - A)\psi = 0" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    定义映射
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb+C+%5Cto+%5Cmathcal+B%28%5Cmathscr+H%29" alt="\mathbb C \to \mathcal B(\mathscr H)" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cmapsto+A_%5Clambda+%3D+%5Clambda+I+-+A" alt="\lambda \mapsto A_\lambda = \lambda I - A" eeimg="1">
+                </p>
+                <p>
+                    前面我们在研究Schrödinger方程时谈到，给定特征值
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cin+%5Cmathbb%7BC%7D" alt="\lambda \in \mathbb{C}" eeimg="1">
+                    求特征向量，相当于求线性算子
+                    <img src="https://www.zhihu.com/equation?tex=A_%5Clambda+%3D+%5Clambda+I+-+A" alt="A_\lambda = \lambda I - A" eeimg="1">
+                    的核：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BKer%7D%28A_%5Clambda%29+%3D+%5Ctext%7BKer%7D%28%5Clambda+I+-+A%29+%5Csubset+%5Cmathscr+H" alt="\text{Ker}(A_\lambda) = \text{Ker}(\lambda I - A) \subset \mathscr H" eeimg="1">
+                </p>
+                <p>
+                    这种情况下，算子
+                    <img src="https://www.zhihu.com/equation?tex=A_%5Clambda" alt="A_\lambda" eeimg="1">
+                    是没有逆的。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    对于能够令
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A_%5Clambda%5E%7B-1%7D+%3D+%28%5Clambda+I+-+A%29%5E%7B-1%7D" alt="A_\lambda^{-1} = (\lambda I - A)^{-1}" eeimg="1">
+                </p>
+                <p>
+                    存在且有界的子集
+                    <img src="https://www.zhihu.com/equation?tex=%5C%7B%5Clambda%5C%7D+%5Csubset+%5Cmathbb+C" alt="\{\lambda\} \subset \mathbb C" eeimg="1">
+                    ，则称
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=R_%5Clambda%28A%29+%3DA_%5Clambda%5E%7B-1%7D%3D+%28%5Clambda+I+-+A%29%5E%7B-1%7D" alt="R_\lambda(A) =A_\lambda^{-1}= (\lambda I - A)^{-1}" eeimg="1">
+                </p>
+                <p>
+                    为算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    在
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    处的
+                    <b>
+                        预解(resolvent)
+                    </b>
+                    ，称
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    属于算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的
+                    <b>
+                        预解集(resolvent set)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Crho%28A%29" alt="\rho(A)" eeimg="1">
+                    。否则，
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    属于算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的
+                    <b>
+                        谱(spectrum)
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28A%29" alt="\sigma(A)" eeimg="1">
+                    。
+                    <br>
+                </p>
+                <p>
+                    如果
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    是特征值，则
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5Cin+%5Csigma%28A%29" alt="\lambda \in \sigma(A)" eeimg="1">
+                    。特征值的集合称为算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的
+                    <b>
+                        点谱(point spectrum)
+                    </b>
+                    ，除此之外，若
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctext%7BRan%7D%28A_%5Clambda%29+%3D+%5Ctext%7BRan%7D%28%5Clambda+I+-A%29" alt="\text{Ran}(A_\lambda) = \text{Ran}(\lambda I -A)" eeimg="1">
+                    不是稠密的，则称
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda" alt="\lambda" eeimg="1">
+                    在
+                    <b>
+                        剩余谱(residual spectrum)
+                    </b>
+                    中。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        谱定理
+                    </b>
+                </h2>
+                <p>
+                    我们过去借助有限维的矩阵来理解自伴算子的意义：
+                </p>
+                <blockquote>
+                    根据有限维的谱定理，
+                    <img src="https://www.zhihu.com/equation?tex=V" alt="V" eeimg="1">
+                    上存在一个
+                    <b>
+                        正交归一(orthonormal)
+                    </b>
+                    基，在这个基上
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    可以按照实数
+                    <b>
+                        特征值(eigenvalue)
+                    </b>
+                    对角化，成为
+                    <b>
+                        对角矩阵(diagonal matrix)
+                    </b>
+                    。
+                    <br>
+                    <br>
+                    <a href="https://zhuanlan.zhihu.com/p/44825641" class="internal">
+                        MP39：量子力学中的内积结构
+                    </a>
+                </blockquote>
+                <p>
+                    现在，我们在一般的自伴算子上讨论谱定理。借助这个定理，我们将认识到自伴算子的良好性质。有界的自伴算子实质上就是一个乘法算子。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        定理
+                    </b>
+                    ：令
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    为Hilbert空间
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathscr+H" alt="\mathscr H" eeimg="1">
+                    上的自伴算子，算子
+                    <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                    的谱为
+                    <img src="https://www.zhihu.com/equation?tex=%5Csigma%28A%29" alt="\sigma(A)" eeimg="1">
+                    ：
+                </p>
+                <ol>
+                    <li>
+                        算子
+                        <img src="https://www.zhihu.com/equation?tex=A" alt="A" eeimg="1">
+                        没有剩余谱
+                    </li>
+                    <li>
+                        <img src="https://www.zhihu.com/equation?tex=%5Csigma%28A%29+%5Csubset+%5Cmathbb+R" alt="\sigma(A) \subset \mathbb R" eeimg="1">
+                        ，算子的谱都是实数
+                    </li>
+                    <li>
+                        不同特征值对应的特征向量之间相互正交
+                    </li>
+                </ol>
+                <p>
+                    这个定理就是前面我们讨论量子力学中可观测量和本征态问题的基础，也是量子力学公理2（可观测量的量子化）和公理4（测量）的基础：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47247498" class="internal">
+                        MP40：从经典力学到量子力学(1)：Hamilton力学、可观测量、本征态
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/47015428" class="internal">
+                        MP44：量子力学公理：从线性代数到泛函分析
+                    </a>
+                </p>
+                <p>
+                    我们接下来会讨论Hilbert空间按照谱分解为子空间的问题，证明留到后面阐述。
+                </p>
+                <p>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

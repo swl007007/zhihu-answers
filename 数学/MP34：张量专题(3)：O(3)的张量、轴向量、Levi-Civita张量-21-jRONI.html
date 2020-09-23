@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            MP34：张量专题(3)：O(3)的张量、轴向量、Levi-Civita张量
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-2b9a1408b0f75f59432b097721fdd28c_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/46700351" target="_blank">
+                        MP34：张量专题(3)：O(3)的张量、轴向量、Levi-Civita张量
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/smdw">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://pic4.zhimg.com/v2-c4aa9b3e46782eb49a182cd7ed914acf.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    jRONI
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-10-16
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <p>
+                    前两讲我们做了几件事：
+                </p>
+                <ol>
+                    <li>
+                        用Hermite内积综合分析两个平面向量的内积和外积，发现它们都具有坐标分量齐次积的形式
+                    </li>
+                    <li>
+                        以
+                        <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                        为例，研究了这些齐次积在基变换下的变换性质
+                    </li>
+                    <li>
+                        将两向量的齐次积向量定义为张量积，
+                        <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                        的变换相应也称为了张量积
+                    </li>
+                    <li>
+                        用位置和动量构造角动量，继续分析基在
+                        <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                        变换下，角动量的性质
+                    </li>
+                    <li>
+                        双线性映射难以进行矩阵表示，于是转为张量积
+                    </li>
+                    <li>
+                        用位置和动量的张量积构造楔积/外积，得到角动量，于是角动量具有了张量的形式
+                    </li>
+                </ol>
+                <p>
+                    <br>
+                    <a href="https://zhuanlan.zhihu.com/p/46687123" class="internal">
+                        MP32：张量专题(1)：SO(2)和平面向量的张量
+                    </a>
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/46720470" class="internal">
+                        MP33：张量专题(2)：角动量的张量形式
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    根据我们的知识，角动量由位置和动量通过叉乘构成，是一个轴向量/赝向量：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/45777678" class="internal">
+                        MP25：力学与电磁学中的外微分(1)：镜像、极/轴向量、叉乘、nabla算子/外微分算子
+                    </a>
+                </p>
+                <p>
+                    这讲我们就研究向量在
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    和
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    变换下的性质。我们发现，
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    下极向量/轴向量具有相同的变换规律，而镜像变换下两者的定向是不同的。
+                </p>
+                <hr>
+                <h2>
+                    <b>
+                        旋转群及基变换
+                    </b>
+                </h2>
+                <p>
+                    过去谈到了平面旋转群
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    的张量：
+                </p>
+                <p>
+                    <a href="http://zhuanlan.zhihu.com/p/46687123/edit" class="internal">
+                        MP32：张量专题(1)：SO(2)和平面向量的张量
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    空间旋转群
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    几乎可以完全套用过来：若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E3" alt="\mathbb{R}^3" eeimg="1">
+                    有两个正交归一基，其基变换
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7BE%7D+%3D+T+E" alt="\tilde{E} = T E" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5B%5Ctextbf%7Bi%7D+%7C+%5Ctextbf%7Bj%7D+%7C+%5Ctextbf%7Bk%7D%5D+%3D+T++%5B%5Ctilde%7B%5Ctextbf%7Bi%7D%7D%7C%5Ctilde%7B%5Ctextbf%7Bj%7D%7D%7C%5Ctilde%7B%5Ctextbf%7Bk%7D%7D%5D" alt="[\textbf{i} | \textbf{j} | \textbf{k}] = T  [\tilde{\textbf{i}}|\tilde{\textbf{j}}|\tilde{\textbf{k}}]" eeimg="1">
+                </p>
+                <p>
+                    作为逆变向量，位置和速度都满足：
+                </p>
+                <p>
+                    那么，位置和动量的坐标向量变换则满足：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Ctextbf%7Bx%7D%7D+%3D+T%5E%7B-1%7D%5Ctextbf%7Bx%7D" alt="\tilde{\textbf{x}} = T^{-1}\textbf{x}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Ctextbf%7Bp%7D%7D+%3D+T%5E%7B-1%7D%5Ctextbf%7Bp%7D" alt="\tilde{\textbf{p}} = T^{-1}\textbf{p}" eeimg="1">
+                </p>
+                <p>
+                    用张量的形式表述：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Ctextbf%7Bx%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bp%7D%7D+%3D+%28T%5E%7B-1%7D+%5Cotimes+T%5E%7B-1%7D%29%28%5Ctextbf%7Bx%7D+%5Cotimes+%5Ctextbf%7Bp%7D%29" alt="\tilde{\textbf{x}} \otimes \tilde{\textbf{p}} = (T^{-1} \otimes T^{-1})(\textbf{x} \otimes \textbf{p})" eeimg="1">
+                </p>
+                <p>
+                    反过来，用变换后的坐标表达变换前的：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Bx%7D+%3D+T%5Ctilde%7B%5Ctextbf%7Bx%7D%7D" alt="\textbf{x} = T\tilde{\textbf{x}}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Bp%7D+%3D+T%5Ctilde%7B%5Ctextbf%7Bp%7D%7D" alt="\textbf{p} = T\tilde{\textbf{p}}" eeimg="1">
+                </p>
+                <p>
+                    用张量的形式表述：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Bx%7D+%5Cotimes+%5Ctextbf%7Bp%7D%3D+%28T+%5Cotimes+T%29%28%5Ctilde%7B%5Ctextbf%7Bx%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bp%7D%7D+%29" alt="\textbf{x} \otimes \textbf{p}= (T \otimes T)(\tilde{\textbf{x}} \otimes \tilde{\textbf{p}} )" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        角动量张量
+                    </b>
+                </h2>
+                <p>
+                    根据
+                    <a href="https://zhuanlan.zhihu.com/p/46720470" class="internal">
+                        MP33：张量专题(2)：角动量的张量形式
+                    </a>
+                    ：角动量是如下构造的张量
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J+%3D+%5Ctextbf%7Bx%7D+%5Cwedge+%5Ctextbf%7Bp%7D+%3D+%5Ctextbf%7Bx%7D+%5Cotimes+%5Ctextbf%7Bp%7D+-+%5Ctextbf%7Bp%7D+%5Cotimes+%5Ctextbf%7Bx%7D" alt="J = \textbf{x} \wedge \textbf{p} = \textbf{x} \otimes \textbf{p} - \textbf{p} \otimes \textbf{x}" eeimg="1">
+                </p>
+                <p>
+                    于是在
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    的变化下有：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=J+%3D+%5Ctextbf%7Bx%7D+%5Cotimes+%5Ctextbf%7Bp%7D+-+%5Ctextbf%7Bp%7D+%5Cotimes+%5Ctextbf%7Bx%7D" alt="J = \textbf{x} \otimes \textbf{p} - \textbf{p} \otimes \textbf{x}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%28T+%5Cotimes+T%29%28%5Ctilde%7B%5Ctextbf%7Bx%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bp%7D%7D+%29+-++%28T+%5Cotimes+T%29%28%5Ctilde%7B%5Ctextbf%7Bp%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bx%7D%7D+%29" alt="= (T \otimes T)(\tilde{\textbf{x}} \otimes \tilde{\textbf{p}} ) -  (T \otimes T)(\tilde{\textbf{p}} \otimes \tilde{\textbf{x}} )" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%3D+%28T+%5Cotimes+T%29%28%5Ctilde%7B%5Ctextbf%7Bx%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bp%7D%7D+-+%5Ctilde%7B%5Ctextbf%7Bp%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bx%7D%7D+%29" alt="= (T \otimes T)(\tilde{\textbf{x}} \otimes \tilde{\textbf{p}} - \tilde{\textbf{p}} \otimes \tilde{\textbf{x}} )" eeimg="1">
+                </p>
+                <p>
+                    显然，这样的变换关系可以推广到所有的楔积/外积形式的物理量上，如
+                    <b>
+                        转动惯量(moment of inertia)
+                    </b>
+                    ，它作为张量是
+                    <b>
+                        惯性张量(intertia tensor)
+                    </b>
+                    ，以及角速度、力矩、磁感应强度等各种轴向量/赝向量。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        空间正交群的镜像变换
+                    </b>
+                </h2>
+                <p>
+                    作为可以用矩阵变换表示的Lie群，或者典型群，有如下的子群包含关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29+%5Clhd+SO%283%29+%5Clhd+O%283%29" alt="SO(2) \lhd SO(3) \lhd O(3)" eeimg="1">
+                </p>
+                <p>
+                    前面平面旋转群
+                    <img src="https://www.zhihu.com/equation?tex=SO%282%29" alt="SO(2)" eeimg="1">
+                    的例子几乎可以不加修改地用于空间旋转群
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    。我们不加严格证明地论述一个事实，即空间旋转群
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    上如果叠加了坐标缩放，就构成空间正交群
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    。我们只需研究镜像问题这一特殊的坐标缩放问题，因为镜像和轴向量问题息息相关，见：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/45777678" class="internal">
+                        MP25：力学与电磁学中的外微分(1)：镜像、极/轴向量、叉乘、nabla算子/外微分算子
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    若
+                    <img src="https://www.zhihu.com/equation?tex=%5Cmathbb%7BR%7D%5E3" alt="\mathbb{R}^3" eeimg="1">
+                    联系两个正交归一基的是基变换
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7BE%7D+%3D+T+E" alt="\tilde{E} = T E" eeimg="1">
+                </p>
+                <p>
+                    现在分开考虑极向量和轴向量：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Br%7D+%3D+r_x%5Ctextbf%7Bi%7D+%2B+r_y%5Ctextbf%7Bj%7D+%2B+r_z%5Ctextbf%7Bk%7D+" alt="\textbf{r} = r_x\textbf{i} + r_y\textbf{j} + r_z\textbf{k}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Bu%7D+%5Ctimes+%5Ctextbf%7Bv%7D+%3D+%28u_x%5Ctextbf%7Bi%7D+%2B+u_y%5Ctextbf%7Bj%7D+%2B+u_z%5Ctextbf%7Bk%7D%29+%5Ctimes+%28v_x%5Ctextbf%7Bi%7D+%2B+v_y%5Ctextbf%7Bj%7D+%2B+v_z%5Ctextbf%7Bk%7D%29" alt="\textbf{u} \times \textbf{v} = (u_x\textbf{i} + u_y\textbf{j} + u_z\textbf{k}) \times (v_x\textbf{i} + v_y\textbf{j} + v_z\textbf{k})" eeimg="1">
+                </p>
+                <p>
+                    在空间旋转变换
+                    <img src="https://www.zhihu.com/equation?tex=T_%5Ctheta+%5Cin+SO%283%29" alt="T_\theta \in SO(3)" eeimg="1">
+                    且下，极向量和轴向量都有相同的变换规律，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Ctextbf%7Br%7D%7D+%3D+T_%5Ctheta%5E%7B-1%7D%5Ctextbf%7Br%7D" alt="\tilde{\textbf{r}} = T_\theta^{-1}\textbf{r}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctilde%7B%5Ctextbf%7Bu%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bv%7D%7D+%3D+%28T_%5Ctheta%5E%7B-1%7D+%5Cotimes+T_%5Ctheta%5E%7B-1%7D%29%28%5Ctextbf%7Bu%7D+%5Cotimes+%5Ctextbf%7Bv%7D%29" alt="\tilde{\textbf{u}} \otimes \tilde{\textbf{v}} = (T_\theta^{-1} \otimes T_\theta^{-1})(\textbf{u} \otimes \textbf{v})" eeimg="1">
+                </p>
+                <p>
+                    以及
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Br%7D+%3D+T_%5Ctheta%5Ctilde%7B%5Ctextbf%7Br%7D%7D" alt="\textbf{r} = T_\theta\tilde{\textbf{r}}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Bu%7D+%5Cotimes+%5Ctextbf%7Bv%7D%3D+%28T_%5Ctheta+%5Cotimes+T_%5Ctheta%29%28%5Ctilde%7B%5Ctextbf%7Bu%7D%7D+%5Cotimes+%5Ctilde%7B%5Ctextbf%7Bv%7D%7D+%29" alt="\textbf{u} \otimes \textbf{v}= (T_\theta \otimes T_\theta)(\tilde{\textbf{u}} \otimes \tilde{\textbf{v}} )" eeimg="1">
+                </p>
+                <p>
+                    也就是说，
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    不能区分极向量和轴向量。
+                </p>
+                <p>
+                    <br>
+                    现在考虑不改变尺度的镜像变换：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T+%5Cin+O%283%29+-+SO%283%29" alt="T \in O(3) - SO(3)" eeimg="1">
+                </p>
+                <p>
+                    即
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=T+%3D+%5Cbegin%7Bbmatrix%7D+-1+%26+0+%26+0+%5C%5C+0+%26+-1+%26+0+%5C%5C+0+%26+0+%26+-1+%5Cend%7Bbmatrix%7D" alt="T = \begin{bmatrix} -1 &amp; 0 &amp; 0 \\ 0 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; -1 \end{bmatrix}" eeimg="1">
+                </p>
+                <p>
+                    这里再次略去冗长的计算，简单地说：
+                </p>
+                <ul>
+                    <li>
+                        极向量
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Br%7D" alt="\textbf{r}" eeimg="1">
+                        是一阶张量，其变换也是一阶张量，作用的结果是反号
+                    </li>
+                    <li>
+                        轴向量
+                        <img src="https://www.zhihu.com/equation?tex=%5Ctextbf%7Bu%7D+%5Ctimes+%5Ctextbf%7Bv%7D+" alt="\textbf{u} \times \textbf{v}" eeimg="1">
+                        是两个极向量张成的二阶张量，其变换也是二阶张量，两次反号的变换其结果是恒通，于是作用的结果不改变符号
+                    </li>
+                </ul>
+                <p>
+                    于是镜像变换给出了判断极向量/轴向量的判据，到现在我们有了张量的概念，可以对过去的例子有一个更清晰的理解：
+                </p>
+                <p>
+                    <a href="https://zhuanlan.zhihu.com/p/45777678" class="internal">
+                        MP25：力学与电磁学中的外微分(1)：镜像、极/轴向量、叉乘、nabla算子/外微分算子
+                    </a>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        空间正交群的行列式
+                    </b>
+                </h2>
+                <p>
+                    镜像变换不属于
+                    <img src="https://www.zhihu.com/equation?tex=SO%283%29" alt="SO(3)" eeimg="1">
+                    ，而是
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    中特有的变换成分。为了将轴向量归入空间正交群
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    表示的框架，我们需要重新对它进行表示。注意到
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    的矩阵表示及其行列式的关系：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29+%5Cto+%5Cmathbb%7BR%7D" alt="O(3) \to \mathbb{R}" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Bo_i%5Ej%5D+%5Cmapsto+%5Ctext%7Bdet%7D%5Bo_i%5Ej%5D" alt="[o_i^j] \mapsto \text{det}[o_i^j]" eeimg="1">
+                </p>
+                <p>
+                    容易理解，行列式携带了坐标缩放的整体尺度和方向的信息。一般线性群都可以用矩阵
+                    <b>
+                        自然表示
+                    </b>
+                    ，作为子群的空间正交群
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29+%5Clhd+GL%283%2C%5Cmathbb%7BR%7D%29" alt="O(3) \lhd GL(3,\mathbb{R})" eeimg="1">
+                </p>
+                <p>
+                    也等同于其自然表示
+                    <img src="https://www.zhihu.com/equation?tex=%5Bo_i%5Ej%5D" alt="[o_i^j]" eeimg="1">
+                    。现在考虑行列式和它构成的张量积：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29+%5Cto+GL%283%2C%5Cmathbb%7BR%7D%29" alt="O(3) \to GL(3,\mathbb{R})" eeimg="1">
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Bo_i%5Ej%5D+%5Cmapsto+%5Ctext%7Bdet%7D%5Bo_i%5Ej%5D+%5Cotimes+%5Bo_i%5Ej%5D+%3D+%5Ctext%7Bdet%7D%5Bo_i%5Ej%5D+%5Bo_i%5Ej%5D" alt="[o_i^j] \mapsto \text{det}[o_i^j] \otimes [o_i^j] = \text{det}[o_i^j] [o_i^j]" eeimg="1">
+                </p>
+                <p>
+                    记得，当没有发生镜像时，极向量（真向量）和轴向量（赝向量）具有相同的变换规则；当发生镜像时，二者会反号。上式中的行列式就体现了这样的关系。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        Levi-Civita张量
+                    </b>
+                </h2>
+                <p>
+                    推广上面的行列式表示，若有张量
+                    <img src="https://www.zhihu.com/equation?tex=T+%3D+%5BT_%7Bi_1%2C+%5Cdots%2C+i_n%7D%5D" alt="T = [T_{i_1, \dots, i_n}]" eeimg="1">
+                    （区分于前面的基变换符号），其分量
+                    <img src="https://www.zhihu.com/equation?tex=%5BT_%7Bi_1%2C+%5Cdots%2C+i_n%7D%5D" alt="[T_{i_1, \dots, i_n}]" eeimg="1">
+                    按照三维正交群元
+                    <img src="https://www.zhihu.com/equation?tex=%5Bo_i%5Ej%5D+%5Cin+O%283%29" alt="[o_i^j] \in O(3)" eeimg="1">
+                    变换：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5B%5Ctilde%7BT%7D_%7Bi_1%2C+%5Cdots%2C+i_n%7D%5D+%3D+o_%7Bi_1j_1%7D+%5Cdots+o_%7Bi_nj_n%7DT_%7Bi_1%2C+%5Cdots%2C+i_n%7D" alt="[\tilde{T}_{i_1, \dots, i_n}] = o_{i_1j_1} \dots o_{i_nj_n}T_{i_1, \dots, i_n}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=i_1%2C+%5Cdots%2C+i_n" alt="i_1, \dots, i_n" eeimg="1">
+                    是三维指标。则称
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    群下的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    阶
+                    <b>
+                        真张量
+                    </b>
+                    ；若按照：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5B%5Ctilde%7BT%7D_%7Bi_1%2C+%5Cdots%2C+i_n%7D%5D+%3D+%5Ctext%7Bdet%7D%5Bo_i%5Ej%5D+o_%7Bi_1j_1%7D+%5Cdots+o_%7Bi_nj_n%7DT_%7Bi_1%2C+%5Cdots%2C+i_n%7D" alt="[\tilde{T}_{i_1, \dots, i_n}] = \text{det}[o_i^j] o_{i_1j_1} \dots o_{i_nj_n}T_{i_1, \dots, i_n}" eeimg="1">
+                </p>
+                <p>
+                    变换则称
+                    <img src="https://www.zhihu.com/equation?tex=T" alt="T" eeimg="1">
+                    为
+                    <img src="https://www.zhihu.com/equation?tex=O%283%29" alt="O(3)" eeimg="1">
+                    群下的
+                    <img src="https://www.zhihu.com/equation?tex=n" alt="n" eeimg="1">
+                    阶
+                    <b>
+                        赝张量
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    若三阶张量的指标
+                    <img src="https://www.zhihu.com/equation?tex=i%2Cj%2Ck" alt="i,j,k" eeimg="1">
+                    按照以下形式变化：
+                </p>
+                <ol>
+                    <li>
+                        若指标取
+                        <img src="https://www.zhihu.com/equation?tex=1%2C2%2C3" alt="1,2,3" eeimg="1">
+                        或其循环，则张量的分量取
+                        <img src="https://www.zhihu.com/equation?tex=%2B1" alt="+1" eeimg="1">
+                        ；
+                    </li>
+                    <li>
+                        若指标取
+                        <img src="https://www.zhihu.com/equation?tex=1%2C3%2C2" alt="1,3,2" eeimg="1">
+                        或其循环，则张量的分量取
+                        <img src="https://www.zhihu.com/equation?tex=-1" alt="-1" eeimg="1">
+                        ；
+                    </li>
+                    <li>
+                        其余情况，张量的分量取
+                        <img src="https://www.zhihu.com/equation?tex=0" alt="0" eeimg="1">
+                    </li>
+                </ol>
+                <p>
+                    于是构成一个常值的反对称赝张量，则称为
+                    <b>
+                        Levi-Civita张量
+                    </b>
+                    。
+                    <br>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
