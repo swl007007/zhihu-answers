@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            (二)动态优化--汉密尔顿函数（最优控制）和HJB方程（动态规划）
+        </title>
+        <link rel="stylesheet" type="text/css" href="print.css" media="print">
+        <style type="text/css">
+            .background-image{text-align: center;max-width: inherit;}.background-image img{max-width: 100%;}.video{max-width: inherit;margin: 80px auto;}.video-cover{max-width: inherit;background-color: #141216;}.video img{height: 400px;display: block;margin: 0 auto;}.video-tip{border-radius: 0 0 8px 8px;max-width: inherit;height: 34px;text-align: center;}.header{margin-bottom: 80px;}.title{font-size: 36px;margin-bottom: 80px;text-align: center;line-height: 42px;}.AuthorInfo,.Avatar{border-radius: 5px;}.Popover{width: 50px;height: 50px;}.AuthorInfo{width: 240px;margin: auto;}.AuthorInfo-content{position: relative;left: 60px;top: -50px;line-height: 1em;padding: 6px 0;}.AuthorInfo-name{font-size: 28px;}.AuthorInfo-detail{font-size: 16px;margin-top: 8px;}.Popover,.AuthorInfo,.AuthorInfo-content,.AuthorInfo{height: 50px;}.LinkCard{margin: 1em auto;width: 390px !important;border-radius: 12px;}.LinkCard-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;padding: 12px;border-radius: inherit;background-color: hsla(0, 0%, 96.5%, 0.88);}.LinkCard-text{overflow: hidden;}.LinkCard-title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;max-height: 40px;font-size: 16px;font-weight: 500;line-height: 1.25;color: #1a1a1a;}.LinkCard-meta{display: -webkit-box;display: -ms-flexbox;display: flex;margin-top: 4px;font-size: 14px;line-height: 20px;color: #999;white-space: nowrap;}.LinkCard-imageCell{margin-left: 8px;border-radius: 6px;}.LinkCard-image{display: block;margin: 0 !important;width: 60px;height: 60px;-o-object-fit: cover;object-fit: cover;border-radius: inherit;}.LinkCard-image--default{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;background-color: #ebebeb;color: #d3d3d3;}svg:not(:root){overflow: hidden;}.TipCard,.LinkCard{position: relative;display: block;width: inherit;-webkit-box-sizing: border-box;box-sizing: border-box;max-width: 100%;overflow: hidden;text-indent: 0 !important;}.TipCard,.LinkCard,.TipCard:hover,.LinkCard:hover{text-decoration: none;border: none !important;color: inherit !important;}.TipCard-backdrop,.LinkCard-backdrop{position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-repeat: no-repeat;-webkit-filter: blur(20px);filter: blur(20px);background-size: cover;background-position: 50%;}.divide{height: 30px;max-width: 45em;margin: 0 auto;}.reference{text-indent: 0;font-size: 14px;}.reference tr:nth-child(2n){background: white;}
+        </style>
+        <style type="text/css">
+            *,::after,::before{box-sizing: border-box;}body{font-size: 1.2rem;line-height: 1.5em;background-color: #f6f6f6;font-family: "PT Serif", "Times New Roman", Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;color: rgb(31, 9, 9);}.article{max-width: 50em;margin: 0px auto;padding: 6em;background: #fff;overflow: hidden;border-radius: 2px;-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);-webkit-box-sizing: border-box;box-sizing: border-box;}p{margin-bottom: 1.5em;line-height: inherit;}p img[eeimg]{display: inline-block;margin: 0 3px;max-width: 100%;vertical-align: middle;}p + ul,p + ol{margin-top: 0.5em;}blockquote{margin: 0 2em;background: #eee;border-radius: 5px;padding: 15px;color: rgb(101, 101, 101);font-style: italic;}blockquote p{background: #eee;border-radius: 5px;}blockquote p::before{content: "\201C";}blockquote p::after{content: "\201D";}blockquote ul,blockquote ol{margin-left: 0px;}blockquote::before,blockquote::after,q::before,q::after{content: none;}blockquote > :first-child,li > :first-child{margin-top: 0px;}blockquote > :last-child{margin-bottom: 0px;}blockquote,q{quotes: none;}a{cursor: pointer;text-decoration: none;color: #3ac19f;}a:hover,a:active{text-decoration: none;color: #ff6188;outline: 0px;}a.url{word-break: break-all;}table tr th{border-bottom: 0px;}table{border-collapse: collapse;border-spacing: 0px;margin-bottom: 1.5em;font-size: 1em;width: 100%;overflow: auto;break-inside: auto;text-align: left;}header,footer{font-family: "PT Serif", "Times New Roman", Times, serif;color: rgb(31, 9, 9);}thead{background-color: rgb(218, 218, 218);display: table-header-group;}thead th,tfoot th{padding: 0.25em 0.25em 0.25em 0.4em;text-transform: uppercase;}tr{break-inside: avoid;break-after: auto;}tr:nth-child(2n){background: rgb(232, 231, 231);}th{text-align: left;}td{vertical-align: top;padding: 0.25em 0.25em 0.25em 0.4em;}tt{font-size: 0.8em;line-height: 1.7em;}ol,ul{text-indent: 0;position: relative;list-style: none;margin: 0px 0px 1.5em 1.5em;}ol li{list-style-type: decimal;list-style-position: outside;}ul li{list-style-type: disc;list-style-position: outside;}li div{padding-top: 0px;}li{margin: 0px;margin-left: 2em;position: relative;}li > figure:last-child{margin-bottom: 0.5rem;}li > :first-child{margin-top: 0px;}li > ul,li > ol{margin-top: inherit;margin-bottom: 0px;}li ol > li{list-style-type: lower-alpha;}li li ol > li{list-style-type: lower-roman;}kbd{margin: 0px 0.1em;padding: 0.1em 0.6em;font-size: 0.8em;color: rgb(36, 39, 41);background: rgb(255, 255, 255);border: 1px solid rgb(173, 179, 185);border-radius: 3px;box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px,rgb(255, 255, 255) 0px 0px 0px 2px inset;white-space: nowrap;vertical-align: middle;}samp,tt{font-family: var(--monospace);}hr{border-bottom: 1px solid #d6d6d6;margin-inline-start: 15%;margin-inline-end: 15%;margin-block-start: 5rem;margin-block-end: 5rem;}u{text-decoration: none;border-bottom: 1px dashed #f40;}figure{margin: 2em auto;max-width: 100%;padding: 0px;font-size: 1rem;text-align: center;}figure img{display: block;max-width: 60%;margin: auto;}figure figcaption{padding: 0 1em;font-size: 0.9rem;color: #999;}figure > table{margin: 0px !important;}div.hr:focus{cursor: none;}a img,img a{cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <div class="article">
+            <div class="header">
+                <div class="background-image">
+                    <img src="https://pic2.zhimg.com/v2-48ccd8ebb634c617b408351fb0cf7a77_720w.jpg?source=172ae18b" alt="background image">
+                </div>
+                <div class="title">
+                    <a href="https://zhuanlan.zhihu.com/p/33741559" target="_blank">
+                        (二)动态优化--汉密尔顿函数（最优控制）和HJB方程（动态规划）
+                    </a>
+                </div>
+                <a class="UserLink-link" target="_blank" href="https://www.zhihu.com/people/niuchaojia">
+                    <div class="AuthorInfo">
+                        <div class="Popover">
+                            <img class="Avatar" width="50" height="50" src="https://picb.zhimg.com/v2-58b2d5987ce5bed0c04b2f545b5e6310.jpg?source=172ae18b" alt="头像">
+                        </div>
+                        <div class="AuthorInfo-content">
+                            <div class="AuthorInfo-name">
+                                <span>
+                                    追风少年
+                                </span>
+                            </div>
+                            <div class="AuthorInfo-detail">
+                                <span>
+                                    2018-02-10
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text">
+                <h2>
+                    <b>
+                        0.引言
+                    </b>
+                </h2>
+                <p>
+                    动态优化解决的问题是传统的拉格朗日函数方法（静态等式约束问题）以及Kuhn-tucker方法（静态不等式约束问题）无法解决的动态问题，在宏观经济学中主要是涉及离散和连续的涉及时间的变化的问题，我们主要关注后者，如产出
+                    <img src="https://www.zhihu.com/equation?tex=Y_%7Bt%7D" alt="Y_{t}" eeimg="1">
+                    与时间密切相关，其中主要的方法是
+                    <b>
+                        变分法，最优控制和动态规划
+                    </b>
+                    三种方法。
+                </p>
+                <p>
+                    变分法相比另外两种方法，比较少用与解决宏观经济学模型中，一是因为其本身较为复杂，更多的是用于证明最优控制以及动态规划的所需要的必要条件，而非应用到动态的宏观经济学中；二是因为绝大多数变分法能解决的问题，用最优控制的方法也可以完美的解决，同时有些问题变分法不能解决，但是最优控制方法还是可以解决。而动态规划由Richard Bellman提出的，一个主要的思想是
+                    <b>
+                        最优性原理：全局最优必定是局部最优，如果此全局最优解可以取到的话。
+                    </b>
+                </p>
+                <p>
+                    建立此专栏的目的只是普及高宏，因此在最优控制以及动态规划的必要条件的充分性、必要性的证明在此文章中不再涉及，我们直接上结论，告诉你们在宏观模型中，如何应用，如何求解。如果读者有兴趣的话，我可以在我想写的东西写完后，再增加一篇文章，把此文章中用到的结论全都证明一遍。
+                </p>
+                <p>
+                    在高宏中，大多数模型都是连续无限时间的，因此在求解模型时，用传统的方法解决的话，计算过程是十分庞大的，而且也让经济学的含义消失了转而成了纯数学计算的过程，这样的方法是没有意义的。而最优控制方法在解决无穷自治问题时有着天然的优势，不仅计算过程十分漂亮，而且引入的参数是有着丰富的经济学含义的，例如在汉密尔顿函数中引入的参数
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%28t%29" alt="\lambda(t)" eeimg="1">
+                    <b>
+                        代表状态变量在时刻t的边际价值
+                    </b>
+                    。所以这篇文章的知识是学习后续比索洛模型更复杂的模型必备的知识储备，以后在求解复杂模型时，可以常回来翻看翻看。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        1.最优控制
+                    </b>
+                </h2>
+                <p>
+                    <b>
+                        1.1.1有限时间基本模型
+                    </b>
+                </p>
+                <p>
+                    在最优控制中，变量分为两类，一类是
+                    <b>
+                        状态变量：即有微分方程约束的变量
+                    </b>
+                    ，意如其字，状态变量的变化一定是连续的变化，本期的值会影响到下一期的值，在时间上呈现连续的变化。另一类是
+                    <b>
+                        控制变量
+                    </b>
+                    ，即没有微分方程约束的变量，可以连续变化，也可以跳跃变化。
+                </p>
+                <p>
+                    面对诸如以下问题时，可以用最优控制理论的方法解决：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=max+%5Cint_%7Bt_%7B0%7D%7D%5E%7Bt_%7B1%7D%7Df%5Cleft%28+t%2Cx%5Cleft%28+t+%5Cright%29%2Cu%5Cleft%28+t+%5Cright%29+%5Cright%29dt%5C%5Cs.t%3Ax%5E%7B%27%7D%5Cleft%28+t+%5Cright%29%3Du%5Cleft%28+t+%5Cright%29%2Cx%5Cleft%28+t_%7B0%7D+%5Cright%29%3Dx_%7B0%7D%EF%BC%8Cx%5Cleft%28+t_%7B1%7D+%5Cright%29%3Dx_%7B1%7D" alt="max \int_{t_{0}}^{t_{1}}f\left( t,x\left( t \right),u\left( t \right) \right)dt\\s.t:x^{&#39;}\left( t \right)=u\left( t \right),x\left( t_{0} \right)=x_{0}，x\left( t_{1} \right)=x_{1}" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=t_%7B0%7D" alt="t_{0}" eeimg="1">
+                    代表初始时刻，
+                    <img src="https://www.zhihu.com/equation?tex=t_%7B1%7D" alt="t_{1}" eeimg="1">
+                    代表终点时刻；
+                    <img src="https://www.zhihu.com/equation?tex=x_%7B0%7D" alt="x_{0}" eeimg="1">
+                    代表状态变量在初始时刻的值，
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cleft%28+t_%7B1%7D+%5Cright%29%3Dx_%7B1%7D" alt="x\left( t_{1} \right)=x_{1}" eeimg="1">
+                    代表状态变量在终点时刻的值。在这里，
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cleft%28+t+%5Cright%29" alt="x\left( t \right)" eeimg="1">
+                    是状态变量，
+                    <img src="https://www.zhihu.com/equation?tex=u%5Cleft%28+t+%5Cright%29" alt="u\left( t \right)" eeimg="1">
+                    是控制变量。
+                </p>
+                <p>
+                    <b>
+                        解法：
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        建立汉密尔顿函数
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=H%3D+f%5Cleft%28+t%2Cx%5Cleft%28+t+%5Cright%29%2Cu%5Cleft%28+t+%5Cright%29+%5Cright%29%2B%5Clambda%5Cleft%28+t+%5Cright%29+g%5Cleft%28+t%2Cx%5Cleft%28+t+%5Cright%29%2Cu%5Cleft%28+t+%5Cright%29+%5Cright%29" alt="H= f\left( t,x\left( t \right),u\left( t \right) \right)+\lambda\left( t \right) g\left( t,x\left( t \right),u\left( t \right) \right)" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        最优条件方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+u%7D%3D0%EF%BC%9Af_%7Bu%7D%2B%5Clambda+g_%7Bu%7D%3D0" alt="\frac{\partial H}{\partial u}=0：f_{u}+\lambda g_{u}=0" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        乘子方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+x%7D%3D-%5Clambda%5E%7B%27%7D%3Af_%7Bx%7D%2B%5Clambda+g_%7Bx%7D%3D-%5Clambda%5E%7B%27%7D%EF%BC%9B%5Clambda%5Cleft%28+t_%7B1%7D+%5Cright%29%3D0" alt="\frac{\partial H}{\partial x}=-\lambda^{&#39;}:f_{x}+\lambda g_{x}=-\lambda^{&#39;}；\lambda\left( t_{1} \right)=0" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        状态方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+%5Clambda%7D%3Dx%5E%7B%27%7D%3Ag%3Dx%5E%7B%27%7D" alt="\frac{\partial H}{\partial \lambda}=x^{&#39;}:g=x^{&#39;}" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        在高宏中涉及的问题类型都是
+                        <i>
+                            自由终点
+                        </i>
+                        问题
+                    </b>
+                    ，即
+                    <img src="https://www.zhihu.com/equation?tex=x%5Cleft%28+t_%7B1%7D+%5Cright%29" alt="x\left( t_{1} \right)" eeimg="1">
+                    的值自由，这样的话
+                    <b>
+                        横截性条件
+                    </b>
+                    就是：
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%5Cleft%28+t_%7B1%7D+%5Cright%29%3D0" alt="\lambda\left( t_{1} \right)=0" eeimg="1">
+                    ，再结合关于状态变量的值的已知条件即可求解这个问题。其中引入的参数
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%5Cleft%28+t+%5Cright%29" alt="\lambda\left( t \right)" eeimg="1">
+                    有着丰富的经济学含义：
+                    <b>
+                        状态变量在时刻t的边际价值
+                    </b>
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        1.1.2例子
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=min+%5Cint_%7B0%7D%5E%7BT%7D%5Bc_%7B1%7Du%28t%29%5E%7B2%7D%2Bc_%7B2%7Dx%5Cleft%28+t+%5Cright%29%5Ddt%5C%5Cs.t%3Ax%5E%7B%27%7D%28t%29%3Du%28t%29%2Cx%280%29%3D0%2Cx%28T%29%3DB%5C%5CBis.free.and.Tis.fixed" alt="min \int_{0}^{T}[c_{1}u(t)^{2}+c_{2}x\left( t \right)]dt\\s.t:x^{&#39;}(t)=u(t),x(0)=0,x(T)=B\\Bis.free.and.Tis.fixed" eeimg="1">
+                </p>
+                <p>
+                    解：定义汉密尔顿函数
+                    <img src="https://www.zhihu.com/equation?tex=H%3Dc_%7B1%7Du%28t%29%5E%7B2%7D%2Bc_%7B2%7Dx%5Cleft%28+t+%5Cright%29%2B%5Clambda%28t%29g%28t%2Cx%2Cu%29" alt="H=c_{1}u(t)^{2}+c_{2}x\left( t \right)+\lambda(t)g(t,x,u)" eeimg="1">
+                </p>
+                <p>
+                    必要条件：
+                </p>
+                <p>
+                    <b>
+                        最优条件方程
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+u%7D%3D0%3A2c_%7B1%7Du%2B%5Clambda%3D0" alt="\frac{\partial H}{\partial u}=0:2c_{1}u+\lambda=0" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        乘子方程
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+x%7D%3D-%5Clambda+%5E%7B%27%7D%3Ac_%7B2%7D%3D-%5Clambda+%5E%7B%27%7D%3B%5Clambda%28T%3D0%29%E8%87%AA%E7%94%B1%E7%BB%88%E7%82%B9%E7%9A%84%E6%A8%AA%E6%88%AA%E6%80%A7%E6%9D%A1%E4%BB%B6" alt="\frac{\partial H}{\partial x}=-\lambda ^{&#39;}:c_{2}=-\lambda ^{&#39;};\lambda(T=0)自由终点的横截性条件" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        状态方程
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+H%7D%7B%5Cpartial+%5Clambda%7D%3Dx%5E%7B%27%7D%3Ax%5E%7B%27%7D%3Du%3Bx%280%29%3D0" alt="\frac{\partial H}{\partial \lambda}=x^{&#39;}:x^{&#39;}=u;x(0)=0" eeimg="1">
+                </p>
+                <p>
+                    由乘子方程可得
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%5Cleft%28+t+%5Cright%29" alt="\lambda\left( t \right)" eeimg="1">
+                    的通解：
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%28t%29%3D-c_%7B2%7Dt%2Bk_%7B0%7D" alt="\lambda(t)=-c_{2}t+k_{0}" eeimg="1">
+                    ，再结合横截性条件，有
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda%28t%29%3D-c_%7B2%7Dt%2Bc_%7B2%7DT" alt="\lambda(t)=-c_{2}t+c_{2}T" eeimg="1">
+                    。
+                </p>
+                <p>
+                    把此结果带入最优条件方程中得：
+                    <img src="https://www.zhihu.com/equation?tex=u%28t%29%3D%5Cfrac%7Bc_%7B2%7D%7D%7B2c_%7B1%7D%7D%28t-T%29" alt="u(t)=\frac{c_{2}}{2c_{1}}(t-T)" eeimg="1">
+                    。
+                </p>
+                <p>
+                    再把此结果带入状态方程中得：
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29%3D%5Cfrac%7Bc_%7B2%7D%7D%7B4c_%7B1%7D%7Dt%5E%7B2%7D-%5Cfrac%7Bc_%7B2%7DT%7D%7B2c_%7B1%7D%7Dt%2Bk_%7B1%7D" alt="x(t)=\frac{c_{2}}{4c_{1}}t^{2}-\frac{c_{2}T}{2c_{1}}t+k_{1}" eeimg="1">
+                    ，由初始条件
+                    <img src="https://www.zhihu.com/equation?tex=x%280%29%3D0" alt="x(0)=0" eeimg="1">
+                    的
+                    <img src="https://www.zhihu.com/equation?tex=k_%7B1%7D%3D0" alt="k_{1}=0" eeimg="1">
+                    ,所以
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5E%7B%5Cast%7D%28t%29%3D%5Cfrac%7Bc_%7B2%7D%7D%7B4c_%7B1%7D%7Dt%5E%7B2%7D-%5Cfrac%7Bc_%7B2%7DT%7D%7B2c_%7B1%7D%7Dt%2Ct%5Cin%5B0%2CT%5D+" alt="x^{\ast}(t)=\frac{c_{2}}{4c_{1}}t^{2}-\frac{c_{2}T}{2c_{1}}t,t\in[0,T]" eeimg="1">
+                    ,同时
+                    <img src="https://www.zhihu.com/equation?tex=B%3D-%5Cfrac%7Bc_%7B2%7DT%5E%7B2%7D%7D%7B4c_%7B1%7D%7D" alt="B=-\frac{c_{2}T^{2}}{4c_{1}}" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        <i>
+                            1.2.1无穷时间基本模型
+                        </i>
+                    </b>
+                </p>
+                <p>
+                    如果面对的问题是无穷时间时，即
+                    <img src="https://www.zhihu.com/equation?tex=t_%7B1%7D%3D%5Cinfty" alt="t_{1}=\infty" eeimg="1">
+                    时，此时有另一种与此差不多的方法，但是专门是为了结局此类问题的，此类基本的问题如下：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=max+%5Cint_%7B0%7D%5E%7B%5Cinfty%7De%5E%7B-rt%7Df%5Cleft%28+t%2Cx%2Cu%5Cright%29dt%5C%5Cs.t%3Ax%5E%7B%27%7D%5Cleft%28+t+%5Cright%29%3Du%5Cleft%28+t+%5Cright%29%2Cx%5Cleft%28+0+%5Cright%29%3Dx_%7B0%7D" alt="max \int_{0}^{\infty}e^{-rt}f\left( t,x,u\right)dt\\s.t:x^{&#39;}\left( t \right)=u\left( t \right),x\left( 0 \right)=x_{0}" eeimg="1">
+                </p>
+                <p>
+                    解法：
+                </p>
+                <p>
+                    建立
+                    <b>
+                        当期值汉密尔顿函数
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%5Cequiv+e%5E%7Brt%7DH%3Df%5Cleft%28+t%2Cx%2Cu+%5Cright%29%2Bm%28t%29g%28t%2Cx%2Cu%29" alt="\psi\equiv e^{rt}H=f\left( t,x,u \right)+m(t)g(t,x,u)" eeimg="1">
+                    ,其中
+                    <img src="https://www.zhihu.com/equation?tex=m%28t%29%5Cequiv+e%5E%7Brt%7D%5Clambda%28t%29" alt="m(t)\equiv e^{rt}\lambda(t)" eeimg="1">
+                    称为
+                    <i>
+                        当期值汉密尔顿乘子
+                    </i>
+                </p>
+                <p>
+                    <b>
+                        最优条件方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+%5Cpsi%7D%7B%5Cpartial+u%7D%3D0%EF%BC%9Af_%7Bu%7D%2Bmg_%7Bu%7D%3D0" alt="\frac{\partial \psi}{\partial u}=0：f_{u}+mg_{u}=0" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        当期乘子方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+%5Cpsi%7D%7B%5Cpartial+x%7D%3Drm-m%27%3Af_%7Bx%7D%2Bmg_%7Bx%7D%3Drm-m%27" alt="\frac{\partial \psi}{\partial x}=rm-m&#39;:f_{x}+mg_{x}=rm-m&#39;" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        状态方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+%5Cpsi%7D%7B%5Cpartial+m%7D%3Du%EF%BC%9Ag%3Du" alt="\frac{\partial \psi}{\partial m}=u：g=u" eeimg="1">
+                </p>
+                <p>
+                    在高级宏观中，
+                    <b>
+                        <i>
+                            横截性条件
+                        </i>
+                    </b>
+                    为
+                    <b>
+                        <i>
+                            状态变量的值趋近于稳态(均衡解),当时间t趋于无穷时
+                        </i>
+                    </b>
+                    ，即：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bt+%5Crightarrow+%5Cinfty%7D%7Bx%5Cleft%28+t+%5Cright%29%7D%3Dx%5E%7B%5Cast%7D" alt="\lim_{t \rightarrow \infty}{x\left( t \right)}=x^{\ast}" eeimg="1">
+                </p>
+                <p>
+                    再结合关于状态变量的已知条件，即可解此模型。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        <i>
+                            1.2.2例子
+                        </i>
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=max+%5Cint_%7B0%7D%5E%7B%5Cinfty%7De%5E%7B-rt%7D%5Bax%28t%29-%5Cfrac%7B1%7D%7B2%7Dx%5E%7B2%7D%28t%29-cu%5E%7B2%7D%28t%29%5Ddt%5C%5Cs.t%3Ax%5E%7B%27%7D%28t%29%3Du%28t%29-bx%28t%29%2Cx%280%29%3Dx_%7B0%7D%3E0%2Cu%28t%29%5Cgeq+0" alt="max \int_{0}^{\infty}e^{-rt}[ax(t)-\frac{1}{2}x^{2}(t)-cu^{2}(t)]dt\\s.t:x^{&#39;}(t)=u(t)-bx(t),x(0)=x_{0}&gt;0,u(t)\geq 0" eeimg="1">
+                </p>
+                <p>
+                    解：
+                </p>
+                <p>
+                    建立
+                    <b>
+                        当期值汉密尔顿函数
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cpsi%3Dax%28t%29-%5Cfrac%7B1%7D%7B2%7Dx%5E%7B2%7D%28t%29-cu%5E%7B2%7D%28t%29%2Bm%28t%29%5Bu%28t%29-bx%28t%29%5D" alt="\psi=ax(t)-\frac{1}{2}x^{2}(t)-cu^{2}(t)+m(t)[u(t)-bx(t)]" eeimg="1">
+                </p>
+                <p>
+                    其中
+                    <img src="https://www.zhihu.com/equation?tex=m%28t%29" alt="m(t)" eeimg="1">
+                    是
+                    <i>
+                        当期值汉密尔顿乘子
+                    </i>
+                    ，且
+                    <img src="https://www.zhihu.com/equation?tex=t%5Cin%5B0%2C%5Cinfty%29" alt="t\in[0,\infty)" eeimg="1">
+                    ,必要条件为：
+                </p>
+                <p>
+                    <b>
+                        最优条件方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B+%5Cpartial+%5Cpsi%7D%7B%5Cpartial+u%7D%3D0%3A+-2cu%28t%29%2Bm%28t%29%3D0" alt="\frac{ \partial \psi}{\partial u}=0: -2cu(t)+m(t)=0" eeimg="1">
+                    (1)
+                </p>
+                <p>
+                    <b>
+                        当期乘子方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+%5Cpsi%7D%7B%5Cpartial+x%7D%3Drm-m%5E%7B%27%7D%3Aa-x%28t%29-bm%28t%29%3Drm%28t%29-m%5E%7B%27%7D%28t%29" alt="\frac{\partial \psi}{\partial x}=rm-m^{&#39;}:a-x(t)-bm(t)=rm(t)-m^{&#39;}(t)" eeimg="1">
+                    (2)
+                </p>
+                <p>
+                    <b>
+                        状态方程
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+%5Cpsi%7D%7B%5Cpartial+m%7D%3Dx%5E%7B%27%7D%28t%29%3Au%28t%29-bx%28t%29%3Dx%5E%7B%27%7D%28t%29%3Bx%280%29%3Dx_%7B0%7D%3E0" alt="\frac{\partial \psi}{\partial m}=x^{&#39;}(t):u(t)-bx(t)=x^{&#39;}(t);x(0)=x_{0}&gt;0" eeimg="1">
+                    (3)
+                </p>
+                <p>
+                    以及
+                    <b>
+                        横截性条件
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bt+%5Crightarrow%5Cinfty%7D%7Bx%28t%29%7D%3Dx%5E%7B%2A%7D" alt="\lim_{t \rightarrow\infty}{x(t)}=x^{*}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    对(1)(3)都求导可得：
+                    <img src="https://www.zhihu.com/equation?tex=m%5E%7B%27%7D%28t%29%3D2cu%5E%7B%27%7D%28t%29%5C%5Cx%5E%7B%27%27%7D%28t%29%3Du%5E%7B%27%7D%28t%29-bx%5E%7B%27%7D%28t%29" alt="m^{&#39;}(t)=2cu^{&#39;}(t)\\x^{&#39;&#39;}(t)=u^{&#39;}(t)-bx^{&#39;}(t)" eeimg="1">
+                </p>
+                <p>
+                    再结合(1)(2)(3)式消去u和m得关于x的
+                    <i>
+                        二阶非齐次微分方程
+                    </i>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%5E%7B%27%27%7D%28t%29-rx%5E%7B%27%7D%28t%29-%5B%5Cfrac%7B1%7D%7B2c%7D%2B%28r%2Bb%29b%5Dx%28t%29%3D-%5Cfrac%7B1%7D%7B2c%7D" alt="x^{&#39;&#39;}(t)-rx^{&#39;}(t)-[\frac{1}{2c}+(r+b)b]x(t)=-\frac{1}{2c}" eeimg="1">
+                </p>
+                <p>
+                    它的特征方程为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+%5E%7B2%7D-r%5Clambda-%5B%5Cfrac%7B1%7D%7B2c%7D%2B%28r%2Bb%29b%5D%3D0" alt="\lambda ^{2}-r\lambda-[\frac{1}{2c}+(r+b)b]=0" eeimg="1">
+                </p>
+                <p>
+                    由求根公式可得此二次方程得
+                    <i>
+                        根
+                    </i>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda+_%7B1%7D%3D%5Cfrac%7Br%2B%5Csqrt%7Br%5E%7B2%7D%2B4%5B%5Cfrac%7B1%7D%7B2c%7D%2B%28r%2Bb%29b%5D%7D%7D%7B2%7D%3E0%5C%5C%5Clambda+_%7B2%7D%3D%5Cfrac%7Br-%5Csqrt%7Br%5E%7B2%7D%2B4%5B%5Cfrac%7B1%7D%7B2c%7D%2B%28r%2Bb%29b%5D%7D%7D%7B2%7D%3C0" alt="\lambda _{1}=\frac{r+\sqrt{r^{2}+4[\frac{1}{2c}+(r+b)b]}}{2}&gt;0\\\lambda _{2}=\frac{r-\sqrt{r^{2}+4[\frac{1}{2c}+(r+b)b]}}{2}&lt;0" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    令
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29%3Dk" alt="x(t)=k" eeimg="1">
+                    (常数)带入上述微分方程中，解得方程的
+                    <i>
+                        特解
+                    </i>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7Ba%7D%7B1%2B2bc%28r%2Bb%29%7D" alt="\frac{a}{1+2bc(r+b)}" eeimg="1">
+                    ,所以微分方程的
+                    <i>
+                        通解
+                    </i>
+                    为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29%3Dc_%7B1%7De%5E%7B%5Clambda_%7B1%7Dt%7D%2Bc_%7B2%7De%5E%7B%5Clambda_%7B2%7Dt%7D%2B%5Cfrac%7Ba%7D%7B1%2B2bc%28r%2Bb%29%7D" alt="x(t)=c_{1}e^{\lambda_{1}t}+c_{2}e^{\lambda_{2}t}+\frac{a}{1+2bc(r+b)}" eeimg="1">
+                    ,
+                </p>
+                <p>
+                    根据横截性条件
+                    <img src="https://www.zhihu.com/equation?tex=%5Clim_%7Bt+%5Crightarrow%5Cinfty%7D%7Bx%28t%29%7D%3Dx%5E%7B%2A%7D" alt="\lim_{t \rightarrow\infty}{x(t)}=x^{*}" eeimg="1">
+                    ，
+                    <b>
+                        要想保证极限存在
+                    </b>
+                    ，
+                    <b>
+                        那么
+                    </b>
+                    <b>
+                        <img src="https://www.zhihu.com/equation?tex=c_%7B1%7D" alt="c_{1}" eeimg="1">
+                        必须等于0
+                    </b>
+                    (因为当
+                    <img src="https://www.zhihu.com/equation?tex=t%5Crightarrow%5Cinfty" alt="t\rightarrow\infty" eeimg="1">
+                    时，由于
+                    <img src="https://www.zhihu.com/equation?tex=%5Clambda_%7B2%7D%3C0" alt="\lambda_{2}&lt;0" eeimg="1">
+                    所以
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7B%5Clambda_%7B2%7Dt%7D%3D0" alt="e^{\lambda_{2}t}=0" eeimg="1">
+                    ，这个时候只有满足
+                    <img src="https://www.zhihu.com/equation?tex=c_%7B1%7De%5E%7B%5Clambda_%7B1%7Dt%7D%3D0" alt="c_{1}e^{\lambda_{1}t}=0" eeimg="1">
+                    才能保证极限存在，由于
+                    <img src="https://www.zhihu.com/equation?tex=e%5E%7B%5Clambda_%7B1%7Dt%7D%5Cne0" alt="e^{\lambda_{1}t}\ne0" eeimg="1">
+                    所以必须有
+                    <img src="https://www.zhihu.com/equation?tex=c_%7B1%7D%3D0" alt="c_{1}=0" eeimg="1">
+                    )，那么进一步可知稳态
+                    <img src="https://www.zhihu.com/equation?tex=x%5E%7B%2A%7D%3D%5Cfrac%7Ba%7D%7B1%2B2bc%28r%2Bb%29%7D" alt="x^{*}=\frac{a}{1+2bc(r+b)}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    再由初始条件
+                    <img src="https://www.zhihu.com/equation?tex=x%280%29%3Dx_%7B0%7D" alt="x(0)=x_{0}" eeimg="1">
+                    ，解得
+                    <img src="https://www.zhihu.com/equation?tex=c_%7B2%7D%3Dx_%7B0%7D-%5Cfrac%7Ba%7D%7B1%2B2bc%28r%2Bb%29%7D" alt="c_{2}=x_{0}-\frac{a}{1+2bc(r+b)}" eeimg="1">
+                    ,所以，
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29%3D%5Bx_%7B0%7D-%5Cfrac%7Ba%7D%7B1%2B2bc%28r%2Bb%29%7D%5De%5E%7B%5Clambda_%7B2%7Dt%7D%2B%5Cfrac%7Ba%7D%7B1%2B2bc%28r%2Bb%29%7D" alt="x(t)=[x_{0}-\frac{a}{1+2bc(r+b)}]e^{\lambda_{2}t}+\frac{a}{1+2bc(r+b)}" eeimg="1">
+                    ,
+                    <img src="https://www.zhihu.com/equation?tex=t%5Cin%5B0%2C%5Cinfty%29" alt="t\in[0,\infty)" eeimg="1">
+                </p>
+                <p>
+                    所以对x(t)求导，可得:
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=u%28t%29%3D%28B%2B%5Clambda_%7B2%7D%29%5Bx_%7B0%7D-%5Cfrac%7Ba%7D%7B1%2B2bc%28r%2Bb%29%7D%5De%5E%7B%5Clambda_%7B2%7Dt%7D%2B%5Cfrac%7Bab%7D%7B1%2B2bc%28r%2Bb%29%7D" alt="u(t)=(B+\lambda_{2})[x_{0}-\frac{a}{1+2bc(r+b)}]e^{\lambda_{2}t}+\frac{ab}{1+2bc(r+b)}" eeimg="1">
+                    ，
+                    <img src="https://www.zhihu.com/equation?tex=t%5Cin%5B0%2C%5Cinfty%29" alt="t\in[0,\infty)" eeimg="1">
+                </p>
+                <p>
+                    <br>
+                </p>
+                <h2>
+                    <b>
+                        2.动态规划
+                    </b>
+                </h2>
+                <p>
+                    <i>
+                        <b>
+                            2.1基本模型
+                        </b>
+                    </i>
+                </p>
+                <p>
+                    动态规划的方法是动态优化中第三个方法，最早由Richard Bellman提出的，此方法的一个中心思想就是
+                    <b>
+                        最优性原理：全局最优必定是局部最优，如果此全局最优解可以取到的话。
+                    </b>
+                </p>
+                <p>
+                    基本问题模型为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=max+%5Cint_%7B0%7D%5E%7BT%7Df%5Cleft%28+t%2Cx%5Cleft%28+t+%5Cright%29%2Cu%5Cleft%28+t+%5Cright%29+%5Cright%29dt%5C%5Cs.t%3Ax%5E%7B%27%7D%5Cleft%28+t+%5Cright%29%3Dg%28t%2Cx%2Cu%29%2Cx%28t_%7B0%7D%29%3Dx_%7B0%7D" alt="max \int_{0}^{T}f\left( t,x\left( t \right),u\left( t \right) \right)dt\\s.t:x^{&#39;}\left( t \right)=g(t,x,u),x(t_{0})=x_{0}" eeimg="1">
+                </p>
+                <p>
+                    定义一个新的函数，称为
+                    <b>
+                        最优值函数：
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=J%28t%2Cx%29%5Cequiv+max+%5Cint_%7B0%7D%5E%7BT%7Df%5Cleft%28+t%2Cx%5Cleft%28+t+%5Cright%29%2Cu%5Cleft%28+t+%5Cright%29+%5Cright%29dt" alt="J(t,x)\equiv max \int_{0}^{T}f\left( t,x\left( t \right),u\left( t \right) \right)dt" eeimg="1">
+                    (注意此时已经取到最优，所以J与u无关,只与t，x相关)
+                </p>
+                <p>
+                    根据前人
+                    <i>
+                        Hamilton-Jacobi-Bellman
+                    </i>
+                    提出的结论有：(
+                    <b>
+                        称为HJB方程
+                    </b>
+                    )
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=-J_%7Bt%7D%28t%2Cx%29%3Dmax_%7Bu%7D%5Bf%28t%2Cx%2Cu%29%2BJ_%7Bx%7D%28t%2Cx%29g%28t%2Cx%2Cu%29%5D" alt="-J_{t}(t,x)=max_{u}[f(t,x,u)+J_{x}(t,x)g(t,x,u)]" eeimg="1">
+                </p>
+                <p>
+                    此方程是关于控制变量u的函数，因此
+                    <b>
+                        等式两侧关于u求导
+                    </b>
+                    ,得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=0%3Df_%7Bu%7D%28t%2Cx%2Cu%29%2BJ_%7Bx%7Dg_%7Bu%7D%28t%2Cx%2Cu%29" alt="0=f_{u}(t,x,u)+J_{x}g_{u}(t,x,u)" eeimg="1">
+                </p>
+                <p>
+                    解此方程
+                    <b>
+                        得出u的表达式
+                    </b>
+                    ，
+                    <b>
+                        再将其带入HJB方程中，消除掉max符号
+                    </b>
+                    。之后根据具体的题目
+                    <b>
+                        猜
+                        <img src="https://www.zhihu.com/equation?tex=J%28t%2Cx%29" alt="J(t,x)" eeimg="1">
+                        的解的结构
+                    </b>
+                    (猜解是一件技巧性极其强的事情，并且十分困难)，
+                    <b>
+                        猜出解后再解HJB方程求出
+                        <img src="https://www.zhihu.com/equation?tex=x%28t%29" alt="x(t)" eeimg="1">
+                        和
+                        <img src="https://www.zhihu.com/equation?tex=u%28t%29" alt="u(t)" eeimg="1">
+                        的表达式。
+                    </b>
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    当
+                    <img src="https://www.zhihu.com/equation?tex=T%3D%5Cinfty" alt="T=\infty" eeimg="1">
+                    ，且函数
+                    <img src="https://www.zhihu.com/equation?tex=f%28x%2Cu%29%E5%92%8Cg%28x%2Cu%29" alt="f(x,u)和g(x,u)" eeimg="1">
+                    不直接和t相关，(前面的函数形式是
+                    <img src="https://www.zhihu.com/equation?tex=f%28t%2Cx%2Cu%29%E5%92%8Cg%28t%2Cx%2Cu%29" alt="f(t,x,u)和g(t,x,u)" eeimg="1">
+                    是直接与t相关的)，即当面对的问题变为：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=max+%5Cint_%7B0%7D%5E%7B%5Cinfty%7D+e%5E%7B-rt%7Df%5Cleft%28+x%5Cleft%28+t+%5Cright%29%2Cu%5Cleft%28+t+%5Cright%29+%5Cright%29dt%5C%5Cs.t%3Ax%5E%7B%27%7D%5Cleft%28+t+%5Cright%29%3Dg%28x%2Cu%29%2Cx%28t_%7B0%7D%29%3Dx_%7B0%7D" alt="max \int_{0}^{\infty} e^{-rt}f\left( x\left( t \right),u\left( t \right) \right)dt\\s.t:x^{&#39;}\left( t \right)=g(x,u),x(t_{0})=x_{0}" eeimg="1">
+                </p>
+                <p>
+                    有一个
+                    <i>
+                        特殊形式的HJB方程
+                    </i>
+                    ，专门解决此类无穷自治问题。当然上述一般形式的HJB方程也可以解决此问题，但是计算过程比较繁琐。
+                </p>
+                <p>
+                    同样的，
+                    <b>
+                        最优值函数
+                    </b>
+                    <img src="https://www.zhihu.com/equation?tex=V%28x%29%5Cequiv+max+%5Cint_%7B0%7D%5E%7B%5Cinfty%7D+e%5E%7B-rt%7Df%5Cleft%28+x%5Cleft%28+t+%5Cright%29%2Cu%5Cleft%28+t+%5Cright%29+%5Cright%29dt" alt="V(x)\equiv max \int_{0}^{\infty} e^{-rt}f\left( x\left( t \right),u\left( t \right) \right)dt" eeimg="1">
+                    (只直接和x相关，不直接和t相关)
+                </p>
+                <p>
+                    解时，列出特殊形式的HJB方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=rV%28x%29%3Dmax_%7Bu%7D%5Bf%28x%2Cu%29%2BV%5E%7B%27%7D%28x%29g%28x%2Cu%29%5D" alt="rV(x)=max_{u}[f(x,u)+V^{&#39;}(x)g(x,u)]" eeimg="1">
+                    ，
+                </p>
+                <p>
+                    之后求解步骤与上述的步骤一样。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    <b>
+                        <i>
+                            2.2例子
+                        </i>
+                    </b>
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=max+%5Cint_%7B0%7D%5E%7B%5Cinfty%7D+e%5E%7B-rt%7D%28ax%5E%7B2%7D%2Bbu%5E%7B2%7D%29dt%5C%5Cs.t%3Ax%5E%7B%27%7D%3Du%2Cx%28t_%7B0%7D%29%3Dx_%7B0%7D%3E0%3Ba%3E0%2Cb%3E0" alt="max \int_{0}^{\infty} e^{-rt}(ax^{2}+bu^{2})dt\\s.t:x^{&#39;}=u,x(t_{0})=x_{0}&gt;0;a&gt;0,b&gt;0" eeimg="1">
+                </p>
+                <p>
+                    此问题是无穷自治问题，按照上述基本模型中的方法，有两种解法，一般形式的HJB以及特殊形式的HJB。
+                </p>
+                <p>
+                    <b>
+                        （一）一般形式的HJB方程来解
+                    </b>
+                    ：
+                </p>
+                <p>
+                    列出HJB方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=-J_%7Bt%7D%3Dmin_%7Bu%7D%5Be%5E%7B-rt%7D%28ax%5E%7B2%7D%2Bbu%5E%7B2%7D%29%2BJ_%7Bx%7Du%5D" alt="-J_{t}=min_{u}[e^{-rt}(ax^{2}+bu^{2})+J_{x}u]" eeimg="1">
+                </p>
+                <p>
+                    <i>
+                        等式两侧关于u一阶求导
+                    </i>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=2e%5E%7B-rt%7Dbu%2BJ_%7Bx%7D%3D0%5CRightarrow+u%3D-%5Cfrac%7BJ_%7Bx%7De%5E%7Brt%7D%7D%7B2b%7D" alt="2e^{-rt}bu+J_{x}=0\Rightarrow u=-\frac{J_{x}e^{rt}}{2b}" eeimg="1">
+                </p>
+                <p>
+                    <i>
+                        再将其带入HJB方程中消除掉min符号
+                    </i>
+                    ：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=-J_%7Bt%7D%3De%5E%7B-rt%7D%28ax%5E%7B2%7D%2B%5Cfrac%7BJ%5E%7B2%7D_%7Bx%7De%5E%7B2rt%7D%7D%7B4b%7D%29-%5Cfrac%7BJ%5E%7B2%7D_%7Bx%7De%5E%7Brt%7D%7D%7B2b%7D" alt="-J_{t}=e^{-rt}(ax^{2}+\frac{J^{2}_{x}e^{2rt}}{4b})-\frac{J^{2}_{x}e^{rt}}{2b}" eeimg="1">
+                </p>
+                <p>
+                    化简得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=ax%5E%7B2%7D-%5Cfrac%7BJ%5E%7B2%7D_%7Bx%7De%5E%7B2rt%7D%7D%7B4b%7D%2Be%5E%7Brt%7DJ_%7Bt%7D%3D0" alt="ax^{2}-\frac{J^{2}_{x}e^{2rt}}{4b}+e^{rt}J_{t}=0" eeimg="1">
+                </p>
+                <p>
+                    根据目标问题中函数得结构来
+                    <b>
+                        猜J的结构
+                    </b>
+                    ：
+                    <br>
+                    <img src="https://www.zhihu.com/equation?tex=J%28t%2Cx%29%3De%5E%7B-rt%7DAx%5E%7B2%7D" alt="J(t,x)=e^{-rt}Ax^{2}" eeimg="1">
+                </p>
+                <p>
+                    所以，
+                    <img src="https://www.zhihu.com/equation?tex=J_%7Bt%7D%3D-re%5E%7B-2rt%7DA%5E%7B2%7Dx%5E%7B2%7D%2CJ_%7Bx%7D%3D2e%5E%7B-rt%7DAx" alt="J_{t}=-re^{-2rt}A^{2}x^{2},J_{x}=2e^{-rt}Ax" eeimg="1">
+                    ,带入上式中，得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BA%5E%7B2%7D%7D%7Bb%7D%2BrA-a%3D0" alt="\frac{A^{2}}{b}+rA-a=0" eeimg="1">
+                    ,
+                </p>
+                <p>
+                    解得A的正根：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5B-r%2B%28r%5E%7B2%7D%2B%5Cfrac%7B4a%7D%7Bb%7D%29%5E%7B%5Cfrac%7B1%7D%7B2%7D%7D%5Db" alt="A=[-r+(r^{2}+\frac{4a}{b})^{\frac{1}{2}}]b" eeimg="1">
+                    ，
+                </p>
+                <p>
+                    所以，
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=u%28t%29%3D-%5Cfrac%7BAx%7D%7Bb%7D" alt="u(t)=-\frac{Ax}{b}" eeimg="1">
+                    (
+                    <b>
+                        反馈形式
+                    </b>
+                    )
+                </p>
+                <p>
+                    那么可进一步解出来：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29%3Dx_%7B0%7De%5E%7B%5Cfrac%7B-At%7D%7Bb%7D%7D" alt="x(t)=x_{0}e^{\frac{-At}{b}}" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        <i>
+                            （
+                        </i>
+                        二）特殊形式的HJB方程来解
+                    </b>
+                    ：
+                </p>
+                <p>
+                    列出特殊形式的HJB方程：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=rV%28x%29%3Dmin_%7Bu%7D%5Bax%5E%7B2%7D%2Bbu%5E%7B2%7D%2BV%5E%7B%27%7D%28x%29u%5D" alt="rV(x)=min_{u}[ax^{2}+bu^{2}+V^{&#39;}(x)u]" eeimg="1">
+                </p>
+                <p>
+                    两侧关于u一阶求导：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=2bu%2BV%5E%7B%27%7D%3D0%5CRightarrow+u%3D-%5Cfrac%7BV%5E%7B%27%7D%7D%7B2b%7D" alt="2bu+V^{&#39;}=0\Rightarrow u=-\frac{V^{&#39;}}{2b}" eeimg="1">
+                </p>
+                <p>
+                    将此结果带入HJB中消除掉min符号：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=rV%3Dax%5E%7B2%7D%2B%5Cfrac%7BV%5E%7B%272%7D%7D%7B4b%7D-%5Cfrac%7BV%5E%7B%272%7D%7D%7B2b%7D" alt="rV=ax^{2}+\frac{V^{&#39;2}}{4b}-\frac{V^{&#39;2}}{2b}" eeimg="1">
+                </p>
+                <p>
+                    化简得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=ax%5E%7B2%7D-%5Cfrac%7BV%5E%7B%272%7D%7D%7B4b%7D-rV%3D0" alt="ax^{2}-\frac{V^{&#39;2}}{4b}-rV=0" eeimg="1">
+                </p>
+                <p>
+                    <b>
+                        猜V(x)的结构
+                    </b>
+                    ：
+                    <img src="https://www.zhihu.com/equation?tex=V%28x%29%3DAx%5E%7B2%7D" alt="V(x)=Ax^{2}" eeimg="1">
+                    那么
+                    <img src="https://www.zhihu.com/equation?tex=V%5E%7B%27%7D%3D2Ax" alt="V^{&#39;}=2Ax" eeimg="1">
+                    ,代入上式中，得：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BA%5E%7B2%7D%7D%7Bb%7D%2BrA-a%3D0" alt="\frac{A^{2}}{b}+rA-a=0" eeimg="1">
+                    ,
+                </p>
+                <p>
+                    解得A的正根：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=A%3D%5B-r%2B%28r%5E%7B2%7D%2B%5Cfrac%7B4a%7D%7Bb%7D%29%5E%7B%5Cfrac%7B1%7D%7B2%7D%7D%5Db" alt="A=[-r+(r^{2}+\frac{4a}{b})^{\frac{1}{2}}]b" eeimg="1">
+                    ，
+                </p>
+                <p>
+                    所以，
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=u%28t%29%3D-%5Cfrac%7BAx%7D%7Bb%7D" alt="u(t)=-\frac{Ax}{b}" eeimg="1">
+                    (反馈形式)
+                </p>
+                <p>
+                    那么可进一步解出来：
+                </p>
+                <p>
+                    <img src="https://www.zhihu.com/equation?tex=x%28t%29%3Dx_%7B0%7De%5E%7B%5Cfrac%7B-At%7D%7Bb%7D%7D" alt="x(t)=x_{0}e^{\frac{-At}{b}}" eeimg="1">
+                    。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    总结，从(一)(二)两种解法可以比较出，在面对不同问题时选择合适的方法可以减少计算的过程，更完美的解出结果。
+                </p>
+                <p>
+                    <br>
+                </p>
+                <p>
+                    注：实际中动态优化的内容非常多，而且非常复杂，这篇文章只是小小的写了我认为对高宏比较有用的部分而已。教材推荐《动态优化》南茜 人大出版社。欢迎讨论指正。
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
